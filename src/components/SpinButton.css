@@ -1,0 +1,67 @@
+.spinButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.spinButton {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ddd;
+  background-color: rgba(0, 0, 0, 0);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 12px;
+  cursor: pointer;
+  border-radius: 100%;
+}
+
+.spinButton:hover {
+  background-color: #f3f3f3;
+}
+
+.spinButtonInput {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.helpIcon {
+  width: 6px;
+  height: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 4px;
+  margin-left: 10px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 100%;
+  border: 1px solid #ddd;
+  cursor: help;
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.spinButtonLabel {
+  display: flex;
+  font-weight: bold;
+  padding: 0 16px;
+  margin-bottom: 8px;
+}
