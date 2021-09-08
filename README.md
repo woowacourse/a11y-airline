@@ -11,6 +11,7 @@
   <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square"/>
 </p>
 
+<br/>
 
 ## 🎯 요구사항1 - Spin Button: 승객수 입력하기
 
