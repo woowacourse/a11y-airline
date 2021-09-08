@@ -12,7 +12,7 @@
 </p>
 
 
-# 🎯 요구사항1 - Spin Button: 승객수 입력하기
+## 🎯 요구사항1 - Spin Button: 승객수 입력하기
 
 ![image.png](https://techcourse-storage.s3.ap-northeast-2.amazonaws.com/91ad86a0195541bcbd91101ce91cff27)
 
@@ -30,7 +30,7 @@
 
 <br/>
 
-# 🎯  요구사항2 - Carousel: 지금 떠나기 좋은 여행
+## 🎯  요구사항2 - Carousel: 지금 떠나기 좋은 여행
 
 - [ ] 목록은 8개를 구현한다.
 - [ ] 실제 스크린 리더는 아래와 같이 읽을 수 있어야 한다.
@@ -42,7 +42,9 @@
 4. 이전 버튼 (사용 중지)
 ```
 
-# 🎯 요구사항3 -  메인 네비게이션
+<br/>
+
+## 🎯 요구사항3 -  메인 네비게이션
 
 
 ![스크린샷 2021-09-08 오전 9.57.52.png](https://techcourse-storage.s3.ap-northeast-2.amazonaws.com/c3ccf7f0d7134a948728f1877ed21c2f)
