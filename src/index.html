@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      crossorigin
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17.0.2/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/babel-standalone@6.26.0/babel.js"
+    ></script>
+  </head>
+  <body>
+    <div id="root" class="mx-auto w-64 mt-20"></div>
+    <script type="text/babel">
+      const Component = () => {
+        const [count, setCount] = React.useState(0);
+
+        const onMinusClick = (e) =>
+          setCount((prev) => (prev <= 0 ? prev : prev - 1));
+        const onPlusClick = (e) =>
+          setCount((prev) => (prev >= 3 ? prev : prev + 1));
+
+        return (
+          <React.Fragment>
+            <header>
+              <h1 className="font-bold text-4xl">승객 선택</h1>
+            </header>
+            <main className="flex flex-col gap-y-8 mt-12">
+              <div className="flex font-bold  items-center">
+                <h1 className="text-2xl">성인</h1>
+                <span className="ml-4 text-xl text-gray-400 border border-gray-400 rounded-full w-6 h-6 flex items-center justify-center">
+                  ?
+                </span>
+              </div>
+              <section className="flex">
+                <button
+                  className="border rounded-full text-4xl px-4 py-1 flex justify-center items-center w-12 h-12 border-gray-600"
+                  onClick={onMinusClick}
+                >
+                  -
+                </button>
+                <span className="text-4xl px-4 mx-6 border-b border-black ">
+                  {count}
+                </span>
+                <button
+                  className="border rounded-full text-4xl px-4 py-1 flex justify-center items-center w-12 h-12 border-gray-600"
+                  onClick={onPlusClick}
+                >
+                  +
+                </button>
+              </section>
+            </main>
+          </React.Fragment>
+        );
+      };
+
+      ReactDOM.render(<Component />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
