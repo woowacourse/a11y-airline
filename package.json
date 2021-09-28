@@ -1,7 +1,10 @@
 {
-  "name": "woowatechcourse-level-4-a11y",
+  "name": "a11y-airplane",
+  "description": "우아한테크코스 레벨 4 웹 접근성 미션",
   "version": "0.0.1",
+  "author": "gwangyeol-im",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -33,5 +36,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.26.0",
+    "prettier": "2.4.1"
   }
 }
