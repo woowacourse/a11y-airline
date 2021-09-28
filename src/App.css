@@ -19,11 +19,12 @@ nav,
 section {
   margin: 0;
   padding: 0;
+  vertical-align: baseline;
+  box-sizing: border-box;
+
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline;
-  box-sizing: border-box;
 }
 
 footer,
@@ -33,9 +34,12 @@ nav,
 section {
   display: block;
 }
+
 body {
   line-height: 1;
+  font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
 }
+
 ol,
 ul {
   list-style: none;
