@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [passengerCount, setPassengerCount] = useState(0);
+  const [passengerCount, setPassengerCount] = useState(1);
 
   const handleIncreasePassengerCount = () => {
+    if (passengerCount >= 3) {
+      alert('한번에 최대 3인만 탑승 가능합니다');
+      return;
+    }
+
     setPassengerCount(passengerCount + 1);
   };
 
