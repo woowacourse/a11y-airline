@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
 const PASSENGER_MIN_COUNT = 1;
@@ -35,30 +36,47 @@ const Mission1 = () => {
   return (
     <section>
       <form onSubmit={submitForm}>
-        <button
-          type="button"
-          aria-label="성인 탑승자 한명 줄이기"
-          onClick={decrementPassengerCount}
-        >
-          -
-        </button>
-        <label htmlFor="passengerCount">성인</label>
-        <input type="tel" id="passengerCount" value={current} readOnly={true} />
-        <div aria-live="assertive" aria-atomic={true}>
-          {prev > current && <p>성인 승객 감소 {current}</p>}
-          {prev < current && <p>성인 승객 증가 {current}</p>}
-        </div>
-        <button
-          type="button"
-          aria-label="성인 탑승자 한명 늘리기"
-          onClick={incrementPassengerCount}
-        >
-          +
-        </button>
+        <InputStepper>
+          <button
+            type="button"
+            aria-label="성인 탑승자 한명 줄이기"
+            onClick={decrementPassengerCount}
+          >
+            -
+          </button>
+          <label htmlFor="passengerCount" className="sr-only">
+            성인
+          </label>
+          <input
+            type="tel"
+            id="passengerCount"
+            value={current}
+            readOnly={true}
+          />
+          <div aria-live="assertive" aria-atomic={true}>
+            {prev > current && (
+              <p className="sr-only">성인 승객 감소 {current}</p>
+            )}
+            {prev < current && (
+              <p className="sr-only">성인 승객 증가 {current}</p>
+            )}
+          </div>
+          <button
+            type="button"
+            aria-label="성인 탑승자 한명 늘리기"
+            onClick={incrementPassengerCount}
+          >
+            +
+          </button>
+        </InputStepper>
         <button>추가</button>
       </form>
     </section>
   );
 };
+
+const InputStepper = styled.div`
+  display: flex;
+`;
 
 export default Mission1;
