@@ -1,34 +1,52 @@
 import './App.css';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 const MAX_PASSENGERS_COUNT = 3;
 const MIN_PASSENGERS_COUNT = 1;
 
 const App = () => {
-  const passengerCountInput = useRef(null);
-  const passengerCountStatus = useRef(null);
+  const [passengers, setPassengers] = useState(1);
+  const passengerStatus = useRef(null);
+  const passengerAlert = useRef(null);
 
-  const addPassenger = () => {
-    const inputValue = passengerCountInput.current.value;
-    if (inputValue >= 3) {
-      passengerCountStatus.current.innerText = `성인 승객 추가 불가능`;
+  const handleAddPassenger = () => {
+    if (passengers >= MAX_PASSENGERS_COUNT) {
+      passengerAlert.current.innerText = `성인 승객 최대 ${MAX_PASSENGERS_COUNT}명`;
       return;
     }
 
-    passengerCountInput.current.value = Number(inputValue) + 1;
-    passengerCountStatus.current.innerText = `성인 승객 추가 ${passengerCountInput.current.value}`;
+    setPassengers((prev) => prev + 1);
+    changeStatus(`성인 승객 추가 ${passengers}`);
   };
 
-  const subtractPassenger = () => {
-    const inputValue = passengerCountInput.current.value;
-    if (inputValue <= 1) {
-      passengerCountStatus.current.innerText = `성인 승객 감소 불가능`;
+  const handleSubtractPassenger = () => {
+    if (passengers <= MIN_PASSENGERS_COUNT) {
+      passengerAlert.current.innerText = `성인 승객 최소 ${MIN_PASSENGERS_COUNT}명`;
       return;
     }
 
-    passengerCountInput.current.value = Number(inputValue) - 1;
-    passengerCountStatus.current.innerText = `성인 승객 감소 ${passengerCountInput.current.value}`;
+    setPassengers((prev) => prev - 1);
+    changeStatus(`성인 승객 감소 ${passengers}`);
+  };
+
+  const handleChangePassenger = (e) => {
+    const inputValue = e.currentTarget.valueAsNumber;
+    if (inputValue < MIN_PASSENGERS_COUNT) {
+      setPassengers(MIN_PASSENGERS_COUNT);
+      return;
+    }
+
+    if (inputValue > MAX_PASSENGERS_COUNT) {
+      setPassengers(MAX_PASSENGERS_COUNT);
+      return;
+    }
+
+    setPassengers(inputValue);
+  };
+
+  const changeStatus = (message) => {
+    passengerStatus.current.innerText = message;
   };
 
   return (
@@ -40,32 +58,27 @@ const App = () => {
           type="button"
           className="buttons"
           aria-label="성인 탑승자 한명 줄이기"
-          onClick={subtractPassenger}
+          onClick={handleSubtractPassenger}
         >
           -
         </button>
         <input
-          type="text"
+          type="number"
           className="number-input"
-          aria-label={`성인 텍스트 숫자만 수정`}
-          defaultValue={MIN_PASSENGERS_COUNT}
-          min={MIN_PASSENGERS_COUNT}
-          max={MAX_PASSENGERS_COUNT}
-          ref={passengerCountInput}
+          value={passengers}
+          aria-label={`성인 ${passengers} 숫자만 수정`}
+          onChange={handleChangePassenger}
         />
         <button
           type="button"
           className="buttons"
           aria-label="성인 탑승자 한명 늘리기"
-          onClick={addPassenger}
+          onClick={handleAddPassenger}
         >
           +
         </button>
-        <span
-          role="status"
-          className="hidden"
-          ref={passengerCountStatus}
-        ></span>
+        <p role="alert" className="hidden" ref={passengerAlert}></p>
+        <p role="status" className="hidden" ref={passengerStatus}></p>
       </div>
     </form>
   );
