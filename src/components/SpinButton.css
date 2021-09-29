@@ -9,7 +9,7 @@
   cursor: pointer;
 }
 
-.round-button:disabled {
+.round-button[aria-disabled='true'] {
   opacity: 0.5;
   cursor: not-allowed;
 }
@@ -30,4 +30,16 @@
   width: 0;
   height: 0;
   overflow: hidden;
+}
+
+.minus-button::after {
+  content: '-';
+  width: 100%;
+  height: 100%;
+}
+
+.plus-button::after {
+  content: '+';
+  width: 100%;
+  height: 100%;
 }

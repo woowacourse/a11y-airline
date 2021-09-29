@@ -25,14 +25,12 @@ const SpinButton = () => {
       <h1>승객 선택</h1>
       <h2>성인</h2>
       <button
-        className='round-button'
+        className='round-button minus-button'
         type='button'
         aria-label='성인 탑승자 한명 줄이기'
         onClick={decrease}
-        disabled={adultCount === 0}
-      >
-        -
-      </button>
+        aria-disabled={adultCount === 0}
+      ></button>
       <input
         className='adult-amount'
         type='text'
@@ -42,18 +40,16 @@ const SpinButton = () => {
         value={adultCount}
         onChange={onChange}
       />
-      <span className='adult-amount-hidden' aria-live='polite'>
-        성인 승객 추가 {adultCount}
+      <span className='adult-amount-hidden' aria-live='assertive'>
+        성인 승객 {adultCount}명으로 변경
       </span>
       <button
-        className='round-button'
+        className='round-button plus-button'
         type='button'
         aria-label='성인 탑승자 한명 늘리기'
         onClick={increase}
-        disabled={adultCount === 3}
-      >
-        +
-      </button>
+        aria-disabled={adultCount === 3}
+      ></button>
     </>
   );
 };
