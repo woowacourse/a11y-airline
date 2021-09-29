@@ -40,8 +40,8 @@ const SpinButton = () => {
 
   return (
     <div>
-      <h2 aria-current="page">승객 선택</h2>
-      <h3>성인</h3>
+      <h1 aria-current="page">승객 선택</h1>
+      <h2>성인</h2>
       <button
         type="button"
         onClick={onClickDecreaseButton}
@@ -53,13 +53,13 @@ const SpinButton = () => {
       </button>
 
       <input
-        id="count"
         value={count}
         type="number"
         onChange={onChangeCount}
         min={LIMIT_COUNT.MIN}
         max={LIMIT_COUNT.MAX}
         aria-label={`성인 ${count} 텍스트 숫자만 수정`}
+        aria-describe
         readOnly
       />
 
