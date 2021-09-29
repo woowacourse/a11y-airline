@@ -21,10 +21,10 @@ section {
   padding: 0;
   vertical-align: baseline;
   box-sizing: border-box;
-
   border: 0;
   font-size: 100%;
   font: inherit;
+  text-decoration: none;
 }
 
 footer,
@@ -43,4 +43,20 @@ body {
 ol,
 ul {
   list-style: none;
+}
+
+.nav {
+  background-color: rgb(206, 206, 206);
+  width: 100%;
+}
+
+.nav-list {
+  display: flex;
+  font-size: 1.875rem;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.nav-list > li {
+  padding: 0.625rem;
 }
