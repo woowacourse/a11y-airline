@@ -76,6 +76,7 @@ const SpinButton = () => {
       <span
         role="status"
         aria-live="assertive"
+        aria-atomic="true"
         aria-label={`성인 승객 추가 ${count}명`}
       ></span>
     </div>
