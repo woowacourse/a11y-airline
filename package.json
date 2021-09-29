@@ -4,6 +4,7 @@
   "author": "Shim MunSeong <Puterism.K@gmail.com>",
   "repository": "https://github.com/Puterism/a11y-airline.git",
   "license": "MIT",
+  "homepage": "https://puterism.github.io/a11y-airline",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -19,6 +20,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -38,6 +41,7 @@
   },
   "devDependencies": {
     "eslint-config-prettier": "^8.3.0",
+    "gh-pages": "^3.2.3",
     "prettier": "^2.4.1"
   }
 }
