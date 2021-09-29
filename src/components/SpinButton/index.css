@@ -37,16 +37,3 @@ input[type='number']::-webkit-outer-spin-button {
   font-size: 16px;
   cursor: pointer;
 }
-
-.tooltip {
-  border: 1.75px solid #7f7f7f;
-  color: #7f7f7f;
-  padding: 3px;
-  width: 10px;
-  height: 10px;
-  display: inline-block;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 12px;
-  font-size: 12px;
-}
