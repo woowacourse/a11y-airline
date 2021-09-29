@@ -1,0 +1,25 @@
+{
+  "name": "a11y-airline",
+  "version": "1.0.0",
+  "description": "This is the project for studying web accessiblity.",
+  "main": "index.js",
+  "repository": "https://github.com/sunhpark42/a11y-airline.git",
+  "author": "sunhpark42 <sunhpark42@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^11.1.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "prettier": "^2.4.1"
+  }
+}
