@@ -6,7 +6,7 @@ const App = () => {
   const valueState = useState<string | number>(1);
 
   return (
-    <div className="App">
+    <main className="App">
       <h1>승객 선택</h1>
       <SpinButton
         label="성인"
@@ -18,7 +18,7 @@ const App = () => {
         increaseMessage="성인 승객 추가"
         decreaseMessage="성인 승객 감소"
       />
-    </div>
+    </main>
   );
 };
 
