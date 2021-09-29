@@ -53,14 +53,10 @@ const Mission1 = () => {
             value={current}
             readOnly={true}
           />
-          <div aria-live="assertive" aria-atomic={true}>
-            {prev > current && (
-              <p className="sr-only">성인 승객 감소 {current}</p>
-            )}
-            {prev < current && (
-              <p className="sr-only">성인 승객 증가 {current}</p>
-            )}
-          </div>
+          <p className="sr-only" aria-live="assertive" aria-atomic={true}>
+            {prev > current ? `성인 승객 감소 ${current}` : ''}
+            {prev < current ? `성인 승객 증가 ${current}` : ''}
+          </p>
           <button
             type="button"
             aria-label="성인 탑승자 한명 늘리기"
