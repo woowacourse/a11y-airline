@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { SpinButton } from '../pages';
 
 const App = () => (
   <>
@@ -19,7 +20,9 @@ const App = () => (
         </ul>
       </nav>
       <Switch>
-        <Route path="/spin-button">스핀버튼</Route>
+        <Route path="/spin-button">
+          <SpinButton />
+        </Route>
         <Route path="/carousel">캐로셀</Route>
         <Route path="/navigation">네비게이션</Route>
       </Switch>
