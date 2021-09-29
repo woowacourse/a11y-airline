@@ -1,8 +1,9 @@
-.container {
-  margin-top: 25%;
+.text {
+  margin: 0 1rem;
+  width: 2rem;
   text-align: center;
 }
 
-.text {
-  margin: 0 1rem;
+.button:disabled {
+  cursor: not-allowed;
 }
