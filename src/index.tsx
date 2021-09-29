@@ -1,4 +1,4 @@
 import ReactDOM from "react-dom";
 import App from "./App";
 
-ReactDOM.render(<App />, document.querySelector("#id"));
+ReactDOM.render(<App />, document.querySelector("#root"));
