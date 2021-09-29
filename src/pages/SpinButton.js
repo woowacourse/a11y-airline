@@ -44,7 +44,7 @@ const SpinButton = () => {
     <>
       <H1>🎯 미션1 Spin Button: 승객수 입력하기</H1>
       <h2>승객 선택</h2>
-      <h4>성인</h4>
+      <h3>성인</h3>
       <SpinButtonSection>
         <button
           aria-label="성인 탑승자 한 명 줄이기"
