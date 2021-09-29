@@ -61,6 +61,14 @@ const SpinButton = () => {
           readOnly
         />
 
+        <span
+          role='alert'
+          className='hidden'
+          id='span-hidden'
+          aria-label={`성인 승객 추가 ${passenger}명`}
+        ></span>
+        <span role='alert' aria-live='assertive' aria-labelledby='span-hidden'></span>
+
         <button
           type='button'
           onClick={increaseCount}
@@ -72,7 +80,6 @@ const SpinButton = () => {
           +
         </button>
       </form>
-      <span className='hidden' aria-live='assertive'>{`성인 승객 추가 ${passenger}명`}</span>
     </section>
   );
 };
