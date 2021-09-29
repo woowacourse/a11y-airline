@@ -44,16 +44,14 @@ const Mission1 = () => {
           >
             -
           </button>
-          <label htmlFor="passengerCount" className="sr-only">
-            성인
-          </label>
           <input
             type="tel"
             id="passengerCount"
             value={current}
+            aria-label="성인"
             readOnly={true}
           />
-          <p className="sr-only" aria-live="assertive" aria-atomic={true}>
+          <p className="sr-only" role="alert">
             {prev > current ? `성인 승객 감소 ${current}` : ''}
             {prev < current ? `성인 승객 증가 ${current}` : ''}
           </p>
