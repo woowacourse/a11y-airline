@@ -1,4 +1,4 @@
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 const LIMIT_COUNT = {
   MIN: 1,
@@ -6,7 +6,7 @@ const LIMIT_COUNT = {
 } as const;
 
 const SpinButton = () => {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState<number>(LIMIT_COUNT.MIN);
 
   const canIncrease = count < LIMIT_COUNT.MAX;
   const canDecrease = LIMIT_COUNT.MIN < count;
@@ -33,21 +33,25 @@ const SpinButton = () => {
 
   const onChangeCount = (event: ChangeEvent) => {
     const _count = Number((event.target as HTMLInputElement).value);
+    const canChange = LIMIT_COUNT.MIN <= _count && _count <= LIMIT_COUNT.MAX;
 
-    setCount(_count);
+    if (canChange) setCount(_count);
   };
 
   return (
     <div>
+      <h2 aria-current="page">승객 선택</h2>
+      <h3>성인</h3>
       <button
         type="button"
         onClick={onClickDecreaseButton}
-        disabled={!canDecrease}
+        aria-label="성인 탑승자 한명 줄이기 버튼"
+        aria-invalid={!canDecrease}
+        aria-errormessage={`최소 탑승 인원은 ${LIMIT_COUNT.MIN}명까지 입니다.`}
       >
         -
       </button>
 
-      <label htmlFor="count"></label>
       <input
         id="count"
         value={count}
@@ -55,15 +59,25 @@ const SpinButton = () => {
         onChange={onChangeCount}
         min={LIMIT_COUNT.MIN}
         max={LIMIT_COUNT.MAX}
+        aria-label={`성인 ${count} 텍스트 숫자만 수정`}
+        readOnly
       />
 
       <button
         type="button"
         onClick={onClickIncreaseButton}
-        disabled={!canIncrease}
+        aria-label="성인 탑승자 한명 늘리기 버튼"
+        aria-invalid={!canIncrease}
+        aria-errormessage={`최대 탑승 인원은 ${LIMIT_COUNT.MAX}명까지 입니다.`}
       >
         +
       </button>
+
+      <span
+        role="status"
+        aria-live="assertive"
+        aria-label={`성인 승객 추가 ${count}명`}
+      ></span>
     </div>
   );
 };
