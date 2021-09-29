@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import PassensgerCounterInput from './components/Counter';
+import PassengerCounterInput from './components/Counter';
 
 const App = () => {
   const [adultCount, setAdultCount] = useState(0);
@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div>
       <h1>승객 선택</h1>
-      <PassensgerCounterInput
+      <PassengerCounterInput
         label="성인"
         value={adultCount}
         setValue={setAdultCount}

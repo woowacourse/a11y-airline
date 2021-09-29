@@ -9,7 +9,7 @@ interface CounterProps extends InputHTMLAttributes<HTMLInputElement> {
   initialValue?: number;
 }
 
-const PassensgerCounterInput = ({
+const PassengerCounterInput = ({
   label,
   value,
   setValue,
@@ -20,14 +20,22 @@ const PassensgerCounterInput = ({
 }: CounterProps) => {
   const [alertMessage, setAlertMessage] = useState('');
   const onDecrease = () => {
-    if (value <= min) return setValue(min);
+    if (value <= min) {
+      setValue(min);
+      setAlertMessage(`최소 ${label} 승객 수 입니다.`);
+      return;
+    }
 
     setValue(value - 1);
     setAlertMessage(`${label} 승객 감소 ${value - 1}`);
   };
 
   const onIncrease = () => {
-    if (value >= max) return setValue(max);
+    if (value >= max) {
+      setValue(max);
+      setAlertMessage(`최대 ${label} 승객 수 입니다.`);
+      return;
+    }
 
     setValue(value + 1);
     setAlertMessage(`${label} 승객 추가 ${value + 1}`);
@@ -35,11 +43,14 @@ const PassensgerCounterInput = ({
 
   const onValueChange = ({ target: { value, valueAsNumber } }: ChangeEvent<HTMLInputElement>) => {
     if (value === '' && initialValue !== undefined) return setValue(initialValue);
-    if (valueAsNumber > max) return setValue(max);
-    if (valueAsNumber < min) return setValue(min);
 
-    setValue(valueAsNumber);
-    setAlertMessage(`${label} 승객 변경 ${valueAsNumber}`);
+    let result = valueAsNumber;
+
+    if (valueAsNumber > max) result = max;
+    if (valueAsNumber < min) result = min;
+
+    setValue(result);
+    setAlertMessage(`${label} 승객 변경 ${result}`);
   };
 
   useEffect(() => {
@@ -74,4 +85,4 @@ const PassensgerCounterInput = ({
   );
 };
 
-export default PassensgerCounterInput;
+export default PassengerCounterInput;
