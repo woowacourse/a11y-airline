@@ -1,0 +1,9 @@
+{
+  "name": "a11y-airline",
+  "version": "1.0.0",
+  "description": "우아한테크코스 웹 접근성 미션",
+  "main": "src/index.ts",
+  "repository": "https://github.com/jho2301/a11y-airline.git",
+  "author": "jho2301 <jho2301@gmail.com>",
+  "license": "MIT",
+}
