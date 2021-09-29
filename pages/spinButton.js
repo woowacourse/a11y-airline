@@ -19,7 +19,7 @@ const SpinButton = () => {
 
     const value = Number(target.value);
 
-    if (3 < value || 0 > value) return;
+    if (MAX < value || MIN > value) return;
 
     setCount(value);
   };
@@ -51,8 +51,8 @@ const SpinButton = () => {
         <input id="count-input" className={styles.text} value={count} onChange={changeCount} />
         <span className={commonStyles.blind} role="status">
           성인 탑승자 {count}명으로 변경됨
-          {count === 0 && '최소 인원 0명으로 더이상 줄이기 불가'}
-          {count === 3 && '최대 인원 3명으로 더이상 늘리기 불가'}
+          {count === MIN && `최소 인원 ${MIN}명으로 더이상 줄이기 불가`}
+          {count === MAX && `최대 인원 ${MAX}명으로 더이상 늘리기 불가`}
         </span>
         <button className={styles.button} onClick={plus} disabled={count === MAX}>
           <span aria-hidden="true">+</span>
