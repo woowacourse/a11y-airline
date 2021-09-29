@@ -1,9 +1,28 @@
 {
   "name": "a11y-airline",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "우아한테크코스 웹 접근성 미션",
-  "main": "src/index.ts",
+  "main": "src/index.tsx",
   "repository": "https://github.com/jho2301/a11y-airline.git",
   "author": "jho2301 <jho2301@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "webpack serve --mode=development",
+    "build": "webpack --mode=production"
+  },
+  "devDependencies": {
+    "@types/react-dom": "^17.0.9",
+    "@types/webpack-dev-server": "^4.1.0",
+    "html-webpack-plugin": "^5.3.2",
+    "ts-loader": "^9.2.6",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3",
+    "webpack": "^5.55.1",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.3.0"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
 }
