@@ -1,0 +1,9 @@
+{
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "files.trimTrailingWhitespace": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "prettier.enable": true
+}
