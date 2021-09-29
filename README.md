@@ -1,5 +1,7 @@
 <p align="middle" >
+
   <img width="100px;" src="./images/airplane.png"/>
+
 </p>
 <h2 align="middle">누구나 접근할 수 있는 항공사 웹사이트</h2>
 <p align="middle">항공사 웹사이트 컴포넌트의 스크린 리더 접근성 높이기</p>
@@ -34,6 +36,7 @@
 ## 🎯 요구사항2 - Carousel: 지금 떠나기 좋은 여행
 
 <img src="./images/carousel_sample.png">
+
 
 - [ ] 목록은 8개를 구현한다.
 - [ ] 실제 스크린 리더는 아래와 같이 읽을 수 있어야 한다.
