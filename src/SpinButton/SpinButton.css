@@ -1,0 +1,43 @@
+.container {
+  margin: auto;
+  text-align: center;
+}
+
+button {
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1rem;
+  background: transparent;
+  margin: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform .1s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+input {
+  width: 40px;
+  text-align: center;
+  border: none;
+  border-bottom: 2px solid #777;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
