@@ -11,9 +11,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test"
   },
+  "homepage": "https://iborymagic.github.io/a11y-airline",
   "eslintConfig": {
     "extends": [
       "react-app",
