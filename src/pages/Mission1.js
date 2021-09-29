@@ -3,33 +3,53 @@ import React, { useState } from 'react';
 
 const PASSENGER_MIN_COUNT = 1;
 const PASSENGER_MAX_COUNT = 3;
-const initialPassengerCount = {
-  prev: PASSENGER_MIN_COUNT,
-  current: PASSENGER_MIN_COUNT,
-};
+
+const isValidPassengerCount = (count) =>
+  PASSENGER_MIN_COUNT <= count && count <= PASSENGER_MAX_COUNT;
 
 const Mission1 = () => {
-  const [passengerCount, setPassengerCount] = useState(initialPassengerCount);
-  const { prev, current } = passengerCount;
-
-  const decrementPassengerCount = () => {
-    if (current <= PASSENGER_MIN_COUNT) return;
-
-    setPassengerCount({ prev: current, current: current - 1 });
-  };
+  const [passengerCount, setPassengerCount] = useState(PASSENGER_MIN_COUNT);
 
   const incrementPassengerCount = () => {
-    if (current >= PASSENGER_MAX_COUNT) return;
+    if (passengerCount >= PASSENGER_MAX_COUNT) return;
 
-    setPassengerCount({ prev: current, current: current + 1 });
+    setPassengerCount(Number(passengerCount) + 1);
+  };
+
+  const decrementPassengerCount = () => {
+    if (passengerCount <= PASSENGER_MIN_COUNT) return;
+
+    setPassengerCount(Number(passengerCount) - 1);
+  };
+
+  const changePassengerCountInput = (event) => {
+    try {
+      const { value } = event.target;
+
+      if (isNaN(value)) {
+        throw new Error();
+      }
+
+      setPassengerCount(value);
+    } catch (error) {
+      setPassengerCount(PASSENGER_MIN_COUNT);
+    }
   };
 
   const submitForm = (event) => {
     event.preventDefault();
 
+    if (!isValidPassengerCount(passengerCount)) {
+      alert(
+        `탑승자는 ${PASSENGER_MIN_COUNT}명 이상 ${PASSENGER_MAX_COUNT}명 이하로 추가할 수 있습니다.`
+      );
+
+      return;
+    }
+
     if (window.confirm('탑승자를 추가하시겠습니까?')) {
       alert('추가 되었습니다.');
-      setPassengerCount(initialPassengerCount);
+      setPassengerCount(PASSENGER_MIN_COUNT);
     }
   };
 
@@ -41,19 +61,20 @@ const Mission1 = () => {
             type="button"
             aria-label="성인 탑승자 한명 줄이기"
             onClick={decrementPassengerCount}
+            disabled={passengerCount <= PASSENGER_MIN_COUNT}
           >
             -
           </button>
           <input
             type="tel"
             id="passengerCount"
-            value={current}
+            value={passengerCount}
             aria-label="성인"
-            readOnly={true}
+            maxLength={1}
+            onChange={changePassengerCountInput}
           />
           <p className="sr-only" role="alert">
-            {prev > current ? `성인 승객 감소 ${current}` : ''}
-            {prev < current ? `성인 승객 증가 ${current}` : ''}
+            성인 {passengerCount}
           </p>
           <button
             type="button"
