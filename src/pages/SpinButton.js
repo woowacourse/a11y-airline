@@ -58,7 +58,7 @@ const SpinButton = () => {
     <main>
       <h2>승객 선택</h2>
       <section>
-        <h3 tabIndex={-1}>성인</h3>
+        <h3>성인</h3>
         <div style={{ display: 'flex' }}>
           <button
             aria-label="성인 탑승자 한명 줄이기"
