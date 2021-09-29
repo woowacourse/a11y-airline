@@ -80,7 +80,7 @@ const SpinButton = () => {
               onBlur={onSetEmptyInput}
               placeholder="0~3 사이의 숫자만 입력"
             />
-            <span className="visually-hidden" role="status" aria-live="polite">
+            <span className="visually-hidden" role="status">
               {`성인 승객 ${action} ${number}`}
             </span>
           </div>
