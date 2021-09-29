@@ -130,7 +130,7 @@ const HomePage = () => {
                 </button>
                 <p
                   id="tip-adult"
-                  aria-role="tooltip"
+                  role="tooltip"
                   className={styles.tooltip_content}
                   hidden={!isTooltipOn}
                 >
