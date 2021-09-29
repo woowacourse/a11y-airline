@@ -1,0 +1,7 @@
+.sr-only {
+  width: 1px;
+  height: 1px;
+  position: fixed;
+  top: -100px;
+  overflow: hidden;
+}

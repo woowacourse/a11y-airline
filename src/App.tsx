@@ -1,5 +1,7 @@
+import SpinButton from './components/SpinButton';
+
 const App = () => {
-  return <div>Hello, World!</div>;
+  return <SpinButton />;
 };
 
 export default App;
