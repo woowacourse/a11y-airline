@@ -6,7 +6,7 @@ const SpinButton = (): JSX.Element => {
   const [status, setStatus] = useState<'추가' | '감소' | null>(null);
 
   const onDecrease = () => {
-    if (numberOfPerson <= 0) return;
+    if (numberOfPerson < 0) return;
 
     setNumberOfPerson((prev) => prev - 1);
     setStatus('감소');
@@ -23,7 +23,7 @@ const SpinButton = (): JSX.Element => {
     const value = Number(target.value);
     const prevNumberOfPerson = numberOfPerson;
 
-    if (value <= 0 || value > 3 || numberOfPerson === value) return;
+    if (value < 0 || value > 3 || numberOfPerson === value) return;
 
     setNumberOfPerson(value);
     setStatus(value > prevNumberOfPerson ? '추가' : '감소');
@@ -37,6 +37,8 @@ const SpinButton = (): JSX.Element => {
         <button
           type="button"
           onClick={onDecrease}
+          disabled={numberOfPerson === 1}
+          aria-disabled={numberOfPerson === 1}
           aria-label="성인 탑승자 한 명 줄이기"
         >
           -
@@ -55,6 +57,8 @@ const SpinButton = (): JSX.Element => {
         <button
           type="button"
           onClick={onIncrease}
+          disabled={numberOfPerson === 3}
+          aria-disabled={numberOfPerson === 3}
           aria-label="성인 탑승자 한 명 늘리기"
         >
           +
