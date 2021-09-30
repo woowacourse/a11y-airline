@@ -40,7 +40,14 @@ const SpinButton = () => {
         <Button aria-label="성인 탑승자 한명 줄이기" onClick={reduceAdultCount}>
           -
         </Button>
-        <Input type="number" aria-label="성인" min="1" max="3" value={currentAdultCount} readOnly />
+        <Input
+          type="number"
+          aria-label="성인 인원 수"
+          min="1"
+          max="3"
+          value={currentAdultCount}
+          readOnly
+        />
         <CurrentAdultCount aria-live="assertive" aria-relevant="additions" aria-atomic="true">
           성인 승객 추가 {currentAdultCount}
         </CurrentAdultCount>
