@@ -64,6 +64,8 @@ function SpinButton() {
             min={ADULT_COUNT_MIN}
             max={ADULT_COUNT_MAX}
             defaultValue={adultCount}
+            value={adultCount}
+            onChange={(e) => setAdultCount(e.target.value)}
           />
 
           <button
