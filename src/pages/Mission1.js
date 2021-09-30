@@ -80,6 +80,7 @@ const Mission1 = () => {
             type="button"
             aria-label="성인 탑승자 한명 늘리기"
             onClick={incrementPassengerCount}
+            disabled={passengerCount >= PASSENGER_MAX_COUNT}
           >
             +
           </button>
