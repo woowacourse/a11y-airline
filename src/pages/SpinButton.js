@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
 
-const H1 = styled.span`
+const Title = styled.span`
   font-size: 2rem;
   font-weight: 700;
   border-bottom: 1px solid grey;
@@ -42,11 +42,12 @@ const SpinButton = () => {
 
   return (
     <>
-      <H1>🎯 미션1 Spin Button: 승객수 입력하기</H1>
+      <Title>🎯 미션1 Spin Button: 승객수 입력하기</Title>
       <h2>승객 선택</h2>
       <h3>성인</h3>
       <SpinButtonSection>
         <button
+          type="button"
           aria-label="성인 탑승자 한 명 줄이기"
           onClick={handleDecreaseCount}
         >
@@ -62,6 +63,7 @@ const SpinButton = () => {
           현재 승객 인원 {passengerCount}
         </CurrentPassenger>
         <button
+          type="button"
           aria-label="성인 탑승자 한명 늘리기"
           onClick={handleIncreaseCount}
         >
