@@ -59,7 +59,6 @@ const SpinButton = () => {
         min={LIMIT_COUNT.MIN}
         max={LIMIT_COUNT.MAX}
         aria-label={`성인 ${count} 텍스트 숫자만 수정`}
-        aria-describe
         readOnly
       />
 
@@ -77,7 +76,7 @@ const SpinButton = () => {
         role="status"
         aria-live="assertive"
         aria-atomic="true"
-        aria-label={`성인 승객 추가 ${count}명`}
+        aria-label={`성인 승객 변경 ${count}명`}
       ></span>
     </div>
   );
