@@ -21,7 +21,7 @@ const App = () => {
   };
 
   return (
-    <form>
+    <section>
       <h1>승객 선택</h1>
 
       <h2>성인</h2>
@@ -82,7 +82,7 @@ const App = () => {
           }}
         />
       </label>
-    </form>
+    </section>
   );
 };
 
