@@ -49,7 +49,7 @@ const SpinButton = () => {
           readOnly
         />
         <CurrentAdultCount aria-live="assertive" aria-relevant="additions" aria-atomic="true">
-          성인 승객 추가 {currentAdultCount}
+          현재 성인 인원 수 {currentAdultCount}
         </CurrentAdultCount>
         <Button type="button" aria-label="성인 탑승자 한명 늘리기" onClick={increaseAdultCount}>
           +
