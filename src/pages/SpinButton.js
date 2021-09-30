@@ -63,8 +63,7 @@ function SpinButton() {
             aria-label={`성인 ${adultCount}명`}
             min={ADULT_COUNT_MIN}
             max={ADULT_COUNT_MAX}
-            value={adultCount}
-            onChange={() => {}}
+            defaultValue={adultCount}
           />
 
           <button
