@@ -45,7 +45,7 @@ const SpinButton = (): JSX.Element => {
           type="number"
           min="1"
           max="3"
-          aria-label="성인"
+          aria-label="성인 탑승 승객 수"
           value={numberOfPerson}
           onChange={onChange}
         />
