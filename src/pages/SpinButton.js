@@ -20,7 +20,7 @@ function SpinButton() {
       const $ariaLive = document.querySelector('.SpinButton_AriaLive');
 
       $ariaLive.innerText = `성인 승객 추가 ${nextCount}`;
-      return Math.min(nextCount, ADULT_COUNT_MAX);
+      return nextCount;
     });
   const decrement = () =>
     setAdultCount((prevCount) => {
@@ -32,7 +32,7 @@ function SpinButton() {
       const $ariaLive = document.querySelector('.SpinButton_AriaLive');
 
       $ariaLive.innerText = `성인 승객 감소 ${nextCount}`;
-      return Math.max(nextCount, ADULT_COUNT_MIN);
+      return nextCount;
     });
 
   return (
