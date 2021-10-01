@@ -76,10 +76,10 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    const isValidPassengerNumber = checkValidatePassengerNumber(passenger);
+    const passengerNumberStatus = checkValidatePassengerNumber(passenger);
 
-    if (isValidPassengerNumber !== PASSENGER_NUMBER_IS_VALID) {
-      setAlertText(MESSAGES[isValidPassengerNumber]);
+    if (passengerNumberStatus !== PASSENGER_NUMBER_IS_VALID) {
+      setAlertText(MESSAGES[passengerNumberStatus]);
       return;
     }
 
