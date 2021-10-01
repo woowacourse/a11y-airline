@@ -46,7 +46,7 @@
             if (state.value <= MIN_COUNT) {
               return {
                 value: MIN_COUNT,
-                alertMessage: `${MIN_COUNT}`,
+                alertMessage: `성인 승객 현재${MIN_COUNT}명`,
                 validationMessage: `성인 승객은 ${MIN_COUNT}명 미만이 될 수 없습니다`,
               };
             }
@@ -55,7 +55,7 @@
 
             return {
               value,
-              alertMessage: `성인 승객 감소 ${value}`,
+              alertMessage: `성인 승객 감소 현재 ${value}명`,
               validationMessage: "",
             };
           }
@@ -64,7 +64,7 @@
             if (state.value >= MAX_COUNT) {
               return {
                 value: MAX_COUNT,
-                alertMessage: `성인 승객 ${MAX_COUNT}`,
+                alertMessage: `성인 승객 현재 ${MAX_COUNT}명`,
                 validationMessage: `성인 승객은 ${MAX_COUNT}명 초과가 될 수 없습니다`,
               };
             }
@@ -73,7 +73,7 @@
 
             return {
               value,
-              alertMessage: `성인 승객 증가 ${value}`,
+              alertMessage: `성인 승객 증가 현재 ${value}명`,
               validationMessage: "",
             };
           }
@@ -102,7 +102,7 @@
 
             const alertMessage = `성인 승객 ${
               number > state.value ? "증가" : "감소"
-            } ${number}`;
+            } 현재 ${number}명`;
 
             return { value: number, alertMessage, validationMessage: "" };
           }
