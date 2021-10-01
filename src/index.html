@@ -22,6 +22,17 @@
       crossorigin
       src="https://unpkg.com/babel-standalone@6.26.0/babel.js"
     ></script>
+    <style>
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+    </style>
   </head>
   <body>
     <div id="root" class="mx-auto w-64 mt-20"></div>
@@ -135,7 +146,7 @@
                   <input
                     id="adult-value-input"
                     className="text-4xl w-16 flex text-center px-4 mx-6 border-b border-black"
-                    type="text"
+                    type="number"
                     inputMode="tel"
                     value={state.value}
                     onChange={onChange}
