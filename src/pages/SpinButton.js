@@ -11,34 +11,46 @@ const SpinButton = () => {
   const [isIncrementButtonDisabled, setIsIncrementButtonDisabled] =
     useState(false);
   const [isDecrementButtonDisabled, setIsDecrementButtonDisabled] =
-    useState(false);
+    useState(true);
 
   const incrementCount = () =>
     setAdultCount((prevCount) => {
+      setIsDecrementButtonDisabled(false);
+
       if (prevCount >= MAX_ADULT_COUNT) {
-        setIsIncrementButtonDisabled(true);
         return prevCount;
       }
 
       const nextCount = prevCount + 1;
-      const $ariaLive = document.querySelector(".spin-button-arialive");
+      if (nextCount >= MAX_ADULT_COUNT) {
+        setIsIncrementButtonDisabled(true);
+        setIsDecrementButtonDisabled(false);
+      }
 
+      const $ariaLive = document.querySelector(".spin-button-arialive");
       $ariaLive.innerText = `성인 승객 추가 ${nextCount}`;
-      return Math.min(nextCount, MAX_ADULT_COUNT);
+
+      return nextCount;
     });
 
   const decrementCount = () =>
     setAdultCount((prevCount) => {
+      setIsIncrementButtonDisabled(false);
+
       if (prevCount <= MIN_ADULT_COUNT) {
-        setIsDecrementButtonDisabled(true);
         return prevCount;
       }
 
       const nextCount = prevCount - 1;
-      const $ariaLive = document.querySelector(".spin-button-arialive");
+      if (nextCount === MIN_ADULT_COUNT) {
+        setIsDecrementButtonDisabled(true);
+        setIsIncrementButtonDisabled(false);
+      }
 
+      const $ariaLive = document.querySelector(".spin-button-arialive");
       $ariaLive.innerText = `성인 승객 감소 ${nextCount}`;
-      return Math.max(nextCount, MIN_ADULT_COUNT);
+
+      return nextCount;
     });
 
   return (
@@ -59,7 +71,7 @@ const SpinButton = () => {
         <section className="counter-section">
           <button
             className="spin-button minus-button icon-text-hidden"
-            aria-disabled={isIncrementButtonDisabled}
+            aria-disabled={isDecrementButtonDisabled}
             onClick={decrementCount}
           >
             성인 승객 한 명 줄이기
@@ -74,7 +86,7 @@ const SpinButton = () => {
           />
           <button
             className="spin-button plus-button icon-text-hidden"
-            aria-disabled={isDecrementButtonDisabled}
+            aria-disabled={isIncrementButtonDisabled}
             onClick={incrementCount}
           >
             성인 승객 한 명 늘리기
