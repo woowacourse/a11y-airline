@@ -2,8 +2,6 @@ import { useState } from 'react';
 import styles from '../styles/spinButton.module.css';
 import commonStyles from '../styles/common.module.css';
 
-const isString = (value) => /\D/.test(value);
-
 const MIN = 0;
 const MAX = 3;
 
@@ -11,13 +9,7 @@ const SpinButton = () => {
   const [count, setCount] = useState(0);
 
   const changeCount = ({ target }) => {
-    if (isString(target.value)) {
-      setCount(0);
-
-      return;
-    }
-
-    const value = Number(target.value);
+    const value = target.valueAsNumber;
 
     if (MAX < value || MIN > value) return;
 
@@ -47,7 +39,7 @@ const SpinButton = () => {
           <span aria-hidden="true">-</span>
           <span className={commonStyles['visibility-hidden']}>성인 탑승자 한 명 줄이기</span>
         </button>
-        <input id="count-input" className={styles.text} value={count} onChange={changeCount} />
+        <input type="number" id="count-input" className={styles.text} value={count} onChange={changeCount} />
         <span className={commonStyles['visibility-hidden']} role="status">
           성인 탑승자 {count}명으로 변경됨
           {count === MIN && `최소 인원 ${MIN}명으로 더이상 줄이기 불가`}
