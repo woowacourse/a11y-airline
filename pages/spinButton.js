@@ -45,17 +45,17 @@ const SpinButton = () => {
         </h3>
         <button className={styles.button} onClick={minus} aria-disabled={count === MIN}>
           <span aria-hidden="true">-</span>
-          <span className={commonStyles.blind}>성인 탑승자 한 명 줄이기</span>
+          <span className={commonStyles['visibility-hidden']}>성인 탑승자 한 명 줄이기</span>
         </button>
         <input id="count-input" className={styles.text} value={count} onChange={changeCount} />
-        <span className={commonStyles.blind} role="status">
+        <span className={commonStyles['visibility-hidden']} role="status">
           성인 탑승자 {count}명으로 변경됨
           {count === MIN && `최소 인원 ${MIN}명으로 더이상 줄이기 불가`}
           {count === MAX && `최대 인원 ${MAX}명으로 더이상 늘리기 불가`}
         </span>
         <button className={styles.button} onClick={plus} aria-disabled={count === MAX}>
           <span aria-hidden="true">+</span>
-          <span className={commonStyles.blind}>성인 탑승자 한 명 늘리기</span>
+          <span className={commonStyles['visibility-hidden']}>성인 탑승자 한 명 늘리기</span>
         </button>
       </section>
     </main>
