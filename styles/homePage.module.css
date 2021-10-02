@@ -1,0 +1,15 @@
+.nav {
+  background-color: rgb(206, 206, 206);
+  width: 100%;
+}
+
+.navList {
+  display: flex;
+  font-size: 1.875rem;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.navItem {
+  padding: 0.625rem;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-import "../css/spinButton.css";
+import styles from "../styles/spinButton.module.css";
 
 const MIN_ADULT_COUNT = 0;
 const MAX_ADULT_COUNT = 3;
@@ -27,7 +27,7 @@ const SpinButton = () => {
         setIsDecrementButtonDisabled(false);
       }
 
-      const $ariaLive = document.querySelector(".spin-button-arialive");
+      const $ariaLive = document.querySelector("#spinButtonAriaLive");
       $ariaLive.innerText = `성인 승객 추가 ${nextCount}`;
 
       return nextCount;
@@ -47,20 +47,20 @@ const SpinButton = () => {
         setIsIncrementButtonDisabled(false);
       }
 
-      const $ariaLive = document.querySelector(".spin-button-arialive");
+      const $ariaLive = document.querySelector("#spinButtonAriaLive");
       $ariaLive.innerText = `성인 승객 감소 ${nextCount}`;
 
       return nextCount;
     });
 
   return (
-    <section className="container">
-      <h1>승객 선택</h1>
-      <section className="select-adult-section">
-        <h2>성인</h2>
+    <section className={styles.container}>
+      <h1 className={styles.h1}>승객 선택</h1>
+      <section>
+        <h2 className={styles.h2}>성인</h2>
         <button
           type="button"
-          className="tooltip icon-text-hidden"
+          className={`${styles.tooltip} ${styles.iconTextHidden}`}
           aria-describedby="tooltip-adult"
         >
           성인 기준 상세 안내
@@ -68,9 +68,9 @@ const SpinButton = () => {
         <p id="tooltip-adult" role="tooltip" hidden>
           국제선 만 12세 이상, 국내선 만 13세 이상
         </p>
-        <section className="counter-section">
+        <section>
           <button
-            className="spin-button minus-button icon-text-hidden"
+            className={`${styles.spinButton} ${styles.minusButton} ${styles.iconTextHidden}`}
             aria-disabled={isDecrementButtonDisabled}
             onClick={decrementCount}
           >
@@ -78,20 +78,24 @@ const SpinButton = () => {
           </button>
           <input
             type="number"
-            className="adult-count-input"
+            className={styles.adultCountInput}
             aria-label={`성인 ${adultCount}명`}
             maxLength="1"
             value={adultCount}
             onChange={() => {}}
           />
           <button
-            className="spin-button plus-button icon-text-hidden"
+            className={`${styles.spinButton} ${styles.plusButton} ${styles.iconTextHidden}`}
             aria-disabled={isIncrementButtonDisabled}
             onClick={incrementCount}
           >
             성인 승객 한 명 늘리기
           </button>
-          <div className="spin-button-arialive" aria-live="assertive" />
+          <div
+            id="spinButtonAriaLive"
+            className={styles.spinButtonAriaLive}
+            aria-live="assertive"
+          />
         </section>
       </section>
     </section>

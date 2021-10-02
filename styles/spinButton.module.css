@@ -3,14 +3,14 @@
   text-align: center;
 }
 
-.container > h1 {
+.h1 {
   padding: 2rem 0;
   line-height: 2;
   font-size: 1.5rem;
   font-weight: 700;
 }
 
-.select-adult-section > h2 {
+.h2 {
   display: inline;
   line-height: 1.5;
   font-size: 1.25rem;
@@ -20,12 +20,12 @@
 .tooltip {
   width: 2rem;
   height: 2rem;
-  background: url(../images/tooltip.svg) no-repeat 50% 50%;
+  background: url(../public/tooltip.svg) no-repeat 50% 50%;
   background-size: 1.5rem 1.5rem;
   cursor: pointer;
 }
 
-.icon-text-hidden {
+.iconTextHidden {
   padding: 0;
   overflow: hidden;
   white-space: nowrap;
@@ -35,27 +35,26 @@
   border-radius: 50%;
 }
 
-.spin-button {
+.spinButton {
   width: 2.75rem;
   height: 2.75rem;
-
   background-size: 2rem 2rem;
   cursor: pointer;
 }
 
-.spin-button[aria-disabled="true"] {
+.spinButton[aria-disabled="true"] {
   opacity: 0.4;
 }
 
-.plus-button {
-  background: url(../images/plus.svg) no-repeat 50% 50%;
+.plusButton {
+  background: url(../public/plus.svg) no-repeat 50% 50%;
 }
 
-.minus-button {
-  background: url(../images/minus.svg) no-repeat 50% 50%;
+.minusButton {
+  background: url(../public/minus.svg) no-repeat 50% 50%;
 }
 
-.adult-count-input {
+.adultCountInput {
   width: 3rem;
   height: 3rem;
   margin: 0 1rem;
@@ -66,7 +65,7 @@
   font-size: 1.5rem;
 }
 
-.spin-button-arialive {
+.spinButtonAriaLive {
   position: absolute;
   clip: rect(1px, 1px, 1px, 1px);
   -webkit-clip-path: inset(0px 0px 99.9% 99.9%);
@@ -79,12 +78,12 @@
 }
 
 /* Chrome, Safari, Edge, Opera */
-.adult-count-input::-webkit-outer-spin-button,
-.adult-count-input::-webkit-inner-spin-button {
+.adultCountInput::-webkit-outer-spin-button,
+.adultCountInput::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 /* Firefox */
-.adult-count-input {
+.adultCountInput {
   -moz-appearance: textfield;
 }
