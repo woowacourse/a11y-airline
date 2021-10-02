@@ -40,14 +40,13 @@ const SpinButton = () => {
     <main className={commonStyles.center}>
       <section>
         <h2>승객 선택</h2>
-        <h3>성인</h3>
+        <h3>
+          <label htmlFor="count-input">성인</label>
+        </h3>
         <button className={styles.button} onClick={minus} disabled={count === MIN}>
           <span aria-hidden="true">-</span>
           <span className={commonStyles.blind}>성인 탑승자 한 명 줄이기</span>
         </button>
-        <label htmlFor="count-input" className={commonStyles.blind}>
-          성인
-        </label>
         <input id="count-input" className={styles.text} value={count} onChange={changeCount} />
         <span className={commonStyles.blind} role="status">
           성인 탑승자 {count}명으로 변경됨
