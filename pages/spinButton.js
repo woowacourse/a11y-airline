@@ -43,7 +43,7 @@ const SpinButton = () => {
         <h3>
           <label htmlFor="count-input">성인</label>
         </h3>
-        <button className={styles.button} onClick={minus} disabled={count === MIN}>
+        <button className={styles.button} onClick={minus} aria-disabled={count === MIN}>
           <span aria-hidden="true">-</span>
           <span className={commonStyles.blind}>성인 탑승자 한 명 줄이기</span>
         </button>
@@ -53,7 +53,7 @@ const SpinButton = () => {
           {count === MIN && `최소 인원 ${MIN}명으로 더이상 줄이기 불가`}
           {count === MAX && `최대 인원 ${MAX}명으로 더이상 늘리기 불가`}
         </span>
-        <button className={styles.button} onClick={plus} disabled={count === MAX}>
+        <button className={styles.button} onClick={plus} aria-disabled={count === MAX}>
           <span aria-hidden="true">+</span>
           <span className={commonStyles.blind}>성인 탑승자 한 명 늘리기</span>
         </button>
