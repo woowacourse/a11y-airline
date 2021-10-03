@@ -28,6 +28,7 @@ const SpinButton = ({
       </button>
       <input
         className="w-8 mx-2 text-center text-2xl font-bold border-b-2 border-black"
+        title="성인 탑승자 수"
         type="number"
         role="spinbutton"
         inputMode="numeric"
