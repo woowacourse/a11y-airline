@@ -1,0 +1,25 @@
+html, body, main, header, div, span, p, 
+h1, h2, h3, h4, h5, h6,
+ul, ol, li {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+main {
+  padding: 50px 20px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
