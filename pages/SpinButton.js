@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import "./App.css";
+import Link from "next/link";
 
-function App() {
+function SpinButton() {
   const [count, setCount] = useState(1);
 
   const handleChangeCount = (event) => {
@@ -64,8 +64,9 @@ function App() {
           성인 {count}명
         </span>
       </section>
+      <Link href="/">돌아가기</Link>
     </>
   );
 }
 
-export default App;
+export default SpinButton;
