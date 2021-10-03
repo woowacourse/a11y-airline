@@ -1,0 +1,51 @@
+{
+  "name": "a11y-airline",
+  "version": "0.0.1",
+  "description": "항공사 웹사이트 컴포넌트의 스크린 리더 접근성 높이기",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigsaigon333/a11y-airline.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bigsaigon333/a11y-airline/issues"
+  },
+  "homepage": "https://github.com/bigsaigon333/a11y-airline#readme",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --fix --cache **/*.js",
+    "format": "prettier --write --ignore-unknown .",
+    "prepare": "husky install",
+    "deploy": "NODE_DEBUG=gh-pages gh-pages --dist src -f"
+  },
+  "devDependencies": {
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "gh-pages": "^3.2.3",
+    "husky": ">=6",
+    "lint-staged": ">=10",
+    "prettier": "2.3.1"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": false,
+      "node": true,
+      "commonjs": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "prettier"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    }
+  },
+  "prettier": {},
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*": "prettier --write --ignore-unknown"
+  }
+}
