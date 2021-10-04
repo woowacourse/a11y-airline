@@ -1,5 +1,7 @@
 <p align="middle" >
-  <img width="100px;" src="./src/images/airplane.png"/>
+
+  <img width="100px;" src="./images/airplane.png"/>
+
 </p>
 <h2 align="middle">누구나 접근할 수 있는 항공사 웹사이트</h2>
 <p align="middle">항공사 웹사이트 컴포넌트의 스크린 리더 접근성 높이기</p>
@@ -15,17 +17,17 @@
 
 ## 🎯 요구사항1 - Spin Button: 승객수 입력하기
 
-<img src="./src/images/spin_button_sample.png">
+<img src="./images/spin_button_sample.png">
 
 - [ ] 최대 인원수는 3명까지만 가능하게 구현한다.
 - [ ] 실제 스크린 리더는 아래와 같이 읽을 수 있어야 한다.
 
 ```
-성인 탑승자 한명 줄이기 버튼
+성인 탑승자 한명 줄이기(버튼)
 성인 1 텍스트 숫자만 수정
-성인 탑승자 한명 늘리기 버튼
+성인 탑승자 한명 늘리기 (버튼)
 성인 승객 추가 2
-성인 탑승자 한명 늘리기 버튼
+성인 탑승자 한명 늘리기 (버튼)
 성인 승객 추가 3
 ```
 
@@ -33,7 +35,8 @@
 
 ## 🎯 요구사항2 - Carousel: 지금 떠나기 좋은 여행
 
-<img src="./src/images/carousel_sample.png">
+<img src="./images/carousel_sample.png">
+
 
 - [ ] 목록은 8개를 구현한다.
 - [ ] 실제 스크린 리더는 아래와 같이 읽을 수 있어야 한다.
@@ -49,7 +52,7 @@
 
 ## 🎯 요구사항3 - 메인 네비게이션
 
-<img src="./src/images/navigation_sample.png">
+<img src="./images/navigation_sample.png">
 
 - [ ] 실제 스크린 리더는 아래와 같이 읽을 수 있어야 한다.
 
