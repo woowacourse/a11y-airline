@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import { useState } from "react";
 import Layout from "../components/layout";
-import SpinButton from "./components/SpinButton";
-import { PASSENGER_VALUE } from "./constants/common";
+import SpinButton from "../components/SpinButton";
+import { PASSENGER_VALUE } from "../constants/common";
 
 const Home: NextPage = () => {
   const [value, setValue] = useState(1);
