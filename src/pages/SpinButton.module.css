@@ -1,0 +1,94 @@
+.Controller {
+  margin: 2rem auto;
+  width: 30rem;
+}
+
+.Controller > h1 {
+  padding: 2rem 0;
+  line-height: 2;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.AdultSection > h2 {
+  display: inline;
+
+  line-height: 1.5;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.Tooltip {
+  width: 2rem;
+  height: 2rem;
+
+  background: url(../../public/images/tooltip.svg) no-repeat 50% 50%;
+  background-size: 1.5rem 1.5rem;
+  cursor: pointer;
+}
+
+.IconOnly {
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: 100%;
+  display: inline-block;
+
+  border: 0;
+  border-radius: 50%;
+}
+
+.Button {
+  width: 2.75rem;
+  height: 2.75rem;
+
+  background-size: 2rem 2rem;
+  cursor: pointer;
+}
+
+.SpinButton[aria-disabled='true'] {
+  opacity: 0.4;
+}
+
+.SpinButtonPlus {
+  background: url(../../public/images/plus.svg) no-repeat 50% 50%;
+}
+
+.SpinButtonMinus {
+  background: url(../../public/images/minus.svg) no-repeat 50% 50%;
+}
+
+.AdultCountInput {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 1rem;
+
+  text-align: center;
+  border: 0;
+  border-bottom: 1px solid #00256c;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.SpinButton_AriaLive {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(0px 0px 99.9% 99.9%);
+  clip-path: inset(0px 0px 99.9% 99.9%);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  padding: 0;
+  border: 0;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.AdultCountInput::-webkit-outer-spin-button,
+.AdultCountInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+.AdultCountInput {
+  -moz-appearance: textfield;
+}
