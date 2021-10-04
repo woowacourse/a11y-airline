@@ -78,7 +78,7 @@ const PassengerCounterInput = ({
       <button type="button" onClick={onIncrease} aria-label={`${label} 탑승자 한 명 늘리기`}>
         +
       </button>
-      <p role="alert" aria-live="polite">
+      <p aria-atomic="true" aria-live="polite">
         {alertMessage}
       </p>
     </div>
