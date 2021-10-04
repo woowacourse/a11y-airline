@@ -31,6 +31,14 @@
 
 <br/>
 
+### Self Checklist!
+
+[ ] 시멘틱 태그를 사용한다.
+[ ] 눈감고 스크린리더로 확인한다. (미션 요구사항 만족)
+[ ] WAVE 에러, 오류 0
+[ ] Lighthouse 점수 100점
+[ ] aria-\* 속성을 사용하기 전에, 시멘틱 태그로 수정할 수 있는 요소인지 확인하기
+
 ## 🎯 요구사항2 - Carousel: 지금 떠나기 좋은 여행
 
 <img src="./src/images/carousel_sample.png">
