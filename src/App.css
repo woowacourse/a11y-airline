@@ -1,0 +1,41 @@
+.passengers {
+  padding: 1rem;
+}
+
+.buttons {
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.2rem;
+  border: 1px solid gray;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.buttons:active {
+  color: #aaa;
+}
+
+.number-input {
+  width: 2rem;
+  margin: 0 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
