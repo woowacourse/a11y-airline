@@ -1,9 +1,5 @@
 import Link from 'next/link';
 
-import SpinButton from './SpinButton';
-import Carousel from './Carousel';
-import Navigation from './Navigation';
-
 const HomePage = () => {
   return (
     <>
