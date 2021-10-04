@@ -30,7 +30,6 @@ const SpinButton = () => {
         <button
           type='button'
           onClick={decreaseCount}
-          aria-live='assertive'
           aria-label='성인 탑승자 한 명 줄이기 버튼'
           className='decrease default-btn'
           disabled={passenger <= 0 ? true : false}
@@ -43,7 +42,6 @@ const SpinButton = () => {
           id='passenger-count-input'
           htmlFor='passenger-count-input-label'
           className='passenger-count-label'
-          aria-live='assertive'
           aria-label={`성인 ${passenger} 텍스트 숫자만 수정`}
         >
           승객 수
@@ -67,12 +65,11 @@ const SpinButton = () => {
           id='span-hidden'
           aria-label={`성인 승객 추가 ${passenger}명`}
         ></span>
-        <span role='alert' aria-live='assertive' aria-labelledby='span-hidden'></span>
+        <span aria-live='polite' aria-labelledby='span-hidden'></span>
 
         <button
           type='button'
           onClick={increaseCount}
-          aria-live='assertive'
           aria-label='성인 탑승자 한 명 늘리기 버튼'
           className='increase default-btn'
           disabled={passenger >= 3 ? true : false}
