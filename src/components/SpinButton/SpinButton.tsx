@@ -73,7 +73,6 @@ const SpinButton = ({
       <div className="spin-button__wrapper">
         <button
           type="button"
-          tabIndex={0}
           className="spin-button__button sub"
           aria-disabled={isDecreaseDisabled}
           onClick={decreaseValue}
@@ -96,7 +95,6 @@ const SpinButton = ({
         />
         <button
           type="button"
-          tabIndex={0}
           className="spin-button__button add"
           aria-disabled={isIncreaseDisabled}
           onClick={increaseValue}
