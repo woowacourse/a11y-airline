@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
+import Head from 'next/head';
 
 const PASSENGER_MIN_COUNT = 1;
 const PASSENGER_MAX_COUNT = 3;
@@ -55,6 +56,9 @@ const Mission1 = () => {
 
   return (
     <section>
+      <Head>
+        <title>항공사 웹사이트 - 미션 1</title>
+      </Head>
       <form onSubmit={submitForm}>
         <InputStepper>
           <button
