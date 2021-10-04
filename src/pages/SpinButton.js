@@ -34,6 +34,22 @@ function SpinButton() {
       $ariaLive.innerText = `성인 승객 감소 ${nextCount}`;
       return Math.max(nextCount, ADULT_COUNT_MIN);
     });
+  const handleChangeAdultCount = (e) => {
+    const inputValue = e.target.value;
+    const $ariaLive = document.querySelector('.SpinButton_AriaLive');
+
+    if (isNaN(inputValue)) {
+      $ariaLive.innerText = `승객 인원은 숫자만 입력 가능합니다.`;
+      return;
+    }
+
+    if (inputValue > ADULT_COUNT_MAX) {
+      $ariaLive.innerText = `승객 인원은 최대 3명까지만 추가 가능합니다.`;
+      return;
+    }
+
+    setAdultCount(Number(inputValue));
+  };
 
   return (
     <section className="Controller">
@@ -55,12 +71,13 @@ function SpinButton() {
           </button>
 
           <input
-            type="number"
+            type="text"
             className="AdultCountInput"
             aria-label={'성인 인원'}
-            max="3"
+            max={ADULT_COUNT_MAX}
+            min={ADULT_COUNT_MIN}
             value={adultCount}
-            onChange={() => {}}
+            onChange={handleChangeAdultCount}
           />
 
           <button
