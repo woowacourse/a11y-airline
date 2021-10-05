@@ -1,13 +1,14 @@
-import './App.css';
-
 import React, { useState } from 'react';
+
+import Head from 'next/head';
+import styles from '../style/SpinButton.module.css';
 
 const MAX_PASSENGERS_COUNT = 3;
 const MIN_PASSENGERS_COUNT = 1;
 const OVER_PASSENGERS_COUNT_LIMIT = `성인 승객 최대 ${MAX_PASSENGERS_COUNT}명`;
 const UNDER_PASSENGERS_COUNT_LIMIT = `성인 승객 최소 ${MIN_PASSENGERS_COUNT}명`;
 
-const App = () => {
+const SpinButton = () => {
   const [passengers, setPassengers] = useState(1);
   const [status, setStatus] = useState('');
   const [alert, setAlert] = useState('');
@@ -56,42 +57,48 @@ const App = () => {
   };
 
   return (
-    <form className="passengers">
-      <h1 tabindex="0">승객 선택</h1>
-      <h2 tabindex="0">성인</h2>
-      <div>
-        <button
-          type="button"
-          className="buttons"
-          aria-label="성인 탑승자 한명 줄이기"
-          onClick={handleSubtractPassenger}
-        >
-          -
-        </button>
-        <input
-          type="text"
-          className="number-input"
-          value={passengers}
-          aria-label={`성인 ${passengers} 숫자만 수정`}
-          onChange={handleChangePassenger}
-        />
-        <button
-          type="button"
-          className="buttons"
-          aria-label="성인 탑승자 한명 늘리기"
-          onClick={handleAddPassenger}
-        >
-          +
-        </button>
-        <p role="alert" className="hidden">
-          {alert}
-        </p>
-        <p role="status" className="hidden">
-          {status}
-        </p>
-      </div>
-    </form>
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>누구나 항공사 - 스핀 버튼</title>
+      </Head>
+      <form className={styles.passengers}>
+        <h1 tabIndex="0">승객 선택</h1>
+        <h2 tabIndex="0">성인</h2>
+        <div>
+          <button
+            type="button"
+            className={styles.buttons}
+            aria-label="성인 탑승자 한명 줄이기"
+            onClick={handleSubtractPassenger}
+          >
+            -
+          </button>
+          <input
+            type="text"
+            className={styles['number-input']}
+            value={passengers}
+            aria-label={`성인 ${passengers} 숫자만 수정`}
+            onChange={handleChangePassenger}
+          />
+          <button
+            type="button"
+            className={styles.buttons}
+            aria-label="성인 탑승자 한명 늘리기"
+            onClick={handleAddPassenger}
+          >
+            +
+          </button>
+          <p role="alert" className={styles.hidden}>
+            {alert}
+          </p>
+          <p role="status" className={styles.hidden}>
+            {status}
+          </p>
+        </div>
+      </form>
+    </>
   );
 };
 
-export default App;
+export default SpinButton;
