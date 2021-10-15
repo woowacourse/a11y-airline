@@ -1,0 +1,11 @@
+.text {
+  margin: 0 1rem;
+  width: 2rem;
+  text-align: center;
+}
+
+.button[aria-disabled='true'] {
+  cursor: not-allowed;
+  background-color: rgb(238, 238, 238);
+  border: 2px solid rgb(230, 230, 230);
+}
