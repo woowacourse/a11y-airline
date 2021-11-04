@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
 
-const Title = styled.span`
+const Title = styled.h1`
   font-size: 2rem;
   font-weight: 700;
   border-bottom: 1px solid grey;
