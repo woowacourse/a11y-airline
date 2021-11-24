@@ -23,9 +23,14 @@ const App = () => {
         </ul>
       </Nav>
 
-      <main style={{ margin: "0 auto", width: "100%", textAlign: "center" }}>
+      <Main>
         <h1>티케의 a11y-airline 미션</h1>
-        <p>스크린리더를 활용하여 사용해보세요</p>
+        <p>
+          <span role="img" aria-label="체크 이모지" aria-hidden="true">
+            ✅
+          </span>
+          스크린리더를 활용하여 사용해보세요
+        </p>
 
         <Switch>
           <Route exact path="/spinButton">
@@ -38,10 +43,12 @@ const App = () => {
             <Navigation />
           </Route>
         </Switch>
-      </main>
+      </Main>
     </BrowserRouter>
   );
 };
+
+export default App;
 
 const Nav = styled.nav`
   width: 100%;
@@ -69,4 +76,12 @@ const Nav = styled.nav`
   }
 `;
 
-export default App;
+const Main = styled.main`
+  width: 100%;
+
+  text-align: center;
+
+  p {
+    margin: 1rem 0;
+  }
+`;
