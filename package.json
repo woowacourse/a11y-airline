@@ -1,0 +1,32 @@
+{
+  "name": "a11y-airline",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.6.0",
+    "@emotion/styled": "^11.6.0",
+    "next": "^12.0.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:jsx-a11y/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 8,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "jsx-a11y"
+    ]
+  },
+  "devDependencies": {
+    "eslint-plugin-jsx-a11y": "^6.4.1"
+  }
+}
