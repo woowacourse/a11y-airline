@@ -61,13 +61,13 @@ const Nav = styled.nav`
     li {
       margin: 1rem;
 
-      a {
+      > a {
         padding: 0.8rem;
 
         border: 0.15rem solid #333333;
         border-radius: 0.5rem;
 
-        :focus {
+        &.active {
           background-color: #333333;
           color: #ffffff;
         }
