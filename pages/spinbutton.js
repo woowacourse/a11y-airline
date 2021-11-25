@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 
 const PASSENGER_MAX_COUNT = 3;
 const PASSENGER_MIN_COUNT = 1;
 
 const SpinButton = () => {
-  useEffect(() => {
-    document.title = "웹 접근성 미션 | 스핀버튼";
-  }, []);
-
   const [adultPassengerCount, setAdultPassengerCount] = useState(
     PASSENGER_MIN_COUNT,
   );
