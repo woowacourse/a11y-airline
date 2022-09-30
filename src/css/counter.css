@@ -52,3 +52,27 @@
   overflow: hidden;
   clip-path: polygon(0 0, 0 0, 0 0);
 }
+
+.title-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+}
+
+.help-box-button {
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid #666;
+  color: #666;
+  cursor: pointer;
+}
+
+#help-box {
+  position: absolute;
+  top: 55px;
+  left: 55px;
+  background: white;
+  border: 1px solid #00256c;
+  padding: 0.7rem;
+}
