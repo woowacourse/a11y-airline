@@ -1,0 +1,98 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+.spin-input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.spin-input-section input::-webkit-outer-spin-button,
+.spin-input-section input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.spin-input-section input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.spin-input-title {
+  font-weight: bold;
+}
+
+.label-container {
+  display: flex;
+  align-items: center;
+}
+
+.spin-label {
+  font-weight: bold;
+}
+
+.default-button-container {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  background-color: transparent;
+}
+
+.round-button-icon {
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.tip-button-icon {
+  border-radius: 50%;
+  border: 2px solid gray;
+
+  color: gray;
+  font-weight: bold;
+}
+
+.spin-input {
+  border: none;
+}
+
+.input-area {
+  display: flex;
+}
+
+.spin-button {
+  font-weight: bolder;
+}
+
+.spin-button .round-button-icon {
+  border: 2px solid lightgray;
+  font-size: 1rem;
+}
+
+.spin-button-value-input {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 30px;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bolder;
+}
