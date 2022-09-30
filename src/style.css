@@ -107,3 +107,9 @@ button {
   font-size: 1.3rem;
   font-weight: bolder;
 }
+
+#spin-input-status {
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
