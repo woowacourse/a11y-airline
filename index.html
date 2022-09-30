@@ -4,10 +4,32 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>웹 접근성 미션 - 스밍</title>
+    <title>웹 접근성 미션</title>
   </head>
   <body>
-    <button type="button">-</button>
-    <button type="button">+</button>
+    <article>
+      <h2>승객 선택</h2>
+      <section>
+        <div class="counter-container">
+          <button
+            type="button"
+            class="decrease-passenger-button counter-button disabled-button"
+          >
+            -
+            <span class="aria-hidden">성인 탑승자 1명 감소</span>
+          </button>
+          <input
+            id="adult-passenger-input"
+            type="tel"
+            value="0"
+            maxlength="1"
+          />
+          <button class="add-passenger-button counter-button" type="button">
+            +
+            <span class="aria-hidden">성인 탑승자 1명 증가</span>
+          </button>
+        </div>
+      </section>
+    </article>
   </body>
 </html>
