@@ -1,3 +1,5 @@
+import "../css/counter.css";
+
 const $ariaAdult = document.querySelector("#aria-adult");
 const $decresePassengerButton = document.querySelector(
   ".decrease-passenger-button"
@@ -8,6 +10,10 @@ const $addPassengerButton = document.querySelector(
 const $adultPassengerInput = document.querySelector(
   "#adult-passenger-input"
 ) as HTMLInputElement;
+const $helpBoxButton = document.querySelector(
+  ".help-box-button"
+) as HTMLButtonElement;
+const $helpBox = document.querySelector("#help-box") as HTMLDivElement;
 
 const handleAddPassengerButton = () => {
   $adultPassengerInput.value = String(Number($adultPassengerInput.value) + 1);
@@ -59,6 +65,23 @@ $decresePassengerButton.addEventListener("click", () => {
     return;
   }
   handleDeletePassengerButton();
+});
+
+$helpBoxButton.addEventListener("click", () => {
+  if ($helpBoxButton.ariaExpanded === "true") {
+    $helpBoxButton.ariaExpanded = "false";
+    $helpBox.replaceChildren();
+    $helpBox.style.opacity = "0";
+    return;
+  }
+
+  $helpBoxButton.ariaExpanded = "true";
+
+  const ariaMessageNode = document.createElement("span");
+  ariaMessageNode.textContent = `국제선 만 12세 이상, 국내선 만 13세 이상`;
+
+  $helpBox.insertAdjacentElement("beforeend", ariaMessageNode);
+  $helpBox.style.opacity = "1";
 });
 
 export {};
