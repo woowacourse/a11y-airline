@@ -1,0 +1,29 @@
+.spin-container {
+  padding: 1rem;
+}
+
+.passenger-label {
+  font-size: 16pt;
+  font-weight: bold;
+  display: block;
+  padding-bottom: 1rem;
+}
+
+.button {
+  min-width: 35px;
+  min-height: 35px;
+  border-radius: 50%;
+  border: 2px solid gainsboro;
+  background-color: white;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+#passenger-input {
+  border: none;
+  border-bottom: 2px solid black;
+  font-size: 2rem;
+  padding: 1rem;
+  text-align: center;
+  max-width: 30px;
+}
