@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/css/index.css" />
+    <title>승객수 입력하기</title>
+  </head>
+  <script defer src="./src/javascript/index.js"></script>
+  <body>
+    <section>
+      <h1>승객 선택</h1>
+      <div class="passenger__title">
+        <span class="passenger__label">성인</span>
+        <button class="adult__count -tooltip">성인 기준 상세 안내</button>
+      </div>
+      <div class="passenger__controls">
+        <button class="passenger__control -sub" type="button">
+          성인 탑승자 한명 줄이기
+        </button>
+        <input class="passenger__count" type="tel" maxlength="1" value="1" />
+        <button class="passenger__control -add" type="button">
+          성인 탑승자 한명 늘리기
+        </button>
+      </div>
+    </section>
+  </body>
+</html>

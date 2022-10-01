@@ -1,0 +1,65 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.passenger__title {
+  display: flex;
+  align-items: center;
+}
+
+.passenger__label {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.adult__count {
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 0;
+  cursor: pointer;
+  border: none;
+}
+
+.-tooltip {
+  background: url("../images/ico-opener.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.passenger__controls {
+  display: flex;
+  align-items: center;
+}
+
+.passenger__control {
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 0;
+  cursor: pointer;
+  border: none;
+}
+
+.passenger__count {
+  border: 0;
+  width: 2.375rem;
+  height: 2.5rem;
+  outline: 0;
+  font-size: 1.8rem;
+  text-align: center;
+  background: transparent;
+  border-bottom: 0.0625rem solid #000;
+}
+
+.-sub {
+  background: url("../images/passenger__control-sub.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.-add {
+  background: url("../images/passenger__control-add.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
