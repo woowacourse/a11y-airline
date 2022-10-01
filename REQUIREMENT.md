@@ -1,0 +1,33 @@
+## 환경 세팅
+
+- [x] react 설치
+  - [x] react
+  - [x] react-dom
+  - [x] react-icons
+  - [x] react-router-dom
+- [x] typescript 설치
+  - [x] typescript
+  - [x] @types/react
+  - [x] @types/react-dom
+- [x] emotion 설치
+  - [x] @emotion/react
+  - [x] @emotion/styled
+- [x] webpack 설치
+  - [x] webpack
+  - [x] babel-loader
+  - [x] style-loader
+  - [x] css-loader
+  - [x] webpack-cli
+  - [x] webpack-dev-server
+  - [x] html-webpack-plugin
+- [ ] babel 설치
+  - [x] @babel/core
+  - [x] @babel/preset-env
+  - [x] @babel/preset-react
+  - [x] @babel/preset-typescript
+  - [x] @emotion/babel-plugin
+  - [x] @emotion/babel-preset-css-prop
+- [x] eslint 설치
+  - [x] eslint
+  - [x] eslint-plugin-react
+- [x] perttier 설치
