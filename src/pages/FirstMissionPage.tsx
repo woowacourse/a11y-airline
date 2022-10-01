@@ -18,7 +18,7 @@ const INFANT = {
 const CHILD = {
   label: '유아',
   min: 0,
-  max: 10,
+  max: 3,
 } as const;
 
 const FirstMissionPage = () => {
