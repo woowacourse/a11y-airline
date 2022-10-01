@@ -1,7 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import MessageProvider from './context/MessageProvider';
+
 import FirstMissionPage from './pages/FirstMissionPage';
 import NotFoundPage from './pages/NotFoundPage';
+
+import MessageProvider from './context/MessageProvider';
 
 const App = () => {
   return (
