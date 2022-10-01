@@ -4,7 +4,9 @@
 	"description": "웹 접근성 미션",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "webpack serve --open --config webpack.config.js",
+		"build": "webpack"
 	},
 	"repository": {
 		"type": "git",
