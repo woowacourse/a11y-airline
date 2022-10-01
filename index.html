@@ -13,16 +13,25 @@
       <h1>승객 선택</h1>
       <div class="passenger__title">
         <span class="passenger__label">성인</span>
-        <button class="adult__count -tooltip">성인 기준 상세 안내</button>
+        <button class="adult__count -tooltip" role="tooltip">
+          성인 기준 상세 안내
+        </button>
       </div>
       <div class="passenger__controls">
         <button class="passenger__control -sub" type="button">
           성인 탑승자 한명 줄이기
         </button>
-        <input class="passenger__count" type="tel" maxlength="1" value="1" />
+        <input
+          class="passenger__count"
+          type="tel"
+          maxlength="1"
+          value="1"
+          aria-label="성인"
+        />
         <button class="passenger__control -add" type="button">
           성인 탑승자 한명 늘리기
         </button>
+        <div class="hidden" aria-live="assertive"></div>
       </div>
     </section>
   </body>
