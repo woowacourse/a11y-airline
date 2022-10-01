@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 import { Button } from '@/common/Button/Button.styles';
 import { Input } from '@/common/Input/Input.styles';
@@ -25,6 +25,14 @@ const InsertingPassenger = () => {
 		setPeopleCount(peopleCount + 1);
 	};
 
+	const onInsertPeopleCount = (e: ChangeEvent<HTMLInputElement>) => {
+		if (Number(e.target.value) > 3 || Number(e.target.value) < 0) {
+			alert('0 미만, 3 초과의 인원 수는 입력하실 수 없습니다');
+			return;
+		}
+		setPeopleCount(Number(e.target.value));
+	};
+
 	return (
 		<S.Container>
 			<S.Title>승객 선택</S.Title>
@@ -34,11 +42,18 @@ const InsertingPassenger = () => {
 					<ChipButton />
 				</S.SubInfo>
 				<S.InputContainer>
-					<Button aria-label="성인 탑승자 한명 줄이기 버튼" onClick={onMinusButtonClick}>
+					<Button aria-label="성인 탑승자 한명 줄이기" onClick={onMinusButtonClick}>
 						-
 					</Button>
-					<Input type="number" min={0} max={3} value={peopleCount} />
-					<Button aria-label="성인 탑승자 한명 늘리기 버튼" onClick={onPlusButtonClick}>
+					<Input
+						type="number"
+						min={0}
+						max={3}
+						value={peopleCount}
+						aria-label="인원"
+						onChange={onInsertPeopleCount}
+					/>
+					<Button aria-label="성인 탑승자 한명 늘리기" onClick={onPlusButtonClick}>
 						+
 					</Button>
 				</S.InputContainer>
