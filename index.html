@@ -24,6 +24,7 @@
           <div
             id="help-box"
             role="dialog"
+            aria-atomic="true"
             aria-live="assertive"
             aria-relevant="additions"
           >
@@ -51,7 +52,12 @@
           <p id="adult-passenger-input" role="tooltip" hidden>
             텍스트 없이 숫자만 입력.
           </p>
-          <span aria-live="assertive" aria-relevant="additions" id="aria-adult">
+          <span
+            aria-live="assertive"
+            aria-relevant="additions"
+            aria-atomic="true"
+            id="aria-adult"
+          >
             <!--  -->
           </span>
           <button class="add-passenger-button counter-button" type="button">
