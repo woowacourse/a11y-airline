@@ -20,7 +20,7 @@
   - [x] webpack-cli
   - [x] webpack-dev-server
   - [x] html-webpack-plugin
-- [ ] babel 설치
+- [x] babel 설치
   - [x] @babel/core
   - [x] @babel/preset-env
   - [x] @babel/preset-react
@@ -31,3 +31,10 @@
   - [x] eslint
   - [x] eslint-plugin-react
 - [x] perttier 설치
+
+## Spin-Button
+
+- [ ] 승객수를 선택할 수 있는 버튼과 숫자창 시멘틱하게 마크업하기
+  - [x] Button 스타일
+- [ ] aria-label과 같은 설명 추가하기
+- [ ] 최대 인원수 3명까지만 가능하게 하기
