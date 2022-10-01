@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/woose28/a11y-airline/issues"
   },
-  "homepage": "https://github.com/woose28/a11y-airline#readme"
+  "homepage": "https://github.com/woose28/a11y-airline#readme",
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  }
 }
