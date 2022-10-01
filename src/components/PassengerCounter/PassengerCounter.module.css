@@ -1,0 +1,35 @@
+label {
+  display: block;
+  padding-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+button {
+  border-radius: 100%;
+  outline: none;
+  background: white;
+  font-size: 1.4rem;
+  border: 1px solid #dee2e6;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid black;
+  margin: 0 1rem;
+  width: 3rem;
+  padding: 0;
+
+  font-size: 1.6rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+input:focus {
+  outline: none;
+}
