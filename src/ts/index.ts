@@ -24,7 +24,7 @@ const handleAddPassengerButton = () => {
   $ariaAdult?.insertAdjacentElement("beforeend", ariaMessageNode);
   setTimeout(() => {
     $ariaAdult?.removeChild(ariaMessageNode);
-  }, 0);
+  }, 100);
 };
 
 const handleDeletePassengerButton = () => {
@@ -37,7 +37,7 @@ const handleDeletePassengerButton = () => {
   $ariaAdult?.insertAdjacentElement("beforeend", ariaMessageNode);
   setTimeout(() => {
     $ariaAdult?.removeChild(ariaMessageNode);
-  }, 0);
+  }, 100);
 };
 
 $addPassengerButton?.addEventListener("click", () => {
