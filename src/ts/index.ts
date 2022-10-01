@@ -20,7 +20,7 @@ const handleAddPassengerButton = () => {
   const currentValue = $adultPassengerInput?.value;
   const ariaMessageNode = document.createElement("span");
   ariaMessageNode.textContent = `성인 승객 증가 ${currentValue}`;
-  ariaMessageNode.classList.add("aria-hidden");
+  ariaMessageNode.classList.add("sr-only");
   $ariaAdult?.insertAdjacentElement("beforeend", ariaMessageNode);
   setTimeout(() => {
     $ariaAdult?.removeChild(ariaMessageNode);
@@ -32,7 +32,7 @@ const handleDeletePassengerButton = () => {
   const currentValue = $adultPassengerInput.value;
   const ariaMessageNode = document.createElement("span");
   ariaMessageNode.textContent = `성인 승객 감소 ${currentValue}`;
-  ariaMessageNode.classList.add("aria-hidden");
+  ariaMessageNode.classList.add("sr-only");
 
   $ariaAdult?.insertAdjacentElement("beforeend", ariaMessageNode);
   setTimeout(() => {
