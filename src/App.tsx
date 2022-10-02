@@ -1,5 +1,6 @@
+import Component from "@components/index";
 const App = () => {
-  return <div>hi</div>;
+  return <Component />;
 };
 
 export default App;
