@@ -1,13 +1,20 @@
 import { useState, ChangeEvent } from "react";
+import HelpToolTip from "./HelpToolTip";
 
 interface Props {
-  ageGroup: "성인" | "청소년" | "유아";
+  ageGroup: "성인" | "청소년" | "영유아";
 }
 
 const DEFAULT_COUNT = 1;
 const MINIMUM_COUNT = 1;
 const MAXIMUM_COUNT = 3;
 const COUNT_RANGE_ERROR_MESSAGE = "최소 1명, 최대 3명까지 선택 가능합니다.";
+
+const DETAIL_DESCRIPTION = {
+  성인: "만 18세 이상 승객",
+  청소년: "만 4세 이상, 만 18세 미만 승객",
+  영유아: "만 4세 미만 승객",
+};
 
 const PassengerCounter = ({ ageGroup }: Props) => {
   const [count, setCount] = useState(DEFAULT_COUNT);
@@ -43,33 +50,41 @@ const PassengerCounter = ({ ageGroup }: Props) => {
   };
 
   return (
-    <section>
-      <h2>{ageGroup}</h2>
-      <button
-        onClick={handleDecrementCount}
-        aria-label={`${ageGroup} 탑승자 한명 줄이기`}
-      >
-        -
-      </button>
+    <section className="flex flex-col justify-center items-center gap-1 w-40">
+      <div className="flex flex-row justify-center items-center gap-2">
+        <h2 className="font-bold text-cyan-800">{ageGroup}</h2>
+        <HelpToolTip content={DETAIL_DESCRIPTION[ageGroup]} />
+      </div>
+      <div>
+        <button
+          className="w-9 p-1 border-2 rounded-full border-cyan-800 text-cyan-800"
+          onClick={handleDecrementCount}
+          aria-label={`${ageGroup} 탑승자 한명 줄이기`}
+        >
+          -
+        </button>
 
-      <label htmlFor="passengerCount" aria-live="polite" className="sr-only">
-        {descriptionText}
-      </label>
-      <input
-        id="passengerCount"
-        type="number"
-        value={count}
-        min="1"
-        max="3"
-        onChange={handleChangeText}
-      />
+        <label htmlFor="passengerCount" aria-live="polite" className="sr-only">
+          {descriptionText}
+        </label>
+        <input
+          id="passengerCount"
+          className="w-20 text-center underline"
+          type="number"
+          value={count}
+          min="1"
+          max="3"
+          onChange={handleChangeText}
+        />
 
-      <button
-        onClick={handleIncrementCount}
-        aria-label={`${ageGroup} 탑승자 한명 늘리기`}
-      >
-        +
-      </button>
+        <button
+          className="w-9 p-1 border-2 rounded-full border-cyan-800 text-cyan-800"
+          onClick={handleIncrementCount}
+          aria-label={`${ageGroup} 탑승자 한명 늘리기`}
+        >
+          +
+        </button>
+      </div>
     </section>
   );
 };
