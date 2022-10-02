@@ -1,9 +1,8 @@
 import { MESSAGES, SPIN_INPUT_RANGE } from "./constants";
 
 const spinButtonFieldSet = document.querySelector("article.spin-input");
-const spinButtonInput = spinButtonFieldSet.querySelector<HTMLButtonElement>(
-  ".spin-button-value-input"
-);
+const spinButtonInput =
+  spinButtonFieldSet.querySelector<HTMLButtonElement>("#spin-input-value");
 const spinInputStatus = document.querySelector("#spin-input-status");
 
 const setSpinInputValue = (to: number) => {
@@ -49,11 +48,43 @@ const handleSpinButtonClick = (classList: DOMTokenList) => {
   }
 };
 
+const handleSpinInputValue = (target: HTMLInputElement) => {
+  const inputValue = Number(target.value);
+  if (
+    inputValue <= SPIN_INPUT_RANGE.MAX &&
+    inputValue >= SPIN_INPUT_RANGE.MIN
+  ) {
+    return;
+  }
+
+  if (inputValue > SPIN_INPUT_RANGE.MAX) {
+    target.value = String(SPIN_INPUT_RANGE.MAX);
+  } else {
+    target.value = String(SPIN_INPUT_RANGE.MIN);
+  }
+  throw new Error(MESSAGES.승객_수_범위_오류);
+};
+
 spinButtonFieldSet.addEventListener("click", (e) => {
   const target = e.target as unknown as HTMLElement;
   const { classList } = target;
 
   if (classList.contains("spin-button")) {
     handleSpinButtonClick(classList);
+  }
+});
+
+spinButtonInput.addEventListener("input", (e) => {
+  const target = e.target as unknown as HTMLInputElement;
+
+  try {
+    handleSpinInputValue(target);
+  } catch (e) {
+    if (e instanceof Error) {
+      alert(e.message);
+      return;
+    }
+
+    alert(MESSAGES.알_수_없는_오류);
   }
 });

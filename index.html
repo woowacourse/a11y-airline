@@ -11,7 +11,7 @@
       <h1 id="spin-input-title">승객 선택</h1>
       <article class="spin-input" aria-labelledby="spin-label">
         <div class="label-container">
-          <label for="spin-value" id="spin-label">성인</label>
+          <label for="spin-input-value" id="spin-label">성인</label>
           <button
             class="default-button-container tip-button"
             aria-label="성인기준 상세 안내"
@@ -21,18 +21,18 @@
             >
           </button>
         </div>
-        <div class="input-container">
+        <form class="input-container">
           <button
             class="spin-button decrement default-button-container"
             aria-label="성인 탑승자 한명 줄이기"
+            type="button"
           >
             <span class="round-button-icon" aria-hidden="true">–</span>
           </button>
           <input
             type="number"
-            class="spin-button-value-input"
-            name="spin-value"
-            id="spin-value"
+            name="spin-input-value"
+            id="spin-input-value"
             value="1"
             min="1"
             max="3"
@@ -40,10 +40,11 @@
           <button
             class="spin-button increment default-button-container"
             aria-label="성인 탑승자 한명 늘리기"
+            type="button"
           >
             <span class="round-button-icon" aria-hidden="true">+</span>
           </button>
-        </div>
+        </form>
         <p role="status" id="spin-input-status" aria-live="polite"></p>
       </article>
     </section>
