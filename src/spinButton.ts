@@ -1,5 +1,4 @@
-const MIN_INPUT = 1;
-const MAX_INPUT = 3;
+import { MESSAGES, SPIN_INPUT_RANGE } from "./constants";
 
 const spinButtonFieldSet = document.querySelector("article.spin-input");
 const spinButtonInput = spinButtonFieldSet.querySelector<HTMLButtonElement>(
@@ -7,33 +6,46 @@ const spinButtonInput = spinButtonFieldSet.querySelector<HTMLButtonElement>(
 );
 const spinInputStatus = document.querySelector("#spin-input-status");
 
-const handleValueChange = (to: number) => {
-  if (typeof to !== "number") throw new Error("입력값이 유효하지 않습니다.");
-  if (to > MAX_INPUT || to < MIN_INPUT)
-    throw new Error("승객 수는 1명에서 3명 사이 인원만 선택 가능합니다.");
+const setSpinInputValue = (to: number) => {
   spinButtonInput.value = String(to);
-  spinInputStatus.textContent = `성인 승객 ${to}명 선택됨`;
+  spinInputStatus.textContent = MESSAGES.현재_승객_수_안내(to);
+
   setTimeout(() => {
     spinInputStatus.textContent = "";
   }, 1000);
 };
 
-const handleSpinButtonClick = (classList: DOMTokenList) => {
-  const amount = classList.contains("increment")
+const handleValueChange = (to: number) => {
+  if (typeof to !== "number") {
+    throw new Error(MESSAGES.유효하지_않은_입력값_오류);
+  }
+  if (to > SPIN_INPUT_RANGE.MAX || to < SPIN_INPUT_RANGE.MIN) {
+    throw new Error(MESSAGES.승객_수_범위_오류);
+  }
+
+  setSpinInputValue(to);
+};
+
+const getChangeAmountFromClassList = (classList: DOMTokenList) =>
+  classList.contains("increment")
     ? 1
     : classList.contains("decrement")
     ? -1
     : 0;
 
+const handleSpinButtonClick = (classList: DOMTokenList) => {
+  const amount = getChangeAmountFromClassList(classList);
+  const currentValue = Number(spinButtonInput.value);
+
   try {
-    handleValueChange(Number(spinButtonInput.value) + amount);
+    handleValueChange(currentValue + amount);
   } catch (e) {
     if (e instanceof Error) {
       alert(e.message);
       return;
     }
 
-    alert("알 수 없는 오류가 발생했습니다.");
+    alert(MESSAGES.알_수_없는_오류);
   }
 };
 
