@@ -9,7 +9,21 @@
 </head>
 
 <body>
-    <div id="root">
+    <div id="root" class="flex">
+        <h1>승객 선택</h1>
+        <div class="flex flex__center sub-title__container">
+            <h2>성인</h2>
+            <span title="성인 승객은 총 3명까지 등록할 수 있습니다." id="tooltip" class="flex flex__center">?</span>
+        </div>
+        <div id="counter" class="counter flex flex__center">
+            <button class="counter__button flex flex__center">-</button>
+            <div class="counter__value__container">
+                <input type="number" value="0" min="0" max="3" step="1" id="counter__value" />
+                <span id="counter__value__line" />
+            </div>
+            <button class="counter__button flex flex__center">+</button>
+        </div>
+
     </div>
 </body>
 
