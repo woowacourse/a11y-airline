@@ -13,6 +13,9 @@ const handleValueChange = (to: number) => {
     throw new Error("1~3명만 선택 가능합니다.");
   spinButtonInput.value = String(to);
   spinInputStatus.textContent = `성인 승객 ${to}명 선택됨`;
+  setTimeout(() => {
+    spinInputStatus.textContent = "";
+  }, 1000);
 };
 
 const handleSpinButtonClick = (classList: DOMTokenList) => {
