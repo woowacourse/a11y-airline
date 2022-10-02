@@ -5,8 +5,7 @@ const spinButtonInput =
   spinButtonFieldSet.querySelector<HTMLButtonElement>("#spin-input-value");
 const spinInputStatus = document.querySelector("#spin-input-status");
 
-const setSpinInputValue = (to: number) => {
-  spinButtonInput.value = String(to);
+const setSpinInputValueChangeMessage = (to: number) => {
   spinInputStatus.textContent = MESSAGES.현재_승객_수_안내(to);
 
   setTimeout(() => {
@@ -22,7 +21,8 @@ const handleValueChange = (to: number) => {
     throw new Error(MESSAGES.승객_수_범위_오류);
   }
 
-  setSpinInputValue(to);
+  spinButtonInput.value = String(to);
+  setSpinInputValueChangeMessage(to);
 };
 
 const getChangeAmountFromClassList = (classList: DOMTokenList) =>
@@ -55,13 +55,16 @@ const handleSpinInputValue = (target: HTMLInputElement) => {
       inputValue >= SPIN_INPUT_RANGE.MIN) ||
     target.value === ""
   ) {
+    setSpinInputValueChangeMessage(inputValue);
     return;
   }
 
   if (inputValue > SPIN_INPUT_RANGE.MAX) {
     target.value = String(SPIN_INPUT_RANGE.MAX);
+    setSpinInputValueChangeMessage(SPIN_INPUT_RANGE.MAX);
   } else {
     target.value = String(SPIN_INPUT_RANGE.MIN);
+    setSpinInputValueChangeMessage(SPIN_INPUT_RANGE.MIN);
   }
   throw new Error(MESSAGES.승객_수_범위_오류);
 };
