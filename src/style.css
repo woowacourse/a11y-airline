@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 button {
@@ -102,6 +103,8 @@ button {
 
 .spin-button-value-input {
   border: none;
+  border-radius: 0;
+  box-shadow: none;
   border-bottom: 1px solid black;
   width: 30px;
   text-align: center;
