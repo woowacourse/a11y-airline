@@ -22,9 +22,24 @@ const SpinButton = () => {
 
   return (
     <Wrapper>
-      <ControlButton onClick={handleClickDecrease}>-</ControlButton>
-      <Input value={value} type="number" min={1} max={3} />
-      <ControlButton onClick={handleClickIncrease}>+</ControlButton>
+      <label id="성인">{'성인'}</label>
+      <ControlWrapper>
+        <ControlButton
+          type="button"
+          onClick={handleClickDecrease}
+          aria-label="탑승자 한명 줄이기"
+        >
+          -
+        </ControlButton>
+        <Input name="성인" value={value} type="number" min={1} max={3} />
+        <ControlButton
+          type="button"
+          onClick={handleClickIncrease}
+          aria-label="성인 탑승자 한명 늘리기"
+        >
+          +
+        </ControlButton>
+      </ControlWrapper>
     </Wrapper>
   );
 };
@@ -32,6 +47,11 @@ const SpinButton = () => {
 export default SpinButton;
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ControlWrapper = styled.div`
   display: flex;
 `;
 
