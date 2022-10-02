@@ -37,9 +37,9 @@
 
 .tip-button-icon {
   border-radius: 50%;
-  border: 2px solid gray;
+  border: 2px solid #4f4f4f;
 
-  color: gray;
+  color: #4f4f4f;
   font-weight: bold;
 }
 
