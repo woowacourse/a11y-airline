@@ -1,7 +1,7 @@
 const MIN_INPUT = 1;
 const MAX_INPUT = 3;
 
-const spinButtonFieldSet = document.querySelector("fieldset.spin-input");
+const spinButtonFieldSet = document.querySelector("article.spin-input");
 const spinButtonInput = spinButtonFieldSet.querySelector<HTMLButtonElement>(
   ".spin-button-value-input"
 );
@@ -10,7 +10,7 @@ const spinInputStatus = document.querySelector("#spin-input-status");
 const handleValueChange = (to: number) => {
   if (typeof to !== "number") throw new Error("입력값이 유효하지 않습니다.");
   if (to > MAX_INPUT || to < MIN_INPUT)
-    throw new Error("1~3명만 선택 가능합니다.");
+    throw new Error("승객 수는 1명에서 3명 사이 인원만 선택 가능합니다.");
   spinButtonInput.value = String(to);
   spinInputStatus.textContent = `성인 승객 ${to}명 선택됨`;
   setTimeout(() => {
