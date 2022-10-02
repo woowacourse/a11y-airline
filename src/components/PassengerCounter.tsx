@@ -64,11 +64,15 @@ const PassengerCounter = ({ ageGroup }: Props) => {
           -
         </button>
 
-        <label htmlFor="passengerCount" aria-live="polite" className="sr-only">
+        <label
+          htmlFor={`${ageGroup} passengerCount`}
+          aria-live="polite"
+          className="sr-only"
+        >
           {descriptionText}
         </label>
         <input
-          id="passengerCount"
+          id={`${ageGroup} passengerCount`}
           className="w-20 text-center underline"
           type="number"
           value={count}
