@@ -51,8 +51,9 @@ const handleSpinButtonClick = (classList: DOMTokenList) => {
 const handleSpinInputValue = (target: HTMLInputElement) => {
   const inputValue = Number(target.value);
   if (
-    inputValue <= SPIN_INPUT_RANGE.MAX &&
-    inputValue >= SPIN_INPUT_RANGE.MIN
+    (inputValue <= SPIN_INPUT_RANGE.MAX &&
+      inputValue >= SPIN_INPUT_RANGE.MIN) ||
+    target.value === ""
   ) {
     return;
   }
