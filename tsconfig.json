@@ -6,6 +6,7 @@
     "module": "ES6",
     "lib": ["DOM", "ESNext"],
     "isolatedModules": true,
+    "moduleResolution": "node",
     "jsx": "react-jsx"
   },
   "include": ["src"]
