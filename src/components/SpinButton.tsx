@@ -49,6 +49,7 @@ interface SpinButtonProps {}
 
 const SpinButton: React.FC<SpinButtonProps> = () => {
   const [count, setCount] = useState<Passengers>(1);
+  const [labelText, setLabelText] = useState('');
 
   const changCount = (newCount: Passengers) => {
     try {
@@ -57,6 +58,7 @@ const SpinButton: React.FC<SpinButtonProps> = () => {
       }
 
       setCount(newCount);
+      setLabelText(`성인 ${newCount} 텍스트 숫자만 수정`);
     } catch (err) {
       alert(err);
     }
@@ -88,8 +90,8 @@ const SpinButton: React.FC<SpinButtonProps> = () => {
       <Button css={counterButton} type="button" aria-label="성인 탑승자 한명 줄이기" onClick={handleDecreaseCount}>
         -
       </Button>
-      <label css={a11yHidden} htmlFor="counter" aria-live="assertive">
-        성인 {count}
+      <label css={a11yHidden} htmlFor="counter" aria-live="polite">
+        {labelText}
       </label>
       <input id="counter" css={counterInput} type="number" value={count} min="1" max="3" onChange={handleChangeCount} />
       <Button css={counterButton} type="button" aria-label="성인 탑승자 한명 늘리기" onClick={handleIncreaseCount}>
