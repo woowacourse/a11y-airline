@@ -43,7 +43,7 @@ const SpinButton = () => {
 
   return (
     <Wrapper>
-      <label htmlFor="adultCount">{'성인'}</label>
+      <Label htmlFor="adultCount">{'성인'}</Label>
       <ControlWrapper>
         <ControlButton
           type="button"
@@ -51,6 +51,7 @@ const SpinButton = () => {
           aria-label="성인 탑승자 한 명 줄이기"
           aria-controls="spinnerMessage"
           aria-disabled={value <= MIN_VALUE}
+          disabled={value <= MIN_VALUE}
         >
           -
         </ControlButton>
@@ -67,6 +68,7 @@ const SpinButton = () => {
           aria-label="성인 탑승자 한 명 늘리기"
           aria-controls="spinnerMessage"
           aria-disabled={value >= MAX_VALUE}
+          disabled={value >= MAX_VALUE}
         >
           +
         </ControlButton>
@@ -85,13 +87,38 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const ControlWrapper = styled.div`
-  display: flex;
+const Label = styled.label`
+  margin-bottom: 20px;
+  font-weight: bold;
 `;
 
-const ControlButton = styled.button``;
+const ControlWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
-const Input = styled.input``;
+const ControlButton = styled.button`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #e6e7ea;
+  background-color: none;
+  font-size: 20px;
+
+  &:disabled {
+    color: #e6e7ea;
+  }
+`;
+
+const Input = styled.input`
+  width: 38px;
+  height: 40px;
+  margin: 0 20px;
+  border-bottom: 1px solid #000000;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+`;
 
 const Message = styled.span`
   position: absolute;
