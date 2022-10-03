@@ -1,6 +1,8 @@
 import { useState, ChangeEvent } from "react";
 import HelpToolTip from "./HelpToolTip";
 
+import { handleErrorByAlert } from "@utils";
+
 interface Props {
   ageGroup: "성인" | "청소년" | "영유아";
 }
@@ -21,34 +23,48 @@ const PassengerCounter = ({ ageGroup }: Props) => {
   const [descriptionText, setDescriptionText] = useState("");
 
   const handleDecrementCount = () => {
-    if (count === MINIMUM_COUNT) {
-      alert(COUNT_RANGE_ERROR_MESSAGE);
-      return;
+    try {
+      if (count === MINIMUM_COUNT) {
+        throw new Error(COUNT_RANGE_ERROR_MESSAGE);
+      }
+      setCount((prev) => {
+        const result = prev - 1;
+        setDescriptionText(`${ageGroup} 승객 감소 ${result}`);
+        return result;
+      });
+    } catch (error) {
+      handleErrorByAlert(error);
     }
-    setCount((prev) => {
-      const result = prev - 1;
-      setDescriptionText(`${ageGroup} 승객 감소 ${result}`);
-      return result;
-    });
   };
 
   const handleIncrementCount = () => {
-    if (count === MAXIMUM_COUNT) {
-      alert(COUNT_RANGE_ERROR_MESSAGE);
-      return;
+    try {
+      if (count === MAXIMUM_COUNT) {
+        throw new Error(COUNT_RANGE_ERROR_MESSAGE);
+      }
+      setCount((prev) => {
+        const result = prev + 1;
+        setDescriptionText(`${ageGroup} 승객 증가 ${result}`);
+        return result;
+      });
+    } catch (error) {
+      handleErrorByAlert(error);
     }
-    setCount((prev) => {
-      const result = prev + 1;
-      setDescriptionText(`${ageGroup} 승객 증가 ${result}`);
-      return result;
-    });
   };
 
   const handleChangeDescriptionText = (
     event: ChangeEvent<HTMLInputElement>
   ) => {
-    setCount(event.target.valueAsNumber);
-    setDescriptionText(`${ageGroup} 승객 텍스트만 변경 ${count}`);
+    try {
+      const value = event.target.valueAsNumber;
+      if (value < MINIMUM_COUNT || value > MAXIMUM_COUNT) {
+        throw new Error(COUNT_RANGE_ERROR_MESSAGE);
+      }
+      setCount(value);
+      setDescriptionText(`${ageGroup} 승객 텍스트만 변경 ${value}`);
+    } catch (error) {
+      handleErrorByAlert(error);
+    }
   };
 
   return (
