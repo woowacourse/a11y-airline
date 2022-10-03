@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  gap: 1rem;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 1.6rem;
+  height: 1.6rem;
+
+  background: none;
+
+  border: 1px solid lightgray;
+  border-radius: 50%;
+
+  font-size: 1.5rem;
+}
+
+.input {
+  text-align: center;
+
+  width: 2rem;
+
+  border: none;
+  border-bottom: 1px solid black;
+
+  outline: none;
+
+  padding-bottom: 0.5rem;
+
+  font-size: 1.5rem;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.disabled {
+  background: #eeeeee;
+
+  cursor: not-allowed;
+}
