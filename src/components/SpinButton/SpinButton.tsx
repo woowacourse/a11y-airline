@@ -1,4 +1,4 @@
-import { useState, ChangeEventHandler } from 'react';
+import { useState, useRef, useEffect, ChangeEventHandler } from 'react';
 import styled from 'styled-components';
 
 const MIN_VALUE = 0;
@@ -8,6 +8,22 @@ const SpinButton = () => {
   const [value, setValue] = useState<number>(1);
   const [message, setMessage] = useState('');
   const [isOpenToggle, setIsOpenToggle] = useState(false);
+  const timerId = useRef<null | number>(null);
+
+  useEffect(() => {
+    if (message === '') {
+      return;
+    }
+
+    if (typeof timerId.current === 'number') {
+      clearTimeout(timerId.current);
+      timerId.current = null;
+    }
+
+    timerId.current = window.setTimeout(() => {
+      setMessage('');
+    });
+  }, [message]);
 
   const handleClickHelpToggle = () => {
     setIsOpenToggle((prevState) => !prevState);
@@ -101,7 +117,9 @@ const SpinButton = () => {
           +
         </ControlButton>
       </ControlWrapper>
-      <HiddenMessage id="inputHelpMessage">숫자만 수정</HiddenMessage>
+      <HiddenMessage id="inputHelpMessage" aria-hidden>
+        숫자만 수정
+      </HiddenMessage>
       <HiddenMessage id="spinnerMessage" aria-live="assertive">
         {message}
       </HiddenMessage>
@@ -219,5 +237,9 @@ const HiddenMessage = styled.span`
   position: absolute;
   width: 1px;
   height: 1px;
+  border: 0;
   overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  z-index: -1;
 `;
