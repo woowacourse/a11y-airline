@@ -53,7 +53,10 @@ const PassengerCounter = ({ ageGroup }: Props) => {
     <section className="flex flex-col justify-center items-center gap-1 w-40">
       <div className="flex flex-row justify-center items-center gap-2">
         <h2 className="font-bold text-cyan-800">{ageGroup}</h2>
-        <HelpToolTip content={DETAIL_DESCRIPTION[ageGroup]} />
+        <HelpToolTip
+          title="연령 기준 안내"
+          content={DETAIL_DESCRIPTION[ageGroup]}
+        />
       </div>
       <div>
         <button
