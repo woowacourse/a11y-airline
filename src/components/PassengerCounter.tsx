@@ -18,15 +18,18 @@ const DETAIL_DESCRIPTION = {
   영유아: "만 4세 미만 승객",
 };
 
+const validatePassengerCount = (count: number): void => {
+  if (count < MINIMUM_COUNT || count > MAXIMUM_COUNT)
+    throw new Error(COUNT_RANGE_ERROR_MESSAGE);
+};
+
 const PassengerCounter = ({ ageGroup }: Props) => {
   const [count, setCount] = useState(DEFAULT_COUNT);
   const [descriptionText, setDescriptionText] = useState("");
 
   const handleDecrementCount = () => {
     try {
-      if (count === MINIMUM_COUNT) {
-        throw new Error(COUNT_RANGE_ERROR_MESSAGE);
-      }
+      validatePassengerCount(count - 1);
       setCount((prev) => {
         const result = prev - 1;
         setDescriptionText(`${ageGroup} 승객 감소 ${result}`);
@@ -39,9 +42,7 @@ const PassengerCounter = ({ ageGroup }: Props) => {
 
   const handleIncrementCount = () => {
     try {
-      if (count === MAXIMUM_COUNT) {
-        throw new Error(COUNT_RANGE_ERROR_MESSAGE);
-      }
+      validatePassengerCount(count + 1);
       setCount((prev) => {
         const result = prev + 1;
         setDescriptionText(`${ageGroup} 승객 증가 ${result}`);
@@ -57,9 +58,7 @@ const PassengerCounter = ({ ageGroup }: Props) => {
   ) => {
     try {
       const value = event.target.valueAsNumber;
-      if (value < MINIMUM_COUNT || value > MAXIMUM_COUNT) {
-        throw new Error(COUNT_RANGE_ERROR_MESSAGE);
-      }
+      validatePassengerCount(value);
       setCount(value);
       setDescriptionText(`${ageGroup} 승객 텍스트만 변경 ${value}`);
     } catch (error) {
