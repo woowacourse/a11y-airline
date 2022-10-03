@@ -31,12 +31,9 @@ const PassengerCounter = ({ ageGroup }: Props) => {
   const handleDecrementCount = () => {
     try {
       validatePassengerCount(count - 1);
-      setCount((prev) => {
-        const result = prev - 1;
+      setCount((prev) => prev - 1);
 
-        actionStatus.current = "감소";
-        return result;
-      });
+      actionStatus.current = "감소";
     } catch (error) {
       handleErrorByAlert(error);
     }
@@ -45,12 +42,9 @@ const PassengerCounter = ({ ageGroup }: Props) => {
   const handleIncrementCount = () => {
     try {
       validatePassengerCount(count + 1);
-      setCount((prev) => {
-        const result = prev + 1;
+      setCount((prev) => prev + 1);
 
-        actionStatus.current = "증가";
-        return result;
-      });
+      actionStatus.current = "증가";
     } catch (error) {
       handleErrorByAlert(error);
     }
