@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useRef, useEffect } from "react";
 import HelpToolTip from "./HelpToolTip";
 
 import { handleErrorByAlert } from "@utils";
@@ -26,13 +26,15 @@ const validatePassengerCount = (count: number): void => {
 const PassengerCounter = ({ ageGroup }: Props) => {
   const [count, setCount] = useState(DEFAULT_COUNT);
   const [descriptionText, setDescriptionText] = useState("");
+  const actionStatus = useRef("");
 
   const handleDecrementCount = () => {
     try {
       validatePassengerCount(count - 1);
       setCount((prev) => {
         const result = prev - 1;
-        setDescriptionText(`${ageGroup} 승객 감소 ${result}`);
+
+        actionStatus.current = "감소";
         return result;
       });
     } catch (error) {
@@ -45,7 +47,8 @@ const PassengerCounter = ({ ageGroup }: Props) => {
       validatePassengerCount(count + 1);
       setCount((prev) => {
         const result = prev + 1;
-        setDescriptionText(`${ageGroup} 승객 증가 ${result}`);
+
+        actionStatus.current = "증가";
         return result;
       });
     } catch (error) {
@@ -60,11 +63,20 @@ const PassengerCounter = ({ ageGroup }: Props) => {
       const value = event.target.valueAsNumber;
       validatePassengerCount(value);
       setCount(value);
-      setDescriptionText(`${ageGroup} 승객 텍스트만 변경 ${value}`);
+
+      actionStatus.current = "텍스트만 변경";
     } catch (error) {
       handleErrorByAlert(error);
     }
   };
+
+  useEffect(() => {
+    setDescriptionText(
+      `${ageGroup} 승객 ${actionStatus.current} ${
+        Number.isNaN(count) ? "" : count
+      }`
+    );
+  }, [count]);
 
   return (
     <section className="flex flex-col justify-center items-center gap-1 w-40">
