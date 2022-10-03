@@ -1,3 +1,4 @@
+import COUNTER from 'src/constants';
 import counterStore from 'src/store/CounterStore';
 import Component from '../Component';
 
@@ -11,8 +12,8 @@ export default class Input extends Component {
     this.#input = document.createElement('input');
     this.#input.type = 'number';
     this.#input.value = counterStore.number.toString();
-    this.#input.min = '0';
-    this.#input.max = '3';
+    this.#input.min = `${COUNTER.MINIMUM_PASSENGER}`;
+    this.#input.max = `${COUNTER.MAXIMUM_PASSENGER}`;
     this.#input.step = '1';
     this.#input.id = 'counter__value';
 

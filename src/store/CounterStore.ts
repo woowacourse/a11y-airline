@@ -1,3 +1,4 @@
+import COUNTER from 'src/constants';
 import Observer from '.';
 
 class Counter extends Observer {
@@ -8,20 +9,26 @@ class Counter extends Observer {
   }
 
   plus() {
-    if (this.#number >= 3) {
-      this.#number = 3;
+    if (this.#number >= COUNTER.MAXIMUM_PASSENGER) {
+      this.#number = COUNTER.MAXIMUM_PASSENGER;
       this.notify();
-      throw new Error('승객의 최대 인원은 3명입니다.');
+      throw new Error(
+        `승객의 최대 인원은 ${COUNTER.MAXIMUM_PASSENGER}명입니다.`
+      );
     }
     this.#number++;
     this.notify();
   }
 
   setCounter(value: number): void {
-    if (value > 3 || value < 0 || value % 1 !== 0) {
+    if (
+      value > COUNTER.MAXIMUM_PASSENGER ||
+      value < COUNTER.MINIMUM_PASSENGER ||
+      value % 1 !== 0
+    ) {
       this.notify();
       throw new Error(
-        '성인 승객은 최소 0명 이상 3명의 자연수 이하여야 합니다.'
+        `성인 승객은 최소 ${COUNTER.MINIMUM_PASSENGER}명 이상 ${COUNTER.MAXIMUM_PASSENGER}명의 자연수 이하여야 합니다.`
       );
     }
     this.#number = value;
@@ -29,10 +36,12 @@ class Counter extends Observer {
   }
 
   minus() {
-    if (this.#number <= 0) {
-      this.#number = 0;
+    if (this.#number <= COUNTER.MINIMUM_PASSENGER) {
+      this.#number = COUNTER.MINIMUM_PASSENGER;
       this.notify();
-      throw new Error('승객의 최소 인원은 0명입니다.');
+      throw new Error(
+        `승객의 최소 인원은 ${COUNTER.MINIMUM_PASSENGER}명입니다.`
+      );
     }
     this.#number--;
     this.notify();
@@ -43,6 +52,6 @@ class Counter extends Observer {
   }
 }
 
-const counterStore = new Counter(0);
+const counterStore = new Counter(COUNTER.MINIMUM_PASSENGER);
 
 export default counterStore;
