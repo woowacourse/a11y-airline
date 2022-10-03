@@ -5,6 +5,8 @@ import Component from '../Component';
 export default class Input extends Component {
   #input;
   #span;
+  #label;
+
   constructor() {
     super();
     this.element.classList.add('counter__value__container');
@@ -20,10 +22,17 @@ export default class Input extends Component {
     this.#span = document.createElement('span');
     this.#span.id = 'counter__value__line';
 
+    this.#label = document.createElement('label');
+    this.#label.ariaLive = 'polite';
+    this.#label.ariaHidden = 'true';
+    this.#label.hidden = true;
+    this.#label.htmlFor = 'counter__value';
+
     this.#input.addEventListener('keyup', this.handleKeyup);
     this.#input.addEventListener<'change'>('change', this.handleInput);
     this.#input.addEventListener('keypress', this.handleKeypress);
-    this.element.append(this.#input, this.#span);
+    this.element.append(this.#input, this.#span, this.#label);
+
     this.render();
 
     counterStore.subscribe('updateInput', () => {
@@ -39,7 +48,6 @@ export default class Input extends Component {
 
   handleKeypress(this: HTMLInputElement, e: Event) {
     const event = e as KeyboardEvent;
-    const code = event.which ? event.which : event.keyCode;
 
     const _value = this.value;
     if (event.keyCode < 48 || event.keyCode > 57) {
@@ -65,5 +73,6 @@ export default class Input extends Component {
 
   render() {
     this.#input.value = counterStore.number.toString();
+    this.#label.textContent = `${counterStore.status}`;
   }
 }

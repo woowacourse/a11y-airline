@@ -3,9 +3,11 @@ import Observer from '.';
 
 class Counter extends Observer {
   #number;
+  #status;
   constructor(initialNumber: number) {
     super();
     this.#number = initialNumber;
+    this.#status = '';
   }
 
   plus() {
@@ -17,6 +19,7 @@ class Counter extends Observer {
       );
     }
     this.#number++;
+    this.#status = `성인 승객 추가 ${this.#number}`;
     this.notify();
   }
 
@@ -32,6 +35,7 @@ class Counter extends Observer {
       );
     }
     this.#number = value;
+    this.#status = `성인 승객 ${this.#number}`;
     this.notify();
   }
 
@@ -44,11 +48,16 @@ class Counter extends Observer {
       );
     }
     this.#number--;
+    this.#status = `성인 승객 감소 ${this.#number}`;
     this.notify();
   }
 
   get number() {
     return this.#number;
+  }
+
+  get status() {
+    return this.#status;
   }
 }
 

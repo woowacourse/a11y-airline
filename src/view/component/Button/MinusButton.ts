@@ -12,6 +12,7 @@ export default class MinusButton extends Button {
           alert(message);
         }
       },
+      label: '성인 탑승자 한명 줄이기',
     });
   }
 }
