@@ -25,6 +25,16 @@ class Store {
     });
   }
 
+  addCounter() {
+    this.#counter.plus();
+    this.notify();
+  }
+
+  minusCounter() {
+    this.#counter.minus();
+    this.notify();
+  }
+
   get count() {
     return this.#counter.number;
   }

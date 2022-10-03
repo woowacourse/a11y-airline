@@ -7,7 +7,9 @@ export default class Input extends Component {
     this.element.classList.add('counter__value__container');
     this.render();
 
-    store.subscribe('updateInput', this.render);
+    store.subscribe('updateInput', () => {
+      this.render();
+    });
   }
 
   render() {
