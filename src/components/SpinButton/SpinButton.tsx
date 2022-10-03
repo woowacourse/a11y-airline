@@ -1,51 +1,71 @@
-import { useState } from 'react';
+import { useState, ChangeEventHandler } from 'react';
 import styled from 'styled-components';
 
+const MIN_VALUE = 0;
+const MAX_VALUE = 3;
+
 const SpinButton = () => {
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState<number>(1);
   const [message, setMessage] = useState('');
 
   const handleClickDecrease = () => {
-    if (value <= 0) {
+    if (value <= MIN_VALUE) {
       return;
     }
 
     setValue((prevValue) => prevValue - 1);
-    setMessage(`승객 감소 ${value - 1}`);
+    setMessage(`성인 승객 감소 ${value - 1}`);
   };
 
   const handleClickIncrease = () => {
-    if (value >= 3) {
+    if (value >= MAX_VALUE) {
       return;
     }
 
     setValue((prevValue) => prevValue + 1);
-    setMessage(`승객 추가 ${value + 1}`);
+    setMessage(`성인 승객 추가 ${value + 1}`);
+  };
+
+  const handleChangeInput: ChangeEventHandler<HTMLInputElement> = (event) => {
+    const { data } = event.nativeEvent as InputEvent;
+
+    if (data === null || !Number.isInteger(Number(data))) {
+      setValue(0);
+      return;
+    }
+
+    if (Number(data) > MAX_VALUE) {
+      return;
+    }
+
+    setValue(Number(data));
   };
 
   return (
     <Wrapper>
-      <label for="성인">{'성인'}</label>
+      <label htmlFor="adultCount">{'성인'}</label>
       <ControlWrapper>
         <ControlButton
           type="button"
           onClick={handleClickDecrease}
-          aria-label="성인 탑승자 한명 줄이기"
+          aria-label="성인 탑승자 한 명 줄이기"
           aria-controls="spinnerMessage"
+          aria-disabled={value <= MIN_VALUE}
         >
           -
         </ControlButton>
-        <Input value={value} type="text" maxLength={1} />
+        <Input id="adultCount" type="tel" value={value} onChange={handleChangeInput} />
         <ControlButton
           type="button"
           onClick={handleClickIncrease}
-          aria-label="성인 탑승자 한명 늘리기"
+          aria-label="성인 탑승자 한 명 늘리기"
           aria-controls="spinnerMessage"
+          aria-disabled={value >= MAX_VALUE}
         >
           +
         </ControlButton>
       </ControlWrapper>
-      <Message id="spinnerMessage" aria-live="polite">
+      <Message id="spinnerMessage" aria-live="assertive">
         {message}
       </Message>
     </Wrapper>
@@ -69,8 +89,8 @@ const Input = styled.input``;
 
 const Message = styled.span`
   position: absolute;
-  left: -10000px;
-  top: auto;
+  /* left: -10000px; */
+  /* top: auto; */
   width: 1px;
   height: 1px;
   overflow: hidden;
