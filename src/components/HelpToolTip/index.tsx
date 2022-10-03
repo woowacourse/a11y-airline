@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes } from "react";
+import React from "react";
 import "./style.css";
 
 import { ValueOf, PASSENGER_TYPE, HELP_DESCRIPTION } from "../../types";
