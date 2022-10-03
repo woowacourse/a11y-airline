@@ -44,7 +44,9 @@ const PassengerCounter = ({ ageGroup }: Props) => {
     });
   };
 
-  const handleChangeText = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeDescriptionText = (
+    event: ChangeEvent<HTMLInputElement>
+  ) => {
     setCount(event.target.valueAsNumber);
     setDescriptionText(`${ageGroup} 승객 텍스트만 변경 ${count}`);
   };
@@ -81,7 +83,7 @@ const PassengerCounter = ({ ageGroup }: Props) => {
           value={count}
           min="1"
           max="3"
-          onChange={handleChangeText}
+          onChange={handleChangeDescriptionText}
         />
 
         <button
