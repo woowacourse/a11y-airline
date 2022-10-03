@@ -54,7 +54,13 @@ const SpinButton = () => {
         >
           -
         </ControlButton>
-        <Input id="adultCount" type="tel" value={value} onChange={handleChangeInput} />
+        <Input
+          id="adultCount"
+          type="tel"
+          value={value}
+          onChange={handleChangeInput}
+          aria-description="숫자만 수정"
+        />
         <ControlButton
           type="button"
           onClick={handleClickIncrease}
@@ -89,8 +95,6 @@ const Input = styled.input``;
 
 const Message = styled.span`
   position: absolute;
-  /* left: -10000px; */
-  /* top: auto; */
   width: 1px;
   height: 1px;
   overflow: hidden;
