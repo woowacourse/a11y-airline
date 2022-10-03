@@ -1,0 +1,41 @@
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.button {
+  border-radius: 50%;
+  background-color: white;
+  font-weight: bold;
+  border: 2px solid gray;
+}
+
+.passenger-title {
+  display: flex;
+  align-items: center;
+}
+
+.tooltip {
+  width: 25px;
+  height: 25px;
+  margin: 0 10px;
+  font-size: 16px;
+  color: gray;
+}
+
+.count-input {
+  margin: 0 15px;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 35px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.count {
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+}
