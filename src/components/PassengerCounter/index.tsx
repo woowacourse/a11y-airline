@@ -1,9 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { ChangeEvent, useRef, useState } from "react";
 import "./style.css";
 
 import HelpToolTip from "../HelpToolTip";
 
 import { HELP_DESCRIPTION, PASSENGER_TYPE, ValueOf } from "../../types";
+
+const INITIAL_COUNT = 1;
 
 interface CounterProp {
   passengerType: ValueOf<typeof PASSENGER_TYPE>;
@@ -16,11 +18,12 @@ export default function PassengerCounter({
   minCount = 0,
   maxCount = 5,
 }: CounterProp) {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(INITIAL_COUNT);
   const [helpOpen, setHelpOpen] = useState(false);
   const changedStatus = useRef("");
 
   const handlePlusButton = () => {
+    if (isNaN(count)) setCount(0);
     if (count >= maxCount) return;
 
     changedStatus.current = "추가";
@@ -32,6 +35,17 @@ export default function PassengerCounter({
 
     changedStatus.current = "감소";
     setCount((prev) => prev - 1);
+  };
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.valueAsNumber;
+    if (value < minCount || value > maxCount) {
+      alert(`${minCount} ~ ${maxCount} 범위의 값을 입력해주세요`);
+      setCount(INITIAL_COUNT);
+      return;
+    }
+
+    setCount(value);
   };
 
   const handleHelpToggle = () => {
@@ -52,8 +66,8 @@ export default function PassengerCounter({
         <button
           className="counter__btn"
           onClick={handleMinusButton}
-          aria-label={`${passengerType} 탑승자 한명 줄이기 버튼`}
-          disabled={count <= minCount}
+          aria-label={`${passengerType} 탑승자 한명 줄이기`}
+          disabled={count <= minCount || isNaN(count)}
         >
           -
         </button>
@@ -68,13 +82,14 @@ export default function PassengerCounter({
           id={`${passengerType} Count`}
           value={count}
           type="number"
-          min={0}
+          min={minCount}
           max={maxCount}
+          onChange={handleInputChange}
         />
         <button
           className="counter__btn"
           onClick={handlePlusButton}
-          aria-label={`${passengerType} 탑승자 한명 늘리기 버튼 `}
+          aria-label={`${passengerType} 탑승자 한명 늘리기`}
           disabled={count >= maxCount}
         >
           +
