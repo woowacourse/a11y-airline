@@ -61,13 +61,7 @@ function SpinButton({ target }: SpinButtonProps) {
       aria-valuemin={0}
       aria-valuemax={3}
     >
-      <label
-        htmlFor={`${target}-input`}
-        aria-hidden={false}
-        aria-live="polite"
-        role="dialog"
-        hidden
-      >
+      <label aria-hidden={false} aria-live="polite" role="dialog" hidden>
         {labelDescription}
       </label>
       <button
@@ -82,7 +76,6 @@ function SpinButton({ target }: SpinButtonProps) {
         -
       </button>
       <input
-        id={`${target}-input`}
         type="number"
         className={styles.input}
         min={0}
