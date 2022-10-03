@@ -1,27 +1,6 @@
 import { css } from '@emotion/react';
-import React, { useState } from 'react';
-
-const buttonStyle = css`
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
-
-  text-align: center;
-  vertical-align: middle;
-`;
-
-const tooltip = css`
-  border: 2px solid #999999;
-  background-color: #ffffff;
-  height: 1.4rem;
-  width: 1.4rem;
-  font-size: 0.9em;
-  color: #999999;
-  border-radius: 1rem;
-`;
+import { useState } from 'react';
+import { Button, Tooltip } from './components';
 
 const counterButton = css`
   border: 1px solid #999999;
@@ -66,7 +45,7 @@ const a11yHidden = css`
 
 type Passengers = 1 | 2 | 3;
 
-function App() {
+const App: React.FC = () => {
   const [count, setCount] = useState<Passengers>(1);
 
   const changCount = (newCount: Passengers) => {
@@ -111,9 +90,7 @@ function App() {
             `}
           >
             <h2>성인</h2>
-            <button type="button" css={[buttonStyle, tooltip]}>
-              <span>?</span>
-            </button>
+            <Tooltip />
           </div>
           <div
             css={css`
@@ -122,14 +99,14 @@ function App() {
               gap: 16px;
             `}
           >
-            <button
-              css={[buttonStyle, counterButton]}
+            <Button
+              css={counterButton}
               type="button"
               aria-label="성인 탑승자 한명 줄이기"
               onClick={handleDecreaseCount}
             >
               -
-            </button>
+            </Button>
             <label css={a11yHidden} htmlFor="counter" aria-live="polite">
               성인 {count}
             </label>
@@ -142,20 +119,20 @@ function App() {
               max="3"
               onChange={handleChangeCount}
             />
-            <button
-              css={[buttonStyle, counterButton]}
+            <Button
+              css={counterButton}
               type="button"
               aria-label="성인 탑승자 한명 늘리기"
               onClick={handleIncreaseCount}
             >
               +
-            </button>
+            </Button>
           </div>
         </div>
       </section>
     </div>
   );
-}
+};
 
 export default App;
 
