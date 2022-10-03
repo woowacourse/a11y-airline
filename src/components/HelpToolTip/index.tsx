@@ -15,7 +15,9 @@ export default function HelpToolTip({
 }: HelpToolTipProps) {
   return (
     <>
-      <button onClick={onClick}>?</button>
+      <button onClick={onClick} aria-label={`${passengerType} 기준 상세 안내`}>
+        ?
+      </button>
       {helpOpen && <div>{HELP_DESCRIPTION[passengerType]}</div>}
     </>
   );
