@@ -1,14 +1,10 @@
-import Counter from '../domain/Coutner';
-
 type FunctionType = (...arg: any[]) => any;
 
-class Store {
+class Observer {
   #callback: { key: string; func: FunctionType }[];
-  #counter;
 
   constructor() {
     this.#callback = [];
-    this.#counter = new Counter(0);
   }
 
   subscribe(key: string, func: FunctionType) {
@@ -24,22 +20,6 @@ class Store {
       func();
     });
   }
-
-  addCounter() {
-    this.#counter.plus();
-    this.notify();
-  }
-
-  minusCounter() {
-    this.#counter.minus();
-    this.notify();
-  }
-
-  get count() {
-    return this.#counter.number;
-  }
 }
 
-const store = new Store();
-
-export default store;
+export default Observer;

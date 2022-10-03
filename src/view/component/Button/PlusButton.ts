@@ -1,4 +1,4 @@
-import store from '../../../store';
+import counterStore from 'src/store/CounterStore';
 import Button from './Button';
 
 export default class PlusButton extends Button {
@@ -7,7 +7,7 @@ export default class PlusButton extends Button {
       children: '+',
       onClick: () => {
         try {
-          store.addCounter();
+          counterStore.plus();
         } catch ({ message }) {
           alert(message);
         }
