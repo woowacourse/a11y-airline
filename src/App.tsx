@@ -1,8 +1,12 @@
 import React from "react";
 
+import PassengerCounter from "./components/PassengerCounter";
+
+import { PASSENGER_TYPE } from "./types";
+
 const App = () => (
   <>
-    <h1>Hello..</h1>
+    <PassengerCounter passengerType={PASSENGER_TYPE.ADULT} maxCount={3} />
   </>
 );
 
