@@ -6,7 +6,11 @@ export default class MinusButton extends Button {
     super({
       children: '-',
       onClick: () => {
-        store.minusCounter();
+        try {
+          store.minusCounter();
+        } catch ({ message }) {
+          alert(message);
+        }
       },
     });
   }

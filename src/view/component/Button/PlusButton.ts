@@ -6,7 +6,11 @@ export default class PlusButton extends Button {
     super({
       children: '+',
       onClick: () => {
-        store.addCounter();
+        try {
+          store.addCounter();
+        } catch ({ message }) {
+          alert(message);
+        }
       },
     });
   }

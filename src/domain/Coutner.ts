@@ -5,10 +5,12 @@ class Counter {
   }
 
   plus() {
+    if (this.#number >= 3) throw Error('3이상은 안됩니다.');
     this.#number++;
   }
 
   minus() {
+    if (this.#number <= 0) throw Error('0이하는 안됩니다.');
     this.#number--;
   }
 
