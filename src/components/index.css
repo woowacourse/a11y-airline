@@ -1,0 +1,11 @@
+.tooltip-content {
+  visibility: hidden;
+  text-align: center;
+  padding: 2px 6px;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltip-content {
+  visibility: visible;
+}
