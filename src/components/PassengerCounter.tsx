@@ -8,7 +8,7 @@ interface Props {
 const DEFAULT_COUNT = 1;
 const MINIMUM_COUNT = 1;
 const MAXIMUM_COUNT = 3;
-const COUNT_RANGE_ERROR_MESSAGE = "최소 1명, 최대 3명까지 선택 가능합니다.";
+const COUNT_RANGE_ERROR_MESSAGE = `최소 ${MINIMUM_COUNT}명, 최대 ${MAXIMUM_COUNT}명까지 선택 가능합니다.`;
 
 const DETAIL_DESCRIPTION = {
   성인: "만 18세 이상 승객",
