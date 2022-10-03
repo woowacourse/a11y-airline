@@ -37,9 +37,11 @@ const tipText = css`
 
 const Tooltip: React.FC = () => {
   return (
-    <Button type="button" css={tooltip}>
-      <span>?</span>
-      <p css={tipText}>인원수는 1~3명까지만 가능합니다.</p>
+    <Button type="button" css={tooltip} role="tooltip" aria-label="인원수는 1~3명까지만 가능합니다.">
+      <span aria-hidden>?</span>
+      <p css={tipText} aria-hidden>
+        인원수는 1~3명까지만 가능합니다.
+      </p>
     </Button>
   );
 };
