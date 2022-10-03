@@ -56,7 +56,7 @@ const SpinButton = () => {
           type="button"
           onClick={handleClickHelpToggle}
           aria-expanded={isOpenToggle}
-          aria-control="helpMessage"
+          aria-controls="helpMessage"
           aria-label="성인 기준 상세 안내"
         >
           ?
@@ -88,7 +88,7 @@ const SpinButton = () => {
           type="tel"
           value={value}
           onChange={handleChangeInput}
-          aria-description="숫자만 수정"
+          aria-describedby="inputHelpMessage"
         />
         <ControlButton
           type="button"
@@ -101,6 +101,7 @@ const SpinButton = () => {
           +
         </ControlButton>
       </ControlWrapper>
+      <HiddenMessage id="inputHelpMessage">숫자만 수정</HiddenMessage>
       <HiddenMessage id="spinnerMessage" aria-live="assertive">
         {message}
       </HiddenMessage>
@@ -178,7 +179,6 @@ const HelpToggleMessage = styled.div`
 `;
 
 const HelpToggleCloseButton = styled.button`
-  /* flex-grow: 1; */
   position: absolute;
   top: 0;
   right: 0;
