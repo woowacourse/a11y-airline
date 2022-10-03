@@ -11,7 +11,7 @@ const counterButton = css`
   font-size: 1.4em;
 `;
 
-const inputStyle = css`
+const counterInput = css`
   ::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
@@ -112,7 +112,7 @@ const App: React.FC = () => {
             </label>
             <input
               id="counter"
-              css={[inputStyle]}
+              css={counterInput}
               type="number"
               value={count}
               min="1"

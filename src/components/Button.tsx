@@ -4,7 +4,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 }
 
-const buttonStyle = css`
+const defaultButton = css`
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -18,7 +18,7 @@ const buttonStyle = css`
 
 const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
   return (
-    <button css={buttonStyle} {...props}>
+    <button css={defaultButton} {...props}>
       {children}
     </button>
   );
