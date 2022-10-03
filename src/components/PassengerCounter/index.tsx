@@ -1,9 +1,9 @@
-import React, { ChangeEvent, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import "./style.css";
 
 import HelpToolTip from "../HelpToolTip";
 
-import { HELP_DESCRIPTION, PASSENGER_TYPE, ValueOf } from "../../types";
+import { PASSENGER_TYPE, ValueOf } from "../../types";
 
 const INITIAL_COUNT = 1;
 
@@ -20,6 +20,7 @@ export default function PassengerCounter({
 }: CounterProp) {
   const [count, setCount] = useState(INITIAL_COUNT);
   const [helpOpen, setHelpOpen] = useState(false);
+  const [description, setDescription] = useState("");
   const changedStatus = useRef("");
 
   const handlePlusButton = () => {
@@ -45,12 +46,24 @@ export default function PassengerCounter({
       return;
     }
 
+    if (isNaN(value)) {
+      setCount(value);
+      return;
+    }
+
+    changedStatus.current = "";
     setCount(value);
   };
 
   const handleHelpToggle = () => {
     setHelpOpen((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (!isNaN(count)) {
+      setDescription(`${passengerType} 승객 ${changedStatus.current} ${count}`);
+    }
+  }, [count]);
 
   return (
     <section className="counter">
@@ -72,14 +85,14 @@ export default function PassengerCounter({
           -
         </button>
         <label
-          htmlFor={`${passengerType} Count`}
+          htmlFor={`${passengerType}-Count`}
           aria-live="polite"
           className="sr-only"
         >
-          {HELP_DESCRIPTION[passengerType]}
+          {description}
         </label>
         <input
-          id={`${passengerType} Count`}
+          id={`${passengerType}-Count`}
           value={count}
           type="number"
           min={minCount}
