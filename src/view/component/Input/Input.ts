@@ -24,9 +24,9 @@ export default class Input extends Component {
 
     this.#label = document.createElement('label');
     this.#label.ariaLive = 'polite';
-    this.#label.ariaHidden = 'true';
-    this.#label.hidden = true;
     this.#label.htmlFor = 'counter__value';
+    this.#label.id = 'counter__value__label';
+    this.#label.classList.add('hide-element');
 
     this.#input.addEventListener('keyup', this.handleKeyup);
     this.#input.addEventListener<'change'>('change', this.handleInput);

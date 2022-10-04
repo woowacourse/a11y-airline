@@ -15,6 +15,5 @@ export default class Button extends Component {
     this.element.addEventListener('click', onClick);
     this.element.textContent = children;
     this.element.ariaLabel = label;
-    this.element.ariaLive = 'assertive';
   }
 }
