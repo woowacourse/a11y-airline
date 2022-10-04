@@ -13,9 +13,11 @@
     <section>
       <div class="passenger__title">
         <h2 class="passenger__label">성인</h2>
-        <button class="adult__count -tooltip" role="tooltip">
-          성인 기준 상세 안내
-        </button>
+        <button class="adult__count tooltip__open">성인 기준 상세 안내</button>
+        <div class="tooltip__text display-hidden" role="tooltip">
+          <span>국제선 만 12세 이상, 국내선 만 13세 이상</span>
+          <button class="tooltip__close">닫기</button>
+        </div>
       </div>
       <div class="passenger__controls">
         <button

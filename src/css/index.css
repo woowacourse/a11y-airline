@@ -5,6 +5,7 @@ body {
 }
 
 .passenger__title {
+  position: relative;
   display: flex;
   align-items: center;
 }
@@ -22,7 +23,7 @@ body {
   border: none;
 }
 
-.-tooltip {
+.tooltip__open {
   background: url("../images/ico-opener.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -79,4 +80,37 @@ body {
 
 [aria-disabled="true"] {
   opacity: 0.3;
+}
+
+.tooltip__text {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+  padding-left: 10px;
+  left: 75px;
+  border-radius: 0.6rem;
+}
+
+.tooltip__close {
+  width: 2rem;
+  height: 2rem;
+  font-size: 0;
+  cursor: pointer;
+  border: none;
+  background: url("../images/popover__close.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.display-hidden {
+  display: none;
+}
+
+.display-visible {
+  visibility: visible;
 }
