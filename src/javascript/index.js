@@ -14,7 +14,7 @@ const handleInputNumberLimitFromOneToThree = (e) => {
     alert("성인 승객은 1명부터 3명까지만 입력 가능합니다.");
   }
 
-  e.target.value = inputNumber.replace(/[^1-3]/g, "1");
+  e.target.value = inputNumber.replace(/[^1-3]/g, "1").replace(/[1]/g, "1");
 };
 
 const handleInputChange = () => {
