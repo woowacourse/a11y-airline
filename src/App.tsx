@@ -2,12 +2,19 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 import useAnnounceMessage from './useAnnounceMessage';
 
+const PASSENGER_COUNT = {
+  max: 3,
+  min: 0,
+};
+
 const App = () => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(PASSENGER_COUNT.min);
   const { announceMessage } = useAnnounceMessage();
 
   const handleClickPlusButton = () => {
-    if (count >= 3) {
+    if (count >= PASSENGER_COUNT.max) {
+      announceMessage(`승객은 최대 ${PASSENGER_COUNT.max}명입니다. `);
+
       return;
     }
     const changedCount = count + 1;
@@ -16,7 +23,9 @@ const App = () => {
   };
 
   const handleClickMinusButton = () => {
-    if (count <= 0) {
+    if (count <= PASSENGER_COUNT.min) {
+      announceMessage(`승객은 ${PASSENGER_COUNT.min}이하로 내릴 수 없습니다.`);
+
       return;
     }
     const changedCount = count - 1;
