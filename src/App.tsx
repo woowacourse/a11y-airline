@@ -8,7 +8,7 @@ function App() {
       <h2>승객 선택</h2>
       <PassengerController
         labelText="성인"
-        defaultValue={0}
+        defaultValue={1}
         step={1}
         min={0}
         max={3}

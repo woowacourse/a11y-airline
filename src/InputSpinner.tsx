@@ -5,6 +5,7 @@ interface InputSpinnerProps {
   step?: number;
   min?: number;
   max?: number;
+  labelText?: string;
   subButtonText?: string;
   addButtonText?: string;
 }
@@ -14,19 +15,27 @@ function InputSpinner({
   step = 1,
   min = 0,
   max = 100,
-  subButtonText = "줄이기 버튼",
-  addButtonText = "늘리기 버튼",
+  labelText = "",
+  subButtonText = "줄이기",
+  addButtonText = "늘리기",
 }: InputSpinnerProps) {
   const [value, setValue] = useState(defaultValue);
+  const [ariaLiveText, setAriaLiveText] = useState("");
 
   const handleClickSub: React.MouseEventHandler<HTMLButtonElement> = () => {
     if (value - step < min) return;
-    setValue((value) => value - step);
+    setValue((value) => {
+      setAriaLiveText(`${labelText} 감소 ${value - step}`);
+      return value - step;
+    });
   };
 
   const handleClickAdd: React.MouseEventHandler<HTMLButtonElement> = () => {
     if (value + step > max) return;
-    setValue((value) => value + step);
+    setValue((value) => {
+      setAriaLiveText(`${labelText} 추가 ${value + step}`);
+      return value + step;
+    });
   };
 
   return (
@@ -51,6 +60,9 @@ function InputSpinner({
       >
         {addButtonText}
       </button>
+      <div className="sr-only" aria-live="polite">
+        {ariaLiveText}
+      </div>
     </div>
   );
 }

@@ -22,8 +22,9 @@ function PassengerController({
       </p>
       <InputSpinner
         {...props}
-        subButtonText={`${labelText} 탑승자 한명 줄이기 버튼`}
-        addButtonText={`${labelText} 탑승자 한명 늘리기 버튼`}
+        labelText={`${labelText} 승객`}
+        subButtonText={`탑승자 한명 줄이기`}
+        addButtonText={`탑승자 한명 늘리기`}
       />
     </label>
   );
