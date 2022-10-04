@@ -1,5 +1,7 @@
+import PassengerEnter from './pages/PassengerEnter';
+
 const App = () => {
-  return <h1>미션</h1>;
+  return <PassengerEnter />;
 };
 
 export default App;
