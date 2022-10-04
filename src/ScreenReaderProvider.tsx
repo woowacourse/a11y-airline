@@ -7,22 +7,28 @@ export const ScreenReaderContext = createContext({
 const ScreenReaderProvider = ({ children }: PropsWithChildren) => {
   const [shouldAnnounce, setShouldAnnounce] = useState(false);
   const [message, setMessage] = useState('');
+  const [type, setType] = useState<'assertive' | 'polite'>('polite');
 
-  const announceMessage = (message: string) => {
+  const announceMessage = (message: string, type: 'assertive' | 'polite' = 'polite') => {
     setShouldAnnounce(true);
     setMessage(message);
+    setType(type);
   };
 
   return (
     <ScreenReaderContext.Provider value={{ announceMessage }}>
       {children}
-      {shouldAnnounce && <AnnouncedMessage message={message} />}
+      {shouldAnnounce && <AnnouncedMessage message={message} type={type} />}
     </ScreenReaderContext.Provider>
   );
 };
 
-const AnnouncedMessage = ({ message }: { message: string }) => {
-  return <div aria-live='polite'>{message}</div>;
+const AnnouncedMessage = ({ message, type }: { message: string; type: 'assertive' | 'polite' }) => {
+  return (
+    <div aria-live={type} className='sr-only'>
+      {message}
+    </div>
+  );
 };
 
 export default ScreenReaderProvider;
