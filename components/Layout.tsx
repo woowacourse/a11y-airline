@@ -8,13 +8,13 @@ interface Props {
 
 const Layout = ({ title, children }: Props) => {
   return (
-    <div className={styles.layout}>
-      <div className={styles.header}>
+    <>
+      <header className={styles.header}>
         <Link href="/">{'<'}</Link>
         <h1>{title}</h1>
-      </div>
-      {children}
-    </div>
+      </header>
+      <div className={styles.contents}>{children}</div>
+    </>
   );
 };
 
