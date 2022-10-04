@@ -24,6 +24,12 @@ class Counter extends Observer {
   }
 
   setCounter(value: number): void {
+    if (value > COUNTER.MAXIMUM_PASSENGER) {
+      this.#number = 3;
+    }
+    if (value < COUNTER.MINIMUM_PASSENGER) {
+      this.#number = 0;
+    }
     if (
       value > COUNTER.MAXIMUM_PASSENGER ||
       value < COUNTER.MINIMUM_PASSENGER ||
