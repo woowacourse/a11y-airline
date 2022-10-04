@@ -1,13 +1,24 @@
 import InputSpinner from "./InputSpinner";
 
-function PassengerController() {
+interface PassengerControllerProps {
+  labelText: string;
+  defaultValue?: number;
+  step?: number;
+  min?: number;
+  max?: number;
+}
+
+function PassengerController({
+  labelText,
+  ...props
+}: PassengerControllerProps) {
   return (
     <div className="passenger__controller-container">
       <label className="passenger__label">
-        성인
+        {labelText}
         <button className="popover-trigger" />
       </label>
-      <InputSpinner />
+      <InputSpinner {...props} />
     </div>
   );
 }
