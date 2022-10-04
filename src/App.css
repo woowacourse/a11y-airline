@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
+
   height: 6.25rem;
 }
 
@@ -23,11 +23,13 @@
   font-weight: 700;
 }
 
-.popover-trigger {
+.tooltip-open-trigger {
   width: 2.25rem;
   height: 2.25rem;
   background-size: 24px 24px;
   background: url(./images/ico-opener.svg) no-repeat 50% 50%;
+
+  font-size: 0;
 }
 
 .passenger__control {
@@ -54,6 +56,13 @@
 .passenger__control-add {
   width: 2.75rem;
   height: 2.75rem;
+
+  font-size: 0;
+}
+
+.passenger__control-sub[aria-disabled="true"],
+.passenger__control-add[aria-disabled="true"] {
+  cursor: not-allowed;
 }
 
 .passenger__control-sub {

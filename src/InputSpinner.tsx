@@ -5,6 +5,8 @@ interface InputSpinnerProps {
   step?: number;
   min?: number;
   max?: number;
+  subButtonText?: string;
+  addButtonText?: string;
 }
 
 function InputSpinner({
@@ -12,6 +14,8 @@ function InputSpinner({
   step = 1,
   min = 0,
   max = 100,
+  subButtonText = "줄이기 버튼",
+  addButtonText = "늘리기 버튼",
 }: InputSpinnerProps) {
   const [value, setValue] = useState(defaultValue);
 
@@ -27,9 +31,26 @@ function InputSpinner({
 
   return (
     <div className="passenger__control">
-      <button className="passenger__control-sub" onClick={handleClickSub} />
-      <input className="passenger__control-input" value={value} readOnly />
-      <button className="passenger__control-add" onClick={handleClickAdd} />
+      <button
+        className="passenger__control-sub"
+        onClick={handleClickSub}
+        aria-disabled={value - step < min}
+      >
+        {subButtonText}
+      </button>
+      <input
+        className="passenger__control-input"
+        type="tel"
+        value={value}
+        readOnly
+      />
+      <button
+        className="passenger__control-add"
+        onClick={handleClickAdd}
+        aria-disabled={value + step > max}
+      >
+        {addButtonText}
+      </button>
     </div>
   );
 }

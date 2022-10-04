@@ -13,13 +13,19 @@ function PassengerController({
   ...props
 }: PassengerControllerProps) {
   return (
-    <div className="passenger__controller-container">
-      <label className="passenger__label">
+    <label className="passenger__controller-container">
+      <p className="passenger__label">
         {labelText}
-        <button className="popover-trigger" />
-      </label>
-      <InputSpinner {...props} />
-    </div>
+        <button className="tooltip-open-trigger">
+          {`${labelText} 기준 상세 안내`}
+        </button>
+      </p>
+      <InputSpinner
+        {...props}
+        subButtonText={`${labelText} 탑승자 한명 줄이기 버튼`}
+        addButtonText={`${labelText} 탑승자 한명 늘리기 버튼`}
+      />
+    </label>
   );
 }
 
