@@ -1,6 +1,10 @@
 import { css } from '@emotion/react';
 
 const globalStyle = css`
+  * {
+    box-sizing: border-box;
+  }
+
   .sr-only {
     position: absolute;
     overflow: hidden;
