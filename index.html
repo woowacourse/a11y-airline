@@ -18,7 +18,11 @@
         </button>
       </div>
       <div class="passenger__controls">
-        <button class="passenger__control -sub" type="button">
+        <button
+          class="passenger__control -sub"
+          type="button"
+          aria-disabled="true"
+        >
           성인 탑승자 한명 줄이기
         </button>
         <input
@@ -28,7 +32,11 @@
           value="1"
           aria-label="성인"
         />
-        <button class="passenger__control -add" type="button">
+        <button
+          class="passenger__control -add"
+          type="button"
+          aria-disabled="false"
+        >
           성인 탑승자 한명 늘리기
         </button>
         <div class="hidden" aria-live="polite"></div>

@@ -76,3 +76,7 @@ body {
   padding: 0;
   border: 0;
 }
+
+[aria-disabled="true"] {
+  opacity: 0.3;
+}
