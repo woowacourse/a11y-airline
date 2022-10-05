@@ -1,4 +1,63 @@
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.passenger-type__tooltip {
+  cursor: pointer;
+}
+
+.passenger-type__tooltip + p {
+  position: absolute;
+  display: none;
+  left: 10px;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(26, 26, 26);
+  border-radius: 5px;
+}
+
+.passenger-type__tooltip:hover + p {
+  position: relative;
+  display: block;
+}
+
 .passenger-type {
   display: flex;
   align-items: center;
+}
+
+.passenger-type__tooltip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin: 0 10px;
+  color: gray;
+  border: 2px solid gray;
+  border-radius: 50%;
+}
+
+.passenger-count__input {
+  height: 40px;
+  width: 60px;
+  font-size: 20px;
+  text-align: center;
+  border: none;
+  border-bottom: 2px solid gray;
+}
+
+.passenger-count__minus-button,
+.passenger-count__plus-button {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  background-color: white;
+  border: 2px solid gray;
+  border-radius: 50%;
+  cursor: pointer;
 }

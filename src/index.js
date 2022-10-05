@@ -7,18 +7,20 @@ const passengerPlusButton = document.querySelector(
 );
 
 passengerInput.addEventListener("input", ({ target }) => {
-  if (target.value > 3 || target.value < 1) {
-    passengerInput.value = 0;
+  if (target.value < 1 || target.value > 3) {
+    passengerInput.value = 1;
     return;
   }
 });
 
 passengerMinusButton.addEventListener("click", () => {
+  const passengerCount = Number(passengerInput.value);
   if (passengerCount <= 1) return;
-  passengerInput.value = Number(passengerInput.value) - 1;
+  passengerInput.value = passengerCount - 1;
 });
 
 passengerPlusButton.addEventListener("click", () => {
-  if (passengerInput.value >= 3) return;
-  passengerInput.value = Number(passengerInput.value) + 1;
+  const passengerCount = Number(passengerInput.value);
+  if (passengerCount >= 3) return;
+  passengerInput.value = passengerCount + 1;
 });
