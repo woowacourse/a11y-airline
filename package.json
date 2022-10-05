@@ -5,8 +5,7 @@
   "main": "src/index.tsx",
   "scripts": {
     "start": "webpack serve --open --mode=development",
-    "build": "webpack --mode=production",
-    "build:refresh": "rm -rf build"
+    "build": "webpack --mode=production"
   },
   "devDependencies": {
     "@types/node": "^18.7.23",
