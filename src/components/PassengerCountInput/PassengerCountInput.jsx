@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./PassengerCountInput.css";
 
 function PassengerCountInput() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   const handleDecreaseCount = () => {
     if (count === 0) {
@@ -32,10 +32,10 @@ function PassengerCountInput() {
         <button
           className="passenger-type-explanation-button"
           aria-label="성인 탑승자에 대한 설명 보기"
+          aria-hidden="true"
         >
-          <span className="tooltip-icon" aria-hidden="true">
-            ?
-          </span>
+          {/* <span className="tooltip-icon" aria-hidden="true"> */}?
+          {/* </span> */}
         </button>
       </div>
 
@@ -58,7 +58,6 @@ function PassengerCountInput() {
           min="0"
           max="3"
           value={count}
-          readOnly
         />
         <button
           onClick={handleIncreaseCount}

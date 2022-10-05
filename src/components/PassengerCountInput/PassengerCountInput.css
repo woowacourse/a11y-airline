@@ -26,7 +26,7 @@
 }
 
 .spin-button {
-  all: unset;
+  /* all: unset; */
   border: 1px solid gray;
   width: 30px;
   height: 30px;
