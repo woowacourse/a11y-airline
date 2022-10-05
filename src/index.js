@@ -6,21 +6,19 @@ const passengerPlusButton = document.querySelector(
   ".passenger-count__plus-button"
 );
 
-passengerInput.addEventListener("input", (e) => {
-  if (e.target.value > 3) {
-    passengerInput.value = 3;
+passengerInput.addEventListener("input", ({ target }) => {
+  if (target.value > 3 || target.value < 1) {
+    passengerInput.value = 0;
     return;
   }
 });
 
 passengerMinusButton.addEventListener("click", () => {
-  const passengerCount = Number(passengerInput.value);
   if (passengerCount <= 1) return;
-  passengerInput.value = passengerCount - 1;
+  passengerInput.value = Number(passengerInput.value) - 1;
 });
 
 passengerPlusButton.addEventListener("click", () => {
-  const passengerCount = Number(passengerInput.value);
-  if (passengerCount >= 3) return;
-  passengerInput.value = passengerCount + 1;
+  if (passengerInput.value >= 3) return;
+  passengerInput.value = Number(passengerInput.value) + 1;
 });
