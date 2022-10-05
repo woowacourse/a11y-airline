@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "start": "webpack serve --mode=development",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
@@ -13,6 +15,7 @@
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "babel-loader": "^8.2.5",
+    "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "ts-loader": "^9.4.1",
     "typescript": "^4.8.4",
@@ -37,7 +40,7 @@
   "bugs": {
     "url": "https://github.com/euijinkk/a11y-airline/issues"
   },
-  "homepage": "https://github.com/euijinkk/a11y-airline#readme",
+  "homepage": "https://github.com/euijinkk/a11y-airline",
   "description": "<p align=\"middle\" >   <img width=\"100px;\" src=\"./src/images/airplane.png\"/> </p> <h2 align=\"middle\">누구나 접근할 수 있는 항공사 웹사이트</h2> <p align=\"middle\">항공사 웹사이트 컴포넌트의 스크린 리더 접근성 높이기</p> <p align=\"middle\">   <img src=\"https://img.shields.io/badge/version-1.0.0-blue?style=flat-square\" alt=\"template version\"/>   <img src=\"https://img.shields.io/badge/language-html-red.svg?style=flat-square\"/>   <img src=\"https://img.shields.io/badge/language-css-blue.svg?style=flat-square\"/>   <img src=\"https://img.shields.io/badge/language-js-yellow.svg?style=flat-square\"/>   <img src=\"https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square\"/> </p>",
   "main": "index.js",
   "directories": {
