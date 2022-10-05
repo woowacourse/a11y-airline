@@ -4,7 +4,21 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
+.passenger-type {
+  display: flex;
+  align-items: center;
+}
+
 .passenger-type__tooltip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin: 0 10px;
+  color: gray;
+  border: 2px solid gray;
+  border-radius: 50%;
   cursor: pointer;
 }
 
@@ -23,23 +37,6 @@ input[type="number"]::-webkit-inner-spin-button {
 .passenger-type__tooltip:hover + p {
   position: relative;
   display: block;
-}
-
-.passenger-type {
-  display: flex;
-  align-items: center;
-}
-
-.passenger-type__tooltip {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  margin: 0 10px;
-  color: gray;
-  border: 2px solid gray;
-  border-radius: 50%;
 }
 
 .passenger-count__input {
