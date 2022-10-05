@@ -29,11 +29,11 @@ selectPeopleForm.addEventListener("click", (e) => {
   const numberOutputValue = Number(outputValue);
 
   if (id === "plus" && numberOutputValue < ariaValueMax) {
-    updateSelectPeopleForm(numberOutputvalue + 1);
+    updateSelectPeopleForm(numberOutputValue + 1);
   }
 
   if (id === "minus" && numberOutputValue > ariaValueMin) {
-    updateSelectPeopleForm(numberOutputvalue - 1);
+    updateSelectPeopleForm(numberOutputValue - 1);
   }
 
   if (id === "select-people-output") {
