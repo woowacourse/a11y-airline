@@ -1,0 +1,53 @@
+.passenger-type-container {
+  display: flex;
+  gap: 10px;
+  margin: 40px 0 30px;
+}
+
+.passenger-type-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.passenger-type-explanation-button {
+  all: unset;
+  border: 1px solid gray;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.tooltip-icon {
+  color: gray;
+  font-size: 15px;
+}
+
+.spin-button {
+  all: unset;
+  border: 1px solid gray;
+  width: 30px;
+  height: 30px;
+  font-size: 26px;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* input type="number"의 화살표를 없앰 */
+.passenger-count-input::-webkit-outer-spin-button,
+.passenger-count-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.passenger-count-input {
+  all: unset;
+  border-bottom: 1px solid black;
+  text-align: center;
+  font-size: 24px;
+  width: 48px;
+  margin: 0 20px;
+}
