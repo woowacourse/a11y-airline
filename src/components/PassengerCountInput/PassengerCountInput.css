@@ -51,3 +51,9 @@
   width: 48px;
   margin: 0 20px;
 }
+
+.disabled {
+  color: #d3d3d3;
+  border-color: #d3d3d3;
+  cursor: not-allowed;
+}
