@@ -35,7 +35,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <section>
       <h1>승객 선택</h1>
       <StyledAdultHeading>
         <h2>성인</h2>
@@ -58,7 +58,7 @@ const App = () => {
           +
         </button>
       </StyledCounter>
-    </div>
+    </section>
   );
 };
 
