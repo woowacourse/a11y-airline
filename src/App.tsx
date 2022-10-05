@@ -50,6 +50,8 @@ function App() {
         <div className="passenger-amount-wrapper">
           <span>{passengerAmount}</span>
         </div>
+        <label htmlFor="성인 승객"></label>
+        <input type="number" value={passengerAmount} />
         <button>
           <img
             src={plusIcon}
