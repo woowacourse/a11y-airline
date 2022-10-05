@@ -29,8 +29,13 @@ function PassengerCountInput() {
         <label className="passenger-type-name" htmlFor="adult">
           성인
         </label>
-        <button className="passenger-type-explanation-button">
-          <span className="tooltip-icon">?</span>
+        <button
+          className="passenger-type-explanation-button"
+          aria-label="성인 탑승자에 대한 설명 보기"
+        >
+          <span className="tooltip-icon" aria-hidden="true">
+            ?
+          </span>
         </button>
       </div>
 
@@ -42,8 +47,9 @@ function PassengerCountInput() {
               : "spin-button count-decrease"
           }
           onClick={handleDecreaseCount}
+          aria-label="성인 탑승자 한명 줄이기"
         >
-          -
+          <span aria-hidden="true">-</span>
         </button>
         <input
           className="passenger-count-input"
@@ -61,8 +67,9 @@ function PassengerCountInput() {
               ? "spin-button count-increase disabled"
               : "spin-button count-increase"
           }
+          aria-label="성인 탑승자 한명 늘리기"
         >
-          +
+          <span aria-hidden="true">+</span>
         </button>
       </div>
     </>
