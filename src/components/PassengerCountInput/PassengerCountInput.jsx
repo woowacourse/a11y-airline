@@ -10,6 +10,9 @@ function PassengerCountInput() {
       return;
     }
     setCount(count - 1);
+    document.querySelector(
+      ".passenger-count-input-state"
+    ).textContent = `성인 승객 감소 ${count}`;
   };
 
   const handleIncreaseCount = () => {
@@ -18,6 +21,9 @@ function PassengerCountInput() {
       return;
     }
     setCount(count + 1);
+    document.querySelector(
+      ".passenger-count-input-state"
+    ).textContent = `성인 승객 추가 ${count}`;
   };
 
   return (
@@ -34,8 +40,9 @@ function PassengerCountInput() {
           aria-label="성인 탑승자에 대한 설명 보기"
           aria-hidden="true"
         >
-          {/* <span className="tooltip-icon" aria-hidden="true"> */}?
-          {/* </span> */}
+          <span className="tooltip-icon" aria-hidden="true">
+            ?
+          </span>
         </button>
       </div>
 
@@ -59,6 +66,7 @@ function PassengerCountInput() {
           max="3"
           value={count}
         />
+        <span className="passenger-count-input-state invisible">성인</span>
         <button
           onClick={handleIncreaseCount}
           className={

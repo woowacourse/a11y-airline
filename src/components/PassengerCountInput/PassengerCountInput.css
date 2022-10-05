@@ -57,3 +57,12 @@
   border-color: #d3d3d3;
   cursor: not-allowed;
 }
+
+.invisible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+  overflow: hidden;
+}
