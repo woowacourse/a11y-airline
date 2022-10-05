@@ -1,6 +1,5 @@
 import GlobalStyle from 'GlobalStyle';
-
-import DialogPassenger from 'components/DialogPassenger';
+import DialogPassenger from 'Pages/DialogPassenger';
 
 const App = () => {
   return (
