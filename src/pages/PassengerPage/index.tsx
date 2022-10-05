@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Button from '../../components/Button';
 import './PassengerPage.css';
 
@@ -6,7 +6,10 @@ const PassengerPage = () => {
   const [count, setCount] = useState(0);
 
   const handlePlusClick = () => {
-    setCount((prevCount) => prevCount + 1);
+    setCount((prevCount) => {
+      if (prevCount < 3) return prevCount + 1;
+      return prevCount;
+    });
   };
 
   const handleMinusClick = () => {
