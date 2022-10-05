@@ -23,7 +23,7 @@
   font-weight: 700;
 }
 
-.tooltip-open-trigger {
+.question-mark-button {
   width: 2.25rem;
   height: 2.25rem;
   background-size: 24px 24px;
@@ -75,6 +75,21 @@
   right: 0;
   background: url(./images/passenger__control-add.svg) 50% 50%/32px 32px
     no-repeat;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+
+  padding: 0.5rem;
+  border: 1px solid gray;
+  border-radius: 0.25rem;
+
+  background-color: white;
+}
+
+.tooltip-trigger:hover .tooltip {
+  display: block;
 }
 
 .sr-only {
