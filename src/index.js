@@ -8,6 +8,18 @@ const $ = (select) => document.querySelector(select);
 const passengerAmountInput = $("#passenger-amount-input");
 const inputStatus = $("#input-status");
 
+passengerAmountInput.addEventListener("input", (e) => {
+  const target = Number(e.target.value);
+  if (target === 0) {
+    return;
+  }
+
+  if (target < PASSENGER_AMOUNT.MIN || target > PASSENGER_AMOUNT.MAX) {
+    alert("범위를 벗어나므로 초기값인 1로 변경됩니다.");
+    e.target.value = PASSENGER_AMOUNT.MIN;
+  }
+});
+
 $(".decrement-button").addEventListener("click", () => {
   if (passengerAmountInput.value > PASSENGER_AMOUNT.MIN) {
     passengerAmountInput.value--;
