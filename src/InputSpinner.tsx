@@ -8,6 +8,7 @@ interface InputSpinnerProps {
   labelText?: string;
   subButtonText?: string;
   addButtonText?: string;
+  inputId?: string;
 }
 
 function InputSpinner({
@@ -18,6 +19,7 @@ function InputSpinner({
   labelText = "",
   subButtonText = "줄이기",
   addButtonText = "늘리기",
+  inputId,
 }: InputSpinnerProps) {
   const [value, setValue] = useState(defaultValue);
   const [ariaLiveText, setAriaLiveText] = useState("");
@@ -51,6 +53,7 @@ function InputSpinner({
         className="passenger__control-input"
         type="tel"
         value={value}
+        id={inputId}
         readOnly
       />
       <button

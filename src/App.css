@@ -15,6 +15,10 @@
   height: 6.25rem;
 }
 
+.passenger__controller-label-container {
+  display: flex;
+}
+
 .passenger__label {
   display: flex;
   align-items: center;
