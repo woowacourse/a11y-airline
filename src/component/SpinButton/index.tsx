@@ -53,30 +53,41 @@ const SpinButton = ({ label }: SpinButtonProps) => {
       <label className="passenger-label" htmlFor="passenger-input">
         {label}
       </label>
-      <button
-        type="button"
-        aria-label={`${label} 탑승자 한 명 줄이기`}
-        className="button"
-        onClick={handleDecrease}
-      >
-        ➖
-      </button>
-      <input
-        type="number"
-        min={1}
-        max={3}
-        id="passenger-input"
-        value={passenger}
-        onChange={handleChangePassenger}
-      />
-      <button
-        aria-label={`${label} 탑승자 한 명 늘이기`}
-        type="button"
-        className="button"
-        onClick={handleIncrease}
-      >
-        ➕
-      </button>
+      <div className="question-icon" aria-labelledby="tool-tip">
+        ?
+        <div
+          className="tool-tip"
+          role="tooltip"
+          id="tool-tip"
+        >{`${label} 승객을 선택합니다. 더하기 빼기 버튼을 이용해 승객을 증가, 감소 할 수 있습니다.`}</div>
+      </div>
+
+      <div>
+        <button
+          type="button"
+          aria-label={`${label} 탑승자 한 명 줄이기`}
+          className="button"
+          onClick={handleDecrease}
+        >
+          ➖
+        </button>
+        <input
+          type="number"
+          min={1}
+          max={3}
+          id="passenger-input"
+          value={passenger}
+          onChange={handleChangePassenger}
+        />
+        <button
+          aria-label={`${label} 탑승자 한 명 늘이기`}
+          type="button"
+          className="button"
+          onClick={handleIncrease}
+        >
+          ➕
+        </button>
+      </div>
       <span className="result-message" aria-live="assertive">
         {resultMessage}
       </span>
