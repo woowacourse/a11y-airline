@@ -114,3 +114,89 @@ body {
 .display-visible {
   visibility: visible;
 }
+
+.tab__area {
+  margin-bottom: 6rem;
+}
+
+.tab {
+  width: max-content;
+  height: 2rem;
+  border-radius: 0.4rem;
+  background-color: rgba(115, 111, 111, 1);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.tab__focus {
+  background-color: #3c8316;
+}
+
+.carousel__wrap {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  background-color: #eee;
+  height: 320px;
+  width: 800px;
+  overflow: hidden;
+}
+
+.slide {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 200px;
+  height: 300px;
+  padding: 20px;
+  border: 1px solid black;
+  background-color: #fff;
+  transition: linear 0.3s;
+}
+
+.slide h2 {
+  font-size: 2rem;
+}
+
+.slide p {
+  font-size: 1.2rem;
+  margin: 5px;
+}
+
+.next {
+  position: absolute;
+  width: 40px;
+  height: 80px;
+  background-color: rgba(115, 111, 111, 0.8);
+  border-top-left-radius: 91px;
+  border-bottom-left-radius: 91px;
+  border: 1px solid gray;
+  border-bottom: 0;
+  right: 0;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+.prev {
+  position: absolute;
+  width: 40px;
+  height: 80px;
+  background-color: rgba(115, 111, 111, 0.8);
+  border-top-right-radius: 91px;
+  border-bottom-right-radius: 91px;
+  border: 1px solid gray;
+  border-bottom: 0;
+  font-size: 2rem;
+  color: white;
+  left: 0;
+  cursor: pointer;
+}
