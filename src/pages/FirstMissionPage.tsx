@@ -31,7 +31,7 @@ const FirstMissionPage = () => {
         <PassengerCounter label={ADULT.label} min={ADULT.min} max={ADULT.max} />
         <PassengerCounter label={INFANT.label} min={INFANT.min} max={INFANT.max} />
         <PassengerCounter label={CHILD.label} min={CHILD.min} max={CHILD.max} />
-        <div aria-live="polite">{message}</div>
+        <div role="status">{message} 반갑습니다</div>
       </FlexContainer>
     </div>
   );
