@@ -1,6 +1,10 @@
 const passengerCount = document.getElementById('passengerCount');
 const politeText = document.getElementById('politeText');
 
+document.getElementById('tooltip').addEventListener('click', () => {
+  politeText.textContent = '승객 수는 1명에서 3명까지만 가능해용~';
+});
+
 document.getElementById('subPassengerButton').addEventListener('click', () => {
   const value = Number(passengerCount.value);
 
