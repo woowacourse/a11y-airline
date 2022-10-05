@@ -12,7 +12,7 @@ function PassengerCountInput() {
     setCount(count - 1);
     document.querySelector(
       ".passenger-count-input-state"
-    ).textContent = `성인 승객 감소 ${count - 1}`;
+    ).textContent = `성인 승객 현재 ${count - 1}`;
   };
 
   const handleIncreaseCount = () => {
@@ -23,7 +23,7 @@ function PassengerCountInput() {
     setCount(count + 1);
     document.querySelector(
       ".passenger-count-input-state"
-    ).textContent = `성인 승객 추가 ${count + 1}`;
+    ).textContent = `성인 승객 현재 ${count + 1}`;
   };
 
   return (
@@ -65,10 +65,6 @@ function PassengerCountInput() {
           max="3"
           value={count}
         />
-        <span
-          className="passenger-count-input-state invisible"
-          aria-live="polite"
-        ></span>
         <button
           onClick={handleIncreaseCount}
           className={
@@ -81,6 +77,10 @@ function PassengerCountInput() {
           <span aria-hidden="true">+</span>
         </button>
       </div>
+      <span
+        className="passenger-count-input-state invisible"
+        aria-live="polite"
+      ></span>
     </>
   );
 }
