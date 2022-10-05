@@ -1,0 +1,45 @@
+.subTitleBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.counterBox {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.countButtonBox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.decreaseButton {
+  width: 24px;
+  height: 24px;
+  font-size: 0;
+  border-radius: 10px;
+  background: url('./images/passenger-control-sub.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.increaseButton {
+  width: 24px;
+  height: 24px;
+  font-size: 0;
+  border-radius: 10px;
+  background: url('./images/passenger-control-add.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.counterText {
+  font-size: 0;
+}
+
+.countValidateText {
+  color: red;
+}
