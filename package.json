@@ -2,7 +2,7 @@
 	"name": "ally-airline",
 	"version": "0.0.1",
 	"description": "웹 접근성 미션",
-	"main": "index.js",
+	"main": "index.tsx",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "webpack serve --open --config webpack.config.js",
@@ -18,7 +18,7 @@
 	"bugs": {
 		"url": "https://github.com/liswktjs/a11y-airline/issues"
 	},
-	"homepage": "https://github.com/liswktjs/a11y-airline#readme",
+	"homepage": "https://github.com/liswktjs/a11y-airline",
 	"dependencies": {
 		"@emotion/react": "^11.10.4",
 		"@emotion/styled": "^11.10.4",
