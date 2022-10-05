@@ -36,5 +36,7 @@ passengerCount.addEventListener('change', () => {
   } else if (value > 3) {
     passengerCount.value = 3;
     politeText.textContent = '성인 3 텍스트 숫자만 수정';
+  } else {
+    politeText.textContent = `성인 ${value} 텍스트 숫자만 수정`;
   }
 });
