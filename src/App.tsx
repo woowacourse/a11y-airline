@@ -1,5 +1,14 @@
-function App() {
-  return <div className="App">Hello World</div>;
-}
+import GlobalStyle from 'GlobalStyle';
+
+import DialogPassenger from 'components/DialogPassenger';
+
+const App = () => {
+  return (
+    <>
+      <GlobalStyle />
+      <DialogPassenger />
+    </>
+  );
+};
 
 export default App;
