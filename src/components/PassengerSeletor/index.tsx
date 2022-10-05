@@ -13,6 +13,7 @@ const PassengetSelector = () => {
         information="국제선 만 12세 이상, 국내선 만 13세 이상"
         count={count}
         setCount={setCount}
+        max={3}
       />
     </S.Container>
   );
