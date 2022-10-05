@@ -1,46 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import PASSENGER from '../constants/index';
+import usePassenger from '../hooks/usePassenger';
 import CircleButton from './circleButton';
 
 const SpinButton = () => {
-  const [passengerNum, setPassengerNum] = useState(1);
-  const [announceState, setAnnounceState] = useState('');
-
-  const handleClickDecreaseButton = () => {
-    setPassengerNum(passengerNum - 1);
-    setAnnounceState(`성인 승객 감소 ${passengerNum - 1}`);
-  };
-
-  const handleClickIncreaseButton = () => {
-    setPassengerNum(passengerNum + 1);
-    setAnnounceState(`성인 승객 추가 ${passengerNum + 1}`);
-  };
-
-  const handleChangePassengerNumInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = Number(e.target.value);
-    if (value >= 0 && value <= 3) {
-      setPassengerNum(value);
-      setAnnounceState(`성인 승객 ${value}`);
-    }
-  };
+  const {
+    passengerNum,
+    announceState,
+    handleChangePassengerNumInput,
+    handleClickDecreaseButton,
+    handleClickIncreaseButton,
+  } = usePassenger();
 
   return (
     <S.Container>
       <CircleButton
-        disabled={passengerNum <= 0}
+        disabled={passengerNum <= PASSENGER.MIN}
         onClick={handleClickDecreaseButton}
         value={'-'}
         ariaLabel={`성인 탑승자 한명 줄이기 버튼`}
       ></CircleButton>
       <S.PassengerNum
         value={passengerNum}
-        min={0}
-        max={3}
+        min={PASSENGER.MIN}
+        max={PASSENGER.MAX}
         onChange={handleChangePassengerNumInput}
         aria-label={`성인 ${passengerNum} 텍스트 숫자만 수정`}
       />
       <CircleButton
-        disabled={passengerNum >= 3}
+        disabled={passengerNum >= PASSENGER.MAX}
         onClick={handleClickIncreaseButton}
         value={'+'}
         ariaLabel={`성인 탑승자 한명 늘리기 버튼`}
