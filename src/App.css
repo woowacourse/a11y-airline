@@ -1,0 +1,59 @@
+h1,
+h2 {
+  margin: 0;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: contrast(10%);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.4rem;
+}
+
+.help-icon {
+  width: 1.2rem;
+}
+
+.minus-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.plus-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.passenger-amount-wrapper {
+  font-size: 1.6rem;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  width: 2rem;
+  text-align: center;
+}
+
+.help-text {
+  font-size: 1.6rem;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.content {
+  display: flex;
+  gap: 1rem;
+}
