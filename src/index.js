@@ -3,6 +3,12 @@ const selectPeopleOutput = document.getElementById("select-people-output");
 const selectPeopleInput = document.getElementById("select-people-input");
 const selectPeopleOutputLive = document.getElementById("select-people-output-live");
 
+const updateSelectPeopleForm = (nextValue) => {
+  selectPeopleOutput.value = nextValue;
+  selectPeopleInput.value = nextValue;
+  selectPeopleOutputLive.innerText = `성인 추가 ${nextValue}`;
+};
+
 const showInput = () => {
   selectPeopleInput.classList.remove("hidden");
   selectPeopleOutput.classList.add("hidden");
@@ -23,15 +29,11 @@ selectPeopleForm.addEventListener("click", (e) => {
   const numberOutputValue = Number(outputValue);
 
   if (id === "plus" && numberOutputValue < ariaValueMax) {
-    selectPeopleOutput.value = numberOutputValue + 1;
-    selectPeopleInput.value = numberOutputValue + 1;
-    selectPeopleOutputLive.innerText = `성인 추가 ${numberOutputValue + 1}`;
+    updateSelectPeopleForm(numberOutputvalue + 1);
   }
 
   if (id === "minus" && numberOutputValue > ariaValueMin) {
-    selectPeopleOutput.value = numberOutputValue - 1;
-    selectPeopleInput.value = numberOutputValue - 1;
-    selectPeopleOutputLive.innerText = `성인 추가 ${numberOutputValue - 1}`;
+    updateSelectPeopleForm(numberOutputvalue - 1);
   }
 
   if (id === "select-people-output") {
@@ -47,9 +49,7 @@ selectPeopleForm.addEventListener("submit", (e) => {
   const { valueAsNumber } = selectPeopleInput;
 
   if (valueAsNumber <= ariaValueMax && valueAsNumber >= ariaValueMin) {
-    selectPeopleOutput.value = valueAsNumber;
-    selectPeopleInput.value = valueAsNumber;
-    selectPeopleOutputLive.innerText = `성인 추가 ${valueAsNumber}`;
+    updateSelectPeopleForm(valueAsNumber);
 
     showOutput();
   }
