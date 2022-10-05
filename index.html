@@ -11,7 +11,7 @@
     <section>
       <h1>승객 선택</h1>
       <div class="passenger-type">
-        <h2 class="passenger-type__title">성인</h2>
+        <label for="passenger-input">성인</label>
         <button
           class="passenger-type__tooltip"
           aria-describedby="tip-passenger-count"
@@ -30,7 +30,12 @@
         >
           -
         </button>
-        <input type="number" class="passenger-count__input" value="1" />
+        <input
+          type="number"
+          id="passenger-input"
+          class="passenger-count__input"
+          value="1"
+        />
         <button
           type="button"
           aria-label="성인 탑승자 한명 늘리기"
