@@ -28,7 +28,7 @@
   background: rgb(31, 98, 161);
 }
 
-.question-icon:hover .tool-tip {
+.question-icon:hover + .tool-tip {
   display: block;
 }
 
