@@ -3,12 +3,12 @@
 	"version": "0.0.1",
 	"description": "웹 접근성 미션",
 	"main": "index.tsx",
-	"homepage": "https://liswktjs.github.io/a11y-airline/",
+	"homepage": "https://github.com/liswktjs/a11y-airline",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "webpack serve --open --config webpack.config.js",
 		"build": "webpack",
-		"predepoly": "npm run build",
+		"predeploy": "npm run build",
 		"deploy": "gh-pages -d dist"
 	},
 	"author": "sally",
