@@ -1,0 +1,31 @@
+.tooltip {
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  width: 30px;
+  height: 30px;
+
+  border: 2px solid #a9a9a9;
+  border-radius: 50%;
+}
+
+.tooltip-description {
+  width: 215px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  background-color: rgba(211, 211, 211, 0.508);
+  padding: 1rem;
+  border-radius: 2px;
+
+  position: absolute;
+  right: -250px;
+  top: -10px;
+}
+
+.tooltip:hover .tooltip-description {
+  visibility: visible;
+}
