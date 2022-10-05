@@ -17,6 +17,7 @@ input[type="number"]::-webkit-inner-spin-button {
   height: 20px;
   margin: 0 10px;
   color: gray;
+  background-color: transparent;
   border: 2px solid gray;
   border-radius: 50%;
   cursor: pointer;
@@ -57,4 +58,8 @@ input[type="number"]::-webkit-inner-spin-button {
   border: 2px solid gray;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.status-message {
+  display: none;
 }

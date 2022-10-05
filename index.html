@@ -12,8 +12,15 @@
       <h1>승객 선택</h1>
       <div class="passenger-type">
         <h2 class="passenger-type__title">성인</h2>
-        <div class="passenger-type__tooltip">?</div>
-        <p>입력 가능한 승객은 최소 1명, 최대 3명입니다.</p>
+        <button
+          class="passenger-type__tooltip"
+          aria-labelledby="tip-passenger-count"
+        >
+          ?
+        </button>
+        <p id="tip-passenger-count" role="tooltip">
+          입력 가능한 승객은 최소 1명, 최대 3명입니다.
+        </p>
       </div>
       <div class="passenger-count">
         <button
@@ -31,6 +38,7 @@
         >
           +
         </button>
+        <p role="status" class="status-message" aria-hidden="false"></p>
       </div>
     </section>
     <script type="module" src="src/index.js"></script>
