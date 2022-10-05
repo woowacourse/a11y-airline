@@ -1,0 +1,14 @@
+body {
+  width: 100%;
+}
+
+button {
+  background-color: inherit;
+  border: none;
+}
+
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}

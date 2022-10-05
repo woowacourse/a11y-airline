@@ -1,0 +1,17 @@
+.tooltipButton {
+  position: relative;
+}
+
+.tooltipDescription {
+  display: none;
+}
+
+.tooltipButton:hover .tooltipDescription {
+  display: block;
+
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  white-space: nowrap;
+}
