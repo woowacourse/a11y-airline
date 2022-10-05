@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import FirstPage from './FirstPage';
+import FirstPage from './Pages/FirstPage';
 
 const App = () => {
   return (
