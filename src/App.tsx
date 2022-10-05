@@ -33,7 +33,7 @@ const App = () => {
         <ToolTip text={'만 20세 이상 성인, 0명부터 3명까지 추가할 수 있습니다.'} />
       </div>
       <main className={styles.counterBox}>
-        <div aria-live='polite' role='alert' className={styles.counterText}>
+        <div aria-live='polite' aria-atomic='true' className={styles.counterText}>
           성인 승객 {count}명
         </div>
         <div className={styles.countButtonBox}>
