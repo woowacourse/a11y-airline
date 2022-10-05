@@ -22,10 +22,22 @@ export const SubInfo = styled.div`
 	justify-content: center;
 `;
 
-export const PeopleType = styled.h3``;
+export const PeopleType = styled.label``;
 
 export const InputContainer = styled.div`
 	display: flex;
 	gap: 15px;
 	margin-top: 50px;
+`;
+
+export const DisplayContent = styled.div`
+	text-indent: 9999999;
+	border: none;
+	clip: rect(0 0 0 0);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
 `;

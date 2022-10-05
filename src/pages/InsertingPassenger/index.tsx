@@ -8,13 +8,14 @@ import * as S from '@/pages/InsertingPassenger/index.styles';
 
 const InsertingPassenger = () => {
 	const [peopleCount, setPeopleCount] = useState<number>(0);
-
+	const [peopleDescription, setPeopleDescription] = useState<string>('');
 	const onMinusButtonClick = () => {
 		if (peopleCount === 0) {
 			window.alert('0명 미만의 인원은 선택하실 수 없습니다');
 			return;
 		}
 		setPeopleCount(peopleCount - 1);
+		setPeopleDescription(`승객 추가 ${peopleCount - 1}`);
 	};
 
 	const onPlusButtonClick = () => {
@@ -23,6 +24,7 @@ const InsertingPassenger = () => {
 			return;
 		}
 		setPeopleCount(peopleCount + 1);
+		setPeopleDescription(`승객 추가 ${peopleCount + 1}`);
 	};
 
 	const onInsertPeopleCount = (e: ChangeEvent<HTMLInputElement>) => {
@@ -31,6 +33,7 @@ const InsertingPassenger = () => {
 			return;
 		}
 		setPeopleCount(Number(e.target.value));
+		setPeopleDescription(`승객 추가 ${e.target.value}`);
 	};
 
 	return (
@@ -38,22 +41,35 @@ const InsertingPassenger = () => {
 			<S.Title>승객 선택</S.Title>
 			<S.ContentContainer>
 				<S.SubInfo>
-					<S.PeopleType>성인</S.PeopleType>
+					<S.PeopleType htmlFor="peopleCountInput" aria-live="assertive" aria-atomic="true">
+						성인
+						<S.DisplayContent>{peopleDescription}</S.DisplayContent>
+					</S.PeopleType>
 					<ChipButton />
 				</S.SubInfo>
 				<S.InputContainer>
-					<Button aria-label="성인 탑승자 한명 줄이기" onClick={onMinusButtonClick}>
+					<Button
+						aria-label="성인 탑승자 한명 줄이기"
+						onClick={onMinusButtonClick}
+						aria-live="polite"
+					>
 						-
 					</Button>
 					<Input
-						type="number"
+						id="peopleCountInput"
+						type="text"
 						min={0}
 						max={3}
 						value={peopleCount}
-						aria-label="인원"
 						onChange={onInsertPeopleCount}
+						aria-controls={`성인 ${peopleCount} 텍스트 숫자만 수정`}
 					/>
-					<Button aria-label="성인 탑승자 한명 늘리기" onClick={onPlusButtonClick}>
+
+					<Button
+						aria-label="성인 탑승자 한명 늘리기"
+						onClick={onPlusButtonClick}
+						aria-live="polite"
+					>
 						+
 					</Button>
 				</S.InputContainer>
