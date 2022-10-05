@@ -8,7 +8,7 @@ const PassengerEnter = () => {
       <S.Title>승객 선택</S.Title>
       <S.PassengerType>
         <S.SubTitle>성인</S.SubTitle>
-        <Tooltip />
+        <Tooltip ariaLabel={'탑승자 유형 툴팁: 성인'} />
       </S.PassengerType>
       <SpinButton />
     </main>

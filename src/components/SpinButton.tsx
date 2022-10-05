@@ -20,6 +20,7 @@ const SpinButton = () => {
     const value = Number(e.target.value);
     if (value >= 0 && value <= 3) {
       setPassengerNum(value);
+      setAnnounceState(`성인 승객 ${value}`);
     }
   };
 

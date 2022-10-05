@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
-const Tooltip = ({ onClick }: ToolTipProps) => {
-  return <S.Button onClick={onClick}>?</S.Button>;
+const Tooltip = ({ onClick, ariaLabel }: ToolTipProps) => {
+  return (
+    <S.Button onClick={onClick} aria-label={ariaLabel}>
+      ?
+    </S.Button>
+  );
 };
 
 interface ToolTipProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  ariaLabel: string;
 }
 
 const S = {
