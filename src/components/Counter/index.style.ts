@@ -25,6 +25,10 @@ export const CountButton = styled.button`
   height: 37px;
   font-size: 20px;
   cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;
 
 export const Count = styled.input`
