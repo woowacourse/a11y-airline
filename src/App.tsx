@@ -1,20 +1,17 @@
 import './style/normalize.css';
-import Router from './router';
-import { BrowserRouter } from 'react-router-dom';
 import Body from './components/Body';
 import MessageContextProvider from './context/MessageContext';
 import A11yMessage from './components/A11yMessage';
+import PassengerPage from './pages/PassengerPage';
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <MessageContextProvider>
-        <Body>
-          <Router />
-        </Body>
-        <A11yMessage />
-      </MessageContextProvider>
-    </BrowserRouter>
+    <MessageContextProvider>
+      <Body>
+        <PassengerPage />
+      </Body>
+      <A11yMessage />
+    </MessageContextProvider>
   );
 };
 
