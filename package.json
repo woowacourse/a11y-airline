@@ -1,0 +1,51 @@
+{
+  "name": "a11y-airline",
+  "version": "0.0.1",
+  "description": "미션: 항공사 웹사이트 컴포넌트의 접근성 높이기",
+  "main": "src/index.tsx",
+  "scripts": {
+    "start": "webpack serve --open --mode=development",
+    "build": "webpack --mode=production"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.23",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "classnames": "^2.3.2",
+    "css-loader": "^6.7.1",
+    "eslint": "^8.24.0",
+    "eslint-plugin-react": "^7.31.8",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "prettier": "^2.7.1",
+    "ts-loader": "^9.4.1",
+    "typescript": "^4.8.4",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lokba/a11y-airline.git"
+  },
+  "keywords": [
+    "accessibility",
+    "aria"
+  ],
+  "author": {
+    "name": "Kim Sang Lok",
+    "email": "evertree6031@gmail.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lokba/a11y-airline/issues"
+  },
+  "homepage": "https://github.com/lokba/a11y-airline#readme"
+}
