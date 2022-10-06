@@ -1,51 +1,51 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = (args) => {
+module.exports = args => {
   const isDevelopment = args.mode;
 
   return {
-    entry: "./src/index.tsx",
+    entry: './src/index.tsx',
     output: {
-      path: path.resolve(__dirname, "build"),
-      filename: "bundle.js",
+      path: path.resolve(__dirname, 'build'),
+      filename: 'bundle.js',
       clean: true,
     },
     resolve: {
-      extensions: [".tsx", ".ts", ".jsx", ".js"],
-      modules: ["node_modules"],
+      extensions: ['.tsx', '.ts', '.jsx', '.js'],
+      modules: ['node_modules'],
       alias: {
-        "@": path.resolve(__dirname, "src"),
+        '@': path.resolve(__dirname, 'src'),
       },
     },
     devServer: {
       static: {
-        directory: path.resolve(__dirname, "build"),
+        directory: path.resolve(__dirname, 'build'),
       },
       compress: true,
-      port: 3000,
+      port: 3001,
       hot: true,
     },
-    devtool: isDevelopment && "eval",
+    devtool: isDevelopment && 'eval',
     module: {
       rules: [
         {
           test: /\.(js|jsx|ts|tsx)$/,
           use: {
-            loader: require.resolve("babel-loader"),
+            loader: require.resolve('babel-loader'),
           },
         },
         {
           test: /\.(ts|tsx)$/,
           use: {
-            loader: require.resolve("ts-loader"),
+            loader: require.resolve('ts-loader'),
           },
         },
       ],
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, "public/index.html"),
+        template: path.resolve(__dirname, 'public/index.html'),
       }),
     ],
   };
