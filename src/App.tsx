@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import useAnnounceMessage from './useAnnounceMessage';
 
 const PASSENGER_COUNT = {
@@ -11,6 +11,7 @@ const App = () => {
   const [count, setCount] = useState(PASSENGER_COUNT.min);
   const { announceMessage } = useAnnounceMessage();
   const [isShowTooltip, setIsShowTooltip] = useState(false);
+  const tooltipTimerRef = useRef<NodeJS.Timeout>();
 
   const handleClickPlusButton = () => {
     if (count >= PASSENGER_COUNT.max) {
@@ -34,19 +35,27 @@ const App = () => {
     setCount(changedCount);
   };
 
+  const showTooltip = () => {
+    setIsShowTooltip(true);
+    if (tooltipTimerRef.current) {
+      clearTimeout(tooltipTimerRef.current);
+    }
+
+    tooltipTimerRef.current = setTimeout(() => {
+      setIsShowTooltip(false);
+    }, 3000);
+  };
+
   return (
     <section>
       <h1>승객 선택</h1>
       <StyledAdultHeading>
-        <h2>성인</h2>
+        <h2 aria-hidden={true}>성인</h2>
         <StyledTooltip>
-          <div
-            onMouseEnter={() => setIsShowTooltip(true)}
-            onMouseLeave={() => setIsShowTooltip(false)}
-          >
+          <button onClick={showTooltip} onMouseEnter={showTooltip} aria-label='성인 기준 안내'>
             ?
-          </div>
-          {isShowTooltip && <p aria-live='polite'>티켓은 최대 3장 구매 가능합니다.</p>}
+          </button>
+          {isShowTooltip && <p aria-live='polite'>만 20세 이상</p>}
         </StyledTooltip>
       </StyledAdultHeading>
       <StyledCounter>
@@ -83,13 +92,14 @@ const StyledTooltip = styled.div`
   width: 100%;
   block-size: fit-content;
 
-  & > div {
+  & > button {
     width: 30px;
     height: 30px;
     line-height: 30px;
     border: 1px solid black;
     border-radius: 50%;
     text-align: center;
+    background-color: white;
   }
 
   & > p {
