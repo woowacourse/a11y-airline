@@ -18,7 +18,10 @@ CounterTemplate.args = {
   title: '성인',
   information: {
     mainLabel: '성인 탑승자 수를 고릅니다.',
-    tooltip: '국제선 만 12세 이상, 국내선 만 13세 이상',
+    tooltip: {
+      name: '성인 기준 상세 안내',
+      content: '국제선 만 12세 이상, 국내선 만 13세 이상',
+    },
     decreaseButtonLabel: '성인 탑승자 한명 줄이기 버튼',
     increaseButtonLabel: '성인 탑승자 한명 늘리기 버튼',
     inputLabel: '성인 탑승자 수 입력칸',

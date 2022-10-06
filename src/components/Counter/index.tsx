@@ -6,7 +6,10 @@ import * as S from './index.style';
 
 interface Information {
   mainLabel: string;
-  tooltip: string;
+  tooltip: {
+    name: string;
+    content: string;
+  };
   decreaseButtonLabel: string;
   increaseButtonLabel: string;
   inputLabel: string;
@@ -69,7 +72,10 @@ const Counter = ({
     <S.Container aria-label={information.mainLabel}>
       <S.Header>
         <S.Title aria-hidden>{title}</S.Title>
-        <Tooltip content={information.tooltip} />
+        <Tooltip
+          name={information.tooltip.name}
+          content={information.tooltip.content}
+        />
       </S.Header>
 
       <S.Body>
