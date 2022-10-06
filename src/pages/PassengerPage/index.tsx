@@ -49,12 +49,10 @@ const PassengerPage = () => {
 
   return (
     <div className='body'>
-      <section aria-labelledby='PAS-TITLE'>
-        <h1 id='PAS-TITLE' role='heading'>
-          승객 선택
-        </h1>
-        <div className='sub' aria-labelledby='PAS-SUB'>
-          <h2 id='PAS-SUB'>성인</h2>
+      <section>
+        <h1 role='heading'>승객 선택</h1>
+        <div className='sub'>
+          <h2>성인</h2>
           <Tooltip description='이미 성년이 된 사람. 보통, 만 20세 이상의 남녀를 말한다.' />
         </div>
         <div className='counter'>
