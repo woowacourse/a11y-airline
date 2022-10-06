@@ -15,12 +15,19 @@
           <div class="reservation-field">
             <div class="label-container">
               <label for="adult-passenger-count-input">성인</label>
-              <button type="button" class="helptip">?</button>
+              <button type="button" class="helptip"><span>?</span></button>
             </div>
             <div class="spin-input-container adult-passenger-spin">
-              <button class="spin-button" data-step="-1">-</button>
-              <input id="adult-passenger-count-input" class="passenger-count-input" type="number" min="0" max="3" />
-              <button class="spin-button" data-step="1">+</button>
+              <button type="button" class="spin-button" data-step="-1">-</button>
+              <input
+                id="adult-passenger-count-input"
+                class="passenger-count-input"
+                type="number"
+                min="0"
+                max="3"
+                value="0"
+              />
+              <button type="button" class="spin-button" data-step="1">+</button>
             </div>
           </div>
         </form>
