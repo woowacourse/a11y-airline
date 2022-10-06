@@ -51,7 +51,11 @@ function App() {
             alt="성인 탑승자 한명 줄이기"
           />
         </button>
+        <label htmlFor="성인" aria-hidden="false" hidden>
+          성인
+        </label>
         <input
+          id="성인"
           className="passenger-amount-input"
           type="number"
           value={passengerAmount}
