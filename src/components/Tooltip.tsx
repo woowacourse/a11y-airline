@@ -4,7 +4,7 @@ const Tooltip = () => {
   return (
     <>
       <S.Question tabIndex={1}>?</S.Question>
-      <S.StyledTooltip id='tooltip' role={'tooltip'}>
+      <S.StyledTooltip tabIndex={2} id='tooltip' role={'tooltip'}>
         국민은행 61210204071715로 후원해 결식아동을 도와보세요!
       </S.StyledTooltip>
     </>
@@ -23,12 +23,12 @@ const S = {
 
     &:hover + [role='tooltip'],
     &:focus + [role='tooltip'] {
-      visibility: visible !important;
+      display: block !important;
       background-color: red;
     }
   `,
   StyledTooltip: styled.div`
-    visibility: ${(props) => (props.role === 'tooltip' ? 'hidden' : 'none')};
+    display: ${(props) => (props.role === 'tooltip' ? 'none' : 'block')};
 
     position: absolute;
     top: -3rem;
