@@ -2,6 +2,8 @@ import { MESSAGES, SPIN_INPUT_RANGE } from "./constants";
 import { alertWithSnackbar } from "./snackbar";
 
 const spinButtonForm = document.querySelector(".spin-input-form");
+const tooltip = document.querySelector("[role=tooltip]");
+
 const spinButtonInput =
   spinButtonForm.querySelector<HTMLButtonElement>("#spin-input-value");
 const spinInputStatus = document.querySelector("#spin-input-status");
@@ -70,10 +72,41 @@ const handleSpinInputValue = (target: HTMLInputElement) => {
   throw new Error(MESSAGES.승객_수_범위_오류);
 };
 
+const handleTooltipButtonClick = (e: Event) => {
+  e.stopPropagation();
+
+  tooltip.classList.remove("hide");
+};
+
+const handleTooltipClose = () => {
+  tooltip.classList.add("hide");
+};
+
+window.addEventListener("click", (e) => {
+  if (!(e.target instanceof HTMLElement)) return;
+  if (tooltip.classList.contains("hide") || tooltip.contains(e.target)) return;
+  handleTooltipClose();
+});
+
 spinButtonForm.addEventListener("click", (e) => {
   if (!(e.target instanceof HTMLButtonElement)) return;
 
-  handleSpinButtonClick(e.target.classList);
+  const { classList } = e.target;
+  if (classList.contains("spin-button")) {
+    handleSpinButtonClick(classList);
+  }
+  if (classList.contains("tooltip-button")) {
+    handleTooltipButtonClick(e);
+  }
+  if (classList.contains("tooltip-close-button")) {
+    handleTooltipClose();
+  }
+});
+
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !tooltip.classList.contains("hide")) {
+    tooltip.classList.add("hide");
+  }
 });
 
 spinButtonInput.addEventListener("input", (e) => {

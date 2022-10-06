@@ -15,8 +15,26 @@
 }
 
 .label-container {
+  position: relative;
   display: flex;
   align-items: center;
+  width: max-content;
+}
+
+.tooltip-container {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  width: max-content;
+  border: 1px solid #4f4f4f;
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.tooltip-container.hide {
+  display: none;
 }
 
 .spin-label {
@@ -35,7 +53,7 @@
   border: 2px solid black;
 }
 
-.tip-button-icon {
+.tooltip-button-icon {
   border-radius: 50%;
   border: 2px solid #4f4f4f;
 

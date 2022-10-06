@@ -12,14 +12,25 @@
       <div class="label-container">
         <label for="spin-input-value" id="spin-label">성인</label>
         <button
-          class="default-button-container tip-button"
-          aria-label="성인기준 상세 안내"
+          class="default-button-container tooltip-button"
+          title="성인기준 상세 안내"
           type="button"
+          aria-expanded="false"
         >
-          <span class="round-button-icon tip-button-icon" aria-hidden="true"
+          <span class="round-button-icon tooltip-button-icon" aria-hidden="true"
             >?</span
           >
         </button>
+        <div role="tooltip" class="tooltip-container hide">
+          국제선 만 12세 이상, 국내선 만 13세 이상
+          <button
+            aria-label="닫기"
+            type="button"
+            class="default-button-container tooltip-close-button"
+          >
+            <span aria-hidden="true">🗙</span>
+          </button>
+        </div>
       </div>
       <div class="input-container">
         <button
