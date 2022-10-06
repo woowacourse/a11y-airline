@@ -43,6 +43,9 @@ const FirstPage = () => {
           -
         </S.Button>
         <S.Count
+          type='number'
+          min={1}
+          max={3}
           onKeyDown={(e) => {
             handleCountChange(e);
           }}
@@ -51,6 +54,9 @@ const FirstPage = () => {
         <S.Button aria-label='성인 탑승자 한명 늘리기' onClick={countUp}>
           +
         </S.Button>
+        <S.HiddenText role='status' aria-live='assertive' aria-relevant='additions'>
+          {`성인 승객이 ${count} 으로 변경됐습니다`}
+        </S.HiddenText>
       </S.ControlWrapper>
     </S.PageWrapper>
   );
@@ -88,11 +94,28 @@ const S = {
     border: none;
     border-bottom: 2px solid #6d6d6d;
     outline: none;
+
+    ::-webkit-outer-spin-button,
+    ::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   `,
   ControlWrapper: styled.div`
     display: flex;
     align-items: center;
     gap: 10px;
+  `,
+  HiddenText: styled.div`
+    overflow: hidden;
+    white-space: nowrap;
+    clip-path: inset(50%);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    border: 0;
   `,
 };
 
