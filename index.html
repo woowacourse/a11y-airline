@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>준찌 항공사 예약 서비스</title>
+    <style>
+      body {
+        height: 100vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      button {
+        padding: 1px 5px;
+
+        background-color: #ffffff;
+
+        border-radius: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.4);
+
+        font-size: 1rem;
+        font-weight: bold;
+
+        cursor: pointer;
+      }
+
+      label,
+      output {
+        cursor: pointer;
+      }
+
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      #app {
+        width: 700px;
+        min-height: 700px;
+
+        margin: 0 auto;
+
+        display: flex;
+        justify-content: center;
+
+        box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      #app section {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      #select-people-input,
+      #select-people-output {
+        width: 100px;
+
+        text-align: center;
+      }
+
+      #select-people-output:not(.hidden) {
+        display: inline-block;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .hidden-text {
+        position: absolute;
+
+        text-indent: -9999px;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="app">
+      <section class="select-people">
+        <h1>승객 선택</h1>
+        <label for="select-people-form"
+          >성인
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 13 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-label="탑승할 성인의 수를 입력해주세요"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M6.5 0C4.77609 0 3.12279 0.684819 1.90381 1.90381C0.684819 3.12279 0 4.77609 0 6.5C0 8.22391 0.684819 9.87721 1.90381 11.0962C3.12279 12.3152 4.77609 13 6.5 13C8.22391 13 9.87721 12.3152 11.0962 11.0962C12.3152 9.87721 13 8.22391 13 6.5C13 4.77609 12.3152 3.12279 11.0962 1.90381C9.87721 0.684819 8.22391 0 6.5 0V0ZM6.5 12C5.04131 12 3.64236 11.4205 2.61091 10.3891C1.57946 9.35764 1 7.95869 1 6.5C1 5.04131 1.57946 3.64236 2.61091 2.61091C3.64236 1.57946 5.04131 1 6.5 1C7.95869 1 9.35764 1.57946 10.3891 2.61091C11.4205 3.64236 12 5.04131 12 6.5C12 7.95869 11.4205 9.35764 10.3891 10.3891C9.35764 11.4205 7.95869 12 6.5 12V12ZM8.05 3.58C7.87724 3.4001 7.6697 3.25721 7.44 3.16C7.151 3.04429 6.84114 2.98981 6.53 3C6.22801 2.99452 5.92822 3.05243 5.65 3.17C5.411 3.27 5.2 3.424 5.03 3.62C4.86439 3.80012 4.73534 4.01068 4.65 4.24C4.57066 4.47294 4.52028 4.71476 4.5 4.96H5.73C5.73567 4.80129 5.78621 4.64743 5.87577 4.51628C5.96533 4.38512 6.09024 4.28205 6.236 4.219C6.33261 4.18094 6.43632 4.16422 6.54 4.17C6.62944 4.15578 6.72056 4.15578 6.81 4.17C6.89216 4.20107 6.96705 4.24873 7.03 4.31C7.09947 4.37012 7.15421 4.44538 7.19 4.53C7.23097 4.62464 7.25141 4.72688 7.25 4.83C7.25 5.003 7.213 5.173 7.14 5.33C7.06737 5.49289 6.97681 5.64717 6.87 5.79L6.52 6.21C6.4 6.34 6.28 6.48 6.17 6.62C6.06334 6.75935 5.97277 6.91031 5.9 7.07C5.83062 7.22739 5.79649 7.39804 5.8 7.57V8.23H7V7.74C7.00339 7.59333 7.04106 7.4495 7.11 7.32C7.19218 7.17604 7.28582 7.03893 7.39 6.91L7.75 6.47C7.88106 6.3186 8.00135 6.15821 8.11 5.99C8.22492 5.81848 8.31892 5.63384 8.39 5.44C8.46293 5.23451 8.50013 5.01805 8.5 4.8C8.50178 4.57282 8.46804 4.34676 8.4 4.13C8.32448 3.92351 8.20507 3.73586 8.05 3.58V3.58ZM5.8 8.83H6.97V10H5.8V8.83Z"
+              fill="black"
+            />
+          </svg>
+        </label>
+        <form id="select-people-form">
+          <div id="select-people-output-live" class="hidden-text" aria-live="polite"></div>
+
+          <button id="plus" type="button" aria-label="성인 탑승자 한명 늘리기" aria-pressed="true">
+            +
+          </button>
+
+          <output
+            id="select-people-output"
+            type="number"
+            for="plus minus"
+            name="result"
+            aria-valuemin="1"
+            aria-valuemax="3"
+            >1
+          </output>
+
+          <input id="select-people-input" class="hidden" type="number" value="1" max="3" min="1" />
+
+          <button id="minus" type="button" aria-label="성인 탑승자 한명 줄이기" aria-pressed="true">
+            -
+          </button>
+        </form>
+      </section>
+    </main>
+    <script src="./src/index.js"></script>
+  </body>
+</html>
