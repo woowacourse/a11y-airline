@@ -5,7 +5,7 @@ import * as S from './App.style';
 
 function App() {
   return (
-    <S.Container>
+    <S.Container aria-label="승객 선택을 위한 서비스">
       <PassengetSelector />
       <Global styles={globalStyle} />
     </S.Container>

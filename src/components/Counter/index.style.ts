@@ -5,17 +5,24 @@ export const Container = styled.form`
   flex-direction: column;
 `;
 
-export const Header = styled.div`
+export const Header = styled.header`
   display: flex;
   align-items: center;
   margin: 30px 0;
 `;
 
-export const Title = styled.p`
+export const Title = styled.h2`
   font-size: 18px;
   font-weight: 700;
   margin-right: 10px;
   user-select: none;
+`;
+
+export const Body = styled.div`
+  display: flex;
+  width: 180px;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const CountButton = styled.button`
@@ -42,11 +49,4 @@ export const Count = styled.input`
   font-weight: 700;
   text-align: center;
   line-height: 35px;
-`;
-
-export const Body = styled.div`
-  display: flex;
-  width: 180px;
-  justify-content: space-between;
-  align-items: center;
 `;

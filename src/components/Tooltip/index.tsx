@@ -15,7 +15,7 @@ const Tooltip = ({ content }: TooltipProps) => {
       onMouseLeave={() => setIsHover(false)}
     >
       <S.Tooltip aria-hidden>?</S.Tooltip>
-      {isHover && <S.Content>{content}</S.Content>}
+      {isHover && <S.Content role="tooltip">{content}</S.Content>}
       <VoiceText>{content}</VoiceText>
     </S.Container>
   );

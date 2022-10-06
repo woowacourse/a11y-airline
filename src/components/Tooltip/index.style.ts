@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
+export const Container = styled.abbr`
   width: fit-content;
   height: fit-content;
   position: relative;
   user-select: none;
 `;
 
-export const Tooltip = styled.div`
+export const Tooltip = styled.span`
   display: flex;
   border: 1px solid #7b7b7b;
   border-radius: 100%;
@@ -19,7 +19,7 @@ export const Tooltip = styled.div`
   font-weight: 600;
 `;
 
-export const Content = styled.div`
+export const Content = styled.p`
   width: fit-content;
   height: fit-content;
   background-color: black;
@@ -32,4 +32,5 @@ export const Content = styled.div`
   white-space: nowrap;
   left: 13px;
   top: 13px;
+  margin: 0;
 `;
