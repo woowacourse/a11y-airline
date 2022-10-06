@@ -21,12 +21,13 @@ class Step2 {
           ${this.slideList
             .map(
               (slide) =>
-                `<a href="https://github.com/jswith" class="slide" role="link">${slide}</a>`
+                `<a href="https://github.com/jswith" class="slide" role="link"><article>${slide}</article></a>`
             )
             .join("")}
         </section>
         <button class="prev" aria-label="이전 버튼">&lt;</button>
         <button class="next" aria-label="다음 버튼">&gt;</button>
+        <div class="hidden" aria-live="polite"></div>
       </div>`;
   }
 
@@ -34,7 +35,7 @@ class Step2 {
     const template = this.slideList
       .map(
         (slide) =>
-          `<a href="https://github.com/jswith" class="slide" role="link">${slide}</a>`
+          `<a href="https://github.com/jswith" class="slide" role="link"><article>${slide}</article></a>`
       )
       .join("");
 
@@ -44,6 +45,7 @@ class Step2 {
 
   handleClickPrevButton = () => {
     this.slideList.unshift(this.slideList.pop());
+
     this.render();
   };
 
