@@ -26,15 +26,15 @@ helpBoxButton.addEventListener("click", () => {
 });
 
 addPassengerButton.addEventListener("click", () => {
-  if (Number(passengerAmount.value) < MAX_PASSENGER_COUNT) {
-    passengerAmount.value = (Number(passengerAmount.value) + 1).toString();
+  if (passengerAmount.valueAsNumber < MAX_PASSENGER_COUNT) {
+    passengerAmount.value = (passengerAmount.valueAsNumber + 1).toString();
     announce(`성인 승객 추가 ${passengerAmount.value}`);
   }
 });
 
 reducePassengerButton.addEventListener("click", () => {
-  if (Number(passengerAmount.value) > MIN_PASSENGER_COUNT) {
-    passengerAmount.value = (Number(passengerAmount.value) - 1).toString();
+  if (passengerAmount.valueAsNumber > MIN_PASSENGER_COUNT) {
+    passengerAmount.value = (passengerAmount.valueAsNumber - 1).toString();
     announce(`성인 승객 추감 ${passengerAmount.value}`);
   }
 });
