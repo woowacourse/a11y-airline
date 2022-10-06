@@ -52,18 +52,23 @@ const App = () => {
       <StyledAdultHeading>
         <h2>성인</h2>
         <StyledTooltip>
-          <button onClick={showTooltip} onMouseEnter={showTooltip} aria-label='성인 기준 안내'>
+          <button
+            type='button'
+            onClick={showTooltip}
+            onMouseEnter={showTooltip}
+            aria-label='성인 기준 안내'
+          >
             ?
           </button>
           {isShowTooltip && <p aria-live='polite'>만 20세 이상</p>}
         </StyledTooltip>
       </StyledAdultHeading>
       <StyledCounter>
-        <button onClick={handleClickMinusButton} aria-label='성인 탑승자 한명 줄이기'>
+        <button type='button' onClick={handleClickMinusButton} aria-label='성인 탑승자 한명 줄이기'>
           -
         </button>
         <input type='number' value={count} />
-        <button onClick={handleClickPlusButton} aria-label='성인 탑승자 한명 늘리기'>
+        <button type='button' onClick={handleClickPlusButton} aria-label='성인 탑승자 한명 늘리기'>
           +
         </button>
       </StyledCounter>
