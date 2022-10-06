@@ -31,6 +31,7 @@ const SpinButton = () => {
 
   const handleClickDecrease = () => {
     if (value <= MIN_VALUE) {
+      setMessage(`최소 승객 수는 ${value}명 입니다.`);
       return;
     }
 
@@ -40,6 +41,7 @@ const SpinButton = () => {
 
   const handleClickIncrease = () => {
     if (value >= MAX_VALUE) {
+      setMessage(`최대 승객 수는 ${value}명 입니다.`);
       return;
     }
 
@@ -52,10 +54,12 @@ const SpinButton = () => {
 
     if (data === null || !Number.isInteger(Number(data))) {
       setValue(0);
+      setMessage(`0부터 3사이의 숫자만 입력 가능합니다. 입력 값이 0으로 대체됩니다.`);
       return;
     }
 
     if (Number(data) > MAX_VALUE) {
+      setMessage(`0부터 3사이의 숫자만 입력 가능합니다.`);
       return;
     }
 
@@ -92,9 +96,7 @@ const SpinButton = () => {
         <ControlButton
           type="button"
           onClick={handleClickDecrease}
-          disabled={value <= MIN_VALUE}
           aria-label="성인 탑승자 한 명 줄이기"
-          aria-controls="spinnerMessage"
           aria-disabled={value <= MIN_VALUE}
         >
           -
@@ -109,9 +111,7 @@ const SpinButton = () => {
         <ControlButton
           type="button"
           onClick={handleClickIncrease}
-          disabled={value >= MAX_VALUE}
           aria-label="성인 탑승자 한 명 늘리기"
-          aria-controls="spinnerMessage"
           aria-disabled={value >= MAX_VALUE}
         >
           +
@@ -218,7 +218,7 @@ const ControlButton = styled.button`
   background-color: none;
   font-size: 20px;
 
-  &:disabled {
+  &[aria-disabled='true'] {
     color: #e6e7ea;
   }
 `;
