@@ -7,6 +7,24 @@
     <title>병민에어</title>
   </head>
   <body>
-    <div id="page"></div>
+    <div id="page">
+      <main>
+        <h1>항공편 예약</h1>
+        <form>
+          <h2>승객 선택</h2>
+          <div class="reservation-field">
+            <div class="label-container">
+              <label for="adult-passenger-count-input">성인</label>
+              <button type="button" class="helptip">?</button>
+            </div>
+            <div class="spin-input-container adult-passenger-spin">
+              <button class="spin-button" data-step="-1">-</button>
+              <input id="adult-passenger-count-input" class="passenger-count-input" type="number" min="0" max="3" />
+              <button class="spin-button" data-step="1">+</button>
+            </div>
+          </div>
+        </form>
+      </main>
+    </div>
   </body>
 </html>
