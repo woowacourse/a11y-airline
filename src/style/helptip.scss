@@ -34,8 +34,20 @@
     border: 1px solid #fff5f540;
     box-shadow: 2px 2px 4px 0px #b2b2b2;
 
+    & > span {
+      flex-grow: 1;
+    }
+
+    & > .helptip-closer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      border-color: transparent;
+    }
+
     &.show {
-      display: block;
+      display: flex;
     }
   }
 }

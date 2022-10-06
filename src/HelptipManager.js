@@ -2,12 +2,14 @@ import { $ } from './util';
 
 class HelptipManager {
   #helptipTrigger = null;
+  #helptipCloser = null;
   #helptipElement = null;
 
   constructor(containerSelector = 'helptip-container', $parent = document) {
     const $container = $(containerSelector, $parent);
     if (!$container) throw new Error('Helptip Container가 없습니다');
     this.#helptipTrigger = $('.helptip-trigger', $container);
+    this.#helptipCloser = $('.helptip-closer', $container);
     this.#helptipElement = $('.helptip', $container);
     this.#check();
   }
@@ -16,6 +18,7 @@ class HelptipManager {
     this.#check();
     window.addEventListener('click', this.#clickOutsideHandler);
     this.#helptipTrigger.addEventListener('click', this.#eventHandler);
+    this.#helptipCloser.addEventListener('click', this.#eventHandler);
   }
 
   end() {

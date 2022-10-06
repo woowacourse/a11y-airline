@@ -16,8 +16,11 @@
             <div class="label-container">
               <label for="adult-passenger-count-input">성인</label>
               <div class="helptip-container">
-                <button type="button" class="helptip-trigger"><span>?</span></button>
-                <div class="helptip">국제선 만 12세 이상, 국내선 만 13세 이상</div>
+                <button type="button" class="helptip-trigger" aria-label="성인 기준 상세 안내 열기"><span>?</span></button>
+                <div class="helptip">
+                  <span>국제선 만 12세 이상, 국내선 만 13세 이상</span>
+                  <button type="button" class="helptip-closer" aria-label="성인 기준 상세 안내 닫기"><span>x</span></button>
+                </div>
               </div>
             </div>
             <div class="spin-input-container adult-passenger-spin">
