@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import useAnnounce from '../../hooks/useAnnounce';
+import useAnnouncerContext from '../../contexts/AnnouncerContext';
 import useSpinButton from '../../hooks/useSpinButton';
 import styles from './PassengerControl.module.css';
 
@@ -18,7 +18,7 @@ const PassengerControl = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const tooltipId = `${label}-tooltip`;
   const inputId = `${label}-count`;
-  const { Announcement, announce } = useAnnounce();
+  const { announce } = useAnnouncerContext();
   const { DownButton, UpButton } = useSpinButton(inputRef);
 
   return (
@@ -106,7 +106,6 @@ const PassengerControl = ({
           max={maxCount}
           step={1}
         />
-        <Announcement />
         <UpButton
           className={styles['spin-button']}
           disabled={count >= maxCount}
