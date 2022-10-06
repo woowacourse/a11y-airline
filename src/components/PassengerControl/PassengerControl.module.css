@@ -1,0 +1,33 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.label-box {
+  display: flex;
+}
+
+.tooltip-box {
+  position: relative;
+}
+
+.tooltip-button {
+  border: 0;
+}
+
+.tooltip {
+  visibility: visible;
+  z-index: 1000;
+  position: absolute;
+  padding: 1rem;
+  background: white;
+  border: 1px solid;
+}
+
+.tooltip[aria-hidden] {
+  visibility: hidden;
+}
+
+.control-box {
+  display: flex;
+}

@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import styles from './PassengerControl.module.css';
 
 const minCount = 1;
 const maxCount = 3;
@@ -10,6 +11,7 @@ const PassengerControl = ({
   label: '성인' | '소아' | '유아';
   description: string;
 }) => {
+  const tooltipRef = useRef<HTMLParagraphElement>(null);
   const [count, setCount] = useState(minCount);
   const inputRef = useRef<HTMLInputElement>(null);
   const tooltipId = `${label}-tooltip`;
@@ -19,15 +21,40 @@ const PassengerControl = ({
   };
 
   return (
-    <div>
-      <div>
+    <div className={styles['layout']}>
+      <div className={styles['label-box']}>
         <label htmlFor={inputId}>{label}</label>
-        <button aria-describedby={tooltipId}>{label} 기준 상세 안내</button>
-        <p id={tooltipId} role="tooltip">
-          {description}
-        </p>
+        <div className={styles['tooltip-box']}>
+          <button
+            type="button"
+            aria-label={`${label} 기준 상세 안내`}
+            aria-describedby={tooltipId}
+            className={styles['tooltip-button']}
+            onClick={() => {
+              tooltipRef.current?.toggleAttribute('aria-hidden');
+            }}
+            onBlur={() => {
+              tooltipRef.current?.setAttribute('aria-hidden', '');
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape')
+                tooltipRef.current?.setAttribute('aria-hidden', '');
+            }}
+          >
+            ?
+          </button>
+          <p
+            ref={tooltipRef}
+            id={tooltipId}
+            role="tooltip"
+            className={styles['tooltip']}
+            aria-hidden
+          >
+            {description}
+          </p>
+        </div>
       </div>
-      <div>
+      <div className={styles['control-box']}>
         <button
           onClick={() => {
             if (!inputRef.current) return;
