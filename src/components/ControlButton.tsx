@@ -4,24 +4,16 @@ type ControlButtonProps = {
   onClick: () => void;
   disabled: boolean;
   ariaLabel: string;
-  ariaControls: string;
   value: string;
 };
 
-const ControlButton = ({
-  onClick,
-  disabled,
-  ariaLabel,
-  ariaControls,
-  value,
-}: ControlButtonProps) => {
+const ControlButton = ({ onClick, disabled, ariaLabel, value }: ControlButtonProps) => {
   return (
     <Button
       type="button"
       onClick={onClick}
       disabled={disabled}
       aria-label={ariaLabel}
-      aria-controls={ariaControls}
       aria-disabled={disabled}
     >
       {value}

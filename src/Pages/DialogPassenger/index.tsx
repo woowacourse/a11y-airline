@@ -38,30 +38,22 @@ const DialogPassenger = () => {
             onClick={handleClickDecrease}
             disabled={value <= MIN_VALUE}
             ariaLabel="성인 탑승자 한 명 줄이기"
-            ariaControls="controlMessage"
             value="-"
           />
           <Input
             onChange={handleChangeInput}
             value={value}
             id="adultCount"
-            aria-describedby="inputHelpMessage"
             type="number"
           />
           <ControlButton
             onClick={handleClickIncrease}
             disabled={value >= MAX_VALUE}
             ariaLabel="성인 탑승자 한 명 늘리기"
-            ariaControls="controlMessage"
             value="+"
           />
         </ControlWrapper>
-        <HiddenMessage id="inputHelpMessage" aria-hidden>
-          숫자만 수정
-        </HiddenMessage>
-        <HiddenMessage id="controlMessage" aria-live="assertive">
-          {message}
-        </HiddenMessage>
+        <HiddenMessage aria-live="assertive">{message}</HiddenMessage>
       </Wrapper>
     </main>
   );

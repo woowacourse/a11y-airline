@@ -20,13 +20,12 @@ const ToolTip = ({
       <ToolTipButton
         onClick={toggleToolTip}
         type="button"
-        aria-controls="adultCount"
         aria-expanded="false"
         aria-label={ariaLabel}
       >
         {icon}
       </ToolTipButton>
-      <HelpToggleMessage id="helpMessage" hidden={!isOpenToolTip}>
+      <HelpToggleMessage hidden={!isOpenToolTip}>
         <span>{message}</span>
         <HelpToggleCloseButton type="button" onClick={toggleToolTip} aria-label="닫기">
           x
