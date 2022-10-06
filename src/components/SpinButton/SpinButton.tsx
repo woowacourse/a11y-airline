@@ -22,7 +22,7 @@ const SpinButton = () => {
 
     timerId.current = window.setTimeout(() => {
       setMessage('');
-    });
+    }, 3000);
   }, [message]);
 
   const handleClickHelpToggle = () => {
