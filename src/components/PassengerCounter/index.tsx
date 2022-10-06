@@ -46,11 +46,6 @@ export default function PassengerCounter({
       return;
     }
 
-    if (isNaN(value)) {
-      setCount(value);
-      return;
-    }
-
     changedStatus.current = "";
     setCount(value);
   };
