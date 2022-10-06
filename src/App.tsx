@@ -7,6 +7,8 @@ import { useState } from 'react';
 
 function App() {
   const [passengerAmount, setPassengerAmount] = useState(1);
+  const [passengerAmountStatus, setPassengerAmountStatus] = useState('');
+
   const handleIncreasePassengerAmount = () => {
     setPassengerAmount((prev) => {
       if (prev >= 3) {
@@ -14,6 +16,7 @@ function App() {
 
         return prev;
       }
+      setPassengerAmountStatus('추가');
 
       return prev + 1;
     });
@@ -26,6 +29,7 @@ function App() {
 
         return prev;
       }
+      setPassengerAmountStatus('감소');
 
       return prev - 1;
     });
@@ -47,11 +51,11 @@ function App() {
             alt="성인 탑승자 한명 줄이기"
           />
         </button>
-        <div className="passenger-amount-wrapper">
-          <span>{passengerAmount}</span>
-        </div>
-        <label htmlFor="성인 승객"></label>
-        <input type="number" value={passengerAmount} />
+        <input
+          className="passenger-amount-input"
+          type="number"
+          value={passengerAmount}
+        />
         <button>
           <img
             src={plusIcon}
@@ -60,6 +64,9 @@ function App() {
             alt="성인 탑승자 한명 늘리기"
           />
         </button>
+        <span className="sr-only" aria-live="polite" aria-atomic="true">
+          성인 승객 {passengerAmountStatus} {passengerAmount}
+        </span>
       </div>
     </div>
   );
