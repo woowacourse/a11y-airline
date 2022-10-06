@@ -61,7 +61,11 @@ const App = () => {
             >
               ?
             </button>
-            {isShowTooltip && <p aria-live='polite'>만 20세 이상</p>}
+            {isShowTooltip && (
+              <p role='status' aria-live='polite'>
+                만 20세 이상
+              </p>
+            )}
           </StyledTooltip>
         </StyledAdultHeading>
         <StyledCounter>
