@@ -1,0 +1,54 @@
+:root {
+  font-size: 16px;
+  line-height: 100%;
+}
+
+html,
+body,
+button,
+input,
+textarea {
+  font-family: -apple-system, BlinkMacSystemFont, Apple SD Gothic Neo, Helvetica, Arial, NanumGothic,
+    나눔고딕, Malgun Gothic, 맑은 고딕, Dotum, 굴림, gulim, 새굴림, noto sans, 돋움, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+h4 {
+  font-size: 1.4rem;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
