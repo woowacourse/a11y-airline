@@ -1,3 +1,4 @@
+import './styles/index.css';
 import PassengerControl from './components/PassengerControl';
 
 const App = () => {
