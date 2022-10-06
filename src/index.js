@@ -46,7 +46,13 @@ selectPeopleForm.addEventListener("submit", (e) => {
 
   const { ariaValueMax, ariaValueMin } = selectPeopleOutput;
 
-  const { valueAsNumber } = selectPeopleInput;
+  const { value } = selectPeopleInput;
+
+  const valueAsNumber = Number(value);
+
+  if (isNaN(valueAsNumber)) {
+    return;
+  }
 
   if (valueAsNumber <= ariaValueMax && valueAsNumber >= ariaValueMin) {
     updateSelectPeopleForm(valueAsNumber);
