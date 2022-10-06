@@ -11,6 +11,7 @@ class HelptipManager {
     this.#helptipTrigger = $('.helptip-trigger', $container);
     this.#helptipCloser = $('.helptip-closer', $container);
     this.#helptipElement = $('.helptip', $container);
+    this.#helptipMessageElement = $('.helptip > span', $container);
     this.#check();
   }
 
@@ -49,15 +50,22 @@ class HelptipManager {
   #show() {
     this.#check();
     this.#helptipElement.classList.add('show');
+    this.#helptipMessageElement.setAttribute('aria-live', 'assertive');
   }
 
   #hide() {
     this.#check();
     this.#helptipElement.classList.remove('show');
+    this.#helptipMessageElement.setAttribute('aria-live', 'off');
   }
 
   #check() {
-    if (this.#helptipElement === null || this.#helptipTrigger === null) {
+    if (
+      this.#helptipElement === null ||
+      this.#helptipTrigger === null ||
+      this.#helptipCloser === null ||
+      this.#helptipMessageElement === null
+    ) {
       throw new Error('helptip selector를 다시 확인해 주세요');
     }
   }
