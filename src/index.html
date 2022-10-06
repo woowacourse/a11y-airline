@@ -12,13 +12,16 @@
         <h1>항공편 예약</h1>
         <form>
           <h2>승객 선택</h2>
-          <div class="reservation-field">
+          <div class="reservation-field adult-passenger-field">
             <div class="label-container">
               <label for="adult-passenger-count-input">성인</label>
-              <button type="button" class="helptip"><span>?</span></button>
+              <div class="helptip-container">
+                <button type="button" class="helptip-trigger"><span>?</span></button>
+                <div class="helptip">국제선 만 12세 이상, 국내선 만 13세 이상</div>
+              </div>
             </div>
             <div class="spin-input-container adult-passenger-spin">
-              <button type="button" class="spin-button" data-step="-1">-</button>
+              <button type="button" class="spin-button" data-step="-1" aria-label="성인 탑승자 한 명 줄이기 버튼">-</button>
               <input
                 id="adult-passenger-count-input"
                 class="passenger-count-input"
@@ -26,12 +29,13 @@
                 min="0"
                 max="3"
                 value="0"
-              />
-              <button type="button" class="spin-button" data-step="1">+</button>
+              ></input>
+              <button type="button" class="spin-button" data-step="1" aria-label="성인 탑승자 한 명 늘리기 버튼">+</button>
             </div>
           </div>
         </form>
       </main>
     </div>
+    <div id="snackbar"></div>
   </body>
 </html>

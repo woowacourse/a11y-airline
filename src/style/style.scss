@@ -1,4 +1,6 @@
 @import './normalize.scss';
+@import './snackbar.scss';
+@import './helptip.scss';
 
 * {
   box-sizing: border-box;
@@ -31,28 +33,6 @@ input[type='number'] {
   column-gap: 4px;
   align-items: center;
   margin-bottom: 10px;
-}
-
-.helptip {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 20px;
-  height: 20px;
-
-  border-radius: 50%;
-  background-color: transparent;
-  border: 2px solid gray;
-  cursor: pointer;
-  color: gray;
-
-  span {
-    padding-top: 3px;
-    padding-left: 2px;
-    font-size: 14px;
-    font-weight: 600;
-  }
 }
 
 .adult-passenger-spin {
