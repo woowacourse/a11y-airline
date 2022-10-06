@@ -17,12 +17,11 @@ class Step2 {
     return `
     <h1>지금 떠나기 좋은 여행</h1>
       <div class="carousel__wrap">
-        <section class="carousel" role="list" >
+        <section class="carousel" role="list">
           ${this.slideList.map((slide) => `${slide}`).join("")}
         </section>
         <button class="prev" aria-label="이전 버튼">&lt;</button>
         <button class="next" aria-label="다음 버튼">&gt;</button>
-        <div class="hidden" aria-live="polite"></div>
       </div>`;
   }
 
