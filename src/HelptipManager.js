@@ -5,7 +5,7 @@ class HelptipManager {
   #helptipCloser = null;
   #helptipElement = null;
 
-  constructor(containerSelector = 'helptip-container', $parent = document) {
+  constructor(containerSelector = '.helptip-container', $parent = document) {
     const $container = $(containerSelector, $parent);
     if (!$container) throw new Error('Helptip Container가 없습니다');
     this.#helptipTrigger = $('.helptip-trigger', $container);
