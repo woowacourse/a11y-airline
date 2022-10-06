@@ -51,7 +51,7 @@ const SpinButton: React.FC<SpinButtonProps> = () => {
   const [count, setCount] = useState<Passengers>(1);
   const [labelText, setLabelText] = useState('');
 
-  const changCount = (newCount: Passengers) => {
+  const changeCount = (newCount: Passengers) => {
     try {
       if (newCount < 1 || newCount > 3) {
         throw new Error('인원수는 1~3명까지만 가능합니다.');
@@ -66,17 +66,17 @@ const SpinButton: React.FC<SpinButtonProps> = () => {
 
   const handleChangeCount = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newCount = (parseInt(e.target.value[e.target.value.length - 1], 10) || 1) as Passengers;
-    changCount(newCount);
+    changeCount(newCount);
   };
 
   const handleIncreaseCount = () => {
     const newCount = (count + 1) as Passengers;
-    changCount(newCount);
+    changeCount(newCount);
   };
 
   const handleDecreaseCount = () => {
     const newCount = (count - 1) as Passengers;
-    changCount(newCount);
+    changeCount(newCount);
   };
 
   return (
