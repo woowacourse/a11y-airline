@@ -6,13 +6,10 @@ function PassengerCountInput() {
 
   const handleDecreaseCount = () => {
     if (count === 0) {
-      alert("0명 이하를 선택할 수 없습니다.");
+      alert("0명보다 아래를 선택할 수 없습니다.");
       return;
     }
     setCount(count - 1);
-    document.querySelector(
-      ".passenger-count-input-state"
-    ).textContent = `성인 승객 현재 ${count - 1}`;
   };
 
   const handleIncreaseCount = () => {
@@ -21,9 +18,6 @@ function PassengerCountInput() {
       return;
     }
     setCount(count + 1);
-    document.querySelector(
-      ".passenger-count-input-state"
-    ).textContent = `성인 승객 현재 ${count + 1}`;
   };
 
   return (
@@ -37,11 +31,9 @@ function PassengerCountInput() {
         </label>
         <button
           className="passenger-type-explanation-button"
-          aria-label="성인 탑승자에 대한 설명 보기"
+          aria-label="성인 승객에 대한 설명 보기"
         >
-          <span className="tooltip-icon" aria-hidden="true">
-            ?
-          </span>
+          <span className="tooltip-icon">?</span>
         </button>
       </div>
 
@@ -53,7 +45,7 @@ function PassengerCountInput() {
               : "spin-button count-decrease"
           }
           onClick={handleDecreaseCount}
-          aria-label="성인 탑승자 한명 줄이기"
+          aria-label="성인 승객 한명 줄이기"
         >
           <span aria-hidden="true">-</span>
         </button>
@@ -72,15 +64,18 @@ function PassengerCountInput() {
               ? "spin-button count-increase disabled"
               : "spin-button count-increase"
           }
-          aria-label="성인 탑승자 한명 늘리기"
+          aria-label="성인 승객 한명 늘리기"
         >
           <span aria-hidden="true">+</span>
         </button>
       </div>
       <span
+        role="status"
         className="passenger-count-input-state invisible"
         aria-live="polite"
-      ></span>
+      >
+        성인 승객 현재 {count}명
+      </span>
     </>
   );
 }
