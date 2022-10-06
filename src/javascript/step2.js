@@ -20,7 +20,7 @@ class Step2 {
         <section class="carousel" role="list">
           ${this.slideList
             .map((slide) => {
-              return `<a class="slide__link" href="https://www.github.com/jswith" role="listitem">
+              return `<a href="https://www.github.com/jswith" role="listitem">
                           ${slide}
                       </a>`;
             })
@@ -34,7 +34,7 @@ class Step2 {
   render() {
     const template = this.slideList
       .map((slide) => {
-        return `<a href="https://www.github.com/jswith">${slide}</a>`;
+        return `<a href="https://www.github.com/jswith" role="listitem">${slide}</a>`;
       })
       .join("");
 
