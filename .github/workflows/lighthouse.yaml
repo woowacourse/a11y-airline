@@ -2,7 +2,7 @@ name: Run lighthouse CI When Push
 on: [push]
 jobs:
   lhci:
-    name: Lighthouse CI
+    name: Lighthouse CI to check accessibility
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
