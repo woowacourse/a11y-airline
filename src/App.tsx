@@ -67,17 +67,20 @@ function App() {
         <div
           className='passenger-select-tooltip'
           aria-describedby='passenger-select-tooltip-text'
+          aria-labelledby='passenger-select-tooltip-text'
         >
           ?
           <span id='passenger-select-tooltip-text' role='tooltip'>
-            성인은 {PASSENGER.ADULT.MIN_COUNT}~{PASSENGER.ADULT.MAX_COUNT}명
-            탑승할 수 있습니다.
+            성인은 탑승일 기준 만 18세 이상에 적용되며,&nbsp;
+            {PASSENGER.ADULT.MIN_COUNT}~{PASSENGER.ADULT.MAX_COUNT}명 탑승할 수
+            있습니다.
           </span>
         </div>
       </div>
       <div className='passenger-select-control'>
         <button
           className='passenger-count-control-button'
+          aria-label='성인 탑승자 한명 줄이기'
           onClick={handleClickDecreaseAdultCount}
         >
           -
@@ -86,11 +89,15 @@ function App() {
           type='number'
           id='adult-count'
           className='passenger-count-input'
+          title={`성인 ${adultCount} 텍스트 숫자만 수정`}
           value={adultCount}
+          aria-live='assertive'
+          aria-label={`성인 승객 추가 ${adultCount}`}
           onChange={handleChangeAdultCount}
         />
         <button
           className='passenger-count-control-button'
+          aria-label='성인 탑승자 한명 늘리기'
           onClick={handleClickIncreaseAdultCount}
         >
           +
