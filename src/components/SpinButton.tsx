@@ -45,9 +45,7 @@ const a11yHidden = css`
 
 type Passengers = 1 | 2 | 3;
 
-interface SpinButtonProps {}
-
-const SpinButton: React.FC<SpinButtonProps> = () => {
+const SpinButton: React.FC = () => {
   const [count, setCount] = useState<Passengers>(1);
   const [labelText, setLabelText] = useState('');
 
