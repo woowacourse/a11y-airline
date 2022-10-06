@@ -147,7 +147,7 @@ body {
   flex-shrink: 0;
   align-items: center;
   height: 350px;
-  width: 720px;
+  width: 780px;
   overflow: hidden;
   margin: 20px 30px;
 }
@@ -160,6 +160,7 @@ body {
   padding: 20px 20px 20px 35px;
   border: 1px solid black;
   background-color: #fff;
+  margin: 0 10px;
 }
 
 .slide h2 {
