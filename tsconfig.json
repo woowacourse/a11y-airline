@@ -8,7 +8,7 @@
     "strict": true,
     "noEmit": true,
     "skipLibCheck": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "allowSyntheticDefaultImports": true
   },
   "include": ["src"]
