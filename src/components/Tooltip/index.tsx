@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { KeyboardEvent, useState } from "react";
 import "./index.css";
 
 const QuestionMarkTooltip = ({ description }: { description: string }) => {
   const [show, setShow] = useState<boolean>(false);
 
   return (
-    <div style={{ position: "relative" }}>
+    <div
+      onKeyDown={(e: KeyboardEvent<HTMLDivElement>) => {
+        if (e.nativeEvent.key === "Escape") {
+          setShow(false);
+        }
+      }}
+      style={{ position: "relative" }}
+    >
       <button
         onClick={() => {
           setShow((prev) => !prev);
