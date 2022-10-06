@@ -6,11 +6,21 @@ const FirstPage = () => {
   const [count, setCount] = useState<number>(1);
 
   const countUp = () => {
-    setCount((prev) => prev + 1);
+    setCount((prev) => {
+      if (prev + 1 <= 3) {
+        return prev + 1;
+      }
+      return prev;
+    });
   };
 
   const countDown = () => {
-    setCount((prev) => prev - 1);
+    setCount((prev) => {
+      if (prev - 1 >= 1) {
+        return prev - 1;
+      }
+      return prev;
+    });
   };
 
   return (
