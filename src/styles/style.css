@@ -35,6 +35,7 @@
   padding: 5px 10px;
   display: flex;
   align-items: center;
+  font-size: 0.75rem;
 }
 
 .tooltip-container.hide {
