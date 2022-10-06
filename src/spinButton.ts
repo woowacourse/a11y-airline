@@ -81,6 +81,7 @@ const handleTooltipButtonClick = (e: Event) => {
   e.stopPropagation();
 
   tooltip.classList.remove("hide");
+  tooltip.ariaExpanded = "true";
 };
 
 const handleTooltipClose = () => {
@@ -111,6 +112,7 @@ spinButtonForm.addEventListener("click", (e) => {
 window.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && !tooltip.classList.contains("hide")) {
     tooltip.classList.add("hide");
+    tooltip.ariaExpanded = "false";
   }
 });
 
