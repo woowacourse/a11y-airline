@@ -1,7 +1,10 @@
 {
   "name": "kamwoo",
+  "homepage": "https://kamwoo.github.io/a11y-airline/",
   "scripts": {
-    "start": "webpack serve"
+    "build": "webpack",
+    "start": "webpack serve",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -18,6 +21,7 @@
     "@types/react-dom": "^18.0.6",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
+    "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.1",
     "webpack-cli": "^4.10.0",
