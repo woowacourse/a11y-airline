@@ -1,3 +1,7 @@
+html {
+  font-size: 10px;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

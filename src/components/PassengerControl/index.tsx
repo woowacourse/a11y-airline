@@ -25,7 +25,9 @@ const PassengerControl = ({
   return (
     <div className={styles['layout']}>
       <div className={styles['label-box']}>
-        <label htmlFor={inputId}>{label}</label>
+        <label className={styles['label']} htmlFor={inputId}>
+          {label}
+        </label>
         <div className={styles['tooltip-box']}>
           <button
             type="button"
@@ -43,7 +45,19 @@ const PassengerControl = ({
                 tooltipRef.current?.setAttribute('aria-hidden', '');
             }}
           >
-            ?
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"
+              />
+            </svg>
           </button>
           <p
             ref={tooltipRef}
@@ -58,6 +72,8 @@ const PassengerControl = ({
       </div>
       <div className={styles['control-box']}>
         <button
+          type="button"
+          className={styles['spin-button']}
           onClick={() => {
             if (!inputRef.current) return;
 
@@ -65,15 +81,29 @@ const PassengerControl = ({
             dispatchChangeEvent(inputRef.current);
           }}
           disabled={count <= minCount}
+          aria-label={`${label} 탑승자 한명 줄이기`}
           aria-controls={inputId}
         >
-          {label} 탑승자 한명 줄이기
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19.5 12h-15"
+            />
+          </svg>
         </button>
         <input
           type="number"
           id={inputId}
           name={inputId}
           ref={inputRef}
+          className={styles['input']}
           defaultValue={minCount}
           onChange={(e) => {
             setCount(e.currentTarget.valueAsNumber);
@@ -85,6 +115,8 @@ const PassengerControl = ({
         />
         <Announcement />
         <button
+          type="button"
+          className={styles['spin-button']}
           onClick={() => {
             if (!inputRef.current) return;
 
@@ -92,8 +124,22 @@ const PassengerControl = ({
             dispatchChangeEvent(inputRef.current);
           }}
           disabled={count >= maxCount}
+          aria-label={`${label} 탑승자 한명 늘리기`}
+          aria-controls={inputId}
         >
-          {label} 탑승자 한명 늘리기
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 4.5v15m7.5-7.5h-15"
+            />
+          </svg>
         </button>
       </div>
     </div>
