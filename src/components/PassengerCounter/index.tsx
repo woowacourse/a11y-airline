@@ -76,6 +76,7 @@ export default function PassengerCounter({
           onClick={handleMinusButton}
           aria-label={`${passengerType} 탑승자 한명 줄이기`}
           disabled={count <= minCount || isNaN(count)}
+          aria-disabled={count <= minCount || isNaN(count)}
         >
           -
         </button>
@@ -99,6 +100,7 @@ export default function PassengerCounter({
           onClick={handlePlusButton}
           aria-label={`${passengerType} 탑승자 한명 늘리기`}
           disabled={count >= maxCount}
+          aria-disabled={count >= maxCount}
         >
           +
         </button>
