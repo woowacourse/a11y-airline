@@ -1,0 +1,38 @@
+.page-people-count {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2rem;
+
+  width: 100%;
+  min-width: 18rem;
+  max-width: 25rem;
+
+  margin: 0 auto;
+  padding: 2rem;
+
+  .title {
+    text-align: center;
+  }
+
+  .label {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+
+    .tip {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 1.25rem;
+      height: 1.25rem;
+
+      font-size: 0.6rem;
+      color: #999;
+      border-radius: 50%;
+      border: 1px solid #ddd;
+    }
+  }
+}
