@@ -16,8 +16,10 @@ function ToolTip({ className, text, align, disabled, children }: ToolTipProps) {
   })
 
   return (
-    <div className={cn(styles.componentTooltip, className)} aria-label={text}>
-      <div className={toolTipBoxClassNames}>{text}</div>
+    <div className={cn(styles.componentTooltip, className)} aria-hidden="true">
+      <div className={toolTipBoxClassNames} aria-label={text}>
+        {text}
+      </div>
       {children}
     </div>
   )
