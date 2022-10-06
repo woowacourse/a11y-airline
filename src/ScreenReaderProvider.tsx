@@ -25,7 +25,7 @@ const ScreenReaderProvider = ({ children }: PropsWithChildren) => {
 
 const AnnouncedMessage = ({ message, type }: { message: string; type: 'assertive' | 'polite' }) => {
   return (
-    <div aria-hidden='true' aria-live={type} className='sr-only'>
+    <div aria-live={type} className='sr-only'>
       {message}
     </div>
   );

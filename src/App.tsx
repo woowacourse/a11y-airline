@@ -50,7 +50,7 @@ const App = () => {
     <section>
       <h1>승객 선택</h1>
       <StyledAdultHeading>
-        <h2 aria-hidden={true}>성인</h2>
+        <h2>성인</h2>
         <StyledTooltip>
           <button onClick={showTooltip} onMouseEnter={showTooltip} aria-label='성인 기준 안내'>
             ?
