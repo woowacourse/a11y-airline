@@ -1,6 +1,10 @@
 @import url("./reset.css");
 @import url("./default-button.css");
 
+:root {
+  --dark-gray: #4f4f4f;
+}
+
 .spin-input-form {
   display: flex;
   flex-direction: column;
@@ -26,7 +30,7 @@
   left: 100%;
   top: 0;
   width: max-content;
-  border: 1px solid #4f4f4f;
+  border: 1px solid var(--dark-gray);
   border-radius: 5px;
   padding: 5px 10px;
   display: flex;
@@ -55,9 +59,9 @@
 
 .tooltip-button-icon {
   border-radius: 50%;
-  border: 2px solid #4f4f4f;
+  border: 2px solid var(--dark-gray);
 
-  color: #4f4f4f;
+  color: var(--dark-gray);
   font-weight: bold;
 }
 
