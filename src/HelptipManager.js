@@ -4,6 +4,7 @@ class HelptipManager {
   #helptipTrigger = null;
   #helptipCloser = null;
   #helptipElement = null;
+  #helptipMessageElement = null;
 
   constructor(containerSelector = '.helptip-container', $parent = document) {
     const $container = $(containerSelector, $parent);
