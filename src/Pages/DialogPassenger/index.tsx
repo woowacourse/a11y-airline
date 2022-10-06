@@ -27,7 +27,7 @@ const DialogPassenger = () => {
           </Label>
           <ToolTip
             icon="?"
-            description="성인 기준 상세 안내"
+            ariaLabel="성인 기준 상세 안내"
             message="국제선 만 12세 이상, 국내선 만 13세 이상"
             isOpenToolTip={isOpenToolTip}
             toggleToolTip={toggleToolTip}
@@ -37,7 +37,7 @@ const DialogPassenger = () => {
           <ControlButton
             onClick={handleClickDecrease}
             disabled={value <= MIN_VALUE}
-            description="성인 탑승자 한 명 줄이기"
+            ariaLabel="성인 탑승자 한 명 줄이기"
             ariaControls="controlMessage"
             value="-"
           />
@@ -46,22 +46,21 @@ const DialogPassenger = () => {
             value={value}
             id="adultCount"
             aria-describedby="inputHelpMessage"
-            maxLength={1}
-            type="tel"
+            type="number"
           />
           <ControlButton
             onClick={handleClickIncrease}
             disabled={value >= MAX_VALUE}
-            description="성인 탑승자 한 명 늘리기"
+            ariaLabel="성인 탑승자 한 명 늘리기"
             ariaControls="controlMessage"
             value="+"
           />
         </ControlWrapper>
+        <HiddenMessage id="inputHelpMessage" aria-hidden>
+          숫자만 수정
+        </HiddenMessage>
         <HiddenMessage id="controlMessage" aria-live="assertive">
           {message}
-        </HiddenMessage>
-        <HiddenMessage id="inputHelpMessage" aria-live="assertive">
-          숫자만 수정
         </HiddenMessage>
       </Wrapper>
     </main>

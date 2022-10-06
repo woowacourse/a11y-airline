@@ -3,7 +3,7 @@ import styled from 'styled-components';
 type ControlButtonProps = {
   onClick: () => void;
   disabled: boolean;
-  description: string;
+  ariaLabel: string;
   ariaControls: string;
   value: string;
 };
@@ -11,7 +11,7 @@ type ControlButtonProps = {
 const ControlButton = ({
   onClick,
   disabled,
-  description,
+  ariaLabel,
   ariaControls,
   value,
 }: ControlButtonProps) => {
@@ -20,7 +20,7 @@ const ControlButton = ({
       type="button"
       onClick={onClick}
       disabled={disabled}
-      aria-label={description}
+      aria-label={ariaLabel}
       aria-controls={ariaControls}
       aria-disabled={disabled}
     >

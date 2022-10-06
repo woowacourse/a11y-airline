@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 type ToolTipProps = {
   icon: string;
-  description: string;
+  ariaLabel: string;
   message: string;
   isOpenToolTip: boolean;
   toggleToolTip: () => void;
@@ -10,7 +10,7 @@ type ToolTipProps = {
 
 const ToolTip = ({
   icon = '?',
-  description,
+  ariaLabel,
   message,
   isOpenToolTip,
   toggleToolTip,
@@ -20,9 +20,9 @@ const ToolTip = ({
       <ToolTipButton
         onClick={toggleToolTip}
         type="button"
-        aria-controls="popover-adultCount"
+        aria-controls="adultCount"
         aria-expanded="false"
-        aria-label={description}
+        aria-label={ariaLabel}
       >
         {icon}
       </ToolTipButton>

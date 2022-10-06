@@ -11,7 +11,6 @@ const useDialogPassenger = () => {
   const toggleToolTip = () => {
     setIsOpenToolTip((prevState) => !prevState);
   };
-
   useEffect(() => {
     if (message === '') {
       return;
@@ -26,7 +25,6 @@ const useDialogPassenger = () => {
       setMessage('');
     }, 3000);
   }, [message]);
-
   const handleClickDecrease = () => {
     if (value <= MIN_VALUE) {
       return;
@@ -46,18 +44,13 @@ const useDialogPassenger = () => {
   };
 
   const handleChangeInput: ChangeEventHandler<HTMLInputElement> = (event) => {
-    const { data } = event.nativeEvent as InputEvent;
+    const value = event.target.valueAsNumber;
 
-    if (data === null || !Number.isInteger(Number(data))) {
-      setValue(0);
+    if (value < MIN_VALUE || value > MAX_VALUE) {
       return;
     }
 
-    if (Number(data) > MAX_VALUE) {
-      return;
-    }
-
-    setValue(Number(data));
+    setValue(value);
   };
 
   return {
