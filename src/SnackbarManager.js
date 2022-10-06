@@ -21,6 +21,7 @@ class SnackbarManager {
     this.#check();
     this.#element.classList.add('show');
     this.#element.textContent = message;
+    this.#element.setAttribute('aria-live', 'assertive');
     this.#timer && clearTimeout(this.#timer);
     this.#timer = setTimeout(() => {
       this.hide();
@@ -29,6 +30,7 @@ class SnackbarManager {
 
   hide() {
     this.#check();
+    this.#element.setAttribute('aria-live', 'off');
     this.#element.classList.remove('show');
   }
 }
