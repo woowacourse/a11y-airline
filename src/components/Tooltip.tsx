@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Tooltip = () => {
   return (
     <>
-      <S.Question>?</S.Question>
+      <S.Question tabIndex={1}>?</S.Question>
       <S.StyledTooltip id='tooltip' role={'tooltip'}>
         국민은행 61210204071715로 후원해 결식아동을 도와보세요!
       </S.StyledTooltip>
@@ -12,7 +12,7 @@ const Tooltip = () => {
 };
 
 const S = {
-  Question: styled.span`
+  Question: styled.div`
     width: 20px;
     height: 20px;
     border: 1px solid #cbcbcb;
