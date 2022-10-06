@@ -8,7 +8,7 @@ module.exports = {
   devtool: 'eval-source-map',
   output: {
     publicPath: '/',
-    path: resolve(__dirname, 'build/'),
+    path: resolve(__dirname, '../build/'),
     clean: true,
   },
   resolve: {
@@ -23,6 +23,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        exclude: /\.module\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.module\.css$/,
         use: [
           'style-loader',
           {
