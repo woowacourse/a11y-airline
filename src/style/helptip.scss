@@ -1,0 +1,41 @@
+.helptip-container {
+  position: relative;
+  .helptip-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid gray;
+    cursor: pointer;
+    color: gray;
+
+    span {
+      padding-top: 3px;
+      padding-left: 2px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+  .helptip {
+    position: absolute;
+    top: 0;
+    left: 150%;
+
+    display: none;
+    word-break: keep-all;
+    width: 150px;
+    background-color: white;
+    padding: 8px;
+    border: 1px solid #fff5f540;
+    box-shadow: 2px 2px 4px 0px #b2b2b2;
+
+    &.show {
+      display: block;
+    }
+  }
+}
