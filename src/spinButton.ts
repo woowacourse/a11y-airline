@@ -1,17 +1,22 @@
 import { MESSAGES, SPIN_INPUT_RANGE } from "./constants";
+import { alertWithSnackbar } from "./snackbar";
 
 const spinButtonForm = document.querySelector(".spin-input-form");
 const spinButtonInput =
   spinButtonForm.querySelector<HTMLButtonElement>("#spin-input-value");
 const spinInputStatus = document.querySelector("#spin-input-status");
 
-const setSpinInputValue = (to: number) => {
-  spinButtonInput.value = String(to);
-  spinInputStatus.textContent = MESSAGES.현재_승객_수_안내(to);
+const handleSRMessage = (message: string) => {
+  spinInputStatus.textContent = message;
 
   setTimeout(() => {
     spinInputStatus.textContent = "";
-  }, 1000);
+  }, 500);
+};
+
+const setSpinInputValue = (to: number) => {
+  spinButtonInput.value = String(to);
+  handleSRMessage(MESSAGES.현재_승객_수_안내(to));
 };
 
 const handleValueChange = (to: number) => {
@@ -40,11 +45,11 @@ const handleSpinButtonClick = (classList: DOMTokenList) => {
     handleValueChange(currentValue + amount);
   } catch (e) {
     if (e instanceof Error) {
-      alert(e.message);
+      alertWithSnackbar(e.message);
       return;
     }
 
-    alert(MESSAGES.알_수_없는_오류);
+    alertWithSnackbar(MESSAGES.알_수_없는_오류);
   }
 };
 
@@ -78,10 +83,10 @@ spinButtonInput.addEventListener("input", (e) => {
     handleSpinInputValue(e.target);
   } catch (exception) {
     if (exception instanceof Error) {
-      alert(exception.message);
+      alertWithSnackbar(exception.message);
       return;
     }
 
-    alert(MESSAGES.알_수_없는_오류);
+    alertWithSnackbar(MESSAGES.알_수_없는_오류);
   }
 });

@@ -72,3 +72,20 @@
   height: 0;
   width: 0;
 }
+
+#snackbar {
+  width: 300px;
+  padding: 10px;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  position: fixed;
+  bottom: 20px;
+  left: calc(50% - 150px);
+  transition: 0.3s;
+  background-color: rgb(247, 247, 247);
+}
+
+#snackbar.hide {
+  opacity: 0;
+  transform: translateY(10px);
+}
