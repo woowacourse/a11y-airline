@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import useAnnounce from '../../hooks/useAnnounce';
+import useSpinButton from '../../hooks/useSpinButton';
 import styles from './PassengerControl.module.css';
 
 const minCount = 1;
@@ -17,10 +18,8 @@ const PassengerControl = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const tooltipId = `${label}-tooltip`;
   const inputId = `${label}-count`;
-  const dispatchChangeEvent = (inputElement: HTMLInputElement) => {
-    inputElement.dispatchEvent(new Event('change', { bubbles: true }));
-  };
   const { Announcement, announce } = useAnnounce();
+  const { DownButton, UpButton } = useSpinButton(inputRef);
 
   return (
     <div className={styles['layout']}>
@@ -71,15 +70,8 @@ const PassengerControl = ({
         </div>
       </div>
       <div className={styles['control-box']}>
-        <button
-          type="button"
+        <DownButton
           className={styles['spin-button']}
-          onClick={() => {
-            if (!inputRef.current) return;
-
-            inputRef.current.stepDown();
-            dispatchChangeEvent(inputRef.current);
-          }}
           disabled={count <= minCount}
           aria-label={`${label} 탑승자 한명 줄이기`}
           aria-controls={inputId}
@@ -97,9 +89,10 @@ const PassengerControl = ({
               d="M19.5 12h-15"
             />
           </svg>
-        </button>
+        </DownButton>
         <input
           type="number"
+          inputMode="numeric"
           id={inputId}
           name={inputId}
           ref={inputRef}
@@ -114,15 +107,8 @@ const PassengerControl = ({
           step={1}
         />
         <Announcement />
-        <button
-          type="button"
+        <UpButton
           className={styles['spin-button']}
-          onClick={() => {
-            if (!inputRef.current) return;
-
-            inputRef.current?.stepUp();
-            dispatchChangeEvent(inputRef.current);
-          }}
           disabled={count >= maxCount}
           aria-label={`${label} 탑승자 한명 늘리기`}
           aria-controls={inputId}
@@ -140,7 +126,7 @@ const PassengerControl = ({
               d="M12 4.5v15m7.5-7.5h-15"
             />
           </svg>
-        </button>
+        </UpButton>
       </div>
     </div>
   );
