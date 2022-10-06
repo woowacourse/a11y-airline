@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/App.css';
 import { PASSENGER } from './constants';
 import usePassengerSelect from './hooks/usePassengerSelect';
 
