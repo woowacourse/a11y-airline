@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import useAnnounce from '../../hooks/useAnnounce';
 import styles from './PassengerControl.module.css';
 
 const minCount = 1;
@@ -19,6 +20,7 @@ const PassengerControl = ({
   const dispatchChangeEvent = (inputElement: HTMLInputElement) => {
     inputElement.dispatchEvent(new Event('change', { bubbles: true }));
   };
+  const { Announcement, announce } = useAnnounce();
 
   return (
     <div className={styles['layout']}>
@@ -63,6 +65,7 @@ const PassengerControl = ({
             dispatchChangeEvent(inputRef.current);
           }}
           disabled={count <= minCount}
+          aria-controls={inputId}
         >
           {label} 탑승자 한명 줄이기
         </button>
@@ -74,11 +77,13 @@ const PassengerControl = ({
           defaultValue={minCount}
           onChange={(e) => {
             setCount(e.currentTarget.valueAsNumber);
+            announce(`${label} 승객 추가 ${e.currentTarget.valueAsNumber}`);
           }}
           min={minCount}
           max={maxCount}
           step={1}
         />
+        <Announcement />
         <button
           onClick={() => {
             if (!inputRef.current) return;
