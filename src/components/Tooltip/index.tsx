@@ -18,7 +18,7 @@ const QuestionMarkTooltip = ({ description }: { description: string }) => {
           setShow((prev) => !prev);
         }}
         className="tooltip"
-        aria-label="승객 관련 정보"
+        aria-label="성인 승객 관련 정보"
       >
         ?
       </button>
