@@ -97,8 +97,10 @@ const StyledAdultHeading = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
-  & > h2 {
+  & > label {
     white-space: nowrap;
+    font-size: 24px;
+    margin: 12px 0;
   }
 `;
 
