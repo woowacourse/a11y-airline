@@ -17,13 +17,12 @@ class Step2 {
     return `
     <h1>지금 떠나기 좋은 여행</h1>
       <div class="carousel__wrap">
-        <section class="carousel" role="list">
+        <section class="carousel" role="list" >
           ${this.slideList
-            .map((slide) => {
-              return `<a href="https://www.github.com/jswith" role="listitem">
-                          ${slide}
-                      </a>`;
-            })
+            .map(
+              (slide) =>
+                `<a href="https://github.com/jswith" class="slide" role="link">${slide}</a>`
+            )
             .join("")}
         </section>
         <button class="prev" aria-label="이전 버튼">&lt;</button>
@@ -33,9 +32,10 @@ class Step2 {
 
   render() {
     const template = this.slideList
-      .map((slide) => {
-        return `<a href="https://www.github.com/jswith" role="listitem">${slide}</a>`;
-      })
+      .map(
+        (slide) =>
+          `<a href="https://github.com/jswith" class="slide" role="link">${slide}</a>`
+      )
       .join("");
 
     this.carousel.replaceChildren();
