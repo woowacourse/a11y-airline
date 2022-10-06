@@ -66,22 +66,19 @@ const handleSpinInputValue = (target: HTMLInputElement) => {
 };
 
 spinButtonForm.addEventListener("click", (e) => {
-  const target = e.target as unknown as HTMLElement;
-  const { classList } = target;
+  if (!(e.target instanceof HTMLButtonElement)) return;
 
-  if (classList.contains("spin-button")) {
-    handleSpinButtonClick(classList);
-  }
+  handleSpinButtonClick(e.target.classList);
 });
 
 spinButtonInput.addEventListener("input", (e) => {
-  const target = e.target as unknown as HTMLInputElement;
+  if (!(e.target instanceof HTMLInputElement)) return;
 
   try {
-    handleSpinInputValue(target);
-  } catch (e) {
-    if (e instanceof Error) {
-      alert(e.message);
+    handleSpinInputValue(e.target);
+  } catch (exception) {
+    if (exception instanceof Error) {
+      alert(exception.message);
       return;
     }
 
