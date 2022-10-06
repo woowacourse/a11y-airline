@@ -3,8 +3,8 @@ import styled from 'styled-components';
 const Tooltip = () => {
   return (
     <>
-      <S.Question tabIndex={1}>?</S.Question>
-      <S.StyledTooltip tabIndex={2} id='tooltip' role={'tooltip'}>
+      <S.Question aria-describedby='tooltip'>?</S.Question>
+      <S.StyledTooltip aria-live='assertive' id='tooltip' role='tooltip'>
         국민은행 61210204071715로 후원해 결식아동을 도와보세요!
       </S.StyledTooltip>
     </>
@@ -12,7 +12,7 @@ const Tooltip = () => {
 };
 
 const S = {
-  Question: styled.div`
+  Question: styled.button`
     width: 20px;
     height: 20px;
     border: 1px solid #cbcbcb;
@@ -20,6 +20,7 @@ const S = {
     border-radius: 50%;
     text-align: center;
     cursor: help;
+    background-color: white;
 
     &:hover + [role='tooltip'],
     &:focus + [role='tooltip'] {
