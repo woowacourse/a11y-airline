@@ -40,7 +40,7 @@ function Counter({ className, min, max, value, placeholder, onChange, ...args }:
         type="button"
         className={styles.button}
         onClick={() => handleChangeCount(value - 1)}
-        aria-label={`${args['aria-label']} 줄이기 버튼`}
+        aria-label={`${args['aria-label']} 줄이기`}
       >
         <span className={styles.innerText}>-</span>
       </button>
@@ -53,7 +53,7 @@ function Counter({ className, min, max, value, placeholder, onChange, ...args }:
         pattern="^[0-9]{1}$"
         value={visibleNumber}
         placeholder={placeholder}
-        aria-placeholder={`${args['aria-label']} 숫자 직접 입력`}
+        aria-label={`${args['aria-label']} 숫자 직접 입력란`}
         onChange={handleChangeInput}
       />
 
@@ -61,7 +61,7 @@ function Counter({ className, min, max, value, placeholder, onChange, ...args }:
         type="button"
         className={styles.button}
         onClick={() => handleChangeCount(value + 1)}
-        aria-label={`${args['aria-label']} 올리기 버튼`}
+        aria-label={`${args['aria-label']} 올리기`}
       >
         <span className={styles.innerText}>+</span>
       </button>
