@@ -3,6 +3,8 @@ import { alertWithSnackbar } from "./snackbar";
 
 const spinButtonForm = document.querySelector(".spin-input-form");
 const tooltip = document.querySelector("[role=tooltip]");
+const tooltipOpenButton =
+  document.querySelector<HTMLButtonElement>(".tooltip-button");
 
 const spinButtonInput =
   spinButtonForm.querySelector<HTMLButtonElement>("#spin-input-value");
@@ -86,6 +88,7 @@ const handleTooltipButtonClick = (e: Event) => {
 
 const handleTooltipClose = () => {
   tooltip.classList.add("hide");
+  tooltipOpenButton.focus();
 };
 
 window.addEventListener("click", (e) => {
