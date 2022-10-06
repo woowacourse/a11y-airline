@@ -33,7 +33,9 @@ function PassengerCountInput() {
           className="passenger-type-explanation-button"
           aria-label="성인 승객에 대한 설명 보기"
         >
-          <span className="tooltip-icon">?</span>
+          <span className="tooltip-icon" aria-hidden="true">
+            ?
+          </span>
         </button>
       </div>
 
