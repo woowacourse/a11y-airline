@@ -11,7 +11,8 @@
     "build": "webpack",
     "start": "webpack serve",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -b gh-pages -d dist --remote me"
+    "deploy": "gh-pages -d dist --remote me",
+    "help": "gh-pages -h"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
