@@ -21,6 +21,13 @@ passengerAmountInput.addEventListener("input", (e) => {
 });
 
 $(".decrement-button").addEventListener("click", () => {
+  if (Number(passengerAmountInput.value) === PASSENGER_AMOUNT.MIN) {
+    $(".decrement-button").ariaDisabled = "true";
+    return;
+  }
+  if (Number(passengerAmountInput.value) === PASSENGER_AMOUNT.MAX) {
+    $(".increment-button").ariaDisabled = "false";
+  }
   if (passengerAmountInput.value > PASSENGER_AMOUNT.MIN) {
     passengerAmountInput.value--;
     inputStatus.textContent = `성인 승객 감소 ${passengerAmountInput.value}`;
@@ -28,6 +35,13 @@ $(".decrement-button").addEventListener("click", () => {
 });
 
 $(".increment-button").addEventListener("click", () => {
+  if (Number(passengerAmountInput.value) === PASSENGER_AMOUNT.MAX) {
+    $(".increment-button").ariaDisabled = "true";
+    return;
+  }
+  if (Number(passengerAmountInput.value) === PASSENGER_AMOUNT.MIN) {
+    $(".decrement-button").ariaDisabled = "false";
+  }
   if (passengerAmountInput.value < PASSENGER_AMOUNT.MAX) {
     passengerAmountInput.value++;
     inputStatus.textContent = `성인 승객 추가 ${passengerAmountInput.value}`;
