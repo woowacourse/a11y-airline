@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import VoiceText from '../VoiceText';
 import * as S from './index.style';
 
 interface TooltipProps {
@@ -13,8 +14,9 @@ const Tooltip = ({ content }: TooltipProps) => {
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
-      <S.Tooltip>?</S.Tooltip>
+      <S.Tooltip aria-hidden>?</S.Tooltip>
       {isHover && <S.Content>{content}</S.Content>}
+      <VoiceText>{content}</VoiceText>
     </S.Container>
   );
 };

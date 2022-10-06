@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
+export const Container = styled.form`
   display: flex;
   flex-direction: column;
 `;
@@ -8,6 +8,7 @@ export const Container = styled.div`
 export const Header = styled.div`
   display: flex;
   align-items: center;
+  margin: 30px 0;
 `;
 
 export const Title = styled.p`
