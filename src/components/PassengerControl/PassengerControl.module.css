@@ -43,6 +43,7 @@
   padding: 1rem;
   background: white;
   border: 1px solid;
+  width: 10rem;
 }
 
 .tooltip[aria-hidden] {
