@@ -23,6 +23,14 @@ const FirstPage = () => {
     });
   };
 
+  const handleCountChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const input = Number(e.key);
+
+    if (input >= 1 && input <= 3) {
+      setCount(input);
+    }
+  };
+
   return (
     <S.PageWrapper>
       <h1>승객 선택</h1>
@@ -34,7 +42,12 @@ const FirstPage = () => {
         <S.Button aria-label='성인 탑승자 한명 줄이기' onClick={countDown}>
           -
         </S.Button>
-        <S.Count>{count}</S.Count>
+        <S.Count
+          onKeyDown={(e) => {
+            handleCountChange(e);
+          }}
+          value={count}
+        />
         <S.Button aria-label='성인 탑승자 한명 늘리기' onClick={countUp}>
           +
         </S.Button>
@@ -68,11 +81,13 @@ const S = {
     background-color: transparent;
     cursor: pointer;
   `,
-  Count: styled.span`
+  Count: styled.input`
     width: 32px;
     text-align: center;
     font-size: 24px;
+    border: none;
     border-bottom: 2px solid #6d6d6d;
+    outline: none;
   `,
   ControlWrapper: styled.div`
     display: flex;
