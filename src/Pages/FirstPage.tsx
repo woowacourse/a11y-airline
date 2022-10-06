@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import Tooltip from './../components/Tooltip';
 
 const FirstPage = () => {
-  const [count, setCount] = useState<number>(0);
+  const [count, setCount] = useState<number>(1);
 
   const countUp = () => {
     setCount((prev) => prev + 1);
@@ -17,12 +18,16 @@ const FirstPage = () => {
       <h1>승객 선택</h1>
       <S.SubtitleWrapper>
         <h2>성인</h2>
-        <S.Question>?</S.Question>
+        <Tooltip />
       </S.SubtitleWrapper>
       <S.ControlWrapper>
-        <S.Button onClick={countDown}>-</S.Button>
+        <S.Button aria-label='성인 탑승자 한명 줄이기' onClick={countDown}>
+          -
+        </S.Button>
         <S.Count>{count}</S.Count>
-        <S.Button onClick={countUp}>+</S.Button>
+        <S.Button aria-label='성인 탑승자 한명 늘리기' onClick={countUp}>
+          +
+        </S.Button>
       </S.ControlWrapper>
     </S.PageWrapper>
   );
@@ -39,18 +44,10 @@ const S = {
     align-items: center;
   `,
   SubtitleWrapper: styled.div`
+    position: relative;
     display: flex;
     align-items: center;
     gap: 4px;
-  `,
-  Question: styled.span`
-    width: 20px;
-    height: 20px;
-    border: 1px solid #cbcbcb;
-    color: #cbcbcb;
-    border-radius: 50%;
-    text-align: center;
-    cursor: help;
   `,
   Button: styled.button`
     width: 30px;
