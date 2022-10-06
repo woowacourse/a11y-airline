@@ -48,14 +48,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const max = target.getAttribute('max');
     if (min !== null) {
       if (target.value < Number(min)) {
-        isPropertRange = false;
+        isProperRange = false;
         target.value = min;
         snackbarManager.show('인원수는 0명에서 3명까지만 가능합니다');
       }
     }
     if (max !== null) {
       if (target.value > Number(max)) {
-        isPropertRange = false;
+        isProperRange = false;
         snackbarManager.show('인원수는 0명에서 3명까지만 가능합니다');
         target.value = max;
       }
