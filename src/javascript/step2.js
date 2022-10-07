@@ -36,7 +36,7 @@ class Step2 {
   handleClickPrevButton = () => {
     this.currentIndex--;
 
-    if (this.currentIndex < 1) {
+    if (this.currentIndex < 2) {
       this.currentIndex = 1;
 
       this.moveSlide();
@@ -51,7 +51,7 @@ class Step2 {
   handleClickNextButton = () => {
     this.currentIndex++;
 
-    if (this.currentIndex > 7) {
+    if (this.currentIndex > 6) {
       this.currentIndex = 7;
 
       this.moveSlide();
