@@ -39,10 +39,8 @@ class Step2 {
     if (this.currentIndex < 1) {
       this.currentIndex = 1;
 
-      this.prevButton.setAttribute("aria-disabled", "true");
-      this.prevButton.setAttribute("aria-label", "이전 버튼 (사용 중지)");
       this.moveSlide();
-
+      this.disablePrevButton();
       return;
     }
 
@@ -56,10 +54,8 @@ class Step2 {
     if (this.currentIndex > 7) {
       this.currentIndex = 7;
 
-      this.nextButton.setAttribute("aria-disabled", "true");
-      this.nextButton.setAttribute("aria-label", "다음 버튼 (사용 중지)");
       this.moveSlide();
-
+      this.disableNextButton();
       return;
     }
 
@@ -86,6 +82,16 @@ class Step2 {
       this.nextButton.setAttribute("aria-disabled", "false");
       return;
     }
+  };
+
+  disablePrevButton = () => {
+    this.prevButton.setAttribute("aria-disabled", "true");
+    this.prevButton.setAttribute("aria-label", "이전 버튼 (사용 중지)");
+  };
+
+  disableNextButton = () => {
+    this.nextButton.setAttribute("aria-disabled", "true");
+    this.nextButton.setAttribute("aria-label", "다음 버튼 (사용 중지)");
   };
 
   moveSlide = () => {
