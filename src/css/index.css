@@ -134,6 +134,10 @@ body {
   background-color: #3c8316;
 }
 
+.carousel__header {
+  font-size: 1.5rem;
+}
+
 .carousel__wrap {
   display: flex;
   position: relative;

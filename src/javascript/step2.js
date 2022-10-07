@@ -23,7 +23,7 @@ class Step2 {
 
   template() {
     return `
-    <h1>지금 떠나기 좋은 여행</h1>
+    <h1 class="carousel__header">지금 떠나기 좋은 여행</h1>
       <div class="carousel__wrap">
         <section class="carousel" role="list">
           ${this.slideList.map((slide) => `${slide}`).join("")}
@@ -64,7 +64,13 @@ class Step2 {
   };
 
   handleAnchorFocus = (e) => {
-    console.log(e.target.dataset.id);
+    const focusedSlideId = e.target.dataset.id;
+
+    if (focusedSlideId === "1") {
+      this.currentIndex = 1;
+
+      return;
+    }
   };
 
   enableButton = (role) => {
