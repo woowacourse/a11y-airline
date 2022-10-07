@@ -34,7 +34,7 @@ const SpinButton = ({ label }: SpinButtonProps) => {
 
   const handleChangePassenger = (event: React.ChangeEvent) => {
     const target = event.target as HTMLInputElement;
-    const value = Number(target.value);
+    const value = target.valueAsNumber;
 
     if (value < PASSENGER.MIN) {
       alert(`승객은 최소 ${PASSENGER.MIN}명 이상이어야 합니다.`);
