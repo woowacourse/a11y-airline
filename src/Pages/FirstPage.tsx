@@ -105,15 +105,8 @@ const S = {
     gap: 10px;
   `,
   HiddenText: styled.div.attrs({ role: 'status', 'aria-live': 'assertive', 'aria-relevant': 'additions' })`
-    overflow: hidden;
-    white-space: nowrap;
-    clip-path: inset(50%);
     position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: 0;
-    padding: 0;
-    border: 0;
+    text-indent: -9999px;
   `,
 };
 
