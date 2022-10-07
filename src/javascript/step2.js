@@ -64,11 +64,41 @@ class Step2 {
   };
 
   handleAnchorFocus = (e) => {
-    const focusedSlideId = e.target.dataset.id;
+    this.currentIndex = e.target.dataset.id;
+    console.log(`curIndex: ${this.currentIndex}`);
 
-    if (focusedSlideId === "1") {
-      this.currentIndex = 1;
+    if (this.currentIndex === "1") {
+      this.moveSlide();
+      return;
+    }
 
+    if (this.currentIndex === "2") {
+      this.moveSlide();
+      return;
+    }
+
+    if (this.currentIndex === "3") {
+      this.moveSlide();
+      return;
+    }
+
+    if (this.currentIndex === "4") {
+      this.moveSlide();
+      return;
+    }
+
+    if (this.currentIndex === "5") {
+      this.moveSlide();
+      return;
+    }
+
+    if (this.currentIndex === "6") {
+      this.moveSlide();
+      return;
+    }
+
+    if (this.currentIndex === "7") {
+      this.moveSlide();
       return;
     }
   };
