@@ -53,7 +53,7 @@ const SpinButton = ({ label }: SpinButtonProps) => {
         {label}
       </label>
       <div className="question-icon" aria-labelledby="tool-tip">
-        <span aria-hidden="true">?</span>
+        <span aria-hidden>?</span>
       </div>
       <div
         className="tool-tip"
