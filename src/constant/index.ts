@@ -1,6 +1,6 @@
 export const PASSENGER = {
   MAX: 3,
-  MIN: 1,
+  MIN: 0,
 } as const;
 
 export const LABEL = {
