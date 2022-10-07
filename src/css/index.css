@@ -163,6 +163,7 @@ body {
   height: 350px;
   background-color: #fff;
   margin: 0 10px;
+  transition: linear 0.3s;
 }
 
 .next {
