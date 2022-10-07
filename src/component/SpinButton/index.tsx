@@ -48,7 +48,7 @@ const SpinButton = ({ label }: SpinButtonProps) => {
   };
 
   return (
-    <section className="spin-container">
+    <div className="spin-container">
       <label className="passenger-label" htmlFor="passenger-input">
         {label}
       </label>
@@ -89,7 +89,7 @@ const SpinButton = ({ label }: SpinButtonProps) => {
       <span className="result-message" role="status" aria-live="assertive">
         {resultMessage}
       </span>
-    </section>
+    </div>
   );
 };
 
