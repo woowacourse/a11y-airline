@@ -5,7 +5,7 @@ import { LABEL } from "./constant";
 function App() {
   return (
     <div className="App">
-      <h2>승객 선택</h2>
+      <h1>승객 선택</h1>
       <SpinButton label={LABEL.ADULT} />
     </div>
   );
