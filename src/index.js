@@ -7,6 +7,17 @@ const $ = (select) => document.querySelector(select);
 
 const passengerAmountInput = $("#passenger-amount-input");
 const inputStatus = $("#input-status");
+const tooltipContent = $(".tooltip-content");
+
+$(".tooltip").addEventListener("click", () => {
+  if (tooltipContent.classList.contains("sr-only")) {
+    tooltipContent.classList.remove("sr-only");
+    tooltipContent.ariaExpanded = "true";
+    return;
+  }
+  tooltipContent.classList.add("sr-only");
+  tooltipContent.ariaExpanded = "false";
+});
 
 passengerAmountInput.addEventListener("input", (e) => {
   const target = Number(e.target.value);
