@@ -41,7 +41,7 @@ export default function PassengerCounter({
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.valueAsNumber;
     if (value < minCount || value > maxCount) {
-      alert(`${minCount} ~ ${maxCount} 범위의 값을 입력해주세요`);
+      setDescription(`${minCount} ~ ${maxCount} 범위의 값을 입력해주세요`);
       setCount(INITIAL_COUNT);
       return;
     }
