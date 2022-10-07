@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>웹 접근성 미션</title>
+  </head>
+  <body>
+    <article>
+      <h1>승객 선택</h1>
+      <section>
+        <div class="title-container">
+          <h2>성인</h2>
+          <button
+            class="help-box-button"
+            type="button"
+            aria-haspopup="true"
+            aria-controls="help-box"
+            aria-expanded="false"
+          >
+            ?
+          </button>
+          <div
+            id="help-box"
+            role="dialog"
+            aria-atomic="true"
+            aria-live="assertive"
+            aria-relevant="additions"
+          >
+            <!--  -->
+          </div>
+        </div>
+        <div class="counter-container">
+          <button
+            type="button"
+            aria-label="성인 탑승자 1명 감소"
+            aria-atomic="true"
+            class="decrease-passenger-button counter-button disabled-button"
+          >
+            -
+            <span class="sr-only">성인 탑승자 1명 감소</span>
+          </button>
+          <input
+            id="adult-passenger-input"
+            type="tel"
+            value="0"
+            aria-valuemin="0"
+            aria-valuemax="3"
+            aria-live="assertive"
+            maxlength="1"
+          />
+          <span
+            aria-live="assertive"
+            aria-relevant="additions"
+            aria-atomic="true"
+            id="aria-adult"
+          >
+            <!--  -->
+          </span>
+          <button
+            class="add-passenger-button counter-button"
+            type="button"
+            aria-label="성인 탑승자 1명 감소"
+            aria-atomic="true"
+          >
+            +
+            <span class="sr-only">성인 탑승자 1명 증가</span>
+          </button>
+        </div>
+      </section>
+    </article>
+  </body>
+</html>
