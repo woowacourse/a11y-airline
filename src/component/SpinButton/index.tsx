@@ -71,8 +71,8 @@ const SpinButton = ({ label }: SpinButtonProps) => {
         </button>
         <input
           type="number"
-          min={1}
-          max={3}
+          min={PASSENGER.MIN}
+          max={PASSENGER.MAX}
           id="passenger-input"
           value={passenger}
           onChange={handleChangePassenger}
