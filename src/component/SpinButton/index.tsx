@@ -66,7 +66,7 @@ const SpinButton = ({ label }: SpinButtonProps) => {
         className="question-icon"
         role="tooltip"
         onClick={handleToolTipClick}
-        aria-labe={`${label} 승객 상세 안내`}
+        aria-label={`${label} 승객 상세 안내`}
       >
         <span aria-hidden>?</span>
       </button>
