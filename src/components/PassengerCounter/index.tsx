@@ -82,7 +82,7 @@ export default function PassengerCounter({
         </button>
         <label
           htmlFor={`${passengerType}-Count`}
-          aria-live="polite"
+          role="status"
           className="sr-only"
         >
           {description}
