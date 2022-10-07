@@ -12,9 +12,13 @@ class Step2 {
     this.prevButton = $(".prev");
     this.nextButton = $(".next");
     this.slides = $$(".slide");
+    this.slideLinks = $$(".slide__link");
 
     this.prevButton.addEventListener("click", this.handleClickPrevButton);
     this.nextButton.addEventListener("click", this.handleClickNextButton);
+    this.slideLinks.forEach((slideLink) =>
+      slideLink.addEventListener("focus", this.handleAnchorFocus)
+    );
   }
 
   template() {
@@ -85,6 +89,10 @@ class Step2 {
           this.SLIDE_SIZE * (this.currentIndex - 1)
         }px)`)
     );
+  };
+
+  handleAnchorFocus = (e) => {
+    console.log(e.target.dataset.id);
   };
 }
 

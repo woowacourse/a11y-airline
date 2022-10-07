@@ -1,81 +1,73 @@
 const slideList = [
   `
-  <article role="listitem" class="slide">
-    <a class="slide__link" href="https://github.com/jswith" target="_blank">
-        <h2>1번 여행지</h2>
-        <p>일반석 왕복</p>
-        <p class="price" aria-hidden="true">KRW 1,000,000 ~</p>
-        <p class="hidden">KRW 1,000,000</p>
+  <article role="listitem" class="slide slide-1">
+    <a class="slide__link" href="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=DXB&cabin=Y&tripType=RT&duration=7" target="_blank">
+      <p class="slide__location">서울/인천 <span aria-hidden="true">-</span> 두바이</p>
+      <p class="slide__seat">일반석 왕복</p>
+      <p class="slide__price">KRW 1,157,800 <span aria-hidden="true">~</span></p>
     </a>
   </article> 
 `,
   `
-<article role="listitem" class="slide">
-  <a class="slide__link" href="https://github.com/jswith" target="_blank" >
-      <h2>2번 여행지</h2>
-      <p>일반석 왕복</p>
-      <p class="price" aria-hidden="true">KRW 2,000,000 ~</p>
-      <p class="hidden">KRW 2,000,000</p>
+<article role="listitem" class="slide slide-2">
+  <a class="slide__link" href="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=FUK&cabin=Y&tripType=RT&duration=7" target="_blank" >
+    <p class="slide__location">서울/인천 <span aria-hidden="true">-</span> 후쿠오카</p>
+    <p class="slide__seat">일반석 왕복</p>
+    <p class="slide__price">KRW 340,400 <span aria-hidden="true">~</span></p>
   </a>
 </article> 
 `,
   `
-<article role="listitem" class="slide">
-  <a class="slide__link" href="https://github.com/jswith" targe="_blank" >
-      <h2>3번 여행지</h2>
-      <p>일반석 왕복</p>
-      <p class="price" aria-hidden="true">KRW 3,000,000 ~</p>
-      <p class="hidden">KRW 3,000,000</p>
+<article role="listitem" class="slide slide-3">
+  <a class="slide__link" href="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=HKT&cabin=Y&tripType=RT&duration=7" target="_blank" >
+    <p class="slide__location">서울/인천 <span aria-hidden="true">-</span> 푸껫</p>
+    <p class="slide__seat">일반석 왕복</p>
+    <p class="slide__price">KRW 704,200 <span aria-hidden="true">~</span></p>
   </a>
 </article> 
 `,
   `
-<article role="listitem" class="slide">
-  <a class="slide__link" href="https://github.com/jswith" targe="_blank" >
-      <h2>4번 여행지</h2>
-      <p>일반석 왕복</p>
-      <p class="price" aria-hidden="true">KRW 4,000,000 ~</p>
-      <p class="hidden">KRW 4,000,000</p>
+<article role="listitem" class="slide slide-4">
+  <a class="slide__link" href="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=CNX&cabin=Y&tripType=RT&duration=7" target="_blank" >
+    <p class="slide__location">서울/인천 <span aria-hidden="true">-</span> 치앙마이</p>
+    <p class="slide__seat">일반석 왕복</p>
+    <p class="slide__price">KRW 794,200 <span aria-hidden="true">~</span></p>
   </a>
 </article> 
 `,
   `
-<article role="listitem" class="slide">
-  <a class="slide__link" href="https://github.com/jswith" targe="_blank" >
-      <h2>5번 여행지</h2>
-      <p>일반석 왕복</p>
-      <p class="price" aria-hidden="true">KRW 5,000,000 ~</p>
-      <p class="hidden">KRW 5,000,000</p>
+<article role="listitem" class="slide slide-5">
+  <a class="slide__link" href="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=BCN&cabin=Y&tripType=RT&duration=7" target="_blank" >
+    <p class="slide__location">서울/인천 <span aria-hidden="true">-</span> 바르셀로나</p>
+    <p class="slide__seat">일반석 왕복</p>
+    <p class="slide__price">KRW 1,546,700 <span aria-hidden="true">~</span></p>
   </a>
 </article> 
 `,
   `
-<article role="listitem" class="slide">
-  <a class="slide__link" href="https://github.com/jswith" targe="_blank" >
-      <h2>6번 여행지</h2>
-      <p>일반석 왕복</p>
-      <p class="price" aria-hidden="true">KRW 6,000,000 ~</p>
-      <p class="hidden">KRW 6,000,000</p>
+<article role="listitem" class="slide slide-6">
+  <a class="slide__link" href="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=HAN&cabin=Y&tripType=RT&duration=7" target="_blank" >
+    <p class="slide__location">서울/인천 <span aria-hidden="true">-</span> 하노이</p>
+    <p class="slide__seat">일반석 왕복</p>
+    <p class="slide__price">KRW 527,200 <span aria-hidden="true">~</span></p>
   </a>
 </article> 
 `,
   `
-<article role="listitem" class="slide">
-  <a class="slide__link" href="https://github.com/jswith" targe="_blank" >
-      <h2>7번 여행지</h2>
-      <p>일반석 왕복</p>
-      <p class="price" aria-hidden="true">KRW 7,000,000 ~</p>
-      <p class="hidden">KRW 7,000,000</p>
+<article role="listitem" class="slide slide-7">
+  <a class="slide__link" href="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=FCO&cabin=Y&tripType=RT&duration=7" target="_blank" >
+    <p class="slide__location">서울/인천 <span aria-hidden="true">-</span> 로마/레오나르도 다빈치</p>
+    <p class="slide__seat">일반석 왕복</p>
+    <p class="slide__price">KRW 1,455,000 <span aria-hidden="true">~</span></p>
   </a>
 </article> 
 `,
   `
-<article role="listitem" class="slide">
-  <a class="slide__link" href="https://github.com/jswith" targe="_blank" >
-      <h2>8번 여행지</h2>
-      <p>일반석 왕복</p>
-      <p class="price" aria-hidden="true">KRW 8,000,000 ~</p>
-      <p class="hidden">KRW 8,000,000</p>
+<article role="listitem" class="slide slide-8">
+  <a class="slide__link" href="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=HNL&cabin=Y&tripType=RT&duration=7" target="_blank" >
+    <p class="slide__location">서울/인천 <span aria-hidden="true">-</span> 호놀룰루 (하와이)</p>
+    <p class="slide__seat">일반석 왕복</p>
+    <p class="slide__price">KRW 1,244,600 <span aria-hidden="true">~</span></p>
   </a>
 </article> 
 `,
