@@ -25,11 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (step !== -1 && step !== 1) return;
 
     const value = parseInt($adultPassengerSpinInput.valueAsNumber, 10);
+
     const nextValue = value + step;
     if (nextValue < 0 || nextValue > 3) {
       snackbarManager.show('인원수는 0명에서 3명까지만 가능합니다');
       return;
     }
+
     $adultPassengerSpinInput.value = Math.max(0, Math.min(MAX_RESERVABLE_ADULT_PASSENGER_COUNT, nextValue));
     $adultPassengerSpinAriaLiveMessage.textContent = `성인 승객 추가 ${$adultPassengerSpinInput.value}`;
     $adultPassengerSpinAriaLiveMessage.setAttribute('aria-live', 'assertive');

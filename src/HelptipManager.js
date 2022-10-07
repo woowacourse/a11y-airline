@@ -57,7 +57,7 @@ class HelptipManager {
   #hide() {
     this.#check();
     this.#helptipElement.classList.remove('show');
-    this.#helptipMessageElement.setAttribute('aria-live', 'off');
+    this.#helptipMessageElement.setAttribute('aria-live', 'polite');
   }
 
   #check() {
