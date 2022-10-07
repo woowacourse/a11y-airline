@@ -31,6 +31,10 @@ const FirstPage = () => {
     }
   };
 
+  const makeText = () => {
+    const text = `성인 승객이 ${count}으로 변경됐습니다`;
+    return text;
+  };
   return (
     <S.PageWrapper>
       <h1>승객 선택</h1>
@@ -54,7 +58,7 @@ const FirstPage = () => {
         <S.Button aria-label='성인 탑승자 한명 늘리기' onClick={countUp}>
           +
         </S.Button>
-        <S.HiddenText>{`성인 승객이 ${count} 으로 변경됐습니다`}</S.HiddenText>
+        <S.HiddenText>{makeText()}</S.HiddenText>
       </S.ControlWrapper>
     </S.PageWrapper>
   );
