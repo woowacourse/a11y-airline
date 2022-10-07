@@ -1,19 +1,19 @@
 .passenger-label {
+  display: inline;
   font-size: 16pt;
   font-weight: bold;
-  padding-bottom: 1rem;
 }
 
 .question-icon {
-  width: 18px;
-  height: 18px;
+  width: 25px;
+  height: 25px;
   border: 2px solid rgb(158, 158, 158);
   color: rgb(158, 158, 158);
   border-radius: 50%;
   font-weight: bold;
-  display: inline-block;
-  text-align: center;
   margin-left: 0.5rem;
+  cursor: pointer;
+  vertical-align: top;
 }
 
 .tool-tip {

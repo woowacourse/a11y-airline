@@ -37,7 +37,7 @@ const SpinButton = ({ label }: SpinButtonProps) => {
 
   const handleChangePassenger = (event: React.ChangeEvent) => {
     const target = event.target as HTMLInputElement;
-    let value = target.valueAsNumber;
+    const value = target.valueAsNumber;
 
     if (value < PASSENGER.MIN) {
       setErrorMessage(`선택할 수 있는 승객은 최대 ${PASSENGER.MAX}명입니다.`);
@@ -54,15 +54,23 @@ const SpinButton = ({ label }: SpinButtonProps) => {
     setErrorMessage("");
   };
 
+  const handleToolTipClick = () => {
+    setResultMessage(`${label} 승객을 선택합니다. 더하기 빼기 버튼을 이용해 승객을 증가, 감소
+    할 수 있습니다.`);
+  };
+
   return (
     <div className="spin-container">
-      <label className="passenger-label" htmlFor="passenger-input">
-        {label}
-      </label>
-      <div className="question-icon" aria-labelledby="tool-tip">
+      <h2 className="passenger-label">{label}</h2>
+      <button
+        className="question-icon"
+        role="tooltip"
+        onClick={handleToolTipClick}
+        aria-labe={`${label} 승객 상세 안내`}
+      >
         <span aria-hidden>?</span>
-      </div>
-      <div className="tool-tip" role="tooltip" id="tool-tip">
+      </button>
+      <div className="tool-tip">
         {label} 승객을 선택합니다. 더하기 빼기 버튼을 이용해 승객을 증가, 감소
         할 수 있습니다.
       </div>
