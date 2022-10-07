@@ -8,28 +8,31 @@ interface SpinButtonProps {
 
 const SpinButton = ({ label }: SpinButtonProps) => {
   const [passenger, setPassenger] = useState(1);
+  const [errorMessage, setErrorMessage] = useState("");
   const [resultMessage, setResultMessage] = useState("");
 
   const handleIncrease = () => {
     if (passenger === PASSENGER.MAX) {
-      alert(`선택할 수 있는 승객은 최대 ${PASSENGER.MAX}명입니다.`);
+      setErrorMessage(`선택할 수 있는 승객은 최대 ${PASSENGER.MAX}명입니다.`);
       return;
     }
     setPassenger((prev) => {
       setResultMessage(`${label} 승객 추가 ${prev + 1}`);
       return prev + 1;
     });
+    setErrorMessage("");
   };
 
   const handleDecrease = () => {
     if (passenger === PASSENGER.MIN) {
-      alert(`승객은 최소 ${PASSENGER.MIN}명 이상이어야 합니다.`);
+      setErrorMessage(`승객은 최소 ${PASSENGER.MIN}명 이상이어야 합니다.`);
       return;
     }
     setPassenger((prev) => {
       setResultMessage(`${label} 승객 제거 ${prev - 1}`);
       return prev - 1;
     });
+    setErrorMessage("");
   };
 
   const handleChangePassenger = (event: React.ChangeEvent) => {
@@ -37,14 +40,15 @@ const SpinButton = ({ label }: SpinButtonProps) => {
     const value = target.valueAsNumber;
 
     if (value < PASSENGER.MIN) {
-      alert(`승객은 최소 ${PASSENGER.MIN}명 이상이어야 합니다.`);
+      setErrorMessage(`선택할 수 있는 승객은 최대 ${PASSENGER.MAX}명입니다.`);
       return;
     }
     if (value > PASSENGER.MAX) {
-      alert(`선택할 수 있는 승객은 최대 ${PASSENGER.MAX}명입니다.`);
+      setErrorMessage(`승객은 최소 ${PASSENGER.MIN}명 이상이어야 합니다.`);
       return;
     }
     setPassenger(value);
+    setErrorMessage("");
   };
 
   return (
@@ -85,6 +89,9 @@ const SpinButton = ({ label }: SpinButtonProps) => {
         >
           ➕
         </button>
+      </div>
+      <div role="alert" className="error-message">
+        {errorMessage}
       </div>
       <span className="result-message" role="status" aria-live="assertive">
         {resultMessage}

@@ -52,6 +52,11 @@
   max-width: 30px;
 }
 
+.error-message {
+  margin-top: 1rem;
+  color: red;
+}
+
 .result-message {
   opacity: 0;
 }
