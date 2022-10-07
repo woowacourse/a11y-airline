@@ -8,7 +8,7 @@ module.exports = {
   mode: 'development',
   entry: join(__dirname, '../src/main.js'),
   output: {
-    filename: 'main.js',
+    filename: 'main-[contenthash].js',
     path: join(__dirname, '../dist'),
     publicPath: '/',
   },
