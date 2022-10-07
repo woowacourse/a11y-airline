@@ -37,7 +37,7 @@ const SpinButton = ({ label }: SpinButtonProps) => {
 
   const handleChangePassenger = (event: React.ChangeEvent) => {
     const target = event.target as HTMLInputElement;
-    const value = target.valueAsNumber;
+    let value = target.valueAsNumber;
 
     if (value < PASSENGER.MIN) {
       setErrorMessage(`선택할 수 있는 승객은 최대 ${PASSENGER.MAX}명입니다.`);
@@ -48,6 +48,9 @@ const SpinButton = ({ label }: SpinButtonProps) => {
       return;
     }
     setPassenger(value);
+    if (!isNaN(value)) {
+      setResultMessage(`${label} ${value} 텍스트 숫자만 수정`);
+    }
     setErrorMessage("");
   };
 
