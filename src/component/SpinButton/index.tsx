@@ -22,7 +22,7 @@ const SpinButton = ({ label }: SpinButtonProps) => {
   };
 
   const handleDecrease = () => {
-    if (Number(passenger) === PASSENGER.MIN) {
+    if (passenger === PASSENGER.MIN) {
       alert(`승객은 최소 ${PASSENGER.MIN}명 이상이어야 합니다.`);
       return;
     }
