@@ -3,7 +3,7 @@ const selectPeopleOutput = document.getElementById("select-people-output");
 const selectPeopleInput = document.getElementById("select-people-input");
 const selectPeopleOutputLive = document.getElementById("select-people-output-live");
 
-const updateSelectPeopleForm = () => {
+const { updateSelectPeopleForm } = (() => {
   const selectPeopleMemo = {
     prevSelectPeople: 1,
   };
@@ -19,7 +19,7 @@ const updateSelectPeopleForm = () => {
       selectPeopleMemo.prevSelectPeople = nextValue;
     },
   };
-};
+})();
 
 const showInput = () => {
   selectPeopleInput.classList.remove("hidden");
