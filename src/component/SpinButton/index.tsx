@@ -55,11 +55,10 @@ const SpinButton = ({ label }: SpinButtonProps) => {
       <div className="question-icon" aria-labelledby="tool-tip">
         <span aria-hidden>?</span>
       </div>
-      <div
-        className="tool-tip"
-        role="tooltip"
-        id="tool-tip"
-      >{`${label} 승객을 선택합니다. 더하기 빼기 버튼을 이용해 승객을 증가, 감소 할 수 있습니다.`}</div>
+      <div className="tool-tip" role="tooltip" id="tool-tip">
+        {label} 승객을 선택합니다. 더하기 빼기 버튼을 이용해 승객을 증가, 감소
+        할 수 있습니다.
+      </div>
 
       <div>
         <button
