@@ -217,6 +217,11 @@ a:visited {
   box-shadow: -10px 0px 10px -10px #000;
 }
 
+.slide__link:hover,
+:focus {
+  border: 2px solid #11277b;
+}
+
 .slide-1 {
   background: url("https://www.koreanair.com/content/dam/koreanair/ko/airport-img/DXB-list-pc.jpg");
   background-repeat: no-repeat;
