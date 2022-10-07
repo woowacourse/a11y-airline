@@ -44,7 +44,7 @@ class Step2 {
       return;
     }
 
-    this.enableButton("prev");
+    this.enableButton("next");
     this.moveSlide();
   };
 
@@ -59,62 +59,54 @@ class Step2 {
       return;
     }
 
-    this.enableButton("next");
+    this.enableButton("prev");
     this.moveSlide();
   };
 
   handleAnchorFocus = (e) => {
     this.currentIndex = e.target.dataset.id;
     console.log(`curIndex: ${this.currentIndex}`);
+    if (this.currentIndex === "8") return;
 
     if (this.currentIndex === "1") {
       this.moveSlide();
+      this.disablePrevButton();
       return;
     }
 
     if (this.currentIndex === "2") {
       this.moveSlide();
-      return;
-    }
-
-    if (this.currentIndex === "3") {
-      this.moveSlide();
-      return;
-    }
-
-    if (this.currentIndex === "4") {
-      this.moveSlide();
-      return;
-    }
-
-    if (this.currentIndex === "5") {
-      this.moveSlide();
+      this.enableButton("prev");
       return;
     }
 
     if (this.currentIndex === "6") {
       this.moveSlide();
+      this.enableButton("next");
       return;
     }
 
     if (this.currentIndex === "7") {
       this.moveSlide();
+      this.disableNextButton();
       return;
     }
+
+    this.moveSlide();
   };
 
   enableButton = (role) => {
-    if (!(role === "next" || role === "prev")) return;
-
     this.prevButton.setAttribute("aria-label", "이전 버튼");
     this.nextButton.setAttribute("aria-label", "다음 버튼");
 
-    if (role === "next") {
+    if (!(role === "next" || role === "prev")) return;
+
+    if (role === "prev") {
       this.prevButton.setAttribute("aria-disabled", "false");
       return;
     }
 
-    if (role === "prev") {
+    if (role === "next") {
       this.nextButton.setAttribute("aria-disabled", "false");
       return;
     }
