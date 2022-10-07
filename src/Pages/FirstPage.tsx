@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import Tooltip from './../components/Tooltip';
+import Tooltip from '../components/Tooltip';
 
 const FirstPage = () => {
   const [count, setCount] = useState<number>(1);
@@ -54,9 +54,7 @@ const FirstPage = () => {
         <S.Button aria-label='성인 탑승자 한명 늘리기' onClick={countUp}>
           +
         </S.Button>
-        <S.HiddenText role='status' aria-live='assertive' aria-relevant='additions'>
-          {`성인 승객이 ${count} 으로 변경됐습니다`}
-        </S.HiddenText>
+        <S.HiddenText>{`성인 승객이 ${count} 으로 변경됐습니다`}</S.HiddenText>
       </S.ControlWrapper>
     </S.PageWrapper>
   );
@@ -106,7 +104,7 @@ const S = {
     align-items: center;
     gap: 10px;
   `,
-  HiddenText: styled.div`
+  HiddenText: styled.div.attrs({ role: 'status', 'aria-live': 'assertive', 'aria-relevant': 'additions' })`
     overflow: hidden;
     white-space: nowrap;
     clip-path: inset(50%);

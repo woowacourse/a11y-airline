@@ -26,6 +26,7 @@ module.exports = {
   },
   output: {
     filename: 'bundle[hash].js',
+    clean: true,
     path: path.resolve(__dirname, 'dist'),
   },
   mode: 'production',
