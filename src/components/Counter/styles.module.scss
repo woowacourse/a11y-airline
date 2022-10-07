@@ -7,11 +7,11 @@
   .input {
     text-align: center;
     appearance: textfield;
-    height: 150%;
     font-size: 1.2rem;
     font-weight: bold;
     border: none;
     border-bottom: 1px solid #ddd;
+    padding: 1rem;
 
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
