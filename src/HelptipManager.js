@@ -51,13 +51,13 @@ class HelptipManager {
   #show() {
     this.#check();
     this.#helptipElement.classList.add('show');
-    this.#helptipMessageElement.setAttribute('aria-live', 'assertive');
+    // this.#helptipMessageElement.setAttribute('aria-live', 'assertive');
   }
 
   #hide() {
     this.#check();
     this.#helptipElement.classList.remove('show');
-    this.#helptipMessageElement.setAttribute('aria-live', 'polite');
+    // this.#helptipMessageElement.setAttribute('aria-live', 'polite');
   }
 
   #check() {

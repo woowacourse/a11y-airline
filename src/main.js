@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $adultPassengerSpinInput.value = Math.max(0, Math.min(MAX_RESERVABLE_ADULT_PASSENGER_COUNT, nextValue));
     $adultPassengerSpinAriaLiveMessage.textContent = `성인 승객 추가 ${$adultPassengerSpinInput.value}`;
-    $adultPassengerSpinAriaLiveMessage.setAttribute('aria-live', 'assertive');
+    // $adultPassengerSpinAriaLiveMessage.setAttribute('aria-live', 'assertive');
   });
 
   $adultPassengerSpinInput.addEventListener('input', e => {
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (isProperRange) {
       $adultPassengerSpinAriaLiveMessage.textContent = `성인 승객 추가 ${target.value}`;
-      $adultPassengerSpinAriaLiveMessage.setAttribute('aria-live', 'assertive');
+      // $adultPassengerSpinAriaLiveMessage.setAttribute('aria-live', 'assertive');
     }
   });
 });
