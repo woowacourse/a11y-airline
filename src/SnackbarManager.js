@@ -30,7 +30,7 @@ class SnackbarManager {
 
   hide() {
     this.#check();
-    this.#element.setAttribute('aria-live', 'polite');
+    this.#element.setAttribute('aria-live', 'off');
     this.#element.classList.remove('show');
   }
 }
