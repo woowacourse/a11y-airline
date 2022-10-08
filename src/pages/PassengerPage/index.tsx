@@ -56,21 +56,11 @@ const PassengerPage = () => {
           <Tooltip description='이미 성년이 된 사람. 보통, 만 20세 이상의 남녀를 말한다.' />
         </div>
         <div className='counter'>
-          <Button
-            onClick={handleMinusClick}
-            role='button'
-            aria-label='성인 탑승자 한명 줄이기'
-            aria-controls='count'>
+          <Button onClick={handleMinusClick} aria-label='성인 탑승자 한명 줄이기'>
             ➖
           </Button>
-          <input
-            id='count'
-            className='number'
-            type='number'
-            value={count}
-            onChange={handleCountChange}
-          />
-          <Button onClick={handlePlusClick} role='button' aria-label='성인 탑승자 한명 늘리기'>
+          <input className='number' type='number' value={count} onChange={handleCountChange} />
+          <Button onClick={handlePlusClick} aria-label='성인 탑승자 한명 늘리기'>
             ➕
           </Button>
         </div>
