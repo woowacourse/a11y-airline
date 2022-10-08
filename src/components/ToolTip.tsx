@@ -20,7 +20,7 @@ const ToolTip = ({
       <ToolTipButton
         onClick={toggleToolTip}
         type="button"
-        aria-expanded="false"
+        aria-expanded={isOpenToolTip}
         aria-label={ariaLabel}
       >
         {icon}
