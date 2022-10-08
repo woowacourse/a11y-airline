@@ -20,13 +20,13 @@ function usePassengerSelect() {
   const handleChangeAdultCount = ({
     target,
   }: ChangeEvent<HTMLInputElement>) => {
-    if (target.value === '') {
+    const value = target.valueAsNumber;
+
+    if (isNaN(value)) {
       setAdultCount('');
 
       return;
     }
-
-    const value = Number(target.value);
 
     if (value < PASSENGER.ADULT.MIN_COUNT) {
       alert(MESSAGE.ERROR.LESS_THAN_MIN_ADULT_COUNT);
