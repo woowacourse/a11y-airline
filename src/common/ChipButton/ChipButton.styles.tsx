@@ -29,6 +29,6 @@ export const Message = styled.div((props: { isOpen: boolean }) => ({
 	wordBreak: 'break-all',
 	position: 'absolute',
 	width: '27vw',
-	top: 0,
-	left: '51px',
+	top: '-50px',
+	left: '70px',
 }));
