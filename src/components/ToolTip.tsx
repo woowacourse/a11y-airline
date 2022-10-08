@@ -26,7 +26,7 @@ const ToolTip = ({
       >
         {icon}
       </ToolTipButton>
-      <HelpToggleMessage hidden={!isOpenToolTip}>
+      <HelpToggleMessage role="dialog" hidden={!isOpenToolTip}>
         <span role="tooltip" id="tooltip-label">
           {message}
         </span>
