@@ -64,7 +64,7 @@ const DialogPassenger = () => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
 `;
