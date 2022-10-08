@@ -15,6 +15,7 @@ const DialogPassenger = () => {
     handleChangeInput,
     value,
     message,
+    alertMessage,
   } = useDialogPassenger();
 
   return (
@@ -44,7 +45,10 @@ const DialogPassenger = () => {
             onChange={handleChangeInput}
             value={value}
             id="adultCount"
-            type="number"
+            type="tel"
+            maxLength={1}
+            max={MAX_VALUE}
+            min={MIN_VALUE}
           />
           <ControlButton
             onClick={handleClickIncrease}
@@ -53,7 +57,8 @@ const DialogPassenger = () => {
             value="+"
           />
         </ControlWrapper>
-        <HiddenMessage aria-live="assertive">{message}</HiddenMessage>
+        <ScreenReaderOnlyMessage aria-live="assertive">{message}</ScreenReaderOnlyMessage>
+        {alertMessage !== '' && <AlertMessage role="alert">{alertMessage}</AlertMessage>}
       </Wrapper>
     </main>
   );
@@ -92,7 +97,7 @@ const Input = styled.input`
   text-align: center;
 `;
 
-const HiddenMessage = styled.span`
+const ScreenReaderOnlyMessage = styled.span`
   position: absolute;
   width: 1px;
   height: 1px;
@@ -101,6 +106,10 @@ const HiddenMessage = styled.span`
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
   z-index: -1;
+`;
+
+const AlertMessage = styled.span`
+  color: red;
 `;
 
 export default DialogPassenger;
