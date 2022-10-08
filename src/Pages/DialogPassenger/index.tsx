@@ -19,11 +19,11 @@ const DialogPassenger = () => {
 
   return (
     <main>
-      <h2>승객 선택</h2>
+      <h1>승객 선택</h1>
       <Wrapper>
         <LabelWrapper>
           <Label htmlFor="adultCount">
-            <span>성인</span>
+            <h2>성인</h2>
           </Label>
           <ToolTip
             icon="?"
