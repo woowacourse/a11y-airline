@@ -1,5 +1,5 @@
 import './styles/App.css';
-import { PASSENGER } from './constants';
+import { MESSAGE } from './constants';
 import usePassengerSelect from './hooks/usePassengerSelect';
 
 function App() {
@@ -24,9 +24,7 @@ function App() {
         >
           ?
           <span id='passenger-select-tooltip-text' role='tooltip'>
-            성인은 탑승일 기준 만 18세 이상에 적용되며,&nbsp;
-            {PASSENGER.ADULT.MIN_COUNT}~{PASSENGER.ADULT.MAX_COUNT}명 탑승할 수
-            있습니다.
+            {MESSAGE.TOOLTIP.ADULT_PASSENGER_SELECT}
           </span>
         </div>
       </div>
