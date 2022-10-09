@@ -2,14 +2,65 @@ li {
   list-style: none;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+button {
+  padding: 0;
+}
+
+ul {
+  padding: 0;
+}
+
 .carousel-list {
   display: flex;
-  width: 1310px;
   overflow: hidden;
+
+  width: 1310px;
   gap: 40px;
 }
 
 .carousel-image {
   width: 230px;
   height: 295px;
+}
+
+.arrow-button-list {
+  position: absolute;
+  width: 1310px;
+  height: 60px;
+  bottom: calc((100% - 9rem) / 2);
+  left: 0;
+}
+
+.prev-arrow-button {
+  position: absolute;
+  left: 0;
+  background: url("https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-left.svg")
+    no-repeat left top;
+  background-size: 30px 60px;
+  width: 3rem;
+  height: 6rem;
+  transform: translateY(-50%);
+  border: 0;
+  cursor: pointer;
+}
+
+.next-arrow-button {
+  position: absolute;
+  right: 0;
+  background: url("https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-right.svg")
+    no-repeat right top;
+  background-size: 30px 60px;
+  width: 3rem;
+  height: 6rem;
+  transform: translateY(-50%);
+  border: 0;
+  cursor: pointer;
+}
+
+.carousel-container {
+  position: relative;
 }
