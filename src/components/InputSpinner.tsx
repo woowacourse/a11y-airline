@@ -25,7 +25,10 @@ function InputSpinner({
   const [ariaLiveText, setAriaLiveText] = useState("");
 
   const handleClickSub: React.MouseEventHandler<HTMLButtonElement> = () => {
-    if (value - step < min) return;
+    if (value - step < min) {
+      alert("최소값에 도달하여 사용할 수 없음");
+      return;
+    }
     setValue((value) => {
       setAriaLiveText(`${labelText} 감소 ${value - step}`);
       return value - step;
@@ -33,7 +36,10 @@ function InputSpinner({
   };
 
   const handleClickAdd: React.MouseEventHandler<HTMLButtonElement> = () => {
-    if (value + step > max) return;
+    if (value + step > max) {
+      alert("최대값에 도달하여 사용할 수 없음");
+      return;
+    }
     setValue((value) => {
       setAriaLiveText(`${labelText} 추가 ${value + step}`);
       return value + step;
@@ -63,7 +69,7 @@ function InputSpinner({
       >
         {addButtonText}
       </button>
-      <div className="sr-only" aria-live="polite">
+      <div className="sr-only" role="status">
         {ariaLiveText}
       </div>
     </div>
