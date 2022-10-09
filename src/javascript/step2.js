@@ -65,7 +65,6 @@ class Step2 {
 
   handleAnchorFocus = (e) => {
     this.currentIndex = e.target.dataset.id;
-    console.log(`curIndex: ${this.currentIndex}`);
     if (this.currentIndex === "8") return;
 
     if (this.currentIndex === "1") {
@@ -96,10 +95,10 @@ class Step2 {
   };
 
   enableButton = (role) => {
+    if (!(role === "next" || role === "prev")) return;
+
     this.prevButton.setAttribute("aria-label", "이전 버튼");
     this.nextButton.setAttribute("aria-label", "다음 버튼");
-
-    if (!(role === "next" || role === "prev")) return;
 
     if (role === "prev") {
       this.prevButton.setAttribute("aria-disabled", "false");
