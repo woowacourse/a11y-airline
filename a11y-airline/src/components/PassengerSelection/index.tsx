@@ -52,7 +52,7 @@ export const PassengerSelection = () => {
         </HelpButton>
         {show && (
           <FlexBox gap="5px" alignItems="center">
-            <p id="help_button_desc" aria-relevant="additions">
+            <p id="help_button_desc">
               국제선 만 12세 이상, 국내선 만 13세 이상
             </p>
             <CloseButton onClick={handleHelpButton} aria-label="닫기">
