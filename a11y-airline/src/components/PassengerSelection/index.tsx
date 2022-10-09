@@ -31,7 +31,7 @@ export const PassengerSelection = () => {
     event
   ) => {
     const inputValue = Number(event.target.value);
-    if (inputValue > MAX_PASSENGER) {
+    if (inputValue > MAX_PASSENGER || inputValue < MIN_PASSENGER) {
       return;
     }
     setPassenger(inputValue);
