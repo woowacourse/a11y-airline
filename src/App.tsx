@@ -1,6 +1,7 @@
 import React from "react";
-import "./App.css";
-import PassengerController from "./PassengerController";
+import "./style/App.css";
+
+import PassengerController from "./components/PassengerController";
 
 function App() {
   return (

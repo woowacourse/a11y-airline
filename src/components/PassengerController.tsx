@@ -1,6 +1,7 @@
-import { PASSENGER_COUNT_ID } from "./constants";
 import InputSpinner from "./InputSpinner";
 import Tooltip from "./Tooltip";
+
+import { PASSENGER_COUNT_ID } from "../constants";
 
 export type PassengerType = "성인";
 

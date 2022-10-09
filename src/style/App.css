@@ -31,7 +31,7 @@
   width: 2.25rem;
   height: 2.25rem;
   background-size: 24px 24px;
-  background: url(./images/ico-opener.svg) no-repeat 50% 50%;
+  background: url(../images/ico-opener.svg) no-repeat 50% 50%;
 
   font-size: 0;
 }
@@ -71,13 +71,13 @@
 
 .passenger__control-sub {
   left: 0;
-  background: url(./images/passenger__control-sub.svg) 50% 50%/32px 32px
+  background: url(../images/passenger__control-sub.svg) 50% 50%/32px 32px
     no-repeat;
 }
 
 .passenger__control-add {
   right: 0;
-  background: url(./images/passenger__control-add.svg) 50% 50%/32px 32px
+  background: url(../images/passenger__control-add.svg) 50% 50%/32px 32px
     no-repeat;
 }
 
