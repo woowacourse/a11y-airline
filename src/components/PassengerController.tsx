@@ -31,9 +31,7 @@ function PassengerController({
           {passengerType}
         </label>
         <Tooltip title={PASSENGER_STANDARD_DETAIL[passengerType]}>
-          <button className="question-mark-button">
-            {`${passengerType} 기준 상세 안내`}
-          </button>
+          {`${passengerType} 기준 상세 안내`}
         </Tooltip>
       </div>
       <InputSpinner

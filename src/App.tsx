@@ -5,7 +5,7 @@ import PassengerController from "./components/PassengerController";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" tabIndex={0}>
       <h2>승객 선택</h2>
       <PassengerController
         passengerType="성인"

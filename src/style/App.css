@@ -16,6 +16,7 @@
 }
 
 .passenger__controller-label-container {
+  position: relative;
   display: flex;
 }
 
@@ -34,6 +35,8 @@
   background: url(../images/ico-opener.svg) no-repeat 50% 50%;
 
   font-size: 0;
+
+  cursor: pointer;
 }
 
 .input-spinner-container {
@@ -81,9 +84,11 @@
     no-repeat;
 }
 
-.tooltip {
+.tooltip-content {
   display: none;
   position: absolute;
+  top: 2.25rem;
+  left: 1rem;
 
   padding: 0.5rem;
   border: 1px solid gray;
@@ -92,8 +97,19 @@
   background-color: white;
 }
 
-.tooltip-trigger:hover .tooltip {
-  display: block;
+.tooltip-trigger[aria-expanded="true"] + .tooltip .tooltip-content {
+  display: flex;
+  align-items: center;
+}
+
+.tooltip__close {
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-left: 1rem;
+
+  background: url(../images/tooltip__close.svg) no-repeat 50% 50%;
+  font-size: 0;
+  cursor: pointer;
 }
 
 .sr-only {
