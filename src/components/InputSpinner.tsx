@@ -41,23 +41,23 @@ function InputSpinner({
   };
 
   return (
-    <div className="passenger__control">
+    <div className="input-spinner-container">
       <button
-        className="passenger__control-sub"
+        className="input-spinner-sub"
         onClick={handleClickSub}
         aria-disabled={value - step < min}
       >
         {subButtonText}
       </button>
       <input
-        className="passenger__control-input"
+        className="input-spinner-input"
         type="tel"
         value={value}
         id={inputId}
         readOnly
       />
       <button
-        className="passenger__control-add"
+        className="input-spinner-add"
         onClick={handleClickAdd}
         aria-disabled={value + step > max}
       >

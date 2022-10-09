@@ -36,13 +36,13 @@
   font-size: 0;
 }
 
-.passenger__control {
+.input-spinner-container {
   display: flex;
   align-items: center;
   gap: 14px;
 }
 
-.passenger__control-input {
+.input-spinner-input {
   width: 3rem;
   height: 3rem;
 
@@ -56,26 +56,26 @@
   font-weight: 700;
 }
 
-.passenger__control-sub,
-.passenger__control-add {
+.input-spinner-sub,
+.input-spinner-add {
   width: 2.75rem;
   height: 2.75rem;
 
   font-size: 0;
 }
 
-.passenger__control-sub[aria-disabled="true"],
-.passenger__control-add[aria-disabled="true"] {
+.input-spinner-sub[aria-disabled="true"],
+.input-spinner-add[aria-disabled="true"] {
   cursor: not-allowed;
 }
 
-.passenger__control-sub {
+.input-spinner-sub {
   left: 0;
   background: url(../images/passenger__control-sub.svg) 50% 50%/32px 32px
     no-repeat;
 }
 
-.passenger__control-add {
+.input-spinner-add {
   right: 0;
   background: url(../images/passenger__control-add.svg) 50% 50%/32px 32px
     no-repeat;
