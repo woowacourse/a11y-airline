@@ -1,0 +1,43 @@
+.tooltip {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 2px solid lightgray;
+  text-align: center;
+  color: gray;
+  background-color: white;
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.tooltip-mark {
+  font-size: 20px;
+}
+
+.tooltip .description {
+  visibility: hidden;
+  min-width: max-content;
+  background-color: gray;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 4px;
+
+  position: absolute;
+  left: 150%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.tooltip .description::after {
+  content: '';
+  position: absolute;
+}
+
+.tooltip:hover .description {
+  visibility: visible;
+}
