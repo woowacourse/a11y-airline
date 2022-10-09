@@ -1,6 +1,6 @@
 import { FlexBox } from "components";
 import { ChangeEventHandler, useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const MIN_PASSENGER = 1;
 const MAX_PASSENGER = 3;
@@ -66,6 +66,7 @@ export const PassengerSelection = () => {
           aria-disabled={passenger <= MIN_PASSENGER}
           onClick={handleDecreasePassenger}
           aria-label="성인 탑승자 한명 줄이기"
+          isDisabled={passenger <= MIN_PASSENGER}
         >
           <p aria-hidden="true">-</p>
         </ControlButton>
@@ -81,6 +82,7 @@ export const PassengerSelection = () => {
           aria-disabled={passenger >= MAX_PASSENGER}
           onClick={handleIncreasePassenger}
           aria-label="성인 탑승자 한명 늘리기"
+          isDisabled={passenger >= MAX_PASSENGER}
         >
           <p aria-hidden="true">+</p>
         </ControlButton>
@@ -108,14 +110,27 @@ const HelpButton = styled.button.attrs({
   text-align: center;
 `;
 
+type ControlButtonProps = {
+  isDisabled: boolean;
+};
+
 const ControlButton = styled.button.attrs({
   type: "button",
-})`
-  width: 1rem;
-  height: 1rem;
-  border: 0.5px solid lightgray;
-  border-radius: 50%;
-  text-align: center;
+})<ControlButtonProps>`
+  ${({ isDisabled }) => css`
+    width: 1rem;
+    height: 1rem;
+    border: 0.5px solid lightgray;
+    border-radius: 50%;
+    text-align: center;
+
+    ${isDisabled &&
+    css`
+      cursor: not-allowed;
+      background-color: lightgray;
+      color: gray;
+    `}
+  `}
 `;
 
 const Passenger = styled.input`
