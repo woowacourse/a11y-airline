@@ -23,7 +23,7 @@ class Counter extends Observer {
     this.notify();
   }
 
-  setCounter(input: number): void {
+  setValue(input: number): void {
     if (input > COUNTER.MAXIMUM_PASSENGER) {
       this.#value = 3;
     }

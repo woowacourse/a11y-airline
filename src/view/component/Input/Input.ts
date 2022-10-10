@@ -72,7 +72,7 @@ export default class Input extends Component {
 
     if (event.keyCode < 48 || event.keyCode > 57) {
       try {
-        counterStore.setCounter(Number(this.#valueAfterKeyDown));
+        counterStore.setValue(Number(this.#valueAfterKeyDown));
       } catch ({ message }) {
         alert(message);
       }
@@ -86,12 +86,12 @@ export default class Input extends Component {
         REGEXP.NOT_NUMBER_IN_NUMBER_INPUT.test(this.#keyOnKeyDown) &&
         this.#keyOnKeyDown.length === 1
       ) {
-        counterStore.setCounter(Math.floor(Number(this.#valueAfterKeyDown)));
+        counterStore.setValue(Math.floor(Number(this.#valueAfterKeyDown)));
         return;
       }
 
       if (target.value[0] === '0') {
-        counterStore.setCounter(Number(target.value));
+        counterStore.setValue(Number(target.value));
       }
 
       const number = Number(target.value);
@@ -99,7 +99,7 @@ export default class Input extends Component {
         target.value = Math.floor(number).toString();
       }
 
-      counterStore.setCounter(Number(target.value));
+      counterStore.setValue(Number(target.value));
     } catch ({ message }) {
       alert(message);
     }
