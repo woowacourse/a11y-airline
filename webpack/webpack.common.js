@@ -34,13 +34,13 @@ module.exports = {
       meta: {
         description: {
           name: 'description',
-          contnet: '편안하게 모시겠습니다 - 병민항공 -',
+          content: '편안하게 모시겠습니다 - 병민항공 -',
         },
         'og:title': { property: 'og:title', content: '병민항공' },
         'og:type': { property: 'og:type', content: 'website' },
         'og:description': {
           name: 'og:description',
-          contnet: '편안하게 모시겠습니다 - 병민항공 -',
+          content: '편안하게 모시겠습니다 - 병민항공 -',
         },
         'og:url': { property: 'og:url', content: '' },
         'og:image': {
