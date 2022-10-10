@@ -1,29 +1,32 @@
 import "../css/carousel.css";
 
+const MAX_CAROUSEL_VIEW = 5;
+
 const $prevArrowButton = document.querySelector(
   ".prev-arrow-button"
 ) as HTMLButtonElement;
 const $nextArrowButton = document.querySelector(
   ".next-arrow-button"
 ) as HTMLButtonElement;
-const $carouselList = document.querySelector(
-  ".carousel-list"
-) as HTMLUListElement;
-
+const $carouselList = document.querySelectorAll(".carousel-list");
+const $carouselAnchorList = document.querySelectorAll(".carousel-anchor");
 let currentCarouselIndex = 0;
+let prevId = 0;
 
 const animateCarousel = (currentCarouselIndex: number) => {
-  $carouselList.animate(
-    [{ transform: `translateX(calc((-270px) * ${currentCarouselIndex}))` }],
-    {
-      // timing options
-      duration: 200,
-      fill: "forwards",
-    }
-  );
+  $carouselList.forEach((carousel) => {
+    carousel.animate(
+      [{ transform: `translateX(calc((-270px) * ${currentCarouselIndex}))` }],
+      {
+        // timing options
+        duration: 100,
+        fill: "forwards",
+      }
+    );
+  });
 };
 
-$prevArrowButton.addEventListener("click", () => {
+const prevSlide = () => {
   if (currentCarouselIndex === 0) {
     $prevArrowButton.setAttribute("aria-disabled", "true");
     return;
@@ -32,9 +35,9 @@ $prevArrowButton.addEventListener("click", () => {
 
   currentCarouselIndex -= 1;
   animateCarousel(currentCarouselIndex);
-});
+};
 
-$nextArrowButton.addEventListener("click", () => {
+const nextSlide = () => {
   if (currentCarouselIndex === 3) {
     $nextArrowButton.setAttribute("aria-disabled", "true");
     return;
@@ -43,4 +46,26 @@ $nextArrowButton.addEventListener("click", () => {
 
   currentCarouselIndex += 1;
   animateCarousel(currentCarouselIndex);
+};
+
+$prevArrowButton.addEventListener("click", prevSlide);
+
+$nextArrowButton.addEventListener("click", nextSlide);
+
+$carouselAnchorList.forEach((carousel) => {
+  (carousel as HTMLAnchorElement).addEventListener("focus", (e) => {
+    const currentId = Number(
+      (carousel as HTMLAnchorElement).closest("li")?.dataset.id
+    );
+
+    if (currentId >= 4 && prevId < currentId) {
+      nextSlide();
+    }
+
+    if (currentId <= 3 && prevId > currentId) {
+      prevSlide();
+    }
+
+    prevId = currentId;
+  });
 });
