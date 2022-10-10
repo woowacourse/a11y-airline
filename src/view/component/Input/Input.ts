@@ -24,7 +24,7 @@ export default class Input extends Component {
 
     this.#input = document.createElement('input');
     this.#input.type = 'text';
-    this.#input.value = counterStore.number.toString();
+    this.#input.value = counterStore.value.toString();
     this.#input.min = `${COUNTER.MINIMUM_PASSENGER}`;
     this.#input.max = `${COUNTER.MAXIMUM_PASSENGER}`;
     this.#input.step = '1';
@@ -106,7 +106,7 @@ export default class Input extends Component {
   };
 
   render() {
-    this.#input.value = counterStore.number.toString();
+    this.#input.value = counterStore.value.toString();
     this.#label.textContent = `${counterStore.status}`;
   }
 }
