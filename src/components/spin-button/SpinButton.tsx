@@ -6,39 +6,72 @@ const COUNT = {
   MAX: 3,
 };
 
+const isCountInRange = (count: number) =>
+  count >= COUNT.MIN && count <= COUNT.MAX;
+
 const SpinButton: React.FC = () => {
   const [count, setCount] = useState<number | "">(COUNT.MIN);
   const [isTooltipOpen, setIsTooltipOpen] = useState(false);
+  const [ariaMessage, setAriaMessage] = useState("");
 
   const handleTooltipClick = () => {
     setIsTooltipOpen((prev) => !prev);
   };
 
+  const handleTooltipCloseButtonClick = () => {
+    setIsTooltipOpen(false);
+  };
+
   const handleDecreaseButtonClick = () => {
     setCount((prev) => {
-      if (prev === "") return COUNT.MIN;
-      return prev - 1 >= COUNT.MIN ? prev - 1 : prev;
+      if (prev === "") {
+        setAriaMessage(`성인 승객 감소 현재 ${COUNT.MIN}명`);
+        return COUNT.MIN;
+      }
+
+      if (prev - 1 < COUNT.MIN) {
+        setAriaMessage(`최소 성인 수는${COUNT.MIN}명 입니다.`);
+        return prev;
+      }
+
+      setAriaMessage(`성인 승객 감소 현재 ${prev - 1}명`);
+      return prev - 1;
     });
   };
 
   const handleIncreaseButtonClick = () => {
     setCount((prev) => {
-      if (prev === "") return COUNT.MIN;
-      return prev + 1 <= COUNT.MAX ? prev + 1 : prev;
+      if (prev === "") {
+        setAriaMessage(`성인 승객 추가 현재 ${COUNT.MIN + 1}명`);
+        return COUNT.MIN + 1;
+      }
+
+      if (prev + 1 > COUNT.MAX) {
+        setAriaMessage(`최대 성인 수는${COUNT.MAX}명 입니다.`);
+        return prev;
+      }
+
+      setAriaMessage(`성인 승객 추가 현재 ${prev + 1}명`);
+      return prev + 1;
     });
   };
 
-  const isCountInRange = (count: number) =>
-    count >= COUNT.MIN && count <= COUNT.MAX;
   const handleCountChange: React.ChangeEventHandler<HTMLInputElement> = ({
     target: { value },
   }) => {
     if (value === "") {
       setCount(value);
+      setAriaMessage("성인 입력값 빔");
       return;
     }
-    if (!isCountInRange(Number(value))) return;
+    if (!isCountInRange(Number(value))) {
+      setAriaMessage(
+        `${COUNT.MIN}부터 ${COUNT.MAX}사이의 값만 입력할 수 있습니다.`
+      );
+      return;
+    }
     setCount(Number(value));
+    setAriaMessage(`성인 ${Number(value)}명 입력됨`);
   };
 
   return (
@@ -56,13 +89,19 @@ const SpinButton: React.FC = () => {
         ?
       </button>
       {isTooltipOpen && (
-        <div id="tooltip-content">국제선 만 12세 이상, 국내선 만 13세 이상</div>
+        <div id="tooltip-content">
+          <div>국제선 만 12세 이상, 국내선 만 13세 이상</div>
+          <button aria-label="닫기" onClick={handleTooltipCloseButtonClick}>
+            x
+          </button>
+        </div>
       )}
       <div className="container">
         <button
           className="spin-button"
           type="button"
           aria-label="성인 탑승자 한명 감소"
+          disabled={count <= COUNT.MIN}
           onClick={handleDecreaseButtonClick}
         >
           -
@@ -79,17 +118,19 @@ const SpinButton: React.FC = () => {
           className="spin-button"
           type="button"
           aria-label="성인 탑승자 한명 증가"
+          disabled={count >= COUNT.MAX}
           onClick={handleIncreaseButtonClick}
         >
           +
         </button>
         <div
           className="hidden"
+          aria-hidden
           aria-atomic
           aria-live="assertive"
           aria-relevant="additions"
         >
-          성인 승객 추가 {count}
+          {ariaMessage}
         </div>
       </div>
     </>
