@@ -6,7 +6,7 @@ export default class Button extends Component {
     children,
     label,
   }: {
-    onClick: (e: Event) => unknown;
+    onClick: (e: MouseEvent) => unknown;
     children: string;
     label: string;
   }) {
