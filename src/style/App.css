@@ -1,0 +1,125 @@
+.App {
+  padding: 1rem;
+}
+
+.App h2 {
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+.passenger__controller-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 6.25rem;
+}
+
+.passenger__controller-label-container {
+  position: relative;
+  display: flex;
+}
+
+.passenger__label {
+  display: flex;
+  align-items: center;
+
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.question-mark-button {
+  width: 2.25rem;
+  height: 2.25rem;
+  background-size: 24px 24px;
+  background: url(../images/ico-opener.svg) no-repeat 50% 50%;
+
+  font-size: 0;
+
+  cursor: pointer;
+}
+
+.input-spinner-container {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.input-spinner-input {
+  width: 3rem;
+  height: 3rem;
+
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #00256c;
+
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.input-spinner-sub,
+.input-spinner-add {
+  width: 2.75rem;
+  height: 2.75rem;
+
+  font-size: 0;
+}
+
+.input-spinner-sub[aria-disabled="true"],
+.input-spinner-add[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
+.input-spinner-sub {
+  left: 0;
+  background: url(../images/passenger__control-sub.svg) 50% 50%/32px 32px
+    no-repeat;
+}
+
+.input-spinner-add {
+  right: 0;
+  background: url(../images/passenger__control-add.svg) 50% 50%/32px 32px
+    no-repeat;
+}
+
+.tooltip-content {
+  display: none;
+  position: absolute;
+  top: 2.25rem;
+  left: 1rem;
+
+  padding: 0.5rem;
+  border: 1px solid gray;
+  border-radius: 0.25rem;
+
+  background-color: white;
+}
+
+.tooltip-trigger[aria-expanded="true"] + .tooltip .tooltip-content {
+  display: flex;
+  align-items: center;
+}
+
+.tooltip__close {
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-left: 1rem;
+
+  background: url(../images/tooltip__close.svg) no-repeat 50% 50%;
+  font-size: 0;
+  cursor: pointer;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
