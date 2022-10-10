@@ -1,5 +1,3 @@
-type FunctionType = (...arg: any[]) => any;
-
 class Observer {
   #callback: { key: string; func: FunctionType }[];
 
