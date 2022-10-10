@@ -8,6 +8,7 @@ const MAX_PASSENGER = 3;
 export const PassengerSelection = () => {
   const [passenger, setPassenger] = useState(1);
   const [show, setShow] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const handleDecreasePassenger = () => {
     if (passenger <= MIN_PASSENGER) {
@@ -31,15 +32,19 @@ export const PassengerSelection = () => {
     event
   ) => {
     const inputValue = Number(event.target.value);
-    if (inputValue > MAX_PASSENGER) {
-      setPassenger(MAX_PASSENGER);
-      return;
-    }
-    if (inputValue < MIN_PASSENGER) {
-      setPassenger(MIN_PASSENGER);
+    if (isNaN(inputValue)) {
       return;
     }
     setPassenger(inputValue);
+    if (inputValue > MAX_PASSENGER || inputValue < MIN_PASSENGER) {
+      if (!showError) {
+        setShowError(true);
+      }
+      return;
+    }
+    if (showError) {
+      setShowError(false);
+    }
   };
 
   return (
@@ -91,14 +96,13 @@ export const PassengerSelection = () => {
         >
           <p aria-hidden="true">+</p>
         </ControlButton>
-        <Hidden
-          aria-live="assertive"
-          aria-relevant="additions"
-          aria-atomic="true"
-        >
+        <Hidden aria-live="assertive" aria-atomic="true" aria-hidden="false">
           성인 승객 추가 {passenger}
         </Hidden>
       </FlexBox>
+      <div role="status" aria-live="polite">
+        {showError ? "1 ~ 3명 사이의 승객만 입력 가능합니다" : ""}
+      </div>
     </FlexBox>
   );
 };
