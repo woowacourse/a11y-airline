@@ -1,0 +1,78 @@
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.passenger-type {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 20px 0;
+}
+
+.passenger-type__tooltip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin: 0 10px;
+  color: gray;
+  background-color: transparent;
+  border: 2px solid gray;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.passenger-type__tooltip + p {
+  display: none;
+  position: absolute;
+  left: 100px;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(26, 26, 26);
+  border-radius: 5px;
+}
+
+.passenger-type__tooltip:hover + p {
+  display: block;
+}
+
+.passenger-count__input {
+  height: 40px;
+  width: 60px;
+  font-size: 20px;
+  text-align: center;
+  border: none;
+  border-bottom: 2px solid gray;
+}
+
+.passenger-count__minus-button,
+.passenger-count__plus-button {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  background-color: white;
+  border: 2px solid gray;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.passenger-count__minus-button:hover,
+.passenger-count__plus-button:hover {
+  background-color: gray;
+}
+
+.status-message {
+  border: none;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}
