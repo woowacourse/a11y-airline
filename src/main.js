@@ -4,6 +4,9 @@ import './style/style.scss';
 import { $ } from './util';
 
 const MAX_RESERVABLE_ADULT_PASSENGER_COUNT = 3;
+const ERROR_MESSAGE = {
+  OVER_RESERVABLE_ADULT: '인원수는 0명에서 3명까지만 가능합니다',
+};
 
 document.addEventListener('DOMContentLoaded', () => {
   const $adultPassengerField = $('.adult-passenger-field');
@@ -28,13 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const nextValue = value + step;
     if (nextValue < 0 || nextValue > 3) {
-      snackbarManager.show('인원수는 0명에서 3명까지만 가능합니다');
+      snackbarManager.show(ERROR_MESSAGE.OVER_RESERVABLE_ADULT);
       return;
     }
 
     $adultPassengerSpinInput.value = Math.max(0, Math.min(MAX_RESERVABLE_ADULT_PASSENGER_COUNT, nextValue));
     $adultPassengerSpinAriaLiveMessage.textContent = `성인 승객 추가 ${$adultPassengerSpinInput.value}`;
-    // $adultPassengerSpinAriaLiveMessage.setAttribute('aria-live', 'assertive');
   });
 
   $adultPassengerSpinInput.addEventListener('input', e => {
@@ -52,20 +54,19 @@ document.addEventListener('DOMContentLoaded', () => {
       if (target.value < Number(min)) {
         isProperRange = false;
         target.value = min;
-        snackbarManager.show('인원수는 0명에서 3명까지만 가능합니다');
+        snackbarManager.show(ERROR_MESSAGE.OVER_RESERVABLE_ADULT);
       }
     }
     if (max !== null) {
       if (target.value > Number(max)) {
         isProperRange = false;
-        snackbarManager.show('인원수는 0명에서 3명까지만 가능합니다');
+        snackbarManager.show(ERROR_MESSAGE.OVER_RESERVABLE_ADULT);
         target.value = max;
       }
     }
 
     if (isProperRange) {
       $adultPassengerSpinAriaLiveMessage.textContent = `성인 승객 추가 ${target.value}`;
-      // $adultPassengerSpinAriaLiveMessage.setAttribute('aria-live', 'assertive');
     }
   });
 });
