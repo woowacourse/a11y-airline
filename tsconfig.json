@@ -9,7 +9,6 @@
     "jsx": "react-jsx",
     "skipLibCheck": true,
     "incremental": true,
-    "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node"
   },
   "include": ["src/**/*"],

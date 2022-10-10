@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Tooltip = () => {
   return (
     <>
-      <S.Question aria-describedby='tooltip'>?</S.Question>
+      <S.Question aria-label='tooltip'>?</S.Question>
       <S.StyledTooltip aria-live='assertive' id='tooltip' role='tooltip'>
         국민은행 61210204071715로 후원해 결식아동을 도와보세요!
       </S.StyledTooltip>
