@@ -25,7 +25,7 @@ const SpinButton: React.FC = () => {
   const handleDecreaseButtonClick = () => {
     setCount((prev) => {
       if (prev === "") {
-        setAriaMessage(`성인 승객 감소 현재 ${COUNT.MIN}명`);
+        setAriaMessage(`성인 승객 감소 ${COUNT.MIN}`);
         return COUNT.MIN;
       }
 
@@ -34,7 +34,7 @@ const SpinButton: React.FC = () => {
         return prev;
       }
 
-      setAriaMessage(`성인 승객 감소 현재 ${prev - 1}명`);
+      setAriaMessage(`성인 승객 감소 ${prev - 1}`);
       return prev - 1;
     });
   };
@@ -42,7 +42,7 @@ const SpinButton: React.FC = () => {
   const handleIncreaseButtonClick = () => {
     setCount((prev) => {
       if (prev === "") {
-        setAriaMessage(`성인 승객 추가 현재 ${COUNT.MIN + 1}명`);
+        setAriaMessage(`성인 승객 추가 ${COUNT.MIN + 1}`);
         return COUNT.MIN + 1;
       }
 
@@ -51,7 +51,7 @@ const SpinButton: React.FC = () => {
         return prev;
       }
 
-      setAriaMessage(`성인 승객 추가 현재 ${prev + 1}명`);
+      setAriaMessage(`성인 승객 추가 ${prev + 1}`);
       return prev + 1;
     });
   };
@@ -102,6 +102,7 @@ const SpinButton: React.FC = () => {
           type="button"
           aria-label="성인 탑승자 한명 감소"
           disabled={count <= COUNT.MIN}
+          aria-disabled={count <= COUNT.MIN}
           onClick={handleDecreaseButtonClick}
         >
           -
@@ -119,19 +120,19 @@ const SpinButton: React.FC = () => {
           type="button"
           aria-label="성인 탑승자 한명 증가"
           disabled={count >= COUNT.MAX}
+          aria-disabled={count >= COUNT.MAX}
           onClick={handleIncreaseButtonClick}
         >
           +
         </button>
-        <div
+        <span
           className="hidden"
-          aria-hidden
           aria-atomic
           aria-live="assertive"
           aria-relevant="additions"
         >
           {ariaMessage}
-        </div>
+        </span>
       </div>
     </>
   );
