@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
-    "target": "ES6",
+    "target": "ESNext",
     "strict": true,
     "module": "ES6",
-    "lib": ["DOM", "ESNext"],
     "isolatedModules": true,
     "moduleResolution": "node",
     "jsx": "react-jsx"
