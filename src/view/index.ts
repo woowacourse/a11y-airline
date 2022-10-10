@@ -2,5 +2,5 @@ import CounterComponent from './component/Counter';
 import TextView from './component/TextView';
 
 document
-  .getElementById('root')
+  .getElementById('page')
   ?.append(new TextView().target, new CounterComponent().target);
