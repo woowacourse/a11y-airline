@@ -156,6 +156,12 @@ const HelpToggle = styled.button`
   font-weight: bold;
   text-align: center;
   color: #767676;
+  cursor: pointer;
+
+  &:active {
+    border: 1.5px solid #00256c;
+    color: #00256c;
+  }
 `;
 
 const HelpToggleMessage = styled.div`
@@ -203,6 +209,7 @@ const HelpToggleCloseButton = styled.button`
   padding: 8px;
   font-size: 16px;
   text-align: end;
+  cursor: pointer;
 `;
 
 const ControlWrapper = styled.div`
@@ -217,9 +224,11 @@ const ControlButton = styled.button`
   border: 1px solid #e6e7ea;
   background-color: none;
   font-size: 20px;
+  cursor: pointer;
 
   &[aria-disabled='true'] {
     color: #e6e7ea;
+    cursor: default;
   }
 `;
 
