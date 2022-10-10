@@ -17,5 +17,4 @@ export default {
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint'],
-  rules: {},
 };

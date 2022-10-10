@@ -20,7 +20,7 @@ const SpinButton = () => {
         onClick={handleClickDecreaseButton}
         value={'-'}
         ariaLabel={`성인 탑승자 한명 줄이기 버튼`}
-      ></CircleButton>
+      />
       <S.PassengerNum
         value={passengerNum}
         min={PASSENGER.MIN}
@@ -33,7 +33,7 @@ const SpinButton = () => {
         onClick={handleClickIncreaseButton}
         value={'+'}
         ariaLabel={`성인 탑승자 한명 늘리기 버튼`}
-      ></CircleButton>
+      />
       <S.Announce role={'status'}>{announceState}</S.Announce>
     </S.Container>
   );

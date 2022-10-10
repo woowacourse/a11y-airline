@@ -24,8 +24,6 @@ const S = {
     border: 1px solid lightgray;
     border-radius: 50%;
     font-size: 1.5rem;
-    :active {
-    }
   `,
 };
 
