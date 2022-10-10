@@ -1,0 +1,23 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  word-break: keep-all;
+}
+
+button {
+  color: black;
+  cursor: pointer;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.spin-input-form input::-webkit-outer-spin-button,
+.spin-input-form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.spin-input-form input[type="number"] {
+  -moz-appearance: textfield;
+}

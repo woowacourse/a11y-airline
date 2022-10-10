@@ -1,0 +1,114 @@
+@import url("./reset.css");
+@import url("./default-button.css");
+
+:root {
+  --dark-gray: #4f4f4f;
+}
+
+.spin-input-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  width: max-content;
+  margin: 0 auto;
+}
+
+.spin-input-title {
+  font-weight: bold;
+}
+
+.label-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: max-content;
+}
+
+.tooltip-container {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  width: max-content;
+  border: 1px solid var(--dark-gray);
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.tooltip-container.hide {
+  display: none;
+}
+
+.spin-label {
+  font-weight: bold;
+}
+
+.round-button-icon {
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.tooltip-button-icon {
+  border-radius: 50%;
+  border: 2px solid var(--dark-gray);
+
+  color: var(--dark-gray);
+  font-weight: bold;
+}
+
+.input-container {
+  display: flex;
+}
+
+.spin-button {
+  font-weight: bolder;
+}
+
+.spin-button .round-button-icon {
+  border: 2px solid lightgray;
+  font-size: 1rem;
+}
+
+#spin-input-value {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid black;
+  width: 30px;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bolder;
+}
+
+#spin-input-status {
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+#snackbar {
+  width: 300px;
+  padding: 10px;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  position: fixed;
+  bottom: 20px;
+  left: calc(50% - 150px);
+  transition: 0.3s;
+  background-color: rgb(247, 247, 247);
+}
+
+#snackbar.hide {
+  opacity: 0;
+  transform: translateY(10px);
+}
