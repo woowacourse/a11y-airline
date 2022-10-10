@@ -40,7 +40,7 @@ export default class TextField extends Component {
     this.#label.classList.add('hide-element');
 
     this.#input.addEventListener('keydown', this.handleKeyDown);
-    this.#input.addEventListener<'change'>('change', this.handleInput);
+    this.#input.addEventListener('change', this.handleInput);
     this.#input.addEventListener('keypress', this.handleKeypress);
     this.element.append(this.#input, this.#span, this.#label);
 
