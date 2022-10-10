@@ -11,12 +11,23 @@ const ERROR_MESSAGE = {
 document.addEventListener('DOMContentLoaded', () => {
   const $adultPassengerField = $('.adult-passenger-field');
   const helptipManager = new HelptipManager('.helptip-container', $adultPassengerField);
-  helptipManager.start();
 
   const snackbarManager = new SnackbarManager();
   const $adultPassengerSpin = $('.adult-passenger-spin', $adultPassengerField);
   const $adultPassengerSpinInput = $('input', $adultPassengerSpin);
-  const $adultPassengerSpinAriaLiveMessage = $('.spin-input-aria-live-message', $adultPassengerSpin);
+  const $ariaLivePolite = $('#aria-live-polite-message');
+  const $ariaLiveAssertive = $('#aria-live-polite-message');
+
+  // @TODO: 위의 element들 null check
+
+  helptipManager.start(
+    () => {
+      $ariaLivePolite.textContent = '국제선 만 12세 이상, 국내선 만 13세 이상';
+    },
+    () => {
+      $ariaLivePolite.textContent = '';
+    },
+  );
 
   $adultPassengerSpin.addEventListener('click', e => {
     if (!e.target) return;
@@ -31,12 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const nextValue = value + step;
     if (nextValue < 0 || nextValue > 3) {
-      snackbarManager.show(ERROR_MESSAGE.OVER_RESERVABLE_ADULT);
+      snackbarManager.show(ERROR_MESSAGE.OVER_RESERVABLE_ADULT, () => ($ariaLivePolite.textContent = ''));
+      $ariaLivePolite.textContent = ERROR_MESSAGE.OVER_RESERVABLE_ADULT;
       return;
     }
 
     $adultPassengerSpinInput.value = Math.max(0, Math.min(MAX_RESERVABLE_ADULT_PASSENGER_COUNT, nextValue));
-    $adultPassengerSpinAriaLiveMessage.textContent = `성인 승객 추가 ${$adultPassengerSpinInput.value}`;
+    $ariaLivePolite.textContent = `성인 승객 추가 ${$adultPassengerSpinInput.value}`;
   });
 
   $adultPassengerSpinInput.addEventListener('input', e => {
@@ -54,19 +66,21 @@ document.addEventListener('DOMContentLoaded', () => {
       if (target.value < Number(min)) {
         isProperRange = false;
         target.value = min;
-        snackbarManager.show(ERROR_MESSAGE.OVER_RESERVABLE_ADULT);
+        snackbarManager.show(ERROR_MESSAGE.OVER_RESERVABLE_ADULT, () => ($ariaLiveAssertive.textContent = ''));
+        $ariaLiveAssertive.textContent = ERROR_MESSAGE.OVER_RESERVABLE_ADULT;
       }
     }
     if (max !== null) {
       if (target.value > Number(max)) {
         isProperRange = false;
-        snackbarManager.show(ERROR_MESSAGE.OVER_RESERVABLE_ADULT);
+        snackbarManager.show(ERROR_MESSAGE.OVER_RESERVABLE_ADULT, () => ($ariaLiveAssertive.textContent = ''));
+        $ariaLiveAssertive.textContent = ERROR_MESSAGE.OVER_RESERVABLE_ADULT;
         target.value = max;
       }
     }
 
     if (isProperRange) {
-      $adultPassengerSpinAriaLiveMessage.textContent = `성인 승객 추가 ${target.value}`;
+      $ariaLivePolite.textContent = `성인 승객 추가 ${target.value}`;
     }
   });
 });

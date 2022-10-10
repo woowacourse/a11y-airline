@@ -17,20 +17,21 @@ class SnackbarManager {
     }
   }
 
-  show(message = '오류가 발생했습니다') {
+  show(message = '오류가 발생했습니다', onHide = null) {
     this.#check();
     this.#element.classList.add('show');
     this.#element.textContent = message;
     this.#timer && clearTimeout(this.#timer);
     this.#timer = setTimeout(() => {
-      this.hide();
+      this.hide(onHide);
     }, this.#delay);
   }
 
-  hide() {
+  hide(onHide = null) {
     this.#check();
     this.#element.classList.remove('show');
     this.#element.textContent = '';
+    onHide && onHide();
   }
 }
 

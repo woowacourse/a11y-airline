@@ -5,7 +5,8 @@ class HelptipManager {
   #helptipCloser = null;
   #helptipElement = null;
   #helptipContent = null;
-  #helptipContentAria = null;
+  #onShowHandler = null;
+  #onHideHandler = null;
 
   constructor(containerSelector = '.helptip-container', $parent = document) {
     const $container = $(containerSelector, $parent);
@@ -14,13 +15,13 @@ class HelptipManager {
     this.#helptipCloser = $('.helptip-closer', $container);
     this.#helptipElement = $('.helptip', $container);
     this.#helptipContent = $('.helptip > .helptip-content', $container);
-    this.#helptipContentAria = $('.helptip span[aria-live="polite"]', $container);
-    console.log('this.#helptipContentAria', this.#helptipContentAria);
     this.#check();
   }
 
-  start() {
+  start(onShow = null, onHide = null) {
     this.#check();
+    this.#onShowHandler = onShow;
+    this.#onHideHandler = onHide;
     window.addEventListener('click', this.#clickOutsideHandler);
     this.#helptipTrigger.addEventListener('click', this.#eventHandler);
     this.#helptipCloser.addEventListener('click', this.#eventHandler);
@@ -54,13 +55,13 @@ class HelptipManager {
   #show() {
     this.#check();
     this.#helptipElement.classList.add('show');
-    this.#helptipContentAria.textContent = this.#helptipContent.textContent;
+    this.#onShowHandler && this.#onShowHandler();
   }
 
   #hide() {
     this.#check();
     this.#helptipElement.classList.remove('show');
-    this.#helptipContentAria.textContent = '';
+    this.#onHideHandler && this.#onHideHandler();
   }
 
   #check() {
@@ -68,8 +69,7 @@ class HelptipManager {
       this.#helptipElement === null ||
       this.#helptipTrigger === null ||
       this.#helptipCloser === null ||
-      this.#helptipContent === null ||
-      this.#helptipContentAria === null
+      this.#helptipContent === null
     ) {
       throw new Error('helptip selector를 다시 확인해 주세요');
     }
