@@ -14,7 +14,7 @@ function Passenger() {
   } = useSetPassengerCount();
 
   return (
-    <section className={styles.section}>
+    <main className={styles.section}>
       <h1>승객 선택</h1>
 
       <div className={styles.tooltip}>
@@ -31,9 +31,10 @@ function Passenger() {
           <BiMinusCircle size="20" />
         </button>
         <label
-          className={styles.hidden}
+          className={styles.srOnly}
           htmlFor="inputLabel"
-          aria-live="polite"
+          role="status"
+          // aria-live="polite"
         >{`성인 승객 추가 ${passengerCount}`}</label>
         <input
           name="inputLabel"
@@ -53,7 +54,7 @@ function Passenger() {
           <BiPlusCircle size="20" />
         </button>
       </div>
-    </section>
+    </main>
   );
 }
 
