@@ -37,7 +37,7 @@ const SpinButton = ({
 
   const handleClickDecrease = () => {
     if (value <= MIN_VALUE) {
-      setMessage(`최소 승객 수는 ${value}명 입니다.`);
+      setMessage(`최소 승객 수는 ${MIN_VALUE}명 입니다.`);
       return;
     }
 
@@ -47,7 +47,7 @@ const SpinButton = ({
 
   const handleClickIncrease = () => {
     if (value >= MAX_VALUE) {
-      setMessage(`최대 승객 수는 ${value}명 입니다.`);
+      setMessage(`최대 승객 수는 ${MAX_VALUE}명 입니다.`);
       return;
     }
 
