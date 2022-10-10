@@ -1,4 +1,4 @@
-export default abstract class Component implements ComponentProps {
+export default abstract class Component implements ComponentImpl {
   protected element;
 
   constructor(type = 'div') {

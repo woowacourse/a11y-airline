@@ -1,4 +1,4 @@
-export default abstract class ComponentWithFragment implements ComponentProps {
+export default abstract class ComponentWithFragment implements ComponentImpl {
   protected container;
 
   constructor() {

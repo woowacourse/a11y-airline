@@ -1,4 +1,4 @@
-interface ComponentProps {
+interface ComponentImpl {
   readonly target: HTMLElement | DocumentFragment;
 }
 
