@@ -33,7 +33,9 @@ const SpinButton = () => {
         value={'+'}
         ariaLabel={`성인 탑승자 한명 늘리기`}
       />
-      <S.Announce role={'status'}>{announceState}</S.Announce>
+      <S.Announce role={'status'} aria-live={'polite'}>
+        {announceState}
+      </S.Announce>
     </S.Container>
   );
 };
