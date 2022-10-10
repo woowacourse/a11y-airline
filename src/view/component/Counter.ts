@@ -15,8 +15,10 @@ export default class CounterComponent extends Component {
     this.#input = new TextField();
     this.element.id = 'counter';
     this.element.classList.add('counter', 'flex', 'flex__center');
-    this.element.appendChild(this.#minusButton.target);
-    this.element.appendChild(this.#input.target);
-    this.element.appendChild(this.#plusButton.target);
+    this.element.append(
+      this.#minusButton.target,
+      this.#input.target,
+      this.#plusButton.target
+    );
   }
 }
