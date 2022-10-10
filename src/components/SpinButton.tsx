@@ -43,7 +43,8 @@ const SpinButton = () => {
 const S = {
   Container: styled.div`
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    flex-wrap: wrap;
   `,
 
   PassengerNum: styled.input`

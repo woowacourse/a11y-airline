@@ -4,18 +4,23 @@ import Tooltip from '../components/Tooltip';
 
 const PassengerEnter = () => {
   return (
-    <main>
+    <S.Main>
       <S.Title>승객 선택</S.Title>
       <S.PassengerType>
         <S.SubTitle>성인</S.SubTitle>
         <Tooltip ariaLabel={'탑승자 유형 툴팁: 성인'} />
       </S.PassengerType>
       <SpinButton />
-    </main>
+    </S.Main>
   );
 };
 
 const S = {
+  Main: styled.main`
+    display: flex;
+    flex-direction: column;
+  `,
+
   Title: styled.h1`
     margin-bottom: 1.5rem;
   `,
@@ -27,6 +32,7 @@ const S = {
   PassengerType: styled.div`
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
   `,
 };
 
