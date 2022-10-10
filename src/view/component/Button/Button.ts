@@ -1,4 +1,4 @@
-import Component from '../Component';
+import Component from 'src/abstract/Component';
 
 export default class Button extends Component {
   constructor({

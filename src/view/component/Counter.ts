@@ -1,4 +1,4 @@
-import Component from './Component';
+import Component from 'src/abstract/Component';
 import Input from './Input/Input';
 import MinusButton from './Button/MinusButton';
 import PlusButton from './Button/PlusButton';

@@ -1,4 +1,4 @@
-import ComponentWithFragment from './ComponentWithFragment';
+import ComponentWithFragment from 'src/abstract/ComponentWithFragment';
 
 export default class TextView extends ComponentWithFragment {
   constructor() {
