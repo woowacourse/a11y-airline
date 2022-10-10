@@ -16,9 +16,6 @@ ul {
 
 .carousel-list {
   display: flex;
-  overflow: hidden;
-
-  width: 1310px;
   gap: 40px;
 }
 
@@ -63,4 +60,6 @@ ul {
 
 .carousel-container {
   position: relative;
+  overflow: hidden;
+  width: 1310px;
 }
