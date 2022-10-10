@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "outDir": "./dist",
+    "isolatedModules": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  }
+}
