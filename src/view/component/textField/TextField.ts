@@ -8,7 +8,7 @@ const REGEXP = {
   KOREAN: /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/,
   NOT_ZERO: /[1-9]/,
 };
-export default class Input extends Component {
+export default class TextField extends Component {
   #input;
   #span;
   #label;
