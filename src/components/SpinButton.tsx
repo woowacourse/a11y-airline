@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import styled from 'styled-components';
 import PASSENGER from '../constants/index';
 import usePassenger from '../hooks/usePassenger';
@@ -19,7 +18,7 @@ const SpinButton = () => {
         disabled={passengerNum <= PASSENGER.MIN}
         onClick={handleClickDecreaseButton}
         value={'-'}
-        ariaLabel={`성인 탑승자 한명 줄이기 버튼`}
+        ariaLabel={`성인 탑승자 한명 줄이기`}
       />
       <S.PassengerNum
         value={passengerNum}
@@ -32,7 +31,7 @@ const SpinButton = () => {
         disabled={passengerNum >= PASSENGER.MAX}
         onClick={handleClickIncreaseButton}
         value={'+'}
-        ariaLabel={`성인 탑승자 한명 늘리기 버튼`}
+        ariaLabel={`성인 탑승자 한명 늘리기`}
       />
       <S.Announce role={'status'}>{announceState}</S.Announce>
     </S.Container>
