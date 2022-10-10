@@ -1,0 +1,62 @@
+.passenger-label {
+  display: inline;
+  font-size: 16pt;
+  font-weight: bold;
+}
+
+.question-icon {
+  width: 25px;
+  height: 25px;
+  border: 2px solid rgb(158, 158, 158);
+  color: rgb(158, 158, 158);
+  border-radius: 50%;
+  font-weight: bold;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  vertical-align: top;
+}
+
+.tool-tip {
+  display: none;
+  position: absolute;
+  max-width: 260px;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 0.8em;
+  color: white;
+  background: rgb(31, 98, 161);
+}
+
+.question-icon:hover + .tool-tip {
+  display: block;
+}
+
+.button {
+  min-width: 35px;
+  min-height: 35px;
+  border-radius: 50%;
+  border: 2px solid gainsboro;
+  background-color: white;
+  font-size: 1rem;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+#passenger-input {
+  border: none;
+  border-bottom: 2px solid black;
+  font-size: 2rem;
+  padding: 1rem;
+  text-align: center;
+  max-width: 30px;
+}
+
+.error-message {
+  margin-top: 1rem;
+  color: red;
+}
+
+.result-message {
+  opacity: 0;
+}
