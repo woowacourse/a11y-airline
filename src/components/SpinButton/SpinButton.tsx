@@ -1,10 +1,16 @@
 import { useState, useRef, useEffect, ChangeEventHandler } from 'react';
 import styled from 'styled-components';
+import { SpinButtonProps } from 'components/SpinButton/SpinButton.type';
 
 const MIN_VALUE = 0;
 const MAX_VALUE = 3;
 
-const SpinButton = () => {
+const SpinButton = ({
+  labelText,
+  passengerType,
+  inputId,
+  toggleMessageText,
+}: SpinButtonProps) => {
   const [value, setValue] = useState<number>(1);
   const [message, setMessage] = useState('');
   const [isOpenToggle, setIsOpenToggle] = useState(false);
@@ -36,7 +42,7 @@ const SpinButton = () => {
     }
 
     setValue((prevValue) => prevValue - 1);
-    setMessage(`성인 승객 감소 ${value - 1}`);
+    setMessage(`${passengerType} 승객 감소 ${value - 1}`);
   };
 
   const handleClickIncrease = () => {
@@ -46,7 +52,7 @@ const SpinButton = () => {
     }
 
     setValue((prevValue) => prevValue + 1);
-    setMessage(`성인 승객 추가 ${value + 1}`);
+    setMessage(`${passengerType} 승객 추가 ${value + 1}`);
   };
 
   const handleChangeInput: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -69,20 +75,20 @@ const SpinButton = () => {
   return (
     <Wrapper>
       <LabelWrapper>
-        <Label htmlFor="adultCount">
-          <span>성인</span>
+        <Label htmlFor={inputId}>
+          <span>{labelText}</span>
         </Label>
         <HelpToggle
           type="button"
           onClick={handleClickHelpToggle}
           aria-expanded={isOpenToggle}
-          aria-controls="helpMessage"
-          aria-label="성인 기준 상세 안내"
+          aria-controls={`${inputId}ToggleMessage`}
+          aria-label={`${passengerType} 기준 상세 안내`}
         >
           ?
         </HelpToggle>
-        <HelpToggleMessage id="helpMessage" hidden={!isOpenToggle}>
-          <span>국제선 만 12세 이상, 국내선 만 13세 이상</span>
+        <HelpToggleMessage id={`${inputId}ToggleMessage`} hidden={!isOpenToggle}>
+          <span>{toggleMessageText}</span>
           <HelpToggleCloseButton
             type="button"
             onClick={handleClickHelpToggle}
@@ -96,31 +102,31 @@ const SpinButton = () => {
         <ControlButton
           type="button"
           onClick={handleClickDecrease}
-          aria-label="성인 탑승자 한 명 줄이기"
+          aria-label={`${passengerType} 탑승자 한 명 줄이기`}
           aria-disabled={value <= MIN_VALUE}
         >
           -
         </ControlButton>
         <Input
-          id="adultCount"
+          id={inputId}
           type="tel"
           value={value}
           onChange={handleChangeInput}
-          aria-describedby="inputHelpMessage"
+          aria-describedby={`${inputId}description`}
         />
         <ControlButton
           type="button"
           onClick={handleClickIncrease}
-          aria-label="성인 탑승자 한 명 늘리기"
+          aria-label={`${passengerType} 탑승자 한 명 늘리기`}
           aria-disabled={value >= MAX_VALUE}
         >
           +
         </ControlButton>
       </ControlWrapper>
-      <HiddenMessage id="inputHelpMessage" aria-hidden>
+      <HiddenMessage id={`${inputId}Description`} aria-hidden>
         숫자만 수정
       </HiddenMessage>
-      <HiddenMessage id="spinnerMessage" aria-live="assertive">
+      <HiddenMessage id={`${inputId}SpinnerMessage`} aria-live="assertive">
         {message}
       </HiddenMessage>
     </Wrapper>
