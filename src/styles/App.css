@@ -1,0 +1,112 @@
+.App {
+  display: flex;
+  flex-direction: column;
+
+  padding: 6rem;
+}
+
+.passenger-select-menu {
+  font-size: 6rem;
+  font-weight: 800;
+}
+
+.passenger-select-option {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  margin: 5rem 0;
+}
+
+.adult-passenger-select-label {
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+.passenger-select-tooltip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  width: 5rem;
+  height: 5rem;
+  border: 1.5px solid gray;
+  border-radius: 50%;
+
+  background: white;
+
+  font-size: 4rem;
+  font-weight: bold;
+  color: gray;
+}
+
+.passenger-select-tooltip:hover #passenger-select-tooltip-text {
+  visibility: visible;
+}
+
+#passenger-select-tooltip-text {
+  visibility: hidden;
+  position: absolute;
+  top: -50%;
+  left: calc(100% + 2rem);
+
+  min-width: 50rem;
+  height: 10rem;
+  padding: 3rem 4rem;
+  border-radius: 4px;
+
+  background: gray;
+
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+
+  opacity: 0.8;
+}
+
+.passenger-select-control {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.passenger-count-control-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 8rem;
+  height: 8rem;
+  border: 1.5px solid lightgray;
+  border-radius: 50%;
+
+  background: white;
+
+  font-size: 7rem;
+}
+
+.passenger-count-control-button:hover {
+  cursor: pointer;
+}
+
+.passenger-count-input {
+  width: 15rem;
+  height: 13rem;
+  border: none;
+  border-bottom: 1px solid black;
+
+  font-size: 8rem;
+  font-weight: bold;
+  text-align: center;
+
+  -moz-appearance: textfield;
+}
+
+.passenger-count-input::-webkit-outer-spin-button,
+.passenger-count-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
