@@ -30,7 +30,7 @@ ul {
 }
 
 .arrow-button-list {
-  position: absolute;
+  position: sticky;
   width: 1310px;
   height: 60px;
   bottom: calc((100% - 9rem) / 2);
@@ -101,4 +101,13 @@ ul {
   font-size: 1rem;
   font-weight: 700;
   color: #11277b;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 0 0, 0 0);
 }
