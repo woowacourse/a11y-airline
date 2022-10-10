@@ -24,6 +24,9 @@
 }
 
 .passenger-select-tooltip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
 
   width: 5rem;
@@ -31,10 +34,11 @@
   border: 1.5px solid gray;
   border-radius: 50%;
 
+  background: white;
+
   font-size: 4rem;
   font-weight: bold;
   color: gray;
-  text-align: center;
 }
 
 .passenger-select-tooltip:hover #passenger-select-tooltip-text {
