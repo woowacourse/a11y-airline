@@ -29,6 +29,9 @@ export default class TextField extends Component {
     this.#input.max = `${COUNTER.MAXIMUM_PASSENGER}`;
     this.#input.step = '1';
     this.#input.id = 'counter__value';
+    this.#input.addEventListener('keydown', this.handleKeyDown);
+    this.#input.addEventListener('change', this.handleInput);
+    this.#input.addEventListener('keypress', this.handleKeypress);
 
     this.#span = document.createElement('span');
     this.#span.id = 'counter__value__line';
@@ -39,9 +42,6 @@ export default class TextField extends Component {
     this.#label.id = 'counter__value__label';
     this.#label.classList.add('hide-element');
 
-    this.#input.addEventListener('keydown', this.handleKeyDown);
-    this.#input.addEventListener('change', this.handleInput);
-    this.#input.addEventListener('keypress', this.handleKeypress);
     this.element.append(this.#input, this.#span, this.#label);
 
     this.render();
