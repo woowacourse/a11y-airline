@@ -1,7 +1,7 @@
 import COUNTER from 'src/constants';
 import Observer from '.';
 
-class Counter extends Observer {
+class CounterStore extends Observer {
   #value;
   #status;
   constructor(initialNumber: number) {
@@ -67,6 +67,6 @@ class Counter extends Observer {
   }
 }
 
-const counterStore = new Counter(COUNTER.MINIMUM_PASSENGER);
+const counterStore = new CounterStore(COUNTER.MINIMUM_PASSENGER);
 
 export default counterStore;
