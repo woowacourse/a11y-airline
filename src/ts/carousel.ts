@@ -25,16 +25,22 @@ const animateCarousel = (currentCarouselIndex: number) => {
 
 $prevArrowButton.addEventListener("click", () => {
   if (currentCarouselIndex === 0) {
+    $prevArrowButton.setAttribute("aria-disabled", "true");
     return;
   }
+  $prevArrowButton.setAttribute("aria-disabled", "false");
+
   currentCarouselIndex -= 1;
   animateCarousel(currentCarouselIndex);
 });
 
 $nextArrowButton.addEventListener("click", () => {
   if (currentCarouselIndex === 3) {
+    $nextArrowButton.setAttribute("aria-disabled", "true");
     return;
   }
+  $nextArrowButton.setAttribute("aria-disabled", "false");
+
   currentCarouselIndex += 1;
   animateCarousel(currentCarouselIndex);
 });
