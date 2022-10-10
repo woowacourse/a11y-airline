@@ -1,20 +1,20 @@
 class Observer {
-  #callback: { key: string; func: FunctionType }[];
+  #callbacks: { key: string; func: FunctionType }[];
 
   constructor() {
-    this.#callback = [];
+    this.#callbacks = [];
   }
 
   subscribe(key: string, func: FunctionType) {
-    this.#callback.push({ key, func });
+    this.#callbacks.push({ key, func });
   }
 
   unsubscribe(key: string) {
-    this.#callback = this.#callback.filter((funcObj) => funcObj.key !== key);
+    this.#callbacks = this.#callbacks.filter((funcObj) => funcObj.key !== key);
   }
 
   notify() {
-    this.#callback.forEach(({ func }) => {
+    this.#callbacks.forEach(({ func }) => {
       func();
     });
   }
