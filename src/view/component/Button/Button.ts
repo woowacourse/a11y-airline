@@ -3,17 +3,17 @@ import Component from 'src/abstract/Component';
 export default class Button extends Component {
   constructor({
     onClick,
-    children,
+    text,
     ariaLabel,
   }: {
     onClick: (e: MouseEvent) => void;
-    children: string;
+    text: string;
     ariaLabel: string;
   }) {
     super('button');
     this.element.classList.add('counter__button', 'flex', 'flex__center');
     this.element.addEventListener('click', onClick);
-    this.element.textContent = children;
+    this.element.textContent = text;
     this.element.ariaLabel = ariaLabel;
   }
 }
