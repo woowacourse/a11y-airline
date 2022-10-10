@@ -4,12 +4,27 @@ import "./PassengerCountInput.css";
 function PassengerCountInput() {
   const [count, setCount] = useState(1);
 
+  const updatePassengerCountStatus = (count) => {
+    const $passengerCountStatus = document.querySelector(
+      ".passenger-count-input-status"
+    );
+    $passengerCountStatus.textContent = `성인 승객 현재 ${count}명`;
+
+    setTimeout(() => {
+      $passengerCountStatus.textContent = "";
+    }, "5000");
+  };
+
   const handleDecreaseCount = () => {
     if (count === 0) {
       alert("0명보다 아래를 선택할 수 없습니다.");
       return;
     }
-    setCount(count - 1);
+
+    const updateCount = count - 1;
+
+    setCount(updateCount);
+    updatePassengerCountStatus(updateCount);
   };
 
   const handleIncreaseCount = () => {
@@ -17,7 +32,11 @@ function PassengerCountInput() {
       alert("최대 3명까지 선택가능합니다.");
       return;
     }
-    setCount(count + 1);
+
+    const updateCount = count + 1;
+
+    setCount(updateCount);
+    updatePassengerCountStatus(updateCount);
   };
 
   return (
@@ -73,11 +92,9 @@ function PassengerCountInput() {
       </div>
       <span
         role="status"
-        className="passenger-count-input-state invisible"
+        className="passenger-count-input-status invisible"
         aria-live="polite"
-      >
-        성인 승객 현재 {count}명
-      </span>
+      ></span>
     </>
   );
 }
