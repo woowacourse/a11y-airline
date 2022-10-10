@@ -20,7 +20,7 @@ function App() {
         <div
           className='passenger-select-tooltip'
           aria-describedby='passenger-select-tooltip-text'
-          aria-labelledby='passenger-select-tooltip-text'
+          aria-label='성인 승객 안내'
         >
           ?
           <span id='passenger-select-tooltip-text' role='tooltip'>
