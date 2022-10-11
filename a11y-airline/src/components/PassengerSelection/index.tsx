@@ -1,14 +1,15 @@
 import { FlexBox } from "components";
-import { ChangeEventHandler, useState } from "react";
+import { ChangeEventHandler, useRef, useState } from "react";
 import styled, { css } from "styled-components";
 
-const MIN_PASSENGER = 1;
+const MIN_PASSENGER = 0;
 const MAX_PASSENGER = 3;
 
 export const PassengerSelection = () => {
   const [passenger, setPassenger] = useState(1);
   const [show, setShow] = useState(false);
   const [showError, setShowError] = useState(false);
+  const errorTimerRef = useRef(0);
 
   const handleDecreasePassenger = () => {
     if (passenger <= MIN_PASSENGER) {
@@ -31,20 +32,30 @@ export const PassengerSelection = () => {
   const handlePassengerInput: ChangeEventHandler<HTMLInputElement> = (
     event
   ) => {
-    const inputValue = Number(event.target.value);
+    let inputValue = Number(event.target.value);
     if (isNaN(inputValue)) {
       return;
     }
+    if (inputValue > MAX_PASSENGER) {
+      inputValue = MAX_PASSENGER;
+      handleErrorMessage();
+    }
+    if (inputValue < MIN_PASSENGER) {
+      inputValue = MIN_PASSENGER;
+      handleErrorMessage();
+    }
+    event.target.value = inputValue.toString();
     setPassenger(inputValue);
-    if (inputValue > MAX_PASSENGER || inputValue < MIN_PASSENGER) {
-      if (!showError) {
-        setShowError(true);
-      }
-      return;
-    }
-    if (showError) {
+  };
+
+  const handleErrorMessage = () => {
+    setShowError(true);
+
+    clearTimeout(errorTimerRef.current);
+
+    errorTimerRef.current = window.setTimeout(() => {
       setShowError(false);
-    }
+    }, 3000);
   };
 
   return (
@@ -101,7 +112,7 @@ export const PassengerSelection = () => {
         </Hidden>
       </FlexBox>
       <div role="status" aria-live="polite">
-        {showError ? "1 ~ 3명 사이의 승객만 입력 가능합니다" : ""}
+        {showError ? "0 ~ 3명 사이의 승객만 입력 가능합니다" : ""}
       </div>
     </FlexBox>
   );
