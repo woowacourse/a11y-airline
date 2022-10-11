@@ -4,14 +4,16 @@ h1 {
 
 .carousel {
   position: relative;
-  overflow: hidden;
-  width: 700px;
+  width: 500px;
   margin: 20px auto;
+  overflow: hidden;
 }
 
 .carousel-content-container {
+  overflow: hidden;
   display: flex;
   gap: 24px;
+  transition: transform 500ms;
 }
 
 .carousel-content {
