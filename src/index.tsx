@@ -7,7 +7,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(<App />);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// 로그 함수를 인수로 전달하면, App 성능을 측정합니다.
+// EX) reportWebVitals(console.log); // 콘솔을 통해 측정 결과를 출력합니다.
 reportWebVitals();
