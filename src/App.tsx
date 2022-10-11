@@ -11,7 +11,7 @@ const App = () => {
   const [count, setCount] = useState(PASSENGER_COUNT.min);
   const { announceMessage } = useAnnounceMessage();
   const [isShowTooltip, setIsShowTooltip] = useState(false);
-  const tooltipTimerRef = useRef<NodeJS.Timeout>();
+  const tooltipTimerRef = useRef<number>();
 
   const handleClickPlusButton = () => {
     if (count >= PASSENGER_COUNT.max) {
@@ -41,7 +41,7 @@ const App = () => {
       clearTimeout(tooltipTimerRef.current);
     }
 
-    tooltipTimerRef.current = setTimeout(() => {
+    tooltipTimerRef.current = window.setTimeout(() => {
       setIsShowTooltip(false);
     }, 3000);
   };
