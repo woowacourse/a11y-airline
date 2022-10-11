@@ -1,8 +1,7 @@
+import ControlButton from 'Pages/SpinButtonPage/components/ControlButton';
+import ToolTip from 'Pages/SpinButtonPage/components/ToolTip';
 import useSpinButtonPage from 'Pages/SpinButtonPage/useSpinButtonPage';
 import styled from 'styled-components';
-
-import ControlButton from 'components/ControlButton';
-import ToolTip from 'components/ToolTip';
 
 import { MAX_VALUE, MIN_VALUE } from 'constants/passenger';
 
