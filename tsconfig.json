@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2016" /* 자바스크립트 컴파일 버전 설정 */,
+    "module": "commonjs" /* 모듈 버전 설정 */,
+    "esModuleInterop": true /* es모듈 준수 emit */,
+    "forceConsistentCasingInFileNames": true /* 같은 파일에 대한 일관되지 않은 참조를 허용 */,
+    "strict": true /* 스트릭트 모드 on */,
+    "declaration": true,
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["src/*"]
+    }
+  }
+}
