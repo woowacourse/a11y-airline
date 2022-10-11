@@ -4,6 +4,7 @@ import Observer from '.';
 class CounterStore extends Observer {
   #value;
   #status;
+
   constructor(initialNumber: number) {
     super();
     this.#value = initialNumber;
@@ -11,8 +12,8 @@ class CounterStore extends Observer {
   }
 
   plus() {
-    if (this.#value >= COUNTER.MAXIMUM_PASSENGER) {
-      this.#value = COUNTER.MAXIMUM_PASSENGER;
+    if (this.#value >= COUNTER.MAX_PASSENGER) {
+      this.#value = COUNTER.MAX_PASSENGER;
       this.#status = ERROR_MESSAGE.EXCEED_PASSENGER;
       this.notify();
       throw new Error(ERROR_MESSAGE.EXCEED_PASSENGER);
@@ -23,15 +24,15 @@ class CounterStore extends Observer {
   }
 
   setValue(input: number): void {
-    if (input > COUNTER.MAXIMUM_PASSENGER) {
+    if (input > COUNTER.MAX_PASSENGER) {
       this.#value = 3;
     }
-    if (input < COUNTER.MINIMUM_PASSENGER) {
+    if (input < COUNTER.MIN_PASSENGER) {
       this.#value = 0;
     }
     if (
-      input > COUNTER.MAXIMUM_PASSENGER ||
-      input < COUNTER.MINIMUM_PASSENGER ||
+      input > COUNTER.MAX_PASSENGER ||
+      input < COUNTER.MIN_PASSENGER ||
       input % 1 !== 0
     ) {
       this.#status = ERROR_MESSAGE.OUT_OF_BOUNDS;
@@ -44,8 +45,8 @@ class CounterStore extends Observer {
   }
 
   minus() {
-    if (this.#value <= COUNTER.MINIMUM_PASSENGER) {
-      this.#value = COUNTER.MINIMUM_PASSENGER;
+    if (this.#value <= COUNTER.MIN_PASSENGER) {
+      this.#value = COUNTER.MIN_PASSENGER;
       this.#status = ERROR_MESSAGE.FALL_SHORT_OF_MIN_PASSENGER;
       this.notify();
       throw new Error(ERROR_MESSAGE.FALL_SHORT_OF_MIN_PASSENGER);
@@ -64,6 +65,6 @@ class CounterStore extends Observer {
   }
 }
 
-const counterStore = new CounterStore(COUNTER.MINIMUM_PASSENGER);
+const counterStore = new CounterStore(COUNTER.MIN_PASSENGER);
 
 export default counterStore;

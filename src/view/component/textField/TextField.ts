@@ -12,21 +12,16 @@ export default class TextField extends Component {
   #input;
   #span;
   #label;
-  #keyOnKeyDown;
-  #valueAfterKeyDown;
 
   constructor() {
     super();
     this.element.classList.add('counter__value__container');
 
-    this.#keyOnKeyDown = '';
-    this.#valueAfterKeyDown = '';
-
     this.#input = document.createElement('input');
     this.#input.type = 'text';
     this.#input.value = counterStore.value.toString();
-    this.#input.min = `${COUNTER.MINIMUM_PASSENGER}`;
-    this.#input.max = `${COUNTER.MAXIMUM_PASSENGER}`;
+    this.#input.min = `${COUNTER.MIN_PASSENGER}`;
+    this.#input.max = `${COUNTER.MAX_PASSENGER}`;
     this.#input.step = '1';
     this.#input.id = 'counter__value';
     this.#input.addEventListener('input', this.handleInput);

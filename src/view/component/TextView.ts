@@ -12,7 +12,6 @@ export default class TextView extends ComponentWithFragment {
       <p title="성인 승객은 총 3명까지 등록할 수 있습니다." id="tooltip" class="flex flex__center" role="tooltip" aria-label="성인 승객은 총 3명까지 등록할 수 있습니다.">?
         <span id="tooltip_description">성인 승객은 총 3명까지 등록할 수 있습니다.</span>
       </p>
-
     </div>`;
     this.container.append(titleElement, subTitleElement);
   }
