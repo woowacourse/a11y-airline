@@ -11,6 +11,9 @@ const GlobalStyle = createGlobalStyle`
     background-color: transparent;
     cursor: pointer;
   }
+  p {
+    margin:0;
+  }
 `;
 
 export default GlobalStyle;
