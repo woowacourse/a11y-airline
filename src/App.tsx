@@ -1,12 +1,18 @@
-import React from "react";
-import SpinButton from "./component/SpinButton";
-import { LABEL } from "./constant";
+import { PAGE_PATH } from "constant";
+import HomePage from "pages/HomePage";
+import SelectPassengerPage from "pages/SelectPassengerPage";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <h1>승객 선택</h1>
-      <SpinButton label={LABEL.ADULT} />
+      <Routes>
+        <Route path={PAGE_PATH.HOME} element={<HomePage />} />
+        <Route
+          path={PAGE_PATH.SELECT_PASSENGER}
+          element={<SelectPassengerPage />}
+        />
+      </Routes>
     </div>
   );
 }
