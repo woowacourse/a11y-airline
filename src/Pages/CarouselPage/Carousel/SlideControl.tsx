@@ -1,8 +1,7 @@
+import { SlideControlProps } from './type';
 import ButtonLeft from 'assets/button-left.svg';
 import ButtonRight from 'assets/button-right.svg';
 import styled from 'styled-components';
-
-type SlideControlProps = { slidePrevious: () => void; slideNext: () => void };
 
 const SlideControl = ({ slidePrevious, slideNext }: SlideControlProps) => {
   return (

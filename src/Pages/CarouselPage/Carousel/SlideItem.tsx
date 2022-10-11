@@ -1,16 +1,17 @@
-import styled from 'styled-components';
+import { SlideItemProps } from './type';
+import styled, { css } from 'styled-components';
 
-type SlideItemProps = {
-  id: number;
-  location: string;
-  seat: string;
-  price: string;
-  image: string;
-  href: string;
-};
-const SlideItem = ({ id, location, seat, price, image, href }: SlideItemProps) => {
+const SlideItem = ({
+  id,
+  location,
+  seat,
+  price,
+  image,
+  href,
+  width,
+}: SlideItemProps & { width: number }) => {
   return (
-    <Wrapper data-id={id}>
+    <Wrapper data-id={id} width={width}>
       <a href={href}>
         <BgImg src={image} />
         <Description>
@@ -25,11 +26,13 @@ const SlideItem = ({ id, location, seat, price, image, href }: SlideItemProps) =
 
 export default SlideItem;
 
-const Wrapper = styled.li`
-  min-width: 249px;
-  display: list-item;
-  position: relative;
-  font-size: 1rem;
+const Wrapper = styled.li<{ width: number }>`
+  ${({ width }) => css`
+    min-width: ${width}px;
+    display: list-item;
+    position: relative;
+    font-size: 1rem;
+  `}
 `;
 
 const BgImg = styled.img`

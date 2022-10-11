@@ -7,7 +7,7 @@ import image5 from 'assets/5.jpg';
 import image6 from 'assets/6.jpg';
 import image7 from 'assets/7.jpg';
 
-export const carouselData = [
+export const mockingSlideItems = [
   {
     id: 0,
     location: '서울/인천 - 두바이',
