@@ -1,6 +1,6 @@
 import "../css/carousel.css";
 
-const MAX_CAROUSEL_VIEW = 5;
+const MAX_CAROUSEL_VIEW = 2;
 
 const $prevArrowButton = document.querySelector(
   ".prev-arrow-button"
@@ -40,7 +40,8 @@ const prevSlide = () => {
 };
 
 const nextSlide = () => {
-  if (currentCarouselIndex === 3) {
+  console.log(currentCarouselIndex);
+  if (currentCarouselIndex === 6) {
     $nextArrowButton.setAttribute("aria-disabled", "true");
     return;
   }
@@ -74,11 +75,11 @@ $carouselAnchorList.forEach((carousel) => {
       );
     }
 
-    if (currentId >= 4 && prevId < currentId) {
+    if (prevId < currentId) {
       nextSlide();
     }
 
-    if (currentId <= 3 && prevId > currentId) {
+    if (prevId > currentId) {
       prevSlide();
     }
 

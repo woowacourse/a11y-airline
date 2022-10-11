@@ -31,7 +31,7 @@ ul {
 
 .arrow-button-list {
   position: sticky;
-  width: 1310px;
+  width: 500px;
   height: 60px;
   bottom: calc((100% - 9rem) / 2);
   left: 0;
@@ -66,7 +66,7 @@ ul {
 .carousel-container {
   position: relative;
   overflow: hidden;
-  width: 1310px;
+  width: 500px;
 }
 
 .carousel-description {
