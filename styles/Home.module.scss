@@ -1,10 +1,21 @@
-.title a {
-  color: #0070f3;
-  text-decoration: none;
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  :hover,
-  :focus,
-  :active {
-    text-decoration: underline;
+  a {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 1rem 0;
+
+    color: #0070f3;
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: underline;
+    }
   }
 }
