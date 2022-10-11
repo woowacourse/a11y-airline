@@ -1,7 +1,6 @@
+import SlideControl from './SlideControl';
 import SlideItem from './SlideItem';
 import { carouselData } from './data';
-import ButtonLeft from 'assets/button-left.svg';
-import ButtonRight from 'assets/button-right.svg';
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
@@ -11,7 +10,7 @@ const CarouselPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef<HTMLUListElement>(null);
 
-  const PrevSlide = () => {
+  const slidePrevious = () => {
     if (currentSlide === 0) {
       return;
     }
@@ -19,7 +18,7 @@ const CarouselPage = () => {
     setCurrentSlide(currentSlide - 1);
   };
 
-  const NextSlide = () => {
+  const slideNext = () => {
     if (currentSlide >= TOTAL_SLIDES) {
       return;
     }
@@ -47,14 +46,7 @@ const CarouselPage = () => {
               <SlideItem key={item.id} {...item} />
             ))}
           </SliderContainer>
-          <SliderControl>
-            <LeftButton onClick={PrevSlide}>
-              <Hidden>이전</Hidden>
-            </LeftButton>
-            <RightButton onClick={NextSlide}>
-              <Hidden>다음</Hidden>
-            </RightButton>
-          </SliderControl>
+          <SlideControl slidePrevious={slidePrevious} slideNext={slideNext} />
         </Wrapper>
       </CarouselSection>
     </main>
@@ -85,49 +77,4 @@ const SliderContainer = styled.ul`
   margin: 0;
   padding: 0;
   line-height: 1.5;
-`;
-
-const SliderControl = styled.div`
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  left: 0;
-  box-sizing: border-box;
-`;
-
-const LeftButton = styled.button`
-  background: url(${ButtonLeft}) no-repeat center top;
-  background-size: 30px 60px;
-  position: absolute;
-  left: 0;
-  width: 30px;
-  height: 60px;
-  transform: translateY(-50%);
-  border: 0;
-  cursor: pointer;
-`;
-
-const RightButton = styled.button`
-  background: url(${ButtonRight}) no-repeat center top;
-  background-size: 30px 60px;
-  position: absolute;
-  right: 0;
-  width: 30px;
-  height: 60px;
-  transform: translateY(-50%);
-  border: 0;
-  cursor: pointer;
-`;
-
-const Hidden = styled.span`
-  overflow: hidden;
-  white-space: nowrap;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: 0;
-  padding: 0;
-  border: 0;
 `;
