@@ -1,10 +1,14 @@
 @import url("./reset.css");
 @import url("./default-button.css");
 
-.spin-input-section {
+:root {
+  --dark-gray: #4f4f4f;
+}
+
+.spin-input-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   padding: 2rem;
   width: max-content;
   margin: 0 auto;
@@ -15,8 +19,27 @@
 }
 
 .label-container {
+  position: relative;
   display: flex;
   align-items: center;
+  width: max-content;
+}
+
+.tooltip-container {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  width: max-content;
+  border: 1px solid var(--dark-gray);
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.tooltip-container.hide {
+  display: none;
 }
 
 .spin-label {
@@ -35,16 +58,12 @@
   border: 2px solid black;
 }
 
-.tip-button-icon {
+.tooltip-button-icon {
   border-radius: 50%;
-  border: 2px solid #4f4f4f;
+  border: 2px solid var(--dark-gray);
 
-  color: #4f4f4f;
+  color: var(--dark-gray);
   font-weight: bold;
-}
-
-.spin-input {
-  border: none;
 }
 
 .input-container {
@@ -75,4 +94,21 @@
   opacity: 0;
   height: 0;
   width: 0;
+}
+
+#snackbar {
+  width: 300px;
+  padding: 10px;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  position: fixed;
+  bottom: 20px;
+  left: calc(50% - 150px);
+  transition: 0.3s;
+  background-color: rgb(247, 247, 247);
+}
+
+#snackbar.hide {
+  opacity: 0;
+  transform: translateY(10px);
 }

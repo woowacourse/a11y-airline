@@ -1,16 +1,26 @@
 import { MESSAGES, SPIN_INPUT_RANGE } from "./constants";
+import { alertWithSnackbar } from "./snackbar";
 
-const spinButtonFieldSet = document.querySelector("article.spin-input");
+const spinButtonForm = document.querySelector(".spin-input-form");
+const tooltip = document.querySelector("[role=tooltip]");
+const tooltipOpenButton =
+  document.querySelector<HTMLButtonElement>(".tooltip-button");
+
 const spinButtonInput =
-  spinButtonFieldSet.querySelector<HTMLButtonElement>("#spin-input-value");
+  spinButtonForm.querySelector<HTMLButtonElement>("#spin-input-value");
 const spinInputStatus = document.querySelector("#spin-input-status");
 
-const setSpinInputValueChangeMessage = (to: number) => {
-  spinInputStatus.textContent = MESSAGES.현재_승객_수_안내(to);
+const handleSRMessage = (message: string) => {
+  spinInputStatus.textContent = message;
 
   setTimeout(() => {
     spinInputStatus.textContent = "";
-  }, 1000);
+  }, 500);
+};
+
+const setSpinInputValue = (to: number) => {
+  spinButtonInput.value = String(to);
+  handleSRMessage(MESSAGES.현재_승객_수_안내(to));
 };
 
 const handleValueChange = (to: number) => {
@@ -21,8 +31,7 @@ const handleValueChange = (to: number) => {
     throw new Error(MESSAGES.승객_수_범위_오류);
   }
 
-  spinButtonInput.value = String(to);
-  setSpinInputValueChangeMessage(to);
+  setSpinInputValue(to);
 };
 
 const getChangeAmountFromClassList = (classList: DOMTokenList) =>
@@ -40,55 +49,87 @@ const handleSpinButtonClick = (classList: DOMTokenList) => {
     handleValueChange(currentValue + amount);
   } catch (e) {
     if (e instanceof Error) {
-      alert(e.message);
+      alertWithSnackbar(e.message);
       return;
     }
 
-    alert(MESSAGES.알_수_없는_오류);
+    alertWithSnackbar(MESSAGES.알_수_없는_오류);
   }
 };
 
 const handleSpinInputValue = (target: HTMLInputElement) => {
+  console.log(target.value === "");
+  if (target.value === "") {
+    target.value = "";
+    return;
+  }
   const inputValue = Number(target.value);
   if (
-    (inputValue <= SPIN_INPUT_RANGE.MAX &&
-      inputValue >= SPIN_INPUT_RANGE.MIN) ||
-    target.value === ""
+    inputValue <= SPIN_INPUT_RANGE.MAX &&
+    inputValue >= SPIN_INPUT_RANGE.MIN
   ) {
-    setSpinInputValueChangeMessage(inputValue);
     return;
   }
 
   if (inputValue > SPIN_INPUT_RANGE.MAX) {
     target.value = String(SPIN_INPUT_RANGE.MAX);
-    setSpinInputValueChangeMessage(SPIN_INPUT_RANGE.MAX);
   } else {
     target.value = String(SPIN_INPUT_RANGE.MIN);
-    setSpinInputValueChangeMessage(SPIN_INPUT_RANGE.MIN);
   }
   throw new Error(MESSAGES.승객_수_범위_오류);
 };
 
-spinButtonFieldSet.addEventListener("click", (e) => {
-  const target = e.target as unknown as HTMLElement;
-  const { classList } = target;
+const handleTooltipButtonClick = (e: Event) => {
+  e.stopPropagation();
 
+  tooltip.classList.remove("hide");
+  tooltipOpenButton.ariaExpanded = "true";
+};
+
+const handleTooltipClose = () => {
+  tooltip.classList.add("hide");
+  tooltipOpenButton.focus();
+};
+
+window.addEventListener("click", (e) => {
+  if (!(e.target instanceof HTMLElement)) return;
+  if (tooltip.classList.contains("hide") || tooltip.contains(e.target)) return;
+  handleTooltipClose();
+});
+
+spinButtonForm.addEventListener("click", (e) => {
+  if (!(e.target instanceof HTMLButtonElement)) return;
+
+  const { classList } = e.target;
   if (classList.contains("spin-button")) {
     handleSpinButtonClick(classList);
+  }
+  if (classList.contains("tooltip-button")) {
+    handleTooltipButtonClick(e);
+  }
+  if (classList.contains("tooltip-close-button")) {
+    handleTooltipClose();
+  }
+});
+
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !tooltip.classList.contains("hide")) {
+    tooltip.classList.add("hide");
+    tooltipOpenButton.ariaExpanded = "false";
   }
 });
 
 spinButtonInput.addEventListener("input", (e) => {
-  const target = e.target as unknown as HTMLInputElement;
+  if (!(e.target instanceof HTMLInputElement)) return;
 
   try {
-    handleSpinInputValue(target);
-  } catch (e) {
-    if (e instanceof Error) {
-      alert(e.message);
+    handleSpinInputValue(e.target);
+  } catch (exception) {
+    if (exception instanceof Error) {
+      alertWithSnackbar(exception.message);
       return;
     }
 
-    alert(MESSAGES.알_수_없는_오류);
+    alertWithSnackbar(MESSAGES.알_수_없는_오류);
   }
 });
