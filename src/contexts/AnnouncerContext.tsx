@@ -8,7 +8,7 @@ import React, {
 type Liveness = AriaAttributes['aria-live'];
 type AnnouncerContextValues = {
   Announcer: React.FC<HTMLSpanElement>;
-  announce: (message: string, liveness: Liveness) => void;
+  announce: (message: string, liveness?: Liveness) => void;
 } | null;
 
 const AnnouncerContext = createContext<AnnouncerContextValues>(null);

@@ -14,7 +14,7 @@ const PassengerControl = ({
   description: string;
 }) => {
   const tooltipRef = useRef<HTMLParagraphElement>(null);
-  const [count, setCount] = useState(minCount);
+  const [count, setCount] = useState(minCount.toString());
   const inputRef = useRef<HTMLInputElement>(null);
   const tooltipId = `${label}-tooltip`;
   const inputId = `${label}-count`;
@@ -72,7 +72,7 @@ const PassengerControl = ({
       <div className={styles['control-box']}>
         <DownButton
           className={styles['spin-button']}
-          disabled={count <= minCount}
+          disabled={Number(count) <= minCount}
           aria-label={`${label} 탑승자 한명 줄이기`}
           aria-controls={inputId}
         >
@@ -97,10 +97,20 @@ const PassengerControl = ({
           name={inputId}
           ref={inputRef}
           className={styles['input']}
-          defaultValue={minCount}
+          value={count}
           onChange={(e) => {
-            setCount(e.currentTarget.valueAsNumber);
-            announce(`${label} 승객 추가 ${e.currentTarget.valueAsNumber}`);
+            const { value, valueAsNumber } = e.currentTarget;
+
+            if (
+              (value.length > 0 && !Number.isInteger(valueAsNumber)) ||
+              valueAsNumber < minCount ||
+              valueAsNumber > maxCount
+            ) {
+              return;
+            }
+
+            setCount(value);
+            announce(`${label} 승객 추가 ${valueAsNumber}`);
           }}
           min={minCount}
           max={maxCount}
