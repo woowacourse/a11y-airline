@@ -20,7 +20,12 @@ const usePassengerItem = (
       return;
     }
 
-    if (passengerNumber >= maxNumber) return;
+    if (passengerNumber >= maxNumber) {
+      setAlertMessage(
+        `${passengerType} 입력 가능한 탑승 인원은 ${minNumber}부터 ${maxNumber}까지`
+      );
+      return;
+    }
 
     setPassengerNumber((prev) => Number(prev) + 1);
     setStatusMessage(`${passengerType} 승객 추가 ${passengerNumber + 1}`);
@@ -34,7 +39,12 @@ const usePassengerItem = (
       return;
     }
 
-    if (passengerNumber <= minNumber) return;
+    if (passengerNumber <= minNumber) {
+      setAlertMessage(
+        `${passengerType} 입력 가능한 탑승 인원은 ${minNumber}부터 ${maxNumber}까지`
+      );
+      return;
+    }
 
     setPassengerNumber((prev) => Number(prev) - 1);
     setStatusMessage(`${passengerType} 승객 감소 ${passengerNumber - 1}`);
