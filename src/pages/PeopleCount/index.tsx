@@ -12,14 +12,20 @@ function PeopleCount() {
 
   return (
     <section className={styles.pagePeopleCount}>
-      <h1 className={styles.title}>승객 선택</h1>
+      <h1 className={styles.title} tabIndex={1}>
+        승객 선택
+      </h1>
 
       <label className={styles.label}>
         성인
-        <ToolTip text="최대 인원수는 3명까지만 가능합니다." align="right">
+        <ToolTip text="최대 인원수는 3명까지만 가능합니다." align="right" tabIndex={2}>
           <div className={styles.tip}>?</div>
         </ToolTip>
       </label>
+
+      <div role="status" className={styles.screenReaderOnly}>
+        성인 승객 {count}명 입력됨
+      </div>
 
       <Counter
         min={0}
