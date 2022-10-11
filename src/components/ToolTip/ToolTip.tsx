@@ -2,7 +2,7 @@ import cn from 'classnames'
 
 import styles from './styles.module.scss'
 
-export interface ToolTipProps {
+export interface ToolTipProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
   text: string
   align: 'top' | 'bottom' | 'left' | 'right'
@@ -10,17 +10,19 @@ export interface ToolTipProps {
   children: React.ReactNode
 }
 
-function ToolTip({ className, text, align, disabled, children }: ToolTipProps) {
+function ToolTip({ className, text, align, disabled, children, ...args }: ToolTipProps) {
   const toolTipBoxClassNames = cn(styles.tooltipBox, styles[`align-${align}`], {
     [styles.disabled]: disabled,
   })
 
   return (
-    <div className={cn(styles.componentTooltip, className)} aria-hidden="true">
-      <div className={toolTipBoxClassNames} aria-label={text}>
+    <div className={cn(styles.componentTooltip, className)}>
+      <div id="tooltipBox" role="tooltip" className={toolTipBoxClassNames} aria-label={text}>
         {text}
       </div>
-      {children}
+      <div role="button" aria-describedby="tooltipBox" {...args}>
+        <span aria-hidden>{children}</span>
+      </div>
     </div>
   )
 }
