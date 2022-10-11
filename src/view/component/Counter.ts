@@ -8,12 +8,12 @@ export default class CounterComponent extends Component {
   #plusButton;
   #input;
 
-  constructor() {
+  constructor(id: string) {
     super();
     this.#minusButton = new MinusButton();
     this.#plusButton = new PlusButton();
     this.#input = new TextField();
-    this.element.id = 'counter';
+    this.element.id = id;
     this.element.classList.add('counter', 'flex', 'flex__center');
     this.element.append(
       this.#minusButton.target,

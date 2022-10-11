@@ -3,4 +3,4 @@ import TextView from './component/TextView';
 
 document
   .getElementById('page')
-  ?.append(new TextView().target, new CounterComponent().target);
+  ?.append(new TextView().target, new CounterComponent('counter').target);
