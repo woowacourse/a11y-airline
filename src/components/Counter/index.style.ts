@@ -33,9 +33,14 @@ export const CountButton = styled.button`
   height: 37px;
   font-size: 20px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
 
   &:disabled {
     cursor: not-allowed;
+    color: #dcdee2;
   }
 `;
 
