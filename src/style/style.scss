@@ -1,0 +1,55 @@
+@import './normalize.scss';
+@import './snackbar.scss';
+@import './helptip.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.d-none {
+  display: none;
+}
+
+.hidden-for-aria-live {
+  position: absolute;
+  text-indent: -9999px;
+}
+
+#page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 40px;
+}
+
+.label-container {
+  display: flex;
+  column-gap: 4px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.adult-passenger-spin {
+  display: flex;
+  column-gap: 6px;
+}
+
+.passenger-count-input {
+  width: 50px;
+  font-size: 24px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}
