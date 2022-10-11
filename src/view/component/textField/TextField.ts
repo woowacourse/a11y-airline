@@ -29,9 +29,7 @@ export default class TextField extends Component {
     this.#input.max = `${COUNTER.MAXIMUM_PASSENGER}`;
     this.#input.step = '1';
     this.#input.id = 'counter__value';
-    this.#input.addEventListener('keydown', this.handleKeyDown);
-    this.#input.addEventListener('change', this.handleInput);
-    this.#input.addEventListener('keypress', this.handleKeypress);
+    this.#input.addEventListener('input', this.handleInput);
 
     this.#span = document.createElement('span');
     this.#span.id = 'counter__value__line';
@@ -51,54 +49,14 @@ export default class TextField extends Component {
     });
   }
 
-  handleKeyDown = (e: Event) => {
-    const target = e.target as HTMLInputElement;
-    this.#keyOnKeyDown = (e as any).key;
-    const value = target.value;
-    this.#input.value = '';
-
-    if (
-      !REGEXP.NOT_NUMBER_IN_NUMBER_INPUT.test(this.#keyOnKeyDown) &&
-      this.#keyOnKeyDown.length === 1
-    ) {
-      this.#valueAfterKeyDown = value;
-      return;
-    }
-    return false;
-  };
-
-  handleKeypress = (e: Event) => {
-    const event = e as KeyboardEvent;
-
-    if (event.keyCode < 48 || event.keyCode > 57) {
-      try {
-        counterStore.setValue(Number(this.#valueAfterKeyDown));
-      } catch ({ message }) {
-        alert(message);
-      }
-    }
-  };
-
   handleInput = (e: Event) => {
     const target = e.target as HTMLInputElement;
+    if (!target) return;
+    if (target.localName !== 'input') return;
+
+    target.value = target.value.replace(/[^0-9]/g, '');
+
     try {
-      if (
-        REGEXP.NOT_NUMBER_IN_NUMBER_INPUT.test(this.#keyOnKeyDown) &&
-        this.#keyOnKeyDown.length === 1
-      ) {
-        counterStore.setValue(Math.floor(Number(this.#valueAfterKeyDown)));
-        return;
-      }
-
-      if (target.value[0] === '0') {
-        counterStore.setValue(Number(target.value));
-      }
-
-      const number = Number(target.value);
-      if (number % 1 !== 0) {
-        target.value = Math.floor(number).toString();
-      }
-
       counterStore.setValue(Number(target.value));
     } catch ({ message }) {
       alert(message);

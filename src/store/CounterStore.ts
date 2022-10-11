@@ -13,6 +13,7 @@ class CounterStore extends Observer {
   plus() {
     if (this.#value >= COUNTER.MAXIMUM_PASSENGER) {
       this.#value = COUNTER.MAXIMUM_PASSENGER;
+      this.#status = `승객의 최대 인원은 ${COUNTER.MAXIMUM_PASSENGER}명입니다.`;
       this.notify();
       throw new Error(
         `승객의 최대 인원은 ${COUNTER.MAXIMUM_PASSENGER}명입니다.`
@@ -35,13 +36,14 @@ class CounterStore extends Observer {
       input < COUNTER.MINIMUM_PASSENGER ||
       input % 1 !== 0
     ) {
+      this.#status = `성인 승객은 최소 ${COUNTER.MINIMUM_PASSENGER}명 이상 ${COUNTER.MAXIMUM_PASSENGER}명의 자연수 이하여야 합니다.`;
       this.notify();
       throw new Error(
         `성인 승객은 최소 ${COUNTER.MINIMUM_PASSENGER}명 이상 ${COUNTER.MAXIMUM_PASSENGER}명의 자연수 이하여야 합니다.`
       );
     }
     this.#value = input;
-    this.#status = `성인 승객 ${this.#value}`;
+    this.#status = `성인 승객 ${this.#value} 텍스트`;
     this.notify();
   }
 
