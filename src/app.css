@@ -1,0 +1,47 @@
+main {
+  padding: 5rem;
+}
+
+.passenger-count-control-container {
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+}
+
+.passenger-count-controller {
+  display: flex;
+  gap: 1rem;
+}
+
+.passenger-count-control-input {
+  font-size: 21px;
+  text-align: center;
+  padding: 0 7px;
+
+  border: unset;
+  border-bottom: 2px solid black;
+}
+.passenger-count-control-input::-webkit-outer-spin-button,
+.passenger-count-control-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.passenger-count-control-button {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  background-color: transparent;
+  border: 1px solid lightgray;
+}
+
+.user-action-message-box {
+  overflow: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  border: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
