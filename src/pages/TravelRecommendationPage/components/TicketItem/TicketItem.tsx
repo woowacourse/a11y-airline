@@ -26,7 +26,7 @@ const TicketItem = ({
 
 export default TicketItem;
 
-const Wrapper = styled.li`
+const Wrapper = styled.div`
   ${({ travelImage }: WrapperProps) => css`
     display: flex;
     flex-direction: column;

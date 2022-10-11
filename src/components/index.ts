@@ -1,3 +1,4 @@
+import Carousel from 'components/Carousel/Carousel';
 import SpinButton from 'components/SpinButton/SpinButton';
 
-export { SpinButton };
+export { Carousel, SpinButton };

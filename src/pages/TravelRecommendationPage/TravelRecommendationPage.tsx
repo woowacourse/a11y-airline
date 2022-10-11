@@ -1,3 +1,4 @@
+import { Carousel } from 'components';
 import { TicketItem } from 'pages/TravelRecommendationPage/components';
 
 const tickets = [
@@ -79,9 +80,13 @@ const TravelRecommendationPage = () => {
   return (
     <>
       <h1>지금 떠나기 좋은 여행</h1>
-      {tickets.map((ticket) => (
-        <TicketItem key={ticket.id} {...ticket} />
-      ))}
+      <Carousel>
+        {tickets.map((ticket) => (
+          <li key={ticket.id}>
+            <TicketItem {...ticket} />
+          </li>
+        ))}
+      </Carousel>
     </>
   );
 };
