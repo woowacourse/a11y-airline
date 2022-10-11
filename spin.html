@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spin</title>
+    <link rel="stylesheet" href="./src/css/spin.css" />
+  </head>
+  <body>
+    <section>
+      <h1>승객 선택</h1>
+      <article class="passenger-title">
+        <h2>성인</h2>
+        <button
+          class="tooltip button"
+          type="button"
+          aria-controls="tooltip-content"
+          aria-label="성인 기준 상세 안내"
+          aria-hidden="false"
+        >
+          ?
+        </button>
+        <div class="tooltip-content sr-only" aria-live="polite">
+          <span>국제선 만 12세 이상, 국내선 만 13세 이상</span>
+        </div>
+      </article>
+      <div>
+        <button
+          class="decrement-button button"
+          type="button"
+          aria-label="성인 탑승자 한명 줄이기"
+          aria-atomic="true"
+        >
+          -
+        </button>
+        <input
+          id="passenger-amount-input"
+          type="tel"
+          value="1"
+          min="1"
+          max="3"
+          aria-label="성인"
+        />
+        <button
+          class="increment-button button"
+          type="button"
+          aria-label="성인 탑승자 한명 늘리기"
+          aria-atomic="true"
+        >
+          +
+        </button>
+      </div>
+      <div id="input-status" class="sr-only" role="status"></div>
+    </section>
+    <script src="./src/js/spin.js"></script>
+  </body>
+</html>

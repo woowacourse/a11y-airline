@@ -1,0 +1,60 @@
+const PASSENGER_AMOUNT = {
+  MIN: 1,
+  MAX: 3,
+};
+
+const $ = (select) => document.querySelector(select);
+
+const passengerAmountInput = $("#passenger-amount-input");
+const inputStatus = $("#input-status");
+const tooltipContent = $(".tooltip-content");
+
+$(".tooltip").addEventListener("click", () => {
+  if (tooltipContent.classList.contains("sr-only")) {
+    tooltipContent.classList.remove("sr-only");
+    tooltipContent.ariaExpanded = "true";
+    return;
+  }
+  tooltipContent.classList.add("sr-only");
+  tooltipContent.ariaExpanded = "false";
+});
+
+passengerAmountInput.addEventListener("input", (e) => {
+  const target = Number(e.target.value);
+  if (target === 0) {
+    return;
+  }
+
+  if (target < PASSENGER_AMOUNT.MIN || target > PASSENGER_AMOUNT.MAX) {
+    alert("범위를 벗어나므로 초기값인 1로 변경됩니다.");
+    e.target.value = PASSENGER_AMOUNT.MIN;
+  }
+});
+
+$(".decrement-button").addEventListener("click", () => {
+  if (Number(passengerAmountInput.value) === PASSENGER_AMOUNT.MIN) {
+    $(".decrement-button").ariaDisabled = "true";
+    return;
+  }
+  if (Number(passengerAmountInput.value) === PASSENGER_AMOUNT.MAX) {
+    $(".increment-button").ariaDisabled = "false";
+  }
+  if (passengerAmountInput.value > PASSENGER_AMOUNT.MIN) {
+    passengerAmountInput.value--;
+    inputStatus.textContent = `성인 승객 감소 ${passengerAmountInput.value}`;
+  }
+});
+
+$(".increment-button").addEventListener("click", () => {
+  if (Number(passengerAmountInput.value) === PASSENGER_AMOUNT.MAX) {
+    $(".increment-button").ariaDisabled = "true";
+    return;
+  }
+  if (Number(passengerAmountInput.value) === PASSENGER_AMOUNT.MIN) {
+    $(".decrement-button").ariaDisabled = "false";
+  }
+  if (passengerAmountInput.value < PASSENGER_AMOUNT.MAX) {
+    passengerAmountInput.value++;
+    inputStatus.textContent = `성인 승객 추가 ${passengerAmountInput.value}`;
+  }
+});
