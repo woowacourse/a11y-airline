@@ -1,6 +1,7 @@
 {
   "specialOfferList": [
     {
+      "id": "0",
       "departureAirport": "ICN",
       "departureAirportNm": "서울/인천, 대한민국",
       "arrivalAirport": "DXB",
@@ -17,6 +18,7 @@
       "imgUrl": "https://www.koreanair.com/content/dam/koreanair/ko/airport-img/DXB-list-pc.jpg"
     },
     {
+      "id": "1",
       "departureAirport": "ICN",
       "departureAirportNm": "서울/인천, 대한민국",
       "arrivalAirport": "FUK",
@@ -33,6 +35,7 @@
       "imgUrl": "https://www.koreanair.com/content/dam/koreanair/ko/airport-img/FUK-list-pc.jpg"
     },
     {
+      "id": "2",
       "departureAirport": "ICN",
       "departureAirportNm": "서울/인천, 대한민국",
       "arrivalAirport": "HKT",
@@ -49,6 +52,7 @@
       "imgUrl": "https://www.koreanair.com/content/dam/koreanair/ko/airport-img/HKT-list-pc.jpg"
     },
     {
+      "id": "3",
       "departureAirport": "ICN",
       "departureAirportNm": "서울/인천, 대한민국",
       "arrivalAirport": "CNX",
@@ -65,6 +69,7 @@
       "imgUrl": "https://www.koreanair.com/content/dam/koreanair/ko/airport-img/CNX-list-pc.jpg"
     },
     {
+      "id": "4",
       "departureAirport": "ICN",
       "departureAirportNm": "서울/인천, 대한민국",
       "arrivalAirport": "BCN",
@@ -81,6 +86,7 @@
       "imgUrl": "https://www.koreanair.com/content/dam/koreanair/ko/airport-img/BCN-list-pc.jpg"
     },
     {
+      "id": "5",
       "departureAirport": "ICN",
       "departureAirportNm": "서울/인천, 대한민국",
       "arrivalAirport": "HAN",
@@ -97,6 +103,7 @@
       "imgUrl": "https://www.koreanair.com/content/dam/koreanair/ko/airport-img/HAN-list-pc.jpg"
     },
     {
+      "id": "6",
       "departureAirport": "ICN",
       "departureAirportNm": "서울/인천, 대한민국",
       "arrivalAirport": "FCO",
@@ -113,6 +120,7 @@
       "imgUrl": "https://www.koreanair.com/content/dam/koreanair/ko/airport-img/FCO-list-pc.jpg"
     },
     {
+      "id": "7",
       "departureAirport": "ICN",
       "departureAirportNm": "서울/인천, 대한민국",
       "arrivalAirport": "HNL",
