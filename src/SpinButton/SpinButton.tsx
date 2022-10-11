@@ -38,6 +38,7 @@ function SpinButton({
         onClick={handleClickMinus}
         css={buttonStyle}
         aria-label={`${passengerType} 탑승자 한명 줄이기`}
+        aria-disabled={inputValue - step < min}
       >
         -
       </button>
@@ -58,6 +59,7 @@ function SpinButton({
         onClick={handleClickPlus}
         css={buttonStyle}
         aria-label={`${passengerType} 탑승자 한명 늘리기`}
+        aria-disabled={inputValue + step > max}
       >
         +
       </button>
