@@ -1,7 +1,12 @@
+h1 {
+  text-align: center;
+}
+
 .carousel {
   position: relative;
   overflow: hidden;
   width: 700px;
+  margin: 20px auto;
 }
 
 .carousel-content-container {
