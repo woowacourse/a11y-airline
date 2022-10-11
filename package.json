@@ -1,0 +1,45 @@
+{
+  "name": "a11y-airline",
+  "version": "1.0.0",
+  "description": "<p align=\"middle\" >   <img width=\"100px;\" src=\"./src/images/airplane.png\"/> </p> <h2 align=\"middle\">누구나 접근할 수 있는 항공사 웹사이트</h2> <p align=\"middle\">항공사 웹사이트 컴포넌트의 스크린 리더 접근성 높이기</p> <p align=\"middle\">   <img src=\"https://img.shields.io/badge/version-1.0.0-blue?style=flat-square\" alt=\"template version\"/>   <img src=\"https://img.shields.io/badge/language-html-red.svg?style=flat-square\"/>   <img src=\"https://img.shields.io/badge/language-css-blue.svg?style=flat-square\"/>   <img src=\"https://img.shields.io/badge/language-js-yellow.svg?style=flat-square\"/>   <img src=\"https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square\"/> </p>",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "webpack serve --mode development",
+    "start:prod": "webpack serve --mode production",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woose28/a11y-airline.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/woose28/a11y-airline/issues"
+  },
+  "homepage": "https://github.com/woose28/a11y-airline#readme",
+  "devDependencies": {
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "@types/styled-components": "^5.1.26",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "esbuild-loader": "^2.20.0",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.8",
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.4",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.6"
+  }
+}
