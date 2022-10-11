@@ -12,9 +12,12 @@ function SpinButton({ target }: SpinButtonProps) {
   const [count, setCount] = useState(0);
   const [labelDescription, setLabelDescription] = useState('');
 
+  const isDisabledMinusButton = count <= COUNT_RULE.MIN;
+  const isDisabledPlusButton = count >= COUNT_RULE.MAX;
+
   const changeCount = (flag: 'plus' | 'minus') => () => {
     if (flag === 'plus') {
-      if (count >= COUNT_RULE.MAX) return;
+      if (isDisabledPlusButton) return;
 
       setCount(prevCount => {
         const newCount = prevCount + 1;
@@ -27,7 +30,7 @@ function SpinButton({ target }: SpinButtonProps) {
       return;
     }
 
-    if (count <= COUNT_RULE.MIN) return;
+    if (isDisabledMinusButton) return;
 
     setCount(prevCount => {
       const newCount = prevCount - 1;
@@ -48,9 +51,6 @@ function SpinButton({ target }: SpinButtonProps) {
     setLabelDescription(`${target} ${newCount} 텍스트 숫자만 수정`);
     setCount(newCount);
   };
-
-  const isDisabledMinusButton = count <= COUNT_RULE.MIN;
-  const isDisabledPlusButton = count >= COUNT_RULE.MAX;
 
   return (
     <div
