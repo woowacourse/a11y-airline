@@ -2,25 +2,56 @@ import SlideItem from './SlideItem';
 import { carouselData } from './data';
 import ButtonLeft from 'assets/button-left.svg';
 import ButtonRight from 'assets/button-right.svg';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
+const TOTAL_SLIDES = 4;
+
 const CarouselPage = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slideRef = useRef<HTMLUListElement>(null);
+
+  const PrevSlide = () => {
+    if (currentSlide === 0) {
+      return;
+    }
+
+    setCurrentSlide(currentSlide - 1);
+  };
+
+  const NextSlide = () => {
+    if (currentSlide >= TOTAL_SLIDES) {
+      return;
+    }
+
+    setCurrentSlide(currentSlide + 1);
+  };
+
+  useEffect(() => {
+    if (!slideRef.current) {
+      return;
+    }
+
+    slideRef.current.style.transition = 'all 0.5s ease-in-out';
+    slideRef.current.style.transform = `translateX(-${currentSlide * 280}px)`;
+  }, [currentSlide]);
+
   return (
     <main>
       <h1>마르코 항공사-Carousel</h1>
       <CarouselSection>
         <h2>지금 떠나기 좋은 여행</h2>
         <Wrapper>
-          <SliderContainer>
+          <SliderContainer ref={slideRef}>
             {carouselData.map((item) => (
               <SlideItem key={item.id} {...item} />
             ))}
           </SliderContainer>
           <SliderControl>
-            <LeftButton>
+            <LeftButton onClick={PrevSlide}>
               <Hidden>이전</Hidden>
             </LeftButton>
-            <RightButton>
+            <RightButton onClick={NextSlide}>
               <Hidden>다음</Hidden>
             </RightButton>
           </SliderControl>
@@ -40,7 +71,7 @@ const Wrapper = styled.div`
   padding: 0;
   display: block;
   word-break: break-word;
-  width: 100%;
+  width: 1080px;
   overflow: hidden;
   position: relative;
 `;
