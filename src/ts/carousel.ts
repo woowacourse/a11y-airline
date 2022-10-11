@@ -1,7 +1,5 @@
 import "../css/carousel.css";
 
-const MAX_CAROUSEL_VIEW = 2;
-
 const $prevArrowButton = document.querySelector(
   ".prev-arrow-button"
 ) as HTMLButtonElement;
@@ -20,7 +18,6 @@ const animateCarousel = (currentCarouselIndex: number) => {
     carousel.animate(
       [{ transform: `translateX(calc((-270px) * ${currentCarouselIndex}))` }],
       {
-        // timing options
         duration: 300,
         fill: "forwards",
       }
@@ -40,7 +37,6 @@ const prevSlide = () => {
 };
 
 const nextSlide = () => {
-  console.log(currentCarouselIndex);
   if (currentCarouselIndex === 6) {
     $nextArrowButton.setAttribute("aria-disabled", "true");
     return;
