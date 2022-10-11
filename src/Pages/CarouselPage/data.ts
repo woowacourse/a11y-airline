@@ -14,7 +14,7 @@ export const mockingSlideItems = [
     seat: '일반석 왕복',
     price: 'KRW 1,158,000 ~',
     image: image0,
-    href: '',
+    href: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=DXB&duration=7&cabin=Y',
   },
   {
     id: 1,
@@ -22,7 +22,7 @@ export const mockingSlideItems = [
     seat: '일반석 왕복',
     price: 'KRW 340,400 ~',
     image: image1,
-    href: '',
+    href: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=FUK&duration=7&cabin=Y',
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ export const mockingSlideItems = [
     seat: '일반석 왕복',
     price: 'KRW 704,200 ~',
     image: image2,
-    href: '',
+    href: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=HKT&cabin=Y&tripType=RT&duration=7',
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ export const mockingSlideItems = [
     seat: '일반석 왕복',
     price: 'KRW 839,200 ~',
     image: image3,
-    href: '',
+    href: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=CNX&cabin=Y&tripType=RT&duration=7',
   },
   {
     id: 4,
@@ -46,7 +46,7 @@ export const mockingSlideItems = [
     seat: '일반석 왕복',
     price: 'KRW 1,546,300 ~',
     image: image4,
-    href: '',
+    href: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=BCN&cabin=Y&tripType=RT&duration=7',
   },
   {
     id: 5,
@@ -54,7 +54,7 @@ export const mockingSlideItems = [
     seat: '일반석 왕복',
     price: 'KRW 527,400 ~',
     image: image5,
-    href: '',
+    href: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=HAN&cabin=Y&tripType=RT&duration=7',
   },
   {
     id: 6,
@@ -62,7 +62,7 @@ export const mockingSlideItems = [
     seat: '일반석 왕복',
     price: 'KRW 1,454,300 ~',
     image: image6,
-    href: '',
+    href: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=HNL&cabin=Y&tripType=RT&duration=7',
   },
   {
     id: 7,
@@ -70,6 +70,6 @@ export const mockingSlideItems = [
     seat: '일반석 왕복',
     price: 'KRW 1,244,900 ~',
     image: image7,
-    href: '',
+    href: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=HNL&cabin=Y&tripType=RT&duration=7',
   },
 ];
