@@ -17,7 +17,7 @@ const ScreenReaderProvider = ({ children }: PropsWithChildren) => {
     setTimeout(() => {
       setShouldAnnounce(false);
       setMessage('');
-    }, 0);
+    }, 3000);
   };
 
   return (
@@ -30,7 +30,7 @@ const ScreenReaderProvider = ({ children }: PropsWithChildren) => {
 
 const AnnouncedMessage = ({ message, type }: { message: string; type: 'assertive' | 'polite' }) => {
   return (
-    <div role='status' aria-live={type} className='sr-only' aria->
+    <div role='status' aria-live={type} className='sr-only'>
       {message}
     </div>
   );
