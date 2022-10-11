@@ -22,12 +22,13 @@ function HelpTooltip({ passengerType, tooltipMessage, baseInfo }: HelpTooltipPro
       <button
         css={buttonStyle}
         onClick={handleClickHelp}
-        aria-label={`${passengerType} 기준 상세 안내 ${tooltipMessage}`}
+        aria-label={`${passengerType} 기준 상세 안내 `}
+        aria-expanded={openTooltip}
       >
         ?
       </button>
       {openTooltip && (
-        <span css={tooltipMessageStyle} aria-hidden={true} role="tooltip">
+        <span css={tooltipMessageStyle} role="tooltip" aria-live="polite">
           {tooltipMessage}
         </span>
       )}
