@@ -13,7 +13,6 @@ h1 {
   overflow: hidden;
   display: flex;
   gap: 24px;
-  transition: transform 500ms;
 }
 
 .carousel-content {
@@ -101,4 +100,10 @@ h1 {
   justify-content: flex-start;
   right: 0;
   transform: translateX(50%);
+}
+
+.hidden {
+  opacity: 0;
+  height: 0;
+  width: 0;
 }
