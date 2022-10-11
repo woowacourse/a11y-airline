@@ -61,7 +61,7 @@ function SpinButton({ target }: SpinButtonProps) {
       aria-valuemin={0}
       aria-valuemax={3}
     >
-      <label aria-hidden={false} aria-live="polite" role="dialog" hidden>
+      <label aria-hidden={false} aria-live="polite" role="status" hidden>
         {labelDescription}
       </label>
       <button
