@@ -1,14 +1,16 @@
 import styled, { css } from 'styled-components';
-import { WrapperProps } from 'pages/TravelRecommendationPage/components/TicketItem/TicketItem.type';
+import {
+  TicketItemProps,
+  WrapperProps,
+} from 'pages/TravelRecommendationPage/components/TicketItem/TicketItem.type';
 
-const travelImage =
-  'https://www.koreanair.com/content/dam/koreanair/ko/airport-img/DXB-list-pc.jpg';
-const departure = '서울/인천';
-const arrival = '두바이';
-const ticketType = '일반석 왕복';
-const minPrice = 1158000;
-
-const TicketItem = () => {
+const TicketItem = ({
+  travelImage,
+  departure,
+  arrival,
+  ticketType,
+  minPrice,
+}: TicketItemProps) => {
   return (
     <Wrapper travelImage={travelImage}>
       <a>
@@ -33,7 +35,7 @@ const Wrapper = styled.li`
     padding: 20px 22px;
     background-image: url(${travelImage});
     background-size: 100%;
-    object-fit: fill;
+    object-fit: cover;
     color: #000;
     cursor: pointer;
   `}
