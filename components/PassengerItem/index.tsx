@@ -35,7 +35,6 @@ const PassengerItem = ({
           type="button"
           aria-label={`${passengerType} 기준 상세안내`}
           aria-expanded={isShowInfo}
-          aria-describedby="popover-info"
           aria-controls="popover-info"
           aria-haspopup="dialog"
         >
