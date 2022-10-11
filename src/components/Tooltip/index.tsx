@@ -23,7 +23,7 @@ const QuestionMarkTooltip = ({ description }: { description: string }) => {
         ?
       </button>
       {show && (
-        <div className="tooltip-description" aria-live="polite">
+        <div role="tooltip" className="tooltip-description" aria-live="polite">
           {description}
         </div>
       )}
