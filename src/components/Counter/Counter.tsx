@@ -12,7 +12,15 @@ export interface CounterProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onCh
   onChange?: (value: number) => void
 }
 
-function Counter({ className, min, max, value, placeholder, onChange, ...args }: CounterProps) {
+function Counter({
+  className,
+  min,
+  max,
+  value = 0,
+  placeholder = '0',
+  onChange,
+  ...args
+}: CounterProps) {
   const visibleNumber = String(value).replace(/(^[0]+)/, '')
 
   const handleChangeCount = (value: number) => {
@@ -67,11 +75,6 @@ function Counter({ className, min, max, value, placeholder, onChange, ...args }:
       </button>
     </div>
   )
-}
-
-Counter.defaultProps = {
-  value: 0,
-  placeholder: 0,
 }
 
 export default Counter

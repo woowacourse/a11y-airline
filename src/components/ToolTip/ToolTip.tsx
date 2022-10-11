@@ -5,12 +5,19 @@ import styles from './styles.module.scss'
 export interface ToolTipProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
   text: string
-  align: 'top' | 'bottom' | 'left' | 'right'
-  disabled: boolean
+  align?: 'top' | 'bottom' | 'left' | 'right'
+  disabled?: boolean
   children: React.ReactNode
 }
 
-function ToolTip({ className, text, align, disabled, children, ...args }: ToolTipProps) {
+function ToolTip({
+  className,
+  text,
+  align = 'top',
+  disabled = false,
+  children,
+  ...args
+}: ToolTipProps) {
   const toolTipBoxClassNames = cn(styles.tooltipBox, styles[`align-${align}`], {
     [styles.disabled]: disabled,
   })
@@ -25,11 +32,6 @@ function ToolTip({ className, text, align, disabled, children, ...args }: ToolTi
       </div>
     </div>
   )
-}
-
-ToolTip.defaultProps = {
-  disabled: false,
-  align: 'top',
 }
 
 export default ToolTip
