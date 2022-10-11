@@ -1,0 +1,50 @@
+.page-people-count {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2rem;
+
+  width: 100%;
+  min-width: 18rem;
+  max-width: 25rem;
+
+  margin: 0 auto;
+  padding: 2rem;
+
+  .title {
+    text-align: center;
+  }
+
+  .screen-reader-only {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    display: block;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+  }
+
+  .label {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.25rem;
+    font-weight: bold;
+    gap: 0.5rem;
+
+    .tip {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 1.25rem;
+      height: 1.25rem;
+
+      font-size: 0.6rem;
+      color: #999;
+      border-radius: 50%;
+      border: 1px solid #ddd;
+    }
+  }
+}

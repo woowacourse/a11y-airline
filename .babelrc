@@ -1,0 +1,14 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "shippedProposals": true,
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+  ],
+  "plugins": ["@babel/plugin-transform-runtime"]
+}
