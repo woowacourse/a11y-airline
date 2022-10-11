@@ -73,6 +73,7 @@ const App = () => {
             type='button'
             onClick={handleClickMinusButton}
             aria-label='성인 탑승자 한명 줄이기'
+            disabled={count <= PASSENGER_COUNT.min}
           >
             -
           </button>
@@ -81,6 +82,7 @@ const App = () => {
             type='button'
             onClick={handleClickPlusButton}
             aria-label='성인 탑승자 한명 늘리기'
+            disabled={count >= PASSENGER_COUNT.max}
           >
             +
           </button>
