@@ -1,6 +1,3 @@
-import CounterComponent from './component/Counter';
-import TextView from './component/TextView';
+import MissionPage from './page/MissionPage';
 
-document
-  .getElementById('page')
-  ?.append(new TextView().target, new CounterComponent('counter').target);
+document.getElementById('page')?.append(new MissionPage().target);
