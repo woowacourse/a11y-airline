@@ -4,6 +4,16 @@ import { CarouselProps } from './type';
 import { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
+const enableButton = (button: HTMLButtonElement, label: string) => {
+  button.setAttribute('aria-disabled', 'false');
+  button.setAttribute('aria-label', label);
+};
+
+const disableButton = (button: HTMLButtonElement, label: string) => {
+  button.setAttribute('aria-disabled', 'true');
+  button.setAttribute('aria-label', `${label} (사용 중지)`);
+};
+
 const Carousel = ({
   slideItems,
   totalSlides = 2,
@@ -14,20 +24,34 @@ const Carousel = ({
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef<HTMLUListElement>(null);
+  const leftButtonRef = useRef<HTMLButtonElement>(null);
+  const rightButtonRef = useRef<HTMLButtonElement>(null);
 
   const slidePrevious = () => {
-    if (currentSlide === 0) {
+    if (!leftButtonRef.current) {
       return;
     }
 
+    if (currentSlide === 0) {
+      disableButton(leftButtonRef.current, '이전 버튼');
+      return;
+    }
+
+    enableButton(leftButtonRef.current, '이전 버튼');
     setCurrentSlide((prevSlide) => prevSlide - 1);
   };
 
   const slideNext = () => {
-    if (currentSlide >= totalSlides) {
+    if (!rightButtonRef.current) {
       return;
     }
 
+    if (currentSlide >= totalSlides) {
+      disableButton(rightButtonRef.current, '다음 버튼');
+      return;
+    }
+
+    enableButton(rightButtonRef.current, '다음 버튼');
     setCurrentSlide((prevSlide) => prevSlide + 1);
   };
 
@@ -53,7 +77,12 @@ const Carousel = ({
               <SlideItem key={item.id} {...item} width={itemWidth} />
             ))}
           </SliderContainer>
-          <SlideControl slidePrevious={slidePrevious} slideNext={slideNext} />
+          <SlideControl
+            slidePrevious={slidePrevious}
+            slideNext={slideNext}
+            leftButtonRef={leftButtonRef}
+            rightButtonRef={rightButtonRef}
+          />
         </Wrapper>
       </CarouselSection>
     </main>
