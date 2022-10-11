@@ -42,7 +42,15 @@ const PassengerItem = ({
         </button>
         <div className={styles.popover}>
           {isShowInfo && (
-            <p id="popover-info">{TOOLTIP_INFO[`${passengerType}`]}</p>
+            <>
+              <p id="popover-info">{TOOLTIP_INFO[`${passengerType}`]}</p>
+              <button
+                onClick={toggleInfo}
+                aria-label={`${passengerType} 기준 상세안내 닫기`}
+              >
+                X
+              </button>
+            </>
           )}
         </div>
       </div>
