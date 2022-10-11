@@ -1,0 +1,68 @@
+.layout-container {
+  padding: 0 2rem;
+  position: relative;
+  margin-top: 6rem;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  min-width: 106rem;
+  max-width: 128rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-left: 0.4rem;
+}
+
+.card-container {
+  position: relative;
+}
+
+.cards {
+  display: flex;
+  transform: translateX(0px);
+  width: 100%;
+}
+
+.invisible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+  overflow: hidden;
+}
+
+.buttons {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: calc((100% - 4.4rem) / 2);
+}
+
+.gallery-button {
+  position: absolute;
+  width: 3rem;
+  height: 6rem;
+  transform: translateY(-50%);
+  border: 0;
+  cursor: pointer;
+}
+
+.prev {
+  left: 0.1rem;
+  background: url(https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-left.svg)
+    no-repeat center top;
+  background-size: 30px 60px;
+}
+
+.next {
+  right: 0.1rem;
+  background: url(https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-right.svg)
+    no-repeat center top;
+  background-size: 30px 60px;
+}
