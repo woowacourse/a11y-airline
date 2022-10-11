@@ -52,7 +52,7 @@ function SpinButton({
         max={max}
         step={step}
         css={inputStyle}
-        aria-label={`${passengerType} 탑승자 텍스트`}
+        aria-label={`${passengerType} 탑승자 수`}
         onChange={(e) => {
           setInputValue(Number(e.target.value));
         }}
