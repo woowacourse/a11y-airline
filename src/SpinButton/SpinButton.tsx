@@ -51,9 +51,11 @@ function SpinButton({
         min={min}
         max={max}
         step={step}
-        readOnly
         css={inputStyle}
         aria-label={`${passengerType} 탑승자 텍스트`}
+        onChange={(e) => {
+          setInputValue(Number(e.target.value));
+        }}
       />
       <button
         onClick={handleClickPlus}
