@@ -4,14 +4,11 @@ a {
 }
 
 .card {
-  /* flex-shrink: 0;
-  position: relative; */
-  /* padding: 0.4rem; */
+  width: 30rem;
+  min-width: 30rem;
+  max-width: 30rem;
 
-  width: calc((100% - 12rem) / 5);
-  min-width: 23.2rem;
-  max-width: 23.2rem;
-  height: 29.7rem;
+  flex-shrink: 0;
   margin-left: 3rem;
 }
 

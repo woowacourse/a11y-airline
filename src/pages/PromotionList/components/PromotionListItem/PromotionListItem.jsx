@@ -3,25 +3,25 @@ import "./PromotionListItem.css";
 
 function PromotionListItem({ img, departure, arrival, seat, price }) {
   return (
-    <li class="card">
-      <a class="link" href="#">
+    <li className="card">
+      <a className="link" href="#">
         <div>
-          <div class="location-image-wrapper">
+          <div className="location-image-wrapper">
             <img
-              class="location-image"
+              className="location-image"
               src={img}
               alt="임시 {departure} - {arrival}"
             />
           </div>
 
-          <div class="explanation">
-            <p class="location">
-              <span class="departure-location">{departure}</span>
+          <div className="explanation">
+            <p className="location">
+              <span className="departure-location">{departure}</span>
               <span> - </span>
-              <span class="arrival-location">{arrival}</span>
+              <span className="arrival-location">{arrival}</span>
             </p>
-            <p class="seat">{seat}</p>
-            <p class="price">{price}</p>
+            <p className="seat">{seat}</p>
+            <p className="price">{price}</p>
           </div>
         </div>
       </a>

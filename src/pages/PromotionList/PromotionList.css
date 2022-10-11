@@ -6,15 +6,13 @@
 
 .container {
   position: relative;
-  width: 100%;
+  width: 63rem;
   margin: 0 auto;
   overflow: hidden;
-  min-width: 106rem;
-  max-width: 128rem;
 }
 
 h2 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin-left: 0.4rem;
 }
 
@@ -26,6 +24,7 @@ h2 {
   display: flex;
   transform: translateX(0px);
   width: 100%;
+  transition: 1s;
 }
 
 .invisible {
@@ -51,6 +50,10 @@ h2 {
   transform: translateY(-50%);
   border: 0;
   cursor: pointer;
+}
+
+.gallery-button:disabled {
+  cursor: not-allowed;
 }
 
 .prev {
