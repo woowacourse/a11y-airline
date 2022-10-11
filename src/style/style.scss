@@ -22,7 +22,7 @@ input[type='number'] {
   display: none;
 }
 
-.aria-hidden {
+.hidden-for-aria-live {
   position: absolute;
   text-indent: -9999px;
 }
