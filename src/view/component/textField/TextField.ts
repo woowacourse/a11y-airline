@@ -1,4 +1,4 @@
-import COUNTER from 'src/constants';
+import { COUNTER } from 'src/constants';
 import counterStore from 'src/store/CounterStore';
 import Component from 'src/abstract/Component';
 

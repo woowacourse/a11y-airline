@@ -1,4 +1,4 @@
-import COUNTER from 'src/constants';
+import { COUNTER, ERROR_MESSAGE } from 'src/constants';
 import Observer from '.';
 
 class CounterStore extends Observer {
@@ -13,11 +13,9 @@ class CounterStore extends Observer {
   plus() {
     if (this.#value >= COUNTER.MAXIMUM_PASSENGER) {
       this.#value = COUNTER.MAXIMUM_PASSENGER;
-      this.#status = `승객의 최대 인원은 ${COUNTER.MAXIMUM_PASSENGER}명입니다.`;
+      this.#status = ERROR_MESSAGE.EXCEED_PASSENGER;
       this.notify();
-      throw new Error(
-        `승객의 최대 인원은 ${COUNTER.MAXIMUM_PASSENGER}명입니다.`
-      );
+      throw new Error(ERROR_MESSAGE.EXCEED_PASSENGER);
     }
     this.#value++;
     this.#status = `성인 승객 추가 ${this.#value}`;
@@ -36,11 +34,9 @@ class CounterStore extends Observer {
       input < COUNTER.MINIMUM_PASSENGER ||
       input % 1 !== 0
     ) {
-      this.#status = `성인 승객은 최소 ${COUNTER.MINIMUM_PASSENGER}명 이상 ${COUNTER.MAXIMUM_PASSENGER}명의 자연수 이하여야 합니다.`;
+      this.#status = ERROR_MESSAGE.OUT_OF_BOUNDS;
       this.notify();
-      throw new Error(
-        `성인 승객은 최소 ${COUNTER.MINIMUM_PASSENGER}명 이상 ${COUNTER.MAXIMUM_PASSENGER}명의 자연수 이하여야 합니다.`
-      );
+      throw new Error(ERROR_MESSAGE.OUT_OF_BOUNDS);
     }
     this.#value = input;
     this.#status = `성인 승객 ${this.#value} 텍스트`;
@@ -50,10 +46,9 @@ class CounterStore extends Observer {
   minus() {
     if (this.#value <= COUNTER.MINIMUM_PASSENGER) {
       this.#value = COUNTER.MINIMUM_PASSENGER;
+      this.#status = ERROR_MESSAGE.FALL_SHORT_OF_MIN_PASSENGER;
       this.notify();
-      throw new Error(
-        `승객의 최소 인원은 ${COUNTER.MINIMUM_PASSENGER}명입니다.`
-      );
+      throw new Error(ERROR_MESSAGE.FALL_SHORT_OF_MIN_PASSENGER);
     }
     this.#value--;
     this.#status = `성인 승객 감소 ${this.#value}`;
