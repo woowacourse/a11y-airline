@@ -20,7 +20,7 @@ const PassengetSelector = () => {
   const [count, setCount] = useState(0);
 
   return (
-    <S.Container role="dialog" tabIndex={-1}>
+    <S.Container role="dialog">
       <S.Title>승객 선택</S.Title>
       <Counter
         title="성인"
