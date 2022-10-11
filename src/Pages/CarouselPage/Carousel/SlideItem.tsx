@@ -46,12 +46,9 @@ const Description = styled.div`
   left: 0;
   top: 0;
   width: 100%;
-  overflow: hidden;
   color: #000;
   padding: 20px;
   box-sizing: border-box;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 `;
 
 const MainText = styled.p`
@@ -59,6 +56,10 @@ const MainText = styled.p`
   margin-bottom: 10px;
   word-wrap: break-word;
   line-height: 1.5;
+  overflow: hidden;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const SubText = styled.p`

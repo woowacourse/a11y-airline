@@ -2,7 +2,7 @@ import { RefObject } from 'react';
 
 export type CarouselProps = {
   slideItems: SlideItemProps[];
-  totalSlides?: number;
+  displayedSlideCount?: number;
   itemWidth?: number;
   itemGap?: number;
 };
