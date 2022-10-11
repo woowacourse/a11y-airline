@@ -3,14 +3,19 @@ import ButtonLeft from 'assets/button-left.svg';
 import ButtonRight from 'assets/button-right.svg';
 import styled from 'styled-components';
 
-const SlideControl = ({ slidePrevious, slideNext }: SlideControlProps) => {
+const SlideControl = ({
+  slidePrevious,
+  slideNext,
+  leftButtonRef,
+  rightButtonRef,
+}: SlideControlProps) => {
   return (
     <Wrapper>
-      <LeftButton onClick={slidePrevious}>
-        <Hidden>이전</Hidden>
+      <LeftButton onClick={slidePrevious} ref={leftButtonRef}>
+        <ScreenReaderOnlyMessage aria-hidden={true}>이전</ScreenReaderOnlyMessage>
       </LeftButton>
-      <RightButton onClick={slideNext}>
-        <Hidden>다음</Hidden>
+      <RightButton onClick={slideNext} ref={rightButtonRef}>
+        <ScreenReaderOnlyMessage>다음</ScreenReaderOnlyMessage>
       </RightButton>
     </Wrapper>
   );
@@ -50,7 +55,7 @@ const RightButton = styled.button`
   cursor: pointer;
 `;
 
-const Hidden = styled.span`
+const ScreenReaderOnlyMessage = styled.span`
   overflow: hidden;
   white-space: nowrap;
   clip: rect(1px, 1px, 1px, 1px);
