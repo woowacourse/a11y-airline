@@ -14,8 +14,8 @@ const PassengerItem = ({
   maxNumber = 3,
 }: Props) => {
   const {
-    toggleToolTip,
-    isShowToolTip,
+    toggleInfo,
+    isShowInfo,
     passengerNumber,
     onClickSubtractButton,
     onChangeInput,
@@ -31,16 +31,18 @@ const PassengerItem = ({
           {passengerType}
         </label>
         <button
-          onClick={toggleToolTip}
+          onClick={toggleInfo}
           type="button"
           aria-label={`${passengerType} 기준 상세안내`}
-          aria-expanded={isShowToolTip}
+          aria-expanded={isShowInfo}
+          aria-describedby="popover-info"
           aria-controls="popover-info"
+          aria-haspopup="dialog"
         >
           ?
         </button>
         <div className={styles.popover}>
-          {isShowToolTip && (
+          {isShowInfo && (
             <p id="popover-info">{TOOLTIP_INFO[`${passengerType}`]}</p>
           )}
         </div>

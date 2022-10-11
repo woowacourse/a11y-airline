@@ -8,7 +8,7 @@ const usePassengerItem = (
   const [passengerNumber, setPassengerNumber] = useState<number | ''>(
     minNumber
   );
-  const [isShowToolTip, setIsShowToolTip] = useState(false);
+  const [isShowInfo, setIsShowToolTip] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const [alertMessage, setAlertMessage] = useState('');
 
@@ -64,11 +64,11 @@ const usePassengerItem = (
     setStatusMessage(`${passengerType} 승객 변경 ${inputValue}`);
   };
 
-  const toggleToolTip = () => setIsShowToolTip((prev) => !prev);
+  const toggleInfo = () => setIsShowToolTip((prev) => !prev);
 
   return {
-    toggleToolTip,
-    isShowToolTip,
+    toggleInfo,
+    isShowInfo,
     passengerNumber,
     onClickSubtractButton,
     onChangeInput,
