@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './src/index.tsx',
   output: {
+    publicPath: '/',
     path: path.join(__dirname, '/dist'),
     clean: true,
   },
