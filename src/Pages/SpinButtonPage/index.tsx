@@ -1,4 +1,4 @@
-import useDialogPassenger from 'Pages/DialogPassenger/useDialogPassenger';
+import useSpinButtonPage from 'Pages/SpinButtonPage/useSpinButtonPage';
 import styled from 'styled-components';
 
 import ControlButton from 'components/ControlButton';
@@ -6,7 +6,7 @@ import ToolTip from 'components/ToolTip';
 
 import { MAX_VALUE, MIN_VALUE } from 'constants/passenger';
 
-const DialogPassenger = () => {
+const SpinButtonPage = () => {
   const {
     isOpenToolTip,
     toggleToolTip,
@@ -16,7 +16,7 @@ const DialogPassenger = () => {
     value,
     message,
     alertMessage,
-  } = useDialogPassenger();
+  } = useSpinButtonPage();
 
   return (
     <main>
@@ -112,4 +112,4 @@ const AlertMessage = styled.span`
   color: red;
 `;
 
-export default DialogPassenger;
+export default SpinButtonPage;
