@@ -6,9 +6,9 @@ const CarouselPage = () => {
     <>
       <Carousel
         slideItems={mockingSlideItems}
-        totalSlides={3}
-        itemWidth={249}
-        itemGap={30}
+        displayedSlideCount={2}
+        itemWidth={190}
+        itemGap={10}
       />
     </>
   );

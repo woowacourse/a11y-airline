@@ -16,11 +16,11 @@ const disableButton = (button: HTMLButtonElement, label: string) => {
 
 const Carousel = ({
   slideItems,
-  totalSlides = 2,
+  displayedSlideCount = 3,
   itemWidth = 249,
   itemGap = 31,
 }: CarouselProps) => {
-  const totalWidth = totalSlides * (itemWidth + itemGap) - 40;
+  const totalWidth = displayedSlideCount * (itemWidth + itemGap) - itemGap;
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef<HTMLUListElement>(null);
@@ -46,8 +46,9 @@ const Carousel = ({
       return;
     }
 
-    if (currentSlide >= totalSlides) {
+    if (currentSlide > slideItems.length - 3) {
       disableButton(rightButtonRef.current, '다음 버튼');
+      console.log('hi');
       return;
     }
 
