@@ -2,12 +2,6 @@ import { COUNTER } from 'src/constants';
 import counterStore from 'src/store/CounterStore';
 import Component from 'src/abstract/Component';
 
-const REGEXP = {
-  NOT_NUMBER_IN_NUMBER_INPUT: /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|e\-+\.~!@#$%^&*()]/,
-  NOT_NUMBER: /[^0-9]/g,
-  KOREAN: /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/,
-  NOT_ZERO: /[1-9]/,
-};
 export default class TextField extends Component {
   #input;
   #span;
