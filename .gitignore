@@ -102,3 +102,15 @@ dist
 
 # TernJS port file
 .tern-port
+
+### NextJS ###
+/node_modules
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Next.js
+/.next/
+/out/
