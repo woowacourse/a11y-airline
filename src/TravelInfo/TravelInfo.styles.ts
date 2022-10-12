@@ -4,6 +4,7 @@ const layoutStyle = css`
   position: relative;
   width: 236px;
   height: 299px;
+  list-style-type: none;
 `;
 
 const linkStyle = css`
