@@ -33,7 +33,4 @@
 ## 개인적인 목표
 
 - webpack, babel 기반 react 개발 환경 구축
-
-```
-
-```
+- 재사용 가능한 Carousel 만들기
