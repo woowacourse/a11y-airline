@@ -14,14 +14,17 @@ body {
   margin-bottom: 20px;
 }
 
+.slider-container {
+  position: relative;
+  overflow: hidden;
+}
+
 .slider {
   display: flex;
   gap: 20px;
   width: 620px;
   height: 400px;
   margin: 0 auto;
-  position: relative;
-  overflow: hidden;
 }
 
 .slide {
@@ -46,7 +49,7 @@ img {
   position: absolute;
   top: 50%;
   border: none;
-  background: rgba(45, 45, 45, 0.8);
+  background: rgb(22, 22, 22);
   font-family: inherit;
   color: white;
   border-radius: 50%;
@@ -96,4 +99,5 @@ img {
 
 .disabled {
   cursor: not-allowed;
+  opacity: 0.5;
 }
