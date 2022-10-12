@@ -1,4 +1,4 @@
-import "./index.css";
+import "./style.css";
 
 interface Props {
   max: number;

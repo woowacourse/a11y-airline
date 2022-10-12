@@ -1,7 +1,7 @@
-import "./index.css";
+import "./style.css";
 
 import TravelCard from "@components/TravelCard";
-import Controller from "./Controller";
+import Controller from "@components/Carousel/Controller";
 
 import { data } from "../../__mocks__/data";
 import useCarousel from "./hook";
