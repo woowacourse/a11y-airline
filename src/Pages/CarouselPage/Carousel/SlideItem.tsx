@@ -13,7 +13,7 @@ const SlideItem = ({
   return (
     <Wrapper data-id={id} width={width}>
       <a href={href}>
-        <BgImg src={image} />
+        <BgImg loading="lazy" src={image} alt={location + ' 사진'} />
         <Description>
           <MainText>{location}</MainText>
           <SubText>{seat}</SubText>
