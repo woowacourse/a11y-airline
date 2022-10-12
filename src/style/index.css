@@ -1,6 +1,13 @@
 @import './counter.css';
 @import './carousel.css';
 
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+}
+
 #page {
   justify-content: center;
   flex-direction: column;
@@ -60,4 +67,10 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
 }
