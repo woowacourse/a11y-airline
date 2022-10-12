@@ -71,12 +71,11 @@ const Carousel = ({
   return (
     <CarouselSection>
       <h2>{title}</h2>
-      <Wrapper width={totalWidth} aria-roledescription="carousel">
+      <Wrapper width={totalWidth}>
         <SliderContainer
           ref={slideRef}
           gap={itemGap}
-          role="list"
-          aria-label="Items Slider"
+          aria-label="Slider"
           aria-live="polite"
         >
           {slideItems.map((item) => (
@@ -112,7 +111,7 @@ const Wrapper = styled.div<{ width: number }>`
   `}
 `;
 
-const SliderContainer = styled.u<{ gap: number }>`
+const SliderContainer = styled.ul<{ gap: number }>`
   ${({ gap }) => css`
     list-style: none;
     height: 294px;

@@ -11,12 +11,8 @@ const SlideControl = ({
 }: SlideControlProps) => {
   return (
     <Wrapper>
-      <LeftButton onClick={slidePrevious} ref={leftButtonRef}>
-        <ScreenReaderOnlyMessage aria-hidden={true}>이전</ScreenReaderOnlyMessage>
-      </LeftButton>
-      <RightButton onClick={slideNext} ref={rightButtonRef}>
-        <ScreenReaderOnlyMessage aria-hidden={true}>다음</ScreenReaderOnlyMessage>
-      </RightButton>
+      <LeftButton onClick={slidePrevious} ref={leftButtonRef} aria-label="이전" />
+      <RightButton onClick={slideNext} ref={rightButtonRef} aria-label="다음" />
     </Wrapper>
   );
 };
@@ -49,17 +45,4 @@ const RightButton = styled.button`
   right: 0;
   width: 30px;
   height: 60px;
-`;
-
-const ScreenReaderOnlyMessage = styled.span`
-  overflow: hidden;
-  white-space: nowrap;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: 0;
-  padding: 0;
-  border: 0;
 `;

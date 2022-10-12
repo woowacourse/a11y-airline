@@ -2,7 +2,6 @@ import { SlideItemProps } from './type';
 import styled, { css } from 'styled-components';
 
 const SlideItem = ({
-  id,
   location,
   seat,
   price,
@@ -11,13 +10,14 @@ const SlideItem = ({
   width,
 }: SlideItemProps & { width: number }) => {
   return (
-    <Wrapper width={width} role="listitem" aria-roledescription="item">
+    <Wrapper width={width}>
       <a href={href}>
         <BgImg loading="lazy" src={image} alt={location + ' 사진'} aria-hidden={true} />
         <Description>
           <MainText>{location}</MainText>
           <SubText>{seat}</SubText>
-          <EmphasisText>{price}</EmphasisText>
+          <EmphasisText aria-hidden={true}>{price}</EmphasisText>
+          <ScreenReaderOnlyMessage>하하</ScreenReaderOnlyMessage>
         </Description>
       </a>
     </Wrapper>
@@ -69,4 +69,17 @@ const SubText = styled.p`
 const EmphasisText = styled.p`
   font-weight: 700;
   text-shadow: -0.5px 0 #fff, 0 0.5px #fff, 0.5px 0 #fff, 0 -0.5px #fff;
+`;
+
+const ScreenReaderOnlyMessage = styled.span`
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
 `;
