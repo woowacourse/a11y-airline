@@ -10,6 +10,10 @@ body {
   margin-top: 200px;
 }
 
+.section__header {
+  margin-bottom: 20px;
+}
+
 .slider {
   display: flex;
   gap: 20px;
@@ -21,6 +25,7 @@ body {
 }
 
 .slide {
+  position: relative;
   list-style: none;
   width: 300px;
   height: 400px;
@@ -32,11 +37,12 @@ img {
   height: 400px;
 }
 
-.slide__link {
+.slide-link {
   display: block;
+  cursor: pointer;
 }
 
-.slider__btn {
+.slider-btn {
   position: absolute;
   top: 50%;
   border: none;
@@ -50,24 +56,40 @@ img {
   cursor: pointer;
 }
 
-.slider__btn:hover {
+.slider-btn:hover {
   background-color: black;
 }
 
-.slider__btn--left {
+.slider-btn__left {
   left: 0;
   transform: translate(-50%, -50%);
   background: url("https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-left.svg");
 }
 
-.slider__btn--right {
+.slider-btn__right {
   right: 0;
   transform: translate(50%, -50%);
   background: url("https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-right.svg");
 }
 
-.mris__desc {
+.slide-desc {
   position: absolute;
   left: 0;
   top: 0;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.slide-desc__location {
+  margin-bottom: 10px;
+  font-weight: bolder;
+}
+
+.slide-desc__type {
+  margin-bottom: 5px;
+}
+
+.slide-desc__price {
+  color: #11277b;
+  font-weight: bolder;
 }
