@@ -44,26 +44,29 @@ const CarouselPage = () => {
   };
 
   return (
-    <div className="carousel">
-      <ul className="item__list" ref={start}>
-        {data.map(({ href, image, location, seat, price }, index) => (
-          <li className="item">
-            <CarouselItem
-              href={href}
-              image={image}
-              location={location}
-              seat={seat}
-              price={price}
-            />
-          </li>
-        ))}
-      </ul>
-      <CarouselController
-        handleBackButtonClick={handleBackButtonClick}
-        handleNextButtonClick={handleNextButtonClick}
-        max={7}
-        current={page}
-      />
+    <div>
+      <h2>지금 떠나기 좋은 여행</h2>
+      <div className="carousel">
+        <ul className="item__list" ref={start}>
+          {data.map(({ href, image, location, seat, price }, index) => (
+            <li className="item">
+              <CarouselItem
+                href={href}
+                image={image}
+                location={location}
+                seat={seat}
+                price={price}
+              />
+            </li>
+          ))}
+        </ul>
+        <CarouselController
+          handleBackButtonClick={handleBackButtonClick}
+          handleNextButtonClick={handleNextButtonClick}
+          max={7}
+          current={page}
+        />
+      </div>
     </div>
   );
 };
