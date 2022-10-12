@@ -2,6 +2,7 @@ import TravelCard from "component/TravelCard";
 import { CAROUSEL_BUTTON_OPTION } from "constant";
 import { useRef, useState } from "react";
 import { ValueOf } from "types/util";
+import { debounce } from "utils";
 import "./index.css";
 
 const HomePage = () => {
@@ -10,17 +11,6 @@ const HomePage = () => {
     previous: true,
     next: false,
   });
-
-  const debounce = (callback: Function, limit: number) => {
-    let timeout: NodeJS.Timeout;
-
-    return function () {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        callback();
-      }, limit);
-    };
-  };
 
   const setDiableCarouselButton = () => {
     console.log("how many?");
