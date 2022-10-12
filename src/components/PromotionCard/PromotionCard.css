@@ -1,0 +1,38 @@
+.promotion-card {
+  display: flex;
+
+  width: 57rem;
+  height: 75rem;
+  padding: 6rem;
+  border: 1px solid white;
+
+  background-color: lightblue;
+  background-size: cover;
+}
+
+.promotion-card:hover {
+  border: 1px solid darkblue;
+
+  cursor: pointer;
+}
+
+.promotion-info {
+  font-size: 4rem;
+}
+
+.promotion-route {
+  margin: 0 0 3.5rem;
+
+  font-weight: 900;
+}
+
+.promotion-flight {
+  margin: 0;
+}
+
+.promotion-price {
+  margin: 1.5rem 0 0;
+
+  font-weight: 900;
+  color: darkblue;
+}
