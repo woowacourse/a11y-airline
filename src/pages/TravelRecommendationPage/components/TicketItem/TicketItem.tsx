@@ -15,7 +15,9 @@ const TicketItem = ({
   return (
     <Wrapper href={link} travelImage={travelImage}>
       <LocationWrapper>
-        <span>{departure}</span>&nbsp;-&nbsp;<span>{arrival}</span>
+        <span>{departure}</span>
+        <span aria-label="에서">&nbsp;-&nbsp;</span>
+        <span>{arrival}</span>
       </LocationWrapper>
       <TicketTypeText>{ticketType}</TicketTypeText>
       <PriceText
@@ -33,7 +35,7 @@ const Wrapper = styled.a`
     flex-direction: column;
     width: 230px;
     height: 295px;
-    padding: 20px 22px;
+    padding: 15px 18px;
     background-image: url(${travelImage});
     background-size: 100%;
     object-fit: cover;
@@ -45,16 +47,16 @@ const Wrapper = styled.a`
 const LocationWrapper = styled.p`
   display: flex;
   margin-bottom: 8px;
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: 700;
 `;
 
 const TicketTypeText = styled.p`
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 `;
 
 const PriceText = styled.p`
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #11277b;
 `;
