@@ -5,6 +5,7 @@ import { CONTROL_BUTTON_KIND } from 'components/Carousel/Carousel.constant';
 
 const ITEM_WIDTH = 230;
 const ITEM_HEIGHT = 295;
+const ITEM_LENGTH = 8;
 const GAP = 8;
 const VIEWING_COUNT = 2;
 
@@ -30,7 +31,7 @@ const Carousel = ({ children }: PropsWithChildren) => {
 
   const handleClickPrevButton = () => {
     if (isReachedEnd) {
-      currentPosRef.current -= (ITEM_WIDTH + GAP) * 2;
+      currentPosRef.current -= (ITEM_WIDTH + GAP) * VIEWING_COUNT;
       wrapperRef.current!.scrollTo({ left: currentPosRef.current, behavior: 'smooth' });
       setReachedAt(null);
       return;
@@ -46,15 +47,21 @@ const Carousel = ({ children }: PropsWithChildren) => {
   };
 
   const handleClickNextButton = () => {
+    console.log('위치는', currentPosRef.current);
     if (isReachedStart) {
       setReachedAt(null);
     }
 
-    if (currentPosRef.current >= 952) {
-      currentPosRef.current = 1428 + 238;
+    if (
+      currentPosRef.current >=
+      ITEM_WIDTH * ITEM_LENGTH +
+        GAP * (ITEM_LENGTH - 1) -
+        ITEM_WIDTH * (VIEWING_COUNT + 1) -
+        GAP * VIEWING_COUNT
+    ) {
+      currentPosRef.current += (ITEM_WIDTH + GAP) * 2;
       wrapperRef.current!.scrollTo({ left: currentPosRef.current, behavior: 'smooth' });
       setReachedAt('end');
-
       return;
     }
 
@@ -77,7 +84,14 @@ const Carousel = ({ children }: PropsWithChildren) => {
         return;
       }
 
-      if (currentPosRef.current >= 1320) {
+      if (
+        currentPosRef.current >=
+        ITEM_WIDTH * ITEM_LENGTH +
+          GAP * (ITEM_LENGTH - 1) -
+          ITEM_WIDTH * (VIEWING_COUNT + 1) -
+          GAP * VIEWING_COUNT +
+          ITEM_WIDTH / 2
+      ) {
         setReachedAt('end');
         setMessage('목록의 끝에 도달했습니다.');
         return;
@@ -89,7 +103,7 @@ const Carousel = ({ children }: PropsWithChildren) => {
   };
 
   return (
-    <Wrapper ref={wrapperRef} width={wrapperWidth}>
+    <Wrapper ref={wrapperRef} width={Math.min(wrapperWidth, window.innerWidth)}>
       <ListWrapper>
         {Children.map(children, (child) => (
           <ListItem>{child}</ListItem>
