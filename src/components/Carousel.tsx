@@ -76,19 +76,17 @@ const Carousel = ({ children }: PropsWithChildren) => {
         <button
           className="carousel-control-left"
           onClick={handleLeftButtonClick}
+          aria-label="이전"
           aria-disabled={currentPosition <= 0}
-        >
-          이전 버튼
-        </button>
+        />
         <button
           className="carousel-control-right"
           onClick={handleRightButtonClick}
+          aria-label="다음"
           aria-disabled={
             currentPosition >= calculateGapBetweenContainerAndList()
           }
-        >
-          다음 버튼
-        </button>
+        />
       </div>
     </div>
   );
