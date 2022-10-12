@@ -42,14 +42,17 @@ const CarouselPage: React.FC = () => {
   const handleClickSlider = (direction: 'left' | 'right') => {
     if (!ulRef.current) return;
 
-    if (direction === 'left') indexRef.current = indexRef.current - 1;
-    if (direction === 'right') indexRef.current = indexRef.current + 1;
-
     const listElements = ulRef.current.querySelectorAll('li');
+    let nextIndex = 0;
 
-    console.log('indexRef.current', indexRef.current);
+    if (direction === 'left') nextIndex = indexRef.current - 1;
+    if (direction === 'right') nextIndex = indexRef.current + 1;
 
-    console.log(listElements);
+    if (nextIndex < 0 || nextIndex >= listElements.length) {
+      return;
+    }
+
+    indexRef.current = nextIndex;
 
     listElements.forEach(list => {
       list.setAttribute(
@@ -177,8 +180,8 @@ const CarouselPage: React.FC = () => {
                 background-size: 30px 60px;
                 height: 60px;
                 width: 30px;
-                cursor: pointer;
                 transform: translateY(-50%);
+                cursor: pointer;
                 /* cursor: not-allowed; */
               `}
               onClick={() => handleClickSlider('left')}
