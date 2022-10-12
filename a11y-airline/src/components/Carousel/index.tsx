@@ -55,7 +55,7 @@ export const Carousel = () => {
   };
 
   return (
-    <FlexBox flexDirection="column" gap="0.5rem">
+    <FlexBox as="section" flexDirection="column" gap="0.5rem">
       <h1>지금 떠나기 좋은 여행</h1>
       <Slider>
         <Content as="ul" moveCount={moveCount} gap="0.5rem">
