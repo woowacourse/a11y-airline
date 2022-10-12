@@ -14,7 +14,8 @@ const Carousel = ({ children }: PropsWithChildren) => {
   const [reachedAt, setReachedAt] = useState<'start' | 'end' | null>('start');
   const wrapperRef = useRef<HTMLDivElement>(null);
   const currentPosRef = useRef(0);
-  const timerIdRef = useRef<number | null>(null);
+  const scrollTimerIdRef = useRef<number | null>(null);
+  const messageTimerIdRef = useRef<null | number>(null);
 
   useEffect(() => {
     wrapperRef.current?.addEventListener('scroll', handleScrollWrapper);
@@ -24,12 +25,31 @@ const Carousel = ({ children }: PropsWithChildren) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (message === '') {
+      return;
+    }
+
+    if (typeof messageTimerIdRef.current === 'number') {
+      clearTimeout(messageTimerIdRef.current);
+      messageTimerIdRef.current = null;
+    }
+
+    messageTimerIdRef.current = window.setTimeout(() => {
+      setMessage('');
+    }, 3000);
+  }, [message]);
+
   const wrapperWidth = ITEM_WIDTH * VIEWING_COUNT + ITEM_WIDTH / 2;
   const controlButtonTop = ITEM_HEIGHT / 2;
   const isReachedStart = reachedAt === 'start';
   const isReachedEnd = reachedAt === 'end';
 
   const handleClickPrevButton = () => {
+    if (isReachedStart) {
+      setMessage('이미 목록의 처음 위치에 있습니다.');
+    }
+
     if (isReachedEnd) {
       currentPosRef.current -= (ITEM_WIDTH + GAP) * VIEWING_COUNT;
       wrapperRef.current!.scrollTo({ left: currentPosRef.current, behavior: 'smooth' });
@@ -47,7 +67,10 @@ const Carousel = ({ children }: PropsWithChildren) => {
   };
 
   const handleClickNextButton = () => {
-    console.log('위치는', currentPosRef.current);
+    if (isReachedEnd) {
+      setMessage('이미 목록의 끝 위치에 있습니다.');
+    }
+
     if (isReachedStart) {
       setReachedAt(null);
     }
@@ -70,12 +93,12 @@ const Carousel = ({ children }: PropsWithChildren) => {
   };
 
   const handleScrollWrapper = () => {
-    if (timerIdRef.current !== null) {
-      window.clearTimeout(timerIdRef.current);
+    if (scrollTimerIdRef.current !== null) {
+      window.clearTimeout(scrollTimerIdRef.current);
     }
 
-    timerIdRef.current = window.setTimeout(() => {
-      timerIdRef.current = null;
+    scrollTimerIdRef.current = window.setTimeout(() => {
+      scrollTimerIdRef.current = null;
       currentPosRef.current = wrapperRef.current!.scrollLeft;
 
       if (currentPosRef.current <= 0) {
@@ -129,6 +152,7 @@ const Carousel = ({ children }: PropsWithChildren) => {
           {'>'}
         </ControlButton>
       </ControlWrapper>
+      <HiddenMessage aria-live="assertive">{message}</HiddenMessage>
     </Wrapper>
   );
 };
@@ -188,4 +212,15 @@ const ControlButton = styled.button`
       cursor: not-allowed;
     }
   `}
+`;
+
+const HiddenMessage = styled.span`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  z-index: -1;
 `;
