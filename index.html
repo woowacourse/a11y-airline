@@ -5,49 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>항공사 접근성 미션</title>
-    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <section>
-      <h1>승객 선택</h1>
-      <div class="passenger-type">
-        <label for="passenger-input">성인</label>
-        <button
-          class="passenger-type__tooltip"
-          aria-describedby="tip-passenger-count"
-        >
-          ?
-        </button>
-        <p id="tip-passenger-count" role="tooltip">
-          입력 가능한 승객은 최소 1명, 최대 3명입니다.
-        </p>
-      </div>
-      <div class="passenger-count">
-        <button
-          type="button"
-          aria-label="성인 탑승자 한명 줄이기"
-          class="passenger-count__minus-button"
-        >
-          -
-        </button>
-        <input
-          type="number"
-          id="passenger-input"
-          class="passenger-count__input"
-          max="3"
-          min="1"
-          value="1"
-        />
-        <button
-          type="button"
-          aria-label="성인 탑승자 한명 늘리기"
-          class="passenger-count__plus-button"
-        >
-          +
-        </button>
-        <p role="status" class="status-message"></p>
-      </div>
-    </section>
-    <script type="module" src="src/index.js"></script>
+    <ul>
+      <li><a href="counter.html">카운터</a></li>
+      <li><a href="carousel.html">캐러셀</a></li>
+    </ul>
   </body>
 </html>
