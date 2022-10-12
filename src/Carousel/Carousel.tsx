@@ -1,42 +1,39 @@
+import { useEffect, useRef, useState } from 'react';
 import './Carousel.css';
 import ListItem from './ListItem';
-import items from '../data/itemData.json';
-import { useEffect, useRef, useState } from 'react';
+import tourItems from '../data/tourItemData.json';
 import useWindowResize from '../hooks/useWindowResize';
 
 function Carousel() {
-  const listItemRef = useRef<HTMLLIElement>(null);
+  const tourItemRef = useRef<HTMLLIElement>(null);
   const [currentTransformX, setCurrentTransformX] = useState(0);
-  const [listItemWidth, setListItemWidth] = useState(0);
+  const [tourItemWidth, setTourItemWidth] = useState(0);
   const minTransformX = 0;
-  const maxTransformX = -listItemWidth * 6;
-
-  const listBoxStyle = {
-    transform: `translateX(${currentTransformX}px)`,
-  };
+  const maxTransformX = -tourItemWidth * 6;
 
   const handleSlideToNextSlide = () => {
     if (currentTransformX <= maxTransformX) return;
 
-    setCurrentTransformX((prev) => prev - listItemWidth);
+    setCurrentTransformX((prev) => prev - tourItemWidth);
   };
-
   const handleSlideToPrevSlide = () => {
     if (currentTransformX >= minTransformX) return;
 
-    setCurrentTransformX((prev) => prev + listItemWidth);
+    setCurrentTransformX((prev) => prev + tourItemWidth);
   };
 
-  const handleSetListItemWidth = () => {
-    if (listItemRef.current) {
-      setListItemWidth(listItemRef.current.clientWidth);
+  console.log(currentTransformX, tourItemWidth);
+  const resetCarouselSetting = () => {
+    if (tourItemRef.current) {
+      setTourItemWidth(tourItemRef.current.clientWidth);
     }
+    setCurrentTransformX(0);
   };
+  useWindowResize(resetCarouselSetting);
 
-  useWindowResize(handleSetListItemWidth);
   useEffect(() => {
-    if (listItemRef.current) {
-      setListItemWidth(listItemRef.current.clientWidth);
+    if (tourItemRef.current) {
+      setTourItemWidth(tourItemRef.current.clientWidth);
     }
   }, []);
 
@@ -45,9 +42,14 @@ function Carousel() {
       <h2 className="list-title">지금 떠나기 좋은 여행</h2>
       <div className="list-box">
         <div>
-          <ul className="list" style={listBoxStyle}>
-            {items.data.map((item) => (
-              <ListItem {...item} ref={listItemRef} />
+          <ul
+            className="list"
+            style={{
+              transform: `translateX(${currentTransformX}px)`,
+            }}
+          >
+            {tourItems.data.map((item) => (
+              <ListItem {...item} ref={tourItemRef} />
             ))}
           </ul>
         </div>
