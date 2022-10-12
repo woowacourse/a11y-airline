@@ -16,6 +16,7 @@ export default function HelpToolTip({
   return (
     <>
       <button
+        className="tooltip"
         onClick={onClick}
         aria-label={`${passengerType} 기준 상세 안내`}
         aria-expanded={helpOpen}

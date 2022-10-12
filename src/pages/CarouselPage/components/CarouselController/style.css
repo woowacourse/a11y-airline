@@ -1,0 +1,31 @@
+.controller {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  left: 0;
+  bottom: 160px;
+}
+
+.left__btn {
+  background: url("../../../../images/button-left.svg");
+  background-size: 30px 60px;
+
+  width: 30px;
+  height: 60px;
+
+  border: 0;
+  cursor: pointer;
+}
+
+.right__btn {
+  background: url("../../../../images/button-right.svg");
+  background-size: 30px 60px;
+
+  width: 30px;
+  height: 60px;
+
+  border: 0;
+  cursor: pointer;
+}
