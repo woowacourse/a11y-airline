@@ -66,8 +66,6 @@ const CarouselPage: React.FC = () => {
         `transform: translateX(calc(-254px * ${indexRef.current})); transition: transform 1s;`
       );
     });
-
-    listElements[indexRef.current].focus();
   };
 
   useEffect(() => {
