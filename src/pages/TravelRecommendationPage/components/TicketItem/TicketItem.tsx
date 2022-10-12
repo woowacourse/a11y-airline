@@ -14,14 +14,12 @@ const TicketItem = ({
 }: TicketItemProps) => {
   return (
     <Wrapper href={link} travelImage={travelImage}>
-      <LocationWrapper>
-        <span>{departure}</span>
-        <span aria-label="에서">&nbsp;-&nbsp;</span>
-        <span>{arrival}</span>
-      </LocationWrapper>
+      <LocationText aria-label={`${departure}에서 ${arrival}`}>
+        {`${departure} - ${arrival}`}
+      </LocationText>
       <TicketTypeText>{ticketType}</TicketTypeText>
       <PriceText
-        aria-label={`${minPrice.toLocaleString()} 대한민국 원`}
+        aria-label={`${minPrice.toLocaleString()} 대한민국 원부터`}
       >{`KRW ${minPrice.toLocaleString()} ~`}</PriceText>
     </Wrapper>
   );
@@ -38,14 +36,16 @@ const Wrapper = styled.a`
     padding: 15px 18px;
     background-image: url(${travelImage});
     background-size: 100%;
-    object-fit: cover;
+    background-position: 'center';
+    background-repeat: 'no-repeat';
     color: #000;
     cursor: pointer;
   `}
 `;
 
-const LocationWrapper = styled.p`
-  display: flex;
+const LocationText = styled.p`
+  /* display: flex;
+  align-items: center; */
   margin-bottom: 8px;
   font-size: 1rem;
   font-weight: 700;
