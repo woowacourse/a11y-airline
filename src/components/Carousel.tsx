@@ -4,17 +4,18 @@ const Carousel = ({ children }: PropsWithChildren) => {
   const listRef = useRef(null);
   const [firstViewedElementIndex, setFirstViewedElementIndex] = useState(0);
 
+  const calculatePosition: (index: number) => number = (index) => {
+    const list = listRef.current as unknown as HTMLUListElement;
+
+    return (100 / list.childElementCount) * index * 0.01 * list.offsetWidth;
+  };
+
   const handleLeftButtonClick: React.MouseEventHandler<
     HTMLButtonElement
   > = () => {
     const list = listRef.current as unknown as HTMLUListElement;
 
-    const currentPosition =
-      (100 / list.childElementCount) *
-      firstViewedElementIndex *
-      0.01 *
-      list.offsetWidth;
-
+    const currentPosition = calculatePosition(firstViewedElementIndex);
     if (currentPosition <= 0) {
       return;
     }
@@ -22,11 +23,7 @@ const Carousel = ({ children }: PropsWithChildren) => {
     const newFirstViewedElementIndex = firstViewedElementIndex - 1;
     setFirstViewedElementIndex((prev) => prev - 1);
 
-    const move =
-      (100 / list.childElementCount) *
-      newFirstViewedElementIndex *
-      0.01 *
-      list.offsetWidth;
+    const move = calculatePosition(newFirstViewedElementIndex);
 
     if (move <= 0) {
       list.style.transform = `translateX(0px)`;
@@ -42,12 +39,7 @@ const Carousel = ({ children }: PropsWithChildren) => {
     const list = listRef.current as unknown as HTMLUListElement;
 
     const gap = list.offsetWidth - list.parentElement!.offsetWidth!;
-    const currentPosition =
-      (100 / list.childElementCount) *
-      firstViewedElementIndex *
-      0.01 *
-      list.offsetWidth;
-
+    const currentPosition = calculatePosition(firstViewedElementIndex);
     if (currentPosition >= gap) {
       return;
     }
@@ -55,11 +47,7 @@ const Carousel = ({ children }: PropsWithChildren) => {
     const newFirstViewedElementIndex = firstViewedElementIndex + 1;
     setFirstViewedElementIndex((prev) => prev + 1);
 
-    const move =
-      (100 / list.childElementCount) *
-      newFirstViewedElementIndex *
-      0.01 *
-      list.offsetWidth;
+    const move = calculatePosition(newFirstViewedElementIndex);
 
     if (gap <= Math.abs(move)) {
       list.style.transform = `translateX(${-gap}px)`;
