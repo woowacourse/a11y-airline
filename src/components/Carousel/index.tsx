@@ -1,50 +1,16 @@
-import { useRef, useState } from "react";
 import "./index.css";
 
 import TravelCard from "@components/TravelCard";
 import Controller from "./Controller";
 
 import { data } from "../../__mocks__/data";
+import useCarousel from "./hook";
 
 const DATA_SIZE = data.length;
 
 const Carousel = () => {
-  const [slide, setSlide] = useState(0);
-  const slideRef = useRef<HTMLUListElement>(null);
-
-  const moveSlide = (page: number) => {
-    if (!slideRef.current) return;
-
-    slideRef.current.scrollTo({
-      top: 0,
-      left: 300 * page + (DATA_SIZE + 1) * page,
-      behavior: "smooth",
-    });
-  };
-
-  const handleSlideToPrev = () => {
-    if (slide < 1) {
-      return;
-    }
-
-    setSlide((prev) => {
-      const result = prev - 1;
-      moveSlide(result);
-      return result;
-    });
-  };
-
-  const handleSlideToNext = () => {
-    if (slide > DATA_SIZE) {
-      return;
-    }
-
-    setSlide((prev) => {
-      const result = prev + 1;
-      moveSlide(result);
-      return result;
-    });
-  };
+  const { slide, slideRef, handleSlideToPrev, handleSlideToNext } =
+    useCarousel(DATA_SIZE);
 
   return (
     <div>
