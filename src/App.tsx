@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import GlobalStyle from 'style/GlobalStyle';
 import { PassengerSelectionPage, TravelRecommendationPage } from 'pages';
+import { Header } from 'components';
 import { PATH } from 'constants/path';
 
 const App = () => {
@@ -9,16 +10,12 @@ const App = () => {
     <Wrapper>
       <GlobalStyle />
       <BrowserRouter>
-        <header>a11y-airline Header</header>
+        <Header />
         <MainWrapper>
           <Routes>
+            <Route index element={<TravelRecommendationPage />} />
+            <Route path={PATH.PASSENGER_SELECTION} element={<PassengerSelectionPage />} />
             <Route
-              index
-              path={PATH.PASSENGER_SELECTION}
-              element={<PassengerSelectionPage />}
-            />
-            <Route
-              index
               path={PATH.TRAVEL_RECOMMENDATION}
               element={<TravelRecommendationPage />}
             />
