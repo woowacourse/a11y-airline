@@ -11,9 +11,20 @@ const HomePage = () => {
     next: false,
   });
 
-  const handleCauroselButtonClick = (
-    option: ValueOf<typeof CAROUSEL_BUTTON_OPTION>
-  ) => {
+  const debounce = (callback: Function, limit: number) => {
+    let timeout: NodeJS.Timeout;
+
+    return function () {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        callback();
+      }, limit);
+    };
+  };
+
+  const setDiableCarouselButton = () => {
+    console.log("how many?");
+
     if (!scrollContainer.current) return;
 
     const listItem = scrollContainer.current.childNodes[0] as HTMLUListElement;
@@ -28,23 +39,42 @@ const HomePage = () => {
     const isNextButtonDisabled =
       scrollContainer.current.scrollLeft >= (itemWidth + itemMargin) * 2;
 
-    if (option === CAROUSEL_BUTTON_OPTION.PREVIOUS) {
-      scrollContainer.current.scrollLeft -= itemWidth + itemMargin;
-    }
-    if (option === CAROUSEL_BUTTON_OPTION.NEXT) {
-      scrollContainer.current.scrollLeft += itemWidth + itemMargin;
-    }
-
     setButtonDisabled({
       previous: isPreviousButtonDisabled,
       next: isNextButtonDisabled,
     });
   };
 
+  const handleCauroselButtonClick = (
+    option: ValueOf<typeof CAROUSEL_BUTTON_OPTION>,
+    disabled: boolean
+  ) => {
+    if (!scrollContainer.current || disabled) return;
+
+    const listItem = scrollContainer.current.childNodes[0] as HTMLUListElement;
+    const containerStyle = getComputedStyle(scrollContainer.current);
+    const itemWidth = listItem.clientWidth;
+    const itemMargin = Number(
+      containerStyle.getPropertyValue("gap").substring(2, 0)
+    );
+
+    if (option === CAROUSEL_BUTTON_OPTION.PREVIOUS) {
+      scrollContainer.current.scrollLeft -= itemWidth + itemMargin;
+    }
+    if (option === CAROUSEL_BUTTON_OPTION.NEXT) {
+      scrollContainer.current.scrollLeft += itemWidth + itemMargin;
+    }
+    setDiableCarouselButton();
+  };
+
   return (
     <div className="home-page-container">
       <h1 className="header-title">지금 떠나기 좋은 여행</h1>
-      <ul className="travel-card-container" ref={scrollContainer}>
+      <ul
+        className="travel-card-container"
+        ref={scrollContainer}
+        onScroll={debounce(setDiableCarouselButton, 500)}
+      >
         <TravelCard
           src="https://www.koreanair.com/content/dam/koreanair/ko/airport-img/DXB-list-pc.jpg"
           alt="두바이 이미지"
@@ -106,7 +136,10 @@ const HomePage = () => {
         <button
           aria-disabled={buttonDisabled.previous}
           onClick={() =>
-            handleCauroselButtonClick(CAROUSEL_BUTTON_OPTION.PREVIOUS)
+            handleCauroselButtonClick(
+              CAROUSEL_BUTTON_OPTION.PREVIOUS,
+              buttonDisabled.previous
+            )
           }
           className="carousel-button previous-button"
         >
@@ -114,7 +147,12 @@ const HomePage = () => {
         </button>
         <button
           aria-disabled={buttonDisabled.next}
-          onClick={() => handleCauroselButtonClick(CAROUSEL_BUTTON_OPTION.NEXT)}
+          onClick={() =>
+            handleCauroselButtonClick(
+              CAROUSEL_BUTTON_OPTION.NEXT,
+              buttonDisabled.next
+            )
+          }
           className="carousel-button next-button"
         >
           <span className="hidden">다음</span>
