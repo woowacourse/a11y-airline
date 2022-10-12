@@ -1,0 +1,46 @@
+.box {
+  display: block;
+  position: relative;
+  color: #000;
+}
+
+.box-small {
+  width: 210px;
+  height: 274px;
+}
+
+.box-middle {
+  width: 238px;
+  height: 300px;
+}
+
+.box-large {
+  width: 267px;
+  height: 342px;
+}
+
+.box img {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 18px;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.fare {
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-shadow: -0.5px 0 #fff, 0 0.5px #fff, 0.5px 0 #fff, 0 -0.5px #fff;
+  color: #11277b;
+}
