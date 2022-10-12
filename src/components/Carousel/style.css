@@ -1,5 +1,6 @@
 .carousel {
   position: relative;
+  width: 600px;
 }
 
 .carousel__list {
