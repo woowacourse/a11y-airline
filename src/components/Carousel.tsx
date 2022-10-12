@@ -1,4 +1,4 @@
-import React, { useState, PropsWithChildren, useRef } from "react";
+import React, { useState, PropsWithChildren, useRef, useMemo } from "react";
 
 const Carousel = ({ children }: PropsWithChildren) => {
   const listRef = useRef(null);
@@ -7,23 +7,35 @@ const Carousel = ({ children }: PropsWithChildren) => {
   const calculatePosition: (index: number) => number = (index) => {
     const list = listRef.current as unknown as HTMLUListElement;
 
-    return (100 / list.childElementCount) * index * 0.01 * list.offsetWidth;
+    return (
+      list && (100 / list.childElementCount) * index * 0.01 * list.offsetWidth
+    );
   };
+
+  const calculateGapBetweenContainerAndList = () => {
+    const list = listRef.current as unknown as HTMLUListElement;
+
+    const gap = list && list.offsetWidth - list.parentElement!.offsetWidth!;
+    return list && gap;
+  };
+
+  const currentPosition = useMemo(
+    () => calculatePosition(firstViewedElementIndex),
+    [firstViewedElementIndex]
+  );
 
   const handleLeftButtonClick: React.MouseEventHandler<
     HTMLButtonElement
   > = () => {
     const list = listRef.current as unknown as HTMLUListElement;
 
-    const currentPosition = calculatePosition(firstViewedElementIndex);
     if (currentPosition <= 0) {
       return;
     }
 
-    const newFirstViewedElementIndex = firstViewedElementIndex - 1;
     setFirstViewedElementIndex((prev) => prev - 1);
 
-    const move = calculatePosition(newFirstViewedElementIndex);
+    const move = calculatePosition(firstViewedElementIndex - 1);
 
     if (move <= 0) {
       list.style.transform = `translateX(0px)`;
@@ -37,19 +49,17 @@ const Carousel = ({ children }: PropsWithChildren) => {
     HTMLButtonElement
   > = () => {
     const list = listRef.current as unknown as HTMLUListElement;
+    const gap = calculateGapBetweenContainerAndList();
 
-    const gap = list.offsetWidth - list.parentElement!.offsetWidth!;
-    const currentPosition = calculatePosition(firstViewedElementIndex);
     if (currentPosition >= gap) {
       return;
     }
 
-    const newFirstViewedElementIndex = firstViewedElementIndex + 1;
     setFirstViewedElementIndex((prev) => prev + 1);
 
-    const move = calculatePosition(newFirstViewedElementIndex);
+    const move = calculatePosition(firstViewedElementIndex + 1);
 
-    if (gap <= Math.abs(move)) {
+    if (gap <= move) {
       list.style.transform = `translateX(${-gap}px)`;
       return;
     }
@@ -66,12 +76,16 @@ const Carousel = ({ children }: PropsWithChildren) => {
         <button
           className="carousel-control-left"
           onClick={handleLeftButtonClick}
+          aria-disabled={currentPosition <= 0}
         >
           이전 버튼
         </button>
         <button
           className="carousel-control-right"
           onClick={handleRightButtonClick}
+          aria-disabled={
+            currentPosition >= calculateGapBetweenContainerAndList()
+          }
         >
           다음 버튼
         </button>
