@@ -67,7 +67,13 @@ const Wrapper = styled.div`
     width: ${width}px;
     position: relative;
     overflow-x: scroll;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   `}
 `;
 
