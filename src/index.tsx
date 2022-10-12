@@ -1,11 +1,12 @@
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { URL } from '@/constant/URL';
 
 import App from '@/App';
-import InsertingPassenger from '@/pages/InsertingPassenger';
-import CarouselTravelList from '@/pages/CarouselTravelList/CarouselTravelList';
 
-import { URL } from '@/constant/URL';
+const InsertingPassenger = React.lazy(() => import('@/pages/InsertingPassenger'));
+const CarouselTravelList = React.lazy(() => import('@/pages/CarouselTravelList/index'));
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
