@@ -13,22 +13,25 @@ const Controller = ({
   handleClickPrevButton,
   handleClickNextButton,
 }: Props) => {
+  const isFirstSlide = slide <= 0;
+  const isLastSlide = slide >= max - 1;
+
   return (
     <div className="controller">
       <button
         className="controller__leftBtn"
         onClick={handleClickPrevButton}
-        disabled={slide <= 0}
-      >
-        <span className="sr-only">이전</span>
-      </button>
+        disabled={isFirstSlide}
+        aria-disabled={isFirstSlide}
+        aria-label="이전"
+      />
       <button
         className="controller__rightBtn"
         onClick={handleClickNextButton}
-        disabled={slide >= max - 1}
-      >
-        <span className="sr-only">다음</span>
-      </button>
+        disabled={isLastSlide}
+        aria-disabled={isLastSlide}
+        aria-label="이전"
+      />
     </div>
   );
 };
