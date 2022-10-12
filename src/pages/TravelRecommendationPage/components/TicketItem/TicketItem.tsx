@@ -13,12 +13,14 @@ const TicketItem = ({
 }: TicketItemProps) => {
   return (
     <Wrapper travelImage={travelImage}>
-      <a>
+      <a href="">
         <LocationWrapper>
           <span>{departure}</span>&nbsp;-&nbsp;<span>{arrival}</span>
         </LocationWrapper>
         <TicketTypeText>{ticketType}</TicketTypeText>
-        <PriceText>{`KRW ${minPrice.toLocaleString()} ~`}</PriceText>
+        <PriceText
+          aria-label={`${minPrice.toLocaleString()} 대한민국 원`}
+        >{`KRW ${minPrice.toLocaleString()} ~`}</PriceText>
       </a>
     </Wrapper>
   );

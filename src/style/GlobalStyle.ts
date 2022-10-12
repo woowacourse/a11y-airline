@@ -14,6 +14,15 @@ const GlobalStyle = createGlobalStyle`
   ul {
     list-style-type: none;
   }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:visited {
+    text-decoration: none;
+    color: #000;
+  }
 `;
 
 export default GlobalStyle;
