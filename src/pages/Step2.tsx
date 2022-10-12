@@ -1,5 +1,11 @@
+import Carousel from "@components/Carousel";
+
 const Step2 = () => {
-  return <div>this is Step2</div>;
+  return (
+    <article>
+      <Carousel />
+    </article>
+  );
 };
 
 export default Step2;
