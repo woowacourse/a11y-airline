@@ -9,41 +9,60 @@ const GAP = 8;
 const VIEWING_COUNT = 2;
 
 const Carousel = ({ children }: PropsWithChildren) => {
-  const currentPos = useRef(0);
-
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const isReachedEnd = useRef(false);
+  const currentPosRef = useRef(0);
+  const isReachedEndRef = useRef(false);
+  const timerIdRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    wrapperRef.current?.addEventListener('scroll', handleScrollWrapper);
+
+    return () => {
+      wrapperRef.current?.removeEventListener('scroll', handleScrollWrapper);
+    };
+  }, []);
 
   const wrapperWidth = ITEM_WIDTH * VIEWING_COUNT + ITEM_WIDTH / 2;
   const controlButtonTop = ITEM_HEIGHT / 2;
 
   const handleClickPrevButton = () => {
-    if (isReachedEnd.current) {
-      currentPos.current -= (ITEM_WIDTH + GAP) * 2;
-      wrapperRef.current!.scrollTo({ left: currentPos.current, behavior: 'smooth' });
-      isReachedEnd.current = false;
+    if (isReachedEndRef.current) {
+      currentPosRef.current -= (ITEM_WIDTH + GAP) * 2;
+      wrapperRef.current!.scrollTo({ left: currentPosRef.current, behavior: 'smooth' });
+      isReachedEndRef.current = false;
       return;
     }
 
-    if (currentPos.current == 0) {
+    if (currentPosRef.current == 0) {
       return;
     }
 
-    currentPos.current -= ITEM_WIDTH + GAP;
-    wrapperRef.current!.scrollTo({ left: currentPos.current, behavior: 'smooth' });
+    currentPosRef.current -= ITEM_WIDTH + GAP;
+    wrapperRef.current!.scrollTo({ left: currentPosRef.current, behavior: 'smooth' });
   };
 
   const handleClickNextButton = () => {
-    if (currentPos.current >= 952) {
-      currentPos.current = 1428 + 238;
-      wrapperRef.current!.scrollTo({ left: currentPos.current, behavior: 'smooth' });
-      isReachedEnd.current = true;
+    if (currentPosRef.current >= 952) {
+      currentPosRef.current = 1428 + 238;
+      wrapperRef.current!.scrollTo({ left: currentPosRef.current, behavior: 'smooth' });
+      isReachedEndRef.current = true;
 
       return;
     }
 
-    currentPos.current += ITEM_WIDTH + GAP;
-    wrapperRef.current!.scrollTo({ left: currentPos.current, behavior: 'smooth' });
+    currentPosRef.current += ITEM_WIDTH + GAP;
+    wrapperRef.current!.scrollTo({ left: currentPosRef.current, behavior: 'smooth' });
+  };
+
+  const handleScrollWrapper = () => {
+    if (timerIdRef.current !== null) {
+      window.clearTimeout(timerIdRef.current);
+    }
+
+    timerIdRef.current = window.setTimeout(() => {
+      currentPosRef.current = wrapperRef.current!.scrollLeft;
+      timerIdRef.current = null;
+    }, 100);
   };
 
   return (
