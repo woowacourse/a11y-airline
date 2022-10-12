@@ -16,7 +16,11 @@ export const Carousel = () => {
   const focusedElement = useActiveElement("li");
 
   useEffect(() => {
-    if (focusedElement && focusedElement.parentNode) {
+    if (
+      focusedElement &&
+      focusedElement.tagName === "LI" &&
+      focusedElement.parentNode
+    ) {
       let currentFocusIndex = Array.prototype.indexOf.call(
         focusedElement.parentNode.children,
         focusedElement
