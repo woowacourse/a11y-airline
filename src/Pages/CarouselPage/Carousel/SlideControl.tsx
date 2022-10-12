@@ -15,7 +15,7 @@ const SlideControl = ({
         <ScreenReaderOnlyMessage aria-hidden={true}>이전</ScreenReaderOnlyMessage>
       </LeftButton>
       <RightButton onClick={slideNext} ref={rightButtonRef}>
-        <ScreenReaderOnlyMessage>다음</ScreenReaderOnlyMessage>
+        <ScreenReaderOnlyMessage aria-hidden={true}>다음</ScreenReaderOnlyMessage>
       </RightButton>
     </Wrapper>
   );
@@ -25,22 +25,21 @@ export default SlideControl;
 
 const Wrapper = styled.div`
   position: absolute;
-  width: 100%;
   top: 50%;
+  transform: translateY(-50%);
   left: 0;
+  width: 100%;
   box-sizing: border-box;
+  cursor: pointer;
 `;
 
 const LeftButton = styled.button`
-  background: url(${ButtonLeft}) no-repeat center top;
-  background-size: 30px 60px;
   position: absolute;
   left: 0;
+  background: url(${ButtonLeft}) no-repeat center top;
+  background-size: 30px 60px;
   width: 30px;
   height: 60px;
-  transform: translateY(-50%);
-  border: 0;
-  cursor: pointer;
 `;
 
 const RightButton = styled.button`
@@ -50,9 +49,6 @@ const RightButton = styled.button`
   right: 0;
   width: 30px;
   height: 60px;
-  transform: translateY(-50%);
-  border: 0;
-  cursor: pointer;
 `;
 
 const ScreenReaderOnlyMessage = styled.span`

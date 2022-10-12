@@ -56,12 +56,6 @@ const Carousel = ({
     setCurrentSlide((prevSlide) => prevSlide + 1);
   };
 
-  //   useEffect(() => {
-  //     if (!slideRef.current) {
-  //       return;
-  //     }
-  //   }, []);
-
   useEffect(() => {
     if (!slideRef.current) {
       return;
@@ -90,13 +84,13 @@ const Carousel = ({
               <SlideItem key={item.id} {...item} width={itemWidth} />
             ))}
           </SliderContainer>
-          <SlideControl
-            slidePrevious={slidePrevious}
-            slideNext={slideNext}
-            leftButtonRef={leftButtonRef}
-            rightButtonRef={rightButtonRef}
-          />
         </Wrapper>
+        <SlideControl
+          slidePrevious={slidePrevious}
+          slideNext={slideNext}
+          leftButtonRef={leftButtonRef}
+          rightButtonRef={rightButtonRef}
+        />
       </CarouselSection>
     </main>
   );
@@ -104,7 +98,10 @@ const Carousel = ({
 
 export default Carousel;
 
-const CarouselSection = styled.section``;
+const CarouselSection = styled.section`
+  position: relative;
+  overflow: hidden;
+`;
 
 const Wrapper = styled.div<{ width: number }>`
   ${({ width }) => css`
@@ -114,8 +111,6 @@ const Wrapper = styled.div<{ width: number }>`
     display: block;
     word-break: break-word;
     width: ${width}px;
-    overflow: hidden;
-    position: relative;
   `}
 `;
 
