@@ -5,9 +5,9 @@ const btnRight = document.querySelector(".slider__btn--right");
 let curSlide = 0;
 const maxSlide = slides.length - 2;
 
-const goToSlide = function (slide) {
+const goToSlide = function (slideIndex) {
   slides.forEach(
-    (s, i) => (s.style.transform = `translateX(${-slide * 320}px)`)
+    (slide) => (slide.style.transform = `translateX(${-slideIndex * 320}px)`)
   );
 };
 
@@ -15,7 +15,7 @@ goToSlide(0);
 
 const nextSlide = function () {
   if (curSlide === maxSlide - 1) {
-    curSlide = 0;
+    return;
   } else {
     curSlide++;
   }
@@ -25,7 +25,7 @@ const nextSlide = function () {
 
 const prevSlide = function () {
   if (curSlide === 0) {
-    curSlide = maxSlide - 1;
+    return;
   } else {
     curSlide--;
   }
