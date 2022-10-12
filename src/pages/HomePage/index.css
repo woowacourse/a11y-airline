@@ -1,0 +1,63 @@
+.home-page-container {
+  position: relative;
+  padding: 1rem;
+}
+
+.travel-card-container {
+  display: flex;
+  gap: 2rem;
+  padding: 0;
+  width: 83rem;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+.header-title {
+  font-size: 1.5rem;
+}
+
+.button-container {
+  position: absolute;
+  width: 84.6rem;
+  left: 0;
+  bottom: calc((100% - 4.4rem) / 2);
+}
+
+.carousel-button {
+  position: absolute;
+  width: 2rem;
+  height: 4rem;
+  transform: translateY(-50%);
+  border: 0;
+  cursor: pointer;
+}
+
+.carousel-button:hover {
+  border: 1px solid white;
+  outline: solid cornflowerblue;
+}
+
+.previous-button {
+  background: url(https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-left.svg)
+    no-repeat center top;
+  left: 1rem;
+}
+
+.next-button {
+  background: url(https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-right.svg)
+    no-repeat center top;
+  right: 0.6rem;
+}
+
+.hidden {
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
