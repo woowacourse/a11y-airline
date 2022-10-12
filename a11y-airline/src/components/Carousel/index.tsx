@@ -8,7 +8,7 @@ import useActiveElement from "hooks/useActiveElement";
 
 const MOVE_COUNT = {
   MIN: 0,
-  MAX: travelList.length - 5,
+  MAX: travelList.length - 2,
 };
 
 export const Carousel = () => {
@@ -87,7 +87,7 @@ export const Carousel = () => {
 };
 
 const Slider = styled.div`
-  width: 52rem;
+  width: 20.5rem;
   overflow: hidden;
   position: relative;
 `;
@@ -134,6 +134,6 @@ const LeftButton = styled(CarouselButton)`
 `;
 
 const RightButton = styled(CarouselButton)`
-  transform: translate3d(calc(52rem - 50%), -8rem, 0);
+  transform: translate3d(calc(20.5rem - 50%), -8rem, 0);
   text-align: start;
 `;
