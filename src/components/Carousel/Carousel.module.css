@@ -11,9 +11,11 @@
 }
 
 .cardBox {
-  height: 320px;
   display: flex;
   gap: 24px;
+  height: 320px;
+  transition-property: transform;
+  transition-duration: 1s;
 }
 
 .card {
@@ -22,6 +24,10 @@
   left: 0;
   width: 240px;
   height: 300px;
+}
+
+.textHidden {
+  font-size: 0;
 }
 
 .title p {
@@ -77,6 +83,21 @@
   width: 240px;
   height: 300px;
   background-image: url('../../images/Suisse-background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.India-background::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 300px;
+  background-image: url('../../images/India-background.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
