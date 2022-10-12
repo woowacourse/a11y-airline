@@ -25,8 +25,6 @@ export const Image = styled.img`
 	object-fit: contain;
 `;
 
-export const Description = styled.div``;
-
 export const TravelTitle = styled.p`
 	font-size: 1rem;
 	font-weight: bold;

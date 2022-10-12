@@ -4,15 +4,20 @@ import CarouselTravelItem from '@/pages/CarouselTravelList/CarouselTravelItem/Ca
 import useHandleCarouselEvent from '@/hooks/useHandleCarouselEvent';
 
 const CarouselTravelList = () => {
-	const { carouselListRef, onLeftSlideButtonClick, onRightSlideButtonClick } =
-		useHandleCarouselEvent();
+	const {
+		carouselListRef,
+		travelDescription,
+		onLeftSlideButtonClick,
+		onRightSlideButtonClick,
+		onHoverItem,
+	} = useHandleCarouselEvent();
 	return (
 		<S.Container>
 			<S.Title>지금 떠나기 좋은 여행</S.Title>
 			<S.CarouselBox>
 				<S.CarouselContainer ref={carouselListRef}>
 					{travelInfo.map((item) => (
-						<CarouselTravelItem item={item} key={item.title} />
+						<CarouselTravelItem item={item} key={item.title} onHoverItem={onHoverItem} />
 					))}
 				</S.CarouselContainer>
 				<S.CarouselButtonContainer>
@@ -24,6 +29,7 @@ const CarouselTravelList = () => {
 					</S.CarouselButton>
 				</S.CarouselButtonContainer>
 			</S.CarouselBox>
+			<S.Description aria-live="assertive">{travelDescription}</S.Description>
 		</S.Container>
 	);
 };

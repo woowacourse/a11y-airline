@@ -59,3 +59,15 @@ export const RightButton = styled(AiOutlineDoubleRight)`
 	font-size: 20px;
 	color: white;
 `;
+
+export const Description = styled.div`
+	text-indent: 9999999;
+	border: none;
+	clip: rect(0 0 0 0);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+`;
