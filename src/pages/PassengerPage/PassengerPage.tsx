@@ -1,8 +1,8 @@
-import '../styles/passenger.css';
+import './PassengerPage.css';
 
-import { MESSAGE } from '../constants';
+import { MESSAGE } from '../../constants';
 
-import usePassengerSelect from '../hooks/usePassengerSelect';
+import usePassengerSelect from '../../hooks/usePassengerSelect';
 
 function PassengerPage() {
   const {

@@ -2,7 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import { PATH } from './constants';
 
-import PassengerPage from './pages/PassengerPage';
+import PassengerPage from './pages/PassengerPage/PassengerPage';
 
 function App() {
   return (
