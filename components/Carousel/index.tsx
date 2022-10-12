@@ -20,12 +20,14 @@ const Carousel = ({ children, moveAmount }: any) => {
       </ul>
       <div className={styles.buttonContainer}>
         <button
+          type="button"
           onClick={onClickPrevButton}
           aria-label="이전"
           aria-disabled={isFirstPage}
           style={isFirstPage ? { cursor: 'not-allowed' } : {}}
         />
         <button
+          type="button"
           onClick={onClickNextButton}
           aria-label="다음"
           aria-disabled={isLastPage}
