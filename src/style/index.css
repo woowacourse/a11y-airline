@@ -11,8 +11,7 @@ body {
 #page {
   justify-content: center;
   flex-direction: column;
-  width: 400px;
-  height: 600px;
+  width: calc(100% - 40px);
   padding: 20px;
   border: 1px solid #444444;
   position: relative;

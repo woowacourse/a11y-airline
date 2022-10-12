@@ -3,10 +3,15 @@
   width: calc((100% - 0.8rem) / 2);
   margin-left: 0.8rem;
   flex-shrink: 0;
+  cursor: pointer;
+}
+.carousel__item:first-child {
+  margin-left: 0;
 }
 
 .carousel__image__container {
   box-sizing: border-box;
+  /* max-width: 300px; */
 }
 
 .carousel__image {
@@ -19,7 +24,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 100%;
+  width: calc(100% - 3.2rem);
   max-height: 15rem;
   overflow: hidden;
   padding: 1.6rem 1.8rem;
@@ -29,13 +34,11 @@
   overflow: hidden;
   width: 100%;
   text-overflow: ellipsis;
-  white-space: nowrap;
   font-size: 1.4rem;
   font-weight: 700;
   color: #000;
   margin-bottom: 0.8rem;
   line-height: 1.58;
-  overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
   display: -webkit-box;
@@ -69,4 +72,70 @@
   width: 100%;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.carousel__title {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #1a1a1a;
+  line-height: 1.67;
+  margin-bottom: 1.6rem;
+}
+
+.carousel__list {
+  display: flex;
+  width: 100%;
+  padding: 0;
+}
+
+.carousel__list__container {
+  overflow: hidden;
+  width: 100%;
+}
+
+#minus__button {
+  left: 0.1;
+  background: url(https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-left.svg)
+    no-repeat center top;
+}
+
+#plus__button {
+  right: 0;
+  background: url(https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-right.svg)
+    no-repeat center top;
+}
+
+.carousel__button {
+  position: absolute;
+  width: 3rem;
+  height: 6rem;
+  transform: translateY(-50%);
+  border: 0;
+  cursor: pointer;
+  background-size: 30px 60px;
+}
+
+@media (max-width: 475px) {
+  .carousel__button {
+    width: 1.5rem;
+    height: 3rem;
+  }
+  #plus__button {
+    background-size: 15px 30px;
+  }
+  #minus__button {
+    background-size: 15px 30px;
+  }
+}
+
+.carousel__button__container {
+  position: absolute;
+  width: 100%;
+
+  bottom: calc((100% - 4.4rem) / 2);
+}
+
+.carousel__page {
+  max-width: 1000px;
+  position: relative;
 }

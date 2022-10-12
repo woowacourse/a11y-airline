@@ -1,6 +1,6 @@
 import ComponentWithFragment from 'src/abstract/ComponentWithFragment';
 import MissionOne from '../component/MissionOne/MissionOne';
-import MissionTwo from '../component/MssionTwo/MissionTwo';
+import MissionTwo from '../component/MissionTwo/MissionTwo';
 
 export default class MissionPage extends ComponentWithFragment {
   #tabButton;
