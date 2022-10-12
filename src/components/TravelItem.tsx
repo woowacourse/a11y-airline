@@ -1,17 +1,14 @@
-import DXBImage from "../images/DXB-list-pc.jpg";
+import { TravelInfo } from "./../type";
 
-const TravelItem = () => {
+const TravelItem = ({ image, location, seat, price, href }: TravelInfo) => {
   return (
     <li className="carousel-list-item">
-      <a
-        className="travel-item-container"
-        href="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=DXB&duration=7&cabin=Y"
-      >
-        <img className="travel-item-image" src={DXBImage} />
+      <a className="travel-item-container" href={href}>
+        <img className="travel-item-image" src={image} alt={`${location}`} />
         <div className="travel-item-description">
-          <p className="travel-item-location">서울/인천 - 두바이</p>
-          <p className="travel-item-seat">일반석 왕복</p>
-          <p className="travel-item-price">KRW 1,158,000~</p>
+          <p className="travel-item-location">{location}</p>
+          <p className="travel-item-seat">{seat}</p>
+          <p className="travel-item-price">{price}</p>
         </div>
       </a>
     </li>

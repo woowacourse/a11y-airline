@@ -112,6 +112,108 @@
   cursor: pointer;
 }
 
+.carousel-container {
+  position: relative;
+  width: 90%;
+  overflow: hidden;
+}
+
+.carousel-list {
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+
+  list-style: none;
+
+  overflow: hidden;
+  transition-duration: 700ms;
+}
+
+.carousel-list-item {
+  width: 200px;
+}
+
+.carousel-control {
+  width: 100%;
+
+  position: absolute;
+  left: 0;
+  bottom: calc(100% / 2 + 30px);
+
+  font-size: 0;
+}
+
+.carousel-control-left {
+  position: absolute;
+  left: 0;
+
+  width: 30px;
+  height: 60px;
+  background: url(../images/carousel__button-left.svg) no-repeat 50% 50%;
+
+  font-size: 0;
+
+  cursor: pointer;
+}
+
+.carousel-control-right {
+  position: absolute;
+  right: 0;
+
+  width: 30px;
+  height: 60px;
+  background: url(../images/carousel__button-right.svg) no-repeat 50% 50%;
+
+  font-size: 0;
+
+  cursor: pointer;
+}
+
+.travel-item-container {
+  position: relative;
+  display: block;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+.travel-item-image {
+  width: 100%;
+  height: auto;
+}
+
+.travel-item-description {
+  position: absolute;
+  top: 0;
+
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+}
+
+.travel-item-location {
+  margin: 0;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.travel-item-seat {
+  margin: 0;
+  margin-bottom: 0.2rem;
+  font-size: 1rem;
+}
+
+.travel-item-price {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #11277b;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
