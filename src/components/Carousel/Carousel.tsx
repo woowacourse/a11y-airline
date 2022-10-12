@@ -1,4 +1,4 @@
-import { useRef, useEffect, PropsWithChildren, Children } from 'react';
+import { useState, useRef, useEffect, PropsWithChildren, Children } from 'react';
 import styled, { css } from 'styled-components';
 import { WrapperProps, ControlButtonProps } from 'components/Carousel/Carousel.type';
 import { CONTROL_BUTTON_KIND } from 'components/Carousel/Carousel.constant';
@@ -9,9 +9,10 @@ const GAP = 8;
 const VIEWING_COUNT = 2;
 
 const Carousel = ({ children }: PropsWithChildren) => {
+  const [message, setMessage] = useState('');
+  const [reachedAt, setReachedAt] = useState<'start' | 'end' | null>('start');
   const wrapperRef = useRef<HTMLDivElement>(null);
   const currentPosRef = useRef(0);
-  const isReachedEndRef = useRef(false);
   const timerIdRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -24,16 +25,19 @@ const Carousel = ({ children }: PropsWithChildren) => {
 
   const wrapperWidth = ITEM_WIDTH * VIEWING_COUNT + ITEM_WIDTH / 2;
   const controlButtonTop = ITEM_HEIGHT / 2;
+  const isReachedStart = reachedAt === 'start';
+  const isReachedEnd = reachedAt === 'end';
 
   const handleClickPrevButton = () => {
-    if (isReachedEndRef.current) {
+    if (isReachedEnd) {
       currentPosRef.current -= (ITEM_WIDTH + GAP) * 2;
       wrapperRef.current!.scrollTo({ left: currentPosRef.current, behavior: 'smooth' });
-      isReachedEndRef.current = false;
+      setReachedAt(null);
       return;
     }
 
     if (currentPosRef.current == 0) {
+      setReachedAt('start');
       return;
     }
 
@@ -42,10 +46,14 @@ const Carousel = ({ children }: PropsWithChildren) => {
   };
 
   const handleClickNextButton = () => {
+    if (isReachedStart) {
+      setReachedAt(null);
+    }
+
     if (currentPosRef.current >= 952) {
       currentPosRef.current = 1428 + 238;
       wrapperRef.current!.scrollTo({ left: currentPosRef.current, behavior: 'smooth' });
-      isReachedEndRef.current = true;
+      setReachedAt('end');
 
       return;
     }
@@ -60,8 +68,23 @@ const Carousel = ({ children }: PropsWithChildren) => {
     }
 
     timerIdRef.current = window.setTimeout(() => {
-      currentPosRef.current = wrapperRef.current!.scrollLeft;
       timerIdRef.current = null;
+      currentPosRef.current = wrapperRef.current!.scrollLeft;
+
+      if (currentPosRef.current <= 0) {
+        setReachedAt('start');
+        setMessage('목록의 처음에 도달했습니다.');
+        return;
+      }
+
+      if (currentPosRef.current >= 1320) {
+        setReachedAt('end');
+        setMessage('목록의 끝에 도달했습니다.');
+        return;
+      }
+
+      setReachedAt(null);
+      setMessage('');
     }, 100);
   };
 
@@ -76,6 +99,7 @@ const Carousel = ({ children }: PropsWithChildren) => {
         <ControlButton
           onClick={handleClickPrevButton}
           aria-label="이전"
+          aria-disabled={isReachedStart}
           top={controlButtonTop}
           kind={CONTROL_BUTTON_KIND.PREV}
         >
@@ -84,6 +108,7 @@ const Carousel = ({ children }: PropsWithChildren) => {
         <ControlButton
           onClick={handleClickNextButton}
           aria-label="다음"
+          aria-disabled={isReachedEnd}
           top={controlButtonTop}
           kind={CONTROL_BUTTON_KIND.NEXT}
         >
@@ -144,5 +169,9 @@ const ControlButton = styled.button`
     color: #fff;
     cursor: pointer;
     transform: translateY(-50%);
+
+    &[aria-disabled='true'] {
+      cursor: not-allowed;
+    }
   `}
 `;
