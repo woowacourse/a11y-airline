@@ -28,7 +28,6 @@ const PassengerCounter = () => {
 
   return (
     <>
-      <h1>승객 선택</h1>
       <div className={styles.subTitleBox}>
         <h2>성인</h2>
         <ToolTip text={'만 20세 이상 성인, 0명부터 3명까지 추가할 수 있습니다.'} />

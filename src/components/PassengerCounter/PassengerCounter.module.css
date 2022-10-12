@@ -21,7 +21,7 @@
   height: 24px;
   font-size: 0;
   border-radius: 10px;
-  background: url('../../images/passenger-control-sub.svg');
+  background-image: url('../../images/passenger-control-sub.svg');
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -31,7 +31,7 @@
   height: 24px;
   font-size: 0;
   border-radius: 10px;
-  background: url('../../images/passenger-control-add.svg');
+  background-image: url('../../images/passenger-control-add.svg');
   background-repeat: no-repeat;
   background-position: center;
 }
