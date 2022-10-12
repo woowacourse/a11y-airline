@@ -19,7 +19,7 @@ export type SlideItemProps = {
   id: number;
   location: string;
   seat: string;
-  price: string;
+  price: number;
   image: string;
   href: string;
 };

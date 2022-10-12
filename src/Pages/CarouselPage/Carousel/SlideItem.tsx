@@ -9,6 +9,12 @@ const SlideItem = ({
   href,
   width,
 }: SlideItemProps & { width: number }) => {
+  const formattedPrice = new Intl.NumberFormat('ko-KR').format(price);
+
+  const displayedPrice = `KRW ${formattedPrice} ~`;
+
+  const readablePrice = `${formattedPrice} 대한민국 원`;
+
   return (
     <Wrapper width={width}>
       <a href={href}>
@@ -16,8 +22,8 @@ const SlideItem = ({
         <Description>
           <MainText>{location}</MainText>
           <SubText>{seat}</SubText>
-          <EmphasisText aria-hidden={true}>{price}</EmphasisText>
-          <ScreenReaderOnlyMessage>하하</ScreenReaderOnlyMessage>
+          <EmphasisText aria-hidden={true}>{displayedPrice}</EmphasisText>
+          <ScreenReaderOnlyMessage>{readablePrice}</ScreenReaderOnlyMessage>
         </Description>
       </a>
     </Wrapper>
