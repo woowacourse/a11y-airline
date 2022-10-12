@@ -41,6 +41,7 @@ const useCarousel = ({
   const handleClickPrevButton = () => {
     if (isReachedStart) {
       setMessage('이미 목록의 처음 위치에 있습니다.');
+      return;
     }
 
     if (isReachedEnd) {
@@ -62,6 +63,7 @@ const useCarousel = ({
   const handleClickNextButton = () => {
     if (isReachedEnd) {
       setMessage('이미 목록의 끝 위치에 있습니다.');
+      return;
     }
 
     if (isReachedStart) {
