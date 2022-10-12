@@ -1,18 +1,15 @@
+import { announce } from "./utils";
+
 const helpBoxButton = document.querySelector("#help-box");
 const adultHelpContextButton = document.querySelector("#adult-help-context");
 const addPassengerButton = document.querySelector("#add-passenger");
 const reducePassengerButton = document.querySelector("#reduce-passenger");
-const announceElement = document.querySelector("#announce");
 const passengerCount = document.querySelector(
   "#passenger-count"
 ) as HTMLInputElement;
 
 const MIN_PASSENGER_COUNT = 1;
 const MAX_PASSENGER_COUNT = 3;
-
-const announce = (message: string) => {
-  announceElement.textContent = message;
-};
 
 helpBoxButton.addEventListener("click", () => {
   if (adultHelpContextButton.classList.contains("hide")) {

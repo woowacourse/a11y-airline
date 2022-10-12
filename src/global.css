@@ -9,6 +9,15 @@ a {
   color: #000000;
 }
 
+ul,
+ol,
+li {
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+}
+
 button {
   cursor: pointer;
 
@@ -17,6 +26,10 @@ button {
   border-radius: 50%;
 
   padding: 0;
+}
+
+button:disabled {
+  cursor: not-allowed;
 }
 
 .hide {
@@ -102,11 +115,11 @@ button {
   transition-duration: 700ms;
 }
 
-#carousel-wrapper > a {
+#carousel-wrapper > li {
   position: relative;
 }
 
-#carousel-wrapper > a > img {
+#carousel-wrapper > li > a > img {
   width: 230px;
 }
 
