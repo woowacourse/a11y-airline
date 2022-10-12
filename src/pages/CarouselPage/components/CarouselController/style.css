@@ -19,6 +19,14 @@
   cursor: pointer;
 }
 
+.left__btn:disabled {
+  cursor: not-allowed;
+}
+
+.right__btn:disabled {
+  cursor: not-allowed;
+}
+
 .right__btn {
   background: url("../../../../images/button-right.svg");
   background-size: 30px 60px;

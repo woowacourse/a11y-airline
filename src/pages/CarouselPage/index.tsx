@@ -24,7 +24,6 @@ const CarouselPage = () => {
       return;
     }
 
-    console.log("back");
     setPage((prev) => {
       const target = prev - 1;
       changePage(target);
@@ -37,7 +36,6 @@ const CarouselPage = () => {
       return;
     }
 
-    console.log("next");
     setPage((prev) => {
       const target = prev + 1;
       changePage(target);
@@ -63,6 +61,8 @@ const CarouselPage = () => {
       <CarouselController
         handleBackButtonClick={handleBackButtonClick}
         handleNextButtonClick={handleNextButtonClick}
+        max={7}
+        current={page}
       />
     </div>
   );
