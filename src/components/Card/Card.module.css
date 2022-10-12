@@ -1,0 +1,36 @@
+.layout {
+  position: relative;
+  width: 340px;
+  height: 370px;
+}
+
+.description {
+  padding: 30px 20px;
+  position: absolute;
+}
+
+.bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.white-black-font {
+  color: white;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+
+.title {
+  font-size: 25px;
+}
+
+.sub-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.paragraph {
+  font-size: 20px;
+  color: navy;
+  text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white;
+}
