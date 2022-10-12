@@ -13,8 +13,6 @@ const HomePage = () => {
   });
 
   const setDiableCarouselButton = () => {
-    console.log("how many?");
-
     if (!scrollContainer.current) return;
 
     const listItem = scrollContainer.current.childNodes[0] as HTMLUListElement;
