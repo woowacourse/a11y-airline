@@ -1,60 +1,82 @@
-import { useState, KeyboardEvent } from 'react';
-import { Trip } from '../../dummy';
-import Item from './components/Item';
+import { useState, useRef, FocusEvent, useEffect, MouseEvent } from 'react';
+
+import Item, { ItemProps } from './components/Item';
 import * as S from './index.style';
 
 interface CarouselProps {
   title: string;
-  items?: Trip[];
+  items: ItemProps[];
+  itemWidth?: number;
 }
 
-const ITEM_WIDTH = 245;
+const LEFT = '<';
+const RIGHT = '>';
 
-const Carousel = ({ title, items }: CarouselProps) => {
-  const [shift, setShift] = useState(0);
+const Carousel = ({ title, items, itemWidth = 245 }: CarouselProps) => {
+  const [end, setEnd] = useState({
+    left: true,
+    right: false,
+  });
+  const ItemContainer = useRef<HTMLUListElement>(null);
 
-  const LeftShift = () => {
-    setShift(shift => (shift < 0 ? shift + 245 : shift));
+  const handleButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
+    if (!ItemContainer.current) return;
+
+    ItemContainer.current.scrollBy({
+      left: e.currentTarget.innerText === LEFT ? -itemWidth : itemWidth,
+      behavior: 'smooth',
+    });
   };
 
-  const RightShift = () => {
-    setShift(shift => (shift > -ITEM_WIDTH * 8 ? shift - 245 : shift));
+  const handleFocus = (e: FocusEvent<HTMLAnchorElement>) => {
+    e.target.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const onPressTab = (
-    e: KeyboardEvent<HTMLUListElement> & { target: HTMLUListElement }
-  ) => {
-    const { x } = e.target.getBoundingClientRect();
+  useEffect(() => {
+    if (!ItemContainer.current) return;
 
-    if (e.shiftKey) {
-      setShift(shift => (shift < 0 ? shift + 245 : shift));
-    }
+    ItemContainer.current.addEventListener('scroll', () => {
+      const { scrollLeft, scrollWidth, offsetWidth } = ItemContainer.current!;
 
-    if (e.code === 'Tab' && !e.shiftKey) {
-      setShift(shift =>
-        x > window.innerWidth * 0.4 && shift > -ITEM_WIDTH * 8
-          ? shift - 245
-          : shift
-      );
-    }
-  };
+      setEnd({
+        left: scrollLeft <= 0,
+        right: scrollWidth <= offsetWidth + scrollLeft,
+      });
+    });
+  }, []);
 
   return (
     <S.Container>
       <S.Title>{title}</S.Title>
-      <S.ItemContainer shift={shift + 'px'} onKeyUp={onPressTab}>
+      <S.ItemContainer ref={ItemContainer}>
         {items &&
-          items.map(item => <Item {...item} key={item.description.title} />)}
+          items.map(item => (
+            <Item
+              {...item}
+              key={item.description.title}
+              onFocus={handleFocus}
+            />
+          ))}
       </S.ItemContainer>
 
       <S.LeftShiftButton
-        onClick={LeftShift}
+        onClick={handleButtonClick}
         type="button"
-      >{`<`}</S.LeftShiftButton>
+        aria-label="이전 버튼"
+        aria-disabled={end.left}
+        isDisable={end.left}
+      >
+        {LEFT}
+      </S.LeftShiftButton>
       <S.RightShiftButton
-        onClick={RightShift}
+        onClick={handleButtonClick}
         type="button"
-      >{`>`}</S.RightShiftButton>
+        aria-label="다음 버튼"
+        aria-disabled={end.right}
+        isDisable={end.right}
+      >
+        {RIGHT}
+      </S.RightShiftButton>
     </S.Container>
   );
 };

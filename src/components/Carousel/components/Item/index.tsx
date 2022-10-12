@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react';
 import * as S from './index.style';
 
-interface ItemProps extends HTMLAttributes<HTMLAnchorElement> {
+export interface ItemProps extends HTMLAttributes<HTMLAnchorElement> {
   link: string;
   imgSrc: string;
   description: {
