@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import "./style.css";
 
 interface CarouselItemProps {
@@ -39,5 +39,4 @@ const CarouselItem = ({
     </div>
   );
 };
-
 export default CarouselItem;
