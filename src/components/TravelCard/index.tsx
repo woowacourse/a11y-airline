@@ -1,5 +1,5 @@
 import { parseToKWRPrice } from "@utils";
-import "./index.css";
+import "./style.css";
 
 interface Props {
   href: string;
