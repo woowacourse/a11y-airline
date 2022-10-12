@@ -35,7 +35,7 @@ addPassengerButton.addEventListener("click", () => {
 reducePassengerButton.addEventListener("click", () => {
   if (passengerAmount.valueAsNumber > MIN_PASSENGER_COUNT) {
     passengerAmount.value = (passengerAmount.valueAsNumber - 1).toString();
-    announce(`성인 승객 추감 ${passengerAmount.value}`);
+    announce(`성인 승객 감소 ${passengerAmount.value}`);
   }
 });
 
