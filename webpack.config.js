@@ -9,6 +9,7 @@ module.exports = args => {
     output: {
       path: path.resolve(__dirname, 'build'),
       filename: 'bundle.js',
+      assetModuleFilename: 'static/[hash][ext]',
       clean: true,
     },
     resolve: {
@@ -40,6 +41,10 @@ module.exports = args => {
           use: {
             loader: require.resolve('ts-loader'),
           },
+        },
+        {
+          test: /\.(jpg)$/i,
+          type: 'asset/resource',
         },
       ],
     },
