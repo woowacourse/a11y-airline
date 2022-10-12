@@ -7,7 +7,7 @@
   display: flex;
   gap: 2rem;
   padding: 0;
-  width: 83rem;
+  width: 32rem;
   overflow: hidden;
   scroll-behavior: smooth;
 }
@@ -18,7 +18,7 @@
 
 .button-container {
   position: absolute;
-  width: 84.6rem;
+  width: 33.6rem;
   left: 0;
   bottom: calc((100% - 4.4rem) / 2);
 }

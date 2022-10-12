@@ -25,7 +25,7 @@ const HomePage = () => {
     const isPreviousButtonDisabled =
       scrollContainer.current.scrollLeft <= itemWidth + itemMargin;
     const isNextButtonDisabled =
-      scrollContainer.current.scrollLeft >= (itemWidth + itemMargin) * 2;
+      scrollContainer.current.scrollLeft >= (itemWidth + itemMargin) * 5;
 
     setButtonDisabled({
       previous: isPreviousButtonDisabled,
@@ -52,7 +52,6 @@ const HomePage = () => {
     if (option === CAROUSEL_BUTTON_OPTION.NEXT) {
       scrollContainer.current.scrollLeft += itemWidth + itemMargin;
     }
-    setDiableCarouselButton();
   };
 
   return (
