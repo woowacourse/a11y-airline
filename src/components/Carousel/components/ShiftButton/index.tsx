@@ -3,10 +3,17 @@ import * as S from './index.style';
 
 interface ShiftButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClick: MouseEventHandler<HTMLButtonElement>;
+  isDisable: boolean;
 }
 
-const ShiftButton = ({ onClick, ...props }: ShiftButtonProps) => {
-  return <S.Container onClick={onClick} {...props}></S.Container>;
+const ShiftButton = ({ onClick, isDisable, ...props }: ShiftButtonProps) => {
+  return (
+    <S.Container
+      onClick={onClick}
+      isDisable={isDisable}
+      {...props}
+    ></S.Container>
+  );
 };
 
 export default ShiftButton;
