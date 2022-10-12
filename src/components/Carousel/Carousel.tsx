@@ -11,13 +11,6 @@ type CarouselType<T> = {
   itemSize: ItemSize;
 };
 
-// const ITEM_SIZE = {
-//   small: 210,
-//   middle: 238,
-//   large: 267,
-// };
-// const GAP_SIZE = 24;
-
 const Carousel = <T extends TravelProductData>({ items, itemSize }: CarouselType<T>) => {
   const {
     isStartPoint,
