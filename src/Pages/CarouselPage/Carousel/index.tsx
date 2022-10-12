@@ -33,11 +33,11 @@ const Carousel = ({
     }
 
     if (currentSlide === 0) {
-      disableButton(leftButtonRef.current, '이전 버튼');
+      disableButton(leftButtonRef.current, '이전');
       return;
     }
 
-    enableButton(leftButtonRef.current, '이전 버튼');
+    enableButton(leftButtonRef.current, '이전');
     setCurrentSlide((prevSlide) => prevSlide - 1);
   };
 
@@ -47,14 +47,20 @@ const Carousel = ({
     }
 
     if (currentSlide > slideItems.length - 3) {
-      disableButton(rightButtonRef.current, '다음 버튼');
+      disableButton(rightButtonRef.current, '다음');
       console.log('hi');
       return;
     }
 
-    enableButton(rightButtonRef.current, '다음 버튼');
+    enableButton(rightButtonRef.current, '다음');
     setCurrentSlide((prevSlide) => prevSlide + 1);
   };
+
+  //   useEffect(() => {
+  //     if (!slideRef.current) {
+  //       return;
+  //     }
+  //   }, []);
 
   useEffect(() => {
     if (!slideRef.current) {
@@ -72,8 +78,14 @@ const Carousel = ({
       <h1>마르코 항공사-Carousel</h1>
       <CarouselSection>
         <h2>지금 떠나기 좋은 여행</h2>
-        <Wrapper width={totalWidth}>
-          <SliderContainer ref={slideRef} gap={itemGap}>
+        <Wrapper width={totalWidth} aria-roledescription="carousel">
+          <SliderContainer
+            ref={slideRef}
+            gap={itemGap}
+            role="list"
+            aria-label="Items Slider"
+            aria-live="polite"
+          >
             {slideItems.map((item) => (
               <SlideItem key={item.id} {...item} width={itemWidth} />
             ))}

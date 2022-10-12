@@ -11,9 +11,9 @@ const SlideItem = ({
   width,
 }: SlideItemProps & { width: number }) => {
   return (
-    <Wrapper data-id={id} width={width}>
+    <Wrapper width={width} role="listitem" aria-roledescription="item">
       <a href={href}>
-        <BgImg loading="lazy" src={image} alt={location + ' 사진'} />
+        <BgImg loading="lazy" src={image} alt={location + ' 사진'} aria-hidden={true} />
         <Description>
           <MainText>{location}</MainText>
           <SubText>{seat}</SubText>
