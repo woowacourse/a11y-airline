@@ -93,3 +93,7 @@ img {
   color: #11277b;
   font-weight: bolder;
 }
+
+.disabled {
+  cursor: not-allowed;
+}
