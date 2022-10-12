@@ -33,7 +33,7 @@ const HomePage = () => {
     });
   };
 
-  const handleCauroselButtonClick = (
+  const handleCarouselButtonClick = (
     option: ValueOf<typeof CAROUSEL_BUTTON_OPTION>,
     disabled: boolean
   ) => {
@@ -123,7 +123,7 @@ const HomePage = () => {
         <button
           aria-disabled={buttonDisabled.previous}
           onClick={() =>
-            handleCauroselButtonClick(
+            handleCarouselButtonClick(
               CAROUSEL_BUTTON_OPTION.PREVIOUS,
               buttonDisabled.previous
             )
@@ -135,7 +135,7 @@ const HomePage = () => {
         <button
           aria-disabled={buttonDisabled.next}
           onClick={() =>
-            handleCauroselButtonClick(
+            handleCarouselButtonClick(
               CAROUSEL_BUTTON_OPTION.NEXT,
               buttonDisabled.next
             )
