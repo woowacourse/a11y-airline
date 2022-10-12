@@ -3,6 +3,19 @@ import { useEffect, useRef, useState } from 'react';
 
 import data from '../mocks/data.json';
 
+const hidden = css`
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+`;
+
 type TripListType = {
   id: string;
   departureAirport: string;
@@ -26,28 +39,26 @@ const CarouselPage: React.FC = () => {
   const ulRef = useRef<HTMLUListElement | null>(null);
   const indexRef = useRef<number>(0);
 
-  const handleClickLeftMove = () => {
+  const handleClickSlider = (direction: 'left' | 'right') => {
     if (!ulRef.current) return;
 
-    indexRef.current = indexRef.current - 1;
+    if (direction === 'left') indexRef.current = indexRef.current - 1;
+    if (direction === 'right') indexRef.current = indexRef.current + 1;
 
     const listElements = ulRef.current.querySelectorAll('li');
 
-    listElements.forEach(list => {
-      list.setAttribute('style', `transform: translateX(calc(254px * ${indexRef.current})); transition: transform 1s;`);
-    });
-  };
+    console.log('indexRef.current', indexRef.current);
 
-  const handleClickRightMove = () => {
-    if (!ulRef.current) return;
-
-    indexRef.current = indexRef.current + 1;
-
-    const listElements = ulRef.current.querySelectorAll('li');
+    console.log(listElements);
 
     listElements.forEach(list => {
-      list.setAttribute('style', `transform: translateX(calc(254px * ${indexRef.current})); transition: transform 1s;`);
+      list.setAttribute(
+        'style',
+        `transform: translateX(calc(-254px * ${indexRef.current})); transition: transform 1s;`
+      );
     });
+
+    listElements[indexRef.current].focus();
   };
 
   useEffect(() => {
@@ -67,11 +78,9 @@ const CarouselPage: React.FC = () => {
       </header>
       <article
         css={css`
-          border: 1px solid black;
-
+          position: relative;
           width: 600px;
           height: 400px;
-
           overflow: hidden;
         `}
       >
@@ -100,8 +109,8 @@ const CarouselPage: React.FC = () => {
                 >
                   <a
                     css={css`
-                      text-decoration: none; /* 링크의 밑줄 제거 */
-                      color: inherit; /* 링크의 색상 제거 */
+                      text-decoration: none;
+                      color: inherit;
                     `}
                     href={trip.link}
                   >
@@ -127,7 +136,6 @@ const CarouselPage: React.FC = () => {
                         css={css`
                           width: auto;
                           height: 100%;
-
                           object-fit: cover;
                           background-repeat: no-repeat;
                         `}
@@ -139,27 +147,64 @@ const CarouselPage: React.FC = () => {
                 </li>
               );
             })}
-          <button
-            css={css`
-              position: absolute;
-              top: 50%;
-              left: 0;
-            `}
-            onClick={handleClickLeftMove}
-          >
-            왼쪽
-          </button>
-          <button
-            css={css`
-              position: absolute;
-              top: 50%;
-              right: 0;
-            `}
-            onClick={handleClickRightMove}
-          >
-            오른쪽
-          </button>
         </ul>
+
+        <div
+          css={css`
+            position: absolute;
+            top: 50%;
+            margin: 0;
+            padding: 0;
+            height: 0;
+          `}
+        >
+          <div
+            css={css`
+              position: fixed;
+              width: 600px;
+              margin: 0;
+              padding: 0;
+              height: 0;
+            `}
+          >
+            <button
+              css={css`
+                border: none;
+                left: 0;
+                position: absolute;
+                background: url(https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-left.svg)
+                  no-repeat center top;
+                background-size: 30px 60px;
+                height: 60px;
+                width: 30px;
+                cursor: pointer;
+                transform: translateY(-50%);
+                /* cursor: not-allowed; */
+              `}
+              onClick={() => handleClickSlider('left')}
+            >
+              <span css={hidden}>이전</span>
+            </button>
+            <button
+              css={css`
+                border: none;
+                right: 0;
+                position: absolute;
+                background: url(https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-right.svg)
+                  no-repeat center top;
+                background-size: 30px 60px;
+                height: 60px;
+                width: 30px;
+                cursor: pointer;
+                transform: translateY(-50%);
+                /* cursor: not-allowed; */
+              `}
+              onClick={() => handleClickSlider('right')}
+            >
+              <span css={hidden}>다음</span>
+            </button>
+          </div>
+        </div>
       </article>
     </article>
   );
