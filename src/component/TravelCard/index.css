@@ -1,0 +1,51 @@
+.travel-card-list {
+  list-style: none;
+  width: calc((100% - 12rem) / 5);
+  min-width: 15rem;
+  max-width: 15rem;
+}
+
+.travel-card-list:hover {
+  background-color: blue;
+}
+
+.link {
+  position: relative;
+  display: block;
+  border: 1px solid transparent;
+  color: black;
+}
+
+.item-img {
+  width: 100%;
+  vertical-align: top;
+}
+
+.text-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1.8rem 1.3rem;
+  width: 100%;
+  max-height: 15rem;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.option {
+  margin: 0;
+}
+
+.lowestPrice {
+  margin: 0;
+  font-weight: bold;
+  color: #11277b;
+}
