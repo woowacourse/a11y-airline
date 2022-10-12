@@ -12,7 +12,7 @@ import {
 
 function Carousel() {
   return (
-    <div css={layoutStyle}>
+    <div css={layoutStyle(data.length)}>
       <button css={prevButtonStyle}>
         <span css={hiddenStyle}>이전</span>
       </button>

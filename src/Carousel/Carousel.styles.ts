@@ -1,16 +1,16 @@
 import { css } from '@emotion/react';
 
-const layoutStyle = css`
+const layoutStyle = (length: number) => css`
   position: relative;
   display: flex;
 
   overflow: overlay;
+  width: ${length * 329}px;
+  max-width: 100%;
 `;
 
 const listStyle = css`
-  position: relative;
   display: flex;
-  flex=direction: row;
   gap: 30px;
 
   height: 310px;
@@ -18,18 +18,18 @@ const listStyle = css`
 `;
 
 const prevButtonStyle = css`
-  position: sticky;
+  position: absolute;
   top: 50%;
-  left: 30px;
   z-index: 10;
   background: url(https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-left.svg)
     no-repeat;
   transform: translate(0, -50%);
 
-  width: 40px;
+  width: 32px;
   height: 60px;
   border: none;
 
+  box-sizing: border-box;
   &:hover {
     border: 1px solid blue;
     cursor: pointer;
@@ -37,15 +37,15 @@ const prevButtonStyle = css`
 `;
 
 const nextButtonStyle = css`
-  position: sticky;
+  position: absolute;
   top: 50%;
-  right: 30px;
+  right: 0;
   z-index: 10;
-  background: url(https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-right.svg)
+  background: url(https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-left.svg)
     no-repeat;
   transform: translate(0, -50%);
 
-  width: 40px;
+  width: 32px;
   height: 60px;
   border: none;
 
