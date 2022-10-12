@@ -39,6 +39,9 @@ const CarouselPage: React.FC = () => {
   const ulRef = useRef<HTMLUListElement | null>(null);
   const indexRef = useRef<number>(0);
 
+  const [disableLeftButton, setDisableLeftButton] = useState(false);
+  const [disableRightButton, setDisableRightButton] = useState(false);
+
   const handleClickSlider = (direction: 'left' | 'right') => {
     if (!ulRef.current) return;
 
@@ -51,6 +54,9 @@ const CarouselPage: React.FC = () => {
     if (nextIndex < 0 || nextIndex >= listElements.length) {
       return;
     }
+
+    setDisableLeftButton(nextIndex === 0);
+    setDisableRightButton(nextIndex === listElements.length - 1);
 
     indexRef.current = nextIndex;
 
@@ -68,6 +74,7 @@ const CarouselPage: React.FC = () => {
     const { specialOfferList } = data;
 
     setTripList(specialOfferList);
+    setDisableLeftButton(true);
   }, []);
 
   return (
@@ -92,7 +99,7 @@ const CarouselPage: React.FC = () => {
             position: relative;
             display: flex;
 
-            padding: 0;
+            padding: 0 4px;
             margin: 40px 0;
           `}
           ref={ulRef}
@@ -108,6 +115,10 @@ const CarouselPage: React.FC = () => {
                     width: 240px;
                     position: relative;
                     margin-right: 20px;
+
+                    :hover {
+                      box-shadow: -1px -1px 10px 0px #000;
+                    }
                   `}
                 >
                   <a
@@ -124,9 +135,29 @@ const CarouselPage: React.FC = () => {
                         left: 10%;
                       `}
                     >
-                      <div>{`${trip.departureAirportNm.split(',')[0]} - ${trip.arrivalAirportNm.split(',')[0]}`}</div>
-                      <div>{`${trip.cabinClassNm} ${trip.tripTypeNm}`}</div>
-                      <div>{`${trip.currency} ${trip.price}`}</div>
+                      <p
+                        css={css`
+                          font-weight: bold;
+                          font-size: 1.2rem;
+                          margin: 0;
+                          margin-bottom: 16px;
+                        `}
+                      >{`${trip.departureAirportNm.split(',')[0]} - ${trip.arrivalAirportNm.split(',')[0]}`}</p>
+                      <p
+                        css={css`
+                          margin: 0;
+                          margin-bottom: 4px;
+                        `}
+                      >{`${trip.cabinClassNm} ${trip.tripTypeNm}`}</p>
+                      <p
+                        css={css`
+                          margin: 0;
+                          font-weight: bold;
+                          font-size: 1.2rem;
+                          color: #11277b;
+                          text-shadow: 1px 1px 1px #ffffff;
+                        `}
+                      >{`${trip.currency} ${parseInt(trip.price).toLocaleString()} ~`}</p>
                     </div>
 
                     <div
@@ -151,7 +182,6 @@ const CarouselPage: React.FC = () => {
               );
             })}
         </ul>
-
         <div
           css={css`
             position: absolute;
@@ -173,7 +203,7 @@ const CarouselPage: React.FC = () => {
             <button
               css={css`
                 border: none;
-                left: 0;
+                left: 4px;
                 position: absolute;
                 background: url(https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-left.svg)
                   no-repeat center top;
@@ -182,9 +212,13 @@ const CarouselPage: React.FC = () => {
                 width: 30px;
                 transform: translateY(-50%);
                 cursor: pointer;
-                /* cursor: not-allowed; */
+                ${disableLeftButton && `cursor: not-allowed;`}
+                :hover {
+                  box-shadow: -1px -1px 10px 0px #ffffff;
+                }
               `}
               onClick={() => handleClickSlider('left')}
+              disabled={disableLeftButton}
             >
               <span css={hidden}>이전</span>
             </button>
@@ -200,9 +234,13 @@ const CarouselPage: React.FC = () => {
                 width: 30px;
                 cursor: pointer;
                 transform: translateY(-50%);
-                /* cursor: not-allowed; */
+                ${disableRightButton && `cursor: not-allowed;`}
+                :hover {
+                  box-shadow: -1px -1px 10px 0px #ffffff;
+                }
               `}
               onClick={() => handleClickSlider('right')}
+              disabled={disableRightButton}
             >
               <span css={hidden}>다음</span>
             </button>
