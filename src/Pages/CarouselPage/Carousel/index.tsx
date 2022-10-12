@@ -49,7 +49,6 @@ const Carousel = ({
 
     if (currentSlide > slideItems.length - 3) {
       disableButton(rightButtonRef.current, '다음');
-      console.log('hi');
       return;
     }
 
@@ -69,9 +68,9 @@ const Carousel = ({
   }, [currentSlide]);
 
   return (
-    <CarouselSection>
+    <CarouselSection width={totalWidth}>
       <h2>{title}</h2>
-      <Wrapper width={totalWidth}>
+      <Wrapper>
         <SliderContainer
           ref={slideRef}
           gap={itemGap}
@@ -82,33 +81,31 @@ const Carousel = ({
             <SlideItem key={item.id} {...item} width={itemWidth} />
           ))}
         </SliderContainer>
+        <SlideControl
+          slidePrevious={slidePrevious}
+          slideNext={slideNext}
+          leftButtonRef={leftButtonRef}
+          rightButtonRef={rightButtonRef}
+        />
       </Wrapper>
-      <SlideControl
-        slidePrevious={slidePrevious}
-        slideNext={slideNext}
-        leftButtonRef={leftButtonRef}
-        rightButtonRef={rightButtonRef}
-      />
     </CarouselSection>
   );
 };
 
 export default Carousel;
 
-const CarouselSection = styled.section`
-  position: relative;
-  overflow: hidden;
-`;
-
-const Wrapper = styled.div<{ width: number }>`
+const CarouselSection = styled.section<{ width: number }>`
   ${({ width }) => css`
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    display: block;
-    word-break: break-word;
+    position: relative;
+    overflow: hidden;
     width: ${width}px;
   `}
+`;
+
+const Wrapper = styled.div`
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 `;
 
 const SliderContainer = styled.ul<{ gap: number }>`
