@@ -5,6 +5,9 @@ export const CarouselItem = styled.li`
 	width: fit-content;
 
 	list-style: none;
+	margin-right: 20px;
+	margin-left: 0;
+	padding: 0;
 `;
 
 export const LinkItem = styled.a``;

@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai';
 
 export const Container = styled.section`
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	width: 100vw;
@@ -11,12 +12,19 @@ export const Container = styled.section`
 
 export const Title = styled.h2``;
 
+export const CarouselBox = styled.div`
+	width: fit-content;
+	position: relative;
+`;
+
 export const CarouselContainer = styled.ul`
 	display: flex;
-	position: relative;
 	width: 80vw;
 
-	gap: 20px;
+	margin: 0;
+	padding: 0;
+
+	overflow: hidden;
 `;
 
 export const CarouselButtonContainer = styled.div`
@@ -39,6 +47,7 @@ export const CarouselButton = styled.button`
 	&:hover,
 	&:active {
 		background-color: black;
+		cursor: pointer;
 	}
 `;
 
