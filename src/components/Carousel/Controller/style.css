@@ -9,9 +9,6 @@
 }
 
 .controller__leftBtn {
-  background: url("../../../assets/left-button.svg");
-  background-size: 30px 60px;
-
   width: 30px;
   height: 60px;
 

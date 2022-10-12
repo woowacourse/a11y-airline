@@ -1,4 +1,6 @@
 import "./style.css";
+import leftButtonSvg from "@assets/left-button.svg";
+import rightButtonSvg from "@assets/right-button.svg";
 
 interface Props {
   max: number;
@@ -24,14 +26,18 @@ const Controller = ({
         disabled={isFirstSlide}
         aria-disabled={isFirstSlide}
         aria-label="이전"
-      />
+      >
+        <img src={leftButtonSvg} aria-hidden={true} />
+      </button>
       <button
         className="controller__rightBtn"
         onClick={handleClickNextButton}
         disabled={isLastSlide}
         aria-disabled={isLastSlide}
         aria-label="이전"
-      />
+      >
+        <img src={rightButtonSvg} aria-hidden={true} />
+      </button>
     </div>
   );
 };
