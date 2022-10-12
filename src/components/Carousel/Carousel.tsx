@@ -62,7 +62,7 @@ const Carousel = <T extends TravelProductData>({ items, itemSize }: CarouselType
       <button
         className={classNames(styles['slide-button'], styles['left-button'])}
         disabled={isStartPoint}
-        aria-label="이전 버튼"
+        aria-label="이전"
         onClick={handleClickPrevSlideButton}
       >
         {'<'}
@@ -70,7 +70,7 @@ const Carousel = <T extends TravelProductData>({ items, itemSize }: CarouselType
       <button
         className={classNames(styles['slide-button'], styles['right-button'])}
         disabled={isEndPoint}
-        aria-label="다음 버튼"
+        aria-label="다음"
         onClick={handleClickNextSlideButton}
       >
         {'>'}
