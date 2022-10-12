@@ -15,6 +15,7 @@ export default class MissionPage extends ComponentWithFragment {
     this.#tabStatus = '1단계';
 
     this.#tabButton.textContent = '2단계로';
+    this.#tabButton.classList.add('tab__button');
     this.#tabButton.addEventListener('click', this.handleTabButton);
     this.#missionContainer = document.createElement('div');
 
