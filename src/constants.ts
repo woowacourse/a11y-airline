@@ -15,4 +15,9 @@ const MESSAGE = {
   },
 };
 
-export { MESSAGE, PASSENGER };
+const PATH = {
+  BASENAME: '/a11y-airline',
+  PASSENGER: '/',
+};
+
+export { MESSAGE, PASSENGER, PATH };
