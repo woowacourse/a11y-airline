@@ -3,8 +3,15 @@ const slideLinks = document.querySelectorAll(".slide-link");
 const btnLeft = document.querySelector(".slider-btn__left");
 const btnRight = document.querySelector(".slider-btn__right");
 
-const addDisabled = (element) => element.classList.add("disabled");
-const removeDisabled = (element) => element.classList.remove("disabled");
+const addDisabled = (element) => {
+  element.classList.add("disabled");
+  element.setAttribute("aria-disabled", "true");
+};
+
+const removeDisabled = (element) => {
+  element.classList.remove("disabled");
+  element.setAttribute("aria-disabled", "false");
+};
 
 let curSlide = 0;
 const maxSlide = slides.length - 1;
@@ -45,7 +52,21 @@ const prevSlide = () => {
 
 slideLinks.forEach((link, index) => {
   link.addEventListener("focus", () => {
-    if (index === maxSlide) return;
+    console.log("index", index);
+    if (index === maxSlide) {
+      addDisabled(btnRight);
+      return;
+    }
+    if (index <= 0) {
+      addDisabled(btnLeft);
+    }
+    if (index > 0) {
+      removeDisabled(btnLeft);
+    }
+    if (index < maxSlide) {
+      removeDisabled(btnRight);
+    }
+
     goToSlide(index);
   });
 });
