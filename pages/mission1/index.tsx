@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import PassengerItem from '../../components/PassengerItem';
 
-const SpinButton: NextPage = () => {
+const Mission1: NextPage = () => {
   return (
     <section>
       <h2>승객 선택</h2>
@@ -14,4 +14,4 @@ const SpinButton: NextPage = () => {
   );
 };
 
-export default SpinButton;
+export default Mission1;
