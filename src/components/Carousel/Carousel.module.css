@@ -1,42 +1,52 @@
-.carouselBox {
+.carouselContainer {
   position: relative;
   width: 500px;
+}
+
+.carouselBox {
+  position: relative;
+  width: 100%;
+  height: 320px;
   overflow-x: scroll;
 }
 
 .cardBox {
+  height: 320px;
   display: flex;
   gap: 24px;
-  min-width: 780px;
 }
 
 .card {
   position: relative;
-  width: 200px;
+  top: 0;
+  left: 0;
+  width: 240px;
   height: 300px;
-  padding: 20px 20px 0 20px;
 }
 
 .title p {
-  display: inline;
+  position: absolute;
+  top: 10px;
+  left: 10px;
   font-size: 24px;
   font-weight: 700;
   white-space: nowrap;
 }
 
 .content {
+  position: absolute;
+  top: 30px;
+  left: 10px;
   margin-top: 20px;
 }
 
 .contentSit {
-  display: inline;
   font-size: 24px;
   font-weight: 500;
   white-space: nowrap;
 }
 
 .contentPrice {
-  display: inline;
   white-space: nowrap;
   color: navy;
   font-size: 24px;
@@ -49,8 +59,7 @@
   content: '';
   top: 0;
   left: 0;
-  padding: 20px 20px 0 20px;
-  width: 200px;
+  width: 240px;
   height: 300px;
   background-image: url('../../images/Barcelona-background.jpg');
   background-repeat: no-repeat;
@@ -65,8 +74,7 @@
   content: '';
   top: 0;
   left: 0;
-  padding: 20px 20px 0 20px;
-  width: 200px;
+  width: 240px;
   height: 300px;
   background-image: url('../../images/Suisse-background.jpg');
   background-repeat: no-repeat;
@@ -76,15 +84,29 @@
   z-index: -1;
 }
 
-.Dubai-background::before {
+.Tokyo-background::before {
   position: absolute;
   content: '';
   top: 0;
   left: 0;
-  padding: 20px 20px 0 20px;
-  width: 200px;
+  width: 240px;
   height: 300px;
-  background-image: url('../../images/Dubai-background.jpg');
+  background-image: url('../../images/Tokyo-background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.London-background::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 300px;
+  background-image: url('../../images/London-background.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -105,7 +127,7 @@
 .CarouselRightButton {
   position: absolute;
   top: 0;
-  right: -10px;
+  right: -5px;
   transform: translate(0, 100%);
   border: none;
   background-color: inherit;

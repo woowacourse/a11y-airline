@@ -6,7 +6,7 @@ import styles from './App.module.css';
 const App = () => {
   return (
     <main>
-      <article className={styles.carouselBox}>
+      <article className={styles.carousel}>
         <header className={styles.tripTitle}>지금 떠나기 좋은 여행</header>
         <Carousel />
       </article>
