@@ -22,7 +22,7 @@ const TravelCard = ({
 }: Props) => {
   return (
     <div className="card">
-      <a href={href}>
+      <a href={href} target="_blank" rel="noreferrer">
         <img
           className="card__image"
           src={imageSrc}
