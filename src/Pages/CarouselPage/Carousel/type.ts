@@ -5,6 +5,7 @@ export type CarouselProps = {
   displayedSlideCount?: number;
   itemWidth?: number;
   itemGap?: number;
+  title?: string;
 };
 
 export type SlideControlProps = {

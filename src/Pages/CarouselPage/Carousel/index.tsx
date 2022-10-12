@@ -19,6 +19,7 @@ const Carousel = ({
   displayedSlideCount = 3,
   itemWidth = 249,
   itemGap = 31,
+  title,
 }: CarouselProps) => {
   const totalWidth = displayedSlideCount * (itemWidth + itemGap) - itemGap;
 
@@ -68,31 +69,28 @@ const Carousel = ({
   }, [currentSlide]);
 
   return (
-    <main>
-      <h1>마르코 항공사-Carousel</h1>
-      <CarouselSection>
-        <h2>지금 떠나기 좋은 여행</h2>
-        <Wrapper width={totalWidth} aria-roledescription="carousel">
-          <SliderContainer
-            ref={slideRef}
-            gap={itemGap}
-            role="list"
-            aria-label="Items Slider"
-            aria-live="polite"
-          >
-            {slideItems.map((item) => (
-              <SlideItem key={item.id} {...item} width={itemWidth} />
-            ))}
-          </SliderContainer>
-        </Wrapper>
-        <SlideControl
-          slidePrevious={slidePrevious}
-          slideNext={slideNext}
-          leftButtonRef={leftButtonRef}
-          rightButtonRef={rightButtonRef}
-        />
-      </CarouselSection>
-    </main>
+    <CarouselSection>
+      <h2>{title}</h2>
+      <Wrapper width={totalWidth} aria-roledescription="carousel">
+        <SliderContainer
+          ref={slideRef}
+          gap={itemGap}
+          role="list"
+          aria-label="Items Slider"
+          aria-live="polite"
+        >
+          {slideItems.map((item) => (
+            <SlideItem key={item.id} {...item} width={itemWidth} />
+          ))}
+        </SliderContainer>
+      </Wrapper>
+      <SlideControl
+        slidePrevious={slidePrevious}
+        slideNext={slideNext}
+        leftButtonRef={leftButtonRef}
+        rightButtonRef={rightButtonRef}
+      />
+    </CarouselSection>
   );
 };
 
