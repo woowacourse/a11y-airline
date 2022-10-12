@@ -18,8 +18,13 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /\.css$/,
+        test: /\.css$/i,
+        exclude: /\.module\.css$/i,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.module\.css$/i,
+        use: ['style-loader', { loader: 'css-loader', options: { modules: true } }],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
@@ -39,7 +44,7 @@ module.exports = {
     static: {
       directory: join(__dirname, './public'),
     },
-    port: 3000,
+    port: 3001,
     hot: true,
     compress: true,
     client: {
