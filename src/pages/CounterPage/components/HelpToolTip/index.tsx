@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-import { ValueOf, PASSENGER_TYPE, HELP_DESCRIPTION } from "../../types";
+import { ValueOf, PASSENGER_TYPE, HELP_DESCRIPTION } from "../../../../types";
 
 interface HelpToolTipProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
