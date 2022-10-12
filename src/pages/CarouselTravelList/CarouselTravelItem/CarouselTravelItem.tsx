@@ -29,9 +29,11 @@ const CarouselTravelItem = ({ item, onHoverItem }: CarouselTravelItemProp) => {
 				<>
 					<S.Image src={item.image} alt={`${item.title} 의 사진입니다`} />
 					<S.CarouselDescriptionBox>
-						<S.TravelTitle aria-label="여행지">{item.title}</S.TravelTitle>
-						<S.TravelSeat aria-label="좌석">일반석-왕복</S.TravelSeat>
-						<S.TravelPrice aria-label="가격">{ConvertPrice(item.price)}~</S.TravelPrice>
+						<S.TravelTitle aria-label={`목적지 ${item.title}`}>{item.title}</S.TravelTitle>
+						<S.TravelSeat aria-label={'일반석 왕복'}>일반석-왕복</S.TravelSeat>
+						<S.TravelPrice aria-label={`가격 ${item.price}`}>
+							{ConvertPrice(item.price)}~
+						</S.TravelPrice>
 					</S.CarouselDescriptionBox>
 				</>
 			</S.LinkItem>
