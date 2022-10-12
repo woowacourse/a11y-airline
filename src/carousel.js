@@ -1,37 +1,39 @@
 const slides = document.querySelectorAll(".slide");
 const btnLeft = document.querySelector(".slider__btn--left");
 const btnRight = document.querySelector(".slider__btn--right");
+const slideLinks = document.querySelectorAll(".slide__link");
 
 let curSlide = 0;
-const maxSlide = slides.length - 2;
+const maxSlide = slides.length - 1;
 
-const goToSlide = function (slideIndex) {
+const goToSlide = (slideIndex) => {
   slides.forEach(
     (slide) => (slide.style.transform = `translateX(${-slideIndex * 320}px)`)
   );
 };
 
-goToSlide(0);
-
-const nextSlide = function () {
-  if (curSlide === maxSlide - 1) {
-    return;
-  } else {
+const nextSlide = () => {
+  if (curSlide !== maxSlide - 1) {
     curSlide++;
   }
 
   goToSlide(curSlide);
 };
 
-const prevSlide = function () {
-  if (curSlide === 0) {
-    return;
-  } else {
+const prevSlide = () => {
+  if (curSlide !== 0) {
     curSlide--;
   }
 
   goToSlide(curSlide);
 };
+
+slideLinks.forEach((link, i) => {
+  link.addEventListener("focus", () => {
+    if (i === maxSlide) return;
+    goToSlide(i);
+  });
+});
 
 btnRight.addEventListener("click", nextSlide);
 btnLeft.addEventListener("click", prevSlide);
