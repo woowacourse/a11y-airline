@@ -8,7 +8,7 @@ export const LABEL = {
 } as const;
 
 export const PAGE_PATH = {
-  HOME: "/a11y-airline",
+  HOME: "/",
   SELECT_PASSENGER: "/select-passenger",
 };
 
