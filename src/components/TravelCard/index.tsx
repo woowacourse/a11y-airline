@@ -25,6 +25,7 @@ const TravelCard = ({
       <a href={href} target="_blank" rel="noreferrer">
         <img
           className="card__image"
+          loading="lazy"
           src={imageSrc}
           alt={`여행지 ${destination} 사진`}
           aria-hidden={true}
