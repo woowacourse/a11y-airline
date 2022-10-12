@@ -1,11 +1,12 @@
 import classNames from 'classnames';
 
-import TravelProduct, { TravelProductData } from '../TravelProduct/TravelProduct';
-
-import styles from './Carousel.module.css';
+import TravelProduct from '../TravelProduct/TravelProduct';
 import useCarousel from './useCarousel';
 
-export type ItemSize = 'small' | 'middle' | 'large';
+import styles from './Carousel.module.css';
+
+import { ItemSize, TravelProductData } from '../../types';
+
 type CarouselType<T> = {
   items: T[];
   itemSize: ItemSize;

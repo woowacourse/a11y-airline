@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
-import { ItemSize } from './Carousel';
+import { useState, useRef, useEffect } from 'react';
+
+import { ItemSize } from '../../types';
 
 const ITEM_SIZE = {
   small: 210,
   middle: 238,
   large: 267,
-};
+} as const;
 const GAP_SIZE = 24;
 
 const useCarousel = (itemSize: ItemSize) => {
