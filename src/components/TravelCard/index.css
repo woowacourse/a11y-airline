@@ -1,0 +1,36 @@
+.card {
+  position: relative;
+  width: 300px;
+}
+
+.card__image {
+  width: 100%;
+}
+
+.card__description {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  padding: 20px;
+  color: #000;
+}
+
+.destination {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  line-height: 1.58;
+}
+
+.seat {
+  font-size: 14px;
+  color: #000;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #11277b;
+}
