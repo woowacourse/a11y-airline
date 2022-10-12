@@ -33,7 +33,7 @@ export const TRAVEL_DATA = [
     id: 4,
     link: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=CNX&duration=7&cabin=Y',
     imageUrl:
-      'https://www.koreanair.com/content/dam/koreanair/ko/airport-img/BCN-list-pc.jpg',
+      'https://www.koreanair.com/content/dam/koreanair/ko/airport-img/CNX-list-pc.jpg',
     departure: '서울/인천',
     arrival: '치앙마이',
     type: '일반석 왕복',
@@ -43,7 +43,7 @@ export const TRAVEL_DATA = [
     id: 5,
     link: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=BCN&duration=7&cabin=Y',
     imageUrl:
-      'https://www.koreanair.com/content/dam/koreanair/ko/airport-img/HAN-list-pc.jpg',
+      'https://www.koreanair.com/content/dam/koreanair/ko/airport-img/BCN-list-pc.jpg',
     departure: '서울/인천',
     arrival: '바르셀로나',
     type: '일반석 왕복',
@@ -53,10 +53,30 @@ export const TRAVEL_DATA = [
     id: 6,
     link: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=HAN&duration=7&cabin=Y',
     imageUrl:
-      'https://www.koreanair.com/content/dam/koreanair/ko/airport-img/FCO-list-pc.jpg',
+      'https://www.koreanair.com/content/dam/koreanair/ko/airport-img/HAN-list-pc.jpg',
     departure: '서울/인천',
     arrival: '하노이',
     type: '일반석 왕복',
     price: 527400,
+  },
+  {
+    id: 7,
+    link: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=FCO&duration=7&cabin=Y',
+    imageUrl:
+      'https://www.koreanair.com/content/dam/koreanair/ko/airport-img/FCO-list-pc.jpg',
+    departure: '서울/인천',
+    arrival: '로마/레오나르도 다빈치',
+    type: '일반석 왕복',
+    price: 1454200,
+  },
+  {
+    id: 8,
+    link: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=HNL&duration=7&cabin=Y',
+    imageUrl:
+      'https://www.koreanair.com/content/dam/koreanair/ko/airport-img/HNL-list-pc.jpg',
+    departure: '서울/인천',
+    arrival: '호놀룰루 (하와이)',
+    type: '일반석 왕복',
+    price: 1244900,
   },
 ];
