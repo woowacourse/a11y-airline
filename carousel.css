@@ -9,6 +9,7 @@ body {
   align-items: center;
   margin-top: 200px;
 }
+
 .slider {
   display: flex;
   gap: 20px;
@@ -31,7 +32,7 @@ img {
   height: 400px;
 }
 
-a {
+.slide__link {
   display: block;
 }
 
@@ -54,11 +55,19 @@ a {
 }
 
 .slider__btn--left {
-  left: 50px;
+  left: 0;
   transform: translate(-50%, -50%);
+  background: url("https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-left.svg");
 }
 
 .slider__btn--right {
-  right: 50px;
+  right: 0;
   transform: translate(50%, -50%);
+  background: url("https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-right.svg");
+}
+
+.mris__desc {
+  position: absolute;
+  left: 0;
+  top: 0;
 }
