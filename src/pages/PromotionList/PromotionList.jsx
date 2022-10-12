@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import PromotionListItem from "./components/PromotionListItem/PromotionListItem";
 import "./PromotionList.css";
 
 function PromotionList() {
   const [slideIdx, setSlideIdx] = useState(1);
+  const cards = useRef(null);
+  const state = useRef(null);
   const endSlideIdx = 7;
 
   const updateSlidePosition = (slideIdx) => {
-    document.querySelector(".cards").style.transform = `translateX(-${
-      33 * (slideIdx - 1)
-    }rem)`;
+    cards.current.style.transform = `translateX(-${33 * (slideIdx - 1)}rem)`;
+  };
+
+  const updateCurrentItem = (nextSlideIdx) => {
+    const $items = document.querySelectorAll(".card");
+    $items.forEach(($item) => $item.setAttribute("aria-hidden", true));
+    $items[nextSlideIdx].setAttribute("aria-hidden", false);
+    state.current.textContent =
+      $items[nextSlideIdx].querySelector(".link").ariaLabel;
   };
 
   const handleShowPrevCard = () => {
@@ -17,6 +25,7 @@ function PromotionList() {
     setSlideIdx(prevSlideIdx);
 
     updateSlidePosition(prevSlideIdx);
+    updateCurrentItem(prevSlideIdx);
   };
 
   const handleShowNextCard = () => {
@@ -24,19 +33,22 @@ function PromotionList() {
     setSlideIdx(nextSlideIdx);
 
     updateSlidePosition(nextSlideIdx);
+    updateCurrentItem(nextSlideIdx);
   };
 
   return (
     <>
       <div className="layout-container">
         <section className="container">
-          <h2 aria-describedby="title">지금 떠나기 좋은 여행</h2>
+          <h2 tabIndex="0" aria-describedby="title">
+            지금 떠나기 좋은 여행
+          </h2>
 
           <div className="buttons">
             <button
               className="gallery-button prev"
               onClick={handleShowPrevCard}
-              disabled={slideIdx === 1}
+              disabled={slideIdx === 0}
             >
               <span className="invisible">이전 프로모션</span>
             </button>
@@ -50,7 +62,7 @@ function PromotionList() {
           </div>
 
           <div className="card-container" aria-label="리스트 목록">
-            <ul className="cards">
+            <ul className="cards" ref={cards}>
               <PromotionListItem
                 img="https://www.koreanair.com/content/dam/koreanair/ko/airport-img/DXB-list-pc.jpg"
                 departure="서울/인천"
@@ -58,6 +70,7 @@ function PromotionList() {
                 seat="일반석 왕복"
                 price="1,157,500"
                 link="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=DXB&cabin=Y&tripType=RT&duration=7"
+                isHidden="false"
               />
               <PromotionListItem
                 img="https://www.koreanair.com/content/dam/koreanair/ko/airport-img/FUK-list-pc.jpg"
@@ -122,6 +135,13 @@ function PromotionList() {
       <p id="title" className="invisible">
         현재 떠날 수 있는 여행지 프로모션 목록입니다.
       </p>
+      <div
+        id="current-item-announcement"
+        className="invisible"
+        role="status"
+        area-live="polite"
+        ref={state}
+      ></div>
     </>
   );
 }
