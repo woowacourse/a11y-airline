@@ -1,3 +1,4 @@
+import { parseToKWRPrice } from "@utils";
 import "./index.css";
 
 interface Props {
@@ -25,7 +26,7 @@ const TravelCard = ({
         <img
           className="card__image"
           src={imageSrc}
-          alt={`${destination} 사진`}
+          alt={`여행지 ${destination} 사진`}
         />
         <div className="card__description">
           <p className="destination">
@@ -34,7 +35,7 @@ const TravelCard = ({
           <p className="seat">
             {seat} {tripType}
           </p>
-          <p className="price">KWR {price} ~</p>
+          <p className="price">KWR {parseToKWRPrice(price)} ~</p>
         </div>
       </a>
     </div>
