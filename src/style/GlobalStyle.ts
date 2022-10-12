@@ -15,11 +15,7 @@ const GlobalStyle = createGlobalStyle`
     list-style-type: none;
   }
 
-  a {
-    text-decoration: none;
-  }
-
-  a:visited {
+  a, a:visited {
     text-decoration: none;
     color: #000;
   }
