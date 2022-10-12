@@ -20,11 +20,20 @@ const CarouselItem = ({
   return (
     <div className="carousel__item">
       <a href={href}>
-        <img className="link__img" src={image} />
+        <img
+          className="link__img"
+          src={image}
+          alt={location + " 사진"}
+          aria-hidden={true}
+        />
         <div className="description">
-          <p className="location">서울/인천 - {location}</p>
+          <p className="location">
+            서울/인천 <span aria-hidden={true}>-</span> {location}
+          </p>
           <p className="seat">{seat} 왕복</p>
-          <p className="price">KRW {formattedPrice} ~</p>
+          <p className="price">
+            KRW {formattedPrice} <span aria-hidden={true}>~</span>
+          </p>
         </div>
       </a>
     </div>
