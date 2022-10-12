@@ -16,7 +16,6 @@
   },
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
-    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "fork-ts-checker-webpack-plugin": "^7.2.13",
     "gh-pages": "^4.0.0",
