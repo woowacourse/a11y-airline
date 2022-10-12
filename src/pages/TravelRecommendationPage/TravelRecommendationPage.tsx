@@ -90,9 +90,7 @@ const TravelRecommendationPage = () => {
       <h1>지금 떠나기 좋은 여행</h1>
       <Carousel>
         {tickets.map((ticket) => (
-          <li key={ticket.id}>
-            <TicketItem {...ticket} />
-          </li>
+          <TicketItem key={ticket.id} {...ticket} />
         ))}
       </Carousel>
     </>

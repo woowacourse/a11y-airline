@@ -1,4 +1,4 @@
-import { useRef, PropsWithChildren } from 'react';
+import { useRef, useEffect, PropsWithChildren, Children } from 'react';
 import styled, { css } from 'styled-components';
 import { WrapperProps, ControlButtonProps } from 'components/Carousel/Carousel.type';
 import { CONTROL_BUTTON_KIND } from 'components/Carousel/Carousel.constant';
@@ -11,18 +11,48 @@ const VIEWING_COUNT = 2;
 const Carousel = ({ children }: PropsWithChildren) => {
   const currentPos = useRef(0);
 
-  const listRef = useRef<HTMLUListElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const isReachedEnd = useRef(false);
 
   const wrapperWidth = ITEM_WIDTH * VIEWING_COUNT + ITEM_WIDTH / 2;
   const controlButtonTop = ITEM_HEIGHT / 2;
 
-  const handleClickPrevButton = () => {};
+  const handleClickPrevButton = () => {
+    if (isReachedEnd.current) {
+      currentPos.current -= (ITEM_WIDTH + GAP) * 2;
+      wrapperRef.current!.scrollTo({ left: currentPos.current, behavior: 'smooth' });
+      isReachedEnd.current = false;
+      return;
+    }
 
-  const handleClickNextButton = () => {};
+    if (currentPos.current == 0) {
+      return;
+    }
+
+    currentPos.current -= ITEM_WIDTH + GAP;
+    wrapperRef.current!.scrollTo({ left: currentPos.current, behavior: 'smooth' });
+  };
+
+  const handleClickNextButton = () => {
+    if (currentPos.current >= 952) {
+      currentPos.current = 1428 + 238;
+      wrapperRef.current!.scrollTo({ left: currentPos.current, behavior: 'smooth' });
+      isReachedEnd.current = true;
+
+      return;
+    }
+
+    currentPos.current += ITEM_WIDTH + GAP;
+    wrapperRef.current!.scrollTo({ left: currentPos.current, behavior: 'smooth' });
+  };
 
   return (
-    <Wrapper width={wrapperWidth}>
-      <ListWrapper ref={listRef}>{children}</ListWrapper>
+    <Wrapper ref={wrapperRef} width={wrapperWidth}>
+      <ListWrapper>
+        {Children.map(children, (child) => (
+          <ListItem>{child}</ListItem>
+        ))}
+      </ListWrapper>
       <ControlWrapper>
         <ControlButton
           onClick={handleClickPrevButton}
@@ -52,17 +82,17 @@ const Wrapper = styled.div`
     width: ${width}px;
     position: relative;
     overflow-x: scroll;
-    /* scroll-snap-type: x mandatory; */
-    /* scroll-snap-type: x mandatory; */
-    scroll-snap-type: x proximity;
+    scroll-snap-type: x mandatory;
   `}
 `;
 
 const ListWrapper = styled.ul`
   display: flex;
   gap: 8px;
-  /* overflow-x: visible; */
-  scroll-snap-type: x mandatory;
+`;
+
+const ListItem = styled.li`
+  scroll-snap-align: start;
 `;
 
 const ControlWrapper = styled.div`
