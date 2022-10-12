@@ -98,7 +98,6 @@ const useCarousel = ({
 
       if (currentPosRef.current <= 0) {
         setReachedAt('start');
-        setMessage('목록의 처음에 도달했습니다.');
         return;
       }
 
@@ -111,12 +110,10 @@ const useCarousel = ({
           itemWidth / 2
       ) {
         setReachedAt('end');
-        setMessage('목록의 끝에 도달했습니다.');
         return;
       }
 
       setReachedAt(null);
-      setMessage('');
     }, 100);
   };
 
