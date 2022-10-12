@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 h1,
 h2 {
   margin: 0;
@@ -22,4 +28,14 @@ button {
   border: none;
   background: none;
   cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+@media (max-width: 400px) {
+  html {
+    font-size: 8px;
+  }
 }

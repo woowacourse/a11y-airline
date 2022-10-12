@@ -1,0 +1,57 @@
+.list-item {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.list-item-link {
+  position: relative;
+  display: block;
+  border: 1px solid transparent;
+}
+
+.list-item-image {
+  width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+
+.list-description {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  max-height: 15rem;
+  overflow: hidden;
+  padding: 1.6rem 1.8rem;
+}
+
+.list-location {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 0.8rem;
+  line-height: 1.58;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  max-height: 6.6rem;
+}
+
+.list-seat {
+  font-size: 1.2rem;
+  color: #000;
+  overflow: hidden;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list-price {
+  overflow: hidden;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
