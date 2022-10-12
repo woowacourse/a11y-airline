@@ -4,6 +4,11 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
 button {
   cursor: pointer;
 
@@ -75,4 +80,127 @@ button {
   border-bottom: 1px solid #000000;
 
   margin: 0 1rem;
+}
+
+.carousel-container {
+  position: relative;
+
+  width: 470px;
+
+  overflow: hidden;
+}
+
+#carousel-wrapper {
+  display: flex;
+  gap: 10px;
+
+  position: relative;
+
+  width: 1190px;
+
+  transform: translateX(0);
+  transition-duration: 700ms;
+}
+
+#carousel-wrapper > a {
+  position: relative;
+}
+
+#carousel-wrapper > a > img {
+  width: 230px;
+}
+
+.description {
+  position: absolute;
+  top: 0;
+
+  width: calc(100% - 32px);
+
+  margin: auto;
+  padding: 20px 16px;
+}
+
+.description > .title {
+  font-weight: bold;
+
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.description > .seat {
+  margin-bottom: 8px;
+}
+
+.description > .price {
+  font-weight: bold;
+
+  color: #11277b;
+
+  margin-top: 0;
+}
+
+#left-button {
+  position: absolute;
+  top: 50%;
+
+  width: 60px;
+  height: 60px;
+
+  background-color: #000000cc;
+
+  border-radius: 50%;
+
+  z-index: 1;
+
+  transform: translate(-50%, -50%);
+}
+
+#right-button {
+  position: absolute;
+  top: 50%;
+  right: 0;
+
+  width: 60px;
+  height: 60px;
+
+  background-color: #000000cc;
+
+  border-radius: 50%;
+
+  z-index: 1;
+
+  transform: translate(50%, -50%);
+}
+
+#left-button:disabled,
+#right-button:disabled {
+  background-color: #888888cc;
+}
+
+.left-arrow {
+  position: absolute;
+  top: 50%;
+  left: 65%;
+
+  width: 10px;
+  height: 10px;
+
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+
+  transform: rotate(-45deg) translate(50%, -25%);
+}
+
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  right: 75%;
+
+  width: 10px;
+  height: 10px;
+
+  border-top: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+
+  transform: rotate(45deg) translate(0, -75%);
 }
