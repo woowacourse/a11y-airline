@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import styles from './styles.module.scss'
 
-function PeopleCount() {
+function Passengers() {
   const [count, setCount] = useState(0)
 
   const handleChangeCount = (value: number) => {
@@ -38,4 +38,4 @@ function PeopleCount() {
   )
 }
 
-export default PeopleCount
+export default Passengers

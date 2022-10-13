@@ -1,9 +1,9 @@
-import PeopleCount from 'pages/PeopleCount'
+import Passengers from 'pages/Passengers'
 
 import 'styles/global.scss'
 
 function App() {
-  return <PeopleCount />
+  return <Passengers />
 }
 
 export default App
