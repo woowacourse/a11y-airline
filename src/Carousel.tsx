@@ -97,33 +97,33 @@ const itemSize = 250 + 10;
 const totalSize = itemSize * TravelList.length;
 
 const TravelCarousel = () => {
-  const [current, setCurrent] = useState(0);
+  const [xTranslated, changeXTranslated] = useState(0);
   const [width, setWidth] = useState(0);
   const maxCurrent = useRef(0);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const handleClickPrevButton = () => {
-    const next = current - itemSize;
+    const next = xTranslated - itemSize;
 
     if (next <= 0) {
-      setCurrent(0);
+      changeXTranslated(0);
 
       return;
     }
 
-    setCurrent(next);
+    changeXTranslated(next);
   };
 
   const handleClickNextButton = () => {
-    const next = current + itemSize;
+    const next = xTranslated + itemSize;
 
     if (next >= maxCurrent.current) {
-      setCurrent(maxCurrent.current);
+      changeXTranslated(maxCurrent.current);
 
       return;
     }
 
-    setCurrent(next);
+    changeXTranslated(next);
   };
 
   useEffect(() => {
@@ -150,10 +150,10 @@ const TravelCarousel = () => {
 
   return (
     <StyledRoot>
-      <StyledPrev onClick={handleClickPrevButton} disabled={current <= 0}>
+      <StyledPrev onClick={handleClickPrevButton} disabled={xTranslated <= 0}>
         {'>'}
       </StyledPrev>
-      <StyledWrapper current={current} ref={wrapperRef}>
+      <StyledWrapper current={xTranslated} ref={wrapperRef}>
         {TravelList.map(
           ({ departure, arrivals, seatClass, isRound, bottomPrice, imageUrl, href }) => (
             <StyledLink href={href} target='_blank'>
@@ -171,7 +171,7 @@ const TravelCarousel = () => {
           )
         )}
       </StyledWrapper>
-      <StyledNext onClick={handleClickNextButton} disabled={current >= maxCurrent.current}>
+      <StyledNext onClick={handleClickNextButton} disabled={xTranslated >= maxCurrent.current}>
         {'<'}
       </StyledNext>
     </StyledRoot>
