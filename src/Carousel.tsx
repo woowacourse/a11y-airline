@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Travel1 from './assets/travel_1.jpg';
 import Travel2 from './assets/travel_2.jpg';
 import Travel3 from './assets/travel_3.jpg';
@@ -93,15 +93,67 @@ const TravelList = [
   },
 ];
 
+const itemSize = 250 + 10;
+const totalSize = itemSize * TravelList.length;
+
 const TravelCarousel = () => {
   const [current, setCurrent] = useState(0);
+  const [width, setWidth] = useState(0);
+  const maxCurrent = useRef(0);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const handleClickPrevButton = () => {
+    const next = current - itemSize;
+
+    if (next <= 0) {
+      setCurrent(0);
+
+      return;
+    }
+
+    setCurrent(next);
+  };
+
+  const handleClickNextButton = () => {
+    const next = current + itemSize;
+
+    if (next >= maxCurrent.current) {
+      setCurrent(maxCurrent.current);
+
+      return;
+    }
+
+    setCurrent(next);
+  };
+
+  useEffect(() => {
+    const onResize = () => {
+      if (!wrapperRef.current) return;
+
+      const wrapperWidth = Number(getComputedStyle(wrapperRef.current).width.slice(0, -2));
+
+      setWidth(wrapperWidth);
+    };
+
+    onResize();
+
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      window.removeEventListener('resize', onResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    maxCurrent.current = totalSize - width - 10;
+  }, [width]);
 
   return (
     <StyledRoot>
-      <StyledPrev onClick={() => setCurrent(current - 1)} disabled={current <= 0}>
+      <StyledPrev onClick={handleClickPrevButton} disabled={current <= 0}>
         {'>'}
       </StyledPrev>
-      <StyledWrapper current={(250 + 10) * current}>
+      <StyledWrapper current={current} ref={wrapperRef}>
         {TravelList.map(
           ({ departure, arrivals, seatClass, isRound, bottomPrice, imageUrl, href }) => (
             <StyledLink href={href} target='_blank'>
@@ -119,7 +171,9 @@ const TravelCarousel = () => {
           )
         )}
       </StyledWrapper>
-      <StyledNext onClick={() => setCurrent(current + 1)}>{'<'}</StyledNext>
+      <StyledNext onClick={handleClickNextButton} disabled={current >= maxCurrent.current}>
+        {'<'}
+      </StyledNext>
     </StyledRoot>
   );
 };
