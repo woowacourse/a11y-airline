@@ -18,6 +18,24 @@
   width: 309rem;
 }
 
+@media screen and (max-width: 1279px) {
+  .promotion-list-container {
+    width: 246rem;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  .promotion-list-container {
+    width: 183rem;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .promotion-list-container {
+    width: 120rem;
+  }
+}
+
 .promotion-list {
   display: flex;
   overflow: hidden;
