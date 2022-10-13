@@ -13,9 +13,9 @@ export default class CarouselButton extends Component {
     super('button');
 
     this.element.id = id;
-    this.element.addEventListener('click', onClick);
     this.element.classList.add('carousel__button');
     this.element.ariaLabel = ariaLabel;
+    this.element.addEventListener('click', onClick);
   }
 
   set disabled(isDisabled: boolean) {

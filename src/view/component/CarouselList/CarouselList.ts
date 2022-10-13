@@ -36,6 +36,7 @@ export default class CarouselList extends Component {
       },
       ariaLabel: '다음',
     });
+
     this.#buttonContainer = createElement('div', 'carousel__button__container');
     this.#buttonContainer.append(
       this.#minusButton.target,

@@ -12,7 +12,6 @@ export default class MissionTwo extends Component {
     this.#list = new CarouselList();
 
     this.element.classList.add('carousel__page');
-
     this.element.append(title, this.#list.target);
   }
 }

@@ -36,10 +36,10 @@ export default class CarouselItem extends Component {
         </p>
     `;
 
-    this.element.classList.add('carousel__item');
     this.#container.append(this.#imageContainer, this.#paragraphContainer);
 
     this.element.tabIndex = 0;
+    this.element.classList.add('carousel__item');
     this.element.append(this.#container);
     this.element.addEventListener('focusin', this.handleFocus);
   }
