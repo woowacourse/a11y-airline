@@ -1,3 +1,5 @@
+@import './media-query.scss';
+
 $containerWidth: 70vw;
 $imageCount: 8;
 $carouselItemWidth: calc($containerWidth/2);
@@ -52,12 +54,26 @@ $carouselItemWidth: calc($containerWidth/2);
   .carousel-control > button > span {
     color: black;
     font-size: 29px;
+
+    @include mobile {
+      font-size: 18px;
+    }
   }
 
-  .active > div {
-    display: none;
-  }
-  .active > div:first-child {
-    display: block;
+  @include mobile {
+    max-width: 90vw;
+
+    .carousel-inner {
+      width: calc(45vw * $imageCount);
+      & > li {
+        width: 45vw;
+      }
+      .carousel-control > button > span {
+        font-size: 18px;
+      }
+      .carousel-description {
+        font-size: 14px;
+      }
+    }
   }
 }
