@@ -38,6 +38,10 @@ $carouselItemWidth: calc($containerWidth/2);
   .carousel-control.left,
   .carousel-control.right {
     opacity: 1;
+
+    &.disabled {
+      cursor: not-allowed;
+    }
   }
   .carousel-control.left {
     left: 0;
