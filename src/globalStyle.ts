@@ -15,7 +15,7 @@ const globalStyle = css`
   }
 
   button:disabled {
-    cursor: none;
+    cursor: normal;
   }
 
   p {
