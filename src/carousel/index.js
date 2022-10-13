@@ -1,4 +1,5 @@
 const Carousel = document.getElementById("carousel-root");
+const CarouselItem = document.querySelector(".carousel-item");
 const LeftButton = document.getElementById("carousel-left");
 const RightButton = document.getElementById("carousel-right");
 const AriaLive = document.getElementById("carousel-button-live");
@@ -7,6 +8,8 @@ const scrollStatus = {
   ing: false,
   timeout: null,
 };
+
+const { width: CAROUSEL_ITEM_WIDTH } = CarouselItem.getBoundingClientRect();
 
 const hasNotPrevTravelItem = () => {
   const { scrollLeft: currentScrollLeft } = Carousel;
@@ -43,7 +46,7 @@ LeftButton.addEventListener("click", () => {
     return;
   }
 
-  Carousel.scrollTo({ left: Carousel.scrollLeft - 200, behavior: "smooth" });
+  Carousel.scrollTo({ left: Carousel.scrollLeft - CAROUSEL_ITEM_WIDTH, behavior: "smooth" });
 });
 
 RightButton.addEventListener("click", () => {
@@ -57,5 +60,5 @@ RightButton.addEventListener("click", () => {
     return;
   }
 
-  Carousel.scrollTo({ left: Carousel.scrollLeft + 200, behavior: "smooth" });
+  Carousel.scrollTo({ left: Carousel.scrollLeft + CAROUSEL_ITEM_WIDTH, behavior: "smooth" });
 });

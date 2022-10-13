@@ -165,6 +165,7 @@ ul {
 }
 
 .sr-only {
-  display: hidden;
-  text-indent: -9999px;
+  position: absolute !important;
+  display: hidden !important;
+  text-indent: -9999px !important;
 }
