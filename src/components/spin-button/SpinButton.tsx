@@ -75,7 +75,7 @@ const SpinButton: React.FC = () => {
   };
 
   return (
-    <>
+    <div>
       <h2>승객 선택</h2>
       <label htmlFor="spin-button-count">성인</label>
       <button
@@ -134,7 +134,7 @@ const SpinButton: React.FC = () => {
           {ariaMessage}
         </span>
       </div>
-    </>
+    </div>
   );
 };
 
