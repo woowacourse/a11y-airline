@@ -1,5 +1,6 @@
 @import './reset-css';
 @import './font-face';
+@import './custom.scss';
 
 :root {
   font-size: 16px;
@@ -8,6 +9,11 @@
 
 html {
   overflow-y: scroll;
+}
+
+a {
+  text-decoration: unset;
+  color: unset;
 }
 
 html,
