@@ -23,7 +23,7 @@ const Carousel = ({ children }: { children: ReactNode[] }) => {
 
     setMovable({
       prev: scrollLeft !== 0,
-      next: scrollWidth !== scrollLeft + offsetWidth,
+      next: scrollWidth >= scrollLeft + offsetWidth,
     });
   };
 

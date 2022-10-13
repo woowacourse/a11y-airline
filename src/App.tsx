@@ -38,7 +38,7 @@ const S = {
     padding: 1rem;
   `,
   Container: styled.section`
-    position: relative;
+    width: 50%;
   `,
   TravelItem: styled.section`
     position: relative;
