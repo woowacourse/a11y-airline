@@ -27,7 +27,7 @@ function TravelInfo({ location, seat, price, image, href }: TravelInfoProps) {
           <p css={locationStyle}>{location}</p>
           <p css={seatStyle}>{seat}</p>
           <p css={priceStyle}>
-            KRW {price} <span aria-hidden>~</span>
+            KRW {price.toLocaleString('ko-kr')} <span aria-hidden>~</span>
           </p>
         </div>
       </a>
