@@ -1,0 +1,23 @@
+.component-card {
+  width: 15rem;
+  height: 20rem;
+
+  background-color: #ddd;
+  background-size: cover;
+  background-position: center;
+
+  padding: 1.25rem;
+
+  .location {
+    line-height: 140%;
+    margin-bottom: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: bold;
+    word-break: keep-all;
+  }
+
+  .price {
+    font-weight: bold;
+    color: #11277b;
+  }
+}
