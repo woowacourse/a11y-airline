@@ -79,8 +79,13 @@ body {
   height: 100vh;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#app {
+  position: relative;
 }
 
 #carousel-root {
@@ -89,8 +94,6 @@ body {
   display: flex;
 
   overflow: hidden;
-
-  position: relative;
 }
 
 .carousel-item {
@@ -152,6 +155,12 @@ body {
 .carousel-button#carousel-right {
   right: 0;
 }
+
 .carousel-button#carousel-left {
   left: 0;
+}
+
+.sr-only {
+  display: hidden;
+  text-indent: -9999px;
 }

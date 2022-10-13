@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./src/style/style.css"></link>
   </head>
   <body>
+    <h1>지금 떠나기 좋은 여행</h1>
     <main id="app">
         <section id="carousel-root">
           <a href="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=DXB&cabin=Y&tripType=RT&duration=7">
@@ -91,8 +92,9 @@
             </section>
           </a>
         </section>
-        <button id="carousel-left" class="carousel-button" type="button">⬅️</button>
-        <button id="carousel-right" class="carousel-button" type="button">➡️</button>
+        <button id="carousel-left" class="carousel-button" type="button" aria-label="이전">⬅️</button>
+        <button id="carousel-right" class="carousel-button" type="button" aria-label="다음">➡️</button>
+        <div id="carousel-button-live" aria-live="assertive" class="sr-only"></div>
     </main>
     <script src="./src/carousel/index.js"></script>
   </body>
