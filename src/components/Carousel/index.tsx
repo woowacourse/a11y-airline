@@ -17,7 +17,7 @@ const Carousel = (props: React.OlHTMLAttributes<HTMLUListElement>) => {
       currentItemIndex.current = 6;
     }
 
-    ulRef.current?.scrollTo(262 * currentItemIndex.current, 0);
+    ulRef.current?.scrollTo(180 * currentItemIndex.current, 0);
   };
 
   return (
