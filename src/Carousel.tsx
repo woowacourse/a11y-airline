@@ -148,6 +148,29 @@ const TravelCarousel = () => {
 
   return (
     <StyledRoot>
+      <StyledWrapper>
+        <StyledTravelList xTranslated={xTranslated} ref={wrapperRef}>
+          {TravelList.map(
+            ({ id, departure, arrivals, seatClass, isRound, bottomPrice, imageUrl, href }) => (
+              <li key={id}>
+                <StyledLink href={href} target='_blank'>
+                  <StyledTravelInfo>
+                    <StyledCityInfo>
+                      {departure} - {arrivals}
+                    </StyledCityInfo>
+                    <StyledFlyType>
+                      {seatClass}석 {isRound ? '왕복' : '편도'}
+                    </StyledFlyType>
+                    <StyledPriceInfo>KRW {bottomPrice.toLocaleString('kr')}</StyledPriceInfo>
+                    <span aria-hidden={true}>&nbsp;~</span>
+                  </StyledTravelInfo>
+                  <img src={imageUrl} alt={arrivals} width={250} height={320.36} />
+                </StyledLink>
+              </li>
+            )
+          )}
+        </StyledTravelList>
+      </StyledWrapper>
       <StyledPrev aria-label='이전' onClick={handleClickPrevButton} disabled={xTranslated <= 0}>
         {'>'}
       </StyledPrev>
@@ -158,27 +181,6 @@ const TravelCarousel = () => {
       >
         {'<'}
       </StyledNext>
-      <StyledWrapper xTranslated={xTranslated} ref={wrapperRef}>
-        {TravelList.map(
-          ({ id, departure, arrivals, seatClass, isRound, bottomPrice, imageUrl, href }) => (
-            <li key={id}>
-              <StyledLink href={href} target='_blank'>
-                <StyledTravelInfo>
-                  <StyledCityInfo>
-                    {departure} - {arrivals}
-                  </StyledCityInfo>
-                  <StyledFlyType>
-                    {seatClass}석 {isRound ? '왕복' : '편도'}
-                  </StyledFlyType>
-                  <StyledPriceInfo>KRW {bottomPrice.toLocaleString('kr')}</StyledPriceInfo>
-                  <span aria-hidden={true}>&nbsp;~</span>
-                </StyledTravelInfo>
-                <img src={imageUrl} alt={arrivals} />
-              </StyledLink>
-            </li>
-          )
-        )}
-      </StyledWrapper>
     </StyledRoot>
   );
 };
@@ -186,12 +188,15 @@ const TravelCarousel = () => {
 export default TravelCarousel;
 
 const StyledRoot = styled.div`
-  width: 100%;
-  overflow-x: hidden;
+  width: 510px;
   position: relative;
 `;
 
-const StyledWrapper = styled.ul<{ xTranslated: number }>`
+const StyledWrapper = styled.div`
+  overflow-x: scroll;
+`;
+
+const StyledTravelList = styled.ul<{ xTranslated: number }>`
   display: flex;
   gap: 10px;
   transform: ${({ xTranslated }) => `translateX(-${xTranslated}px)`};

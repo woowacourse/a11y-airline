@@ -22,6 +22,14 @@ const globalStyle = css`
     margin: 0;
   }
 
+  ul {
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+
   .sr-only {
     position: absolute;
     overflow: hidden;
