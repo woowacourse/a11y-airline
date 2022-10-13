@@ -36,6 +36,7 @@ $carouselItemWidth: calc($containerWidth/2);
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
+    z-index: 5;
   }
   .carousel-control.left,
   .carousel-control.right {
