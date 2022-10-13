@@ -1,0 +1,62 @@
+$containerWidth: 70vw;
+$imageCount: 8;
+$carouselItemWidth: calc($containerWidth/2);
+
+.carousel-container {
+  img {
+    width: 100%;
+  }
+  position: relative;
+  max-width: $containerWidth;
+  overflow: hidden;
+  .carousel {
+    overflow-x: scroll;
+  }
+  .carousel-inner {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    width: calc($carouselItemWidth * $imageCount);
+  }
+  .carousel-inner > li {
+    width: $carouselItemWidth;
+  }
+  .carousel-inner > li > a {
+    display: block;
+    position: relative;
+    color: black;
+  }
+  .carousel-inner > li > a > .carousel-description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #e8e8e882;
+  }
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+  .carousel-control.left,
+  .carousel-control.right {
+    opacity: 1;
+  }
+  .carousel-control.left {
+    left: 0;
+  }
+  .carousel-control.right {
+    right: 0;
+  }
+  .carousel-control > button > span {
+    color: black;
+    font-size: 29px;
+  }
+
+  .active > div {
+    display: none;
+  }
+  .active > div:first-child {
+    display: block;
+  }
+}

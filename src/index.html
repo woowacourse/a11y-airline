@@ -8,35 +8,151 @@
   </head>
   <body>
     <div id="page">
-      <h1>항공편 예약</h1>
-      <h2>승객 선택</h2>
-      <div class="reservation-field adult-passenger-field">
-        <div class="label-container">
-          <label for="adult-passenger-count-input">성인</label>
-          <div class="helptip-container">
-            <button type="button" class="helptip-trigger" aria-label="성인 기준 상세 안내 열기"><span>?</span></button>
-            <div class="helptip">
-              <span class="helptip-content" aria-hidden="true">국제선 만 12세 이상, 국내선 만 13세 이상</span>
-              <button type="button" class="helptip-closer" aria-label="성인 기준 상세 안내 닫기"><span>x</span></button>
+      <div class="tab-container">
+        <ul class="tabs">
+          <li class="tab-item active" data-tabId="airline-reservation">
+            <span class="tab-link">항공편예약</span>
+          </li>
+          <li class="tab-item" data-tabId="airline-product">
+            <span class="tab-link">여행상품</span>
+          </li>
+        </ul>
+        <div class="panels">
+          <div class="panel" id="airline-reservation">
+            <h1>항공편 예약</h1>
+            <h2>승객 선택</h2>
+            <div class="reservation-field adult-passenger-field">
+              <div class="label-container">
+                <label for="adult-passenger-count-input">성인</label>
+                <div class="helptip-container">
+                  <button type="button" class="helptip-trigger" aria-label="성인 기준 상세 안내 열기"><span>?</span></button>
+                  <div class="helptip">
+                    <span class="helptip-content" aria-hidden="true">국제선 만 12세 이상, 국내선 만 13세 이상</span>
+                    <button type="button" class="helptip-closer" aria-label="성인 기준 상세 안내 닫기"><span>x</span></button>
+                  </div>
+                </div>
+              </div>
+              <div class="spin-input-container adult-passenger-spin">
+                <button type="button" class="spin-button" data-step="-1" aria-label="성인 탑승자 한 명 줄이기">-</button>
+                <input
+                  id="adult-passenger-count-input"
+                  class="passenger-count-input"
+                  type="number"
+                  min="0"
+                  max="3"
+                  value="0"
+                ></input>
+                <button type="button" class="spin-button" data-step="1" aria-label="성인 탑승자 한 명 늘리기">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="panel" id="airline-product">
+            <div class="carousel-container">
+              <div class="carousel slide" data-interval="2500">
+                <ul class="carousel-inner">
+                  <li>
+                    <a href="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=DXB&cabin=Y&tripType=RT&duration=7">
+                      <img src="https://www.koreanair.com/content/dam/koreanair/ko/airport-img/DXB-list-pc.jpg" alt="서울/인천 두바이 일반석 왕복 1,158,200 대한민국 원">
+                      <div class="carousel-description">
+                        <h2>서울/인천 - 두바이</h2>
+                        <h3>일반석 왕복</h3>
+                        <div class="price">KRW 1,158,200 ~</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=FUK&cabin=Y&tripType=RT&duration=7">
+                      <img src="https://www.koreanair.com/content/dam/koreanair/ko/airport-img/FUK-list-pc.jpg" alt="서울/인천 후쿠오카 일반석 왕복 340,400 대한민국 원">
+                      <div class="carousel-description">
+                        <h2>서울/인천 - 후쿠오카</h2>
+                        <h3>일반석 왕복</h3>
+                        <div class="price">KRW 340,400 ~</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=HKT&cabin=Y&tripType=RT&duration=7">
+                      <img src="https://www.koreanair.com/content/dam/koreanair/ko/airport-img/HKT-list-pc.jpg" alt="서울/인천 푸캣 일반석 왕복 713,000 대한민국 원">
+                      <div class="carousel-description">
+                        <h2>서울/인천 - 푸캣</h2>
+                        <h3>일반석 왕복</h3>
+                        <div class="price">KRW 713,000 ~</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=CNX&duration=7&cabin=Y">
+                      <img src="https://www.koreanair.com/content/dam/koreanair/ko/airport-img/CNX-list-pc.jpg" alt="서울/인천 치앙마이 일반석 왕복 839,000 대한민국 원">
+                      <div class="carousel-description">
+                        <h2>서울/인천 - 치앙마이</h2>
+                        <h3>일반석 왕복</h3>
+                        <div class="price">KRW 839,000 ~</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=BCN&cabin=Y&tripType=RT&duration=7">
+                      <img src="https://www.koreanair.com/content/dam/koreanair/ko/airport-img/BCN-list-pc.jpg" alt="서울/인천 바르셀로나 일반석 왕복 1,546,400 대한민국 원">
+                      <div class="carousel-description">
+                        <h2>서울/인천 - 바르셀로나</h2>
+                        <h3>일반석 왕복</h3>
+                        <div class="price">KRW 1,546,400 ~</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=HAN&cabin=Y&tripType=RT&duration=7">
+                      <img src="https://www.koreanair.com/content/dam/koreanair/ko/airport-img/HAN-list-pc.jpg" alt="서울/인천 하노이 일반석 왕복 527,600 대한민국 원">
+                      <div class="carousel-description">
+                        <h2>서울/인천 - 하노이</h2>
+                        <h3>일반석 왕복</h3>
+                        <div class="price">KRW 527,600 ~</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=FCO&cabin=Y&tripType=RT&duration=7">
+                      <img src="https://www.koreanair.com/content/dam/koreanair/ko/airport-img/FCO-list-pc.jpg" alt="서울/인천 로마/레오나르도 다빈치 일반석 왕복 1,454,400 대한민국 원">
+                      <div class="carousel-description">
+                        <h2>서울/인천 - 로마/레오나르도 다빈치</h2>
+                        <h3>일반석 왕복</h3>
+                        <div class="price">KRW 1,454,400 ~</div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=HNL&cabin=Y&tripType=RT&duration=7">
+                      <img src="https://www.koreanair.com/content/dam/koreanair/ko/airport-img/HNL-list-pc.jpg" alt="서울/인천 호놀룰루(하와이) 일반석 왕복 1,245,600 대한민국 원">
+                      <div class="carousel-description">
+                        <h2>서울/인천 - 호놀룰루(하와이)</h2>
+                        <h3>일반석 왕복</h3>
+                        <div class="price">KRW 1,245,600 ~</div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+
+                <!-- Controls -->
+                <div class="left carousel-control">
+                  <button type="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </button>
+                </div>
+                <div class="right carousel-control">
+                  <button type="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="spin-input-container adult-passenger-spin">
-          <button type="button" class="spin-button" data-step="-1" aria-label="성인 탑승자 한 명 줄이기">-</button>
-          <input
-            id="adult-passenger-count-input"
-            class="passenger-count-input"
-            type="number"
-            min="0"
-            max="3"
-            value="0"
-          ></input>
-          <button type="button" class="spin-button" data-step="1" aria-label="성인 탑승자 한 명 늘리기">+</button>
-        </div>
       </div>
+      <div id="snackbar" role="status"></div>
+      <div id="aria-live-polite-message" class="hidden-for-aria-live" aria-live="polite"></div>
+      <div id="aria-live-assertive-message" class="hidden-for-aria-live" aria-live="assertive"></div>
     </div>
-    <div id="snackbar" role="status"></div>
-    <div id="aria-live-polite-message" class="hidden-for-aria-live" aria-live="polite"></div>
-    <div id="aria-live-assertive-message" class="hidden-for-aria-live" aria-live="assertive"></div>
   </body>
 </html>

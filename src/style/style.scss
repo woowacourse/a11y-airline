@@ -1,6 +1,8 @@
 @import './normalize.scss';
 @import './snackbar.scss';
 @import './helptip.scss';
+@import './tabs.scss';
+@import './carousel.scss';
 
 * {
   box-sizing: border-box;
@@ -52,4 +54,11 @@ input[type='number'] {
   padding-left: 10px;
   padding-right: 10px;
   text-align: center;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
