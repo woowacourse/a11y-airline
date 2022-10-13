@@ -30,7 +30,19 @@ const Carousel = (props: React.OlHTMLAttributes<HTMLUListElement>) => {
         aria-label="이전"
         aria-disabled
       >
-        left
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1}
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M15.75 19.5L8.25 12l7.5-7.5"
+          />
+        </svg>
       </button>
       <ul ref={ulRef} className={styles.list} {...props}></ul>
       <button
@@ -41,7 +53,19 @@ const Carousel = (props: React.OlHTMLAttributes<HTMLUListElement>) => {
         aria-label="다음"
         aria-disabled
       >
-        right
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1}
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+          />
+        </svg>
       </button>
     </div>
   );

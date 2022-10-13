@@ -1,5 +1,6 @@
 .layout {
   position: relative;
+  max-width: 1100px;
 }
 
 .list {
@@ -21,25 +22,41 @@
 
 .list > li {
   list-style-type: none;
-  min-width: 232px;
-  max-width: 232px;
+  width: calc((100% - 0.8rem) / 2);
+}
+
+@media (min-width: 1060px) {
+  .list > li {
+    width: calc((100% - 12rem) / 5);
+    min-width: 232px;
+    max-width: 232px;
+  }
 }
 
 .button {
   position: absolute;
   top: calc(50%);
-  width: 3rem;
-  height: 6rem;
+  width: 4rem;
+  height: 4rem;
   transform: translateY(-50%);
-  border: 0;
+  border: none;
+  border-radius: 50%;
   cursor: pointer;
   z-index: 10;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(4px);
+  transition: all ease-out 100ms;
+}
+
+.button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .left-button {
-  left: 0;
+  left: 0.5rem;
 }
 
 .right-button {
-  right: 0;
+  right: 0.5rem;
 }
