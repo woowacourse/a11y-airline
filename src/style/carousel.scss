@@ -10,7 +10,9 @@ $carouselItemWidth: calc($containerWidth/2);
   }
   position: relative;
   max-width: $containerWidth;
-  overflow: hidden;
+  .carousel {
+    overflow: hidden;
+  }
   .carousel-inner {
     display: flex;
     flex-wrap: nowrap;
@@ -47,10 +49,10 @@ $carouselItemWidth: calc($containerWidth/2);
     }
   }
   .carousel-control.left {
-    left: 0;
+    left: -40px;
   }
   .carousel-control.right {
-    right: 0;
+    right: -40px;
   }
   .carousel-control > button > span {
     color: black;
