@@ -5,6 +5,23 @@ const globalStyle = css`
     box-sizing: border-box;
   }
 
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: none;
+  }
+
+  p {
+    margin: 0;
+  }
+
   .sr-only {
     position: absolute;
     overflow: hidden;
