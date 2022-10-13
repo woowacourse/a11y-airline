@@ -34,7 +34,7 @@ const seatStyle = css`
 `;
 
 const priceStyle = css`
-  font-size: 14px;
+  font-size: 15px;
 `;
 
 export { layoutStyle, imageStyle, textStyle, locationStyle, seatStyle, priceStyle, linkStyle };
