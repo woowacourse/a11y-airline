@@ -5,6 +5,8 @@ export const ITEM_LIST: CarouselItemImpl[] = [
     departure: '두바이',
     price: 1158000,
     startingPoint: '서울/인천',
+    anchorTo:
+      'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=DXB&duration=7&cabin=Y',
   },
   {
     imageSrc:
@@ -12,6 +14,8 @@ export const ITEM_LIST: CarouselItemImpl[] = [
     departure: '후쿠오카',
     price: 340400,
     startingPoint: '서울/인천',
+    anchorTo:
+      'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=FUK&cabin=Y&tripType=RT&duration=7',
   },
   {
     imageSrc:
@@ -19,6 +23,8 @@ export const ITEM_LIST: CarouselItemImpl[] = [
     departure: '푸껫',
     price: 704100,
     startingPoint: '서울/인천',
+    anchorTo:
+      'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=HKT&duration=7&cabin=Y',
   },
   {
     imageSrc:
@@ -26,6 +32,8 @@ export const ITEM_LIST: CarouselItemImpl[] = [
     departure: '치앙마이',
     price: 839100,
     startingPoint: '서울/인천',
+    anchorTo:
+      'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=CNX&duration=7&cabin=Y',
   },
   {
     imageSrc:
@@ -33,6 +41,8 @@ export const ITEM_LIST: CarouselItemImpl[] = [
     departure: '바르셀로나',
     price: 1546300,
     startingPoint: '서울/인천',
+    anchorTo:
+      'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=BCN&cabin=Y&tripType=RT&duration=7',
   },
   {
     imageSrc:
@@ -40,6 +50,8 @@ export const ITEM_LIST: CarouselItemImpl[] = [
     departure: '하노이',
     price: 527500,
     startingPoint: '서울/인천',
+    anchorTo:
+      'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=HAN&cabin=Y&tripType=RT&duration=7',
   },
   {
     imageSrc:
@@ -47,6 +59,8 @@ export const ITEM_LIST: CarouselItemImpl[] = [
     departure: '로마/레오나르도 다빈치',
     price: 1454200,
     startingPoint: '서울/인천',
+    anchorTo:
+      'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=FCO&cabin=Y&tripType=RT&duration=7',
   },
   {
     imageSrc:
@@ -54,5 +68,7 @@ export const ITEM_LIST: CarouselItemImpl[] = [
     departure: '호놀룰루 (하와이)',
     price: 1244900,
     startingPoint: '서울/인천',
+    anchorTo:
+      'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=HNL&cabin=Y&tripType=RT&duration=7',
   },
 ];

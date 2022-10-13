@@ -8,10 +8,17 @@ export default class CarouselItem extends Component<'li'> {
   #paragraphContainer;
   #container;
 
-  constructor({ imageSrc, startingPoint, departure, price }: CarouselItemImpl) {
+  constructor({
+    imageSrc,
+    startingPoint,
+    departure,
+    price,
+    anchorTo,
+  }: CarouselItemImpl) {
     super('li', 'carousel__item');
 
-    this.#container = createElement('a');
+    this.#container = createElement<'a'>('a');
+    this.#container.href = anchorTo;
     this.#imageContainer = createElement('div', 'carousel__image__container');
     this.#paragraphContainer = createElement(
       'div',

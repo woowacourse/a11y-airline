@@ -9,4 +9,5 @@ interface CarouselItemImpl {
   startingPoint: string;
   departure: string;
   price: number;
+  anchorTo: string;
 }
