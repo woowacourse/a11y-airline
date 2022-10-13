@@ -9,14 +9,11 @@ $carouselItemWidth: calc($containerWidth/2);
   position: relative;
   max-width: $containerWidth;
   overflow: hidden;
-  .carousel {
-    overflow-x: scroll;
-  }
   .carousel-inner {
     display: flex;
     flex-wrap: nowrap;
-    overflow-x: scroll;
     width: calc($carouselItemWidth * $imageCount);
+    transition: transform 0.4s;
   }
   .carousel-inner > li {
     width: $carouselItemWidth;
