@@ -152,7 +152,7 @@ const TravelCarousel = () => {
       <StyledPrev onClick={handleClickPrevButton} disabled={xTranslated <= 0}>
         {'>'}
       </StyledPrev>
-      <StyledWrapper current={xTranslated} ref={wrapperRef}>
+      <StyledWrapper xTranslated={xTranslated} ref={wrapperRef}>
         {TravelList.map(
           ({ departure, arrivals, seatClass, isRound, bottomPrice, imageUrl, href }) => (
             <StyledLink href={href} target='_blank'>
@@ -185,10 +185,10 @@ const StyledRoot = styled.div`
   position: relative;
 `;
 
-const StyledWrapper = styled.div<{ current: number }>`
+const StyledWrapper = styled.div<{ xTranslated: number }>`
   display: flex;
   gap: 10px;
-  transform: ${({ current }) => `translateX(-${current}px)`};
+  transform: ${({ xTranslated }) => `translateX(-${xTranslated}px)`};
   transition: transform 300ms linear;
 
   & > * {
