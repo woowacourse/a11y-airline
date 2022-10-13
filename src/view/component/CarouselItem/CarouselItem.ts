@@ -4,10 +4,12 @@ import { createElement } from 'src/util/dom';
 export default class CarouselItem extends Component {
   #imageContainer;
   #paragraphContainer;
+  #container;
 
   constructor({ imageSrc, startingPoint, departure, price }: CarouselItemImpl) {
     super('li');
 
+    this.#container = createElement('a');
     this.#imageContainer = createElement('div', 'carousel__image__container');
     this.#paragraphContainer = createElement(
       'div',
@@ -15,7 +17,7 @@ export default class CarouselItem extends Component {
     );
 
     this.#imageContainer.innerHTML = `
-    <img alt="${departure} 이미지" src="${imageSrc}" class="carousel__image">`;
+    <img alt="${departure} 이미지" src="${imageSrc}" class="carousel__image" aria-hidden=true>`;
 
     this.#paragraphContainer.innerHTML = `
         <p class="carousel__item__location">
@@ -33,6 +35,15 @@ export default class CarouselItem extends Component {
     `;
 
     this.element.classList.add('carousel__item');
-    this.element.append(this.#imageContainer, this.#paragraphContainer);
+    this.#container.append(this.#imageContainer, this.#paragraphContainer);
+
+    this.element.tabIndex = 0;
+    this.element.append(this.#container);
+    this.element.addEventListener('focusin', this.handleFocus);
   }
+
+  handleFocus = (e: FocusEvent) => {
+    const target = e.target as HTMLLIElement;
+    target.scrollIntoView({ inline: 'end' });
+  };
 }

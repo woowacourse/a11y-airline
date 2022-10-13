@@ -4,14 +4,15 @@
   margin-left: 0.8rem;
   flex-shrink: 0;
   cursor: pointer;
+  scroll-snap-align: end;
 }
+
 .carousel__item:first-child {
   margin-left: 0;
 }
 
 .carousel__image__container {
   box-sizing: border-box;
-  /* max-width: 300px; */
 }
 
 .carousel__image {
@@ -89,7 +90,9 @@
 }
 
 .carousel__list__container {
-  overflow: hidden;
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   width: 100%;
 }
 
@@ -113,6 +116,10 @@
   border: 0;
   cursor: pointer;
   background-size: 30px 60px;
+}
+
+.carousel__button:disabled {
+  cursor: not-allowed;
 }
 
 @media (max-width: 475px) {

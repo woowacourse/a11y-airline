@@ -12,6 +12,7 @@ export default class MissionPage extends ComponentWithFragment {
   constructor() {
     super();
     this.#tabButton = document.createElement('button');
+
     this.#tabStatus = '1단계';
 
     this.#tabButton.textContent = '2단계로';
