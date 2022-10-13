@@ -6,12 +6,11 @@ export default class MissionTwo extends Component {
   #list;
 
   constructor() {
-    super();
+    super('div', 'carousel__page');
     const title = createElement('h1', 'carousel__title');
     title.textContent = '지금 떠나는 여행';
     this.#list = new CarouselList();
 
-    this.element.classList.add('carousel__page');
     this.element.append(title, this.#list.target);
   }
 }

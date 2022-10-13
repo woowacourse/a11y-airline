@@ -10,10 +10,9 @@ export default class CarouselButton extends Component<'button'> {
     onClick: (e: MouseEvent) => void;
     ariaLabel: string;
   }) {
-    super('button');
+    super('button', 'carousel__button');
 
     this.element.id = id;
-    this.element.classList.add('carousel__button');
     this.element.ariaLabel = ariaLabel;
     this.element.addEventListener('click', onClick);
   }

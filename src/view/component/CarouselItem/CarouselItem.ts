@@ -9,7 +9,7 @@ export default class CarouselItem extends Component<'li'> {
   #container;
 
   constructor({ imageSrc, startingPoint, departure, price }: CarouselItemImpl) {
-    super('li');
+    super('li', 'carousel__item');
 
     this.#container = createElement('a');
     this.#imageContainer = createElement('div', 'carousel__image__container');
@@ -39,7 +39,6 @@ export default class CarouselItem extends Component<'li'> {
     this.#container.append(this.#imageContainer, this.#paragraphContainer);
 
     this.element.tabIndex = 0;
-    this.element.classList.add('carousel__item');
     this.element.append(this.#container);
     this.element.addEventListener('focusin', this.handleFocus);
   }

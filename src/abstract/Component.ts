@@ -6,8 +6,11 @@ export default abstract class Component<
 {
   protected element;
 
-  constructor(type: keyof HTMLElementTagNameMap = 'div') {
-    this.element = createElement<T>(type);
+  constructor(
+    type: keyof HTMLElementTagNameMap = 'div',
+    ...classList: string[]
+  ) {
+    this.element = createElement<T>(type, ...classList);
   }
 
   get target() {
