@@ -9,7 +9,10 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
   },
   module: {
-    rules: [{ test: /\.(ts|tsx)$/, loader: 'ts-loader' }],
+    rules: [
+      { test: /\.(ts|tsx)$/, loader: 'ts-loader' },
+      { test: /\.(jpeg)$/, loader: 'file-loader' },
+    ],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
