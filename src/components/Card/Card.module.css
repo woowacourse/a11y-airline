@@ -1,7 +1,12 @@
 .layout {
+  display: block;
   position: relative;
   width: 240px;
   height: 370px;
+}
+
+.layout:link {
+  color: inherit;
 }
 
 .description {

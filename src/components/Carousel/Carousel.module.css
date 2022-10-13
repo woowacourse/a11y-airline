@@ -11,6 +11,11 @@
   overflow-x: scroll;
 
   transition: ease 1s;
+  scrollbar-width: none;
+}
+
+.box::-webkit-scrollbar {
+  display: none;
 }
 
 .carousel-button {
@@ -23,7 +28,7 @@
   border: none;
   background-color: rgba(0, 0, 0, 0.3);
   color: white;
-
+  z-index: 10;
   cursor: pointer;
 }
 
@@ -35,4 +40,16 @@
 .right-button {
   border-radius: 25px 0 0 25px;
   right: 0;
+}
+
+.display-none {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
