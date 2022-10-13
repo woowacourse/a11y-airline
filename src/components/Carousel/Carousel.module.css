@@ -1,0 +1,38 @@
+.layout {
+  position: relative;
+  width: 1000px;
+}
+
+.box {
+  display: flex;
+  gap: 16px;
+  flex-wrap: nowrap;
+  overflow-y: hidden;
+  overflow-x: scroll;
+
+  transition: ease 1s;
+}
+
+.carousel-button {
+  width: 25px;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+
+  cursor: pointer;
+}
+
+.left-button {
+  border-radius: 0 25px 25px 0;
+  left: 0;
+}
+
+.right-button {
+  border-radius: 25px 0 0 25px;
+  right: 0;
+}
