@@ -21,24 +21,26 @@ function PromotionCard({
   seat = '일반석',
   trip = '왕복',
 }: PromotionCardProps) {
-  const handleClickPromotionCard = () => {
-    window.open(link);
-  };
-
   return (
-    <li
-      className='promotion-card'
-      style={{ backgroundImage: `url(${image})` }}
-      onClick={handleClickPromotionCard}
+    <a
+      rel='noreferrer'
+      href={link}
+      target='_blank'
+      className='promotion-card-link'
     >
-      <div className='promotion-info'>
-        <p className='promotion-route'>{`${departure} - ${destination}`}</p>
-        <p className='promotion-flight'>{`${seat} ${trip}`}</p>
-        <p className='promotion-price'>{`KRW ${addThousandUnitComma(
-          lowestPrice
-        )} ~`}</p>
-      </div>
-    </li>
+      <li
+        className='promotion-card'
+        style={{ backgroundImage: `url(${image})` }}
+      >
+        <div className='promotion-info'>
+          <p className='promotion-route'>{`${departure} - ${destination}`}</p>
+          <p className='promotion-flight'>{`${seat} ${trip}`}</p>
+          <p className='promotion-price'>{`KRW ${addThousandUnitComma(
+            lowestPrice
+          )} ~`}</p>
+        </div>
+      </li>
+    </a>
   );
 }
 

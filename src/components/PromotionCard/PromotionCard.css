@@ -1,6 +1,9 @@
-.promotion-card {
-  display: flex;
+.promotion-card-link {
+  color: black;
+  text-decoration: none;
+}
 
+.promotion-card {
   width: 57rem;
   height: 75rem;
   padding: 6rem;
