@@ -12,14 +12,14 @@ export const URL = {
     'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=HNL&duration=7&cabin=Y',
 };
 
-export type carouselItemsType = {
+export type CarouselItemType = {
   title: string;
   flightType: string;
   price: number;
   link: string;
 };
 
-export const carouselItems: carouselItemsType[] = [
+export const carouselItems: CarouselItemType[] = [
   {
     title: '서울/인천 - 두바이',
     flightType: '일반석 왕복',

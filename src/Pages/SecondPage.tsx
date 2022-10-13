@@ -3,55 +3,66 @@ import styled from 'styled-components';
 import CarouselItem from './../components/CarouselItem';
 import { carouselItems } from './../const/carousel';
 
+import Carousel from '../components/Carousel';
 import LeftButton from '../images/button-left.svg';
 import RightButton from '../images/button-right.svg';
+
 const SecondPage = () => {
   const [currentPage, setCurrentPage] = useState(0);
 
+  const onClickLeftButton = () => {
+    setCurrentPage((prev) => {
+      if (prev > 0) {
+        return prev - 1;
+      }
+      return prev;
+    });
+  };
+
+  const onClickRightButton = () => {
+    setCurrentPage((prev) => {
+      if (prev < 7) {
+        return prev + 1;
+      }
+      return prev;
+    });
+  };
+
   return (
-    <S.Box>
-      <S.Title>집 떠나와~ 열차타고~</S.Title>
-      <S.Slide>
-        <S.LeftButton>
+    <>
+      <S.Title>훌라훌라훌라 어깨춤을 춘다 탬버린!</S.Title>
+      <S.Box>
+        <S.LeftButton
+          disabled={currentPage === 0 ? true : false}
+          onClick={onClickLeftButton}
+          aria-label='이전 캐러샐 아이템으로 가기'
+        >
           <img src={LeftButton} />
         </S.LeftButton>
-        {carouselItems.map((item) => (
-          <CarouselItem item={item} />
-        ))}
-        <S.RightButton>
+        <Carousel currentPage={currentPage} setCurrentPage={setCurrentPage}>
+          {carouselItems.map((item) => (
+            <CarouselItem item={item} />
+          ))}
+        </Carousel>
+        <S.RightButton
+          disabled={currentPage === 7 ? true : false}
+          onClick={onClickRightButton}
+          aria-label='다음 캐러샐 아이템으로 가기'
+        >
           <img src={RightButton} />
         </S.RightButton>
-      </S.Slide>
-    </S.Box>
+      </S.Box>
+    </>
   );
 };
 
 const S = {
-  Box: styled.div``,
   Title: styled.h2``,
-  Slide: styled.ul`
-    display: flex;
-    gap: 1rem;
-    width: 90%;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-    transition-duration: 700ms;
-    transform: translateX(0px);
-
-    &:first-child {
-      margin-left: 0;
-    }
-
-    @media (min-width: 900px) {
-      width: 55%;
-    }
-    @media (min-width: 640px) {
-      width: 70%;
-    }
+  Box: styled.div`
+    width: 36rem;
+    position: relative;
   `,
+
   LeftButton: styled.button`
     position: absolute;
     width: 3rem;
@@ -60,7 +71,12 @@ const S = {
     border: 0;
     cursor: pointer;
     left: 0;
+    top: 50%;
+    z-index: 100;
     background-color: transparent;
+    &:disabled {
+      cursor: not-allowed;
+    }
   `,
   RightButton: styled.button`
     position: absolute;
@@ -70,7 +86,12 @@ const S = {
     border: 0;
     cursor: pointer;
     right: 0;
+    top: 50%;
+    z-index: 100;
     background-color: transparent;
+    &:disabled {
+      cursor: not-allowed;
+    }
   `,
 };
 
