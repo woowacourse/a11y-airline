@@ -1,9 +1,9 @@
+import { useState } from 'react'
 import cn from 'classnames'
 
-import FlexContainer from 'components/FlexContainer'
 import CarouselPage from 'pages/CarouselPage'
 import PassengersPage from 'pages/PassengersPage'
-import { useState } from 'react'
+import { FlexContainer } from 'components'
 
 import 'styles/global.scss'
 import styles from 'styles/app.module.scss'

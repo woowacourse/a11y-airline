@@ -1,5 +1,5 @@
-import { Counter, ToolTip } from 'components'
 import { useState } from 'react'
+import { Counter, ToolTip } from 'components'
 
 import styles from './styles.module.scss'
 

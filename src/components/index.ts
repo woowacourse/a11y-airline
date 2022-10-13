@@ -1,2 +1,5 @@
 export { default as Counter } from './Counter/Counter'
 export { default as ToolTip } from './ToolTip/ToolTip'
+export { default as FlexContainer } from './FlexContainer/FlexContainer'
+export { default as Carousel } from './Carousel/Carousel'
+export { default as Card } from './Card/Card'

@@ -1,15 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 
+import cn from 'classnames'
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import cn from 'classnames'
-
 import useDebounceCallback from 'hooks/useDebounceCallback'
+import { FlexContainer } from 'components'
 
 import styles from './styles.module.scss'
-
-import FlexContainer from '../FlexContainer'
 
 interface CarouselProps {
   className?: string

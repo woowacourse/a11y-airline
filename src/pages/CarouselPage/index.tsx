@@ -1,9 +1,9 @@
-import Carousel from 'components/Carousel'
-import styles from './styles.module.scss'
-import specialOfferList from 'dummy/specialOfferList.json'
-import FlexContainer from 'components/FlexContainer'
-import Card from 'components/Card'
 import { useMemo } from 'react'
+
+import { Carousel, Card } from 'components'
+import specialOfferList from 'dummy/specialOfferList.json'
+
+import styles from './styles.module.scss'
 
 function CarouselPage() {
   const specialOfferCards = useMemo(

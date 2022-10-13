@@ -1,10 +1,9 @@
 import cn from 'classnames'
-import FlexContainer from 'components/FlexContainer'
-import { HTMLAttributes } from 'react'
+import { FlexContainer } from 'components'
 
 import styles from './styles.module.scss'
 
-interface CardProps extends HTMLAttributes<unknown> {
+interface CardProps extends React.HTMLAttributes<unknown> {
   backgroundImage: URLString
   children: React.ReactNode
 }
