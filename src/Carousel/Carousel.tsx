@@ -17,8 +17,7 @@ function Carousel() {
 
   const isStart = page < 1;
   const isEnd =
-    listRef.current === null ||
-    (listRef.current && page * 264 >= listRef.current.scrollWidth - listRef.current.offsetWidth);
+    listRef.current && page * 264 >= listRef.current.scrollWidth - listRef.current.offsetWidth;
 
   const handleClickPrevButton = () => {
     if (isStart) {
@@ -48,8 +47,8 @@ function Carousel() {
       <button
         css={prevButtonStyle}
         onClick={handleClickPrevButton}
-        aria-disabled={isStart}
-        aria-hidden
+        aria-hidden={true}
+        tabIndex={-1}
       ></button>
       <ul css={listStyle} ref={listRef}>
         {data.map((el) => (
@@ -66,8 +65,8 @@ function Carousel() {
       <button
         css={nextButtonStyle}
         onClick={handleClickNextButton}
-        aria-disabled={isEnd}
-        aria-hidden
+        aria-hidden={true}
+        tabIndex={-1}
       ></button>
     </div>
   );

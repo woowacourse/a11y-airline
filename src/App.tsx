@@ -17,7 +17,7 @@ function App() {
       />
       <SpinButton min={0} max={3} passengerType={PASSENGER_TYPE.ADULT} />
 
-      <h2>지금 떠나기 좋은 여행</h2>
+      <h2 tabIndex={0}>지금 떠나기 좋은 여행</h2>
       <Carousel />
     </div>
   );
