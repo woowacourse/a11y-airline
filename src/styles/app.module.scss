@@ -1,0 +1,28 @@
+.header {
+  padding: 5rem 0 2rem;
+}
+
+.button {
+  cursor: pointer;
+
+  padding: 1rem 1.5rem;
+  background-color: #f3f3f3;
+  border: none;
+  font-size: 0.75rem;
+  border-radius: 1rem;
+
+  & > p:first-child {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+  }
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+
+  &.focus {
+    font-weight: bold;
+    background-color: #31717250;
+    color: #317172;
+  }
+}
