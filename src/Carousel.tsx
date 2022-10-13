@@ -155,13 +155,9 @@ const TravelCarousel = () => {
               <li key={id}>
                 <StyledLink href={href} target='_blank'>
                   <StyledTravelInfo>
-                    <StyledCityInfo>
-                      {departure} - {arrivals}
-                    </StyledCityInfo>
-                    <StyledFlyType>
-                      {seatClass}석 {isRound ? '왕복' : '편도'}
-                    </StyledFlyType>
-                    <StyledPriceInfo>KRW {bottomPrice.toLocaleString('kr')}</StyledPriceInfo>
+                    <StyledCityInfo>{`${departure}-${arrivals}`}</StyledCityInfo>
+                    <StyledFlyType>{`${seatClass}석 ${isRound ? '왕복' : '편도'}`}</StyledFlyType>
+                    <StyledPriceInfo>{`KRW ${bottomPrice.toLocaleString('kr')}`}</StyledPriceInfo>
                     <span aria-hidden={true}>&nbsp;~</span>
                   </StyledTravelInfo>
                   <img src={imageUrl} alt={arrivals} width={250} height={320.36} />
