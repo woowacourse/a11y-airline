@@ -3,13 +3,7 @@
 import { useRef, useState } from 'react';
 import { data } from '../data';
 import TravelInfo from '../TravelInfo/TravelInfo';
-import {
-  hiddenStyle,
-  layoutStyle,
-  listStyle,
-  nextButtonStyle,
-  prevButtonStyle,
-} from './Carousel.styles';
+import { layoutStyle, listStyle, nextButtonStyle, prevButtonStyle } from './Carousel.styles';
 
 function Carousel() {
   const [page, setPage] = useState(0);

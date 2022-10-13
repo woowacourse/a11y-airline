@@ -54,15 +54,4 @@ const nextButtonStyle = css`
   }
 `;
 
-const hiddenStyle = css`
-  overflow: hidden;
-  white-space: nowrap;
-  clip: rect(1px, 1px, 1px, 1px);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: 0;
-  padding: 0;
-  border: 0;
-`;
-export { layoutStyle, listStyle, prevButtonStyle, nextButtonStyle, hiddenStyle };
+export { layoutStyle, listStyle, prevButtonStyle, nextButtonStyle };
