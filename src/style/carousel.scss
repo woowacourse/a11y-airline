@@ -64,12 +64,12 @@ $carouselItemWidth: calc($containerWidth/2);
   }
 
   @include mobile {
-    max-width: 90vw;
+    max-width: 80vw;
 
     .carousel-inner {
-      width: calc(45vw * $imageCount);
+      width: calc(40vw * $imageCount);
       & > li {
-        width: 45vw;
+        width: 40vw;
       }
       .carousel-control > button > span {
         font-size: 18px;
