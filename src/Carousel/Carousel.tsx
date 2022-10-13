@@ -39,8 +39,8 @@ function Carousel() {
 
   return (
     <div className="list-container">
-      <h2 className="list-title">지금 떠나기 좋은 여행</h2>
-      <div className="list-box">
+      <h1 className="list-title">지금 떠나기 좋은 여행</h1>
+      <section className="list-box">
         <div>
           <ul
             className="list"
@@ -53,23 +53,25 @@ function Carousel() {
             ))}
           </ul>
         </div>
-        <button
-          type="button"
-          className="button-prev"
-          onClick={handleSlideToPrevSlide}
-          disabled={currentTransformX >= minTransformX}
-        >
-          <span hidden>이전</span>
-        </button>
-        <button
-          type="button"
-          className="button-next"
-          onClick={handleSlideToNextSlide}
-          disabled={currentTransformX <= maxTransformX}
-        >
-          <span hidden>다음</span>
-        </button>
-      </div>
+        <div className="list-controller">
+          <button
+            type="button"
+            className="button-prev"
+            onClick={handleSlideToPrevSlide}
+            disabled={currentTransformX >= minTransformX}
+          >
+            <span className="sr-only">이전</span>
+          </button>
+          <button
+            type="button"
+            className="button-next"
+            onClick={handleSlideToNextSlide}
+            disabled={currentTransformX <= maxTransformX}
+          >
+            <span className="sr-only">다음</span>
+          </button>
+        </div>
+      </section>
     </div>
   );
 }

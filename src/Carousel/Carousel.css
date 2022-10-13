@@ -1,6 +1,7 @@
 .list-container {
   width: 70%;
   margin: auto;
+  position: relative;
 }
 
 .list-back {
@@ -21,7 +22,6 @@
 }
 
 .list-box {
-  position: relative;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -29,15 +29,16 @@
 .list {
   display: flex;
   width: 50%;
+  transition: linear 0.3s;
 }
 
 .list-controller {
-  position: absolute;
   width: 100%;
+  bottom: 50%;
+  left: 0;
 }
 
 .button-prev {
-  position: absolute;
   top: 50%;
   left: 0;
   background: url('../assets/left-arrow.png') no-repeat center top;
@@ -45,12 +46,10 @@
   position: absolute;
   width: 3rem;
   height: 3rem;
-  transform: translateY(-50%);
   cursor: pointer;
 }
 
 .button-next {
-  position: absolute;
   top: 50%;
   right: 0;
   background: url('../assets/right-arrow.png') no-repeat center center;
@@ -58,6 +57,5 @@
   position: absolute;
   width: 3rem;
   height: 3rem;
-  transform: translateY(-50%);
   cursor: pointer;
 }
