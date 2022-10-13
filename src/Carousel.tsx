@@ -160,8 +160,8 @@ const TravelCarousel = () => {
                     <StyledPriceInfo>{`KRW ${bottomPrice.toLocaleString('kr')}`}</StyledPriceInfo>
                     <span aria-hidden={true}>&nbsp;~</span>
                   </StyledTravelInfo>
-                  <img src={imageUrl} alt={arrivals} width={250} height={320.36} />
                 </StyledLink>
+                <img src={imageUrl} alt='' width={250} height={320.36} />
               </li>
             )
           )}
