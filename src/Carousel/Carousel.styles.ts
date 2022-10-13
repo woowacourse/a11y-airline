@@ -12,9 +12,8 @@ const layoutStyle = (length: number) => css`
 const listStyle = css`
   display: flex;
   gap: 30px;
-
-  height: 310px;
-  overflow: overlay;
+  overflow: hidden;
+  padding: 0;
 `;
 
 const prevButtonStyle = css`
