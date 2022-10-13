@@ -1,6 +1,6 @@
 import Component from 'src/abstract/Component';
 
-export default class CarouselButton extends Component {
+export default class CarouselButton extends Component<'button'> {
   constructor({
     id,
     onClick,
@@ -20,6 +20,6 @@ export default class CarouselButton extends Component {
 
   set disabled(isDisabled: boolean) {
     this.element.ariaDisabled = `${isDisabled}`;
-    (this.element as HTMLButtonElement).disabled = isDisabled;
+    this.element.disabled = isDisabled;
   }
 }

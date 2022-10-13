@@ -3,7 +3,7 @@ import './index.css';
 import Component from 'src/abstract/Component';
 import { createElement } from 'src/util/dom';
 
-export default class CarouselItem extends Component {
+export default class CarouselItem extends Component<'li'> {
   #imageContainer;
   #paragraphContainer;
   #container;
