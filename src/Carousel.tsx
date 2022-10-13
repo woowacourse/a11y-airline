@@ -98,8 +98,9 @@ const totalSize = itemSize * TravelList.length;
 
 const TravelCarousel = () => {
   const [xTranslated, changeXTranslated] = useState(0);
-  const [width, setWidth] = useState(0);
-  const maxCurrent = useRef(0);
+  const [maxXTranslated, setMaxXTranslated] = useState(0);
+
+  const carouselWidth = useRef(0);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const handleClickPrevButton = () => {
@@ -117,8 +118,8 @@ const TravelCarousel = () => {
   const handleClickNextButton = () => {
     const next = xTranslated + itemSize;
 
-    if (next >= maxCurrent.current) {
-      changeXTranslated(maxCurrent.current);
+    if (next >= maxXTranslated) {
+      changeXTranslated(maxXTranslated);
 
       return;
     }
@@ -132,7 +133,9 @@ const TravelCarousel = () => {
 
       const wrapperWidth = Number(getComputedStyle(wrapperRef.current).width.slice(0, -2));
 
-      setWidth(wrapperWidth);
+      carouselWidth.current = wrapperWidth;
+
+      setMaxXTranslated(totalSize - carouselWidth.current - 10);
     };
 
     onResize();
@@ -143,10 +146,6 @@ const TravelCarousel = () => {
       window.removeEventListener('resize', onResize);
     };
   }, []);
-
-  useEffect(() => {
-    maxCurrent.current = totalSize - width - 10;
-  }, [width]);
 
   return (
     <StyledRoot>
@@ -171,7 +170,7 @@ const TravelCarousel = () => {
           )
         )}
       </StyledWrapper>
-      <StyledNext onClick={handleClickNextButton} disabled={xTranslated >= maxCurrent.current}>
+      <StyledNext onClick={handleClickNextButton} disabled={xTranslated >= maxXTranslated}>
         {'<'}
       </StyledNext>
     </StyledRoot>
