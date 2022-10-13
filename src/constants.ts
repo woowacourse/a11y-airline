@@ -17,7 +17,13 @@ const MESSAGE = {
 
 const PATH = {
   BASENAME: '/a11y-airline',
-  PASSENGER: '/',
+  PASSENGER: '/passenger',
+  PROMOTION: '/',
 };
 
-export { MESSAGE, PASSENGER, PATH };
+const PROMOTION = {
+  CARD_WIDTH: 57,
+  CARD_GAP: 6,
+};
+
+export { MESSAGE, PASSENGER, PATH, PROMOTION };

@@ -1,0 +1,61 @@
+.promotion-page {
+  display: flex;
+  flex-direction: column;
+
+  padding: 6rem;
+}
+
+.promotion-header {
+  margin: 0 0 6rem;
+
+  font-size: 5rem;
+  font-weight: 800;
+}
+
+.promotion-list-container {
+  position: relative;
+
+  width: 309rem;
+}
+
+.promotion-list {
+  display: flex;
+  overflow: hidden;
+  gap: 6rem;
+
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+.control-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  border: none;
+
+  background: black;
+  opacity: 0.6;
+
+  font-size: 7rem;
+  font-weight: bold;
+  color: white;
+
+  cursor: pointer;
+}
+
+.prev-button {
+  left: 1px;
+
+  padding: 4rem 2rem 4rem 1rem;
+  border-radius: 0 15rem 15rem 0;
+}
+
+.next-button {
+  right: 1px;
+
+  padding: 4rem 1rem 4rem 2rem;
+  border-radius: 15rem 0 0 15rem;
+}

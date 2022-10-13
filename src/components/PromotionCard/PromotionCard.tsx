@@ -26,7 +26,7 @@ function PromotionCard({
   };
 
   return (
-    <div
+    <li
       className='promotion-card'
       style={{ backgroundImage: `url(${image})` }}
       onClick={handleClickPromotionCard}
@@ -38,7 +38,7 @@ function PromotionCard({
           lowestPrice
         )} ~`}</p>
       </div>
-    </div>
+    </li>
   );
 }
 
