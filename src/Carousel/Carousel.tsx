@@ -17,7 +17,8 @@ function Carousel() {
 
   const isStart = page < 1;
   const isEnd =
-    listRef.current && page * 264 >= listRef.current.scrollWidth - listRef.current.offsetWidth;
+    listRef.current === null ||
+    (listRef.current && page * 264 >= listRef.current.scrollWidth - listRef.current.offsetWidth);
 
   const handleClickPrevButton = () => {
     if (isStart) {
@@ -44,7 +45,12 @@ function Carousel() {
 
   return (
     <div css={layoutStyle(data.length)}>
-      <button css={prevButtonStyle} onClick={handleClickPrevButton}>
+      <button
+        css={prevButtonStyle}
+        onClick={handleClickPrevButton}
+        aria-disabled={isStart}
+        disabled={isStart}
+      >
         <span css={hiddenStyle}>이전</span>
       </button>
       <ul css={listStyle} ref={listRef}>
@@ -59,7 +65,12 @@ function Carousel() {
           />
         ))}
       </ul>
-      <button css={nextButtonStyle} onClick={handleClickNextButton}>
+      <button
+        css={nextButtonStyle}
+        onClick={handleClickNextButton}
+        aria-disabled={isEnd}
+        disabled={isEnd}
+      >
         <span css={hiddenStyle}>다음</span>
       </button>
     </div>
