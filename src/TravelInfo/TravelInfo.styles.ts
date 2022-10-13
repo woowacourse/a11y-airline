@@ -35,6 +35,8 @@ const seatStyle = css`
 
 const priceStyle = css`
   font-size: 15px;
+  color: navy;
+  font-weight: bold;
 `;
 
 export { layoutStyle, imageStyle, textStyle, locationStyle, seatStyle, priceStyle, linkStyle };

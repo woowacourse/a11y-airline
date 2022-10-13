@@ -49,10 +49,8 @@ function Carousel() {
         css={prevButtonStyle}
         onClick={handleClickPrevButton}
         aria-disabled={isStart}
-        disabled={isStart}
-      >
-        <span css={hiddenStyle}>이전</span>
-      </button>
+        aria-hidden
+      ></button>
       <ul css={listStyle} ref={listRef}>
         {data.map((el) => (
           <TravelInfo
@@ -69,10 +67,8 @@ function Carousel() {
         css={nextButtonStyle}
         onClick={handleClickNextButton}
         aria-disabled={isEnd}
-        disabled={isEnd}
-      >
-        <span css={hiddenStyle}>다음</span>
-      </button>
+        aria-hidden
+      ></button>
     </div>
   );
 }
