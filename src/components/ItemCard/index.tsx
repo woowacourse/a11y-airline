@@ -6,14 +6,17 @@ import {
   TripType,
   TRIP_TYPES,
 } from '../../constants/flight';
+import styles from './ItemCard.module.css';
 
 const ItemCard = ({
+  id,
   departure,
   destination,
   seat,
   tripType,
   price,
 }: {
+  id: number;
   departure: LocationCode;
   destination: LocationCode;
   seat: Seat;
@@ -21,7 +24,7 @@ const ItemCard = ({
   price: number;
 }) => {
   return (
-    <div>
+    <div className={styles.layout}>
       <span>
         {LOCATION_CODES[departure]} - {LOCATION_CODES[destination]}
       </span>

@@ -1,0 +1,45 @@
+.layout {
+  position: relative;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
+}
+
+.list > li {
+  list-style-type: none;
+  min-width: 232px;
+  max-width: 232px;
+}
+
+.button {
+  position: absolute;
+  top: calc(50%);
+  width: 3rem;
+  height: 6rem;
+  transform: translateY(-50%);
+  border: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.left-button {
+  left: 0;
+}
+
+.right-button {
+  right: 0;
+}
