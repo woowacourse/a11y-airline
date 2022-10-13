@@ -1,6 +1,6 @@
 .layout {
   position: relative;
-  width: 340px;
+  width: 240px;
   height: 370px;
 }
 
@@ -30,6 +30,7 @@
 }
 
 .paragraph {
+  font-weight: 600;
   font-size: 20px;
   color: navy;
   text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white;
