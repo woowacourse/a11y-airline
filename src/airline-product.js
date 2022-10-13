@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const translate = `translateX(${nextX}px)`;
     $carouselInner.style.transform = translate;
 
-    console.log('currentIndex', [currentIndex, itemCount]);
     $prevBtn.ariaDisabled = false;
     $prevBtn.disabled = false;
     if (currentIndex === itemCount - 1) {
