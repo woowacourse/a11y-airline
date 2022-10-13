@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const $carousel = document.querySelector('.carousel');
   const $carouselInner = $carousel.querySelector('.carousel-inner');
   const itemCount = $carousel.querySelectorAll('li').length / 2; // @TODO: 홀수 처리 필요
-  const $prevBtn = $carousel.querySelector('.carousel-control.left > button');
-  const $nextBtn = $carousel.querySelector('.carousel-control.right > button');
+  const $prevBtn = document.querySelector('.carousel-control.left > button');
+  const $nextBtn = document.querySelector('.carousel-control.right > button');
   let currentIndex = 0;
 
   $prevBtn.addEventListener('click', () => {
