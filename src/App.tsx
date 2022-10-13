@@ -11,9 +11,7 @@ const App = () => {
       <h2>지금 떠나기 좋은 여행</h2>
       <Carousel>
         {recommendations.map((recommendation) => (
-          <li key={recommendation.id}>
-            <ItemCard {...recommendation} />
-          </li>
+          <ItemCard key={recommendation.id} {...recommendation} />
         ))}
       </Carousel>
       <h2>승객 선택</h2>

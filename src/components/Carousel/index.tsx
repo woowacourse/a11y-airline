@@ -27,6 +27,8 @@ const Carousel = (props: React.OlHTMLAttributes<HTMLUListElement>) => {
         onClick={() => {
           browseItem((prev) => prev - 1);
         }}
+        aria-label="이전"
+        aria-disabled
       >
         left
       </button>
@@ -36,6 +38,8 @@ const Carousel = (props: React.OlHTMLAttributes<HTMLUListElement>) => {
         onClick={() => {
           browseItem((prev) => prev + 1);
         }}
+        aria-label="다음"
+        aria-disabled
       >
         right
       </button>
