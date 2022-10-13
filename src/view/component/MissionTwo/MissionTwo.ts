@@ -1,6 +1,5 @@
 import Component from 'src/abstract/Component';
 import { createElement } from 'src/util/dom';
-import CarouselItem from '../CarouselItem/CarouselItem';
 import CarouselList from '../CarouselList/CarouselList';
 
 export default class MissionTwo extends Component {

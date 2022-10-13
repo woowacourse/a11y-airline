@@ -1,3 +1,5 @@
+import './index.css';
+
 import Component from 'src/abstract/Component';
 import { createElement } from 'src/util/dom';
 

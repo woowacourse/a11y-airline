@@ -1,0 +1,40 @@
+.carousel__list {
+  display: flex;
+  width: 100%;
+  padding: 0;
+}
+
+#minus__button {
+  left: 0.1;
+  background: url(https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-left.svg)
+    no-repeat center top;
+}
+
+#plus__button {
+  right: 0;
+  background: url(https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-right.svg)
+    no-repeat center top;
+}
+
+@media (max-width: 475px) {
+  #plus__button {
+    background-size: 15px 30px;
+  }
+  #minus__button {
+    background-size: 15px 30px;
+  }
+}
+
+.carousel__button__container {
+  position: absolute;
+  width: 100%;
+
+  bottom: calc((100% - 4.4rem) / 2);
+}
+
+.carousel__list__container {
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  width: 100%;
+}
