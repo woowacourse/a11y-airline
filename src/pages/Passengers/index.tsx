@@ -11,7 +11,7 @@ function Passengers() {
   }
 
   return (
-    <section className={styles.pagePeopleCount}>
+    <article className={styles.pagePassengers}>
       <h1 className={styles.title} tabIndex={1}>
         승객 선택
       </h1>
@@ -34,7 +34,7 @@ function Passengers() {
         onChange={handleChangeCount}
         aria-label="성인 탑승자"
       />
-    </section>
+    </article>
   )
 }
 
