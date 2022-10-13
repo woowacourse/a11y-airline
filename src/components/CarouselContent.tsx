@@ -29,8 +29,11 @@ const S = {
     height: 295px;
   `,
 
-  Thumbnail: styled.div`
+  Thumbnail: styled.button`
     position: absolute;
+    border: none;
+    background-color: white;
+    cursor: pointer;
   `,
 
   Image: styled.img`

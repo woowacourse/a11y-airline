@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import CarouselContent from './CarouselContent';
@@ -6,18 +6,28 @@ import { TripInfo } from './CarouselContent';
 
 const Carousel = ({ CarouselContents }: CarouselProps) => {
   const carouselRef = useRef<HTMLUListElement | null>(null);
+  const [scrollEnd, setScrollEnd] = useState(false);
 
   const handleClickLeftScrollButton = () => {
     carouselRef.current?.scrollBy(-263, 0);
   };
 
   const handleClickRightScrollButton = () => {
+    const before = carouselRef.current?.scrollLeft;
     carouselRef.current?.scrollBy(263, 0);
+    const after = carouselRef.current?.scrollLeft;
+    if (before === after) setScrollEnd(true);
   };
 
   return (
     <S.Container ref={carouselRef}>
-      <S.LeftScrollButton onClick={handleClickLeftScrollButton}>{'<'}</S.LeftScrollButton>
+      <S.LeftScrollButton
+        aria-label={'이전'}
+        disabled={carouselRef.current?.scrollLeft === 0}
+        onClick={handleClickLeftScrollButton}
+      >
+        {'<'}
+      </S.LeftScrollButton>
       {CarouselContents.map((content) => {
         return (
           <CarouselContent
@@ -29,7 +39,13 @@ const Carousel = ({ CarouselContents }: CarouselProps) => {
           />
         );
       })}
-      <S.RightScrollButton onClick={handleClickRightScrollButton}>{'>'}</S.RightScrollButton>
+      <S.RightScrollButton
+        aria-label={'다음'}
+        disabled={scrollEnd}
+        onClick={handleClickRightScrollButton}
+      >
+        {'>'}
+      </S.RightScrollButton>
     </S.Container>
   );
 };
