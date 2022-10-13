@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import HiddenButAriaRead from "../HiddenButAriaRead";
 import "./spin-button.css";
 
 const COUNT = {
@@ -75,7 +76,7 @@ const SpinButton: React.FC = () => {
   };
 
   return (
-    <div>
+    <section>
       <h2>승객 선택</h2>
       <label htmlFor="spin-button-count">성인</label>
       <button
@@ -125,16 +126,9 @@ const SpinButton: React.FC = () => {
         >
           +
         </button>
-        <span
-          className="hidden"
-          aria-atomic
-          aria-live="assertive"
-          aria-relevant="additions"
-        >
-          {ariaMessage}
-        </span>
+        <HiddenButAriaRead>{ariaMessage}</HiddenButAriaRead>
       </div>
-    </div>
+    </section>
   );
 };
 
