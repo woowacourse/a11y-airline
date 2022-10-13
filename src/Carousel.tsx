@@ -11,6 +11,7 @@ import Travel8 from './assets/travel_8.jpg';
 
 const TravelList = [
   {
+    id: 1,
     departure: '서울/인천',
     arrivals: '두바이',
     seatClass: '일반',
@@ -20,6 +21,7 @@ const TravelList = [
     href: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=DXB&duration=7&cabin=Y',
   },
   {
+    id: 2,
     departure: '서울/인천',
     arrivals: '후쿠오카',
     seatClass: '일반',
@@ -29,6 +31,7 @@ const TravelList = [
     href: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=FUK&duration=7&cabin=Y',
   },
   {
+    id: 3,
     departure: '서울/인천',
     arrivals: '푸켓',
     seatClass: '일반',
@@ -38,6 +41,7 @@ const TravelList = [
     href: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=HKT&duration=7&cabin=Y',
   },
   {
+    id: 4,
     departure: '서울/인천',
     arrivals: '치앙마이',
     seatClass: '일반',
@@ -47,6 +51,7 @@ const TravelList = [
     href: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=CNX&duration=7&cabin=Y',
   },
   {
+    id: 5,
     departure: '서울/인천',
     arrivals: '바르셀로나',
     seatClass: '일반',
@@ -56,6 +61,7 @@ const TravelList = [
     href: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=BCN&duration=7&cabin=Y',
   },
   {
+    id: 6,
     departure: '서울/인천',
     arrivals: '하노이',
     seatClass: '일반',
@@ -65,6 +71,7 @@ const TravelList = [
     href: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=HAN&duration=7&cabin=Y',
   },
   {
+    id: 7,
     departure: '서울/인천',
     arrivals: '로마',
     seatClass: '일반',
@@ -74,6 +81,7 @@ const TravelList = [
     href: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=FCO&duration=7&cabin=Y',
   },
   {
+    id: 8,
     departure: '서울/인천',
     arrivals: '호놀룰루 (하와이)',
     seatClass: '일반',
@@ -92,7 +100,7 @@ const TravelCarousel = () => {
   const [maxXTranslated, setMaxXTranslated] = useState(0);
 
   const carouselWidth = useRef(0);
-  const wrapperRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLUListElement>(null);
 
   const handleClickPrevButton = () => {
     const next = xTranslated - itemSize;
@@ -140,30 +148,37 @@ const TravelCarousel = () => {
 
   return (
     <StyledRoot>
-      <StyledPrev onClick={handleClickPrevButton} disabled={xTranslated <= 0}>
+      <StyledPrev aria-label='이전' onClick={handleClickPrevButton} disabled={xTranslated <= 0}>
         {'>'}
       </StyledPrev>
+      <StyledNext
+        aria-label='다음'
+        onClick={handleClickNextButton}
+        disabled={xTranslated >= maxXTranslated}
+      >
+        {'<'}
+      </StyledNext>
       <StyledWrapper xTranslated={xTranslated} ref={wrapperRef}>
         {TravelList.map(
-          ({ departure, arrivals, seatClass, isRound, bottomPrice, imageUrl, href }) => (
-            <StyledLink href={href} target='_blank'>
-              <StyledTravelInfo>
-                <StyledCityInfo>
-                  {departure} - {arrivals}
-                </StyledCityInfo>
-                <StyledFlyType>
-                  {seatClass}석 {isRound ? '왕복' : '편도'}
-                </StyledFlyType>
-                <StyledPriceInfo>KRW {bottomPrice.toLocaleString('kr')} ~</StyledPriceInfo>
-              </StyledTravelInfo>
-              <img src={imageUrl} alt={arrivals} />
-            </StyledLink>
+          ({ id, departure, arrivals, seatClass, isRound, bottomPrice, imageUrl, href }) => (
+            <li key={id}>
+              <StyledLink href={href} target='_blank'>
+                <StyledTravelInfo>
+                  <StyledCityInfo>
+                    {departure} - {arrivals}
+                  </StyledCityInfo>
+                  <StyledFlyType>
+                    {seatClass}석 {isRound ? '왕복' : '편도'}
+                  </StyledFlyType>
+                  <StyledPriceInfo>KRW {bottomPrice.toLocaleString('kr')}</StyledPriceInfo>
+                  <span aria-hidden={true}>&nbsp;~</span>
+                </StyledTravelInfo>
+                <img src={imageUrl} alt={arrivals} />
+              </StyledLink>
+            </li>
           )
         )}
       </StyledWrapper>
-      <StyledNext onClick={handleClickNextButton} disabled={xTranslated >= maxXTranslated}>
-        {'<'}
-      </StyledNext>
     </StyledRoot>
   );
 };
@@ -176,15 +191,16 @@ const StyledRoot = styled.div`
   position: relative;
 `;
 
-const StyledWrapper = styled.div<{ xTranslated: number }>`
+const StyledWrapper = styled.ul<{ xTranslated: number }>`
   display: flex;
   gap: 10px;
   transform: ${({ xTranslated }) => `translateX(-${xTranslated}px)`};
   transition: transform 300ms linear;
 
-  & > * {
+  & > li {
     flex: none;
     width: fit-content;
+    position: relative;
   }
 
   img {
@@ -194,7 +210,8 @@ const StyledWrapper = styled.div<{ xTranslated: number }>`
 `;
 
 const StyledLink = styled.a`
-  position: relative;
+  width: 100%;
+  height: 100%;
 `;
 
 const StyledTravelInfo = styled.div`
@@ -213,7 +230,7 @@ const StyledFlyType = styled.p`
   font-size: 12px;
 `;
 
-const StyledPriceInfo = styled.p`
+const StyledPriceInfo = styled.span`
   text-shadow: -0.5px 0 #fff, 0 0.5px #fff, 0.5px 0 #fff, 0 -0.5px #fff;
   color: #11277b;
   font-weight: 700;
