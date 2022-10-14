@@ -1,0 +1,23 @@
+.section {
+  min-width: 230px;
+  height: 294px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.flexRow {
+  display: flex;
+  gap: 5px;
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 230px;
+  height: 294px;
+  z-index: -1;
+}
