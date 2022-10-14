@@ -1,10 +1,10 @@
-import { CarouselItemType } from "../../mock/data/carousel";
+import { CarouselItem } from "../../mock/data/carousel";
 import styles from "./styles.module.css";
 import srStyles from "../../styles/screenReader.module.css";
 
-type Props = Omit<CarouselItemType, "id">;
+type Props = Omit<CarouselItem, "id">;
 
-function CarouselItem({
+function CarouselCard({
   departure,
   arrival,
   cabinClass,
@@ -46,4 +46,4 @@ function CarouselItem({
   );
 }
 
-export default CarouselItem;
+export default CarouselCard;

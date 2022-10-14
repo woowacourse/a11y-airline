@@ -1,4 +1,4 @@
-import CarouselItem from "../../components/CarouselItem";
+import CarouselCard from "../../components/CarouselCard";
 import { carouselList } from "../../mock/data/carousel";
 import styles from "./styles.module.css";
 import {
@@ -50,7 +50,7 @@ function Carousel() {
               imgUrl,
               linkUrl,
             }) => (
-              <CarouselItem
+              <CarouselCard
                 key={id}
                 departure={departure}
                 arrival={arrival}

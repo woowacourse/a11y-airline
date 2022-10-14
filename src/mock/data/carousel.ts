@@ -1,4 +1,4 @@
-export interface CarouselItemType {
+export interface CarouselItem {
   id: number;
   departure: string;
   arrival: string;
@@ -9,7 +9,7 @@ export interface CarouselItemType {
   linkUrl: string;
 }
 
-export const carouselList: CarouselItemType[] = [
+export const carouselList: CarouselItem[] = [
   {
     id: 1,
     departure: "서울/인천",
