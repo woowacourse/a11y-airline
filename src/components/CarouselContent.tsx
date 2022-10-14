@@ -33,7 +33,7 @@ const S = {
   `,
 
   Link: styled.a`
-    position: relative;
+    position: absolute;
     width: 230px;
     height: 295px;
   `,

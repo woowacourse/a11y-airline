@@ -88,6 +88,7 @@ const S = {
     width: 490px;
     height: 297px;
     gap: 32px;
+    margin: 0;
     padding: 0;
     list-style: none;
     ::-webkit-scrollbar {
