@@ -77,7 +77,7 @@ const Carousel: React.FC = () => {
           <HiddenButAriaRead>{`추천 여행 목록 ${travels.length}개 포함`}</HiddenButAriaRead>
           {travels.map((travel) => (
             <li key={travel.id}>
-              <a className="card-link" href=".">
+              <a className="card-link" href={travel.href}>
                 <TravelCard
                   src={travel.src}
                   location={travel.location}
