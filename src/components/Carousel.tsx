@@ -69,7 +69,7 @@ const S = {
     flex-wrap: wrap;
     overflow-x: auto;
     position: relative;
-    width: 100%;
+    width: 490px;
     height: 297px;
     padding: 0;
     list-style: none;
@@ -85,7 +85,7 @@ const S = {
     flex-wrap: wrap;
     overflow-x: auto;
     position: relative;
-    width: 100%;
+    width: 490px;
     height: 297px;
     gap: 32px;
     padding: 0;
@@ -96,7 +96,7 @@ const S = {
   `,
 
   LeftScrollButton: styled.button`
-    position: fixed;
+    position: absolute;
     z-index: 10;
     left: 0;
     width: 35px;
@@ -112,7 +112,7 @@ const S = {
   `,
 
   RightScrollButton: styled.button`
-    position: fixed;
+    position: absolute;
     z-index: 10;
     right: 0;
     width: 35px;
