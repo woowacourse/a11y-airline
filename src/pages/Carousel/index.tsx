@@ -19,7 +19,9 @@ function Carousel() {
 
   return (
     <article className={styles.article}>
-      <h1 className={styles.title}>지금 떠나기 좋은 여행</h1>
+      <h1 className={styles.title} tabIndex={1}>
+        지금 떠나기 좋은 여행
+      </h1>
 
       <div className={styles.carouselContainer}>
         <button
@@ -27,6 +29,7 @@ function Carousel() {
           type="button"
           onClick={handleCarouselContainerScrollToLeft}
           disabled={isDisabledScrollToLeftButton}
+          tabIndex={-1}
         >
           <BsFillArrowLeftCircleFill size="36" />
         </button>
@@ -66,6 +69,7 @@ function Carousel() {
           type="button"
           onClick={handleCarouselContainerScrollToRight}
           disabled={isDisabledScrollToRightButton}
+          tabIndex={-1}
         >
           <BsFillArrowRightCircleFill size="36" />
         </button>
