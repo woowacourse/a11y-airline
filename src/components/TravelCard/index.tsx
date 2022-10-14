@@ -32,20 +32,20 @@ const TravelCard = ({
         />
         <div className="card__description">
           <p className="destination">
-            <span aria-label={`출발지 ${departure}`}> {departure} </span>
-            <span aria-hidden={true}> ~ </span>
-            <span aria-label={`도착지 ${destination}`}> {destination} </span>
+            <p aria-label={`출발지 ${departure}`}> {departure} </p>
+            <p aria-hidden={true}> ~ </p>
+            <p aria-label={`도착지 ${destination}`}> {destination} </p>
           </p>
           <p className="trip-information">
-            <span aria-label={`좌석 등급 ${seat}`}> {seat} </span>
-            <span aria-label={`티켓 종류 ${tripType}`}>{tripType}</span>
+            <p aria-label={`좌석 등급 ${seat}`}> {seat} </p>
+            <p aria-label={`티켓 종류 ${tripType}`}>{tripType}</p>
           </p>
           <p className="price">
-            <span aria-hidden={true}>KWR</span>
-            <span className="sr-only">한화 </span>
+            <p aria-hidden={true}>KWR</p>
+            <p className="sr-only">한화 </p>
             {parseToKWRPrice(price)}
-            <span className="sr-only">원 부터 </span>
-            <span aria-hidden={true}> ~</span>
+            <p className="sr-only">원 부터 </p>
+            <p aria-hidden={true}> ~</p>
           </p>
         </div>
       </a>
