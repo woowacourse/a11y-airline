@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 
-const CarouselContent = ({ imageUrl, imageAlt, arrivals, price }: TripInfo) => {
+const CarouselContent = ({ imageUrl, imageAlt, arrivals, price, link }: TripInfo) => {
   return (
     <S.Container>
-      <S.Thumbnail>
-        <S.Image src={imageUrl} alt={imageAlt} />
-      </S.Thumbnail>
-      <S.Description>
-        <S.Location>서울/인천 - {arrivals}</S.Location>
-        <S.Seat>일반석 왕복</S.Seat>
-        <S.Price>KRW {price} ~</S.Price>
-      </S.Description>
+      <S.Link href={link}>
+        <S.Thumbnail>
+          <S.Image src={imageUrl} alt={imageAlt} />
+        </S.Thumbnail>
+        <S.Description>
+          <S.Location>서울/인천 - {arrivals}</S.Location>
+          <S.Seat>일반석 왕복</S.Seat>
+          <S.Price>KRW {price} ~</S.Price>
+        </S.Description>
+      </S.Link>
     </S.Container>
   );
 };
@@ -20,6 +22,7 @@ export interface TripInfo {
   imageAlt: string;
   arrivals: string;
   price: string;
+  link: string;
 }
 
 const S = {
@@ -29,7 +32,13 @@ const S = {
     height: 295px;
   `,
 
-  Thumbnail: styled.button`
+  Link: styled.a`
+    position: relative;
+    width: 230px;
+    height: 295px;
+  `,
+
+  Thumbnail: styled.a`
     position: absolute;
     border: none;
     background-color: white;
@@ -48,6 +57,7 @@ const S = {
     width: 230px;
     height: 295px;
     padding: 16px;
+    color: black;
   `,
 
   Location: styled.h2`

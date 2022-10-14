@@ -6,39 +6,46 @@ import { TripInfo } from './CarouselContent';
 
 const Carousel = ({ CarouselContents }: CarouselProps) => {
   const carouselRef = useRef<HTMLUListElement | null>(null);
+  const [scrollStart, setScrollStart] = useState(false);
   const [scrollEnd, setScrollEnd] = useState(false);
 
   const handleClickLeftScrollButton = () => {
     carouselRef.current?.scrollBy(-263, 0);
+    setScrollEnd(false);
+    if (carouselRef.current?.scrollLeft === 0) setScrollStart(true);
   };
 
   const handleClickRightScrollButton = () => {
     const before = carouselRef.current?.scrollLeft;
     carouselRef.current?.scrollBy(263, 0);
+    setScrollStart(false);
     const after = carouselRef.current?.scrollLeft;
     if (before === after) setScrollEnd(true);
   };
 
   return (
-    <S.Container ref={carouselRef}>
+    <S.Container>
       <S.LeftScrollButton
         aria-label={'이전'}
-        disabled={carouselRef.current?.scrollLeft === 0}
+        disabled={scrollStart}
         onClick={handleClickLeftScrollButton}
       >
         {'<'}
       </S.LeftScrollButton>
-      {CarouselContents.map((content) => {
-        return (
-          <CarouselContent
-            key={content.imageUrl}
-            imageUrl={content.imageUrl}
-            imageAlt={content.imageAlt}
-            arrivals={content.arrivals}
-            price={content.price}
-          />
-        );
-      })}
+      <S.UlContainer ref={carouselRef}>
+        {CarouselContents.map((content) => {
+          return (
+            <CarouselContent
+              key={content.imageUrl}
+              imageUrl={content.imageUrl}
+              imageAlt={content.imageAlt}
+              arrivals={content.arrivals}
+              price={content.price}
+              link={content.link}
+            />
+          );
+        })}
+      </S.UlContainer>
       <S.RightScrollButton
         aria-label={'다음'}
         disabled={scrollEnd}
@@ -55,7 +62,23 @@ interface CarouselProps {
 }
 
 const S = {
-  Container: styled.ul`
+  Container: styled.section`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    position: relative;
+    width: 100%;
+    height: 297px;
+    padding: 0;
+    list-style: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  `,
+
+  UlContainer: styled.ul`
     display: flex;
     flex-direction: column;
     justify-content: center;
