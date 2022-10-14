@@ -12,10 +12,22 @@ const Carousel = ({ children }: { children: ReactNode[] }) => {
   });
 
   function scrollToNextPage() {
-    carouselRef.current?.scrollBy({ left: 1, top: 0, behavior: "smooth" });
+    carouselRef.current?.scrollBy({
+      left: carouselRef.current?.children[0].querySelector("section")
+        ?.scrollWidth,
+      top: 0,
+      behavior: "smooth",
+    });
   }
   function scrollToPrevPage() {
-    carouselRef.current?.scrollBy({ left: -1, top: 0, behavior: "smooth" });
+    carouselRef.current?.scrollBy({
+      left:
+        Number(
+          carouselRef.current?.children[0].querySelector("section")?.scrollWidth
+        ) * -1,
+      top: 0,
+      behavior: "smooth",
+    });
   }
 
   const handleXScrollMove = () => {
@@ -37,9 +49,7 @@ const Carousel = ({ children }: { children: ReactNode[] }) => {
 
   return (
     <S.Slider>
-      <S.Carousel ref={carouselRef} aria-label="항공권들">
-        {children}
-      </S.Carousel>
+      <S.Carousel ref={carouselRef}>{children}</S.Carousel>
       <S.PrevButton
         type="button"
         onClick={scrollToPrevPage}
