@@ -34,7 +34,6 @@ function Passenger() {
           className={styles.srOnly}
           htmlFor="inputLabel"
           role="status"
-          // aria-live="polite"
         >{`성인 승객 추가 ${passengerCount}`}</label>
         <input
           name="inputLabel"
