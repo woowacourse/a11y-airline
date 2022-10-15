@@ -1,8 +1,9 @@
 import { useContext, useRef, useState } from 'react';
+import S from './Carousel.module.css';
 import type { CardInfo } from '../../type';
 import Card from '../Card';
-import S from './Carousel.module.css';
 import { messageContext } from '../../context/MessageContext';
+import { scrollByIndex } from '../../utils';
 
 type CarouselProps = {
   cardInfoList: CardInfo[];
@@ -12,13 +13,13 @@ const Carousel: React.FC<CarouselProps> = ({ cardInfoList }) => {
   const messageState = useContext(messageContext);
   const [index, setIndex] = useState(0);
   const carouselRef = useRef<HTMLUListElement>(null);
+  const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
   const handleLeftClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     if (carouselRef.current && index > 0) {
-      carouselRef.current.scrollBy({ left: -256, behavior: 'smooth' });
-      setIndex((prevIndex) => {
-        return prevIndex - 1;
-      });
+      scrollByIndex(carouselRef.current, itemRefs.current, index, 'left');
+      setIndex((prevIndex) => prevIndex - 1);
+
       return;
     }
 
@@ -27,25 +28,32 @@ const Carousel: React.FC<CarouselProps> = ({ cardInfoList }) => {
 
   const handleRightClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     if (carouselRef.current && index < cardInfoList.length - 1) {
-      carouselRef.current.scrollBy({ left: 256, behavior: 'smooth' });
+      scrollByIndex(carouselRef.current, itemRefs.current, index, 'right');
       setIndex((prevIndex) => prevIndex + 1);
+
       return;
     }
 
     messageState?.setMessage('사용 중지');
   };
 
+  const bindItemRefs = (index: number) => (element: HTMLAnchorElement) => {
+    itemRefs.current[index] = element;
+
+    return element;
+  };
+
   return (
     <div className={S.layout}>
-      <ul className={S.box} ref={carouselRef} role='list'>
+      <ul className={S.box} ref={carouselRef}>
         {cardInfoList.map((info, infoIndex) =>
           index === infoIndex ? (
-            <li key={info.id} role='listitem'>
-              <Card info={info} />
+            <li key={info.id}>
+              <Card info={info} ref={bindItemRefs(infoIndex)} />
             </li>
           ) : (
-            <li key={info.id} role='listitem' tabIndex={-1}>
-              <Card info={info} tabIndex={-1} />
+            <li key={info.id} tabIndex={-1}>
+              <Card info={info} tabIndex={-1} ref={bindItemRefs(infoIndex)} />
             </li>
           )
         )}
