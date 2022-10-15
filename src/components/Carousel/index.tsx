@@ -1,4 +1,4 @@
-import { useState, useRef, FocusEvent, useEffect, MouseEvent } from 'react';
+import { useState, useRef, FocusEvent, MouseEvent } from 'react';
 
 import Item, { ItemProps } from './components/Item';
 import * as S from './index.style';
@@ -32,23 +32,21 @@ const Carousel = ({ title, items, itemWidth = 245 }: CarouselProps) => {
     e.target.scrollIntoView({ behavior: 'smooth' });
   };
 
-  useEffect(() => {
+  const handleEnd = () => {
     if (!ItemContainer.current) return;
 
-    ItemContainer.current.addEventListener('scroll', () => {
-      const { scrollLeft, scrollWidth, offsetWidth } = ItemContainer.current!;
+    const { scrollLeft, scrollWidth, offsetWidth } = ItemContainer.current;
 
-      setEnd({
-        left: scrollLeft <= 0,
-        right: scrollWidth <= offsetWidth + scrollLeft,
-      });
+    setEnd({
+      left: scrollLeft <= 0,
+      right: scrollWidth <= offsetWidth + scrollLeft,
     });
-  }, []);
+  };
 
   return (
     <S.Container>
       <S.Title>{title}</S.Title>
-      <S.ItemContainer ref={ItemContainer}>
+      <S.ItemContainer ref={ItemContainer} onScroll={handleEnd}>
         {items &&
           items.map(item => (
             <Item
