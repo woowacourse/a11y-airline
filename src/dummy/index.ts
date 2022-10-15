@@ -1,12 +1,6 @@
-export interface Trip {
-  link: string;
-  imgSrc: string;
-  description: {
-    title: string;
-    subTitle: string;
-    information: string;
-  };
-}
+import { ItemProps } from '../components/Carousel/components/Item';
+
+export interface Trip extends ItemProps {}
 
 export const trips: Trip[] = [
   {

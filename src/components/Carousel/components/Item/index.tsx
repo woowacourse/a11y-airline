@@ -14,7 +14,7 @@ export interface ItemProps extends HTMLAttributes<HTMLAnchorElement> {
 const Item = ({ link, imgSrc, description, ...props }: ItemProps) => {
   return (
     <S.Container href={link} {...props}>
-      <S.Content src={imgSrc} alt={description.title} />
+      <S.Content src={imgSrc} />
       <S.Description>
         <S.Title>{description.title}</S.Title>
         <S.SubTitle>{description.subTitle}</S.SubTitle>
