@@ -25,7 +25,7 @@ const ListItem = forwardRef<HTMLLIElement, Props>((item: Props, ref) => {
             <img src={img} className="list-item-image" alt="" />
           </div>
           <div className="list-description">
-            <p className="list-location" aria-label={seat}>
+            <p className="list-location" aria-label={description}>
               {description}
             </p>
             <p className="list-seat" aria-label={seat}>
