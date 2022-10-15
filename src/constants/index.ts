@@ -26,7 +26,7 @@ export const CAROUSEL_CONTENTS: TripInfo[] = [
   {
     imageUrl: 치앙마이,
     imageAlt: '치앙마이 이미지',
-    arrivals: '치망마이',
+    arrivals: '치앙마이',
     price: '839,000',
     link: 'https://www.koreanair.com/booking/best-prices?departureCode=ICN&destinationCode=CNX&cabin=Y&tripType=RT&duration=7',
   },
