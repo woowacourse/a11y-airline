@@ -8,9 +8,9 @@ const CarouselContent = ({ imageUrl, imageAlt, arrivals, price, link }: TripInfo
           <S.Image src={imageUrl} alt={imageAlt} />
         </S.Thumbnail>
         <S.Description>
-          <S.Location>서울/인천 - {arrivals}</S.Location>
+          <S.Location aria-label={`서울/인천 - ${arrivals}`}>서울/인천 - {arrivals}</S.Location>
           <S.Seat>일반석 왕복</S.Seat>
-          <S.Price>KRW {price} ~</S.Price>
+          <S.Price aria-label={`${price} 대한민국 원`}>KRW {price} ~</S.Price>
         </S.Description>
       </S.Link>
     </S.Container>

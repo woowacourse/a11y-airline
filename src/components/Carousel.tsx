@@ -1,33 +1,25 @@
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
+import useCarousel from '../hooks/useCarousel';
 
 import CarouselContent from './CarouselContent';
 import { TripInfo } from './CarouselContent';
 
 const Carousel = ({ CarouselContents }: CarouselProps) => {
-  const carouselRef = useRef<HTMLUListElement | null>(null);
-  const [scrollStart, setScrollStart] = useState(false);
-  const [scrollEnd, setScrollEnd] = useState(false);
-
-  const handleClickLeftScrollButton = () => {
-    carouselRef.current?.scrollBy(-263, 0);
-    setScrollEnd(false);
-    if (carouselRef.current?.scrollLeft === 0) setScrollStart(true);
-  };
-
-  const handleClickRightScrollButton = () => {
-    const before = carouselRef.current?.scrollLeft;
-    carouselRef.current?.scrollBy(263, 0);
-    setScrollStart(false);
-    const after = carouselRef.current?.scrollLeft;
-    if (before === after) setScrollEnd(true);
-  };
+  const {
+    carouselRef,
+    scrollStart,
+    scrollEnd,
+    handleClickLeftScrollButton,
+    handleClickRightScrollButton,
+    announceState,
+  } = useCarousel();
 
   return (
     <S.Container>
       <S.LeftScrollButton
         aria-label={'이전'}
-        disabled={scrollStart}
+        aria-disabled={scrollStart}
         onClick={handleClickLeftScrollButton}
       >
         {'<'}
@@ -48,11 +40,14 @@ const Carousel = ({ CarouselContents }: CarouselProps) => {
       </S.UlContainer>
       <S.RightScrollButton
         aria-label={'다음'}
-        disabled={scrollEnd}
+        aria-disabled={scrollEnd}
         onClick={handleClickRightScrollButton}
       >
         {'>'}
       </S.RightScrollButton>
+      <S.Announce role={'status'} aria-live={'polite'} tabIndex={-1}>
+        {announceState}
+      </S.Announce>
     </S.Container>
   );
 };
@@ -129,6 +124,10 @@ const S = {
     font-size: 20px;
     font-weight: 700;
     cursor: pointer;
+  `,
+
+  Announce: styled.p`
+    transform: scale(0);
   `,
 };
 
