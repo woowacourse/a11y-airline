@@ -6,36 +6,43 @@ import useWindowResize from '../hooks/useWindowResize';
 
 function Carousel() {
   const tourItemRef = useRef<HTMLLIElement>(null);
-  const [currentTransformX, setCurrentTransformX] = useState(0);
-  const [tourItemWidth, setTourItemWidth] = useState(0);
-  const minTransformX = 0;
-  const maxTransformX = -tourItemWidth * 6;
+  const [currentTranslateX, setCurrentTranslateX] = useState(0);
+  const [maxTranslateX, setMaxTranslateX] = useState(0);
+  const minTranslateX = 0;
 
-  const handleSlideToNextSlide = () => {
-    if (currentTransformX <= maxTransformX) return;
+  const isFirstItem = currentTranslateX >= minTranslateX;
+  const isLastItem = currentTranslateX <= maxTranslateX;
 
-    setCurrentTransformX((prev) => prev - tourItemWidth);
+  const handleSlideToNextItem = () => {
+    if (isLastItem) return;
+
+    setCurrentTranslateX((prev) => {
+      if (!tourItemRef.current) return prev;
+
+      return prev - tourItemRef.current.clientWidth;
+    });
   };
-  const handleSlideToPrevSlide = () => {
-    if (currentTransformX >= minTransformX) return;
 
-    setCurrentTransformX((prev) => prev + tourItemWidth);
+  const handleSlideToPrevItem = () => {
+    if (isFirstItem) return;
+
+    setCurrentTranslateX((prev) => {
+      if (!tourItemRef.current) return prev;
+
+      return prev + tourItemRef.current.clientWidth;
+    });
   };
 
-  console.log(currentTransformX, tourItemWidth);
   const resetCarouselSetting = () => {
-    if (tourItemRef.current) {
-      setTourItemWidth(tourItemRef.current.clientWidth);
-    }
-    setCurrentTransformX(0);
+    setCurrentTranslateX(0);
   };
   useWindowResize(resetCarouselSetting);
 
   useEffect(() => {
     if (tourItemRef.current) {
-      setTourItemWidth(tourItemRef.current.clientWidth);
+      setMaxTranslateX(-tourItemRef.current.clientWidth * 6);
     }
-  }, []);
+  }, [tourItemRef.current?.clientWidth]);
 
   return (
     <div className="list-container">
@@ -45,7 +52,7 @@ function Carousel() {
           <ul
             className="list"
             style={{
-              transform: `translateX(${currentTransformX}px)`,
+              transform: `translateX(${currentTranslateX}px)`,
             }}
           >
             {tourItems.data.map((item) => (
@@ -57,16 +64,16 @@ function Carousel() {
           <button
             type="button"
             className="button-prev"
-            onClick={handleSlideToPrevSlide}
-            disabled={currentTransformX >= minTransformX}
+            onClick={handleSlideToPrevItem}
+            disabled={isFirstItem}
           >
             <span className="sr-only">이전</span>
           </button>
           <button
             type="button"
             className="button-next"
-            onClick={handleSlideToNextSlide}
-            disabled={currentTransformX <= maxTransformX}
+            onClick={handleSlideToNextItem}
+            disabled={isLastItem}
           >
             <span className="sr-only">다음</span>
           </button>
