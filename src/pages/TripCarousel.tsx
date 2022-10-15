@@ -4,10 +4,10 @@ import { CAROUSEL_CONTENTS } from '../constants';
 
 const TripCarousel = () => {
   return (
-    <S.Main>
+    <>
       <S.Title>지금 떠나기 좋은 여행</S.Title>
       <Carousel CarouselContents={CAROUSEL_CONTENTS} />
-    </S.Main>
+    </>
   );
 };
 
@@ -15,6 +15,8 @@ const S = {
   Main: styled.main`
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
+    width: 100vw;
     margin: 0 16px;
   `,
 

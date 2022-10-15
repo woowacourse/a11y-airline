@@ -76,6 +76,9 @@ const S = {
     ::-webkit-scrollbar {
       display: none;
     }
+    @media (max-width: 490px) {
+      width: inherit;
+    }
   `,
 
   UlContainer: styled.ul`
