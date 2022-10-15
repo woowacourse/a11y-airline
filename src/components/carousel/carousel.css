@@ -50,7 +50,7 @@
 .carousel-button:active {
   border: 1px solid darkblue;
 }
-.carousel-button:disabled {
+.carousel-button[aria-disabled="true"] {
   border: none;
 }
 
