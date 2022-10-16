@@ -35,32 +35,43 @@ const useCarousel = ({
     window.innerWidth,
   );
   const controlButtonTop = itemHeight / 2;
+
   const isReachedStart = reachedAt === 'start';
   const isReachedEnd = reachedAt === 'end';
 
+  const totalScrollPosition = itemWidth * itemLength + gap * (itemLength - 1);
+  const decreasingScrollPosition = itemWidth * (viewingCount + 1) + gap * viewingCount;
+  const maxScrollPosition = totalScrollPosition - decreasingScrollPosition;
+  const minScrollPosition = 0;
+  const positionUnit = itemWidth + gap;
+
   const handleClickPrevButton = () => {
+    const isMinPosition = currentPosRef.current == minScrollPosition;
+
     if (isReachedStart) {
       setMessage('이미 목록의 처음 위치에 있습니다.');
       return;
     }
 
     if (isReachedEnd) {
-      currentPosRef.current -= (itemWidth + gap) * viewingCount;
+      currentPosRef.current -= positionUnit * viewingCount;
       wrapperRef.current!.scrollTo({ left: currentPosRef.current, behavior: 'smooth' });
       setReachedAt(null);
       return;
     }
 
-    if (currentPosRef.current == 0) {
+    if (isMinPosition) {
       setReachedAt('start');
       return;
     }
 
-    currentPosRef.current -= itemWidth + gap;
+    currentPosRef.current -= positionUnit;
     wrapperRef.current!.scrollTo({ left: currentPosRef.current, behavior: 'smooth' });
   };
 
   const handleClickNextButton = () => {
+    const isExceedMaxPosition = currentPosRef.current >= maxScrollPosition;
+
     if (isReachedEnd) {
       setMessage('이미 목록의 끝 위치에 있습니다.');
       return;
@@ -70,20 +81,14 @@ const useCarousel = ({
       setReachedAt(null);
     }
 
-    if (
-      currentPosRef.current >=
-      itemWidth * itemLength +
-        gap * (itemLength - 1) -
-        itemWidth * (viewingCount + 1) -
-        gap * viewingCount
-    ) {
-      currentPosRef.current += (itemWidth + gap) * 2;
+    if (isExceedMaxPosition) {
+      currentPosRef.current += positionUnit * 2;
       wrapperRef.current!.scrollTo({ left: currentPosRef.current, behavior: 'smooth' });
       setReachedAt('end');
       return;
     }
 
-    currentPosRef.current += itemWidth + gap;
+    currentPosRef.current += positionUnit;
     wrapperRef.current!.scrollTo({ left: currentPosRef.current, behavior: 'smooth' });
   };
 
@@ -96,19 +101,15 @@ const useCarousel = ({
       scrollTimerIdRef.current = null;
       currentPosRef.current = wrapperRef.current!.scrollLeft;
 
+      const isExceedMaxPosition =
+        currentPosRef.current >= maxScrollPosition + itemWidth / 2;
+
       if (currentPosRef.current <= 0) {
         setReachedAt('start');
         return;
       }
 
-      if (
-        currentPosRef.current >=
-        itemWidth * itemLength +
-          gap * (itemLength - 1) -
-          itemWidth * (viewingCount + 1) -
-          gap * viewingCount +
-          itemWidth / 2
-      ) {
+      if (isExceedMaxPosition) {
         setReachedAt('end');
         return;
       }
