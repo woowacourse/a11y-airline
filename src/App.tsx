@@ -6,7 +6,7 @@ import "./style/App.css";
 
 function App() {
   return (
-    <div className="App" tabIndex={0}>
+    <div className="App">
       <h2>지금 떠나기 좋은 여행</h2>
       <Carousel>
         {TRAVEL_INFO_LIST.map((item) => (
