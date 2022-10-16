@@ -94,3 +94,22 @@ a {
     no-repeat right top;
   background-size: 30px 60px;
 }
+
+@media (max-width: 400px) {
+  .item-container {
+    width: 390px;
+  }
+
+  .item-list {
+    gap: 30px;
+  }
+
+  .item-image {
+    width: 180px;
+    height: 250px;
+  }
+
+  .button-wrapper {
+    width: 390px;
+  }
+}

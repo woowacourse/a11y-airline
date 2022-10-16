@@ -3,11 +3,16 @@ import { $, $$ } from "./dom.js";
 let itemIndex = 0;
 
 const transformItemList = () => {
+  let translateSize = window.innerWidth > 400 ? -270 : -210;
+
   $$(".item").forEach((item) => {
-    item.animate([{ transform: `translateX(calc((-270px) * ${itemIndex}))` }], {
-      duration: 300,
-      fill: "forwards",
-    });
+    item.animate(
+      [{ transform: `translateX(calc((${translateSize}px) * ${itemIndex}))` }],
+      {
+        duration: 300,
+        fill: "forwards",
+      }
+    );
   });
 };
 
