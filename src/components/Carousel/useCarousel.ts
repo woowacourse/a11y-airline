@@ -55,7 +55,11 @@ const useCarousel = ({
 
     if (isReachedEnd) {
       currentPosRef.current -= positionUnit * viewingCount;
-      wrapperRef.current!.scrollTo({ left: currentPosRef.current, behavior: 'smooth' });
+      wrapperRef.current!.scrollBy({
+        left: -(positionUnit * viewingCount),
+        behavior: 'smooth',
+      });
+
       setReachedAt(null);
       return;
     }
@@ -66,7 +70,7 @@ const useCarousel = ({
     }
 
     currentPosRef.current -= positionUnit;
-    wrapperRef.current!.scrollTo({ left: currentPosRef.current, behavior: 'smooth' });
+    wrapperRef.current!.scrollBy({ left: -positionUnit, behavior: 'smooth' });
   };
 
   const handleClickNextButton = () => {
@@ -83,13 +87,13 @@ const useCarousel = ({
 
     if (isExceedMaxPosition) {
       currentPosRef.current += positionUnit * 2;
-      wrapperRef.current!.scrollTo({ left: currentPosRef.current, behavior: 'smooth' });
+      wrapperRef.current!.scrollBy({ left: positionUnit * 2, behavior: 'smooth' });
       setReachedAt('end');
       return;
     }
 
     currentPosRef.current += positionUnit;
-    wrapperRef.current!.scrollTo({ left: currentPosRef.current, behavior: 'smooth' });
+    wrapperRef.current!.scrollBy({ left: positionUnit, behavior: 'smooth' });
   };
 
   const handleScrollWrapper = () => {
