@@ -11,6 +11,8 @@ const carouselContents = carouselContentContainer.querySelectorAll<HTMLElement>(
 const contentLength = carouselContents.length;
 
 let focusedLinkIndex = 0;
+const checkFirstItemFocused = (index: number) => index === 0;
+const checkLastItemFocused = (index: number) => index === contentLength - 1;
 
 const horizontalScrollToElement: (
   element: HTMLElement,
@@ -24,7 +26,6 @@ const horizontalScrollToElement: (
 };
 
 const scrollToPrev = () => {
-  if (focusedLinkIndex === 0) return;
   focusedLinkIndex -= 1;
   horizontalScrollToElement(
     carouselContents[focusedLinkIndex],
@@ -33,7 +34,6 @@ const scrollToPrev = () => {
 };
 
 const scrollToNext = () => {
-  if (focusedLinkIndex === contentLength - 1) return;
   focusedLinkIndex += 1;
   horizontalScrollToElement(
     carouselContents[focusedLinkIndex],
@@ -43,10 +43,10 @@ const scrollToNext = () => {
 
 const handleCarouselMove = (target: HTMLButtonElement) => {
   const { classList } = target;
-  if (classList.contains("prev")) {
+  if (classList.contains("prev") && !checkFirstItemFocused(focusedLinkIndex)) {
     scrollToPrev();
   }
-  if (classList.contains("next")) {
+  if (classList.contains("next") && !checkLastItemFocused(focusedLinkIndex)) {
     scrollToNext();
   }
 };
