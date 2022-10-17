@@ -26,8 +26,9 @@ const TravelCard = ({
         <div className="text-info">
           <p className="title">{title}</p>
           <p className="option">{option}</p>
-          <p className="lowestPrice">
-            KRW {lowestPrice} <span aria-hidden>~</span>
+          <p className="lowestPrice" aria-label={`${lowestPrice} 대한민국 원`}>
+            <span aria-hidden>KRW</span> {lowestPrice}{" "}
+            <span aria-hidden>~</span>
           </p>
         </div>
       </a>
