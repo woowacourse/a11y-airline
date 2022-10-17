@@ -32,7 +32,7 @@ const CarouselTravelItem = ({ item, imageRef, onHoverItem }: CarouselTravelItemP
 					<S.CarouselDescriptionBox>
 						<S.TravelTitle aria-label={`목적지 ${item.title}`}>{item.title}</S.TravelTitle>
 						<S.TravelSeat aria-label={'일반석 왕복'}>일반석-왕복</S.TravelSeat>
-						<S.TravelPrice aria-label={`가격 ${item.price}`}>
+						<S.TravelPrice aria-label={`가격 ${item.price}원`}>
 							{ConvertPrice(item.price)}~
 						</S.TravelPrice>
 					</S.CarouselDescriptionBox>
