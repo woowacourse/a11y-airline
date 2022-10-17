@@ -1,7 +1,7 @@
-import PassengerCountInput from "./components/PassengerCountInput/PassengerCountInput";
+import PromotionList from "./pages/PromotionList/PromotionList";
 
 function App() {
-  return <PassengerCountInput />;
+  return <PromotionList />;
 }
 
 export default App;
