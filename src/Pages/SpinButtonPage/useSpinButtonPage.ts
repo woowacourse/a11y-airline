@@ -2,7 +2,7 @@ import { ChangeEventHandler, useEffect, useRef, useState } from 'react';
 
 import { MAX_VALUE, MIN_VALUE } from 'constants/passenger';
 
-const useDialogPassenger = () => {
+const useSpinButtonPage = () => {
   const [value, setValue] = useState<number | ''>(1);
   const [message, setMessage] = useState('');
   const [alertMessage, setAlertMessage] = useState('');
@@ -81,4 +81,4 @@ const useDialogPassenger = () => {
   };
 };
 
-export default useDialogPassenger;
+export default useSpinButtonPage;

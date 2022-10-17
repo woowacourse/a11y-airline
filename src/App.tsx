@@ -1,11 +1,11 @@
 import GlobalStyle from 'GlobalStyle';
-import DialogPassenger from 'Pages/DialogPassenger';
+import Router from 'Router';
 
 const App = () => {
   return (
     <>
       <GlobalStyle />
-      <DialogPassenger />
+      <Router />
     </>
   );
 };
