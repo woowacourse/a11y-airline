@@ -6,6 +6,12 @@ import CarouselController from "./components/CarouselController";
 
 import { data } from "./data";
 
+const PAGE = {
+  WIDTH: 300,
+  GAP: 8,
+  MAX_COUNT: 8,
+};
+
 const CarouselPage = () => {
   const [page, setPage] = useState<number>(0);
   const start = useRef<HTMLUListElement>(null);
@@ -14,7 +20,7 @@ const CarouselPage = () => {
     if (!start.current) return;
     start.current.scrollTo({
       top: 0,
-      left: 300 * page + 8 * page,
+      left: (PAGE.WIDTH + PAGE.GAP) * page,
       behavior: "smooth",
     });
   };
@@ -32,7 +38,7 @@ const CarouselPage = () => {
   };
 
   const handleNextButtonClick = () => {
-    if (page > 7) {
+    if (page > PAGE.MAX_COUNT) {
       return;
     }
 
@@ -48,7 +54,7 @@ const CarouselPage = () => {
       <h2>지금 떠나기 좋은 여행</h2>
       <div className="carousel">
         <ul className="item__list" ref={start}>
-          {data.map(({ href, image, location, seat, price }, index) => (
+          {data.map(({ href, image, location, seat, price }) => (
             <li className="item">
               <CarouselItem
                 href={href}
@@ -63,7 +69,7 @@ const CarouselPage = () => {
         <CarouselController
           handleBackButtonClick={handleBackButtonClick}
           handleNextButtonClick={handleNextButtonClick}
-          max={7}
+          max={PAGE.MAX_COUNT - 1}
           current={page}
         />
       </div>
