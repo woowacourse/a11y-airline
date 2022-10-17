@@ -15,24 +15,24 @@
 .promotion-list-container {
   position: relative;
 
-  width: 309rem;
+  max-width: 309rem;
 }
 
 @media screen and (max-width: 1279px) {
   .promotion-list-container {
-    width: 246rem;
+    max-width: 246rem;
   }
 }
 
 @media screen and (max-width: 959px) {
   .promotion-list-container {
-    width: 183rem;
+    max-width: 183rem;
   }
 }
 
 @media screen and (max-width: 599px) {
   .promotion-list-container {
-    width: 120rem;
+    max-width: 120rem;
   }
 }
 
