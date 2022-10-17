@@ -7,6 +7,7 @@ import {
 } from 'components/Carousel/Carousel.type';
 import useCarousel from 'components/Carousel/useCarousel';
 import { CONTROL_BUTTON_KIND } from 'components/Carousel/Carousel.constant';
+import { HiddenMessage } from 'components';
 
 const Carousel = ({
   itemWidth,
@@ -121,15 +122,4 @@ const ControlButton = styled.button`
       cursor: not-allowed;
     }
   `}
-`;
-
-const HiddenMessage = styled.span`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  border: 0;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-  z-index: -1;
 `;
