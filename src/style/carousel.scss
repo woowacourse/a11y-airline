@@ -1,6 +1,7 @@
+@use 'sass:math';
 @import './media-query.scss';
 
-$containerWidth: 70vw;
+$containerWidth: 50vw;
 $imageCount: 8;
 $carouselItemWidth: calc($containerWidth/2);
 
@@ -64,12 +65,13 @@ $carouselItemWidth: calc($containerWidth/2);
   }
 
   @include mobile {
-    max-width: 80vw;
+    $width: 80vw;
+    max-width: $width;
 
     .carousel-inner {
-      width: calc(40vw * $imageCount);
+      width: calc(math.div($width, 2) * $imageCount);
       & > li {
-        width: 40vw;
+        width: math.div($width, 2);
       }
       .carousel-control > button > span {
         font-size: 18px;
