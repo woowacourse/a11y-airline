@@ -24,6 +24,11 @@ ul {
   gap: 40px;
 }
 
+.carousel-anchor {
+  display: block;
+  height: 100%;
+}
+
 .carousel-image {
   width: 230px;
   height: 295px;
