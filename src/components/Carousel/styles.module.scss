@@ -11,7 +11,7 @@
     overflow-x: scroll;
     overflow-y: visible;
     overscroll-behavior-x: contain;
-    scroll-snap-type: none;
+    scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
 
     & > * {
