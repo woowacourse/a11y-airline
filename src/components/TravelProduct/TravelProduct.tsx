@@ -33,7 +33,9 @@ const TravelProduct = ({
         <p>
           {seatType} {bookingType}
         </p>
-        <p className={styles.fare}>KRW {minimumFare.toLocaleString()} ~</p>
+        <p className={styles.fare}>
+          KRW {minimumFare.toLocaleString()} <span aria-hidden>~</span>
+        </p>
       </div>
     </a>
   );
