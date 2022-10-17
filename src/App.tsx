@@ -1,19 +1,18 @@
 import React from "react";
+import Carousel from "./components/Carousel";
+import TravelItem from "./components/TravelItem";
+import { TRAVEL_INFO_LIST } from "./constants/travel";
 import "./style/App.css";
-
-import PassengerController from "./components/PassengerController";
 
 function App() {
   return (
-    <div className="App" tabIndex={0}>
-      <h2>승객 선택</h2>
-      <PassengerController
-        passengerType="성인"
-        defaultValue={1}
-        step={1}
-        min={0}
-        max={3}
-      />
+    <div className="App">
+      <h2>지금 떠나기 좋은 여행</h2>
+      <Carousel>
+        {TRAVEL_INFO_LIST.map((item) => (
+          <TravelItem key={item.location} {...item} />
+        ))}
+      </Carousel>
     </div>
   );
 }
