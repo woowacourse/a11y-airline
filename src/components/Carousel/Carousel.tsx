@@ -8,6 +8,7 @@ import useDebounceCallback from 'hooks/useDebounceCallback'
 import { FlexContainer } from 'components'
 
 import styles from './styles.module.scss'
+import srStyles from 'styles/screen-reader.module.scss'
 
 interface CarouselProps {
   className?: string
@@ -59,18 +60,6 @@ function Carousel({ className, children }: CarouselProps) {
 
   return (
     <div className={styles.componentCarousel}>
-      <button
-        type="button"
-        className={cn(styles.controlButton, styles.previous, {
-          [styles.enabled]: buttonEnabled.previous,
-        })}
-        onClick={handleChangeScroll('previous')}
-        aria-disabled={!buttonEnabled.previous}
-      >
-        <span className="screen-reader-text">이전</span>
-        <FontAwesomeIcon icon={faChevronLeft} />
-      </button>
-
       <FlexContainer
         className={cn(styles.contentWrapper, className)}
         ref={contentListRef}
@@ -81,13 +70,32 @@ function Carousel({ className, children }: CarouselProps) {
         {children}
       </FlexContainer>
 
+      <span className={srStyles.screenReaderOnly} role="status">
+        {(!buttonEnabled.previous && '첫번째 컨텐츠에 도달했습니다.') ||
+          (!buttonEnabled.next && '마지막 컨텐츠에 도달했습니다.')}
+      </span>
+
+      <button
+        type="button"
+        className={cn(styles.controlButton, styles.previous, {
+          [styles.enabled]: buttonEnabled.previous,
+        })}
+        onClick={handleChangeScroll('previous')}
+        aria-hidden={!buttonEnabled.previous}
+        tabIndex={!buttonEnabled.previous ? -1 : undefined}
+      >
+        <span className={srStyles.screenReaderOnly}>이전</span>
+        <FontAwesomeIcon icon={faChevronLeft} />
+      </button>
+
       <button
         type="button"
         className={cn(styles.controlButton, styles.next, { [styles.enabled]: buttonEnabled.next })}
         onClick={handleChangeScroll('next')}
         aria-disabled={!buttonEnabled.next}
+        tabIndex={!buttonEnabled.next ? -1 : undefined}
       >
-        <span className="screen-reader-text">다음</span>
+        <span className={srStyles.screenReaderOnly}>다음</span>
         <FontAwesomeIcon icon={faChevronRight} />
       </button>
     </div>
