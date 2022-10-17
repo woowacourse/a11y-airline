@@ -26,8 +26,8 @@ function TravelInfo({ location, seat, price, image, href }: TravelInfoProps) {
         css={linkStyle}
         aria-label={`${location} ${seat} 최저가 ${price.toLocaleString('ko-kr')} 대한민국 원부터`}
       >
-        <img src={image} alt={location} css={imageStyle} />
-        <div css={textStyle}>
+        <img src={image} alt={location} css={imageStyle} aria-hidden />
+        <div css={textStyle} aria-hidden>
           <p css={locationStyle}>{location}</p>
           <p css={seatStyle}>{seat}</p>
           <p css={priceStyle}>KRW {price.toLocaleString('ko-kr')} ~</p>
