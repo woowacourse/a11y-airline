@@ -1,5 +1,6 @@
 .box {
   position: relative;
+  width: 500px;
 }
 
 .carousel-list {
