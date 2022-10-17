@@ -64,6 +64,10 @@
   cursor: pointer;
 }
 
+.control-button:disabled {
+  cursor: not-allowed;
+}
+
 .prev-button {
   left: 1px;
 
