@@ -21,22 +21,23 @@ ul {
 
 .carousel-list {
   display: flex;
-  gap: 40px;
+  gap: 10%;
 }
 
 .carousel-anchor {
   display: block;
   height: 100%;
+  width: 100%;
 }
 
 .carousel-image {
-  width: 230px;
+  width: 100%;
   height: 295px;
 }
 
 .arrow-button-list {
   position: sticky;
-  width: 500px;
+  width: 100%;
   height: 60px;
   bottom: calc((100% - 9rem) / 2);
   left: 0;
@@ -71,7 +72,8 @@ ul {
 .carousel-container {
   position: relative;
   overflow: hidden;
-  width: 500px;
+  width: 100vw;
+  max-width: 500px;
 }
 
 .carousel-description {
@@ -82,6 +84,8 @@ ul {
 
 .carousel-item {
   position: relative;
+  width: 45%;
+  flex-shrink: 0;
 }
 
 .description-header {

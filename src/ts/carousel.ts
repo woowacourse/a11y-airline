@@ -14,9 +14,20 @@ let currentCarouselIndex = 0;
 let prevId = 0;
 
 const animateCarousel = (currentCarouselIndex: number) => {
+  const carouselItemWidth = (
+    document.querySelector(".carousel-item") as HTMLLIElement
+  ).clientWidth;
+  console.log(carouselItemWidth);
+
   $carouselList.forEach((carousel) => {
     carousel.animate(
-      [{ transform: `translateX(calc((-270px) * ${currentCarouselIndex}))` }],
+      [
+        {
+          transform: `translateX(calc((${-(
+            carouselItemWidth * 1.23
+          )}px) * ${currentCarouselIndex}))`,
+        },
+      ],
       {
         duration: 300,
         fill: "forwards",
