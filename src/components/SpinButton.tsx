@@ -1,7 +1,9 @@
 import styled from 'styled-components';
-import PASSENGER from '../constants/index';
+
 import usePassenger from '../hooks/usePassenger';
 import CircleButton from './circleButton';
+
+import { PASSENGER } from '../constants/index';
 
 const SpinButton = () => {
   const {

@@ -1,7 +1,7 @@
-import PassengerEnter from './pages/PassengerEnter';
+import TripCarousel from './pages/TripCarousel';
 
 const App = () => {
-  return <PassengerEnter />;
+  return <TripCarousel />;
 };
 
 export default App;

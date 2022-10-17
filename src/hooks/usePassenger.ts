@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import PASSENGER from '../constants/index';
+
+import { PASSENGER } from '../constants/index';
 
 const usePassenger = () => {
   const [passengerNum, setPassengerNum] = useState(PASSENGER.DEFAULT);

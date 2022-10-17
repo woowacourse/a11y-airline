@@ -5,6 +5,7 @@
     "module": "esnext",
     "strict": true,
     "noImplicitAny": true,
+    "moduleResolution": "node",
     "esModuleInterop": true,
     "outDir": "dist"
   },
