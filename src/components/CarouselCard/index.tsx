@@ -24,9 +24,9 @@ function CarouselCard({
             자세한 내용을 확인하시려면 클릭해주세요.`}
         </p>
 
-        <h1 aria-hidden={true}>{`${departure} - ${arrival}`}</h1>
+        <h1 aria-hidden>{`${departure} - ${arrival}`}</h1>
 
-        <div aria-hidden={true}>
+        <div aria-hidden>
           <div className={styles.flexRow}>
             <p>{cabinClass}</p>
             <p>{tripType}</p>
@@ -39,7 +39,7 @@ function CarouselCard({
           className={styles.backgroundImage}
           src={imgUrl}
           alt={`${departure} - ${arrival} 배경이미지`}
-          aria-hidden={true}
+          aria-hidden
         />
       </section>
     </a>
