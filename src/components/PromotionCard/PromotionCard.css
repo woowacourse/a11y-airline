@@ -4,7 +4,7 @@
 }
 
 .promotion-card {
-  width: 57rem;
+  width: var(--promotion-card-width);
   height: 75rem;
   padding: 6rem;
   border: 1px solid white;

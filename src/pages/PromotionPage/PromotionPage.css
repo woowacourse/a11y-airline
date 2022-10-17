@@ -39,7 +39,7 @@
 .promotion-list {
   display: flex;
   overflow: hidden;
-  gap: 6rem;
+  gap: var(--promotion-list-gap);
 
   margin: 0;
   padding: 0;

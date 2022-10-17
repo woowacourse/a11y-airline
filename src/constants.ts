@@ -1,3 +1,5 @@
+import { getGlobalStyleValue } from './utils';
+
 const PASSENGER = {
   ADULT: {
     MIN_COUNT: 0,
@@ -22,8 +24,10 @@ const PATH = {
 };
 
 const PROMOTION = {
-  CARD_WIDTH: 57,
-  CARD_GAP: 6,
+  MOVE_OFFSET:
+    (getGlobalStyleValue('--promotion-list-gap') +
+      getGlobalStyleValue('--promotion-card-width')) *
+    4,
 };
 
 export { MESSAGE, PASSENGER, PATH, PROMOTION };

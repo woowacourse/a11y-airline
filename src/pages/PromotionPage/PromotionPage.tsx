@@ -11,21 +11,15 @@ import PromotionCard from '../../components/PromotionCard/PromotionCard';
 function PromotionPage() {
   const promotionListRef = useRef<HTMLUListElement>(null);
 
-  const offset = (PROMOTION.CARD_WIDTH + PROMOTION.CARD_GAP) * 4;
+  const handleClickControlButton = (direction: string) => {
+    const promotionList = promotionListRef.current;
 
-  const handleClickPrevButton = () => {
-    if (!(promotionListRef.current instanceof HTMLUListElement)) return;
+    if (!(promotionList instanceof HTMLUListElement)) return;
 
-    promotionListRef.current.scrollBy({
-      left: -offset,
-      behavior: 'smooth',
-    });
-  };
+    const offset =
+      direction === 'prev' ? -PROMOTION.MOVE_OFFSET : PROMOTION.MOVE_OFFSET;
 
-  const handleClickNextButton = () => {
-    if (!(promotionListRef.current instanceof HTMLUListElement)) return;
-
-    promotionListRef.current.scrollBy({
+    promotionList.scrollBy({
       left: offset,
       behavior: 'smooth',
     });
@@ -42,15 +36,13 @@ function PromotionPage() {
         </ul>
         <button
           className='control-button prev-button'
-          aria-label='이전'
-          onClick={handleClickPrevButton}
+          onClick={() => handleClickControlButton('prev')}
         >
           ＜
         </button>
         <button
           className='control-button next-button'
-          aria-label='다음'
-          onClick={handleClickNextButton}
+          onClick={() => handleClickControlButton('next')}
         >
           ＞
         </button>
