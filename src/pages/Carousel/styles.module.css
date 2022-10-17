@@ -12,6 +12,7 @@
   overflow: auto;
   gap: 10px;
   scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   /* scroll bar hidden */
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */

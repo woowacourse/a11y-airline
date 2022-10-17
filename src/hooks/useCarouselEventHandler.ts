@@ -26,7 +26,6 @@ function useCarouselEventHandler(): UseCarouselEventHandlerResult {
 
     carouselListRef.current.scrollTo({
       left: currentScrollPosition - 240,
-      behavior: "smooth",
     });
   };
 
@@ -39,7 +38,6 @@ function useCarouselEventHandler(): UseCarouselEventHandlerResult {
 
     carouselListRef.current.scrollTo({
       left: currentScrollPosition + 240,
-      behavior: "smooth",
     });
   };
 
