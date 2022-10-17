@@ -6,3 +6,13 @@ export const PASSENGER = {
 export const LABEL = {
   ADULT: "성인",
 } as const;
+
+export const PAGE_PATH = {
+  HOME: "/",
+  SELECT_PASSENGER: "/select-passenger",
+};
+
+export const CAROUSEL_BUTTON_OPTION = {
+  PREVIOUS: "previous-button",
+  NEXT: "next",
+} as const;
