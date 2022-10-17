@@ -1,10 +1,12 @@
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { URL } from '@/constant/URL';
 
 import App from '@/App';
-import InsertingPassenger from '@/pages/InsertingPassenger';
 
-import { URL } from '@/constant/URL';
+const InsertingPassenger = React.lazy(() => import('@/pages/InsertingPassenger'));
+const CarouselTravelList = React.lazy(() => import('@/pages/CarouselTravelList/index'));
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
@@ -13,6 +15,7 @@ root.render(
 		<Routes>
 			<Route path={URL.HOME} element={<App />} />
 			<Route path={URL.INSERTING_PASSENGER} element={<InsertingPassenger />} />
+			<Route path={URL.CAROUSEL_TRAVEL} element={<CarouselTravelList />} />
 		</Routes>
 	</BrowserRouter>,
 );
