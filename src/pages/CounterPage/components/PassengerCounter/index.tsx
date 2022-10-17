@@ -3,7 +3,7 @@ import "./style.css";
 
 import HelpToolTip from "../HelpToolTip";
 
-import { PASSENGER_TYPE, ValueOf } from "../../types";
+import { PASSENGER_TYPE, ValueOf } from "../../../../types";
 
 const INITIAL_COUNT = 1;
 

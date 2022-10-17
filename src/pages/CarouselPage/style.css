@@ -1,0 +1,19 @@
+.carousel {
+  position: relative;
+}
+
+.item__list {
+  display: flex;
+  list-style: none;
+
+  gap: 8px;
+
+  max-width: 100%;
+  overflow: hidden;
+
+  padding-inline-start: 0;
+}
+
+.item {
+  display: list-item;
+}

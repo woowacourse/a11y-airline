@@ -1,0 +1,45 @@
+.controller {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  left: 0;
+  bottom: 160px;
+
+  pointer-events: none;
+}
+
+.left__btn {
+  background: url("../../../../images/button-left.svg");
+  background-size: 30px 60px;
+
+  width: 30px;
+  height: 60px;
+
+  border: 0;
+
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.left__btn:disabled {
+  cursor: not-allowed;
+}
+
+.right__btn:disabled {
+  cursor: not-allowed;
+}
+
+.right__btn {
+  background: url("../../../../images/button-right.svg");
+  background-size: 30px 60px;
+
+  width: 30px;
+  height: 60px;
+
+  border: 0;
+
+  cursor: pointer;
+  pointer-events: auto;
+}
