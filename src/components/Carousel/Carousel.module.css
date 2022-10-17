@@ -3,6 +3,12 @@
   width: 500px;
 }
 
+@media (max-width: 500px) {
+  .box {
+    width: 100%;
+  }
+}
+
 .carousel-list {
   display: flex;
   gap: 1.5rem;
