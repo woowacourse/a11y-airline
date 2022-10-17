@@ -33,6 +33,10 @@ const useCarousel = ({
   const handleClickPrevButton = () => {
     const isMinPosition = currentPosRef.current == minScrollPosition;
 
+    if (wrapperRef.current === null) {
+      return;
+    }
+
     if (isReachedStart) {
       setMessage('이미 목록의 처음 위치에 있습니다.');
       return;
@@ -40,7 +44,7 @@ const useCarousel = ({
 
     if (isReachedEnd) {
       currentPosRef.current -= positionUnit * viewingCount;
-      wrapperRef.current!.scrollBy({
+      wrapperRef.current.scrollBy({
         left: -(positionUnit * viewingCount),
         behavior: 'smooth',
       });
@@ -55,11 +59,15 @@ const useCarousel = ({
     }
 
     currentPosRef.current -= positionUnit;
-    wrapperRef.current!.scrollBy({ left: -positionUnit, behavior: 'smooth' });
+    wrapperRef.current.scrollBy({ left: -positionUnit, behavior: 'smooth' });
   };
 
   const handleClickNextButton = () => {
     const isExceedMaxPosition = currentPosRef.current >= maxScrollPosition;
+
+    if (wrapperRef.current === null) {
+      return;
+    }
 
     if (isReachedEnd) {
       setMessage('이미 목록의 끝 위치에 있습니다.');
@@ -72,13 +80,13 @@ const useCarousel = ({
 
     if (isExceedMaxPosition) {
       currentPosRef.current += positionUnit * 2;
-      wrapperRef.current!.scrollBy({ left: positionUnit * 2, behavior: 'smooth' });
+      wrapperRef.current.scrollBy({ left: positionUnit * 2, behavior: 'smooth' });
       setReachedAt('end');
       return;
     }
 
     currentPosRef.current += positionUnit;
-    wrapperRef.current!.scrollBy({ left: positionUnit, behavior: 'smooth' });
+    wrapperRef.current.scrollBy({ left: positionUnit, behavior: 'smooth' });
   };
 
   const handleScrollWrapper = () => {
@@ -88,7 +96,12 @@ const useCarousel = ({
 
     scrollTimerIdRef.current = window.setTimeout(() => {
       scrollTimerIdRef.current = null;
-      currentPosRef.current = wrapperRef.current!.scrollLeft;
+
+      if (wrapperRef.current === null) {
+        return;
+      }
+
+      currentPosRef.current = wrapperRef.current.scrollLeft;
 
       const isExceedMaxPosition =
         currentPosRef.current >= maxScrollPosition + itemWidth / 2;
