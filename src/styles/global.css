@@ -1,5 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   width: 100%;
+}
+
+h1,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-size: 12px;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  outline: none;
 }
 
 button {

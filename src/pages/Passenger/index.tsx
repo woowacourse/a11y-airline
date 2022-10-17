@@ -2,6 +2,7 @@ import { BiMinusCircle, BiPlusCircle } from "react-icons/bi";
 import PassengerTooltip from "../../components/PassengerTooltip";
 import useSetPassengerCount from "../../hooks/useSetPassengerCount";
 import styles from "./styles.module.css";
+import srStyles from "../../styles/screenReader.module.css";
 
 function Passenger() {
   const {
@@ -31,10 +32,9 @@ function Passenger() {
           <BiMinusCircle size="20" />
         </button>
         <label
-          className={styles.srOnly}
+          className={srStyles.srOnly}
           htmlFor="inputLabel"
           role="status"
-          // aria-live="polite"
         >{`성인 승객 추가 ${passengerCount}`}</label>
         <input
           name="inputLabel"

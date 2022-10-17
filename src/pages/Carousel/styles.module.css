@@ -1,0 +1,41 @@
+.title {
+  margin-bottom: 30px;
+}
+
+.carouselContainer {
+  position: relative;
+  width: 100%;
+}
+
+.carouselListSection {
+  display: flex;
+  overflow: auto;
+  gap: 10px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  /* scroll bar hidden */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* scroll bar hidden */
+.carouselListSection::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+.leftCircleButton {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1;
+}
+
+.rightCircleButton {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
