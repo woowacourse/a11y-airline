@@ -7,14 +7,16 @@ const CarouselTravelList = () => {
 	const {
 		carouselListRef,
 		carouselImgItem,
+		title,
 		travelDescription,
+		buttonState,
 		onLeftSlideButtonClick,
 		onRightSlideButtonClick,
 		onHoverItem,
 	} = useHandleCarouselEvent();
 	return (
 		<S.Container>
-			<S.Title>지금 떠나기 좋은 여행</S.Title>
+			<S.Title ref={title}>지금 떠나기 좋은 여행</S.Title>
 			<S.CarouselBox>
 				<S.CarouselContainer ref={carouselListRef}>
 					{travelInfo.map((item) => (
@@ -36,6 +38,7 @@ const CarouselTravelList = () => {
 				</S.CarouselButtonContainer>
 			</S.CarouselBox>
 			<S.Description aria-live="assertive">{travelDescription}</S.Description>
+			<S.Description aria-live="assertive">{buttonState}</S.Description>
 		</S.Container>
 	);
 };
