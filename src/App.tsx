@@ -15,7 +15,7 @@ const App = () => {
                   <S.TravelItemDescription>
                     <S.TravelItemRoute>{route}</S.TravelItemRoute>
                     <S.TravelItemSeat>{seat}</S.TravelItemSeat>
-                    <S.TravelItemPrice>
+                    <S.TravelItemPrice aria-label={`${price} 대한민국원`}>
                       KRW {price.toLocaleString("ko-KR")}
                       <span aria-hidden="true">~</span>
                     </S.TravelItemPrice>
