@@ -47,7 +47,7 @@ const useHandleCarouselEvent = () => {
 
 	const onHoverItem = (item: { title: string; price: number; image: string; link: string }) => {
 		setTravelDescription(`
-			여행지 ${item.title}의 가격은 ${item.price}입니다
+			여행지 ${item.title}의 가격은 ${item.price}원입니다 
 		`);
 	};
 
