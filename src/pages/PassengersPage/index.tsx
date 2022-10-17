@@ -1,9 +1,9 @@
-import { Counter, ToolTip } from 'components'
 import { useState } from 'react'
+import { Counter, ToolTip } from 'components'
 
 import styles from './styles.module.scss'
 
-function PeopleCount() {
+function PassengersPages() {
   const [count, setCount] = useState(0)
 
   const handleChangeCount = (value: number) => {
@@ -11,7 +11,7 @@ function PeopleCount() {
   }
 
   return (
-    <section className={styles.pagePeopleCount}>
+    <article className={styles.pagePassengers}>
       <h1 className={styles.title} tabIndex={1}>
         승객 선택
       </h1>
@@ -34,8 +34,8 @@ function PeopleCount() {
         onChange={handleChangeCount}
         aria-label="성인 탑승자"
       />
-    </section>
+    </article>
   )
 }
 
-export default PeopleCount
+export default PassengersPages

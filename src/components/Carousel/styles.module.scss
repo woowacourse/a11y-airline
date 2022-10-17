@@ -1,0 +1,70 @@
+@import 'styles/@variables.scss';
+
+.component-carousel {
+  position: relative;
+
+  .content-wrapper {
+    @include hide-scroll-bar;
+
+    position: relative;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: visible;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    & > * {
+      flex-shrink: 0;
+      flex-grow: 0;
+      scroll-snap-align: end;
+    }
+  }
+
+  .control-button {
+    cursor: pointer;
+    user-select: none;
+    pointer-events: none;
+    position: absolute;
+
+    top: 50%;
+    z-index: 1;
+    padding: 1rem;
+
+    border: none;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(0.5rem);
+    font-size: 1.25rem;
+    transform: translateY(-50%);
+
+    transition: all 0.2s ease;
+    opacity: 0;
+    filter: blur(1rem);
+
+    & > svg {
+      transition: transform 0.2s ease;
+    }
+
+    &.previous {
+      left: 0px;
+      border-radius: 0 50% 50% 0;
+    }
+
+    &.next {
+      right: 0px;
+      border-radius: 50% 0 0 50%;
+    }
+
+    &.enabled {
+      filter: blur(0);
+
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    &:active > svg {
+      transform: scale(1.5);
+    }
+  }
+}

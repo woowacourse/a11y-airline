@@ -10,6 +10,11 @@ html {
   overflow-y: scroll;
 }
 
+a {
+  text-decoration: unset;
+  color: unset;
+}
+
 html,
 body,
 button,
