@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { UseCarouselProps } from 'components/Carousel/Carousel.type';
+import useAssistiveMessage from 'hooks/useAssistiveMessage';
 
 const useCarousel = ({
   itemWidth,
@@ -8,27 +9,11 @@ const useCarousel = ({
   gap,
   viewingCount,
 }: UseCarouselProps) => {
-  const [message, setMessage] = useState('');
+  const { message, setMessage } = useAssistiveMessage();
   const [reachedAt, setReachedAt] = useState<'start' | 'end' | null>('start');
   const wrapperRef = useRef<HTMLDivElement>(null);
   const currentPosRef = useRef(0);
   const scrollTimerIdRef = useRef<number | null>(null);
-  const messageTimerIdRef = useRef<null | number>(null);
-
-  useEffect(() => {
-    if (message === '') {
-      return;
-    }
-
-    if (typeof messageTimerIdRef.current === 'number') {
-      clearTimeout(messageTimerIdRef.current);
-      messageTimerIdRef.current = null;
-    }
-
-    messageTimerIdRef.current = window.setTimeout(() => {
-      setMessage('');
-    }, 3000);
-  }, [message]);
 
   const wrapperWidth = Math.min(
     itemWidth * viewingCount + itemWidth / 2,

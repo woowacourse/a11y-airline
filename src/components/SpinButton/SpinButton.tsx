@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, ChangeEventHandler } from 'react';
 import styled from 'styled-components';
 import { SpinButtonProps } from 'components/SpinButton/SpinButton.type';
 import { HiddenMessage } from 'components';
+import useAssistiveMessage from 'hooks/useAssistiveMessage';
 
 const MIN_VALUE = 0;
 const MAX_VALUE = 3;
@@ -13,24 +14,10 @@ const SpinButton = ({
   toggleMessageText,
 }: SpinButtonProps) => {
   const [value, setValue] = useState<number>(1);
-  const [message, setMessage] = useState('');
+
   const [isOpenToggle, setIsOpenToggle] = useState(false);
-  const timerId = useRef<null | number>(null);
 
-  useEffect(() => {
-    if (message === '') {
-      return;
-    }
-
-    if (typeof timerId.current === 'number') {
-      clearTimeout(timerId.current);
-      timerId.current = null;
-    }
-
-    timerId.current = window.setTimeout(() => {
-      setMessage('');
-    }, 3000);
-  }, [message]);
+  const { message, setMessage } = useAssistiveMessage();
 
   const handleClickHelpToggle = () => {
     setIsOpenToggle((prevState) => !prevState);
