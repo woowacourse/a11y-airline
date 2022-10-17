@@ -28,7 +28,7 @@ const CarouselTravelItem = ({ item, imageRef, onHoverItem }: CarouselTravelItemP
 				}}
 			>
 				<>
-					<S.Image ref={imageRef} src={item.image} alt={`${item.title} 의 사진입니다`} />
+					<S.Image ref={imageRef} src={item.image} />
 					<S.CarouselDescriptionBox>
 						<S.TravelTitle aria-label={`목적지 ${item.title}`}>{item.title}</S.TravelTitle>
 						<S.TravelSeat aria-label={'일반석 왕복'}>일반석-왕복</S.TravelSeat>
