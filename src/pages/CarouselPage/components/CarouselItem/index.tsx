@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import "./style.css";
 
 interface CarouselItemProps extends React.HTMLAttributes<HTMLDivElement> {
