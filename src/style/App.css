@@ -119,7 +119,6 @@
 }
 
 .carousel-list {
-  width: fit-content;
   margin: 0;
   padding: 0;
   display: flex;
@@ -131,7 +130,7 @@
   transition-duration: 700ms;
 }
 
-.carousel-list-item {
+.carousel-list-item > a {
   width: 200px;
 }
 

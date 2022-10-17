@@ -1,70 +1,44 @@
-import React, { useState, PropsWithChildren, useRef, useMemo } from "react";
+import React, { useState, PropsWithChildren, useRef } from "react";
 
 const Carousel = ({ children }: PropsWithChildren) => {
   const listRef = useRef(null);
-  const [firstViewedElementIndex, setFirstViewedElementIndex] = useState(0);
-
-  const calculatePosition: (index: number) => number = (index) => {
-    const list = listRef.current as unknown as HTMLUListElement;
-
-    return (
-      list && (100 / list.childElementCount) * index * 0.01 * list.offsetWidth
-    );
-  };
-
-  const calculateGapBetweenContainerAndList = () => {
-    const list = listRef.current as unknown as HTMLUListElement;
-
-    const gap = list && list.offsetWidth - list.parentElement!.offsetWidth!;
-    return list && gap;
-  };
-
-  const currentPosition = useMemo(
-    () => calculatePosition(firstViewedElementIndex),
-    [firstViewedElementIndex]
-  );
+  const [leftButtonDisabled, setLeftButtonDisabled] = useState(true);
+  const [rightButtonDisabled, setRightButtonDisabled] = useState(false);
 
   const handleLeftButtonClick: React.MouseEventHandler<
     HTMLButtonElement
   > = () => {
     const list = listRef.current as unknown as HTMLUListElement;
 
-    if (currentPosition <= 0) {
-      return;
+    list.scrollBy({ top: 0, left: -224, behavior: "smooth" });
+
+    console.log(list.scrollWidth, list.scrollLeft, list.clientWidth);
+
+    if (list.scrollLeft - 224 <= 0) {
+      setLeftButtonDisabled(true);
     }
 
-    setFirstViewedElementIndex((prev) => prev - 1);
-
-    const move = calculatePosition(firstViewedElementIndex - 1);
-
-    if (move <= 0) {
-      list.style.transform = `translateX(0px)`;
-      return;
+    if (list.scrollLeft + 224 < list.scrollWidth) {
+      setRightButtonDisabled(false);
     }
-
-    list.style.transform = `translateX(${-move}px)`;
   };
 
   const handleRightButtonClick: React.MouseEventHandler<
     HTMLButtonElement
   > = () => {
     const list = listRef.current as unknown as HTMLUListElement;
-    const gap = calculateGapBetweenContainerAndList();
 
-    if (currentPosition >= gap) {
-      return;
+    list.scrollBy({ top: 0, left: 224, behavior: "smooth" });
+
+    console.log(list.scrollWidth, list.scrollLeft, list.clientWidth);
+
+    if (list.scrollLeft + 224 > 0) {
+      setLeftButtonDisabled(false);
     }
 
-    setFirstViewedElementIndex((prev) => prev + 1);
-
-    const move = calculatePosition(firstViewedElementIndex + 1);
-
-    if (gap <= move) {
-      list.style.transform = `translateX(${-gap}px)`;
-      return;
+    if (list.scrollWidth - list.clientWidth - list.scrollLeft - 224 <= 0) {
+      setRightButtonDisabled(true);
     }
-
-    list.style.transform = `translateX(${-move}px)`;
   };
 
   return (
@@ -77,15 +51,13 @@ const Carousel = ({ children }: PropsWithChildren) => {
           className="carousel-control-left"
           onClick={handleLeftButtonClick}
           aria-label="이전"
-          aria-disabled={currentPosition <= 0}
+          aria-disabled={leftButtonDisabled}
         />
         <button
           className="carousel-control-right"
           onClick={handleRightButtonClick}
           aria-label="다음"
-          aria-disabled={
-            currentPosition >= calculateGapBetweenContainerAndList()
-          }
+          aria-disabled={rightButtonDisabled}
         />
       </div>
     </div>
