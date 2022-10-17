@@ -4,13 +4,14 @@
 
 .carouselContainer {
   position: relative;
-  width: 1024px;
+  width: 100%;
 }
 
 .carouselListSection {
   display: flex;
   overflow: auto;
   gap: 10px;
+  scroll-snap-type: x mandatory;
   /* scroll bar hidden */
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */

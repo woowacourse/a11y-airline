@@ -6,6 +6,7 @@
   flex-direction: column;
   gap: 10px;
   position: relative;
+  scroll-snap-align: end;
 }
 
 .flexRow {
