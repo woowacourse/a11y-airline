@@ -9,16 +9,24 @@ type ChildrenProp = {
 };
 
 const Carousel = ({ children, currentPage, setCurrentPage }: ChildrenProp) => {
-  const sliderItemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const sliderItemRefs = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
+    const currentElement = sliderItemRefs.current[currentPage];
+
     sliderItemRefs.current[currentPage]?.scrollIntoView({
       behavior: 'smooth',
       inline: 'center',
     });
+    sliderItemRefs.current.map((element, idx) => {
+      element.ariaHidden = 'true';
+      if (idx === currentPage) {
+        element.ariaHidden = 'false';
+      }
+    });
   }, [currentPage]);
 
-  const setPageRef = (page: number) => (el: HTMLDivElement | null) => {
+  const setPageRef = (page: number) => (el: HTMLDivElement) => {
     sliderItemRefs.current[page] = el;
 
     return sliderItemRefs.current[page];

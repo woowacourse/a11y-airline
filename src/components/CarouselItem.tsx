@@ -35,7 +35,7 @@ const imgMap = (img: string) => {
 
 const CarouselItem = ({ item }: { item: CarouselItemType }, ref: ForwardedRef<HTMLLIElement>) => {
   return (
-    <S.BOX ref={ref}>
+    <S.Box ref={ref} aria-hidden='true'>
       <a href={item.link} aria-hidden='true'>
         <S.IMG alt={`행복한 ${item.title} 이미지`} src={imgMap(item.imgsrc)}></S.IMG>
       </a>
@@ -47,12 +47,12 @@ const CarouselItem = ({ item }: { item: CarouselItemType }, ref: ForwardedRef<HT
           <S.PriceValue>{item.price.toLocaleString()}</S.PriceValue>
         </S.Price>
       </S.Content>
-    </S.BOX>
+    </S.Box>
   );
 };
 
 const S = {
-  BOX: styled.li`
+  Box: styled.li`
     position: relative;
     width: calc((100% - 14rem) / 2);
     min-width: 245px;
