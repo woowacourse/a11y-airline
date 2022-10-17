@@ -13,12 +13,18 @@
 
 <br/>
 
+<a href="https://usageness.github.io/a11y-airline/">
+  <p align="middle">
+    <img src="https://user-images.githubusercontent.com/28296575/195269942-cc032726-6e2d-4011-a618-b1ce9f865db9.jpg" alt="template version"/>
+  </p>
+</a>
+
 ## 🎯 요구사항1 - Spin Button: 승객수 입력하기
 
 <img src="./src/images/spin_button_sample.png">
 
-- [ ] 최대 인원수는 3명까지만 가능하게 구현한다.
-- [ ] 실제 스크린 리더는 아래와 같이 읽을 수 있어야 한다.
+- [x] 최대 인원수는 3명까지만 가능하게 구현한다.
+- [x] 실제 스크린 리더는 아래와 같이 읽을 수 있어야 한다.
 
 ```
 성인 탑승자 한명 줄이기 버튼
@@ -35,8 +41,8 @@
 
 <img src="./src/images/carousel_sample.png">
 
-- [ ] 목록은 8개를 구현한다.
-- [ ] 실제 스크린 리더는 아래와 같이 읽을 수 있어야 한다.
+- [x] 목록은 8개를 구현한다.
+- [x] 실제 스크린 리더는 아래와 같이 읽을 수 있어야 한다.
 
 ```
 1. 지금 떠나기 좋은 여행
