@@ -1,3 +1,5 @@
+import { getGlobalStyleValue } from './utils';
+
 const PASSENGER = {
   ADULT: {
     MIN_COUNT: 0,
@@ -15,4 +17,17 @@ const MESSAGE = {
   },
 };
 
-export { MESSAGE, PASSENGER };
+const PATH = {
+  BASENAME: '/a11y-airline',
+  PASSENGER: '/passenger',
+  PROMOTION: '/',
+};
+
+const PROMOTION = {
+  MOVE_OFFSET:
+    (getGlobalStyleValue('--promotion-list-gap') +
+      getGlobalStyleValue('--promotion-card-width')) *
+    4,
+};
+
+export { MESSAGE, PASSENGER, PATH, PROMOTION };
