@@ -6,6 +6,7 @@ import useHandleCarouselEvent from '@/hooks/useHandleCarouselEvent';
 const CarouselTravelList = () => {
 	const {
 		carouselListRef,
+		carouselImgItem,
 		travelDescription,
 		onLeftSlideButtonClick,
 		onRightSlideButtonClick,
@@ -17,7 +18,12 @@ const CarouselTravelList = () => {
 			<S.CarouselBox>
 				<S.CarouselContainer ref={carouselListRef}>
 					{travelInfo.map((item) => (
-						<CarouselTravelItem item={item} key={item.title} onHoverItem={onHoverItem} />
+						<CarouselTravelItem
+							imageRef={carouselImgItem}
+							item={item}
+							key={item.title}
+							onHoverItem={onHoverItem}
+						/>
 					))}
 				</S.CarouselContainer>
 				<S.CarouselButtonContainer>

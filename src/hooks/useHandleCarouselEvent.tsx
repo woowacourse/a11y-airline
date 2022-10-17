@@ -1,22 +1,24 @@
 import { useRef, useState } from 'react';
 
 const useHandleCarouselEvent = () => {
-	const carouselListRef = useRef<HTMLUListElement | null>(null);
+	const carouselListRef = useRef<HTMLUListElement>(null);
+	const carouselImgItem = useRef<HTMLImageElement>(null);
 	const [travelDescription, setTravelDescription] = useState('');
 
 	const onLeftSlideButtonClick = () => {
-		if (!carouselListRef.current) {
+		if (!carouselListRef.current || !carouselImgItem.current) {
 			return;
 		}
-		const elementWidth = carouselListRef.current.clientWidth / 4;
+		const elementWidth = carouselImgItem.current.clientWidth + 20;
+		console.log(elementWidth);
 		carouselListRef.current.scrollBy({ top: 0, left: -elementWidth, behavior: 'smooth' });
 	};
 
 	const onRightSlideButtonClick = () => {
-		if (!carouselListRef.current) {
+		if (!carouselListRef.current || !carouselImgItem.current) {
 			return;
 		}
-		const elementWidth = carouselListRef.current.clientWidth / 4;
+		const elementWidth = carouselImgItem.current.clientWidth + 20;
 		carouselListRef.current.scrollBy({ top: 0, left: elementWidth, behavior: 'smooth' });
 	};
 
@@ -28,6 +30,7 @@ const useHandleCarouselEvent = () => {
 
 	return {
 		carouselListRef,
+		carouselImgItem,
 		travelDescription,
 		onLeftSlideButtonClick,
 		onRightSlideButtonClick,

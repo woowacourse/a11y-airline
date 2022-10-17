@@ -1,6 +1,7 @@
 import * as S from '@/pages/CarouselTravelList/CarouselTravelItem/CarouselTravelItem.styles';
 
 export interface CarouselTravelItemProp {
+	imageRef: React.RefObject<HTMLImageElement>;
 	item: {
 		title: string;
 		price: number;
@@ -10,7 +11,7 @@ export interface CarouselTravelItemProp {
 	onHoverItem: (item: { title: string; price: number; image: string; link: string }) => void;
 }
 
-const CarouselTravelItem = ({ item, onHoverItem }: CarouselTravelItemProp) => {
+const CarouselTravelItem = ({ item, imageRef, onHoverItem }: CarouselTravelItemProp) => {
 	const ConvertPrice = (price: number) => {
 		const commaPrice = price.toLocaleString('ko-KR', {
 			style: 'currency',
@@ -27,7 +28,7 @@ const CarouselTravelItem = ({ item, onHoverItem }: CarouselTravelItemProp) => {
 				}}
 			>
 				<>
-					<S.Image src={item.image} alt={`${item.title} 의 사진입니다`} />
+					<S.Image ref={imageRef} src={item.image} alt={`${item.title} 의 사진입니다`} />
 					<S.CarouselDescriptionBox>
 						<S.TravelTitle aria-label={`목적지 ${item.title}`}>{item.title}</S.TravelTitle>
 						<S.TravelSeat aria-label={'일반석 왕복'}>일반석-왕복</S.TravelSeat>
