@@ -95,6 +95,15 @@ a {
   background-size: 30px 60px;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 0 0, 0 0);
+}
+
 @media (max-width: 400px) {
   .item-container {
     width: 390px;
