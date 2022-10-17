@@ -29,16 +29,25 @@ const CarouselTravelList = () => {
 					))}
 				</S.CarouselContainer>
 				<S.CarouselButtonContainer>
-					<S.CarouselButton aria-label="이전 여행지 보기" onClick={onLeftSlideButtonClick}>
+					<S.CarouselButton
+						aria-label={buttonState}
+						aria-role="button"
+						aria-live="assertive"
+						onClick={onLeftSlideButtonClick}
+					>
 						<S.LeftButton />
 					</S.CarouselButton>
-					<S.CarouselButton aria-label="다른 여행지 보기" onClick={onRightSlideButtonClick}>
+					<S.CarouselButton
+						aria-label={buttonState}
+						aria-role="button"
+						aria-live="assertive"
+						onClick={onRightSlideButtonClick}
+					>
 						<S.RightButton />
 					</S.CarouselButton>
 				</S.CarouselButtonContainer>
 			</S.CarouselBox>
 			<S.Description aria-live="assertive">{travelDescription}</S.Description>
-			<S.Description aria-live="assertive">{buttonState}</S.Description>
 		</S.Container>
 	);
 };
