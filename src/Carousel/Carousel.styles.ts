@@ -40,7 +40,7 @@ const nextButtonStyle = css`
   top: 50%;
   right: 0;
   z-index: 10;
-  background: url(https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-left.svg)
+  background: url(https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-right.svg)
     no-repeat;
   transform: translate(0, -50%);
 
