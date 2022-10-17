@@ -1,9 +1,9 @@
+import { $ } from "./dom.js";
+
 const PASSENGER_AMOUNT = {
   MIN: 1,
   MAX: 3,
 };
-
-const $ = (select) => document.querySelector(select);
 
 const passengerAmountInput = $("#passenger-amount-input");
 const inputStatus = $("#input-status");
