@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 4px;
+}
+
 body {
   margin: 0;
 
