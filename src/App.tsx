@@ -1,10 +1,19 @@
 import './styles/index.css';
 import PassengerControl from './components/PassengerControl';
+import ItemCard from './components/ItemCard';
+import { recommendations } from './mocks/dummy';
+import Carousel from './components/Carousel';
 
 const App = () => {
   return (
     <>
       <h1>A11Y Airline</h1>
+      <h2>지금 떠나기 좋은 여행</h2>
+      <Carousel>
+        {recommendations.map(({ id, ...rest }) => (
+          <ItemCard key={id} {...rest} />
+        ))}
+      </Carousel>
       <h2>승객 선택</h2>
       <PassengerControl
         label="성인"

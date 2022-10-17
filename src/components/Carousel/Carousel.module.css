@@ -1,0 +1,55 @@
+.layout {
+  position: relative;
+  width: calc(15rem * 2 + 3rem);
+}
+
+.list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
+}
+
+.list > li {
+  list-style-type: none;
+  min-width: 15rem;
+}
+
+.button {
+  position: absolute;
+  top: calc(50%);
+  width: 4rem;
+  height: 4rem;
+  transform: translateY(-50%);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(4px);
+  transition: all ease-out 100ms;
+}
+
+.button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.left-button {
+  left: 0.5rem;
+}
+
+.right-button {
+  right: 0.5rem;
+}
