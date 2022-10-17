@@ -3,7 +3,7 @@ import { $, $$ } from "./dom.js";
 let itemIndex = 0;
 
 const transformItemList = () => {
-  const translateSize = window.innerWidth > 400 ? -270 : -210;
+  const translateSize = window.innerWidth > 400 ? -270 : -195;
 
   $$(".item").forEach((item) => {
     item.animate(

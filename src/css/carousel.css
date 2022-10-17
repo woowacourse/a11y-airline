@@ -3,10 +3,6 @@
   padding: 0;
 }
 
-body {
-  margin: 0;
-}
-
 p {
   margin: 0;
 }
@@ -108,21 +104,21 @@ a {
   clip-path: polygon(0 0, 0 0, 0 0);
 }
 
-@media (max-width: 400px) {
+@media (max-width: 390px) {
   .item-container {
-    width: 390px;
+    width: 370px;
   }
 
   .item-list {
-    gap: 30px;
+    gap: 20px;
   }
 
   .item-image {
-    width: 180px;
-    height: 250px;
+    width: 175px;
+    height: 240px;
   }
 
   .button-wrapper {
-    width: 390px;
+    width: 370px;
   }
 }
