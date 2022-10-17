@@ -21,14 +21,16 @@ interface TravelInfoProps {
 function TravelInfo({ location, seat, price, image, href }: TravelInfoProps) {
   return (
     <li css={layoutStyle}>
-      <a href={href} css={linkStyle}>
-        <img src={image} alt={location} css={imageStyle} aria-hidden />
+      <a
+        href={href}
+        css={linkStyle}
+        aria-label={`${location} ${seat} 최저가 ${price.toLocaleString('ko-kr')} 대한민국 원부터`}
+      >
+        <img src={image} alt={location} css={imageStyle} />
         <div css={textStyle}>
           <p css={locationStyle}>{location}</p>
           <p css={seatStyle}>{seat}</p>
-          <p css={priceStyle}>
-            KRW {price.toLocaleString('ko-kr')} <span aria-hidden>~</span>
-          </p>
+          <p css={priceStyle}>KRW {price.toLocaleString('ko-kr')} ~</p>
         </div>
       </a>
     </li>
