@@ -139,7 +139,7 @@ function PromotionList() {
         id="current-item-announcement"
         className="invisible"
         role="status"
-        area-live="polite"
+        aria-live="polite"
         ref={state}
       ></div>
     </>
