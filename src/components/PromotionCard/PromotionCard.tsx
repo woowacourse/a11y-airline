@@ -35,9 +35,10 @@ function PromotionCard({
         <div className='promotion-info'>
           <p className='promotion-route'>{`${departure} - ${destination}`}</p>
           <p className='promotion-flight'>{`${seat} ${trip}`}</p>
-          <p className='promotion-price'>{`KRW ${addThousandUnitComma(
-            lowestPrice
-          )} ~`}</p>
+          <p
+            className='promotion-price'
+            aria-label={`${addThousandUnitComma(lowestPrice)} 대한민국 원`}
+          >{`KRW ${addThousandUnitComma(lowestPrice)} ~`}</p>
         </div>
       </li>
     </a>
