@@ -1,105 +1,21 @@
-const passengerCountInput = document.querySelector(".passenger__count");
-const passengerAddButton = document.querySelector(".-add");
-const passengerSubButton = document.querySelector(".-sub");
-const hiddenElement = document.querySelector(".hidden");
-const tooltipOpenButton = document.querySelector(".tooltip__open");
-const tooltipCloseButton = document.querySelector(".tooltip__close");
-const tooltipText = document.querySelector(".tooltip__text");
+import { $ } from "./util.js";
 
-const passengerAddButtonDisabled = () => {
-  passengerSubButton.setAttribute("aria-disabled", "false");
-  passengerAddButton.setAttribute("aria-disabled", "true");
-};
+import Step1 from "./step1.js";
+import Step2 from "./step2.js";
 
-const passengerSubButtonDisabled = () => {
-  passengerSubButton.setAttribute("aria-disabled", "true");
-  passengerAddButton.setAttribute("aria-disabled", "false");
-};
+const step1Button = $(".step1__button");
+const step2Button = $(".step2__button");
 
-const initButtonStatus = () => {
-  passengerSubButton.setAttribute("aria-disabled", "false");
-  passengerAddButton.setAttribute("aria-disabled", "false");
-};
+new Step2();
 
-const handleInputNumber = (e) => {
-  const inputNumber = e.target.value;
-  initButtonStatus();
+step1Button.addEventListener("click", () => {
+  step1Button.classList.add("tab__focus");
+  step2Button.classList.remove("tab__focus");
+  new Step1();
+});
 
-  if (inputNumber === "") {
-    return;
-  }
-
-  if (inputNumber < 1 || inputNumber > 3) {
-    alert("성인 승객은 1명부터 3명까지만 입력 가능합니다.");
-    passengerSubButtonDisabled();
-  }
-
-  if (passengerCountInput.value === "1") {
-    passengerSubButtonDisabled();
-  }
-
-  if (passengerCountInput.value === "3") {
-    passengerAddButtonDisabled();
-  }
-
-  e.target.value = inputNumber.replace(/[^1-3]/g, "1").replace(/[1]/g, "1");
-};
-
-const handleInputChange = () => {
-  hiddenElement.textContent = `성인 ${passengerCountInput.value} 텍스트 숫자만 수정`;
-};
-
-const subtractPassengerCount = () => {
-  if (passengerCountInput.value > 1) {
-    passengerCountInput.value--;
-  }
-
-  initButtonStatus();
-
-  if (passengerCountInput.value === "1") {
-    passengerSubButtonDisabled();
-  }
-
-  hiddenElement.textContent = `성인 승객 감소 ${passengerCountInput.value}`;
-};
-
-const addPassengerCount = () => {
-  if (passengerCountInput.value < 3) {
-    passengerCountInput.value++;
-  }
-
-  initButtonStatus();
-
-  if (passengerCountInput.value === "3") {
-    passengerAddButtonDisabled();
-  }
-
-  hiddenElement.textContent = `성인 승객 증가 ${passengerCountInput.value}`;
-};
-
-const toggleTooltip = () => {
-  if (tooltipText.classList.contains("display-hidden")) {
-    showTooltip();
-    return;
-  }
-  hideTooltip();
-};
-
-const showTooltip = () => {
-  tooltipText.classList.remove("display-hidden");
-  tooltipText.classList.add("display-visible");
-  tooltipOpenButton.setAttribute("aria-expanded", true);
-};
-
-const hideTooltip = () => {
-  tooltipText.classList.remove("display-visible");
-  tooltipText.classList.add("display-hidden");
-  tooltipOpenButton.setAttribute("aria-expanded", false);
-};
-
-passengerCountInput.addEventListener("input", handleInputNumber);
-passengerCountInput.addEventListener("change", handleInputChange);
-passengerAddButton.addEventListener("click", addPassengerCount);
-passengerSubButton.addEventListener("click", subtractPassengerCount);
-tooltipOpenButton.addEventListener("click", toggleTooltip);
-tooltipCloseButton.addEventListener("click", hideTooltip);
+step2Button.addEventListener("click", () => {
+  step2Button.classList.add("tab__focus");
+  step1Button.classList.remove("tab__focus");
+  new Step2();
+});
