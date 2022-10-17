@@ -52,7 +52,6 @@ const prevSlide = () => {
 
 slideLinks.forEach((link, index) => {
   link.addEventListener("focus", () => {
-    console.log("index", index);
     if (index === maxSlide) {
       addDisabled(btnRight);
       return;
