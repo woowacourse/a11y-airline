@@ -1,10 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
   const $carousel = document.querySelector('.carousel');
   const $carouselInner = $carousel.querySelector('.carousel-inner');
+  const $airlineProductCount = document.querySelector('.airline-product-count');
+  const airlineProductCount = $carouselInner.childElementCount;
   const itemCount = $carousel.querySelectorAll('li').length / 2; // @TODO: 홀수 처리 필요
   const $prevBtn = document.querySelector('.carousel-control.left > button');
   const $nextBtn = document.querySelector('.carousel-control.right > button');
-  let currentIndex = 0;
+
+  $airlineProductCount.textContent =
+    airlineProductCount === 0 ? `여행 상품이 없습니다` : `목록 ${airlineProductCount}개 항목 포함`;
 
   $prevBtn.addEventListener('click', () => {
     const width = $carousel.clientWidth;
