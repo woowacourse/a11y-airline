@@ -1,6 +1,6 @@
 import Component from 'src/abstract/Component';
 
-export default class Button extends Component {
+export default class Button extends Component<'button'> {
   constructor({
     onClick,
     text,

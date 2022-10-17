@@ -1,0 +1,12 @@
+.carousel__title {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #1a1a1a;
+  line-height: 1.67;
+  margin-bottom: 1.6rem;
+}
+
+.carousel__page {
+  max-width: 1000px;
+  position: relative;
+}

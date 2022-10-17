@@ -1,8 +1,16 @@
-export default abstract class Component implements ComponentImpl {
+import { createElement } from 'src/util/dom';
+
+export default abstract class Component<
+  T extends keyof HTMLElementTagNameMap = 'div'
+> implements ComponentImpl
+{
   protected element;
 
-  constructor(type = 'div') {
-    this.element = document.createElement(type);
+  constructor(
+    type: keyof HTMLElementTagNameMap = 'div',
+    ...classList: string[]
+  ) {
+    this.element = createElement<T>(type, ...classList);
   }
 
   get target() {
