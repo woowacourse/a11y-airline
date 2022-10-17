@@ -29,6 +29,9 @@ const prevButtonStyle = css`
   border: none;
 
   box-sizing: border-box;
+
+  font-size: 0;
+
   &:hover {
     border: 1px solid blue;
     cursor: pointer;
@@ -47,6 +50,8 @@ const nextButtonStyle = css`
   width: 32px;
   height: 60px;
   border: none;
+
+  font-size: 0;
 
   &:hover {
     border: 1px solid blue;
