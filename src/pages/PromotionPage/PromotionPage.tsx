@@ -30,6 +30,7 @@ function PromotionPage() {
         <button
           className='control-button prev-button'
           disabled={buttonDisabled.prev}
+          aria-label='이전'
           onClick={() => handleClickControlButton('prev')}
         >
           ＜
@@ -37,6 +38,7 @@ function PromotionPage() {
         <button
           className='control-button next-button'
           disabled={buttonDisabled.next}
+          aria-label='다음'
           onClick={() => handleClickControlButton('next')}
         >
           ＞
