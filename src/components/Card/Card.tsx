@@ -24,11 +24,11 @@ function Container({ backgroundImage, children, ...args }: CardProps) {
   )
 }
 
-interface NameProps extends React.HTMLAttributes<HTMLHeadElement> {
+interface LocationProps extends React.HTMLAttributes<HTMLHeadElement> {
   children: string
 }
 
-function Location({ className, children, ...args }: NameProps) {
+function Location({ className, children, ...args }: LocationProps) {
   return (
     <p className={cn(className, styles.location)} {...args}>
       {children}
@@ -55,7 +55,7 @@ interface PriceProps extends React.HTMLAttributes<HTMLParagraphElement> {
 function Price({ className, children, ...args }: PriceProps) {
   return (
     <p className={cn(className, styles.price)} {...args}>
-      KRW {children.toLocaleString('ko-kr')}
+      <span aria-label="대한민국 원">KRW</span> {children.toLocaleString('ko-kr')}
     </p>
   )
 }
