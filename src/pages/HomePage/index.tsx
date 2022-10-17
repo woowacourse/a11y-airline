@@ -7,7 +7,9 @@ import { debounce } from "utils";
 import "./index.css";
 
 const HomePage = () => {
-  const scrollContainer = useRef<HTMLUListElement>(null);
+  const scrollContainer = useRef<
+    HTMLUListElement & { childNodes: HTMLLIElement[] }
+  >(null);
   const [buttonDisabled, setButtonDisabled] = useState({
     previous: true,
     next: false,
@@ -16,7 +18,7 @@ const HomePage = () => {
   const setDiableCarouselButton = () => {
     if (!scrollContainer.current) return;
 
-    const listItem = scrollContainer.current.childNodes[0] as HTMLUListElement;
+    const [listItem] = scrollContainer.current.childNodes;
     const containerStyle = getComputedStyle(scrollContainer.current);
     const itemWidth = listItem.clientWidth;
     const itemMargin = Number(
@@ -54,7 +56,7 @@ const HomePage = () => {
   ) => {
     if (!scrollContainer.current || disabled) return;
 
-    const listItem = scrollContainer.current.childNodes[0] as HTMLUListElement;
+    const [listItem] = scrollContainer.current.childNodes;
     const containerStyle = getComputedStyle(scrollContainer.current);
     const itemWidth = listItem.clientWidth;
     const itemMargin = Number(
