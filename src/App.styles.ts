@@ -5,10 +5,7 @@ const layoutStyle = css`
   flex-direction: column;
   gap: 10px;
 
-  width: 120px;
-  padding: 20px;
-  border: 1px solid #ced4da;
-  border-radius: 8px;
+  margin: 10px;
 `;
 
 export { layoutStyle };
