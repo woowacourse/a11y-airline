@@ -1,0 +1,33 @@
+.controller {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  bottom: 160px;
+  left: 0;
+}
+
+.controller__leftBtn {
+  width: 30px;
+  height: 60px;
+
+  border: 0;
+  cursor: pointer;
+}
+
+.controller__leftBtn:disabled {
+  cursor: not-allowed;
+}
+
+.controller__rightBtn {
+  width: 30px;
+  height: 60px;
+
+  border: 0;
+  cursor: pointer;
+}
+
+.controller__rightBtn:disabled {
+  cursor: not-allowed;
+}

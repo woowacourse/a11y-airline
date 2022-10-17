@@ -9,3 +9,7 @@ export const handleErrorByAlert = (error: unknown) => {
   }
   alert("예기치 못한 에러가 발생했습니다.");
 };
+
+export const parseToKWRPrice = (price: number): string => {
+  return new Intl.NumberFormat("ko-KR").format(price);
+};
