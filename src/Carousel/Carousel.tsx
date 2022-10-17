@@ -39,6 +39,16 @@ function Carousel() {
   return (
     <div css={layoutStyle(data.length)}>
       <ul css={listStyle} ref={listRef}>
+        <button css={prevButtonStyle} onClick={handleClickPrevButton} aria-disabled={isStart}>
+          이전
+        </button>
+        <button
+          css={nextButtonStyle}
+          onClick={handleClickNextButton}
+          aria-disabled={isEnd || false}
+        >
+          다음
+        </button>
         {data.map((el) => (
           <TravelInfo
             key={el.id}
@@ -50,12 +60,6 @@ function Carousel() {
           />
         ))}
       </ul>
-      <button css={prevButtonStyle} onClick={handleClickPrevButton} aria-disabled={isStart}>
-        이전
-      </button>
-      <button css={nextButtonStyle} onClick={handleClickNextButton} aria-disabled={isEnd || false}>
-        다음
-      </button>
     </div>
   );
 }
