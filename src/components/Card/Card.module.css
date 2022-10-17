@@ -1,0 +1,116 @@
+.card {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 300px;
+}
+
+.textHidden {
+  font-size: 0;
+}
+
+.content {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  margin-top: 20px;
+}
+
+.contentSit {
+  font-size: 24px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.contentPrice {
+  white-space: nowrap;
+  color: navy;
+  font-size: 24px;
+  font-weight: 900;
+  -webkit-text-stroke: 0.7px white;
+}
+
+.title p {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.Barcelona-background::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 300px;
+  background-image: url('../../images/Barcelona-background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.Suisse-background::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 300px;
+  background-image: url('../../images/Suisse-background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.India-background::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 300px;
+  background-image: url('../../images/India-background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.Tokyo-background::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 300px;
+  background-image: url('../../images/Tokyo-background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.London-background::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 300px;
+  background-image: url('../../images/London-background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.8;
+  z-index: -1;
+}

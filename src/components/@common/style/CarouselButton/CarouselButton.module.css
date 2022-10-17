@@ -1,0 +1,59 @@
+.quarterTopright {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-top-right-radius: 100%;
+  background-color: black;
+  opacity: 0.5;
+}
+
+.quarterTopleft {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-top-left-radius: 100%;
+  background-color: black;
+  opacity: 0.5;
+}
+
+.quarterBottomright {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-bottom-right-radius: 100%;
+  background-color: black;
+  opacity: 0.5;
+}
+
+.quarterBottomleft {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-bottom-left-radius: 100%;
+  background-color: black;
+  opacity: 0.5;
+}
+
+.iconBox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.leftArrowIcon {
+  position: absolute;
+  transform: translate(0, 50%);
+  width: 50px;
+  height: 50px;
+  background-image: url('../../../../images/left-arrow.svg');
+  z-index: 1;
+}
+
+.rightArrowIcon {
+  position: absolute;
+  transform: translate(0, 50%);
+  width: 50px;
+  height: 50px;
+  background-image: url('../../../../images/right-arrow.svg');
+  z-index: 1;
+}

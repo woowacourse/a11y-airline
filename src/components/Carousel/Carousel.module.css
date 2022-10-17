@@ -1,0 +1,39 @@
+.carouselContainer {
+  position: relative;
+  width: 500px;
+}
+
+.carouselBox {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow-x: scroll;
+}
+
+.cardBox {
+  display: flex;
+  gap: 24px;
+  height: 320px;
+  transition-property: transform;
+  transition-duration: 1s;
+}
+
+.CarouselLeftButton {
+  position: absolute;
+  top: 0;
+  left: -10px;
+  transform: translate(0, 100%);
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.CarouselRightButton {
+  position: absolute;
+  top: 0;
+  right: -5px;
+  transform: translate(0, 100%);
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
