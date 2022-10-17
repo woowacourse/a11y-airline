@@ -17,6 +17,7 @@ export type CarouselItemType = {
   flightType: string;
   price: number;
   link: string;
+  imgsrc: string;
 };
 
 export const carouselItems: CarouselItemType[] = [
@@ -25,47 +26,55 @@ export const carouselItems: CarouselItemType[] = [
     flightType: '일반석 왕복',
     price: 1158000,
     link: URL.두바이,
+    imgsrc: 'Dubai',
   },
   {
     title: '서울/인천 - 후쿠오카',
     flightType: '일반석 왕복',
     price: 340400,
     link: URL.후쿠오카,
+    imgsrc: 'Hukuoka',
   },
   {
     title: '서울/인천 - 푸껫',
     flightType: '일반석 왕복',
     price: 704100,
     link: URL.푸껫,
+    imgsrc: 'Pucket',
   },
   {
     title: '서울/인천 - 치앙마이',
     flightType: '일반석 왕복',
     price: 839101,
     link: URL.치앙마이,
+    imgsrc: 'Chiang',
   },
   {
     title: '서울/인천 - 바르셀로나',
     flightType: '일반석 왕복',
     price: 1546300,
     link: URL.바르셀로나,
+    imgsrc: 'Barcel',
   },
   {
     title: '서울/인천 - 하노이',
     flightType: '일반석 왕복',
     price: 527500,
     link: URL.하노이,
+    imgsrc: 'Hanoi',
   },
   {
     title: '서울/인천 - 로마/레오나르도 다빈치',
     flightType: '일반석 왕복',
     price: 1454200,
     link: URL['로마/레오나르도 다빈치'],
+    imgsrc: 'Rome',
   },
   {
     title: '서울/인천 - 호놀룰루(하와이)',
     flightType: '일반석 왕복',
     price: 1244900,
     link: URL['호놀룰루(하와이)'],
+    imgsrc: 'Hornol',
   },
 ];

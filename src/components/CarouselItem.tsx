@@ -2,12 +2,42 @@ import { ForwardedRef, forwardRef, memo } from 'react';
 import styled from 'styled-components';
 import { CarouselItemType } from '../const/carousel';
 import Barcel from '../images/barcel.jpg';
+import Chiang from '../images/chiang.jpg';
+import Dubai from '../images/dubai.jpg';
+import Hanoi from '../images/hanoi.jpg';
+import Hornol from '../images/hornol.jpg';
+import Hukuoka from '../images/hukuoka.jpg';
+import Pucket from '../images/pucket.jpg';
+import Rome from '../images/rome.jpg';
+
+const imgMap = (img: string) => {
+  switch (img) {
+    case 'Barcel':
+      return Barcel;
+    case 'Chiang':
+      return Chiang;
+    case 'Dubai':
+      return Dubai;
+    case 'Hanoi':
+      return Hanoi;
+    case 'Hukuoka':
+      return Hukuoka;
+    case 'Pucket':
+      return Pucket;
+    case 'Rome':
+      return Rome;
+    case 'Hornol':
+      return Hornol;
+    default:
+      break;
+  }
+};
 
 const CarouselItem = ({ item }: { item: CarouselItemType }, ref: ForwardedRef<HTMLLIElement>) => {
   return (
     <S.BOX ref={ref}>
       <a href={item.link} aria-hidden='true'>
-        <S.IMG alt={`행복한 ${item.title} 이미지`} src={Barcel}></S.IMG>
+        <S.IMG alt={`행복한 ${item.title} 이미지`} src={imgMap(item.imgsrc)}></S.IMG>
       </a>
       <S.Content>
         <S.Title>{item.title}</S.Title>
