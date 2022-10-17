@@ -1,9 +1,14 @@
 import useCarousel from './useCarousel';
 
 import styles from './styles.module.scss';
-import { useState } from 'react';
+import { ReactNode } from 'react';
 
-const Carousel = ({ children, moveAmount }: any) => {
+interface Props {
+  children: ReactNode;
+  moveAmount: number;
+}
+
+const Carousel = ({ children, moveAmount }: Props) => {
   const {
     ulRef,
     onClickPrevButton,

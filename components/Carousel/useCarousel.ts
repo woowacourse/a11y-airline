@@ -56,6 +56,19 @@ const useCarousel = (moveAmount: number) => {
     }
   };
 
+  useEffect(() => {
+    if (!ulRef.current) return;
+
+    ulRef.current.childNodes.forEach((item) => {
+      const { tagName, localName } = item as HTMLElement;
+      if (tagName !== 'LI') {
+        throw new Error(
+          `The tag of the child element in the Carousel must be "li". (current tag is "${localName}")`
+        );
+      }
+    });
+  });
+
   return {
     ulRef,
     onClickPrevButton,
