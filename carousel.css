@@ -15,8 +15,8 @@ body {
 }
 
 .slider-container {
-  position: relative;
   overflow: hidden;
+  position: relative;
 }
 
 .slider {
@@ -100,4 +100,17 @@ img {
 .disabled {
   cursor: not-allowed;
   opacity: 0.5;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    align-items: flex-start;
+    margin-top: 50px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  .slider-container {
+    position: static;
+  }
 }
