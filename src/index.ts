@@ -1,3 +1,5 @@
-import "./styles/style.css";
+import "./styles/step1.css";
+import "./styles/step2.css";
 
-import "./spinButton";
+import "./carousel";
+// import "./spinButton";
