@@ -103,11 +103,13 @@ img {
 }
 
 @media screen and (max-width: 768px) {
+  html {
+    overflow-x: hidden;
+  }
   body {
     align-items: flex-start;
     margin-top: 50px;
     position: relative;
-    overflow-x: hidden;
   }
 
   .slider-container {
