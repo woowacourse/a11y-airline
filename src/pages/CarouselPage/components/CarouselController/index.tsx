@@ -4,31 +4,29 @@ import "./style.css";
 interface CarouselControllerProps {
   handleBackButtonClick: () => void;
   handleNextButtonClick: () => void;
-  max: number;
-  current: number;
+  end: { left: boolean; right: boolean };
 }
 
 const CarouselController = ({
   handleBackButtonClick,
   handleNextButtonClick,
-  max,
-  current,
+  end,
 }: CarouselControllerProps) => {
   return (
     <div className="controller">
       <button
         className="left__btn"
         onClick={handleBackButtonClick}
-        aria-disable={current <= 0}
-        disabled={current <= 0}
+        aria-disable={end.left}
+        disabled={end.left}
       >
         <span className="sr-only">이전</span>
       </button>
       <button
         className="right__btn"
         onClick={handleNextButtonClick}
-        aria-disable={current >= max - 1}
-        disabled={current >= max - 1}
+        aria-disable={end.right}
+        disabled={end.right}
       >
         <span className="sr-only">다음</span>
       </button>

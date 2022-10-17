@@ -12,8 +12,14 @@ const PAGE = {
   MAX_COUNT: 8,
 };
 
+const initEnd = {
+  left: true,
+  right: false,
+};
+
 const CarouselPage = () => {
   const [page, setPage] = useState<number>(0);
+  const [end, setEnd] = useState(initEnd);
   const start = useRef<HTMLUListElement>(null);
 
   const changePage = (page: number) => {
@@ -38,7 +44,9 @@ const CarouselPage = () => {
   };
 
   const handleNextButtonClick = () => {
-    if (page > PAGE.MAX_COUNT) {
+    if (!start.current) return;
+
+    if (page > PAGE.MAX_COUNT - 1) {
       return;
     }
 
@@ -49,11 +57,26 @@ const CarouselPage = () => {
     });
   };
 
+  const handleEnd = () => {
+    if (!start.current) return;
+
+    const { scrollLeft, scrollWidth, offsetWidth } = start.current;
+
+    setEnd({
+      left: scrollLeft <= 0,
+      right: scrollWidth <= offsetWidth + scrollLeft,
+    });
+  };
+
+  const handlePageFocus: React.FocusEventHandler<HTMLDivElement> = () => {
+    handleNextButtonClick();
+  };
+
   return (
     <div>
       <h2>지금 떠나기 좋은 여행</h2>
       <div className="carousel">
-        <ul className="item__list" ref={start}>
+        <ul className="item__list" ref={start} onScroll={handleEnd}>
           {data.map(({ href, image, location, seat, price }) => (
             <li className="item">
               <CarouselItem
@@ -62,6 +85,7 @@ const CarouselPage = () => {
                 location={location}
                 seat={seat}
                 price={price}
+                onFocus={handlePageFocus}
               />
             </li>
           ))}
@@ -69,8 +93,7 @@ const CarouselPage = () => {
         <CarouselController
           handleBackButtonClick={handleBackButtonClick}
           handleNextButtonClick={handleNextButtonClick}
-          max={PAGE.MAX_COUNT - 1}
-          current={page}
+          end={end}
         />
       </div>
     </div>
