@@ -27,19 +27,17 @@ const Carousel = ({ children, moveAmount }: Props) => {
         <button
           type="button"
           onClick={onClickPrevButton}
+          aria-label="이전"
           aria-disabled={isFirstPage}
           style={isFirstPage ? { cursor: 'not-allowed' } : {}}
-        >
-          <span className="sr-only">다음</span>
-        </button>
+        />
         <button
           type="button"
           onClick={onClickNextButton}
+          aria-label="다음"
           aria-disabled={isLastPage}
           style={isLastPage ? { cursor: 'not-allowed' } : {}}
-        >
-          <span className="sr-only">다음</span>
-        </button>
+        />
       </div>
     </div>
   );
