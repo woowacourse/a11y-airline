@@ -1,0 +1,49 @@
+.carousel {
+  position: relative;
+}
+
+.carouselContent {
+  display: flex;
+  width: 90vw;
+  overflow-x: hidden;
+  padding: 1rem 0;
+  scroll-behavior: smooth;
+
+  li + li {
+    margin-left: 1rem;
+  }
+
+  li:first-of-type {
+    margin-left: 0;
+  }
+}
+
+.buttonContainer {
+  position: absolute;
+  width: 90vw;
+  top: calc(50% - 30px);
+
+  button {
+    position: absolute;
+    width: 30px;
+    height: 60px;
+    border: none;
+    cursor: pointer;
+  }
+
+  button:first-of-type {
+    left: 0;
+    background: url('https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-left.svg')
+      no-repeat center top;
+  }
+
+  button:last-of-type {
+    right: 0;
+    background: url('https://www.koreanair.com/etc.clientlibs/koreanair/clientlibs/clientlib-base/resources/images/mris__button-right.svg')
+      no-repeat center top;
+  }
+}
+
+.disabled {
+  cursor: not-allowed;
+}

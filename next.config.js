@@ -6,6 +6,9 @@ const nextConfig = {
     locales: ['ko'],
     defaultLocale: 'ko',
   },
+  images: {
+    domains: ['www.koreanair.com'],
+  },
 };
 
 module.exports = nextConfig;
