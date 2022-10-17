@@ -27,7 +27,9 @@ const TravelItem = ({ travelItem }: Props) => {
             <span>
               {`KRW ${Number(travelItem.price).toLocaleString('ko-KR')}`}
             </span>
-            <span aria-label="이상">{' ~ '}</span>
+            <span aria-label="이상" role="complementary">
+              {' ~ '}
+            </span>
           </p>
         </div>
       </a>
