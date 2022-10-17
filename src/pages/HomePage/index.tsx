@@ -23,10 +23,24 @@ const HomePage = () => {
       containerStyle.getPropertyValue("gap").substring(2, 0)
     );
 
+    console.log("answer: ", (itemWidth + itemMargin) * 5);
+    console.log("scrollWidth: ", scrollContainer.current.scrollWidth);
+    console.log(
+      "off + left + item: ",
+      scrollContainer.current.offsetWidth +
+        scrollContainer.current.scrollLeft +
+        itemWidth +
+        itemMargin
+    );
+
     const isPreviousButtonDisabled =
       scrollContainer.current.scrollLeft <= itemWidth + itemMargin;
     const isNextButtonDisabled =
-      scrollContainer.current.scrollLeft >= (itemWidth + itemMargin) * 5;
+      scrollContainer.current.scrollWidth <=
+      scrollContainer.current.offsetWidth +
+        scrollContainer.current.scrollLeft +
+        itemWidth +
+        itemMargin;
 
     setButtonDisabled({
       previous: isPreviousButtonDisabled,
@@ -65,6 +79,7 @@ const HomePage = () => {
       >
         {dummyTravelCardData.map(({ src, alt, href, title, lowestPrice }) => (
           <TravelCard
+            key={src}
             src={src}
             alt={alt}
             href={href}
