@@ -22,7 +22,7 @@ function Card({ place }: CardProps, ref: LegacyRef<HTMLDivElement>) {
         <div className={styles.description}>
           <p className={styles.title}>{place.title}</p>
           <p>{place.seat}</p>
-          <p>
+          <p aria-label={`${place.price} 대한민국 원`}>
             KRW {place.price.toLocaleString('ko-KR')}
             <span aria-hidden={true}> ~</span>
           </p>
