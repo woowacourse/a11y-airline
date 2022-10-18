@@ -3,9 +3,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  mode: "production",
+  mode: "development",
   entry: {
-    index: "./src/ts",
+    index: "./src/ts/carousel.ts",
   },
   resolve: {
     extensions: [".js", ".css", ".ts"],
@@ -36,11 +36,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: "index",
-      hash: true,
-      filename: "index.html",
-      chunks: ["index"],
-      template: "./index.html",
+      template: "./carousel.html",
     }),
   ],
 };
