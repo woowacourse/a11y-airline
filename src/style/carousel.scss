@@ -1,0 +1,84 @@
+@use 'sass:math';
+@import './media-query.scss';
+
+$containerWidth: 50vw;
+$imageCount: 8;
+$carouselItemWidth: calc($containerWidth/2);
+
+.carousel-container {
+  img {
+    width: 100%;
+  }
+  position: relative;
+  max-width: $containerWidth;
+  .carousel {
+    overflow: hidden;
+  }
+  .carousel-inner {
+    display: flex;
+    flex-wrap: nowrap;
+    width: calc($carouselItemWidth * $imageCount);
+    transition: transform 0.4s;
+  }
+  .carousel-inner > li {
+    width: $carouselItemWidth;
+  }
+  .carousel-inner > li > a {
+    display: block;
+    position: relative;
+    color: black;
+  }
+  .carousel-inner > li > a > .carousel-description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #e8e8e882;
+  }
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    z-index: 5;
+  }
+  .carousel-control.left,
+  .carousel-control.right {
+    opacity: 1;
+
+    &.disabled {
+      cursor: not-allowed;
+    }
+  }
+  .carousel-control.left {
+    left: -40px;
+  }
+  .carousel-control.right {
+    right: -40px;
+  }
+  .carousel-control > button > span {
+    color: black;
+    font-size: 29px;
+
+    @include mobile {
+      font-size: 18px;
+    }
+  }
+
+  @include mobile {
+    $width: 80vw;
+    max-width: $width;
+
+    .carousel-inner {
+      width: calc(math.div($width, 2) * $imageCount);
+      & > li {
+        width: math.div($width, 2);
+      }
+      .carousel-control > button > span {
+        font-size: 18px;
+      }
+      .carousel-description {
+        font-size: 14px;
+      }
+    }
+  }
+}

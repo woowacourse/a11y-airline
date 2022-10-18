@@ -1,6 +1,8 @@
 @import './normalize.scss';
 @import './snackbar.scss';
 @import './helptip.scss';
+@import './tabs.scss';
+@import './carousel.scss';
 
 * {
   box-sizing: border-box;
@@ -22,7 +24,8 @@ input[type='number'] {
   display: none;
 }
 
-.hidden-for-aria-live {
+.hidden-for-aria-live,
+.sr-only {
   position: absolute;
   text-indent: -9999px;
 }
@@ -52,4 +55,11 @@ input[type='number'] {
   padding-left: 10px;
   padding-right: 10px;
   text-align: center;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }

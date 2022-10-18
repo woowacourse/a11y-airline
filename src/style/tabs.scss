@@ -1,0 +1,23 @@
+.wrapper {
+  position: relative;
+}
+
+.tabs {
+  display: flex;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  column-gap: 10px;
+  & > .tab {
+    flex-grow: 1;
+  }
+}
+
+.panels {
+  & > .panel {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+}
