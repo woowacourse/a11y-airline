@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Travel1 from './assets/travel_1.jpg';
 import Travel2 from './assets/travel_2.jpg';
 import Travel3 from './assets/travel_3.jpg';
@@ -8,6 +8,7 @@ import Travel5 from './assets/travel_5.jpg';
 import Travel6 from './assets/travel_6.jpg';
 import Travel7 from './assets/travel_7.jpg';
 import Travel8 from './assets/travel_8.jpg';
+import { debounce } from './debounce';
 
 const TravelList = [
   {
@@ -96,34 +97,36 @@ const itemSize = 250 + 10;
 const totalSize = itemSize * TravelList.length;
 
 const TravelCarousel = () => {
-  const [xTranslated, changeXTranslated] = useState(0);
+  const [scrollX, setScrollX] = useState(0);
   const [maxXTranslated, setMaxXTranslated] = useState(0);
 
   const carouselWidth = useRef(0);
-  const wrapperRef = useRef<HTMLUListElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   const handleClickPrevButton = () => {
-    const next = xTranslated - itemSize;
+    const next = scrollX - itemSize;
 
-    if (next <= 0) {
-      changeXTranslated(0);
+    if (next < 0) {
+      setScrollX(0);
 
       return;
     }
 
-    changeXTranslated(next);
+    setScrollX(next);
+    wrapperRef.current?.scrollTo({ left: next, behavior: 'smooth' });
   };
 
   const handleClickNextButton = () => {
-    const next = xTranslated + itemSize;
+    const next = scrollX + itemSize;
 
-    if (next >= maxXTranslated) {
-      changeXTranslated(maxXTranslated);
+    if (next > maxXTranslated) {
+      setScrollX(maxXTranslated);
 
       return;
     }
 
-    changeXTranslated(next);
+    setScrollX(next);
+    wrapperRef.current?.scrollTo({ left: next, behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -146,10 +149,19 @@ const TravelCarousel = () => {
     };
   }, []);
 
+  const onScroll = useCallback(
+    debounce(() => {
+      if (!wrapperRef.current) return;
+
+      setScrollX(wrapperRef.current?.scrollLeft);
+    }, 300),
+    []
+  );
+
   return (
     <StyledRoot>
-      <StyledWrapper>
-        <StyledTravelList xTranslated={xTranslated} ref={wrapperRef}>
+      <StyledWrapper ref={wrapperRef} onScroll={onScroll}>
+        <StyledTravelList>
           {TravelList.map(
             ({ id, departure, arrivals, seatClass, isRound, bottomPrice, imageUrl, href }) => (
               <li key={id}>
@@ -167,13 +179,13 @@ const TravelCarousel = () => {
           )}
         </StyledTravelList>
       </StyledWrapper>
-      <StyledPrev aria-label='이전' onClick={handleClickPrevButton} disabled={xTranslated <= 0}>
+      <StyledPrev aria-label='이전' onClick={handleClickPrevButton} disabled={scrollX <= 0}>
         {'>'}
       </StyledPrev>
       <StyledNext
         aria-label='다음'
         onClick={handleClickNextButton}
-        disabled={xTranslated >= maxXTranslated}
+        disabled={scrollX >= maxXTranslated}
       >
         {'<'}
       </StyledNext>
@@ -189,14 +201,12 @@ const StyledRoot = styled.div`
 `;
 
 const StyledWrapper = styled.div`
-  overflow-x: hidden;
+  overflow-x: scroll;
 `;
 
-const StyledTravelList = styled.ul<{ xTranslated: number }>`
+const StyledTravelList = styled.ul`
   display: flex;
   gap: 10px;
-  transform: ${({ xTranslated }) => `translateX(-${xTranslated}px)`};
-  transition: transform 300ms linear;
 
   & > li {
     flex: none;
