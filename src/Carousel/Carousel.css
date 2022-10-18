@@ -1,0 +1,61 @@
+.list-container {
+  width: 70%;
+  margin: auto;
+  position: relative;
+}
+
+.list-back {
+  background-color: #f3f4f8;
+  width: 100%;
+  height: 16.8rem;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.list-title {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #1a1a1a;
+  line-height: 1.67;
+  margin-bottom: 1.6rem;
+}
+
+.list-box {
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.list {
+  display: flex;
+  width: 50%;
+  transition: linear 0.3s;
+}
+
+.list-controller {
+  width: 100%;
+  bottom: 50%;
+  left: 0;
+}
+
+.button-prev {
+  top: 50%;
+  left: 0;
+  background: url('../assets/left-arrow.png') no-repeat center top;
+  background-size: 2rem;
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}
+
+.button-next {
+  top: 50%;
+  right: 0;
+  background: url('../assets/right-arrow.png') no-repeat center center;
+  background-size: 2rem;
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}

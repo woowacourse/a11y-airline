@@ -1,11 +1,11 @@
 import React, { ChangeEvent } from 'react';
-import helpIcon from './images/help.png';
-import minusIcon from './images/minus.png';
-import plusIcon from './images/plus.png';
-import './App.css';
+import helpIcon from '../images/help.png';
+import minusIcon from '../images/minus.png';
+import plusIcon from '../images/plus.png';
+import './Spin.css';
 import { useState } from 'react';
 
-function App() {
+function Spin() {
   const [passengerAmount, setPassengerAmount] = useState(1);
   const [passengerAmountStatus, setPassengerAmountStatus] = useState('');
 
@@ -75,4 +75,4 @@ function App() {
   );
 }
 
-export default App;
+export default Spin;
