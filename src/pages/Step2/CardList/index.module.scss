@@ -1,0 +1,43 @@
+.container {
+  width: 100%;
+}
+
+.button {
+  position: fixed;
+  top: 176px;
+
+  width: fit-content;
+  height: fit-content;
+
+  background: none;
+  border: 0;
+
+  padding: 0;
+
+  z-index: 99;
+
+  cursor: pointer;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}
+
+.unlist {
+  display: flex;
+  gap: 16px;
+
+  overflow-x: hidden;
+
+  width: 100%;
+
+  padding: 0;
+}
+
+.list {
+  list-style-type: none;
+}

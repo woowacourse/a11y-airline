@@ -1,0 +1,29 @@
+.container {
+  position: relative;
+
+  width: 100%;
+}
+
+.image {
+  width: 240px;
+  height: 320px;
+
+  border-radius: 4px;
+}
+
+.description {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  padding: 3.2px 16px;
+
+  color: black;
+
+  font-size: 12.8px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 700;
+}
