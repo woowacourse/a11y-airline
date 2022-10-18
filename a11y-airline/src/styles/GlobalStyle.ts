@@ -111,7 +111,8 @@ ${({ theme }) => css`
     font-family: "Source Sans Pro", sans-serif;
   }
   ol,
-  ul {
+  ul,
+  li {
     list-style: none;
   }
   blockquote,

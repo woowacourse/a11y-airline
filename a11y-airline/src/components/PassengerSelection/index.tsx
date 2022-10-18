@@ -1,4 +1,4 @@
-import { FlexBox } from "components";
+import { FlexBox, Hidden } from "components";
 import { ChangeEventHandler, useRef, useState } from "react";
 import styled, { css } from "styled-components";
 
@@ -158,15 +158,6 @@ const Passenger = styled.input`
   font-size: 1.4rem;
   font-weight: bold;
   border-bottom: 0.5px solid black;
-`;
-
-const Hidden = styled.p`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  clip: rect(0 0 0 0);
-  margin: -1px;
-  overflow: hidden;
 `;
 
 const CloseButton = styled.button.attrs({

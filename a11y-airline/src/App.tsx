@@ -1,9 +1,10 @@
-import { PassengerSelection } from "components";
+import { PassengerSelection, Carousel } from "components";
 
 function App() {
   return (
     <main>
-      <PassengerSelection />
+      {/* <PassengerSelection /> */}
+      <Carousel />
     </main>
   );
 }
