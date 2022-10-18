@@ -69,11 +69,7 @@ function CardList({ placeList }: CardListProps) {
     <div className={styles.container}>
       <ul className={styles.unlist}>
         {placeList.map((place, idx) => (
-          <li
-            className={styles.list}
-            key={idx}
-            aria-label={`${place.title} ${place.seat} ${place.price} 대한민국 원`}
-          >
+          <li className={styles.list} key={idx}>
             <Card place={place} ref={getCardRef(idx)} />
           </li>
         ))}
