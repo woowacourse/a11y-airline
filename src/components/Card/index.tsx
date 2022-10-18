@@ -8,6 +8,8 @@ interface CardProps {
 }
 
 function Card({ place }: CardProps, ref: LegacyRef<HTMLDivElement>) {
+  const [origin, destination] = place.title.split('-');
+
   return (
     <a href={place.link} target="_blank" className={styles.container}>
       <div ref={ref}>
@@ -20,9 +22,13 @@ function Card({ place }: CardProps, ref: LegacyRef<HTMLDivElement>) {
           />
         </div>
         <div className={styles.description}>
-          <p className={styles.title}>{place.title}</p>
+          <p className={styles.title}>
+            {origin}
+            <span aria-hidden={true}>-</span>
+            {destination}
+          </p>
           <p>{place.seat}</p>
-          <p aria-label={`${place.price} 대한민국 원`}>
+          <p aria-label={`${place.price.toLocaleString('ko-KR')} 대한민국 원`}>
             KRW {place.price.toLocaleString('ko-KR')}
             <span aria-hidden={true}> ~</span>
           </p>
