@@ -3,11 +3,23 @@ const selectPeopleOutput = document.getElementById("select-people-output");
 const selectPeopleInput = document.getElementById("select-people-input");
 const selectPeopleOutputLive = document.getElementById("select-people-output-live");
 
-const updateSelectPeopleForm = (nextValue) => {
-  selectPeopleOutput.value = nextValue;
-  selectPeopleInput.value = nextValue;
-  selectPeopleOutputLive.innerText = `성인 추가 ${nextValue}`;
-};
+const { updateSelectPeopleForm } = (() => {
+  const selectPeopleMemo = {
+    prevSelectPeople: 1,
+  };
+
+  return {
+    updateSelectPeopleForm(nextValue) {
+      const updateType = selectPeopleMemo.prevSelectPeople < nextValue ? "추가" : "감소";
+
+      selectPeopleOutput.value = nextValue;
+      selectPeopleInput.value = nextValue;
+      selectPeopleOutputLive.innerText = `성인 ${updateType} ${nextValue}`;
+
+      selectPeopleMemo.prevSelectPeople = nextValue;
+    },
+  };
+})();
 
 const showInput = () => {
   selectPeopleInput.classList.remove("hidden");
@@ -46,7 +58,13 @@ selectPeopleForm.addEventListener("submit", (e) => {
 
   const { ariaValueMax, ariaValueMin } = selectPeopleOutput;
 
-  const { valueAsNumber } = selectPeopleInput;
+  const { value } = selectPeopleInput;
+
+  const valueAsNumber = Number(value);
+
+  if (isNaN(valueAsNumber)) {
+    return;
+  }
 
   if (valueAsNumber <= ariaValueMax && valueAsNumber >= ariaValueMin) {
     updateSelectPeopleForm(valueAsNumber);
