@@ -20,8 +20,8 @@ function CardList({ placeList }: CardListProps) {
 
   const cardRefList = useRef<Array<HTMLDivElement | null>>([]);
 
-  const isFirst = placeCard < 0;
-  const isLast = placeCard > placeList.length - 1;
+  const isFirst = placeCard <= 0;
+  const isLast = placeCard >= placeList.length - 1;
 
   const getCardRef =
     (placeNumber: number) => (element: HTMLDivElement | null) => {
