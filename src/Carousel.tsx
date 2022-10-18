@@ -189,7 +189,7 @@ const StyledRoot = styled.div`
 `;
 
 const StyledWrapper = styled.div`
-  overflow-x: scroll;
+  overflow-x: hidden;
 `;
 
 const StyledTravelList = styled.ul<{ xTranslated: number }>`
