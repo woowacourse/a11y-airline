@@ -2,13 +2,13 @@ import './style/normalize.css';
 import Body from './components/Body';
 import MessageContextProvider from './context/MessageContext';
 import A11yMessage from './components/A11yMessage';
-import PassengerPage from './pages/PassengerPage';
+import CarouselPage from './pages/CarouselPage';
 
 const App = () => {
   return (
     <MessageContextProvider>
       <Body>
-        <PassengerPage />
+        <CarouselPage />
       </Body>
       <A11yMessage />
     </MessageContextProvider>

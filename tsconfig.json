@@ -11,5 +11,5 @@
     "jsx": "preserve",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src"]
+  "include": ["src", "index.d.ts"]
 }

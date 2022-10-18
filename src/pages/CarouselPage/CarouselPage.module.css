@@ -1,0 +1,12 @@
+.layout {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 1000px;
+  overflow-x: hidden;
+}
