@@ -1,120 +1,75 @@
-import { ChangeEvent, useState } from "react";
-import "./app.css";
-import QuestionMarkTooltip from "./components/Tooltip";
-
-const MAX_PASSENGER_COUNT = 3;
-const MIN_PASSENGER_COUNT = 1;
-
-const PASSENGER_CHANGE_MESSAGE = "성인 탑승 인원을 변경합니다. ";
-const PASSENGER_INCREASE_MESSAGE = "성인 탑승 인원 추가";
-const PASSENGER_DECREASE_MESSAGE = "성인 탑승 인원 감소";
-const PASSENGER_COUNT_INPUT_ALERT_MESSAGE = (count: number) =>
-  `승객 ${count}명`;
-
-const isValidPassengerCount = (count: number) => {
-  if (count < MIN_PASSENGER_COUNT) {
-    return false;
-  }
-
-  if (count > MAX_PASSENGER_COUNT) {
-    return false;
-  }
-
-  return true;
-};
+import styled from "styled-components";
+import Carousel from "./components/Carousel";
+import { TravelInformation } from "./data";
 
 const App = () => {
-  const [passengerCount, setPassengerCount] =
-    useState<number>(MIN_PASSENGER_COUNT);
-  const [message, setMessage] = useState<string>("");
-
-  const changePassengerCount = (e: ChangeEvent<HTMLInputElement>) => {
-    const count = e.target.valueAsNumber;
-
-    if (!isValidPassengerCount(count)) {
-      return;
-    }
-
-    setPassengerCount(count);
-    setMessage(
-      `${PASSENGER_CHANGE_MESSAGE} ${PASSENGER_COUNT_INPUT_ALERT_MESSAGE(
-        count
-      )}`
-    );
-  };
-
-  const increasePassengerCount = () => {
-    const currentPassengerCount = passengerCount;
-
-    if (!isValidPassengerCount(passengerCount + 1)) {
-      return;
-    }
-
-    setPassengerCount((prev) => prev + 1);
-    setMessage(
-      `${PASSENGER_INCREASE_MESSAGE}
-        ${PASSENGER_COUNT_INPUT_ALERT_MESSAGE(currentPassengerCount + 1)}`
-    );
-  };
-
-  const decreasePassengerCount = () => {
-    const currentPassengerCount = passengerCount;
-
-    if (!isValidPassengerCount(passengerCount - 1)) {
-      return;
-    }
-
-    setPassengerCount((prev) => prev - 1);
-    setMessage(
-      `${PASSENGER_DECREASE_MESSAGE}
-        ${PASSENGER_COUNT_INPUT_ALERT_MESSAGE(currentPassengerCount - 1)}`
-    );
-  };
-
   return (
-    <main>
-      <h1>웹 접근성 좋은 항공사</h1>
-      <h2>승객 선택</h2>
-      <section className="passenger-count-control-container">
-        <div className="flex g7 align-center">
-          <label htmlFor="passenger-count-input">성인</label>
-          <QuestionMarkTooltip description="승객은 최소 1명 최대 3명입니다." />
-        </div>
-        <div className="passenger-count-controller">
-          <button
-            className="passenger-count-control-button"
-            type="button"
-            aria-disabled={passengerCount === MIN_PASSENGER_COUNT}
-            aria-label="성인 승객 한명 줄이기"
-            onClick={decreasePassengerCount}
-          >
-            -
-          </button>
-          <input
-            className="passenger-count-control-input"
-            id="passenger-count-input"
-            type="number"
-            min={MIN_PASSENGER_COUNT}
-            max={MAX_PASSENGER_COUNT}
-            value={passengerCount}
-            onChange={changePassengerCount}
-          />
-          <button
-            className="passenger-count-control-button"
-            type="button"
-            aria-disabled={passengerCount === MAX_PASSENGER_COUNT}
-            aria-label="성인 승객 한명 늘이기"
-            onClick={increasePassengerCount}
-          >
-            +
-          </button>
-        </div>
-        <div className="user-action-message-box" role="status">
-          {message}
-        </div>
-      </section>
-    </main>
+    <S.Wrapper>
+      <h2>지금 떠나기 좋은 여행</h2>
+      <S.Container>
+        <Carousel>
+          {TravelInformation.map(({ route, href, id, image, price, seat }) => (
+            <li key={id}>
+              <a href={href}>
+                <S.TravelItem>
+                  <S.TravelItemDescription>
+                    <S.TravelItemRoute>{route}</S.TravelItemRoute>
+                    <S.TravelItemSeat>{seat}</S.TravelItemSeat>
+                    <S.TravelItemPrice aria-label={`${price} 대한민국원`}>
+                      KRW {price.toLocaleString("ko-KR")}
+                      <span aria-hidden="true">~</span>
+                    </S.TravelItemPrice>
+                  </S.TravelItemDescription>
+                  <S.TravelItemImage src={image} alt={route} />
+                </S.TravelItem>
+              </a>
+            </li>
+          ))}
+        </Carousel>
+      </S.Container>
+    </S.Wrapper>
   );
 };
 
 export default App;
+
+const S = {
+  Wrapper: styled.main`
+    padding: 1rem;
+  `,
+  Container: styled.section`
+    width: 90%;
+  `,
+  TravelItem: styled.section`
+    position: relative;
+  `,
+  TravelItemDescription: styled.section`
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    color: black;
+  `,
+  TravelItemImage: styled.img`
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    max-height: 300px;
+    justify-content: center;
+  `,
+  TravelItemRoute: styled.span`
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 7px;
+  `,
+  TravelItemSeat: styled.span`
+    color: #242424;
+    font-size: 0.8rem;
+  `,
+  TravelItemPrice: styled.span`
+    color: #11277b;
+    font-size: 1rem;
+    font-weight: bold;
+  `,
+};

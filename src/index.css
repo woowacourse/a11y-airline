@@ -25,8 +25,20 @@ code {
 }
 
 button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
   cursor: pointer;
 }
+
 button:disabled {
   cursor: default;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
 }
