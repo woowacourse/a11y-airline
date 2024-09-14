@@ -134,9 +134,12 @@ table {
   border-spacing : 0;
 }
 
-body {
-  max-width: 600px;
-  position : absolute;
-  left     : 50%;
-  transform: translateX(-50%);
+@media screen and (min-width:600px) {
+  body {
+
+    max-width: 600px;
+    position : absolute;
+    left     : 50%;
+    transform: translateX(-50%);
+  }
 }
