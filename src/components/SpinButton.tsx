@@ -71,7 +71,7 @@ const SpinButton: React.FC = () => {
           </button>
         </div>
       </section>
-      <div role='note' className='visually-hidden'>
+      <div role='alert' className='visually-hidden' aria-live='polite'>
         {tip}
       </div>
     </>
