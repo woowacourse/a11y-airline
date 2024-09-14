@@ -133,3 +133,10 @@ table {
   border-collapse: collapse;
   border-spacing : 0;
 }
+
+body {
+  max-width: 600px;
+  position : absolute;
+  left     : 50%;
+  transform: translateX(-50%);
+}
