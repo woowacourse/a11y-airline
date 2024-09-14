@@ -1,7 +1,40 @@
 .App {
-  text-align: center;
-  display: flex;
+  text-align     : center;
+  display        : flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items    : center;
+  height         : 100vh;
+}
+
+span {
+  font-family: 'Prentendard';
+  font-weight: 600;
+  font-size  : 15px;
+}
+
+h1 {
+  font-family: 'Prentendard';
+  font-weight: 900;
+  font-size  : 35px;
+}
+
+h2 {
+  font-family: 'Prentendard';
+  font-weight: 500;
+  font-size  : 25px;
+}
+
+.n500 {
+  font-family: 'Prentendard';
+  font-weight: 500;
+}
+
+.n400 {
+  font-family: 'Prentendard';
+  font-weight: 400;
+}
+
+.n300 {
+  font-family: 'Prentendard';
+  font-weight: 400;
 }
