@@ -44,6 +44,7 @@ const travelOptions: TravelOption[] = [
   }
 ];
 
+const totalCount = travelOptions.length;
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -61,6 +62,9 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
+      <p className="visually-hidden">
+        {`${totalCount}개의 여행 상품 중 ${currentIndex + 1}번 째 상품`}
+      </p>
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
