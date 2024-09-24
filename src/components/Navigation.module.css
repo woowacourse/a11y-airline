@@ -40,8 +40,8 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.navItem:hover > .navList,
-.navItem:focus-within > .navList {
+.navItem:hover .navList,
+.navItem:focus-within .navList {
   display: block;
 }
 
