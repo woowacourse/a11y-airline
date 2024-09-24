@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import travelItem01 from '../assets/travel-item-01.png';
 import travelItem02 from '../assets/travel-item-02.png';
@@ -46,6 +46,7 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [announcement, setAnnouncement] = useState('');
 
   const nextTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
@@ -58,6 +59,15 @@ const TravelSection = () => {
   const handleCardClick = (link: string) => {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
+
+  useEffect(() => {
+    const currentOption = travelOptions[currentIndex];
+    setAnnouncement(
+      `${currentOption.departure}에서 ${currentOption.destination}까지, ${
+        currentOption.type
+      }, ${currentOption.price.toLocaleString()}원`
+    );
+  }, [currentIndex]);
 
   return (
     <div className={styles.travelSection}>
@@ -88,6 +98,10 @@ const TravelSection = () => {
       <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
         <img src={chevronRight} className={styles.navButtonIcon} />
       </button>
+
+      <div role="status" aria-live="polite" className={styles.visuallyHidden}>
+        {announcement}
+      </div>
     </div>
   );
 };
