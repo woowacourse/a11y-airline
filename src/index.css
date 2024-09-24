@@ -109,6 +109,8 @@ ul {
   list-style: none;
 }
 button {
+  margin: 0;
+  padding: 0;
   color: #000;
 }
 body {
