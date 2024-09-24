@@ -64,7 +64,10 @@ const TravelSection = () => {
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
-      <div className={styles.carousel}>
+      <div
+        className={styles.carousel}
+        aria-label={`이미지 캐러셀의 총 개수는 ${travelOptions.length}개`}
+      >
         {travelOptions.map((option, index) => (
           <div
             key={index}
