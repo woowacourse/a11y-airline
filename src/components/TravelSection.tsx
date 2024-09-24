@@ -45,6 +45,13 @@ const travelOptions: TravelOption[] = [
 ];
 
 const totalCount = travelOptions.length;
+
+const getAriaLabel = (option: TravelOption) => {
+  return `${option.departure} 출발 ${option.destination} 도착 ${
+    option.type
+  } 가격 ${option.price.toLocaleString()}원. 선택하면 예약 페이지로 이동합니다.`;
+};
+
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -70,12 +77,15 @@ const TravelSection = () => {
       </button>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <div
+          <button
+            type="button"
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
+            aria-live="polite"
+            aria-label={getAriaLabel(option)}
           >
-            <img src={option.image} className={styles.cardImage} />
+            <img src={option.image} className={styles.cardImage} alt="" />
             <div className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
@@ -83,7 +93,7 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </button>
         ))}
       </div>
       <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
