@@ -19,7 +19,7 @@
   text-decoration: none;
   color: #333;
   font-size: 16px;
-  padding: 5px 10px;
+  padding: 10px 10px;
   display: block;
 }
 
@@ -87,7 +87,6 @@
   .navItem {
     display: block;
     margin-right: 0;
-    margin-bottom: 10px;
   }
 
   .navItem .navList {

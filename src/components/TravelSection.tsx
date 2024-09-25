@@ -50,7 +50,7 @@ const TravelSection = () => {
   const isMounted = useRef(false);
 
   useEffect(() => {
-    if (isMounted.current && cardRefs.current[currentIndex]) {
+    if (isMounted.current) {
       cardRefs.current[currentIndex]?.focus();
     } else {
       isMounted.current = true;
@@ -77,7 +77,7 @@ const TravelSection = () => {
         aria-label="이전 여행"
         aria-controls="carousel"
       >
-        <img src={chevronLeft} className={styles.navButtonIcon} alt="이전 여행" />
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
       <div className={styles.carousel} id="carousel">
         {travelOptions.map((option, index) => (
@@ -85,7 +85,6 @@ const TravelSection = () => {
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
-            role="group"
             aria-roledescription="carousel item"
             aria-label={`${travelOptions.length}개의 여행 중 ${index + 1}번째, ${
               option.departure
@@ -95,7 +94,12 @@ const TravelSection = () => {
             tabIndex={index === currentIndex ? 0 : -1}
             ref={(el) => (cardRefs.current[index] = el)}
           >
-            <img src={option.image} className={styles.cardImage} aria-hidden="true" />
+            <img
+              src={option.image}
+              className={styles.cardImage}
+              aria-label={`${option.departure} - ${option.destination}`}
+              aria-hidden="true"
+            />
             <div className={styles.cardContent} aria-hidden="true">
               <p className={`${styles.cardTitle} heading-3-text`} aria-hidden="true">
                 {option.departure} - {option.destination}
@@ -116,7 +120,7 @@ const TravelSection = () => {
         aria-label="다음 여행"
         aria-controls="carousel"
       >
-        <img src={chevronRight} className={styles.navButtonIcon} alt="다음 여행" />
+        <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
     </div>
   );

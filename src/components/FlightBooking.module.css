@@ -12,8 +12,10 @@
 
 .helpIconWrapper {
   position: relative;
-  margin-left: 5px;
   cursor: pointer;
+  border: none;
+  margin-left: 5px;
+  background-color: transparent;
 }
 
 .helpIcon {

@@ -9,6 +9,19 @@
   margin: 0 auto;
 }
 
+.skipToContent:focus {
+  position: fixed;
+  clip: auto;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 1rem;
+  overflow: visible;
+  border: none;
+  background-color: lightblue;
+  z-index: 1000;
+}
+
 .header {
   padding: 48px 24px 24px 24px;
 }
