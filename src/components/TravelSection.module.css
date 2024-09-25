@@ -1,6 +1,15 @@
 .travelSection {
-  position: relative;
+  background-color: rgb(246, 246, 246);
   padding-bottom: 32px;
+}
+
+.travelTitle {
+  font-size: 18px;
+  padding: 24px;
+}
+
+.carouselContainer {
+  position: relative;
 }
 
 .carousel {
@@ -56,7 +65,7 @@
 
 .navButton {
   position: absolute;
-  top: 25%;
+  top: calc((100% - 64px) / 2);
   background-color: rgb(44, 44, 44);
   color: black;
   border: none;
