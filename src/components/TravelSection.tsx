@@ -60,7 +60,7 @@ const TravelSection = () => {
   };
 
   return (
-    <div className={styles.travelSection}>
+    <article className={styles.travelSection}>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <div aria-hidden={index !== currentIndex} aria-live="polite">
@@ -110,7 +110,7 @@ const TravelSection = () => {
       >
         <img src={chevronRight} className={styles.navButtonIcon} />
       </button>
-    </div>
+    </article>
   );
 };
 
