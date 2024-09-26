@@ -48,11 +48,7 @@ const FlightBooking = () => {
             onMouseLeave={() => setShowTooltip(false)}
             onBlur={() => setShowTooltip(false)}
           >
-            <img
-              src={helpIcon}
-              alt={`최소 ${MIN_PASSENGERS}명, 최대 ${MAX_PASSENGERS}명까지 예약할 수 있습니다.`}
-              className={styles.helpIcon}
-            />
+            <img src={helpIcon} className={styles.helpIcon} aria-hidden="true" />
             {showTooltip && (
               <span className={styles.tooltip} role="tooltip">
                 최소 {MIN_PASSENGERS}명, 최대 {MAX_PASSENGERS}명까지 예약할 수 있습니다.
