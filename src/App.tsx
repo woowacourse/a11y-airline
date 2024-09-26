@@ -2,9 +2,14 @@ import styles from './App.module.css';
 import Navigation from './components/Navigation';
 import FlightBooking from './components/FlightBooking';
 import TravelSection from './components/TravelSection';
+import { useEffect } from 'react';
 // import PromotionModal from './components/PromotionModal';
 
 function App() {
+  useEffect(() => {
+    document.title = '항공편 검색 및 여행 상품 | a11y 항공';
+  }, []);
+
   return (
     <div className={styles.app}>
       <Navigation />
