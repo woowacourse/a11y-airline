@@ -17,6 +17,12 @@
   display: none;
   width: 100%;
   height: 246px;
+
+  padding: 0;
+
+  p {
+    width: fit-content;
+  }
 }
 
 .cardActive {
