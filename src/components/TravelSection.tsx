@@ -71,6 +71,9 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
           >
+            <div className={styles.visuallyHidden} aria-live="polite" aria-atomic="true">
+              {`${travelOptions.length}개의 여행 상품 중 ${index + 1}번째 상품입니다.`}
+            </div>
             <img src={option.image} className={styles.cardImage} />
             <div className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
