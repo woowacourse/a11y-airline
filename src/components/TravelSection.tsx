@@ -60,7 +60,13 @@ const TravelSection = () => {
   };
 
   return (
-    <div className={styles.travelSection}>
+    <div
+      className={styles.travelSection}
+      aria-live="polite"
+      aria-label={`여행 상품 캐러셀 총 ${travelOptions.length}개의 여행 상품 중 ${
+        currentIndex + 1
+      }번째 상품을 확인 중`}
+    >
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
