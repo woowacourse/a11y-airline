@@ -7,6 +7,8 @@ import TravelSection from './components/TravelSection';
 function App() {
   return (
     <div className={styles.app}>
+      <title>A11Y AIRLINE - 안전하고 쾌적한 여행</title>
+
       <Navigation />
 
       <header className={styles.header}>
