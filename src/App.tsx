@@ -15,10 +15,7 @@ function App() {
         </p>
       </header>
       <main id="main-content" className={styles.main}>
-        <section className={styles.flightBooking}>
-          <FlightBooking />
-        </section>
-
+        <FlightBooking />
         <TravelSection />
       </main>
       <footer className={styles.footer}>
