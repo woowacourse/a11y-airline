@@ -21,7 +21,8 @@ const FlightBooking = () => {
   const makeElementId = (id: string) => `${flightBookingId}__${id}`;
 
   const ELEMENT_ID = {
-    count: makeElementId('count')
+    count: makeElementId('count'),
+    helpLabel: makeElementId('help-label')
   };
   const incrementCount = useCallback(() => {
     if (adultCount === MAX_PASSENGERS) {
@@ -54,12 +55,13 @@ const FlightBooking = () => {
             </label>
             <div
               className={styles.helpIconWrapper}
+              aria-label="도움말 버튼"
               onTouchStart={() => setShowTooltip(true)}
               onTouchEnd={() => setShowTooltip(false)}
               onMouseEnter={() => setShowTooltip(true)}
               onMouseLeave={() => setShowTooltip(false)}
             >
-              <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
+              <img src={helpIcon} alt="" className={styles.helpIcon} />
               {showTooltip && (
                 <div role="alert" className={styles.tooltip}>
                   {TOOL_TIP_MESSAGE}
