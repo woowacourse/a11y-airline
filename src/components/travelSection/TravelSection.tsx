@@ -60,7 +60,7 @@ const TravelSection = () => {
   };
 
   return (
-    <div className={styles.travelSection}>
+    <article className={styles.travelSection}>
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
@@ -85,7 +85,7 @@ const TravelSection = () => {
       <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
         <img src={chevronRight} className={styles.navButtonIcon} />
       </button>
-    </div>
+    </article>
   );
 };
 
