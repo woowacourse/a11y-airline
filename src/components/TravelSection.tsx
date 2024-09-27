@@ -47,12 +47,25 @@ const travelOptions: TravelOption[] = [
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const getCardInfo = (index: number) => {
+    const option = travelOptions[index];
+
+    return `${travelOptions.length}개의 여행 상품 중 ${index + 1}번째 상품. 
+    ${option.departure} 출발 ${option.destination} 도착,           
+    ${option.type},
+    가격 ${option.price}원. 선택하면 예약 페이지로 이동합니다.`;
+  };
+
   const nextTravel = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
+    const newIndex = (currentIndex + 1) % travelOptions.length;
+    setCurrentIndex(newIndex);
+    getCardInfo(newIndex);
   };
 
   const prevTravel = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
+    const newIndex = (currentIndex - 1 + travelOptions.length) % travelOptions.length;
+    setCurrentIndex(newIndex);
+    getCardInfo(newIndex);
   };
 
   const handleCardClick = (link: string) => {
@@ -60,7 +73,7 @@ const TravelSection = () => {
   };
 
   return (
-    <div className={styles.travelSection} role="region" aria-roledescription="carousel">
+    <div className={styles.travelSection} role="region">
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
@@ -75,13 +88,11 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
             role="button"
-            aria-label={`${travelOptions.length}개의 여행 상품 중 ${index + 1}번째 상품. 
-            ${option.departure} 출발 ${option.destination} 도착,           
-            ${option.type},
-            가격 ${option.price.toLocaleString()}원. 선택하면 예약 페이지로 이동합니다.`}
+            aria-live="polite"
+            aria-label={getCardInfo(index)}
           >
             <img src={option.image} className={styles.cardImage} alt="" />
-            <div className={styles.cardContent} aria-hidden="true">
+            <div className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
               </p>
