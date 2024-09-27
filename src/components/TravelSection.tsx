@@ -61,7 +61,11 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 여행 상품"
+      >
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
       <div className={styles.carousel}>
@@ -70,7 +74,10 @@ const TravelSection = () => {
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
-            aria-label={`3개의 여행 상품 중 ${index + 1}번째 상품`}
+            role="button"
+            aria-label={`${option.departure} 출발 ${option.destination} 도착 ${
+              option.type
+            } 왕복 가격 ${option.price.toLocaleString()}원 선택하면 예약 페이지로 이동합니다`}
           >
             <img
               src={option.image}
@@ -78,16 +85,24 @@ const TravelSection = () => {
               alt={`${option.departure}에서 ${option.destination}로 가는 여행 이미지`}
             />
             <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
+              <p className={`${styles.cardTitle} heading-3-text`} aria-hidden="true">
                 {option.departure} - {option.destination}
               </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+              <p className={`${styles.cardType} body-text`} aria-hidden="true">
+                {option.type}
+              </p>
+              <p className={`${styles.cardPrice} body-text`} aria-hidden="true">
+                KRW {option.price.toLocaleString()}
+              </p>
             </div>
           </div>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
+      <button
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+        aria-label="다음 여행 상품"
+      >
         <img src={chevronRight} className={styles.navButtonIcon} />
       </button>
     </div>
