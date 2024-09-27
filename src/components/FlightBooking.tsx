@@ -69,7 +69,7 @@ const FlightBooking = () => {
               )}
             </div>
           </div>
-          <fieldset id={ELEMENT_ID.count} className={styles.counter}>
+          <div id={ELEMENT_ID.count} className={styles.counter}>
             <button
               type="button"
               className="button-text"
@@ -87,7 +87,7 @@ const FlightBooking = () => {
             >
               <img src={plus} alt="" />
             </button>
-          </fieldset>
+          </div>
         </fieldset>
         {statusMessage && (
           <div className="visually-hidden" role="alert">
