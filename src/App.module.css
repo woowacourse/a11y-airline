@@ -21,11 +21,6 @@
   flex: 1;
 }
 
-.flightBooking {
-  background-image: url('./assets/booking-bg.png');
-  padding: 26px 24px;
-}
-
 .footer {
   padding: 32px;
   background-color: white;
