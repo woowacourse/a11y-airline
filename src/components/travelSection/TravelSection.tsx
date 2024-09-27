@@ -69,12 +69,15 @@ const TravelSection = () => {
           {`세계 여행 상품 ${travelOptions.length} 중 ${currentIndex + 1}번째 상품`}
         </div>
         {travelOptions.map((option, index) => (
-          <div
+          <button
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
+            aria-label={`${option.departure}출발${option.destination}도착 ${
+              option.type
+            } 가격${option.price.toLocaleString()}원 선택하면 예약 페이지로 이동합니다.`}
           >
-            <img src={option.image} className={styles.cardImage} />
+            <img src={option.image} className={styles.cardImage} alt="" />
             <div className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
@@ -82,7 +85,7 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </button>
         ))}
       </div>
       <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
