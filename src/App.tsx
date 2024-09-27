@@ -9,6 +9,10 @@ function App() {
     <div className={styles.app}>
       <title>A11Y AIRLINE - 안전하고 쾌적한 여행</title>
 
+      <a href="#main-content" className={styles.skipLink}>
+        본문으로 바로가기
+      </a>
+
       <Navigation />
 
       <header className={styles.header}>
