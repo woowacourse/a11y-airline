@@ -65,6 +65,9 @@ const TravelSection = () => {
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
       <div className={styles.carousel}>
+        <div className="visually-hidden" role="alert">
+          {`세계 여행 상품 ${travelOptions.length} 중 ${currentIndex + 1}번째 상품`}
+        </div>
         {travelOptions.map((option, index) => (
           <div
             key={index}
