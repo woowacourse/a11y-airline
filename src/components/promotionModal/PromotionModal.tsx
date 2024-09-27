@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import close from '../assets/close.svg';
+import close from '../../assets/close.svg';
 
 import styles from './PromotionModal.module.css';
 

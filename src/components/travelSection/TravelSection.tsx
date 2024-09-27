@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import travelItem01 from '../assets/travel-item-01.png';
-import travelItem02 from '../assets/travel-item-02.png';
-import travelItem03 from '../assets/travel-item-03.png';
-import chevronLeft from '../assets/chevron-left.svg';
-import chevronRight from '../assets/chevron-right.svg';
+import travelItem01 from '../../assets/travel-item-01.png';
+import travelItem02 from '../../assets/travel-item-02.png';
+import travelItem03 from '../../assets/travel-item-03.png';
+import chevronLeft from '../../assets/chevron-left.svg';
+import chevronRight from '../../assets/chevron-right.svg';
 
 import styles from './TravelSection.module.css';
 

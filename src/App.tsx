@@ -1,8 +1,9 @@
-import styles from './App.module.css';
-import Navigation from './components/Navigation';
-import FlightBooking from './components/FlightBooking';
-import TravelSection from './components/TravelSection';
-// import PromotionModal from './components/PromotionModal';
+import styles from './styles/App.module.css';
+import FlightBooking from './components/flightBooking/FlightBooking';
+import Navigation from './components/navigation/Navigation';
+import TravelSection from './components/travelSection/TravelSection';
+
+// import PromotionModal from './components/promotionModal/PromotionModal';
 
 function App() {
   return (

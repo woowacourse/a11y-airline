@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react';
 
-import helpIcon from '../assets/help.svg';
-import plus from '../assets/plus.svg';
-import minus from '../assets/minus.svg';
+import helpIcon from '../../assets/help.svg';
+import plus from '../../assets/plus.svg';
+import minus from '../../assets/minus.svg';
 
 import styles from './FlightBooking.module.css';
 
