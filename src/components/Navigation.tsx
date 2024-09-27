@@ -7,9 +7,16 @@ interface NavItem {
   subItems?: NavItem[];
 }
 
+const TOGGLE_ITEM_TITLE = {
+  service: '서비스',
+  travelInfo: '여행 정보'
+};
+
+const TOGGLE_ITEM_TITLE_LIST = Object.values(TOGGLE_ITEM_TITLE);
+
 const navItems: NavItem[] = [
   {
-    title: '서비스',
+    title: TOGGLE_ITEM_TITLE.service,
     link: '#',
     subItems: [
       {
@@ -24,7 +31,7 @@ const navItems: NavItem[] = [
     ]
   },
   {
-    title: '여행 정보',
+    title: TOGGLE_ITEM_TITLE.travelInfo,
     link: '#',
     subItems: [
       {
@@ -39,16 +46,26 @@ const navItems: NavItem[] = [
 
 const Navigation = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState('');
 
   const toggleNav = () => {
     setIsNavOpen((prev) => !prev);
+    setActiveMenu('');
   };
 
   const renderNavItems = (items: NavItem[]) => (
     <ul className={styles.navList}>
       {items.map((item, index) => (
         <li key={index} className={styles.navItem}>
-          <a href={item.link}>{item.title}</a>
+          <a
+            {...(TOGGLE_ITEM_TITLE_LIST.includes(item.title) && {
+              'aria-expanded': activeMenu === item.title
+            })}
+            href={item.link}
+            onClick={() => setActiveMenu(item.title)}
+          >
+            {item.title}
+          </a>
           {item.subItems && renderNavItems(item.subItems)}
         </li>
       ))}
@@ -57,7 +74,13 @@ const Navigation = () => {
 
   return (
     <>
-      <button className={styles.navToggle} onClick={toggleNav} type="button">
+      <button
+        aria-controls="main-nav"
+        aria-expanded={isNavOpen}
+        className={styles.navToggle}
+        onClick={toggleNav}
+        type="button"
+      >
         {isNavOpen ? '닫기' : '메뉴'}
       </button>
       <nav id="main-nav" className={`${styles.mainNav} ${isNavOpen ? styles.mainNavActive : ''}`}>
