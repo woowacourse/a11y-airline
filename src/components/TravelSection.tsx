@@ -77,7 +77,7 @@ const TravelSection = () => {
             role="button"
             aria-label={`${option.departure} 출발 ${option.destination} 도착 ${
               option.type
-            } 왕복 가격 ${option.price.toLocaleString()}원 선택하면 예약 페이지로 이동합니다`}
+            }  가격 ${option.price.toLocaleString()}원 선택하면 예약 페이지로 이동합니다`}
           >
             <img
               src={option.image}
@@ -102,6 +102,7 @@ const TravelSection = () => {
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={nextTravel}
         aria-label="다음 여행 상품"
+        aria-describedby="and 뒤로"
       >
         <img src={chevronRight} className={styles.navButtonIcon} />
       </button>
