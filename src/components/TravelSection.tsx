@@ -61,18 +61,16 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <span className="visually-hidden" role="text" aria-live="polite">
-        {travelOptions.length}개의 여행 상품 중 {currentIndex + 1}번째 상품
-      </span>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <div
+          <button
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
-            role="button"
             aria-live="polite"
-            aria-label={` ${option.departure} 출발 ${option.destination} 도착. ${
+            aria-label={`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품. ${
+              option.departure
+            } 출발 ${option.destination} 도착. ${
               option.type
             } 가격 ${option.price.toLocaleString()}원. 선택하면 예약 페이지로 이동합니다.`}
           >
@@ -85,7 +83,7 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </button>
         ))}
       </div>
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
