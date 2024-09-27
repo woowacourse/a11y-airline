@@ -57,7 +57,7 @@ const TravelSection = () => {
   };
 
   const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
+    window.open(link, '_self');
   };
 
   return (
