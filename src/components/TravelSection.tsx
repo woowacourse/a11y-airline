@@ -62,15 +62,16 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <ScreenReaderOnly>{`${travelOptions.length}개의 여행 상품 중 ${
-        currentIndex + 1
-      }번째 상품`}</ScreenReaderOnly>
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="이전 여행 상품" />
       </button>
-      <div className={styles.carousel}>
+      <div aria-live="polite" className={styles.carousel}>
+        <ScreenReaderOnly>{`${travelOptions.length}개의 여행 상품 중 ${
+          currentIndex + 1
+        }번째 상품`}</ScreenReaderOnly>
         {travelOptions.map((option, index) => (
-          <div
+          <button
+            type="button"
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
@@ -81,13 +82,18 @@ const TravelSection = () => {
                 {option.departure} - {option.destination}
               </p>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+              <p className={`${styles.cardPrice} body-text`}>
+                KRW {option.price.toLocaleString('ko-KR')}
+              </p>
+              {/* 스크린 리더가 한 번 쉬고 읽기 위해 "." 사용 */}
+              <ScreenReaderOnly>.</ScreenReaderOnly>
+              <ScreenReaderOnly>선택하면 예약페이지로 이동합니다.</ScreenReaderOnly>
             </div>
-          </div>
+          </button>
         ))}
       </div>
       <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+        <img src={chevronRight} className={styles.navButtonIcon} alt="다음 여행 상품" />
       </button>
     </div>
   );

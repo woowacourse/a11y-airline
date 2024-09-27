@@ -1,6 +1,13 @@
-import { PropsWithChildren } from 'react';
+import { HTMLAttributes, PropsWithChildren } from 'react';
 import styles from './ScreenReaderOnly.module.css';
 
-export default function ScreenReaderOnly({ children }: PropsWithChildren) {
-  return <span className={`${styles.visuallyHidden}`}>{children}</span>;
+export default function ScreenReaderOnly({
+  children,
+  ...props
+}: PropsWithChildren<HTMLAttributes<HTMLSpanElement>>) {
+  return (
+    <span {...props} className={`${styles.visuallyHidden}`}>
+      {children}
+    </span>
+  );
 }
