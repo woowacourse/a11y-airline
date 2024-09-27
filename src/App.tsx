@@ -2,11 +2,13 @@ import styles from './App.module.css';
 import Navigation from './components/Navigation';
 import FlightBooking from './components/FlightBooking';
 import TravelSection from './components/TravelSection';
+import SkipContentButton from './components/SkipContentButton';
 // import PromotionModal from './components/PromotionModal';
 
 function App() {
   return (
     <div className={styles.app}>
+      <SkipContentButton />
       <Navigation />
       <header className={styles.header}>
         <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>

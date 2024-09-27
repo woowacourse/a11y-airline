@@ -1,0 +1,10 @@
+.skipContentButton {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(118, 187, 248);
+  font-size: 24px;
+  border: none;
+  color: #ffff;
+  padding: 5px 14px;
+}
