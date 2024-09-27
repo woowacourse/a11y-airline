@@ -2,11 +2,15 @@ import styles from './App.module.css';
 import Navigation from './components/Navigation';
 import FlightBooking from './components/FlightBooking';
 import TravelSection from './components/TravelSection';
+import { Helmet } from 'react-helmet';
 // import PromotionModal from './components/PromotionModal';
 
 function App() {
   return (
     <div className={styles.app}>
+      <Helmet>
+        <title>A11Y AIRLINE - 안전하고 쾌적한 여행을 위한 항공사</title>
+      </Helmet>
       <Navigation />
       <div className={styles.header}>
         <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>
