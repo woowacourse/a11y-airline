@@ -57,15 +57,24 @@ const Navigation = () => {
     <ul className={styles.navList}>
       {items.map((item, index) => (
         <li key={index} className={styles.navItem}>
-          <a
-            {...(TOGGLE_ITEM_TITLE_LIST.includes(item.title) && {
-              'aria-expanded': activeMenu === item.title
-            })}
-            href={item.link}
-            onClick={() => setActiveMenu(item.title)}
-          >
-            {item.title}
-          </a>
+          {TOGGLE_ITEM_TITLE_LIST.includes(item.title) ? (
+            <button
+              aria-expanded={activeMenu === item.title ? 'true' : 'false'}
+              onClick={() => setActiveMenu(item.title)}
+            >
+              {item.title}
+            </button>
+          ) : (
+            <a
+              {...(TOGGLE_ITEM_TITLE_LIST.includes(item.title) && {
+                'aria-expanded': activeMenu === item.title
+              })}
+              href={item.link}
+              onClick={() => setActiveMenu(item.title)}
+            >
+              {item.title}
+            </a>
+          )}
           {item.subItems && renderNavItems(item.subItems)}
         </li>
       ))}

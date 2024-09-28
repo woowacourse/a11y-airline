@@ -13,14 +13,24 @@
   display: inline-block;
   position: relative;
   margin-right: 20px;
+  font-size: 16px;
+}
+
+.navItem button {
+  background-color: transparent;
+  border: none;
+  text-align: start;
+  font-size: inherit;
+  width: 100%;
+  padding: 5px 10px;
 }
 
 .navItem a {
   text-decoration: none;
   color: #333;
-  font-size: 16px;
-  padding: 5px 10px;
   display: block;
+  font-size: inherit;
+  padding: 5px 10px;
 }
 
 .navItem a:hover,
