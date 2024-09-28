@@ -62,7 +62,7 @@ const PromotionModal = ({ closePromotionModal }: PromotionModalProps) => {
       className={styles.modal}
     >
       <div className={styles.modalBackdrop} onClick={closePromotionModal}></div>
-      <p aria-live="assertive" id={elementId.description} className="screen-only">
+      <p aria-live="assertive" id={elementId.description} className="visually-hidden">
         A11Y AIRLINE 앱에 대한 정보 제공 모달이 열렸습니다.
       </p>
       <div className={styles.modalContainer}>
@@ -81,7 +81,7 @@ const PromotionModal = ({ closePromotionModal }: PromotionModalProps) => {
             onClick={closePromotionModal}
             onKeyDown={handleButtonKeydown}
           >
-            <span className="screen-only">닫기</span>
+            <span className="visually-hidden">닫기</span>
             <img src={close} alt="" />
           </button>
         </div>

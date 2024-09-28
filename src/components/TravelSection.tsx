@@ -84,10 +84,10 @@ const TravelSection = () => {
           onClick={prevTravel}
           type="button"
         >
-          <span className="screen-only">왼쪽 이동</span>
+          <span className="visually-hidden">왼쪽 이동</span>
           <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
         </button>
-        <p id={elementId.description} aria-live="polite" className="screen-only">
+        <p id={elementId.description} aria-live="polite" className="visually-hidden">
           {getOptionDescription(travelOptions[currentIndex], currentIndex)}
         </p>
         <ol className={styles.carousel}>
@@ -115,7 +115,7 @@ const TravelSection = () => {
           onClick={nextTravel}
           type="button"
         >
-          <span className="screen-only">오른쪽 이동</span>
+          <span className="visually-hidden">오른쪽 이동</span>
           <img src={chevronRight} className={styles.navButtonIcon} alt="" />
         </button>
       </div>
