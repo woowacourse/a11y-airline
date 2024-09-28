@@ -48,7 +48,9 @@ const Navigation = () => {
     <ul className={styles.navList} role="tabList">
       {items.map((item, index) => (
         <li id={`tab${index}-${item}`} key={index} className={styles.navItem} role="tab">
-          <a href={item.link}>{item.title}</a>
+          <a href={item.link} role="button">
+            {item.title}
+          </a>
           {item.subItems && renderNavItems(item.subItems)}
         </li>
       ))}
