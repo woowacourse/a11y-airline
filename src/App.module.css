@@ -43,7 +43,7 @@
 
 .skipLink {
   position: absolute;
-  top: -40px; /* 화면 밖에 숨깁니다 */
+  top: -40px;
   left: 0;
   background: #000;
   color: #fff;
@@ -55,5 +55,5 @@
 }
 
 .skipLink:focus {
-  top: 0; /* 포커스 받으면 화면 상단에 나타납니다 */
+  top: 0;
 }
