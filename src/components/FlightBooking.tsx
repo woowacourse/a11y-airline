@@ -44,18 +44,26 @@ const FlightBooking = () => {
             className={styles.helpIconWrapper}
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
+            onFocus={() => setShowTooltip(true)}
+            onBlur={() => setShowTooltip(false)}
           >
             <img
               src={helpIcon}
               alt="도움말"
               className={styles.helpIcon}
-              role="button"
-              onClick={() => setShowTooltip((prev) => !prev)}
+              tabIndex={0}
               aria-describedby={showTooltip ? 'tooltip' : undefined}
               aria-expanded={showTooltip}
             />
             {showTooltip && (
-              <div role="tooltip" className={styles.tooltip} id="tooltip" aria-live="polite">
+              <div
+                role="tooltip"
+                className={styles.tooltip}
+                id="tooltip"
+                aria-live="polite"
+                aria-hidden="true"
+                tabIndex={-1}
+              >
                 최대 3명까지 예약할 수 있습니다
               </div>
             )}
