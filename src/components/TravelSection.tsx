@@ -8,6 +8,8 @@ import chevronRight from '../assets/chevron-right.svg';
 
 import styles from './TravelSection.module.css';
 
+import '../Accessibility.css';
+
 interface TravelOption {
   departure: string;
   destination: string;
@@ -71,6 +73,9 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
           >
+            <p className="visually-hidden">
+              {`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품`}
+            </p>
             <img src={option.image} className={styles.cardImage} />
             <div className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
