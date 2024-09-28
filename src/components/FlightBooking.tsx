@@ -45,8 +45,20 @@ const FlightBooking = () => {
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
           >
-            <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
-            {showTooltip && <div className={styles.tooltip}>최대 3명까지 예약할 수 있습니다</div>}
+            <img
+              src={helpIcon}
+              alt="도움말"
+              className={styles.helpIcon}
+              role="button"
+              onClick={() => setShowTooltip((prev) => !prev)}
+              aria-describedby={showTooltip ? 'tooltip' : undefined}
+              aria-expanded={showTooltip}
+            />
+            {showTooltip && (
+              <div role="tooltip" className={styles.tooltip} id="tooltip" aria-live="polite">
+                최대 3명까지 예약할 수 있습니다
+              </div>
+            )}
           </div>
         </div>
         <div className={styles.counter}>
