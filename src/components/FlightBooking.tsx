@@ -51,8 +51,6 @@ const FlightBooking = () => {
             <div
               className={styles.helpIconWrapper}
               aria-label="도움말 버튼"
-              onTouchStart={() => setShowTooltip(true)}
-              onTouchEnd={() => setShowTooltip(false)}
               onMouseEnter={() => setShowTooltip(true)}
               onMouseLeave={() => setShowTooltip(false)}
             >
