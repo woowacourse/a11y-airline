@@ -66,7 +66,7 @@ const TravelSection = () => {
 
     return `${travelOptions.length}개 추천 상품 중 ${
       index + 1
-    }번째 상품: ${departure}에서 출발해 ${destination}에 도착하는 ${price}원 ${type}좌석`;
+    }번째 상품: ${departure}에서 출발해 ${destination}에 도착하는 ${price}원 ${type}좌석 상품입니다. 선택 시 해당 상품 예약 페이지로 이동합니다.`;
   };
 
   return (
@@ -84,7 +84,7 @@ const TravelSection = () => {
           onClick={prevTravel}
           type="button"
         >
-          <span className="visually-hidden">왼쪽 이동</span>
+          <span className="visually-hidden">이전 상품으로 이동</span>
           <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
         </button>
         <p id={elementId.description} aria-live="polite" className="visually-hidden">
@@ -115,7 +115,7 @@ const TravelSection = () => {
           onClick={nextTravel}
           type="button"
         >
-          <span className="visually-hidden">오른쪽 이동</span>
+          <span className="visually-hidden">다음 상품으로 이동</span>
           <img src={chevronRight} className={styles.navButtonIcon} alt="" />
         </button>
       </div>
