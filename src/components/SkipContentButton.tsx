@@ -4,22 +4,28 @@ import styles from './SkipContentButton.module.css';
 
 const SkipContentButton = () => {
   const [isOpenSkipContent, setIsOpenSkipContent] = useState(false);
-  const [tabCount, setTabCount] = useState(0);
 
   const handleTabToSkipContent = (e: KeyboardEvent) => {
+    // SkipContent이 열려있다다면  Enter시, 동작 실행 되게
+    if (e.code === 'Enter' && isOpenSkipContent) {
+      handleSkipContent();
+    }
+
+    //Tab  동작
     if (e.code !== 'Tab') return;
-
-    if (tabCount === 0) {
-      setIsOpenSkipContent(true);
-    }
-    if (tabCount === 1) {
+    if (isOpenSkipContent) {
       setIsOpenSkipContent(false);
+      return;
     }
 
-    setTabCount((prev) => (prev += 1));
+    if (document.activeElement?.tagName === 'BODY') {
+      e.preventDefault();
+      setIsOpenSkipContent(true);
+      return;
+    }
   };
 
-  const handleClick = () => {
+  const handleSkipContent = () => {
     setIsOpenSkipContent(false);
     const mainContentEl = document.getElementById('main-content');
     mainContentEl?.scrollIntoView({ behavior: 'smooth' });
@@ -28,18 +34,15 @@ const SkipContentButton = () => {
   useEffect(() => {
     document.addEventListener('keydown', handleTabToSkipContent);
 
-    if (tabCount > 1) {
-      document.removeEventListener('keydown', handleTabToSkipContent);
-    }
     return () => {
       document.removeEventListener('keydown', handleTabToSkipContent);
     };
-  }, [tabCount]);
+  }, [isOpenSkipContent]);
 
   return (
     <>
       {isOpenSkipContent && (
-        <button className={styles.skipContentButton} onClick={handleClick}>
+        <button className={styles.skipContentButton} onClick={handleSkipContent}>
           Skip Content
         </button>
       )}
