@@ -1,4 +1,4 @@
-import { useId, useState } from 'react';
+import { useState } from 'react';
 
 import travelItem01 from '../assets/travel-item-01.png';
 import travelItem02 from '../assets/travel-item-02.png';
@@ -7,6 +7,7 @@ import chevronLeft from '../assets/chevron-left.svg';
 import chevronRight from '../assets/chevron-right.svg';
 
 import styles from './TravelSection.module.css';
+import useElementId from '../hooks/useElementId';
 
 interface TravelOption {
   departure: string;
@@ -46,15 +47,8 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const travelSectionId = useId();
 
-  const makeElementId = (id: string) => `${travelSectionId}__${id}`;
-
-  const ELEMENT_ID = {
-    carouselHeading: makeElementId('carousel-heading'),
-    carouselDescription: makeElementId('carousel-description')
-  };
-
+  const elementId = useElementId({ childrenNameList: ['heading', 'description'] });
   const nextTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
   };
@@ -78,10 +72,10 @@ const TravelSection = () => {
   return (
     <section
       className={styles.travelSection}
-      aria-labelledby={ELEMENT_ID.carouselHeading}
-      aria-describedby={ELEMENT_ID.carouselDescription}
+      aria-labelledby={elementId.heading}
+      aria-describedby={elementId.description}
     >
-      <h2 id={ELEMENT_ID.carouselHeading} className={`${styles.travelTitle} heading-2-text`}>
+      <h2 id={elementId.heading} className={`${styles.travelTitle} heading-2-text`}>
         지금 떠나기 좋은 여행
       </h2>
       <div className={styles.carouselContainer}>
@@ -93,7 +87,7 @@ const TravelSection = () => {
           <span className="screen-only">왼쪽 이동</span>
           <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
         </button>
-        <p id={ELEMENT_ID.carouselDescription} aria-live="polite" className="screen-only">
+        <p id={elementId.description} aria-live="polite" className="screen-only">
           {getOptionDescription(travelOptions[currentIndex], currentIndex)}
         </p>
         <ol className={styles.carousel}>

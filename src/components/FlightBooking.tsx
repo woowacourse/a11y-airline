@@ -1,10 +1,11 @@
-import { useCallback, useId, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import helpIcon from '../assets/help.svg';
 import plus from '../assets/plus.svg';
 import minus from '../assets/minus.svg';
 
 import styles from './FlightBooking.module.css';
+import useElementId from '../hooks/useElementId';
 
 const MIN_PASSENGERS = 1;
 const MAX_PASSENGERS = 3;
@@ -16,14 +17,8 @@ const FlightBooking = () => {
   const [statusMessage, setStatusMessage] = useState('');
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const flightBookingId = useId();
+  const elementId = useElementId({ childrenNameList: ['count'] });
 
-  const makeElementId = (id: string) => `${flightBookingId}__${id}`;
-
-  const ELEMENT_ID = {
-    count: makeElementId('count'),
-    helpLabel: makeElementId('help-label')
-  };
   const incrementCount = useCallback(() => {
     if (adultCount === MAX_PASSENGERS) {
       setStatusMessage('최대 승객 수에 도달했습니다');
@@ -50,7 +45,7 @@ const FlightBooking = () => {
         <legend className="heading-2-text">항공권 예매</legend>
         <fieldset className={styles.passengerCount}>
           <div className={styles.passengerLabel}>
-            <label htmlFor={ELEMENT_ID.count} className="body-text">
+            <label htmlFor={elementId.count} className="body-text">
               성인
             </label>
             <div
@@ -69,7 +64,7 @@ const FlightBooking = () => {
               )}
             </div>
           </div>
-          <div id={ELEMENT_ID.count} className={styles.counter}>
+          <div id={elementId.count} className={styles.counter}>
             <button
               type="button"
               className="button-text"
