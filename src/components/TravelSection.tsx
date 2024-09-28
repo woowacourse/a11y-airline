@@ -63,10 +63,6 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div className={styles.travelSection}>
       <p className="visually-hidden">
@@ -82,23 +78,24 @@ const TravelSection = () => {
       </button>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <button
-            type="button"
+          <a
             key={index}
+            href={option.link}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
-            aria-live="polite"
             aria-label={getAriaLabel(option)}
+            aria-live="polite"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <img src={option.image} className={styles.cardImage} alt="" />
-            <div className={styles.cardContent}>
+            <img src={option.image} className={styles.cardImage} alt="" aria-hidden="true" />
+            <div className={styles.cardContent} aria-hidden="true">
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
               </p>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </button>
+          </a>
         ))}
       </div>
       <button
