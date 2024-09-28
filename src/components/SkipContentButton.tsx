@@ -1,10 +1,11 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import styles from './SkipContentButton.module.css';
+import getFocusableElementList from '../utils/focusableElementListFinder';
 
 const SkipContentButton = () => {
   const [isOpenSkipContent, setIsOpenSkipContent] = useState(false);
-  const [lastFocusableEl, setLastFocusableEl] = useState<HTMLElement | null>(null);
+  const lastFocusableEl = useRef<HTMLElement | null>(null);
 
   const handleTabToSkipContent = (e: KeyboardEvent) => {
     // SkipContent이 열려있다다면  Enter시, 동작 실행 되게
@@ -19,7 +20,7 @@ const SkipContentButton = () => {
       return;
     }
     // document의 마지막 Tab에서 SkipContent 오픈
-    if (document.activeElement === lastFocusableEl) {
+    if (document.activeElement === lastFocusableEl?.current) {
       e.preventDefault();
       setIsOpenSkipContent(true);
       return;
@@ -33,11 +34,9 @@ const SkipContentButton = () => {
   };
 
   useLayoutEffect(() => {
-    const focusableElementList = document.querySelectorAll(
-      'button, [href], input, select, textarea,   [tabindex]:not([tabindex="-1"])'
-    ) as NodeListOf<HTMLElement>;
+    const focusableElementList = getFocusableElementList({});
 
-    setLastFocusableEl(focusableElementList[focusableElementList.length - 1]);
+    lastFocusableEl.current = focusableElementList[focusableElementList.length - 1];
   }, []);
 
   useEffect(() => {
