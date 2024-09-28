@@ -7,8 +7,8 @@ const SkipContentButton = () => {
 
   const handleSkipContent = () => {
     setIsOpenSkipContent(false);
-    const mainContentEl = document.getElementById('main-content');
-    mainContentEl?.scrollIntoView({ behavior: 'smooth' });
+    document.querySelector('main')?.focus();
+    document.querySelector('main')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -16,7 +16,7 @@ const SkipContentButton = () => {
       className={`${styles.skipContentButton} ${isOpenSkipContent ? styles.on : ''}`}
       onClick={handleSkipContent}
       onFocus={() => setIsOpenSkipContent(true)}
-      onBlur={handleSkipContent}
+      onBlur={() => setIsOpenSkipContent(false)}
     >
       Skip Content
     </button>

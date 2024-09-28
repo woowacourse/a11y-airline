@@ -18,7 +18,7 @@ function App() {
       )}
       <div className={styles.app} aria-hidden={isOpenPromotionModal ? 'true' : 'false'}>
         <Navigation />
-        <main>
+        <main tabIndex={-1}>
           <section className={styles.announce}>
             <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>
             <p className="body-text">
