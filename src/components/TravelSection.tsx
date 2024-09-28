@@ -63,6 +63,9 @@ const TravelSection = () => {
     <div className={styles.travelSection}>
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
         <img src={chevronLeft} className={styles.navButtonIcon} />
+      <div className="visually-hidden" aria-live="polite" aria-atomic="true">
+        {travelOptions.length}개의 여행 상품 중 {currentIndex + 1}번의 상품
+      </div>
       </button>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
