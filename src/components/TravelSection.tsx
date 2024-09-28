@@ -45,6 +45,8 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // 접근성을 위한 ref
   const ariaRef1 = useRef<HTMLDivElement>(null);
   const ariaRef2 = useRef<HTMLDivElement>(null);
   const ariaRef3 = useRef<HTMLDivElement>(null);
@@ -65,6 +67,7 @@ const TravelSection = () => {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
 
+  // 접근성을 위한 useEffect
   useEffect(() => {
     if (isFirstRender) {
       setIsFirstRender(false);
@@ -89,6 +92,7 @@ const TravelSection = () => {
               ' 클릭 시 해당 페이지로 이동합니다'
             }
             ref={ariaRefs[index]}
+            // 접근성을 위한 tabIndex
             tabIndex={1}
           >
             <img src={option.image} className={styles.cardImage} aria-hidden />
