@@ -93,3 +93,7 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+.output {
+  padding: 0 16px;
+}

@@ -40,3 +40,20 @@
   background-color: white;
   text-align: center;
 }
+
+.skipLink {
+  position: absolute;
+  top: -40px; /* 화면 밖에 숨깁니다 */
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  z-index: 100;
+  text-decoration: none;
+  transition: top 0.3s;
+  width: auto;
+}
+
+.skipLink:focus {
+  top: 0; /* 포커스 받으면 화면 상단에 나타납니다 */
+}
