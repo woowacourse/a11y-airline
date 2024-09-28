@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 
 import close from '../assets/close.svg';
 
@@ -14,28 +14,26 @@ const PromotionModal = ({ closePromotionModal }: PromotionModalProps) => {
 
   const handleTabKey = (e: KeyboardEvent) => {
     if (!modalRef.current) return;
-    const focusableElements = modalRef.current.querySelectorAll(
+
+    const focusableElementList = modalRef.current.querySelectorAll(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
     ) as NodeListOf<HTMLElement>;
 
-    const firstFocusableElement = focusableElements[0];
-    const lastFocusableElement = focusableElements[focusableElements.length - 1];
+    const firstFocusableEl = focusableElementList[0];
+    const lastFocusableEl = focusableElementList[focusableElementList.length - 1];
 
     if (e.code !== 'Tab') return;
 
     // 첫번째 요소로 이동
-    if (
-      document.activeElement?.tagName === 'BODY' ||
-      document.activeElement === lastFocusableElement
-    ) {
+    if (document.activeElement?.tagName === 'BODY' || document.activeElement === lastFocusableEl) {
       e.preventDefault();
-      return firstFocusableElement.focus(); // 첫 번째 요소로 이동
+      return firstFocusableEl.focus(); // 첫 번째 요소로 이동
     }
 
     // Shift + Tab (이전 요소로 이동)
-    if (e.shiftKey && document.activeElement === firstFocusableElement) {
+    if (e.shiftKey && document.activeElement === firstFocusableEl) {
       e.preventDefault();
-      lastFocusableElement.focus(); // 마지막 요소로 이동
+      lastFocusableEl.focus(); // 마지막 요소로 이동
       return;
     }
   };
