@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-      <div className={styles.app}>
+      <div className={styles.app} aria-hidden={isOpenPromotionModal ? 'true' : 'false'}>
         <Navigation />
         <main>
           <section className={styles.announce}>
