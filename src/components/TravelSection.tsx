@@ -70,14 +70,29 @@ const TravelSection = () => {
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
+            role="button"
           >
+            <div
+              aria-label={`총 ${travelOptions.length}개의 상품 중 ${
+                currentIndex + 1
+              }번째 여행지 상품입니다.`}
+            ></div>
             <img src={option.image} className={styles.cardImage} />
             <div className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
+              <p
+                className={`${styles.cardTitle} heading-3-text`}
+                aria-label={`${option.departure} 출발 ${option.destination} 도착`}
+              >
                 {option.departure} - {option.destination}
               </p>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+              <p
+                className={`${styles.cardPrice} body-text`}
+                aria-label={`가격 ${option.price.toLocaleString()}원`}
+              >
+                KRW {option.price.toLocaleString()}
+              </p>
             </div>
           </div>
         ))}
