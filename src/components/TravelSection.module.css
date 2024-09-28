@@ -3,6 +3,14 @@
   padding-bottom: 32px;
 }
 
+.travelDescription {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 .carousel {
   position: relative;
   overflow: hidden;
