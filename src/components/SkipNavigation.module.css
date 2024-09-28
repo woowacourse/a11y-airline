@@ -1,0 +1,17 @@
+.skipNavAnchor {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  transition: left 0.3s;
+  z-index: 99;
+}
+
+.skipNavAnchor:focus {
+  left: 0;
+}
