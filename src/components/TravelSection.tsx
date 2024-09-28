@@ -61,6 +61,9 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
+      <div aria-live="assertive" role="status" tabIndex={0} className="visually-hidden">
+        {`${travelOptions.length}개의 상품 중, ${currentIndex + 1}번째 상품`}
+      </div>
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
@@ -68,12 +71,21 @@ const TravelSection = () => {
       >
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
+
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <div
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
+            tabIndex={index === currentIndex ? 0 : -1}
+            aria-label={`여행 상품 ${index + 1} / ${travelOptions.length}, 출발지: ${
+              option.departure
+            }, 도착지: ${option.destination}, 좌석 유형: ${
+              option.type
+            }, 가격: ${option.price.toLocaleString()}원
+            , 선택하면 예약 페이지로 이동합니다.`}
+            aria-hidden={index !== currentIndex}
           >
             <img src={option.image} className={styles.cardImage} />
             <div className={styles.cardContent}>
