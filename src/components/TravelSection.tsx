@@ -76,28 +76,33 @@ const TravelSection = () => {
       >
         <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
-      <div className={styles.carousel}>
+      <ul className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <a
+          <li
             key={index}
-            href={option.link}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            aria-label={getAriaLabel(option)}
-            aria-live="polite"
-            target="_blank"
-            rel="noopener noreferrer"
           >
-            <img src={option.image} className={styles.cardImage} alt="" aria-hidden="true" />
-            <div className={styles.cardContent} aria-hidden="true">
-              <p className={`${styles.cardTitle} heading-3-text`}>
-                {option.departure} - {option.destination}
-              </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
-            </div>
-          </a>
+            <a
+              aria-label={getAriaLabel(option)}
+              aria-live="polite"
+              href={option.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={option.image} className={styles.cardImage} alt="" />
+              <div className={styles.cardContent} aria-hidden="true">
+                <h3 className={`${styles.cardTitle} heading-3-text`}>
+                  {option.departure} - {option.destination}
+                </h3>
+                <p className={`${styles.cardType} body-text`}>{option.type}</p>
+                <p className={`${styles.cardPrice} body-text`}>
+                  KRW {option.price.toLocaleString()}
+                </p>
+              </div>
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
       <button
         type="button"
         aria-label="다음 여행 상품"
