@@ -29,10 +29,11 @@ function App() {
           <p className="body-text">&copy; A11Y AIRLINE</p>
         </footer>
       </div>
-      {isOpenPromotionModal && (
+      {isOpenPromotionModal ? (
         <PromotionModal closePromotionModal={() => setIsOpenPromotionModal(false)} />
+      ) : (
+        <SkipContentButton />
       )}
-      <SkipContentButton />
     </>
   );
 }
