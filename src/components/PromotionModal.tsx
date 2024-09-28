@@ -1,26 +1,25 @@
-import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import close from '../assets/close.svg';
 
 import styles from './PromotionModal.module.css';
 import useElementId from '../hooks/useElementId';
+import getFocusableElementList from '../utils/focusableElementListFinder';
 
 interface PromotionModalProps {
   closePromotionModal: () => void;
 }
 const PromotionModal = ({ closePromotionModal }: PromotionModalProps) => {
   const modalRef = useRef<HTMLTableSectionElement | null>(null);
+  const focusableElementList = useRef<NodeListOf<HTMLElement> | null>(null);
   const elementId = useElementId({ childrenNameList: ['description'] });
 
   const handleTabKey = (e: KeyboardEvent) => {
     if (!modalRef.current) return;
+    if (!focusableElementList.current) return;
 
-    const focusableElementList = modalRef.current.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    ) as NodeListOf<HTMLElement>;
-
-    const firstFocusableEl = focusableElementList[0];
-    const lastFocusableEl = focusableElementList[focusableElementList.length - 1];
+    const firstFocusableEl = focusableElementList.current[0];
+    const lastFocusableEl = focusableElementList.current[focusableElementList.current.length - 1];
 
     if (e.code !== 'Tab') return;
 
@@ -42,13 +41,20 @@ const PromotionModal = ({ closePromotionModal }: PromotionModalProps) => {
     if (e.code === 'Enter') closePromotionModal();
   };
 
+  useLayoutEffect(() => {
+    if (!modalRef.current) return;
+    const list = getFocusableElementList({ targetElement: modalRef.current });
+
+    focusableElementList.current = list;
+  }, [modalRef]);
+
   useEffect(() => {
     document.addEventListener('keydown', handleTabKey);
 
     return () => {
       document.removeEventListener('keydown', handleTabKey);
     };
-  }, [modalRef]);
+  }, [modalRef, focusableElementList]);
 
   return (
     <section
