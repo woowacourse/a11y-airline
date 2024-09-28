@@ -9,7 +9,7 @@
   margin: 0 auto;
 }
 
-.header {
+.announce {
   padding: 48px 24px 24px 24px;
 }
 
@@ -17,7 +17,7 @@
   margin-bottom: 16px;
 }
 
-.main {
+.mainContent {
   flex: 1;
 }
 

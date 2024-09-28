@@ -73,7 +73,7 @@ const Navigation = () => {
   );
 
   return (
-    <>
+    <header>
       <button
         aria-controls="main-nav"
         aria-expanded={isNavOpen}
@@ -86,7 +86,7 @@ const Navigation = () => {
       <nav id="main-nav" className={`${styles.mainNav} ${isNavOpen ? styles.mainNavActive : ''}`}>
         {renderNavItems(navItems)}
       </nav>
-    </>
+    </header>
   );
 };
 
