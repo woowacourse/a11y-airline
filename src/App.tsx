@@ -11,6 +11,11 @@ function App() {
 
   return (
     <>
+      {isOpenPromotionModal ? (
+        <PromotionModal closePromotionModal={() => setIsOpenPromotionModal(false)} />
+      ) : (
+        <SkipContentButton />
+      )}
       <div className={styles.app} aria-hidden={isOpenPromotionModal ? 'true' : 'false'}>
         <Navigation />
         <main>
@@ -29,11 +34,6 @@ function App() {
           <p className="body-text">&copy; A11Y AIRLINE</p>
         </footer>
       </div>
-      {isOpenPromotionModal ? (
-        <PromotionModal closePromotionModal={() => setIsOpenPromotionModal(false)} />
-      ) : (
-        <SkipContentButton />
-      )}
     </>
   );
 }

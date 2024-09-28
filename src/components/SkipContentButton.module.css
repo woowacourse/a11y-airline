@@ -7,4 +7,9 @@
   border: none;
   color: #ffff;
   padding: 5px 14px;
+  opacity: 0;
+}
+
+.skipContentButton.on {
+  opacity: 1;
 }
