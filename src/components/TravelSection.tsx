@@ -1,12 +1,10 @@
-import { useState } from 'react';
-
+import chevronLeft from '../assets/chevron-left.svg';
+import chevronRight from '../assets/chevron-right.svg';
+import styles from './TravelSection.module.css';
 import travelItem01 from '../assets/travel-item-01.png';
 import travelItem02 from '../assets/travel-item-02.png';
 import travelItem03 from '../assets/travel-item-03.png';
-import chevronLeft from '../assets/chevron-left.svg';
-import chevronRight from '../assets/chevron-right.svg';
-
-import styles from './TravelSection.module.css';
+import { useState } from 'react';
 
 interface TravelOption {
   departure: string;
@@ -71,13 +69,21 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
           >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
+            <img
+              src={option.image}
+              className={styles.cardImage}
+              aria-label={`${option.departure}에서 ${option.destination} ${option.type} ${option.price}원`}
+            />
+            <div className={styles.cardContent} aria-hidden>
+              <p className={`${styles.cardTitle} heading-3-text`} aria-hidden>
                 {option.departure} - {option.destination}
               </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+              <p className={`${styles.cardType} body-text`} aria-hidden>
+                {option.type}
+              </p>
+              <p className={`${styles.cardPrice} body-text`} aria-hidden>
+                KRW {option.price.toLocaleString()}
+              </p>
             </div>
           </div>
         ))}
