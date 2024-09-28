@@ -40,3 +40,23 @@
   background-color: white;
   text-align: center;
 }
+
+.skipTo {
+  position: absolute;
+  top: -99px;
+  left: 0;
+  background: #333;
+  color: #fff;
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  text-decoration: none;
+  z-index: 999;
+}
+
+.skipTo:hover,
+.skipTo:focus,
+.skipTo:active {
+  display: block;
+  top: 0;
+}
