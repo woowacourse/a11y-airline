@@ -61,9 +61,14 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        type="button"
+      >
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
+
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <div
@@ -73,16 +78,21 @@ const TravelSection = () => {
           >
             <img src={option.image} className={styles.cardImage} />
             <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
+              <h3 className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
-              </p>
+              </h3>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
           </div>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
+
+      <button
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+        type="button"
+      >
         <img src={chevronRight} className={styles.navButtonIcon} />
       </button>
     </div>

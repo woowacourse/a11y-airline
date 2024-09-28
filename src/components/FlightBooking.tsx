@@ -37,9 +37,10 @@ const FlightBooking = () => {
   return (
     <div className={styles.flightBooking}>
       <h2 className="heading-2-text">항공권 예매</h2>
-      <div className={styles.passengerCount}>
+
+      <fieldset className={styles.passengerCount}>
         <div className={styles.passengerLabel}>
-          <span className="body-text">성인</span>
+          <legend className="body-text">성인</legend>
           <div
             className={styles.helpIconWrapper}
             onMouseEnter={() => setShowTooltip(true)}
@@ -49,16 +50,28 @@ const FlightBooking = () => {
             {showTooltip && <div className={styles.tooltip}>최대 3명까지 예약할 수 있습니다</div>}
           </div>
         </div>
+
         <div className={styles.counter}>
-          <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
+          <button
+            className="button-text"
+            onClick={decrementCount}
+            aria-label="성인 승객 감소"
+            type="button"
+          >
             <img src={minus} alt="" />
           </button>
           <span aria-live="polite">{adultCount}</span>
-          <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
+          <button
+            className="button-text"
+            onClick={incrementCount}
+            aria-label="성인 승객 증가"
+            type="button"
+          >
             <img src={plus} alt="" />
           </button>
         </div>
-      </div>
+      </fieldset>
+
       {statusMessage && (
         <div className="visually-hidden" role="alert">
           {statusMessage}
