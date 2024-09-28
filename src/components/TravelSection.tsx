@@ -1,10 +1,11 @@
+import { MouseEvent, useEffect, useMemo, useRef, useState } from 'react';
+
 import chevronLeft from '../assets/chevron-left.svg';
 import chevronRight from '../assets/chevron-right.svg';
 import styles from './TravelSection.module.css';
 import travelItem01 from '../assets/travel-item-01.png';
 import travelItem02 from '../assets/travel-item-02.png';
 import travelItem03 from '../assets/travel-item-03.png';
-import { useState } from 'react';
 
 interface TravelOption {
   departure: string;
@@ -44,9 +45,16 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const ariaRef1 = useRef<HTMLDivElement>(null);
+  const ariaRef2 = useRef<HTMLDivElement>(null);
+  const ariaRef3 = useRef<HTMLDivElement>(null);
+  const ariaRefs = useMemo(() => [ariaRef1, ariaRef2, ariaRef3], []);
+  const [isFirstRender, setIsFirstRender] = useState(true);
 
-  const nextTravel = () => {
+  const nextTravel = (e: MouseEvent<HTMLButtonElement>) => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
+    e.currentTarget.tabIndex = -1;
+    e.currentTarget.blur();
   };
 
   const prevTravel = () => {
@@ -56,6 +64,14 @@ const TravelSection = () => {
   const handleCardClick = (link: string) => {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
+
+  useEffect(() => {
+    if (isFirstRender) {
+      setIsFirstRender(false);
+      return;
+    }
+    ariaRefs[currentIndex].current?.focus();
+  }, [currentIndex, ariaRefs]);
 
   return (
     <div className={styles.travelSection}>
@@ -67,8 +83,13 @@ const TravelSection = () => {
           <div
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
-            aria-label={`${option.departure}에서 ${option.destination} ${option.type} ${option.price}원`}
+            onMouseUp={() => handleCardClick(option.link)}
+            aria-label={
+              `여행 포커스 됨 ${option.departure}에서 ${option.destination} ${option.type} ${option.price}원` +
+              ' 클릭 시 해당 페이지로 이동합니다'
+            }
+            ref={ariaRefs[index]}
+            tabIndex={1}
           >
             <img src={option.image} className={styles.cardImage} aria-hidden />
             <div className={styles.cardContent} aria-hidden>
