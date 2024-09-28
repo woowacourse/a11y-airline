@@ -1,0 +1,18 @@
+.skipButton {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+
+  outline: none;
+  border: none;
+
+  background-color: #1f6feb;
+  color: white;
+
+  cursor: pointer;
+}
+
+.hidden {
+  opacity: 0;
+}
