@@ -66,7 +66,7 @@ const TravelSection = () => {
       </button>
       <section
         className={styles.carousel}
-        role="group"
+        role="region"
         aria-label={`총 ${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품`}
       >
         {travelOptions.map((option, index) => (
