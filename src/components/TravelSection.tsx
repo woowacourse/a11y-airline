@@ -59,11 +59,25 @@ const TravelSection = () => {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
 
+  const getCurrentCardContent = (index: number) => {
+    const currentOption = travelOptions[index];
+    return `${travelOptions.length}개의 상품 중, ${currentIndex + 1}번째 상품, 출발지: ${
+      currentOption.departure
+    }, 도착지: ${currentOption.destination}, 좌석 유형: ${
+      currentOption.type
+    }, 가격: ${currentOption.price.toLocaleString()}원, 
+    선택하면 예약 페이지로 이동합니다.`;
+  };
+
   return (
     <div className={styles.travelSection}>
-      <div aria-live="assertive" role="status" tabIndex={0} className="visually-hidden">
+      <div tabIndex={0} className={styles.visuallyHidden}>
         {`${travelOptions.length}개의 상품 중, ${currentIndex + 1}번째 상품`}
       </div>
+      <div aria-live="assertive" role="status" className={styles.visuallyHidden} tabIndex={-1}>
+        {getCurrentCardContent(currentIndex)}
+      </div>
+
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
@@ -79,15 +93,13 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
             tabIndex={index === currentIndex ? 0 : -1}
-            aria-label={`여행 상품 ${index + 1} / ${travelOptions.length}, 출발지: ${
-              option.departure
-            }, 도착지: ${option.destination}, 좌석 유형: ${
-              option.type
-            }, 가격: ${option.price.toLocaleString()}원
-            , 선택하면 예약 페이지로 이동합니다.`}
-            aria-hidden={index !== currentIndex}
+            aria-label={getCurrentCardContent(currentIndex)}
           >
-            <img src={option.image} className={styles.cardImage} />
+            <img
+              src={option.image}
+              className={styles.cardImage}
+              alt={`${option.destination} 여행 상품`}
+            />
             <div className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
@@ -98,6 +110,7 @@ const TravelSection = () => {
           </div>
         ))}
       </div>
+
       <button
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={nextTravel}
