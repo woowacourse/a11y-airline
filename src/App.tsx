@@ -2,16 +2,27 @@ import styles from './App.module.css';
 import Navigation from './components/Navigation';
 import FlightBooking from './components/FlightBooking';
 import TravelSection from './components/TravelSection';
-import { useEffect } from 'react';
-// import PromotionModal from './components/PromotionModal';
+import { useEffect, useRef } from 'react';
+import PromotionModal from './components/PromotionModal';
 
 function App() {
+  const mainRef = useRef<HTMLElement>(null);
+
+  const skipToMain = () => {
+    if (mainRef.current) {
+      mainRef.current.focus();
+    }
+  };
+
   useEffect(() => {
     document.title = '항공편 검색 및 여행 상품 | a11y 항공';
   }, []);
 
   return (
     <div className={styles.app}>
+      <button className={styles.showOnFocus} onClick={skipToMain}>
+        본문으로 바로가기
+      </button>
       <header>
         <Navigation />
         <div className={styles.header}>
@@ -21,7 +32,7 @@ function App() {
           </p>
         </div>
       </header>
-      <main id="main-content" className={styles.main}>
+      <main ref={mainRef} id="main-content" className={styles.main} tabIndex={0} aria-label="">
         <section className={styles.flightBooking}>
           <FlightBooking />
         </section>
@@ -34,7 +45,7 @@ function App() {
         <p className="body-text">&copy; A11Y AIRLINE</p>
       </footer>
       {/* 추가 CHALLENGE: 모달 포커스 트랩 */}
-      {/* <PromotionModal /> */}
+      <PromotionModal />
     </div>
   );
 }

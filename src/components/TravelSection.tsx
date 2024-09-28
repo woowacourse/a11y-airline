@@ -63,12 +63,11 @@ const TravelSection = () => {
     <article className={styles.travelSection}>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <div aria-hidden={index !== currentIndex} aria-live="polite">
+          <div key={index} aria-hidden={index !== currentIndex} aria-live="polite">
             <div className={styles.visuallyHidden}>
               {`${travelOptions.length}개의 여행 상품 중 ${index + 1}번째 상품입니다.`}
             </div>
             <button
-              key={index}
               className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
               onClick={() => handleCardClick(option.link)}
             >

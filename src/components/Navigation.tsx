@@ -45,16 +45,14 @@ const Navigation = () => {
   };
 
   const renderNavItems = (items: NavItem[]) => (
-    <nav>
-      <ul className={styles.navList}>
-        {items.map((item, index) => (
-          <li key={index} className={styles.navItem}>
-            <a href={item.link}>{item.title}</a>
-            {item.subItems && renderNavItems(item.subItems)}
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <ul className={styles.navList}>
+      {items.map((item, index) => (
+        <li key={index} className={styles.navItem}>
+          <a href={item.link}>{item.title}</a>
+          {item.subItems && renderNavItems(item.subItems)}
+        </li>
+      ))}
+    </ul>
   );
 
   return (
