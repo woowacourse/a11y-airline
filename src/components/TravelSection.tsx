@@ -64,7 +64,11 @@ const TravelSection = () => {
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
-      <div className={styles.carousel}>
+      <section
+        className={styles.carousel}
+        role="group"
+        aria-label={`총 ${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품`}
+      >
         {travelOptions.map((option, index) => (
           <div
             key={index}
@@ -81,7 +85,7 @@ const TravelSection = () => {
             </div>
           </div>
         ))}
-      </div>
+      </section>
       <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
         <img src={chevronRight} className={styles.navButtonIcon} />
       </button>
