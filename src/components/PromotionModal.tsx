@@ -9,10 +9,25 @@ const portalElement = document.getElementById('modal') as HTMLElement;
 
 const PromotionModal = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const dialogRef = useRef(null);
+  const firstFocusableElementRef = useRef<HTMLButtonElement | null>(null);
+  const lastFocusableElementRef = useRef<HTMLButtonElement | null>(null);
 
   const closeModal = () => {
     setIsOpen(false);
+  };
+
+  const trapFocus = (event: KeyboardEvent) => {
+    if (event.key !== 'Tab') return;
+
+    if (event.shiftKey && document.activeElement === firstFocusableElementRef.current) {
+      event.preventDefault();
+      lastFocusableElementRef.current?.focus();
+    }
+
+    if (document.activeElement === lastFocusableElementRef.current) {
+      event.preventDefault();
+      firstFocusableElementRef.current?.focus();
+    }
   };
 
   useEffect(() => {
@@ -29,14 +44,22 @@ const PromotionModal = () => {
 
       element.removeAttribute('aria-hidden');
     });
+
+    document.addEventListener('keydown', trapFocus);
+
+    return () => document.removeEventListener('keydown', trapFocus);
   }, [isOpen]);
+
+  useEffect(() => {
+    firstFocusableElementRef.current?.focus();
+  }, []);
 
   if (!isOpen) {
     return null;
   }
 
   return createPortal(
-    <div className={styles.modal} ref={dialogRef}>
+    <div className={styles.modal}>
       <div className={styles.modalBackdrop} onClick={closeModal}></div>
       <div className={styles.modalContainer}>
         <div className={styles.modalContent}>
@@ -45,8 +68,18 @@ const PromotionModal = () => {
             체크인, 탑승권 저장, 수하물 알림까지
             <br />- 앱으로 더욱 편하게 여행하세요!
           </p>
-          <button className={`${styles.modalActionButton} button-text`}>앱에서 열기</button>
-          <button className={`${styles.modalCloseButton} heading-2-text`} onClick={closeModal}>
+          <button
+            className={`${styles.modalActionButton} button-text`}
+            onClick={closeModal}
+            ref={firstFocusableElementRef}
+          >
+            앱에서 열기
+          </button>
+          <button
+            className={`${styles.modalCloseButton} heading-2-text`}
+            onClick={closeModal}
+            ref={lastFocusableElementRef}
+          >
             <img src={close} alt="창 닫기" />
           </button>
         </div>
