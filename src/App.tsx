@@ -7,6 +7,10 @@ import TravelSection from './components/TravelSection';
 function App() {
   return (
     <div className={styles.app}>
+      <a href="#main-content" className={styles.skipToMain}>
+        본문으로 바로가기
+      </a>
+
       <Navigation />
       <main id="main-content" className={styles.main}>
         <header className={styles.header} role="banner">
