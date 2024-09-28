@@ -16,24 +16,16 @@ const PromotionModal = ({ closePromotionModal }: PromotionModalProps) => {
 
   const handleTabKey = (e: KeyboardEvent) => {
     if (!modalRef.current) return;
+    if (e.code !== 'Tab') return;
     if (!focusableElementList.current) return;
 
     const firstFocusableEl = focusableElementList.current[0];
     const lastFocusableEl = focusableElementList.current[focusableElementList.current.length - 1];
 
-    if (e.code !== 'Tab') return;
-
-    // 첫번째 요소로 이동
-    if (document.activeElement?.tagName === 'BODY' || document.activeElement === lastFocusableEl) {
+    //마지막 요소 ->첫번째 요소로 이동
+    if (document.activeElement === lastFocusableEl) {
       e.preventDefault();
-      return firstFocusableEl.focus(); // 첫 번째 요소로 이동
-    }
-
-    // Shift + Tab (이전 요소로 이동)
-    if (e.shiftKey && document.activeElement === firstFocusableEl) {
-      e.preventDefault();
-      lastFocusableEl.focus(); // 마지막 요소로 이동
-      return;
+      return firstFocusableEl.focus();
     }
   };
 
