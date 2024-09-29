@@ -83,13 +83,13 @@ const TravelSection = () => {
           <div
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
+            aria-live="polite"
           >
-            <span aria-live="polite" className="visually-hidden">
-              {option.travelItemLabel}
-            </span>
+            <span className="visually-hidden">{`${option.travelItemLabel}`}</span>
             <button
               onClick={() => handleCardClick(option.link)}
               className={styles.carouselCardButton}
+              aria-label={`${option.departure} 출발 ${option.destination} 도착 ${option.type} 가격 ${option.price}원 선택하면 예약 페이지로 이동합니다.`}
             >
               <img
                 src={option.image}
