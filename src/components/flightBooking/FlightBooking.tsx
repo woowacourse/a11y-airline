@@ -58,7 +58,7 @@ const FlightBooking = () => {
             <img src={helpIcon} alt="" className={styles.helpIcon} />
             {showTooltip && (
               <div id="booking-desc" className={styles.tooltip}>
-                최대 3명까지 예약할 수 있습니다
+                최대 3명까지 예약할 수 있습니다.
               </div>
             )}
           </button>
