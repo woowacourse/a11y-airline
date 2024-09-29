@@ -52,7 +52,7 @@
   margin-bottom: 15px;
 }
 
-.passengerCount span {
+.passengerCount p {
   font-weight: 700;
 }
 
@@ -74,7 +74,7 @@
   align-items: center;
 }
 
-.counter span {
+.counter p {
   font-size: 18px;
   text-align: center;
   font-size: 18px;
