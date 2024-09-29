@@ -61,10 +61,14 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
+      <p className="visually-hidden" aria-live="assertive" id="carousel-index" aria-atomic="true">
+        {travelOptions.length}개의 여행 상품 중 {currentIndex + 1}번 째 상품
+      </p>
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
         aria-label="이전 여행 상품"
+        aria-controls="carousel-index"
       >
         <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
@@ -90,6 +94,7 @@ const TravelSection = () => {
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={nextTravel}
         aria-label="다음 여행 상품"
+        aria-controls="carousel-index"
       >
         <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
