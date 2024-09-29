@@ -9,6 +9,24 @@
   margin: 0 auto;
 }
 
+.skip {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #000000;
+  text-align: center;
+}
+
 .header {
   padding: 48px 24px 24px 24px;
 }
