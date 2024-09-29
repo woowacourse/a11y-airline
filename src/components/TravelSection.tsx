@@ -68,7 +68,7 @@ const TravelSection = () => {
   };
 
   return (
-    <div className={styles.travelSection} role="region" aria-label="여행 옵션 캐러셀">
+    <div className={styles.travelSection} aria-label="여행 옵션 캐러셀">
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
