@@ -1,10 +1,11 @@
-import { useCallback, useState } from 'react';
+import { Ref, RefObject, useCallback, useRef, useState } from 'react';
 
 import helpIcon from '../assets/help.svg';
 import plus from '../assets/plus.svg';
 import minus from '../assets/minus.svg';
 
 import styles from './FlightBooking.module.css';
+import { removeAriaLive, setAriaLive } from '../utils/ariaLive';
 
 const MIN_PASSENGERS = 1;
 const MAX_PASSENGERS = 3;
@@ -18,6 +19,8 @@ const FlightBooking = () => {
   const [adultCount, setAdultCount] = useState(MIN_PASSENGERS);
   const [statusMessage, setStatusMessage] = useState('');
   const [showTooltip, setShowTooltip] = useState(false);
+
+  const adultCountRef = useRef<HTMLSpanElement>(null);
 
   const incrementCount = useCallback(() => {
     if (adultCount === MAX_PASSENGERS) {
@@ -44,7 +47,11 @@ const FlightBooking = () => {
   }, [adultCount]);
 
   return (
-    <div className={styles.flightBooking}>
+    <div
+      className={styles.flightBooking}
+      onFocus={() => setAriaLive(adultCountRef, 'polite')}
+      onBlur={() => removeAriaLive(adultCountRef)}
+    >
       <h2 className="heading-2-text">항공권 예매</h2>
       <div className={styles.passengerCount}>
         <div className={styles.passengerLabel}>
@@ -62,7 +69,7 @@ const FlightBooking = () => {
           <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
             <img src={minus} alt="" />
           </button>
-          <span aria-live="polite">{adultCount}</span>
+          <span ref={adultCountRef}>{adultCount}</span>
           <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
             <img src={plus} alt="" />
           </button>
