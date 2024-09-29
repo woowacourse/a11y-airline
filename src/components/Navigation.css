@@ -1,0 +1,110 @@
+.main-nav {
+  background-color: #f8f8f8;
+  padding: 10px 0;
+}
+
+.main-nav .nav-list {
+  list-style-type: none;
+  padding: 10px 16px;
+  margin: 0;
+}
+
+.main-nav .nav-list .nav-item {
+  display: inline-block;
+  position: relative;
+  margin-right: 20px;
+}
+
+.main-nav .nav-list .nav-item a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  padding: 5px 10px;
+  display: block;
+}
+
+.main-nav .nav-list .nav-item a:hover,
+.main-nav .nav-list .nav-item a:focus {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+}
+
+.main-nav .nav-list .sub-nav-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-nav .nav-list .nav-item:hover > .sub-nav-list,
+.main-nav .nav-list .nav-item:focus-within > .sub-nav-list {
+  display: block;
+}
+
+.main-nav .nav-list .sub-nav-list .sub-nav-item {
+  width: 200px;
+  display: block;
+  margin-right: 0;
+}
+
+.main-nav .nav-list .sub-nav-list .sub-nav-item a {
+  padding: 10px;
+}
+
+.main-nav .nav-list .sub-nav-list .sub-nav-item a:hover,
+.main-nav .nav-list .sub-nav-list .sub-nav-item a:focus {
+  background-color: #f0f0f0;
+}
+
+.nav-toggle {
+  display: none;
+  font-size: 16px;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .main-nav--active {
+    display: block;
+  }
+
+  .main-nav .nav-list .nav-item {
+    display: block;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .main-nav .nav-list .sub-nav-list {
+    position: static;
+    display: none;
+    width: auto;
+    border: none;
+    box-shadow: none;
+    margin-left: 20px;
+  }
+
+  .main-nav .nav-list .nav-item:hover > .sub-nav-list,
+  .main-nav .nav-list .nav-item:focus-within > .sub-nav-list {
+    display: block;
+  }
+
+  .main-nav .nav-list .sub-nav-list .sub-nav-item {
+    width: auto;
+  }
+}
