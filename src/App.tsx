@@ -2,11 +2,22 @@ import styles from './styles/App.module.css';
 import FlightBooking from './components/flightBooking/FlightBooking';
 import Navigation from './components/navigation/Navigation';
 import TravelSection from './components/travelSection/TravelSection';
+import { useRef } from 'react';
+import SkipToContent from './components/skipToContent/SkipToContet';
 // import PromotionModal from './components/promotionModal/PromotionModal';
 
 function App() {
+  const mainContentRef = useRef<HTMLDivElement>(null);
+
+  const handleSkipToContent = () => {
+    if (mainContentRef.current) {
+      mainContentRef.current.focus();
+    }
+  };
+
   return (
     <div className={styles.app}>
+      <SkipToContent onSkipToContent={handleSkipToContent} />
       <Navigation />
       <header className={styles.header}>
         <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>
@@ -14,7 +25,7 @@ function App() {
           A11Y AIRLINE은 고객 여러분의 안전하고 쾌적한 여행을 위해 최선을 다하고 있습니다.
         </p>
       </header>
-      <main id="main-content" className={styles.main}>
+      <main id="main-content" ref={mainContentRef} className={styles.main}>
         <div className={styles.flightBooking}>
           <FlightBooking />
         </div>
