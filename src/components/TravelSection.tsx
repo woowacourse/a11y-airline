@@ -71,14 +71,13 @@ const TravelSection = () => {
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
           >
-            <span aria-live="polite" className={styles.visuallyHidden}>
+            <span aria-live="polite" className="visually-hidden">
               {option.ariaLabel}
             </span>
             <button
               onClick={() => handleCardClick(option.link)}
               className={styles.carouselCardButton}
             >
-              {/* <a href={option.link}> */}
               <img
                 src={option.image}
                 className={styles.cardImage}
@@ -93,7 +92,6 @@ const TravelSection = () => {
                   KRW {option.price.toLocaleString()}
                 </p>
               </div>
-              {/* </a> */}
             </button>
           </div>
         ))}
