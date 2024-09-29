@@ -42,9 +42,8 @@ const FlightBooking = () => {
   return (
     <section className={styles.flightBooking}>
       <form className={styles.form}>
-        <legend className="heading-2-text">항공권 예매</legend>
-        <fieldset className={styles.passengerCount}>
-          <legend className="visually-hidden">성인 항공권 예매</legend>
+        <h2 className="heading-2-text">항공권 예매</h2>
+        <section className={styles.passengerCount} aria-label="성인 승객 수 선택">
           <div id={elementId.countLabel} className={styles.passengerLabel}>
             <span className="body-text">성인</span>
             <button
@@ -81,7 +80,7 @@ const FlightBooking = () => {
               <img src={plus} alt="" />
             </button>
           </div>
-        </fieldset>
+        </section>
         {statusMessage && (
           <div className="visually-hidden" role="alert">
             {statusMessage}
