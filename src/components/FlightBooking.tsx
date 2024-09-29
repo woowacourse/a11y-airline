@@ -9,6 +9,11 @@ import styles from './FlightBooking.module.css';
 const MIN_PASSENGERS = 1;
 const MAX_PASSENGERS = 3;
 
+const STATUS_MESSAGE = {
+  min: '최소 1명의 승객이 필요합니다',
+  max: '최대 승객 수에 도달했습니다'
+};
+
 const FlightBooking = () => {
   const [adultCount, setAdultCount] = useState(MIN_PASSENGERS);
   const [statusMessage, setStatusMessage] = useState('');
@@ -16,22 +21,26 @@ const FlightBooking = () => {
 
   const incrementCount = useCallback(() => {
     if (adultCount === MAX_PASSENGERS) {
-      setStatusMessage('최대 승객 수에 도달했습니다');
+      setStatusMessage('');
+      setTimeout(() => {
+        setStatusMessage(STATUS_MESSAGE.max);
+      }, 0);
       return;
     }
 
     setAdultCount((prev) => Math.min(MAX_PASSENGERS, prev + 1));
-    setStatusMessage('');
   }, [adultCount]);
 
   const decrementCount = useCallback(() => {
     if (adultCount === MIN_PASSENGERS) {
-      setStatusMessage('최소 1명의 승객이 필요합니다');
+      setStatusMessage('');
+      setTimeout(() => {
+        setStatusMessage(STATUS_MESSAGE.min);
+      }, 0);
       return;
     }
 
     setAdultCount((prev) => Math.max(MIN_PASSENGERS, prev - 1));
-    setStatusMessage('');
   }, [adultCount]);
 
   return (
