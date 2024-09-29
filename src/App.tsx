@@ -20,9 +20,12 @@ function App() {
         <Navigation />
         <main tabIndex={-1}>
           <section className={styles.announce}>
-            <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>
+            <h1 lang="en" className={`${styles.title} heading-1-text`}>
+              A11Y AIRLINE
+            </h1>
             <p className="body-text">
-              A11Y AIRLINE은 고객 여러분의 안전하고 쾌적한 여행을 위해 최선을 다하고 있습니다.
+              <span lang="en">A11Y AIRLINE</span>은 고객 여러분의 안전하고 쾌적한 여행을 위해 최선을
+              다하고 있습니다.
             </p>
           </section>
           <section id="main-content" className={styles.mainContent}>
@@ -31,7 +34,9 @@ function App() {
           </section>
         </main>
         <footer className={styles.footer}>
-          <p className="body-text">&copy; A11Y AIRLINE</p>
+          <p lang="en" className="body-text">
+            &copy; A11Y AIRLINE
+          </p>
         </footer>
       </div>
     </>
