@@ -45,21 +45,25 @@ const FlightBooking = () => {
         <h2 className="heading-2-text">항공권 예매</h2>
         <section className={styles.passengerCount} aria-label="성인 승객 수 선택">
           <div id={elementId.countLabel} className={styles.passengerLabel}>
-            <span className="body-text">성인</span>
-            <button
-              className={styles.helpIconButton}
-              type="button"
-              aria-label="도움말 버튼"
-              onMouseEnter={() => setShowTooltip(true)}
-              onMouseLeave={() => setShowTooltip(false)}
-            >
-              <img src={helpIcon} alt="" className={styles.helpIcon} />
+            <h3 className="body-text">성인</h3>
+            <div className={styles.helpContainer}>
+              <button
+                className={styles.helpIconButton}
+                aria-label="도움말"
+                aria-expanded={showTooltip ? 'true' : 'false'}
+                onMouseEnter={() => setShowTooltip(true)}
+                onMouseLeave={() => setShowTooltip(false)}
+                onFocus={() => setShowTooltip(true)}
+                onBlur={() => setShowTooltip(false)}
+              >
+                <img src={helpIcon} alt="" className={styles.helpIcon} />
+              </button>
               {showTooltip && (
                 <div role="alert" className={styles.tooltip}>
                   {TOOL_TIP_MESSAGE}
                 </div>
               )}
-            </button>
+            </div>
           </div>
           <div aria-labelledby={elementId.countLabel} className={styles.counter}>
             <button
