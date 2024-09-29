@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import travelItem01 from '../assets/travel-item-01.png';
-import travelItem02 from '../assets/travel-item-02.png';
-import travelItem03 from '../assets/travel-item-03.png';
 import chevronLeft from '../assets/chevron-left.svg';
 import chevronRight from '../assets/chevron-right.svg';
+import soosoo1 from '../assets/soosoo1.png';
+import soosoo2 from '../assets/soosoo2.png';
+import soosoo3 from '../assets/soosoo3.png';
 
 import styles from './TravelSection.module.css';
 
@@ -16,35 +16,48 @@ interface TravelOption {
   image: string;
   link: string;
   ariaLabel: string;
+  style: React.CSSProperties;
 }
 
 const travelOptions: TravelOption[] = [
   {
     departure: '서울/인천',
-    destination: '두바이',
+    destination: '쑤쑤의 사랑의 총알',
     type: '일반석 왕복',
     price: 1121600,
-    image: travelItem01,
+    image: soosoo1,
     link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasList?TOURTYP=KALPAK&PKGBRA=KP&PKGARE=E5&REGNB1=%uC720%uB7FD&REGNB2=%uC911%uB3D9&REGTOP=1',
-    ariaLabel: '3개의 여행 상품 중 첫 번째 상품'
+    ariaLabel: '3개의 여행 상품 중 첫 번째 상품',
+    style: {
+      objectFit: 'cover',
+      objectPosition: 'center 13%'
+    }
   },
   {
     departure: '서울/인천',
-    destination: '바르셀로나',
+    destination: '쑤쑤의 기지개',
     type: '일반석 왕복',
     price: 1515200,
-    image: travelItem02,
+    image: soosoo2,
     link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasView?pkgpnh=KP44129',
-    ariaLabel: '3개의 여행 상품 중 두 번째 상품'
+    ariaLabel: '3개의 여행 상품 중 두 번째 상품',
+    style: {
+      objectFit: 'contain',
+      objectPosition: 'right 50%'
+    }
   },
   {
     departure: '서울/인천',
-    destination: '로마',
+    destination: '쑤쑤의 쌍커풀 수술',
     type: '일반석 왕복',
-    price: 1415800,
-    image: travelItem03,
+    price: 1529000,
+    image: soosoo3,
     link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasView?pkgpnh=KP41216',
-    ariaLabel: '3개의 여행 상품 중 세 번째 상품'
+    ariaLabel: '3개의 여행 상품 중 세 번째 상품',
+    style: {
+      objectFit: 'contain',
+      objectPosition: 'right'
+    }
   }
 ];
 
@@ -81,6 +94,7 @@ const TravelSection = () => {
               <img
                 src={option.image}
                 className={styles.cardImage}
+                style={option.style}
                 alt={`${option.destination} 이미지`}
               />
               <div className={styles.cardContent}>
