@@ -101,3 +101,10 @@
   border-radius: 4px;
   cursor: pointer;
 }
+.statusMessage {
+  margin: auto 0;
+  height: 18px;
+  text-align: center;
+  width: 100%;
+  font-size: 14px;
+}

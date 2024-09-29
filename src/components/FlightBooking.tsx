@@ -85,11 +85,9 @@ const FlightBooking = () => {
             </button>
           </div>
         </section>
-        {statusMessage && (
-          <div className="visually-hidden" role="alert">
-            {statusMessage}
-          </div>
-        )}
+        <div role="alert" className={styles.statusMessage}>
+          {statusMessage}
+        </div>
         <button className={styles.searchButton}>항공편 검색</button>
       </form>
     </section>
