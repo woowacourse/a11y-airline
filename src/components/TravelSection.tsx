@@ -55,15 +55,8 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
-      </button>
       <p
         className="visually-hidden"
         role="status"
@@ -71,10 +64,12 @@ const TravelSection = () => {
       >{`${travelOptions.length}개의 여행상품 중 ${currentIndex + 1}번 째 상품`}</p>
       <section className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <div
+          <a
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
+            href={option.link}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <img src={option.image} className={styles.cardImage} />
             <div className={styles.cardContent}>
@@ -84,9 +79,12 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </a>
         ))}
       </section>
+      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
+        <img src={chevronLeft} className={styles.navButtonIcon} />
+      </button>
       <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
         <img src={chevronRight} className={styles.navButtonIcon} />
       </button>
