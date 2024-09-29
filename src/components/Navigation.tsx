@@ -49,11 +49,7 @@ const Navigation = () => {
       {items.map((item, index) => (
         <li key={index} className={styles.navItem}>
           <a href={item.link}>{item.title}</a>
-          {item.subItems && (
-            <nav aria-label={`${item.title} 상세`} className={styles.subNav}>
-              {renderNavItems(item.subItems)}
-            </nav>
-          )}
+          {item.subItems && <nav className={styles.subNav}>{renderNavItems(item.subItems)}</nav>}
         </li>
       ))}
     </ul>
