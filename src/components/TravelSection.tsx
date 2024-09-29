@@ -82,7 +82,7 @@ ${travelOptions[index].departure} 출발, ${travelOptions[index].destination} �
       </button>
 
       {/*캐루셀 카드 리스트*/}
-      <div className={styles.carousel} tabIndex={2}>
+      <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <div
             key={index}
@@ -91,7 +91,7 @@ ${travelOptions[index].departure} 출발, ${travelOptions[index].destination} �
             onClick={() => handleCardClick(option.link)}
             aria-live="polite"
             aria-label={createMessage(index)}
-            tabIndex={1}
+            tabIndex={0}
             id="travel-info"
           >
             <img
@@ -110,7 +110,7 @@ ${travelOptions[index].departure} 출발, ${travelOptions[index].destination} �
         ))}
       </div>
 
-      <div role="alert" className="visually-hidden">
+      <div role="alert" aria-live="assertive" className="visually-hidden">
         {TRAVEL_OPTION_COUNT}개의 여행 상품중 {currentIndex + 1}번째 상품
       </div>
 
