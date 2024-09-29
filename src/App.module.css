@@ -9,6 +9,27 @@
   margin: 0 auto;
 }
 
+.skipToContentButton {
+  position: absolute;
+  background-color: #158dd2;
+  border: 0;
+  border-radius: 4px;
+  padding: 10px;
+  z-index: 1;
+
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.skipToContentButton:focus {
+  opacity: 1;
+}
+
+.skipToContentButton:not(:focus) {
+  opacity: 0;
+}
+
 .header {
   padding: 48px 24px 24px 24px;
 }

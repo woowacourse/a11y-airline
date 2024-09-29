@@ -7,8 +7,16 @@ import TravelSection from './components/TravelSection';
 function App() {
   return (
     <div className={styles.app}>
+      <a
+        type="button"
+        href="#banner-content"
+        aria-hidden="true"
+        className={styles.skipToContentButton}
+      >
+        본문으로 바로가기
+      </a>
       <Navigation />
-      <header className={styles.header}>
+      <header id="banner-content" className={styles.header}>
         <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>
         <p className="body-text">
           A11Y AIRLINE은 고객 여러분의 안전하고 쾌적한 여행을 위해 최선을 다하고 있습니다.
