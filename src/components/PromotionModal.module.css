@@ -1,30 +1,26 @@
-.modal {
+.lineBreak {
   display: block;
-}
-
-.modalBackdrop {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 480px;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
 }
 
 .modalContainer {
   position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-bottom: 0;
+
   background-color: white;
   padding: 20px;
   width: 100%;
   max-width: 480px;
   border-radius: 8px 8px 0 0;
   z-index: 1001;
+  box-sizing: border-box;
+}
+
+.modalContainer::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 1);
 }
 
 .modalContent {

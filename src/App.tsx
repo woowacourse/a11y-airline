@@ -20,7 +20,8 @@ function App() {
 
   return (
     <div className={styles.app}>
-      <button className={styles.showOnFocus} onClick={skipToMain}>
+      <PromotionModal />
+      <button className={styles.showOnFocus} onClick={skipToMain} tabIndex={0}>
         본문으로 바로가기
       </button>
       <header>
@@ -32,7 +33,13 @@ function App() {
           </p>
         </div>
       </header>
-      <main ref={mainRef} id="main-content" className={styles.main} tabIndex={0} aria-label="">
+      <main
+        ref={mainRef}
+        id="main-content"
+        className={styles.main}
+        aria-label="항공편 검색 및 여행 상품 추천 기능이 존재하는 주요 영역입니다."
+        tabIndex={-1}
+      >
         <section className={styles.flightBooking}>
           <FlightBooking />
         </section>
@@ -44,8 +51,6 @@ function App() {
       <footer className={styles.footer}>
         <p className="body-text">&copy; A11Y AIRLINE</p>
       </footer>
-      {/* 추가 CHALLENGE: 모달 포커스 트랩 */}
-      <PromotionModal />
     </div>
   );
 }

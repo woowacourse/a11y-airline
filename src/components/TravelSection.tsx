@@ -71,7 +71,12 @@ const TravelSection = () => {
               className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
               onClick={() => handleCardClick(option.link)}
             >
-              <img src={option.image} className={styles.cardImage} />
+              <img
+                src={option.image}
+                className={styles.cardImage}
+                alt="여행 상품 이미지"
+                aria-hidden
+              />
               <div className={styles.cardContent}>
                 <p
                   className={`${styles.cardTitle} heading-3-text`}
@@ -100,14 +105,14 @@ const TravelSection = () => {
         onClick={prevTravel}
         aria-label="이전 여행 상품"
       >
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
       <button
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={nextTravel}
         aria-label="다음 여행 상품"
       >
-        <img src={chevronRight} className={styles.navButtonIcon} />
+        <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
     </article>
   );
