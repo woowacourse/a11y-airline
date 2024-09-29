@@ -17,7 +17,7 @@ const FlightBooking = () => {
   const [statusMessage, setStatusMessage] = useState('');
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const elementId = useElementId({ childrenNameList: ['count'] });
+  const elementId = useElementId({ childrenNameList: ['countLabel'] });
 
   const incrementCount = useCallback(() => {
     if (adultCount === MAX_PASSENGERS) {
@@ -44,10 +44,9 @@ const FlightBooking = () => {
       <form className={styles.form}>
         <legend className="heading-2-text">항공권 예매</legend>
         <fieldset className={styles.passengerCount}>
-          <div className={styles.passengerLabel}>
-            <label htmlFor={elementId.count} className="body-text">
-              성인
-            </label>
+          <legend className="visually-hidden">성인 항공권 예매</legend>
+          <div id={elementId.countLabel} className={styles.passengerLabel}>
+            <span className="body-text">성인</span>
             <div
               className={styles.helpIconWrapper}
               aria-label="도움말 버튼"
@@ -62,7 +61,7 @@ const FlightBooking = () => {
               )}
             </div>
           </div>
-          <div id={elementId.count} className={styles.counter}>
+          <div aria-labelledby={elementId.countLabel} className={styles.counter}>
             <button
               type="button"
               className="button-text"
