@@ -6,6 +6,11 @@ import { Helmet } from 'react-helmet';
 // import PromotionModal from './components/PromotionModal';
 
 function App() {
+  const skipToMain = () => {
+    const mainContent = document.getElementById('main-content');
+    if (mainContent) mainContent.focus();
+  };
+
   return (
     <>
       <Helmet>
@@ -17,8 +22,7 @@ function App() {
           className={styles.skipLink}
           onClick={(e) => {
             e.preventDefault();
-            const mainContent = document.getElementById('main-content');
-            if (mainContent) mainContent.focus();
+            skipToMain();
           }}
         >
           본문으로 바로가기
@@ -35,7 +39,6 @@ function App() {
             <FlightBooking />
           </section>
           <section className={styles.travelSection}>
-            <h2 className={`${styles.travelTitle} heading-2-text`}>지금 떠나기 좋은 여행</h2>
             <TravelSection />
           </section>
         </main>
