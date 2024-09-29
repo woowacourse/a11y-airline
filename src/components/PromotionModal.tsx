@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import close from '../assets/close.svg';
 
@@ -10,6 +10,16 @@ const PromotionModal = () => {
   const closeModal = () => {
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    const handleCloseModalWithKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') closeModal();
+    };
+
+    if (isOpen) document.addEventListener('keydown', handleCloseModalWithKey);
+
+    return () => document.removeEventListener('keydown', handleCloseModalWithKey);
+  }, [isOpen]);
 
   if (!isOpen) {
     return null;
