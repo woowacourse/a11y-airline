@@ -8,7 +8,7 @@ function App() {
   return (
     <div className={styles.app}>
       <a href="#main-content" className={styles.srOnly}>
-        메인 콘텐츠로 건너뛰기
+        본문으로 바로가기
       </a>
 
       <Navigation />
