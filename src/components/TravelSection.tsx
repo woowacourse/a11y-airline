@@ -15,6 +15,7 @@ interface TravelOption {
   price: number;
   image: string;
   link: string;
+  ariaLabel: string;
 }
 
 const travelOptions: TravelOption[] = [
@@ -24,7 +25,8 @@ const travelOptions: TravelOption[] = [
     type: '일반석 왕복',
     price: 1121600,
     image: travelItem01,
-    link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasList?TOURTYP=KALPAK&PKGBRA=KP&PKGARE=E5&REGNB1=%uC720%uB7FD&REGNB2=%uC911%uB3D9&REGTOP=1'
+    link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasList?TOURTYP=KALPAK&PKGBRA=KP&PKGARE=E5&REGNB1=%uC720%uB7FD&REGNB2=%uC911%uB3D9&REGTOP=1',
+    ariaLabel: '3개의 여행 상품 중 첫 번째 상품'
   },
   {
     departure: '서울/인천',
@@ -32,7 +34,8 @@ const travelOptions: TravelOption[] = [
     type: '일반석 왕복',
     price: 1515200,
     image: travelItem02,
-    link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasView?pkgpnh=KP44129'
+    link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasView?pkgpnh=KP44129',
+    ariaLabel: '3개의 여행 상품 중 두 번째 상품'
   },
   {
     departure: '서울/인천',
@@ -40,7 +43,8 @@ const travelOptions: TravelOption[] = [
     type: '일반석 왕복',
     price: 1415800,
     image: travelItem03,
-    link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasView?pkgpnh=KP41216'
+    link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasView?pkgpnh=KP41216',
+    ariaLabel: '3개의 여행 상품 중 세 번째 상품'
   }
 ];
 
@@ -61,9 +65,6 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
-      </button>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <div
@@ -71,7 +72,15 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
           >
-            <img src={option.image} className={styles.cardImage} />
+            <span aria-live="polite" className={styles.visuallyHidden}>
+              {option.ariaLabel}
+            </span>
+
+            <img
+              src={option.image}
+              className={styles.cardImage}
+              alt={`${option.destination} 이미지`}
+            />
             <div className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
@@ -82,6 +91,9 @@ const TravelSection = () => {
           </div>
         ))}
       </div>
+      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
+        <img src={chevronLeft} className={styles.navButtonIcon} />
+      </button>
       <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
         <img src={chevronRight} className={styles.navButtonIcon} />
       </button>
