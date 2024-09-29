@@ -44,13 +44,17 @@ const Navigation = () => {
     setIsNavOpen((prev) => !prev);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === 'Escape' && isNavOpen) {
+      setIsNavOpen(false);
+    }
+  };
+
   const renderNavItems = (items: NavItem[]) => (
-    <ul className={styles.navList} role="tabList">
+    <ul className={styles.navList}>
       {items.map((item, index) => (
-        <li id={`tab${index}-${item}`} key={index} className={styles.navItem} role="menuitem">
-          <a href={item.link} role="button">
-            {item.title}
-          </a>
+        <li key={index} className={styles.navItem}>
+          <a href={item.link}>{item.title}</a>
           {item.subItems && renderNavItems(item.subItems)}
         </li>
       ))}
@@ -59,7 +63,13 @@ const Navigation = () => {
 
   return (
     <>
-      <button className={styles.navToggle} onClick={toggleNav}>
+      <button
+        className={styles.navToggle}
+        onClick={toggleNav}
+        aria-expanded={isNavOpen}
+        aria-controls="main-nav"
+        onKeyDown={handleKeyDown}
+      >
         {isNavOpen ? '닫기' : '메뉴'}
       </button>
       <nav id="main-nav" className={`${styles.mainNav} ${isNavOpen ? styles.mainNavActive : ''}`}>
