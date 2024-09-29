@@ -83,8 +83,8 @@ const TravelSection = () => {
           className={`${styles.navButton} ${styles.navButtonPrev}`}
           onClick={prevTravel}
           type="button"
+          aria-label="이전 상품으로 이동"
         >
-          <span className="visually-hidden">이전 상품으로 이동</span>
           <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
         </button>
         <p id={elementId.description} aria-live="polite" className="visually-hidden">
@@ -114,8 +114,8 @@ const TravelSection = () => {
           className={`${styles.navButton} ${styles.navButtonNext}`}
           onClick={nextTravel}
           type="button"
+          aria-label="다음 상품으로 이동"
         >
-          <span className="visually-hidden">다음 상품으로 이동</span>
           <img src={chevronRight} className={styles.navButtonIcon} alt="" />
         </button>
       </div>
