@@ -69,8 +69,12 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection} role="region" aria-label="여행 옵션 캐러셀">
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} aria-label="이전 여행 옵션 보기" />
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 여행 옵션 보기"
+      >
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
       <ol
         className={styles.carousel}
@@ -112,7 +116,7 @@ const TravelSection = () => {
         onClick={nextTravel}
         aria-label="다음 여행 옵션 보기"
       >
-        <img src={chevronRight} className={styles.navButtonIcon} />
+        <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
     </div>
   );
