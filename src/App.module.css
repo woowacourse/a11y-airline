@@ -1,3 +1,13 @@
+header {
+  background-color: black;
+}
+
+button {
+  border: 0;
+  background-color: transparent;
+  outline: none;
+}
+
 .app {
   font-family: Arial, sans-serif;
   max-width: 480px;
@@ -39,4 +49,16 @@
   padding: 32px;
   background-color: white;
   text-align: center;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
