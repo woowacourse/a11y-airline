@@ -15,7 +15,7 @@ interface TravelOption {
   price: number;
   image: string;
   link: string;
-  ariaLabel: string;
+  travelItemLabel: string;
   style: React.CSSProperties;
 }
 
@@ -27,7 +27,7 @@ const travelOptions: TravelOption[] = [
     price: 1121600,
     image: soosoo1,
     link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasList?TOURTYP=KALPAK&PKGBRA=KP&PKGARE=E5&REGNB1=%uC720%uB7FD&REGNB2=%uC911%uB3D9&REGTOP=1',
-    ariaLabel: '3개의 여행 상품 중 첫 번째 상품',
+    travelItemLabel: '3개의 여행 상품 중 첫 번째 상품',
     style: {
       objectFit: 'cover',
       objectPosition: 'center 13%'
@@ -40,7 +40,7 @@ const travelOptions: TravelOption[] = [
     price: 1515200,
     image: soosoo2,
     link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasView?pkgpnh=KP44129',
-    ariaLabel: '3개의 여행 상품 중 두 번째 상품',
+    travelItemLabel: '3개의 여행 상품 중 두 번째 상품',
     style: {
       objectFit: 'contain',
       objectPosition: 'right 50%'
@@ -53,7 +53,7 @@ const travelOptions: TravelOption[] = [
     price: 1529000,
     image: soosoo3,
     link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasView?pkgpnh=KP41216',
-    ariaLabel: '3개의 여행 상품 중 세 번째 상품',
+    travelItemLabel: '3개의 여행 상품 중 세 번째 상품',
     style: {
       objectFit: 'contain',
       objectPosition: 'right'
@@ -85,7 +85,7 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
           >
             <span aria-live="polite" className="visually-hidden">
-              {option.ariaLabel}
+              {option.travelItemLabel}
             </span>
             <button
               onClick={() => handleCardClick(option.link)}
