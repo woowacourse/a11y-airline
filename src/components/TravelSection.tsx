@@ -68,7 +68,7 @@ const TravelSection = () => {
   };
 
   return (
-    <div className={styles.travelSection} role="carousel">
+    <div className={styles.travelSection} role="region" aria-label="여행 옵션 캐러셀">
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
         <img src={chevronLeft} className={styles.navButtonIcon} aria-label="이전 여행 옵션 보기" />
       </button>
