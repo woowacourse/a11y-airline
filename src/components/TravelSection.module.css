@@ -18,6 +18,12 @@
   width: 100%;
   height: 246px;
   text-align: left;
+  color: rgba(2, 2, 2);
+}
+
+.card:visited {
+  color: rgba(2, 2, 2);
+  text-decoration: none;
 }
 
 .cardActive {
