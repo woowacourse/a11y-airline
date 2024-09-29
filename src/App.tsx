@@ -2,11 +2,20 @@ import styles from './App.module.css';
 import Navigation from './components/Navigation';
 import FlightBooking from './components/FlightBooking';
 import TravelSection from './components/TravelSection';
+import { useEffect } from 'react';
 // import PromotionModal from './components/PromotionModal';
 
 function App() {
+  useEffect(() => {
+    document.title = `A11Y AIRLINE - 항공권 예약 및 인기 여행 상품`;
+  }, []);
+
   return (
     <div className={styles.app}>
+      <a href="#main-content" className="skipLink">
+        본문으로 바로가기
+      </a>
+
       <Navigation />
 
       <header className={styles.header}>
