@@ -2,9 +2,25 @@ import styles from './App.module.css';
 import Navigation from './components/Navigation';
 import FlightBooking from './components/FlightBooking';
 import TravelSection from './components/TravelSection';
+import { useEffect, useState } from 'react';
+import ToastNotification from './components/ToastNotification';
 // import PromotionModal from './components/PromotionModal';
 
 function App() {
+  const [toastMessage, setToastMessage] = useState('');
+
+  const handleToastMessage = (message: string) => {
+    setToastMessage(message);
+  };
+
+  useEffect(() => {
+    if (toastMessage) {
+      setTimeout(() => {
+        setToastMessage('');
+      }, 4000);
+    }
+  }, [toastMessage]);
+
   return (
     <div className={styles.app}>
       <div className={styles.skipNav}>
@@ -19,7 +35,7 @@ function App() {
       </header>
       <main id="main-content" className={styles.main}>
         <section className={styles.flightBooking}>
-          <FlightBooking />
+          <FlightBooking setToastMessage={handleToastMessage} />
         </section>
         <section className={styles.travelSection}>
           <h2 className={`${styles.travelTitle} heading-2-text`} tabIndex={0}>
@@ -31,6 +47,8 @@ function App() {
       <footer className={styles.footer}>
         <p className="body-text">&copy; A11Y AIRLINE</p>
       </footer>
+
+      {toastMessage && <ToastNotification message={toastMessage} />}
       {/* 추가 CHALLENGE: 모달 포커스 트랩 */}
       {/* <PromotionModal /> */}
     </div>
