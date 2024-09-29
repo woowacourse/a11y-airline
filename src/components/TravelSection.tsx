@@ -55,6 +55,10 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
+  const readCarouselItem = (item: TravelOption) => {
+    return `출발지 ${item.departure} 도착지 ${item.departure} ${item.type} 가격 ${item.price} 클릭하면 예약 페이지로 이동합니다.`;
+  };
+
   return (
     <div className={styles.travelSection}>
       <p
@@ -70,6 +74,7 @@ const TravelSection = () => {
             href={option.link}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={readCarouselItem(option)}
           >
             <img src={option.image} className={styles.cardImage} />
             <div className={styles.cardContent}>
