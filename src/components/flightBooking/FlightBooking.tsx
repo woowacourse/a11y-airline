@@ -14,24 +14,29 @@ const FlightBooking = () => {
   const [statusMessage, setStatusMessage] = useState('');
   const [showTooltip, setShowTooltip] = useState(false);
 
+  const updateAlert = (message: string) => {
+    setStatusMessage('');
+    setTimeout(() => {
+      setStatusMessage(message);
+    }, 0);
+  };
+
   const incrementCount = useCallback(() => {
     if (adultCount === MAX_PASSENGERS) {
-      setStatusMessage('최대 승객 수에 도달했습니다');
+      updateAlert('최대 승객 수에 도달했습니다');
       return;
     }
 
     setAdultCount((prev) => Math.min(MAX_PASSENGERS, prev + 1));
-    setStatusMessage('');
   }, [adultCount]);
 
   const decrementCount = useCallback(() => {
     if (adultCount === MIN_PASSENGERS) {
-      setStatusMessage('최소 1명의 승객이 필요합니다');
+      updateAlert('최소 1명의 승객이 필요합니다');
       return;
     }
 
     setAdultCount((prev) => Math.max(MIN_PASSENGERS, prev - 1));
-    setStatusMessage('');
   }, [adultCount]);
 
   return (
