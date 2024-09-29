@@ -95,7 +95,7 @@ const TravelSection = () => {
             }
             ref={ariaRefs[index]}
             // 접근성을 위한 tabIndex
-            tabIndex={1}
+            tabIndex={0}
           >
             <img src={option.image} className={styles.cardImage} aria-hidden />
             <div className={styles.cardContent} aria-hidden>
