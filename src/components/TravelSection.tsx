@@ -55,13 +55,15 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
+  const slideAriaLabel = ({ departure, destination, type, price }: TravelOption) => {
+    return `${departure} 출발 ${destination} 도착. ${type}. 가격 ${price.toLocaleString(
+      'ko-KR'
+    )}원. 선택하면 예약페이지로 이동합니다.`;
   };
 
   return (
     <div className={styles.travelSection}>
-      <p className="visually-hidden" aria-live="assertive" id="carousel-index" aria-atomic="true">
+      <p className="visually-hidden" aria-live="polite" aria-atomic="true">
         {travelOptions.length}개의 여행 상품 중 {currentIndex + 1}번 째 상품
       </p>
       <button
@@ -72,12 +74,15 @@ const TravelSection = () => {
       >
         <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
-      <div className={styles.carousel}>
+      <section className={styles.carousel} aria-live="polite" id="carousel-index">
         {travelOptions.map((option, index) => (
-          <div
+          <a
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
+            aria-label={slideAriaLabel(option)}
+            href={option.link}
+            target="_blank"
+            rel="noreferrer noopener"
           >
             <img src={option.image} className={styles.cardImage} alt="" />
             <div className={styles.cardContent}>
@@ -87,9 +92,9 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </a>
         ))}
-      </div>
+      </section>
       <button
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={nextTravel}
