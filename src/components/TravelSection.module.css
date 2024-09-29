@@ -3,6 +3,11 @@
   padding-bottom: 32px;
 }
 
+.travelTitle {
+  font-size: 18px;
+  padding: 24px;
+}
+
 .carousel {
   position: relative;
   overflow: hidden;
@@ -56,7 +61,7 @@
 
 .navButton {
   position: absolute;
-  top: 25%;
+  top: calc(50% - 10px);
   background-color: rgb(44, 44, 44);
   color: black;
   border: none;
