@@ -47,9 +47,9 @@ const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // 접근성을 위한 ref
-  const ariaRef1 = useRef<HTMLDivElement>(null);
-  const ariaRef2 = useRef<HTMLDivElement>(null);
-  const ariaRef3 = useRef<HTMLDivElement>(null);
+  const ariaRef1 = useRef<HTMLLIElement>(null);
+  const ariaRef2 = useRef<HTMLLIElement>(null);
+  const ariaRef3 = useRef<HTMLLIElement>(null);
   const ariaRefs = useMemo(() => [ariaRef1, ariaRef2, ariaRef3], []);
   const [isFirstRender, setIsFirstRender] = useState(true);
 
@@ -81,14 +81,16 @@ const TravelSection = () => {
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
         <img src={chevronLeft} className={styles.navButtonIcon} aria-label="이전 옵션" />
       </button>
-      <div className={styles.carousel}>
+      <ul className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <div
+          <li
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onMouseUp={() => handleCardClick(option.link)}
             aria-label={
-              `여행 포커스 됨 ${option.departure}에서 ${option.destination} ${option.type} ${option.price}원` +
+              `여행 포커스 됨 옵션 ${travelOptions.length}개 중 ${index + 1}번째 옵션 ${
+                option.departure
+              }에서 ${option.destination} ${option.type} ${option.price}원` +
               ' 클릭 시 해당 페이지로 이동합니다'
             }
             ref={ariaRefs[index]}
@@ -107,9 +109,9 @@ const TravelSection = () => {
                 KRW {option.price.toLocaleString()}
               </p>
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
       <button
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={nextTravel}
