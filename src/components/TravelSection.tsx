@@ -59,32 +59,60 @@ const TravelSection = () => {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
 
+  const getTravelDescription = () => {
+    const { departure, destination, price, type } = travelOptions[currentIndex];
+
+    return `
+      ${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째입니다.
+      ${departure}에서 ${destination}로 향하는 ${type} 상품으로, 가격은 ${price}원입니다.
+      선택하시면 예약 페이지로 이동합니다.
+    `;
+  };
+
   return (
     <section className={styles.travelSection}>
       <h2 className={`${styles.travelSectionTitle} heading-2-text`}>지금 떠나기 좋은 여행</h2>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
-      </button>
       <section className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <article
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
+            role="button"
           >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
-              <h3 className={`${styles.cardTitle} heading-3-text`}>
-                {option.departure} - {option.destination}
-              </h3>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+            <p className="visually-hidden">{getTravelDescription()}</p>
+            <div aria-hidden="true">
+              <img
+                alt={`${option.departure}-${option.destination} 여행 상품 이미지`}
+                src={option.image}
+                className={styles.cardImage}
+              />
+              <div className={styles.cardContent}>
+                <h3 className={`${styles.cardTitle} heading-3-text`}>
+                  {option.departure} - {option.destination}
+                </h3>
+                <p className={`${styles.cardType} body-text`}>{option.type}</p>
+                <p className={`${styles.cardPrice} body-text`}>
+                  KRW {option.price.toLocaleString()}
+                </p>
+              </div>
             </div>
           </article>
         ))}
       </section>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+      <button
+        type="button"
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+      >
+        <img src={chevronLeft} alt="이전 상품으로 이동" className={styles.navButtonIcon} />
+      </button>
+      <button
+        type="button"
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+      >
+        <img src={chevronRight} alt="다음 상품으로 이동" className={styles.navButtonIcon} />
       </button>
     </section>
   );
