@@ -59,6 +59,12 @@ const TravelSection = () => {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
 
+  const handleCardKeyDown = (event: React.KeyboardEvent<HTMLDivElement>, link: string) => {
+    if (event.key === 'Enter') {
+      window.open(link, '_blank', 'noopener,noreferrer');
+    }
+  };
+
   const getTravelDescription = () => {
     const { departure, destination, price, type } = travelOptions[currentIndex];
     return `
@@ -75,8 +81,10 @@ const TravelSection = () => {
         {travelOptions.map((option, index) => (
           <div
             key={index}
+            tabIndex={0}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
+            onKeyDown={(event) => handleCardKeyDown(event, option.link)}
             role="button"
             aria-label={getTravelDescription()}
             aria-live="polite"
