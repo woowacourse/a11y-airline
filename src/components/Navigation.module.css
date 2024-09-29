@@ -61,13 +61,13 @@
 }
 
 .navToggle {
+  width: 100%;
   display: none;
   font-size: 16px;
   padding: 10px;
   background-color: #333;
   color: white;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
 }
 
