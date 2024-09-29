@@ -80,7 +80,7 @@ const TravelSection = () => {
             } 가격 ${option.price.toLocaleString()}원. 선택하면 예약 페이지로 이동합니다.`}
           >
             <div aria-live="polite" className={styles.srOnly}>
-              {option.departure} 출발 {option.destination} 도착 ${option.type} 가격
+              {option.departure} 출발 {option.destination} 도착 {option.type} 가격
               {option.price.toLocaleString()}원. 선택하면 예약 페이지로 이동합니다.
             </div>
             <img
