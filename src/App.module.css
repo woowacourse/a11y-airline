@@ -7,6 +7,29 @@
   flex-direction: column;
   background-color: #fff;
   margin: 0 auto;
+
+  position: relative;
+}
+
+.skipNav {
+  position: absolute;
+  top: -36px;
+  width: 100%;
+
+  background-color: #333;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 16px;
+
+  a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+.skipNav:focus-within {
+  top: 0;
 }
 
 .header {
