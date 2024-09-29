@@ -34,7 +34,7 @@ function App() {
         handleOnKeyDown={handleSkipKeyDown}
       />
       <Navigation />
-      <section id="a11y-airline-content" className={styles.content} ref={contentRef} tabIndex={-1}>
+      <section id="a11y-airline-content" className={styles.content} ref={contentRef}>
         <header id={headerId} className={styles.header}>
           <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>
           <p className="body-text">
