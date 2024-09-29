@@ -73,7 +73,7 @@ const TravelSection = () => {
       <h2 className={`${styles.travelSectionTitle} heading-2-text`}>지금 떠나기 좋은 여행</h2>
       <section className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <article
+          <div
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
@@ -97,7 +97,7 @@ const TravelSection = () => {
                 </p>
               </div>
             </div>
-          </article>
+          </div>
         ))}
       </section>
       <button
