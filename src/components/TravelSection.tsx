@@ -71,29 +71,25 @@ const TravelSection = () => {
       <ol className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <li
-            aria-live="polite" // 다음 버튼을 눌러 li가 전환되면 바로 이 내용이 읽어짐
+            aria-live="polite"
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
           >
-            <span className="visually-hidden" role="text">
-              {/* visually-hidden 클래스를 사용한 이유는 시각 사용자에게는 이 설명을 숨기기 위함임 */}
-              {/* role='text'를 사용하면 세계 여행 상품 중 / n / 번째 상품 처럼 분리되어 읽히지 않고 한 번에 읽히게 됨 */}
-              세계 여행 상품 중 {index + 1}번째 상품
-            </span>
             <img src={option.image} className={styles.cardImage} aria-hidden="true" />
-            <div className={styles.cardContent}>
+            <button className={styles.cardContent}>
+              <span className="visually-hidden" role="text">
+                {/* visually-hidden 클래스를 사용한 이유는 시각 사용자에게는 이 설명을 숨기기 위함임 */}
+                {/* role='text'를 사용하면 세계 여행 상품 중 / n / 번째 상품 처럼 분리되어 읽히지 않고 한 번에 읽히게 됨 */}
+                세계 여행 상품 중 {index + 1}번째 상품
+              </span>
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
               </p>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p
-                aria-label={`가격 ${option.price.toLocaleString()} 원`}
-                className={`${styles.cardPrice} body-text`}
-              >
-                KRW {option.price.toLocaleString()}
-              </p>
-            </div>
+              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+              <span className="visually-hidden">클릭하면 상세 페이지로 이동합니다.</span>
+            </button>
           </li>
         ))}
       </ol>
