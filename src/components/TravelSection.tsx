@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import travelItem01 from '../assets/travel-item-01.png';
 import travelItem02 from '../assets/travel-item-02.png';
@@ -46,7 +46,6 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [announcement, setAnnouncement] = useState('');
 
   const nextTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
@@ -60,19 +59,14 @@ const TravelSection = () => {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
 
-  useEffect(() => {
-    const currentOption = travelOptions[currentIndex];
-    setAnnouncement(
-      `${currentOption.departure}에서 ${currentOption.destination}까지, ${
-        currentOption.type
-      }, ${currentOption.price.toLocaleString()}원`
-    );
-  }, [currentIndex]);
-
   return (
     <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 버튼"
+      >
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="이전 버튼 아이콘" />
       </button>
       <div
         className={styles.carousel}
@@ -92,16 +86,21 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
+
+            <div role="status" aria-live="polite" className={styles.visuallyHidden}>
+              {option.departure}에서 {option.destination}까지, {option.type},{' '}
+              {option.price.toLocaleString()}원
+            </div>
           </div>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
+      <button
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+        aria-label="다음 버튼 아이콘"
+      >
         <img src={chevronRight} className={styles.navButtonIcon} />
       </button>
-
-      <div role="status" aria-live="polite" className={styles.visuallyHidden}>
-        {announcement}
-      </div>
     </div>
   );
 };
