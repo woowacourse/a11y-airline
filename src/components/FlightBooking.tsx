@@ -58,7 +58,7 @@ const FlightBooking = () => {
             aria-label="성인 승객 감소"
             type="button"
           >
-            <img src={minus} alt="" />
+            <img src={minus} alt="감소 아이콘" />
           </button>
           <span aria-live="polite">{adultCount}</span>
           <button
@@ -67,7 +67,7 @@ const FlightBooking = () => {
             aria-label="성인 승객 증가"
             type="button"
           >
-            <img src={plus} alt="" />
+            <img src={plus} alt="증가 아이콘" />
           </button>
         </div>
       </fieldset>

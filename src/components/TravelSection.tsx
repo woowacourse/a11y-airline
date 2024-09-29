@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import travelItem01 from '../assets/travel-item-01.png';
 import travelItem02 from '../assets/travel-item-02.png';
@@ -48,8 +48,6 @@ const TRAVEL_OPTION_COUNT = travelOptions.length;
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [liveMessage, setLiveMessage] = useState('');
-  const [isMessageActive, setIsMessageActive] = useState(false);
 
   const nextTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
@@ -58,10 +56,6 @@ const TravelSection = () => {
   const prevTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
-
-  useEffect(() => {
-    setLiveMessage(createMessage(currentIndex));
-  }, [currentIndex]);
 
   const handleCardClick = (link: string) => {
     window.open(link, '_blank', 'noopener,noreferrer');
@@ -84,11 +78,11 @@ ${travelOptions[index].departure} 출발, ${travelOptions[index].destination} �
         type="button"
         aria-label="이전 여행상품"
       >
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="이전 버튼 이미지" />
       </button>
 
       {/*캐루셀 카드 리스트*/}
-      <div className={styles.carousel}>
+      <div className={styles.carousel} tabIndex={2}>
         {travelOptions.map((option, index) => (
           <div
             key={index}
@@ -97,49 +91,42 @@ ${travelOptions[index].departure} 출발, ${travelOptions[index].destination} �
             onClick={() => handleCardClick(option.link)}
             aria-live="polite"
             aria-label={createMessage(index)}
-            tabIndex={0}
-            onFocus={() => setIsMessageActive(true)}
+            tabIndex={1}
+            id="travel-info"
           >
-            <img src={option.image} className={styles.cardImage} />
+            <img
+              src={option.image}
+              className={styles.cardImage}
+              alt={`여행 상품 ${index + 1}번째 이미지`}
+            />
             <div className={styles.cardContent} aria-hidden="true">
-              <h3
-                className={`${styles.cardTitle} heading-3-text`}
-                aria-label={`${option.departure}출발 ${option.destination}도착`}
-              >
+              <h3 className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
               </h3>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p
-                className={`${styles.cardPrice} body-text`}
-                aria-label={` 가격: ${option.price.toLocaleString()}원`}
-              >
-                KRW {option.price.toLocaleString()}
-              </p>
+              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
           </div>
         ))}
       </div>
 
-      <div role="alert" aria-live="assertive" className="visually-hidden">
-        {liveMessage}
+      <div role="alert" className="visually-hidden">
+        {TRAVEL_OPTION_COUNT}개의 여행 상품중 {currentIndex + 1}번째 상품
       </div>
 
-      {isMessageActive && (
-        <div role="alert" className="visually-hidden">
-          {TRAVEL_OPTION_COUNT}개의 여행 상품중 {currentIndex + 1}번째 상품
-        </div>
-      )}
+      <div role="alert" aria-live="assertive" className="visually-hidden">
+        {createMessage(currentIndex)}
+      </div>
 
-      {isMessageActive && (
-        <button
-          className={`${styles.navButton} ${styles.navButtonNext}`}
-          onClick={nextTravel}
-          type="button"
-          aria-label="다음 여행상품"
-        >
-          <img src={chevronRight} className={styles.navButtonIcon} />
-        </button>
-      )}
+      <button
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+        type="button"
+        aria-label="다음 여행상품"
+        aria-describedby="travel-info"
+      >
+        <img src={chevronRight} className={styles.navButtonIcon} alt="다음 버튼 이미지" />
+      </button>
     </div>
   );
 };
