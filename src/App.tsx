@@ -2,11 +2,11 @@ import styles from './App.module.css';
 import Navigation from './components/Navigation';
 import FlightBooking from './components/FlightBooking';
 import TravelSection from './components/TravelSection';
-// import PromotionModal from './components/PromotionModal';
+import PromotionModal from './components/PromotionModal';
 
 function App() {
   return (
-    <div className={styles.app}>
+    <div id="app" className={styles.app}>
       <a className={styles.skipLink} href="#main-content">
         본문 보기
       </a>
@@ -29,6 +29,7 @@ function App() {
       <footer className={styles.footer}>
         <p className="body-text">&copy; A11Y AIRLINE</p>
       </footer>
+      <PromotionModal />
     </div>
   );
 }
