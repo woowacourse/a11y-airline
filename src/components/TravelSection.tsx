@@ -95,9 +95,9 @@ const TravelSection = () => {
           >
             <img src={option.image} className={styles.cardImage} alt="" />
             <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`} aria-hidden>
+              <h3 className={`${styles.cardTitle} heading-3-text`} aria-hidden>
                 {option.departure} - {option.destination}
-              </p>
+              </h3>
               <p className={`${styles.cardType} body-text`} aria-hidden>
                 {option.type}
               </p>
