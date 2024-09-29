@@ -104,7 +104,7 @@
 .statusMessage {
   margin: auto 0;
   height: 18px;
-  text-align: center;
+  text-align: right;
   width: 100%;
   font-size: 14px;
 }
