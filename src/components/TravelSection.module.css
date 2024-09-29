@@ -3,6 +3,11 @@
   padding-bottom: 32px;
 }
 
+.travelSectionTitle {
+  font-size: 18px;
+  padding: 24px;
+}
+
 .carousel {
   position: relative;
   overflow: hidden;
