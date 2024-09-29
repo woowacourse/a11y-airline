@@ -81,13 +81,13 @@ const TravelSection = () => {
             aria-label={getTravelDescription()}
             aria-live="polite"
           >
-            <div aria-hidden="true">
+            <figure aria-hidden="true">
               <img
                 alt={`${option.departure}-${option.destination} 여행 상품 이미지`}
                 src={option.image}
                 className={styles.cardImage}
               />
-              <div className={styles.cardContent}>
+              <figcaption className={styles.cardContent}>
                 <h3 className={`${styles.cardTitle} heading-3-text`}>
                   {option.departure} - {option.destination}
                 </h3>
@@ -95,8 +95,8 @@ const TravelSection = () => {
                 <p className={`${styles.cardPrice} body-text`}>
                   KRW {option.price.toLocaleString()}
                 </p>
-              </div>
-            </div>
+              </figcaption>
+            </figure>
           </div>
         ))}
       </section>
