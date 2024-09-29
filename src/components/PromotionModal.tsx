@@ -29,7 +29,8 @@ const PromotionModal = () => {
   }
 
   return (
-    <div className={styles.modal}>
+    <article className={styles.modal} role="dialog" aria-modal="true" aria-label="앱 설치 안내">
+      {/* role로 이 영역이 모달임을 알리고, aria-modal로 접근성 트리에 이 영역만 표시! */}
       <div className={styles.modalBackdrop} onClick={closeModal}></div>
       <div className={styles.modalContainer}>
         <div className={styles.modalContent}>
