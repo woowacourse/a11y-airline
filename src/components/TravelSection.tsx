@@ -48,9 +48,9 @@ const TRAVEL_OPTION_COUNT = travelOptions.length;
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [carouselInfoMessage, setCarouselInfoMessage] = useState(
-    `${TRAVEL_OPTION_COUNT}개의 여행상품 중 ${currentIndex}번째 상품`
-  );
+  const [liveMessage, setLiveMessage] = useState('');
+  const [isMessageActive, setIsMessageActive] = useState(false);
+
   const nextTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
   };
@@ -59,20 +59,22 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
+  useEffect(() => {
+    setLiveMessage(createMessage(currentIndex));
+  }, [currentIndex]);
+
   const handleCardClick = (link: string) => {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
 
-  useEffect(() => {
-    setCarouselInfoMessage(
-      `${TRAVEL_OPTION_COUNT}개의 여행상품 중 ${currentIndex + 1}번째 상품, ${
-        travelOptions[currentIndex].departure
-      } 출발, ${travelOptions[currentIndex].destination} 도착, ${
-        travelOptions[currentIndex].type
-      }, 가격: ${travelOptions[currentIndex].price.toLocaleString()}원,
-      선택하면 예약 페이지로 이동합니다.`
-    );
-  }, [currentIndex, TRAVEL_OPTION_COUNT]);
+  const createMessage = (index: number) => {
+    return `
+${travelOptions[index].departure} 출발, ${travelOptions[index].destination} 도착, ${
+      travelOptions[index].type
+    }, 가격: ${travelOptions[index].price.toLocaleString()}원,
+선택하면 예약 페이지로 이동합니다.
+`;
+  };
 
   return (
     <div className={styles.travelSection}>
@@ -84,6 +86,8 @@ const TravelSection = () => {
       >
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
+
+      {/*캐루셀 카드 리스트*/}
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <div
@@ -91,7 +95,10 @@ const TravelSection = () => {
             role="button"
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
-            aria-label={carouselInfoMessage}
+            aria-live="polite"
+            aria-label={createMessage(index)}
+            tabIndex={0}
+            onFocus={() => setIsMessageActive(true)}
           >
             <img src={option.image} className={styles.cardImage} />
             <div className={styles.cardContent} aria-hidden="true">
@@ -113,18 +120,26 @@ const TravelSection = () => {
         ))}
       </div>
 
-      <div className="visually-hidden" role="alert">
-        {carouselInfoMessage}
+      <div role="alert" aria-live="assertive" className="visually-hidden">
+        {liveMessage}
       </div>
 
-      <button
-        className={`${styles.navButton} ${styles.navButtonNext}`}
-        onClick={nextTravel}
-        type="button"
-        aria-label="다음 여행상품"
-      >
-        <img src={chevronRight} className={styles.navButtonIcon} />
-      </button>
+      {isMessageActive && (
+        <div role="alert" className="visually-hidden">
+          {TRAVEL_OPTION_COUNT}개의 여행 상품중 {currentIndex + 1}번째 상품
+        </div>
+      )}
+
+      {isMessageActive && (
+        <button
+          className={`${styles.navButton} ${styles.navButtonNext}`}
+          onClick={nextTravel}
+          type="button"
+          aria-label="다음 여행상품"
+        >
+          <img src={chevronRight} className={styles.navButtonIcon} />
+        </button>
+      )}
     </div>
   );
 };
