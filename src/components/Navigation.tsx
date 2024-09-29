@@ -47,8 +47,10 @@ const Navigation = () => {
   const renderNavItems = (items: NavItem[]) => (
     <ul role="menu" className={styles.navList}>
       {items.map((item, index) => (
-        <li role="menuitem" key={index} className={styles.navItem}>
-          <a href={item.link}>{item.title}</a>
+        <li key={index} className={styles.navItem}>
+          <a role="menuitem" href={item.link}>
+            {item.title}
+          </a>
           {item.subItems && renderNavItems(item.subItems)}
         </li>
       ))}
