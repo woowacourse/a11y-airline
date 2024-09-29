@@ -1,9 +1,8 @@
 import { useCallback, useState } from 'react';
 
 import helpIcon from '../assets/help.svg';
-import plus from '../assets/plus.svg';
 import minus from '../assets/minus.svg';
-
+import plus from '../assets/plus.svg';
 import styles from './FlightBooking.module.css';
 
 const MIN_PASSENGERS = 1;
@@ -51,11 +50,11 @@ const FlightBooking = () => {
         </div>
         <div className={styles.counter}>
           <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
-            <img src={minus} alt="" />
+            <img src={minus} alt="감소" />
           </button>
           <span aria-live="polite">{adultCount}</span>
           <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
-            <img src={plus} alt="" />
+            <img src={plus} alt="추가" />
           </button>
         </div>
       </div>

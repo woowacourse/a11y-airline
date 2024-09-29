@@ -79,7 +79,12 @@ const TravelSection = () => {
   return (
     <div className={styles.travelSection}>
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} aria-label="이전 옵션" />
+        <img
+          src={chevronLeft}
+          className={styles.navButtonIcon}
+          aria-label="이전 옵션"
+          alt="이전 옵션"
+        />
       </button>
       <ul className={styles.carousel}>
         {travelOptions.map((option, index) => (
@@ -97,7 +102,12 @@ const TravelSection = () => {
             // 접근성을 위한 tabIndex
             tabIndex={0}
           >
-            <img src={option.image} className={styles.cardImage} aria-hidden />
+            <img
+              src={option.image}
+              alt={option.destination + ' 소개 이미지'}
+              className={styles.cardImage}
+              aria-hidden
+            />
             <div className={styles.cardContent} aria-hidden>
               <p className={`${styles.cardTitle} heading-3-text`} aria-hidden>
                 {option.departure} - {option.destination}
@@ -117,7 +127,7 @@ const TravelSection = () => {
         onClick={nextTravel}
         aria-label="다음 옵션"
       >
-        <img src={chevronRight} className={styles.navButtonIcon} />
+        <img src={chevronRight} alt="다음 옵션" className={styles.navButtonIcon} />
       </button>
     </div>
   );
