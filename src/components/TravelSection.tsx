@@ -61,7 +61,6 @@ const TravelSection = () => {
 
   const getTravelDescription = () => {
     const { departure, destination, price, type } = travelOptions[currentIndex];
-
     return `
       ${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째입니다.
       ${departure}에서 ${destination}로 향하는 ${type} 상품으로, 가격은 ${price}원입니다.
@@ -79,8 +78,9 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
             role="button"
+            aria-label={getTravelDescription()}
+            aria-live="polite"
           >
-            <p className="visually-hidden">{getTravelDescription()}</p>
             <div aria-hidden="true">
               <img
                 alt={`${option.departure}-${option.destination} 여행 상품 이미지`}
