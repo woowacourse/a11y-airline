@@ -47,8 +47,9 @@ const FlightBooking = () => {
           <legend className="visually-hidden">성인 항공권 예매</legend>
           <div id={elementId.countLabel} className={styles.passengerLabel}>
             <span className="body-text">성인</span>
-            <div
-              className={styles.helpIconWrapper}
+            <button
+              className={styles.helpIconButton}
+              type="button"
               aria-label="도움말 버튼"
               onMouseEnter={() => setShowTooltip(true)}
               onMouseLeave={() => setShowTooltip(false)}
@@ -59,7 +60,7 @@ const FlightBooking = () => {
                   {TOOL_TIP_MESSAGE}
                 </div>
               )}
-            </div>
+            </button>
           </div>
           <div aria-labelledby={elementId.countLabel} className={styles.counter}>
             <button
