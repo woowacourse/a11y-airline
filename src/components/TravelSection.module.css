@@ -23,6 +23,15 @@
   display: block;
 }
 
+.carouselCardButton {
+  width: 100%;
+  height: 100%;
+
+  border: none;
+
+  padding: 0;
+}
+
 .cardImage {
   width: 100%;
   height: 100%;
@@ -39,6 +48,8 @@
   bottom: 0;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 26%, rgba(255, 255, 255, 0) 100%);
   padding: 24px 16px;
+
+  text-align: left;
 }
 
 .cardTitle {
@@ -85,4 +96,16 @@
 .navButtonIcon {
   width: 24px;
   height: 24px;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

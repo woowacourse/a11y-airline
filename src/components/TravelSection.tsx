@@ -70,24 +70,31 @@ const TravelSection = () => {
           <div
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
           >
             <span aria-live="polite" className={styles.visuallyHidden}>
               {option.ariaLabel}
             </span>
-
-            <img
-              src={option.image}
-              className={styles.cardImage}
-              alt={`${option.destination} 이미지`}
-            />
-            <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
-                {option.departure} - {option.destination}
-              </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
-            </div>
+            <button
+              onClick={() => handleCardClick(option.link)}
+              className={styles.carouselCardButton}
+            >
+              {/* <a href={option.link}> */}
+              <img
+                src={option.image}
+                className={styles.cardImage}
+                alt={`${option.destination} 이미지`}
+              />
+              <div className={styles.cardContent}>
+                <p className={`${styles.cardTitle} heading-3-text`}>
+                  {option.departure} - {option.destination}
+                </p>
+                <p className={`${styles.cardType} body-text`}>{option.type}</p>
+                <p className={`${styles.cardPrice} body-text`}>
+                  KRW {option.price.toLocaleString()}
+                </p>
+              </div>
+              {/* </a> */}
+            </button>
           </div>
         ))}
       </div>
