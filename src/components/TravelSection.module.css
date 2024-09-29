@@ -23,6 +23,10 @@
   display: block;
 }
 
+.cardActive:hover {
+  cursor: pointer;
+}
+
 .cardImage {
   width: 100%;
   height: 100%;
