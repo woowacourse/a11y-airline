@@ -14,6 +14,10 @@ const PromotionModal = () => {
     setIsOpen(false);
   };
 
+  const handleESCKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Escape') closeModal();
+  };
+
   useEffect(() => {
     const openInAppButtonElement = openInAppButton.current;
     const closeButtonElement = closeButton.current;
@@ -64,7 +68,7 @@ const PromotionModal = () => {
   }
 
   return (
-    <div ref={modal} role="dialog" className={styles.modal}>
+    <div onKeyDown={handleESCKeyDown} ref={modal} role="dialog" className={styles.modal}>
       <div className={styles.modalBackdrop} onClick={closeModal}></div>
       <div className={styles.modalContainer}>
         <div className={styles.modalContent}>
