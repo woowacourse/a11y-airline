@@ -13,7 +13,7 @@ const FocusTrap = ({ children, childRef }: Props) => {
     // here we query all focusable elements, customize as your own need
     if (childRef.current == null) return;
     const focusableModalElements = childRef.current.querySelectorAll(
-      'a[href], button:not([disabled]), textarea, input, select'
+      'a[href], button:not([disabled]), textarea, input, select, [aria-*]'
     );
 
     const firstElement = focusableModalElements[0];

@@ -16,7 +16,8 @@ const PromotionModal = forwardRef<HTMLDivElement, object>(function (props, ref) 
   }
 
   return (
-    <div ref={ref} className={styles.modal} role="A11y airline 앱 홍보 모달">
+    <div ref={ref} className={styles.modal} aria-live="polite">
+      <div> A11y airline 앱 홍보 팝업</div>
       <div className={styles.modalBackdrop} onClick={closeModal}></div>
       <div className={styles.modalContainer}>
         <div className={styles.modalContent}>
@@ -25,10 +26,14 @@ const PromotionModal = forwardRef<HTMLDivElement, object>(function (props, ref) 
             체크인, 탑승권 저장, 수하물 알림까지
             <br />- 앱으로 더욱 편하게 여행하세요!
           </p>
-          <button className={`${styles.modalActionButton} button-text`}>앱에서 열기</button>
-          <button className={`${styles.modalCloseButton} heading-2-text`} onClick={closeModal}>
+          <button
+            className={`${styles.modalCloseButton} heading-2-text`}
+            onClick={closeModal}
+            aria-label="팝업 닫기"
+          >
             <img src={close} />
           </button>
+          <button className={`${styles.modalActionButton} button-text`}>앱에서 열기</button>
         </div>
       </div>
     </div>
