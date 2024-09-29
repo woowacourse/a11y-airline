@@ -14,10 +14,9 @@
   display: flex;
   align-items: center;
 }
-.helpContainer {
-  position: relative;
-}
+
 .helpIconButton {
+  position: relative;
   margin-left: 5px;
   cursor: pointer;
   background-color: transparent;

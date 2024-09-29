@@ -39,6 +39,9 @@ const FlightBooking = () => {
     setStatusMessage('');
   }, [adultCount]);
 
+  const openTooltip = () => setShowTooltip(true);
+  const closeTooltip = () => setShowTooltip(false);
+
   return (
     <section className={styles.flightBooking}>
       <form className={styles.form}>
@@ -46,23 +49,21 @@ const FlightBooking = () => {
         <section className={styles.passengerCount} aria-label="성인 승객 수 선택">
           <div id={elementId.countLabel} className={styles.passengerLabel}>
             <h3 className="body-text">성인</h3>
-            <div className={styles.helpContainer}>
-              <button
-                className={styles.helpIconButton}
-                aria-label="도움말"
-                aria-expanded={showTooltip ? 'true' : 'false'}
-                onMouseEnter={() => setShowTooltip(true)}
-                onMouseLeave={() => setShowTooltip(false)}
-                onFocus={() => setShowTooltip(true)}
-                onBlur={() => setShowTooltip(false)}
-              >
-                <img src={helpIcon} alt="" className={styles.helpIcon} />
-              </button>
+            <div
+              className={styles.helpIconButton}
+              tabIndex={0}
+              aria-description={`도움말: ${TOOL_TIP_MESSAGE}`}
+              onMouseEnter={openTooltip}
+              onMouseLeave={closeTooltip}
+              onFocus={openTooltip}
+              onBlur={closeTooltip}
+            >
               {showTooltip && (
                 <div role="alert" className={styles.tooltip}>
                   {TOOL_TIP_MESSAGE}
                 </div>
               )}
+              <img src={helpIcon} alt="" className={styles.helpIcon} />
             </div>
           </div>
           <div aria-labelledby={elementId.countLabel} className={styles.counter}>
