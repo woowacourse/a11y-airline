@@ -4,7 +4,7 @@ import Navigation from './components/navigation/Navigation';
 import TravelSection from './components/travelSection/TravelSection';
 import { useRef } from 'react';
 import SkipToContent from './components/skipToContent/SkipToContet';
-// import PromotionModal from './components/promotionModal/PromotionModal';
+import PromotionModal from './components/promotionModal/PromotionModal';
 
 function App() {
   const mainContentRef = useRef<HTMLDivElement>(null);
@@ -37,8 +37,7 @@ function App() {
       <footer className={styles.footer}>
         <p className="body-text">&copy; SUNDAY AIRLINE</p>
       </footer>
-      {/* 추가 CHALLENGE: 모달 포커스 트랩 */}
-      {/* <PromotionModal /> */}
+      <PromotionModal />
     </div>
   );
 }
