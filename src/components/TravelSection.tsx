@@ -58,7 +58,7 @@ const TravelSection = () => {
   return (
     <div className={styles.travelSection}>
       <div className={styles.srOnly}>
-        {travelOptions.length}개의 여행 상품 중 {currentIndex}번째 상품
+        {travelOptions.length}개의 여행 상품 중 {currentIndex + 1}번째 상품
       </div>
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
