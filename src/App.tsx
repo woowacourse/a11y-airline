@@ -17,7 +17,13 @@ function App() {
           A11Y AIRLINE은 고객 여러분의 안전하고 쾌적한 여행을 위해 최선을 다하고 있습니다.
         </p>
       </header>
-      <section id="main-content" className={styles.main} tabIndex={0} ref={contentRef}>
+      <section
+        id="main-content"
+        className={styles.main}
+        tabIndex={0}
+        ref={contentRef}
+        aria-label="메인 콘텐츠"
+      >
         <div className={styles.flightBooking}>
           <FlightBooking />
         </div>
