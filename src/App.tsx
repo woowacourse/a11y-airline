@@ -7,6 +7,10 @@ import TravelSection from './components/TravelSection';
 function App() {
   return (
     <div className={styles.app}>
+      <a href="#main-content" className={styles.srOnly}>
+        메인 콘텐츠로 건너뛰기
+      </a>
+
       <Navigation />
       <section className={styles.header}>
         <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>

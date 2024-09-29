@@ -40,3 +40,15 @@
   background-color: white;
   text-align: center;
 }
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0); /* 구형 브라우저 호환성을 위한 clip */
+  border: 0;
+  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
