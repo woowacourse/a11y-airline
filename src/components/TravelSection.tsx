@@ -70,24 +70,29 @@ const TravelSection = () => {
       </button>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <button
-            key={index}
-            className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
-            aria-description="클릭하면 예약페이지로 이동합니다."
-          >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
-              <p
-                className={`${styles.cardTitle} heading-3-text`}
-                aria-label={`${option.departure}출발 ${option.destination}도착`}
-              >
-                {option.departure} - {option.destination}
-              </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
-            </div>
-          </button>
+          <div aria-live="polite" className={`${index !== currentIndex && 'hidden'}`}>
+            <div>{`${travelOptions.length}개의 여행상품 중 ${index + 1}번째 상품`}</div>
+            <button
+              key={index}
+              className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
+              onClick={() => handleCardClick(option.link)}
+            >
+              <img src={option.image} className={styles.cardImage} />
+              <div className={styles.cardContent}>
+                <p
+                  className={`${styles.cardTitle} heading-3-text`}
+                  aria-label={`${option.departure}출발 ${option.destination}도착`}
+                >
+                  {option.departure} - {option.destination}
+                </p>
+                <p className={`${styles.cardType} body-text`}>{option.type}</p>
+                <p className={`${styles.cardPrice} body-text`}>
+                  KRW {option.price.toLocaleString()}
+                </p>
+              </div>
+              <span className="visually-hidden">클릭하면 예약페이지로 이동합니다.</span>
+            </button>
+          </div>
         ))}
       </div>
       <button
