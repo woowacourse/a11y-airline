@@ -11,6 +11,19 @@ const PromotionModal = () => {
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        // keyCode 대신 key 사용
+        closeModal();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   if (!isOpen) {
     return null;
   }
