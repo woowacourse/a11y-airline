@@ -71,7 +71,9 @@ const TravelSection = () => {
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <div aria-live="polite" className={`${index !== currentIndex && 'hidden'}`}>
-            <div>{`${travelOptions.length}개의 여행상품 중 ${index + 1}번째 상품`}</div>
+            <div className="visually-hidden">{`${travelOptions.length}개의 여행상품 중 ${
+              index + 1
+            }번째 상품`}</div>
             <button
               key={index}
               className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}

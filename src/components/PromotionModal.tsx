@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
 
 import close from '../assets/close.svg';
 
 import styles from './PromotionModal.module.css';
 
-const PromotionModal = () => {
+const PromotionModal = forwardRef<HTMLDivElement, object>(function (props, ref) {
   const [isOpen, setIsOpen] = useState(true);
 
   const closeModal = () => {
@@ -16,7 +16,7 @@ const PromotionModal = () => {
   }
 
   return (
-    <div className={styles.modal}>
+    <div ref={ref} className={styles.modal} role="A11y airline 앱 홍보 모달">
       <div className={styles.modalBackdrop} onClick={closeModal}></div>
       <div className={styles.modalContainer}>
         <div className={styles.modalContent}>
@@ -33,6 +33,6 @@ const PromotionModal = () => {
       </div>
     </div>
   );
-};
+});
 
 export default PromotionModal;

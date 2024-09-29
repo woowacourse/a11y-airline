@@ -35,7 +35,7 @@ const FlightBooking = () => {
   }, [adultCount]);
 
   return (
-    <div className={styles.flightBooking}>
+    <section className={styles.flightBooking}>
       <h2 className="heading-2-text">항공권 예매</h2>
       <div className={styles.passengerCount}>
         <div className={styles.passengerLabel}>
@@ -65,7 +65,7 @@ const FlightBooking = () => {
         </div>
       )}
       <button className={styles.searchButton}>항공편 검색</button>
-    </div>
+    </section>
   );
 };
 
