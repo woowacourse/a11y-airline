@@ -16,7 +16,7 @@ const PromotionModal = () => {
   }
 
   return (
-    <div className={styles.modal}>
+    <div className={styles.modal} role="dialog" aria-label="프로모션 모달" aria-live="polite">
       <div className={styles.modalBackdrop} onClick={closeModal}></div>
       <div className={styles.modalContainer}>
         <div className={styles.modalContent}>
@@ -27,7 +27,7 @@ const PromotionModal = () => {
           </p>
           <button className={`${styles.modalActionButton} button-text`}>앱에서 열기</button>
           <button className={`${styles.modalCloseButton} heading-2-text`} onClick={closeModal}>
-            <img src={close} />
+            <img src={close} alt="닫기 아이콘" aria-label="모달 닫기" />
           </button>
         </div>
       </div>
