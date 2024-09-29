@@ -7,11 +7,13 @@ interface Props {
 
 const FocusTrap = ({ children, childRef }: Props) => {
   const keyDownHandler: KeyboardEventHandler<HTMLElement> = (e) => {
-    // only execute if tab is pressed
+    // 탭키 클릭시만 동작
     if (e.key !== 'Tab') return;
 
-    // here we query all focusable elements, customize as your own need
+    // ref 존재시에만 동작
     if (childRef.current == null) return;
+
+    // 자식들을 모두 얻기위해 querySelectorAll 사용
     const focusableModalElements = childRef.current.querySelectorAll(
       'a[href], button:not([disabled]), textarea, input, select, [aria-*]'
     );
@@ -19,13 +21,13 @@ const FocusTrap = ({ children, childRef }: Props) => {
     const firstElement = focusableModalElements[0];
     const lastElement = focusableModalElements[focusableModalElements.length - 1];
 
-    // if going forward by pressing tab and lastElement is active shift focus to first focusable element
+    // 마지막요소에서 탭 할 시 첫 요소로 이동
     if (!e.shiftKey && document.activeElement === lastElement) {
       (firstElement as HTMLDivElement).focus();
       return e.preventDefault();
     }
 
-    // if going backward by pressing tab and firstElement is active shift focus to last focusable element
+    // 첫 요소에서 Shift 탭 할 시 마지막 요소로 이동
     if (e.shiftKey && document.activeElement === firstElement) {
       (lastElement as HTMLDivElement).focus();
       e.preventDefault();
