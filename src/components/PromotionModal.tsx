@@ -4,7 +4,7 @@ import close from '../assets/close.svg';
 
 import styles from './PromotionModal.module.css';
 
-const PromotionModal = forwardRef<HTMLDivElement, object>(function (props, ref) {
+const PromotionModal = forwardRef<HTMLDivElement, object>(function (_props, ref) {
   const [isOpen, setIsOpen] = useState(true);
 
   const closeModal = () => {

@@ -11,6 +11,9 @@ function App() {
   const modalRef = useRef<HTMLDivElement | null>(null);
   return (
     <div className={styles.app}>
+      <div className="skip">
+        <a href="#main-content">본문으로 바로가기</a>
+      </div>
       <Navigation />
       <header className={styles.header}>
         <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>
