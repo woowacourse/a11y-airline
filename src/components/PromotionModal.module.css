@@ -33,6 +33,7 @@
 
 .modalTitle {
   margin: 16px 0;
+  outline: none;
 }
 
 .modalDescription {

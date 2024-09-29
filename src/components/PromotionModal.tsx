@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import close from '../assets/close.svg';
 
@@ -42,12 +42,16 @@ const PromotionModal = () => {
             <br />- 앱으로 더욱 편하게 여행하세요!
           </p>
           <button className={`${styles.modalActionButton} button-text`}>앱에서 열기</button>
-          <button className={`${styles.modalCloseButton} heading-2-text`} onClick={closeModal}>
+          <button
+            className={`${styles.modalCloseButton} heading-2-text`}
+            onClick={closeModal}
+            aria-label="닫기"
+          >
             <img src={close} />
           </button>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 
