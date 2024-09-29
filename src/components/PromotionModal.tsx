@@ -52,7 +52,14 @@ const PromotionModal = () => {
   }
 
   return createPortal(
-    <div ref={modalRef} className={styles.modal} role="dialog" aria-modal="true" aria-live="polite">
+    <div
+      id="promotion-modal"
+      ref={modalRef}
+      className={styles.modal}
+      role="dialog"
+      aria-modal="true"
+      aria-live="polite"
+    >
       <div className={styles.modalBackdrop} onClick={closeModal} aria-hidden></div>
       <div className={styles.modalContainer}>
         <div className={styles.modalContent}>

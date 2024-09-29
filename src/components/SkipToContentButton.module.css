@@ -13,6 +13,10 @@
   cursor: pointer;
 }
 
+.skipButton:focus {
+  text-decoration: underline;
+}
+
 .hidden {
   opacity: 0;
 }

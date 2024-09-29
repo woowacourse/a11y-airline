@@ -10,7 +10,8 @@ const SkipToContentButton = () => {
     if (
       event.key === 'Tab' &&
       (document.activeElement === document.body ||
-        document.activeElement === document.documentElement)
+        document.activeElement === document.documentElement) &&
+      !document.getElementById('promotion-modal')
     ) {
       setIsVisible(true);
     }
