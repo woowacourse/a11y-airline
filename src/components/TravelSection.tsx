@@ -67,7 +67,7 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <div className={styles.carousel} aria-live="polite" aria-atomic="true">
+      <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <div
             key={index}
