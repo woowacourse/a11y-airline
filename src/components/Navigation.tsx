@@ -61,7 +61,7 @@ const Navigation = ({ contentRef }: { contentRef?: React.RefObject<HTMLElement> 
 
   return (
     <>
-      <button tabIndex={1} onClick={skipNavigationClickHandler} className={styles.skipNav}>
+      <button tabIndex={0} onClick={skipNavigationClickHandler} className={styles.skipNav}>
         콘텐츠로 이동하기
       </button>
       <button className={styles.navToggle} onClick={toggleNav}>
