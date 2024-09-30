@@ -89,6 +89,7 @@ const TravelSection = () => {
                 KRW {option.price.toLocaleString('ko-KR')}
               </p>
             </div>
+            <ScreenReaderOnly>선택하면 예약페이지로 이동합니다.</ScreenReaderOnly>
           </button>
         ))}
       </div>
