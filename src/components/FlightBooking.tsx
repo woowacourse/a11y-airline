@@ -50,17 +50,27 @@ const FlightBooking = () => {
           </div>
         </div>
         <div className={styles.counter}>
-          <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
+          <button
+            className="button-text"
+            onClick={decrementCount}
+            aria-label="성인 승객 감소"
+            aria-disabled={adultCount <= MIN_PASSENGERS}
+          >
             <img src={minus} alt="" />
           </button>
           <span aria-live="polite">{adultCount}</span>
-          <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
+          <button
+            className="button-text"
+            onClick={incrementCount}
+            aria-label="성인 승객 증가"
+            aria-disabled={adultCount >= MAX_PASSENGERS}
+          >
             <img src={plus} alt="" />
           </button>
         </div>
       </div>
       {statusMessage && (
-        <div className="visually-hidden" role="alert">
+        <div role="status" aria-live="assertive">
           {statusMessage}
         </div>
       )}
