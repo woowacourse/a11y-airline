@@ -1,4 +1,4 @@
-import { Ref, RefObject, useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import helpIcon from '../assets/help.svg';
 import plus from '../assets/plus.svg';
@@ -24,10 +24,10 @@ const FlightBooking = () => {
 
   const incrementCount = useCallback(() => {
     if (adultCount === MAX_PASSENGERS) {
-      setStatusMessage('');
+      setStatusMessage(STATUS_MESSAGE.max);
       setTimeout(() => {
-        setStatusMessage(STATUS_MESSAGE.max);
-      }, 0);
+        setStatusMessage('');
+      }, 100);
       return;
     }
 
@@ -36,10 +36,10 @@ const FlightBooking = () => {
 
   const decrementCount = useCallback(() => {
     if (adultCount === MIN_PASSENGERS) {
-      setStatusMessage('');
+      setStatusMessage(STATUS_MESSAGE.min);
       setTimeout(() => {
-        setStatusMessage(STATUS_MESSAGE.min);
-      }, 0);
+        setStatusMessage('');
+      }, 100);
       return;
     }
 
@@ -76,7 +76,7 @@ const FlightBooking = () => {
         </div>
       </div>
       {statusMessage && (
-        <div className="visually-hidden" role="alert">
+        <div className="visually-hidden" role="alert" tabIndex={-1}>
           {statusMessage}
         </div>
       )}
