@@ -40,21 +40,21 @@ const FlightBooking = () => {
       <div className={styles.passengerCount}>
         <div className={styles.passengerLabel}>
           <span className="body-text">성인</span>
-          <div
-            tabIndex={0}
+          <button
             className={styles.helpIconWrapper}
             onMouseEnter={() => setShowTooltip(true)}
             onFocus={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
             onBlur={() => setShowTooltip(false)}
+            aria-label={`최소 ${MIN_PASSENGERS}명, 최대 ${MAX_PASSENGERS}명까지 예약할 수 있습니다.`}
           >
-            <img src={helpIcon} className={styles.helpIcon} aria-hidden="true" />
+            <img src={helpIcon} className={styles.helpIcon} aria-hidden="true" alt="" />
             {showTooltip && (
               <span className={styles.tooltip} role="tooltip">
                 최소 {MIN_PASSENGERS}명, 최대 {MAX_PASSENGERS}명까지 예약할 수 있습니다.
               </span>
             )}
-          </div>
+          </button>
         </div>
         <div className={styles.counter}>
           <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
