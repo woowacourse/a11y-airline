@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import travelItem01 from '../assets/travel-item-01.png';
 import travelItem02 from '../assets/travel-item-02.png';
@@ -46,6 +46,7 @@ const travelOptions: TravelOption[] = [
 ];
 
 const TravelSection = () => {
+  const [prevIndex, setPrevIndex] = useState(-1);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const elementId = useElementId({ childrenNameList: ['heading', 'description'] });
@@ -61,6 +62,12 @@ const TravelSection = () => {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
 
+  const getCurrentOptionInfo = () => {
+    const { departure, destination } = travelOptions[currentIndex];
+
+    return `${departure}출발 ${destination}도착 상품으로 이동했습니다.`;
+  };
+
   const getOptionDescription = (option: TravelOption, index: number) => {
     const { departure, destination, type, price } = option;
 
@@ -69,12 +76,18 @@ const TravelSection = () => {
     }번째 상품: ${departure}에서 출발해 ${destination}에 도착하는 ${price}원 ${type}좌석 상품입니다. 상품 선택 시 해당 상품 예약 페이지로 이동합니다.`;
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setPrevIndex(currentIndex);
+    }, 10);
+  }, [currentIndex]);
+
   return (
     <section className={styles.travelSection} aria-labelledby={elementId.heading}>
       <h2 id={elementId.heading} className={`${styles.travelTitle} heading-2-text`}>
         지금 떠나기 좋은 여행
       </h2>
-      <div className={styles.carouselContainer} aria-live="polite">
+      <div className={styles.carouselContainer}>
         <button
           className={`${styles.navButton} ${styles.navButtonPrev}`}
           onClick={prevTravel}
@@ -83,6 +96,13 @@ const TravelSection = () => {
         >
           <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
         </button>
+        <div
+          aria-hidden={prevIndex === currentIndex ? 'true' : 'false'}
+          aria-live="polite"
+          className="visually-hidden"
+        >
+          {getCurrentOptionInfo()}
+        </div>
         <ol className={styles.carousel}>
           {travelOptions.map((option, index) => (
             <li
@@ -91,9 +111,7 @@ const TravelSection = () => {
               className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
               onClick={() => handleCardClick(option.link)}
             >
-              <p className="visually-hidden">
-                {getOptionDescription(travelOptions[currentIndex], currentIndex)}
-              </p>
+              <p className="visually-hidden">{getOptionDescription(travelOptions[index], index)}</p>
               <section aria-hidden="true">
                 <img src={option.image} className={styles.cardImage} alt="" />
                 <div className={styles.cardContent}>
