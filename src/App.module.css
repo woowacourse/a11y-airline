@@ -1,0 +1,28 @@
+.app {
+  font-family: Arial, sans-serif;
+  max-width: 480px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+.announce {
+  padding: 48px 24px 24px 24px;
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+.mainContent {
+  flex: 1;
+}
+
+.footer {
+  padding: 32px;
+  background-color: white;
+  text-align: center;
+}
