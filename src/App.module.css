@@ -40,3 +40,21 @@
   background-color: white;
   text-align: center;
 }
+
+.skipButton {
+  position: absolute;
+  background-color: #6fabb6;
+  color: black;
+  padding: 10px;
+  z-index: 1000;
+  text-decoration: none;
+  border: none;
+}
+
+.skipButton:focus {
+  opacity: 1;
+}
+
+.skipButton:not(:focus) {
+  opacity: 0;
+}
