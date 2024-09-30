@@ -75,8 +75,8 @@ const PromotionModal = ({ closePromotionModal }: PromotionModalProps) => {
             className={`${styles.modalCloseButton} heading-2-text`}
             onClick={closePromotionModal}
             onKeyDown={handleButtonKeydown}
+            aria-label="닫기"
           >
-            <span className="visually-hidden">닫기</span>
             <img src={close} alt="" />
           </button>
         </div>
