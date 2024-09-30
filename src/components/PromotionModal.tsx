@@ -68,9 +68,10 @@ const PromotionModal = ({ isOpen, closeModal }: PromotionModalProps) => {
 
     if (!focusableElementList) return;
 
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', (e) => handleKeyDown(e, focusableElementList));
 
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () =>
+      window.removeEventListener('keydown', (e) => handleKeyDown(e, focusableElementList));
   }, [isOpen]);
 
   if (!isOpen) {
