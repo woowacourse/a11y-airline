@@ -11,7 +11,7 @@
     "deploy": "npm run build && npx gh-pages -d dist"
   },
   "author": "woowacourse",
-  "homepage": "https://{username}.github.io/a11y-airline",
+  "homepage": "https://Jaymyong66.github.io/a11y-airline",
   "license": "MIT",
   "dependencies": {
     "react": "^18.3.1",
