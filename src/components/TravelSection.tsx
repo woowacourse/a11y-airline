@@ -69,7 +69,7 @@ const TravelSection = () => {
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
       >
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+        <img alt="" src={chevronLeft} className={styles.navButtonIcon} />
       </button>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => {
