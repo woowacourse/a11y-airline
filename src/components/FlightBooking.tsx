@@ -52,7 +52,7 @@ const FlightBooking = () => {
             <div
               className={styles.helpIconButton}
               tabIndex={0}
-              aria-description={`도움말: ${TOOL_TIP_MESSAGE}`}
+              aria-label={`도움말: ${TOOL_TIP_MESSAGE}`}
               onMouseEnter={openTooltip}
               onMouseLeave={closeTooltip}
               onFocus={openTooltip}
