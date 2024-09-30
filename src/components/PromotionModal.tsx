@@ -3,10 +3,10 @@ import { useEffect } from 'react';
 import close from '../assets/close.svg';
 
 import styles from './PromotionModal.module.css';
-import { useTrapFocus } from '../hooks/useTrapFocus';
+import { useFocusTrap } from '../hooks/useFocusTrap';
 
 const PromotionModal = () => {
-  const [dialogRef, firstFocusableRef, lastFocusableRef] = useTrapFocus<
+  const [dialogRef, firstFocusableRef, lastFocusableRef] = useFocusTrap<
     HTMLDialogElement,
     HTMLButtonElement,
     HTMLButtonElement

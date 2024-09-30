@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useRef } from 'react';
 
-export const useTrapFocus = <
+export const useFocusTrap = <
   T extends HTMLElement,
   U extends HTMLElement,
   V extends HTMLElement
