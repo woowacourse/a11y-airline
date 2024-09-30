@@ -9,6 +9,7 @@ import chevronRight from '../assets/chevron-right.svg';
 import styles from './TravelSection.module.css';
 
 import '../Accessibility.css';
+import VisuallyHidden from './VisuallyHidden';
 
 interface TravelOption {
   departure: string;
@@ -75,24 +76,26 @@ const TravelSection = () => {
           return (
             <button
               key={index}
-              role="alert"
               aria-live="polite"
-              aria-label={`${option.departure} 출발 ${option.destination} 도착 ${
-                option.type
-              } 가격 ${option.price.toLocaleString()}원 선택 하면 예약 페이지로 이동합니다`}
               className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
               onClick={() => handleCardClick(option.link)}
             >
-              <p className="visually-hidden">
+              <VisuallyHidden>
                 {`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품`}
-              </p>
-              <img src={option.image} className={styles.cardImage} />
+              </VisuallyHidden>
+              <img alt="" src={option.image} className={styles.cardImage} />
               <div className={styles.cardContent}>
-                <p className={`${styles.cardTitle} heading-3-text`}>
+                <p
+                  className={`${styles.cardTitle} heading-3-text`}
+                  aria-label={`${option.departure}출발 ${option.destination}도착`}
+                >
                   {option.departure} - {option.destination}
                 </p>
                 <p className={`${styles.cardType} body-text`}>{option.type}</p>
-                <p className={`${styles.cardPrice} body-text`}>
+                <p
+                  className={`${styles.cardPrice} body-text`}
+                  aria-label={`가격 ${option.price.toLocaleString()}원. 선택하면 예약 페이지로 이동합니다.`}
+                >
                   KRW {option.price.toLocaleString()}
                 </p>
               </div>
@@ -105,7 +108,7 @@ const TravelSection = () => {
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={nextTravel}
       >
-        <img src={chevronRight} className={styles.navButtonIcon} />
+        <img alt="" src={chevronRight} className={styles.navButtonIcon} />
       </button>
     </div>
   );
