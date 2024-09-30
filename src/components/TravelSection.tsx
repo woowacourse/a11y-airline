@@ -66,19 +66,15 @@ const TravelSection = () => {
 
     return `${travelOptions.length}개 추천 상품 중 ${
       index + 1
-    }번째 상품: ${departure}에서 출발해 ${destination}에 도착하는 ${price}원 ${type}좌석 상품입니다. 선택 시 해당 상품 예약 페이지로 이동합니다.`;
+    }번째 상품: ${departure}에서 출발해 ${destination}에 도착하는 ${price}원 ${type}좌석 상품입니다. 상품 선택 시 해당 상품 예약 페이지로 이동합니다.`;
   };
 
   return (
-    <section
-      className={styles.travelSection}
-      aria-labelledby={elementId.heading}
-      aria-describedby={elementId.description}
-    >
+    <section className={styles.travelSection} aria-labelledby={elementId.heading}>
       <h2 id={elementId.heading} className={`${styles.travelTitle} heading-2-text`}>
         지금 떠나기 좋은 여행
       </h2>
-      <div className={styles.carouselContainer}>
+      <div className={styles.carouselContainer} aria-live="polite">
         <button
           className={`${styles.navButton} ${styles.navButtonPrev}`}
           onClick={prevTravel}
@@ -87,26 +83,29 @@ const TravelSection = () => {
         >
           <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
         </button>
-        <p id={elementId.description} aria-live="polite" className="visually-hidden">
-          {getOptionDescription(travelOptions[currentIndex], currentIndex)}
-        </p>
         <ol className={styles.carousel}>
           {travelOptions.map((option, index) => (
             <li
+              tabIndex={0}
               key={index}
               className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
               onClick={() => handleCardClick(option.link)}
             >
-              <img src={option.image} className={styles.cardImage} alt="" />
-              <div className={styles.cardContent}>
-                <h3 className={`${styles.cardTitle} heading-3-text`}>
-                  {option.departure} - {option.destination}
-                </h3>
-                <p className={`${styles.cardType} body-text`}>{option.type}</p>
-                <p className={`${styles.cardPrice} body-text`}>
-                  KRW {option.price.toLocaleString()}
-                </p>
-              </div>
+              <p className="visually-hidden">
+                {getOptionDescription(travelOptions[currentIndex], currentIndex)}
+              </p>
+              <section aria-hidden="true">
+                <img src={option.image} className={styles.cardImage} alt="" />
+                <div className={styles.cardContent}>
+                  <h3 className={`${styles.cardTitle} heading-3-text`}>
+                    {option.departure} - {option.destination}
+                  </h3>
+                  <p className={`${styles.cardType} body-text`}>{option.type}</p>
+                  <p className={`${styles.cardPrice} body-text`}>
+                    KRW {option.price.toLocaleString()}
+                  </p>
+                </div>
+              </section>
             </li>
           ))}
         </ol>
