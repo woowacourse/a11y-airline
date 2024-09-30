@@ -5,7 +5,10 @@
 ## 🔥 결과
 
 - 배포한 페이지 접근 경로(GitHub Pages):
-- 스크린 리더 화면 녹화 영상 (before / after)
+  - [링크로 이동](https://llqqssttyy.github.io/a11y-airline/)
+- 스크린 리더 화면 녹화 영상 (before / after):
+  - [before](https://drive.google.com/file/d/1MU92m6Gz80n-E7Xnb-fGk5RQ8_Y3npSE/view?usp=sharing)
+  - [after](https://drive.google.com/file/d/1-tvFwIsDKCbpkEThK2vsXJHFEYFRIzOg/view?usp=sharing)
 
 ## ✅ 개선 작업 목록
 
