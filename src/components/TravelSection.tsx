@@ -70,7 +70,8 @@ const TravelSection = () => {
           {`총 ${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품`}
         </ScreenReaderOnly>
         {travelOptions.map((option, index) => (
-          <div
+          <button
+            type="button"
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
@@ -81,9 +82,14 @@ const TravelSection = () => {
                 {option.departure} - {option.destination}
               </p>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+              <p
+                className={`${styles.cardPrice} body-text`}
+                aria-label={`${option.price.toLocaleString('ko-KR')} 원`}
+              >
+                KRW {option.price.toLocaleString('ko-KR')}
+              </p>
             </div>
-          </div>
+          </button>
         ))}
       </div>
       <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
