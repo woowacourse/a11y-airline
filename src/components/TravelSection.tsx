@@ -71,7 +71,6 @@ const TravelSection = () => {
       <ol className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <li
-            aria-live="polite"
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
