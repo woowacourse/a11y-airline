@@ -77,7 +77,8 @@ const TravelSection = () => {
   };
 
   const generateTravelInfoLabel = (option: TravelOption) => {
-    return `${option.departure} 출발, ${option.destination} 도착.
+    return `총 ${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품입니다. 
+            ${option.departure} 출발, ${option.destination} 도착.
             ${option.type}, 가격 ${option.price.toLocaleString()}원.`;
   };
 
@@ -87,14 +88,9 @@ const TravelSection = () => {
       <div className="visually-hidden" ref={travelInfoRef} tabIndex={-1}>
         {generateTravelInfoLabel(travelOptions[currentIndex])}
       </div>
-      <section
-        className={styles.carousel}
-        role="region"
-        aria-label={`총 ${travelOptions.length}개의 여행 상품 중 
-        ${currentIndex + 1}번째 상품입니다.`}
-      >
+      <ul className={styles.carousel} role="region">
         {travelOptions.map((option, index) => (
-          <div
+          <li
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
@@ -111,9 +107,9 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </li>
         ))}
-      </section>
+      </ul>
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
