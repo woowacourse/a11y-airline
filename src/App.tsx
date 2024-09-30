@@ -1,14 +1,32 @@
 import styles from './App.module.css';
 import Navigation from './components/Navigation';
 import FlightBooking from './components/FlightBooking';
-import TravelSection from './components/TravelSection';
 import PromotionModal from './components/PromotionModal';
+import { useEffect, useRef, useState } from 'react';
+import TravelSection from './components/TravelSection';
 // import PromotionModal from './components/PromotionModal';
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(true);
+  const mainRef = useRef<HTMLAnchorElement | null>(null);
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  useEffect(() => {
+    if (isModalOpen) return;
+
+    setTimeout(() => {
+      if (mainRef.current) {
+        mainRef.current.focus();
+      }
+    }, 150);
+  }, [isModalOpen]);
+
   return (
     <div className={styles.app}>
-      <a href="#main-content" className="visually-hidden">
+      <a href="#main-content" className="visually-hidden" ref={mainRef}>
         본문으로 바로가기
       </a>
 
@@ -31,8 +49,7 @@ function App() {
       <footer className={styles.footer}>
         <p className="body-text">&copy; A11Y AIRLINE</p>
       </footer>
-      {/* 추가 CHALLENGE: 모달 포커스 트랩 */}
-      <PromotionModal />
+      <PromotionModal isOpen={isModalOpen} closeModal={closeModal} />
     </div>
   );
 }
