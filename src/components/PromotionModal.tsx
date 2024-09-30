@@ -53,13 +53,13 @@ const PromotionModal = ({ closePromotionModal }: PromotionModalProps) => {
       ref={modalRef}
       aria-modal="true"
       role="dialog"
-      aria-label="A11Y AIRLINE 앱에 대한 정보 제공 모달"
+      aria-label="A11Y AIRLINE 앱에 대한 정보를 제공 웹 대화상자"
       aria-describedby={elementId.description}
       className={styles.modal}
     >
       <div className={styles.modalBackdrop} onClick={closePromotionModal}></div>
-      <p aria-live="assertive" id={elementId.description} className="visually-hidden">
-        A11Y AIRLINE 앱에 대한 정보 제공 모달이 열렸습니다.
+      <p id={elementId.description} className="visually-hidden">
+        A11Y AIRLINE 앱에 대한 정보를 제공하는 웹 대화상자가 열렸습니다.
       </p>
       <div className={styles.modalContainer}>
         <div className={styles.modalContent}>
