@@ -11,7 +11,7 @@
 
 .skipLink {
   position: absolute;
-  top: -40px;
+  top: -48px;
   left: 0;
   background: #000;
   color: #fff;
@@ -25,6 +25,11 @@
 .skipLink:focus {
   top: 0;
   /* 포커스를 받으면 화면 상단에 나타남 */
+}
+
+button a {
+  color: white;
+  text-decoration: none;
 }
 
 .header {
