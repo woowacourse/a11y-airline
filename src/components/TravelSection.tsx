@@ -75,11 +75,10 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
             role="button"
-            tabIndex={index === currentIndex ? 0 : -1}
-            aria-label={`총 ${travelOptions.length}개의 상품 중 ${
-              currentIndex + 1
-            }번째 여행지 상품입니다.`}
           >
+            <div className={styles.visuallyHidden}>
+              총 {travelOptions.length}개의 상품 중 {currentIndex + 1}번째 여행지 상품입니다.
+            </div>
             <img src={option.image} className={styles.cardImage} alt="" />
             <div className={styles.cardContent}>
               <h3
