@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import travelItem01 from '../assets/travel-item-01.png';
 import travelItem02 from '../assets/travel-item-02.png';
@@ -46,6 +46,7 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [announcement, setAnnouncement] = useState('');
 
   const nextTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
@@ -59,31 +60,53 @@ const TravelSection = () => {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
 
+  useEffect(() => {
+    const currentOption = travelOptions[currentIndex];
+    setAnnouncement(
+      `전체 ${travelOptions.length}개 중 ${currentIndex + 1}번째 항목: ${currentOption.departure}에서 ${currentOption.destination}까지 ${currentOption.type}, 가격 ${currentOption.price.toLocaleString()}원`
+    );
+  }, [currentIndex]);
+
   return (
     <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+      <p className="visually-hidden" aria-live="polite">
+        {announcement}
+      </p>
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 여행 옵션"
+      >
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <div
+          <button
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`${index + 1}번째 여행 옵션 링크로 이동`}
+            aria-hidden={index !== currentIndex}
           >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
+            <img src={option.image} className={styles.cardImage} alt="" />
+            <div className={styles.cardContent} aria-hidden>
+              <h3 className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
-              </p>
+              </h3>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </button>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+      <button
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+        aria-label="다음 여행 옵션"
+      >
+        <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
     </div>
   );

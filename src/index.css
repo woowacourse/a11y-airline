@@ -108,9 +108,7 @@ ol,
 ul {
   list-style: none;
 }
-button {
-  color: #000;
-}
+button,
 body {
   margin: 0;
   padding: 0;
