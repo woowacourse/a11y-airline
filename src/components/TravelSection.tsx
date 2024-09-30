@@ -78,7 +78,7 @@ const TravelSection = () => {
             <span className="visually-hidden" role="text">
               {/* visually-hidden 클래스를 사용한 이유는 시각 사용자에게는 이 설명을 숨기기 위함임 */}
               {/* role='text'를 사용하면 세계 여행 상품 중 / n / 번째 상품 처럼 분리되어 읽히지 않고 한 번에 읽히게 됨 */}
-              세계 여행 상품 중 {index + 1}번째 상품
+              세계 여행 상품 총 {travelOptions.length}개 중 {index + 1}번째 상품
             </span>
             <img src={option.image} className={styles.cardImage} aria-hidden="true" />
             <button className={styles.cardContent}>
