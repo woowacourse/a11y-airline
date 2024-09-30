@@ -56,14 +56,14 @@ const Navigation = () => {
   );
 
   return (
-    <>
+    <nav>
       <button className={styles.navToggle} onClick={toggleNav}>
         {isNavOpen ? '닫기' : '메뉴'}
       </button>
       <nav id="main-nav" className={`${styles.mainNav} ${isNavOpen ? styles.mainNavActive : ''}`}>
         {renderNavItems(navItems)}
       </nav>
-    </>
+    </nav>
   );
 };
 
