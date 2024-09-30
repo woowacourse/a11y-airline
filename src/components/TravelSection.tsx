@@ -64,7 +64,8 @@ const TravelSection = () => {
   return (
     <div className={styles.travelSection}>
       <button
-        aria-label="이전"
+        type="button"
+        aria-label="이전 상품"
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
       >
@@ -74,7 +75,7 @@ const TravelSection = () => {
         {travelOptions.map((option, index) => {
           return (
             <button
-              key={index}
+              key= type="button" {index}
               role="alert"
               aria-live="polite"
               aria-label={`${option.departure} 출발 ${option.destination} 도착 ${
@@ -101,7 +102,8 @@ const TravelSection = () => {
         })}
       </div>
       <button
-        aria-label="다음"
+        type="button"
+        aria-label="다음 상품"
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={nextTravel}
       >
