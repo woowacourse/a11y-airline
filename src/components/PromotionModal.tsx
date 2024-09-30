@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import close from '../assets/close.svg';
 
@@ -6,10 +6,63 @@ import styles from './PromotionModal.module.css';
 
 const PromotionModal = () => {
   const [isOpen, setIsOpen] = useState(true);
+  const modalRef = useRef<HTMLElement | null>(null);
+  const modalFocusableElements = useRef<HTMLElement[]>([]);
+  const previousActiveElement = useRef<HTMLElement | null>(null);
 
   const closeModal = () => {
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    if (!modalRef.current) return;
+
+    modalFocusableElements.current = Array.from(
+      modalRef.current.querySelectorAll<HTMLElement>('button, [tabindex]:not([tabindex="-1"])')
+    );
+
+    previousActiveElement.current = document.activeElement as HTMLElement;
+
+    const handleTabKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Tab') return;
+
+      const firstFocusableElement = modalFocusableElements.current[0];
+      const lastFocusableElement =
+        modalFocusableElements.current[modalFocusableElements.current.length - 1];
+
+      if (event.shiftKey) {
+        if (document.activeElement === firstFocusableElement) {
+          event.preventDefault();
+          lastFocusableElement.focus();
+        }
+      } else {
+        if (document.activeElement === lastFocusableElement) {
+          event.preventDefault();
+          firstFocusableElement.focus();
+        }
+      }
+    };
+
+    const handleFocusTrap = (event: FocusEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        modalFocusableElements.current[0].focus();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleTabKeyDown);
+      document.addEventListener('focusin', handleFocusTrap);
+      modalFocusableElements.current[0].focus();
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleTabKeyDown);
+      document.removeEventListener('focusin', handleFocusTrap);
+      if (previousActiveElement.current) {
+        previousActiveElement.current.focus();
+      }
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     const handleCloseModalWithKey = (event: KeyboardEvent) => {
@@ -27,6 +80,7 @@ const PromotionModal = () => {
 
   return (
     <section
+      ref={modalRef}
       className={styles.modal}
       role="dialog"
       aria-modal="true"
