@@ -14,6 +14,12 @@ const PromotionModal = ({ closePromotionModal }: PromotionModalProps) => {
   const focusableElementList = useRef<NodeListOf<HTMLElement> | null>(null);
   const elementId = useElementId({ childrenNameList: ['description'] });
 
+  const closeModalByEsc = (e: KeyboardEvent) => {
+    if (e.code === 'Escape') {
+      return closePromotionModal();
+    }
+  };
+
   const handleTabKey = (e: KeyboardEvent) => {
     if (!modalRef.current) return;
     if (e.code !== 'Tab') return;
@@ -29,6 +35,11 @@ const PromotionModal = ({ closePromotionModal }: PromotionModalProps) => {
     }
   };
 
+  const handleModalKeydown = (e: KeyboardEvent) => {
+    closeModalByEsc(e);
+    handleTabKey(e);
+  };
+
   const handleButtonKeydown = (e: React.KeyboardEvent) => {
     if (e.code === 'Enter') closePromotionModal();
   };
@@ -41,10 +52,10 @@ const PromotionModal = ({ closePromotionModal }: PromotionModalProps) => {
   }, [modalRef]);
 
   useEffect(() => {
-    document.addEventListener('keydown', handleTabKey);
+    document.addEventListener('keydown', handleModalKeydown);
 
     return () => {
-      document.removeEventListener('keydown', handleTabKey);
+      document.removeEventListener('keydown', handleModalKeydown);
     };
   }, [modalRef, focusableElementList]);
 
