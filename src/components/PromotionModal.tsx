@@ -1,13 +1,18 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import close from '../assets/close.svg';
 
 import styles from './PromotionModal.module.css';
 import FocusTrap from './FocusTrap';
 
-const PromotionModal = () => {
+const PromotionModal = ({
+  isOpen,
+  setIsOpen
+}: {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const [popUpMessage, setPopUpMessage] = useState('팝업이 열렸습니다.');
-  const [isOpen, setIsOpen] = useState(true);
 
   const modalRef = useRef<HTMLDivElement | null>(null);
 
@@ -31,11 +36,11 @@ const PromotionModal = () => {
       <div
         className={styles.modal}
         tabIndex={0}
-        role="dialog"
-        aria-modal="true"
         aria-labelledby="modal-title"
         aria-describedby="modal-description"
         ref={modalRef}
+        role="dialog"
+        aria-modal="true"
       >
         <div className={styles.modalBackdrop} onClick={closeModal}></div>
         <div className={styles.modalContainer}>
