@@ -22,6 +22,7 @@ const PromotionModal = () => {
       outsideElements?.forEach((el) => {
         el.setAttribute('data-original-tabindex', el.getAttribute('tabindex') || '0');
         el.setAttribute('tabindex', '-1');
+        el.setAttribute('aria-hidden', 'true');
       });
 
       const handleEscapeKey = (e: KeyboardEvent) => {
@@ -40,6 +41,7 @@ const PromotionModal = () => {
             el.removeAttribute('tabindex');
           }
           el.removeAttribute('data-original-tabindex');
+          el.removeAttribute('aria-hidden');
         });
 
         document.removeEventListener('keydown', handleEscapeKey);
@@ -58,13 +60,23 @@ const PromotionModal = () => {
       className={styles.modal}
       role="dialog"
       aria-modal="true"
-      aria-live="polite"
     >
       <div className={styles.modalBackdrop} onClick={closeModal} aria-hidden></div>
       <div className={styles.modalContainer}>
-        <div className={styles.modalContent}>
-          <h2 className={`${styles.modalTitle} heading-2-text`}>여행할 땐 A11Y AIRLINE 앱</h2>
-          <p className={`${styles.modalDescription} body-text ${styles.modalDescription}`}>
+        <div
+          className={styles.modalContent}
+          id="promotion-modal-content"
+          tabIndex={0}
+          aria-describedby="modalTitle modalDescription"
+        >
+          <h2 className={`${styles.modalTitle} heading-2-text`} id="modalTitle">
+            여행할 땐 A11Y AIRLINE 앱
+          </h2>
+          <p
+            className={`${styles.modalDescription} body-text ${styles.modalDescription}`}
+            id="modalDescription"
+            aria-hidden
+          >
             체크인, 탑승권 저장, 수하물 알림까지
             <br /> - 앱으로 더욱 편하게 여행하세요!
           </p>

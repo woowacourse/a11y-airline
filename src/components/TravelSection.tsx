@@ -82,8 +82,8 @@ const TravelSection = () => {
         {travelOptions.map((option, index) => (
           <a
             key={index}
-            className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             aria-hidden={currentIndex !== index}
+            className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             aria-label={`클릭하시면 항공권 구매 링크로 이동합니다.`}
             aria-describedby="travelItemDescription"
             href={option.link}
@@ -91,11 +91,9 @@ const TravelSection = () => {
             rel="noopener noreferrer"
           >
             <div id="travelItemDescription" aria-live="polite" className={styles.srOnly}>
-              {`현재 ${currentIndex + 1}번째 여행 상품: ${currentTravelItem.departure}출발 ${
-                currentTravelItem.destination
-              }도착 ${currentTravelItem.type}항공권입니다. 가격은 ${
-                currentTravelItem.price
-              }원 입니다.`}
+              현재 {currentIndex + 1}번째 여행 상품: {currentTravelItem.departure}출발{' '}
+              {currentTravelItem.destination}도착 {currentTravelItem.type}항공권입니다. 가격은{' '}
+              {currentTravelItem.price}원 입니다.
             </div>
             <img aria-hidden="true" src={option.image} className={styles.cardImage} />
             <div aria-hidden="true" className={styles.cardContent}>
