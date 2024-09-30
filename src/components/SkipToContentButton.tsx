@@ -19,10 +19,8 @@ const SkipToContentButton = () => {
 
   const skipToContent = () => {
     const mainContent = document.getElementById('main-content');
-    if (mainContent) {
-      mainContent.focus();
-      setIsVisible(false);
-    }
+    if (mainContent) mainContent.focus();
+    setIsVisible(false);
   };
 
   useEffect(() => {

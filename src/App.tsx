@@ -10,7 +10,10 @@ function App() {
     <div className={styles.app}>
       <SkipToContentButton />
       <Navigation />
-      <header className={styles.header}>
+      <header
+        className={styles.header}
+        aria-label="현재 모달이 켜져있습니다. 모달에 진입하려면 Tab키를 누르세요."
+      >
         <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>
         <p className="body-text">
           A11Y AIRLINE은 고객 여러분의 안전하고 쾌적한 여행을 위해 최선을 다하고 있습니다.
