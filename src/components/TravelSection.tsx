@@ -74,6 +74,7 @@ const TravelSection = () => {
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
+            aria-live="polite"
           >
             <span className="visually-hidden" role="text">
               {/* visually-hidden 클래스를 사용한 이유는 시각 사용자에게는 이 설명을 숨기기 위함임 */}
