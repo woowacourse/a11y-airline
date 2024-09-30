@@ -74,13 +74,6 @@ const TravelSection = () => {
       <p aria-live="polite" className="visually-hidden">
         {getCurrentIndex(currentIndex)}
       </p>
-      <button
-        aria-label="이전 여행 상품"
-        className={`${styles.navButton} ${styles.navButtonPrev}`}
-        onClick={prevTravel}
-      >
-        <img src={chevronLeft} className={styles.navButtonIcon} />
-      </button>
 
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
@@ -101,6 +94,13 @@ const TravelSection = () => {
           </button>
         ))}
       </div>
+      <button
+        aria-label="이전 여행 상품"
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+      >
+        <img src={chevronLeft} className={styles.navButtonIcon} />
+      </button>
       <button
         aria-label="다음 여행 상품"
         className={`${styles.navButton} ${styles.navButtonNext}`}
