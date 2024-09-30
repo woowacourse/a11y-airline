@@ -59,13 +59,11 @@ const PromotionModal = ({ closePromotionModal }: PromotionModalProps) => {
     >
       <div className={styles.modalBackdrop} onClick={closePromotionModal}></div>
       <p aria-live="assertive" id={elementId.description} className="visually-hidden">
-        <span lang="en">A11Y AIRLINE</span> 앱에 대한 정보 제공 모달이 열렸습니다.
+        A11Y AIRLINE 앱에 대한 정보 제공 모달이 열렸습니다.
       </p>
       <div className={styles.modalContainer}>
         <div className={styles.modalContent}>
-          <h2 className={`${styles.modalTitle} heading-2-text`}>
-            여행할 땐 <span lang="en">A11Y AIRLINE</span> 앱
-          </h2>
+          <h2 className={`${styles.modalTitle} heading-2-text`}>여행할 땐 A11Y AIRLINE 앱</h2>
           <p className={`${styles.modalDescription} body-text`}>
             체크인, 탑승권 저장, 수하물 알림까지
             <br />- 앱으로 더욱 편하게 여행하세요!

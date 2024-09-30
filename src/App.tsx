@@ -20,11 +20,11 @@ function App() {
         <Navigation />
         <main tabIndex={-1}>
           <section className={styles.announce}>
-            <h1 lang="en" className={`${styles.title} heading-1-text`}>
+            <h1 className={`${styles.title} heading-1-text`}>
               A11Y AIRLINE
             </h1>
             <p className="body-text">
-              <span lang="en">A11Y AIRLINE</span>은 고객 여러분의 안전하고 쾌적한 여행을 위해 최선을
+             A11Y AIRLINE은 고객 여러분의 안전하고 쾌적한 여행을 위해 최선을
               다하고 있습니다.
             </p>
           </section>
@@ -34,7 +34,7 @@ function App() {
           </section>
         </main>
         <footer className={styles.footer}>
-          <p lang="en" className="body-text">
+          <p  className="body-text">
             &copy; A11Y AIRLINE
           </p>
         </footer>

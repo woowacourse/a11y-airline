@@ -103,7 +103,7 @@ const TravelSection = () => {
                   {option.departure} - {option.destination}
                 </h3>
                 <p className={`${styles.cardType} body-text`}>{option.type}</p>
-                <p lang="en" className={`${styles.cardPrice} body-text`}>
+                <p className={`${styles.cardPrice} body-text`}>
                   KRW {option.price.toLocaleString()}
                 </p>
               </div>
