@@ -27,7 +27,7 @@ const PromotionModal = () => {
           </p>
           <button className={`${styles.modalActionButton} button-text`}>앱에서 열기</button>
           <button className={`${styles.modalCloseButton} heading-2-text`} onClick={closeModal}>
-            <img src={close} />
+            <img src={close} alt="" />
           </button>
         </div>
       </div>
