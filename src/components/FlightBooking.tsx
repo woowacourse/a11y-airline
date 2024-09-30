@@ -55,11 +55,14 @@ const FlightBooking = () => {
       <h2 className="heading-2-text">항공권 예매</h2>
       <div className={styles.passengerCount}>
         <div className={styles.passengerLabel}>
-          <span className="body-text">성인</span>
+          <span className="body-text" tabIndex={0}>
+            성인
+          </span>
           <div
             className={styles.helpIconWrapper}
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
+            tabIndex={0}
           >
             <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
             {showTooltip && <div className={styles.tooltip}>최대 3명까지 예약할 수 있습니다</div>}
@@ -69,7 +72,9 @@ const FlightBooking = () => {
           <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
             <img src={minus} alt="" />
           </button>
-          <span ref={adultCountRef}>{adultCount}</span>
+          <span ref={adultCountRef} tabIndex={0}>
+            {adultCount}
+          </span>
           <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
             <img src={plus} alt="" />
           </button>
