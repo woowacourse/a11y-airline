@@ -17,6 +17,7 @@ const FlightBooking = () => {
   const incrementCount = useCallback(() => {
     if (adultCount === MAX_PASSENGERS) {
       setStatusMessage('최대 승객 수에 도달했습니다');
+      setTimeout(() => setStatusMessage(''), 500);
       return;
     }
 
@@ -27,6 +28,7 @@ const FlightBooking = () => {
   const decrementCount = useCallback(() => {
     if (adultCount === MIN_PASSENGERS) {
       setStatusMessage('최소 1명의 승객이 필요합니다');
+      setTimeout(() => setStatusMessage(''), 500);
       return;
     }
 
@@ -45,7 +47,11 @@ const FlightBooking = () => {
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
           >
-            <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
+            <img
+              src={helpIcon}
+              alt="도움말: 최대 3명까지 예약할 수 있습니다"
+              className={styles.helpIcon}
+            />
             {showTooltip && <div className={styles.tooltip}>최대 3명까지 예약할 수 있습니다</div>}
           </div>
         </div>
