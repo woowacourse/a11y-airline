@@ -72,7 +72,7 @@ const TravelSection = () => {
             onClick={() => handleCardClick(option.link)}
             role="link"
           >
-            <p aria-live="polite" className="visually-hidden">
+            <p aria-live="assertive" className="visually-hidden">
               {`${travelOptions.length}개의 여행상품 중 ${index + 1}번째 상품. ${
                 option.departure
               } 출발, ${option.destination} 도착, ${
@@ -81,11 +81,15 @@ const TravelSection = () => {
             </p>
             <img src={option.image} className={styles.cardImage} alt="" />
             <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
+              <p className={`${styles.cardTitle} heading-3-text`} aria-hidden="true">
                 {option.departure} - {option.destination}
               </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+              <p className={`${styles.cardType} body-text`} aria-hidden="true">
+                {option.type}
+              </p>
+              <p className={`${styles.cardPrice} body-text`} aria-hidden="true">
+                KRW {option.price.toLocaleString()}
+              </p>
             </div>
           </div>
         ))}
