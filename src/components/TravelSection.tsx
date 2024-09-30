@@ -67,9 +67,8 @@ const TravelSection = () => {
         </span>
         <ol className={styles.carousel}>
           {travelOptions.map((option, index) => (
-            <li>
+            <li key={index}>
               <button
-                key={index}
                 className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
                 onClick={() => handleCardClick(option.link)}
                 aria-label={`${option.departure} 출발 ${option.destination} 도착. ${
