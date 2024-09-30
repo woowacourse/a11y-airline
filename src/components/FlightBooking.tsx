@@ -46,7 +46,7 @@ const FlightBooking = () => {
     <section className={styles.flightBooking}>
       <form className={styles.form}>
         <h2 className="heading-2-text">항공권 예매</h2>
-        <section className={styles.passengerCount} aria-label="성인 승객 수 선택">
+        <section className={styles.passengerCount}>
           <div id={elementId.countLabel} className={styles.passengerLabel}>
             <h3 className="body-text">성인</h3>
             <div
