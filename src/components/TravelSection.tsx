@@ -71,10 +71,6 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <div aria-live="assertive" role="status" className={styles.visuallyHidden} tabIndex={-1}>
-        {getCurrentCardContent(currentIndex)}
-      </div>
-
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
@@ -91,6 +87,8 @@ const TravelSection = () => {
             onClick={() => handleCardClick(option.link)}
             tabIndex={index === currentIndex ? 0 : -1}
             role="link"
+            aria-live="polite"
+            aria-atomic={true}
             aria-label={getCurrentCardContent(currentIndex)}
           >
             <img
