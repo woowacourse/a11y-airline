@@ -59,13 +59,11 @@ const TravelSection = () => {
   const nextTravel = () => {
     const newIndex = (currentIndex + 1) % travelOptions.length;
     setCurrentIndex(newIndex);
-    getCardInfo(newIndex);
   };
 
   const prevTravel = () => {
     const newIndex = (currentIndex - 1 + travelOptions.length) % travelOptions.length;
     setCurrentIndex(newIndex);
-    getCardInfo(newIndex);
   };
 
   const handleCardClick = (link: string) => {
