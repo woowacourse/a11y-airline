@@ -71,9 +71,6 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <div tabIndex={0} className={styles.visuallyHidden}>
-        {`${travelOptions.length}개의 상품 중, ${currentIndex + 1}번째 상품`}
-      </div>
       <div aria-live="assertive" role="status" className={styles.visuallyHidden} tabIndex={-1}>
         {getCurrentCardContent(currentIndex)}
       </div>
@@ -93,6 +90,7 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
             tabIndex={index === currentIndex ? 0 : -1}
+            role="link"
             aria-label={getCurrentCardContent(currentIndex)}
           >
             <img
