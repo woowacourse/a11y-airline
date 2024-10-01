@@ -18,29 +18,21 @@ const PromotionModal = () => {
     if (event.key === 'Escape') closeModal();
   };
 
-  useEffect(() => {
-    const openInAppButtonElement = openInAppButton.current;
-    const closeButtonElement = closeButton.current;
-
-    const focusCloseButton = (event: KeyboardEvent) => {
-      if (event.key === 'Tab') {
-        event.preventDefault();
-        closeButtonElement?.focus();
-      }
-    };
-
-    const focusOpenInAppButton = (event: KeyboardEvent) => {
-      if (event.key === 'Tab' && openInAppButtonElement) {
-        event.preventDefault();
-        openInAppButtonElement?.focus();
-      }
-    };
-
-    if (openInAppButtonElement && closeButtonElement) {
-      closeButtonElement.addEventListener('keydown', focusOpenInAppButton);
-      openInAppButtonElement.addEventListener('keydown', focusCloseButton);
+  const focusCloseButton = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      closeButton.current?.focus();
     }
+  };
 
+  const focusOpenInAppButton = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      openInAppButton.current?.focus();
+    }
+  };
+
+  useEffect(() => {
     if (isOpen) {
       [...(document.getElementById('app') as HTMLDivElement).children].forEach((element) => {
         if (modal.current !== element) {
@@ -54,13 +46,6 @@ const PromotionModal = () => {
         }
       });
     }
-
-    return () => {
-      if (openInAppButtonElement && closeButtonElement) {
-        closeButtonElement.removeEventListener('keydown', focusOpenInAppButton);
-        openInAppButtonElement.removeEventListener('keydown', focusCloseButton);
-      }
-    };
   }, [isOpen]);
 
   if (!isOpen) {
@@ -77,10 +62,15 @@ const PromotionModal = () => {
             체크인, 탑승권 저장, 수하물 알림까지
             <br />- 앱으로 더욱 편하게 여행하세요!
           </p>
-          <button ref={openInAppButton} className={`${styles.modalActionButton} button-text`}>
+          <button
+            onKeyDown={focusCloseButton}
+            ref={openInAppButton}
+            className={`${styles.modalActionButton} button-text`}
+          >
             앱에서 열기
           </button>
           <button
+            onKeyDown={focusOpenInAppButton}
             ref={closeButton}
             autoFocus
             className={`${styles.modalCloseButton} heading-2-text`}
