@@ -59,9 +59,7 @@ const TravelSection = () => {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
 
-  const descriptionText = `세계의 여행 상품 ${travelOptions.length}개 중 ${
-    currentIndex + 1
-  }번째 상품.`;
+  const descriptionText = `${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품.`;
 
   return (
     <div className={styles.travelSection}>
@@ -71,7 +69,6 @@ const TravelSection = () => {
             key={index}
             className={`${index === currentIndex ? styles.cardActive : ''}`}
             aria-live="polite"
-            aria-hidden={index !== currentIndex}
             aria-roledescription="slide"
           >
             <div className={styles.travelDescription}>{descriptionText}</div>
