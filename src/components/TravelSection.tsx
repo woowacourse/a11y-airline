@@ -83,14 +83,13 @@ const TravelSection = () => {
               </p>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p
-                aria-label={`${option.price.toLocaleString('ko-KR')} 원`}
+                aria-label={`${option.price.toLocaleString(
+                  'ko-KR'
+                )} 원. 선택하면 예약페이지로 이동합니다.`}
                 className={`${styles.cardPrice} body-text`}
               >
                 KRW {option.price.toLocaleString('ko-KR')}
               </p>
-              {/* 스크린 리더가 한 번 쉬고 읽기 위해 "." 사용 */}
-              <ScreenReaderOnly>.</ScreenReaderOnly>
-              <ScreenReaderOnly>선택하면 예약페이지로 이동합니다.</ScreenReaderOnly>
             </div>
           </button>
         ))}
