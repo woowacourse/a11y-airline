@@ -57,6 +57,5 @@
 .skipTo:hover,
 .skipTo:focus,
 .skipTo:active {
-  display: block;
   top: 0;
 }

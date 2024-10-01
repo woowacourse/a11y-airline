@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 import close from '../assets/close.svg';
 
@@ -12,13 +12,10 @@ const PromotionModal = ({
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const [popUpMessage, setPopUpMessage] = useState('팝업이 열렸습니다.');
-
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   const closeModal = () => {
     setIsOpen(false);
-    setPopUpMessage('');
   };
 
   if (!isOpen) {
@@ -51,7 +48,7 @@ const PromotionModal = ({
         </div>
 
         <div role="alert" aria-live="assertive" className="visually-hidden">
-          {popUpMessage}
+          {isOpen ? '팝업이 열렸습니다.' : ''}
         </div>
       </div>
     </FocusTrap>
