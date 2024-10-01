@@ -60,18 +60,21 @@ const TravelSection = () => {
   const isNextDisabled = currentIndex === travelOptions.length - 1;
 
   return (
-    <div
-      className={styles.travelSection}
-      aria-label={`여행 상품 캐러셀 총 ${travelOptions.length}개의 여행 상품 중 ${
-        currentIndex + 1
-      }번째 상품을 확인 중`}
-    >
+    <div className={styles.travelSection} tabIndex={-1}>
       <div
         aria-live="polite"
         aria-label={`여행 상품 캐러셀 총 ${travelOptions.length}개의 여행 상품 중 ${
           currentIndex + 1
         }번째 상품을 확인 중`}
         className={styles.srOnly}
+      />
+      <div
+        id="travel-description"
+        aria-live="polite"
+        className={styles.srOnly}
+        aria-label={`현재 ${currentIndex + 1}번째 여행 상품: ${currentTravelItem.departure}출발
+          ${currentTravelItem.destination}도착 ${currentTravelItem.type}항공권입니다. 가격은
+          ${currentTravelItem.price}원 입니다.`}
       />
       <button
         className={`${styles.navButton} ${styles.navButtonPrev} ${
@@ -84,22 +87,14 @@ const TravelSection = () => {
       >
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
-      <div className={styles.carousel}>
-        <div
-          id="travel-content"
-          aria-live="polite"
-          className={styles.srOnly}
-          aria-label={`현재 ${currentIndex + 1}번째 여행 상품: ${currentTravelItem.departure}출발
-          ${currentTravelItem.destination}도착 ${currentTravelItem.type}항공권입니다. 가격은
-          ${currentTravelItem.price}원 입니다.`}
-        />
 
+      <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <a
             key={index}
             aria-hidden={currentIndex !== index}
-            aria-describedby="travel-content"
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
+            aria-describedby="travel-description"
             aria-label={`클릭하시면 항공권 구매 링크로 이동합니다.`}
             href={option.link}
             target="_blank"
