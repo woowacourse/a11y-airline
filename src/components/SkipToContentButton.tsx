@@ -34,7 +34,9 @@ const SkipToContentButton = () => {
     <button
       ref={ref}
       onClick={skipToContent}
+      onFocus={() => setIsVisible(true)}
       onBlur={() => setIsVisible(false)}
+      aria-hidden={!isVisible}
       className={`${styles.skipButton} ${!isVisible && styles.hidden}`}
     >
       본문으로 바로가기
