@@ -85,7 +85,7 @@ const TravelSection = () => {
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
-            tabIndex={index === currentIndex ? 0 : -1}
+            tabIndex={0}
             role="link"
             aria-live="polite"
             aria-atomic={true}
