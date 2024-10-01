@@ -16,7 +16,7 @@ const PromotionModal = () => {
   }
 
   return (
-    <div className={styles.modal}>
+    <div className={styles.modal} role="dialog" aria-modal="true">
       <div className={styles.modalBackdrop} onClick={closeModal}></div>
       <div className={styles.modalContainer}>
         <div className={styles.modalContent}>
