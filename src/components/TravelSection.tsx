@@ -57,10 +57,6 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
-
   const createMessage = (index: number) => {
     return `
 ${travelOptions[index].departure} 출발, ${travelOptions[index].destination} 도착, ${
@@ -87,18 +83,19 @@ ${travelOptions[index].departure} 출발, ${travelOptions[index].destination} �
         tabIndex={-1}
         aria-description=""
       >
-        {TRAVEL_OPTION_COUNT}개의 여행 상품중 {currentIndex + 1}번째 상품,
-        {createMessage(currentIndex)}
+        {`${TRAVEL_OPTION_COUNT}개의 여행 상품중 ${currentIndex + 1}번째 상품
+        ${createMessage(currentIndex)}`}
       </div>
 
       {/*캐루셀 카드 리스트*/}
       <div className={styles.carousel} aria-live="polite">
         {travelOptions.map((option, index) => (
-          <div
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={option.link}
             key={index}
-            role="button"
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
             aria-label={`${createMessage(index)}, 선택하면 예약 페이지로 이동합니다.`}
             tabIndex={0}
             aria-live="assertive"
@@ -112,7 +109,7 @@ ${travelOptions[index].departure} 출발, ${travelOptions[index].destination} �
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
 

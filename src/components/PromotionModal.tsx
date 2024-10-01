@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import close from '../assets/close.svg';
 
@@ -21,30 +21,16 @@ const PromotionModal = ({
     setPopUpMessage('');
   };
 
-  useEffect(() => {
-    if (isOpen) {
-      modalRef.current?.focus();
-    }
-  }, [isOpen]);
-
   if (!isOpen) {
     return null;
   }
 
   return (
     <FocusTrap onEscapeFocusTrap={closeModal}>
-      <div
-        className={styles.modal}
-        tabIndex={0}
-        aria-labelledby="modal-title"
-        aria-describedby="modal-description"
-        ref={modalRef}
-        role="dialog"
-        aria-modal="true"
-      >
+      <div className={styles.modal} tabIndex={0} role="dialog" aria-modal="true">
         <div className={styles.modalBackdrop} onClick={closeModal}></div>
         <div className={styles.modalContainer}>
-          <div className={styles.modalContent}>
+          <div className={styles.modalContent} ref={modalRef}>
             <h2 className={`${styles.modalTitle} heading-2-text`} id="modal-title">
               여행할 땐 A11Y AIRLINE 앱
             </h2>
