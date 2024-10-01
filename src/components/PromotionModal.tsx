@@ -6,7 +6,7 @@ import styles from './PromotionModal.module.css';
 
 const PromotionModal = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const modalRef = useRef<HTMLDivElement | null>(null);
+  const modalRef = useRef<HTMLElement | null>(null);
   const nextFocusIndexRef = useRef(0);
 
   const closeModal = () => {
@@ -48,7 +48,7 @@ const PromotionModal = () => {
   }
 
   return (
-    <div className={styles.modal} role="dialog" aria-modal="true" ref={modalRef}>
+    <section className={styles.modal} role="dialog" aria-modal="true" ref={modalRef}>
       <div className={styles.modalBackdrop} onClick={closeModal}></div>
       <div className={styles.modalContainer}>
         <div className={styles.modalContent}>
@@ -61,11 +61,11 @@ const PromotionModal = () => {
           </p>
           <button className={`${styles.modalActionButton} button-text`}>앱에서 열기</button>
           <button className={`${styles.modalCloseButton} heading-2-text`} onClick={closeModal}>
-            <img src={close} />
+            <img src={close} alt="닫기" />
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
