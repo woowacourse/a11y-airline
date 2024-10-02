@@ -90,7 +90,8 @@ const TravelSection = () => {
             aria-label={`
             ${option.departure} 출발 ${option.destination} 도착,
             ${option.type},
-            ${option.price.toLocaleString()}원
+            ${option.price.toLocaleString()}원,
+            클릭하면 여행 상품 페이지로 이동합니다. 
           `}
           >
             <img src={option.image} className={styles.cardImage} alt="" />
