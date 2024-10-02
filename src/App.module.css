@@ -52,3 +52,16 @@
   border: 0;
   white-space: nowrap; /* 텍스트 줄바꿈 방지 */
 }
+
+.skipLink {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  z-index: 100;
+}
+.skipLink:focus {
+  top: 0;
+}
