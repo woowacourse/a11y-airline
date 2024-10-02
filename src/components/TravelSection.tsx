@@ -69,6 +69,7 @@ const TravelSection = () => {
     <section className={styles.travelSection}>
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
+        type="button"
         onClick={prevTravel}
         aria-label="이전 여행지 상품으로 이동하기"
       >
@@ -97,6 +98,7 @@ const TravelSection = () => {
       </article>
       <button
         className={`${styles.navButton} ${styles.navButtonNext}`}
+        type="button"
         onClick={nextTravel}
         aria-label="다음 여행지 상품으로 이동하기"
       >
