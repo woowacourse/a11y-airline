@@ -73,11 +73,13 @@ const TravelSection = () => {
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
         aria-label="이전 여행 옵션 보기"
+        type="button"
       >
         <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
       <ol
         className={styles.carousel}
+        role="button"
         aria-live="polite"
         aria-label={`총 ${travelOptions.length}개의 여행 옵션 중 ${currentIndex + 1}번째 옵션`}
       >
@@ -115,6 +117,7 @@ const TravelSection = () => {
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={nextTravel}
         aria-label="다음 여행 옵션 보기"
+        type="button"
       >
         <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
