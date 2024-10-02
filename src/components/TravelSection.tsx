@@ -76,13 +76,7 @@ ${travelOptions[index].departure} 출발, ${travelOptions[index].destination} �
         <img src={chevronLeft} className={styles.navButtonIcon} alt="이전 버튼 이미지" />
       </button>
 
-      <div
-        role="status"
-        aria-live="polite"
-        className="visually-hidden"
-        tabIndex={-1}
-        aria-description=""
-      >
+      <div aria-live="polite" className="visually-hidden" tabIndex={-1}>
         {`${TRAVEL_OPTION_COUNT}개의 여행 상품중 ${currentIndex + 1}번째 상품
         ${createMessage(currentIndex)}`}
       </div>
@@ -99,7 +93,6 @@ ${travelOptions[index].departure} 출발, ${travelOptions[index].destination} �
             aria-label={`${createMessage(index)}, 선택하면 예약 페이지로 이동합니다.`}
             tabIndex={0}
             aria-live="assertive"
-            id="travel-info"
           >
             <img src={option.image} className={styles.cardImage} alt={''} />
             <div className={styles.cardContent} aria-hidden="true">
