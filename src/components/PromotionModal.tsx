@@ -14,7 +14,7 @@ const PromotionModal: React.FC = () => {
     const focusableElements = modalRef.current?.querySelectorAll(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
     );
-    const firstElement = focusableElements?.[0] as HTMLElement;
+    const firstElement = modalRef.current;
     const lastElement = focusableElements?.[focusableElements.length - 1] as HTMLElement;
 
     const handleTabKey = (e: KeyboardEvent) => {
@@ -32,7 +32,7 @@ const PromotionModal: React.FC = () => {
       } else {
         if (document.activeElement === lastElement) {
           e.preventDefault();
-          firstElement.focus();
+          firstElement?.focus();
         }
       }
     };
@@ -68,14 +68,7 @@ const PromotionModal: React.FC = () => {
   }
 
   return (
-    <div
-      className={styles.modal}
-      role="dialog"
-      aria-labelledby="modal-title"
-      aria-describedby="modal-description"
-      aria-modal="true"
-      ref={modalRef}
-    >
+    <div className={styles.modal} role="dialog" aria-modal="true" ref={modalRef} tabIndex={-1}>
       <div className={styles.modalBackdrop} onClick={closeModal} />
       <div className={styles.modalContainer}>
         <div className={styles.modalContent}>
