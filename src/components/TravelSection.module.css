@@ -21,6 +21,7 @@
 
 .cardActive {
   display: block;
+  text-align: left;
 }
 
 .cardImage {
@@ -73,13 +74,11 @@
 .navButtonPrev {
   left: 0;
   border-radius: 0 40px 40px 0;
-  padding-left: 15px;
 }
 
 .navButtonNext {
   right: 0;
   border-radius: 40px 0 0 40px;
-  padding-right: 15px;
 }
 
 .navButtonIcon {
