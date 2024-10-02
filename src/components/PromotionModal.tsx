@@ -59,7 +59,8 @@ const PromotionModal = () => {
         className={styles.modalContainer}
         role="dialog"
         aria-modal="true"
-        aria-labelledby="modalTitle"
+        aria-label="앱 설치 안내"
+        tabIndex={0}
       >
         <div className={styles.modalContent}>
           <h2 id="modalTitle" className={`${styles.modalTitle} heading-2-text`}>
