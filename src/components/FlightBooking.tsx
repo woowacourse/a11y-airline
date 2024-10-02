@@ -62,7 +62,6 @@ const FlightBooking = () => {
                 id="tooltip"
                 aria-live="polite"
                 aria-hidden="true"
-                tabIndex={-1}
               >
                 최대 3명까지 예약할 수 있습니다
               </div>
