@@ -39,7 +39,7 @@ const PromotionModal = () => {
           ref={lastFocusableRef}
           className={`${styles.modalCloseButton} heading-2-text`}
           onClick={closeModal}
-          aria-label="앱 전환 대화상자 닫기"
+          aria-label="대화상자 닫기"
         >
           <img src={close} alt="" />
         </button>
