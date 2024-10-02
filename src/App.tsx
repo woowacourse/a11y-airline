@@ -21,7 +21,7 @@ function App() {
   return (
     <div className={styles.app}>
       <PromotionModal />
-      <button className={styles.showOnFocus} onClick={skipToMain} tabIndex={0}>
+      <button type="button" className={styles.showOnFocus} onClick={skipToMain} tabIndex={0}>
         본문으로 바로가기
       </button>
       <header>

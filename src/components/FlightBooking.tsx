@@ -55,13 +55,23 @@ const FlightBooking = () => {
           </div>
         </div>
         <div className={styles.counter}>
-          <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
+          <button
+            type="button"
+            className="button-text"
+            onClick={decrementCount}
+            aria-label="성인 승객 감소"
+          >
             <img src={minus} alt="" />
           </button>
           <span aria-live="polite" aria-label={`현재 성인 승객 수 ${adultCount}명`}>
             {adultCount}
           </span>
-          <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
+          <button
+            type="button"
+            className="button-text"
+            onClick={incrementCount}
+            aria-label="성인 승객 증가"
+          >
             <img src={plus} alt="" />
           </button>
         </div>
@@ -71,7 +81,9 @@ const FlightBooking = () => {
           {statusMessage}
         </div>
       )}
-      <button className={styles.searchButton}>항공편 검색</button>
+      <button type="button" className={styles.searchButton}>
+        항공편 검색
+      </button>
     </article>
   );
 };

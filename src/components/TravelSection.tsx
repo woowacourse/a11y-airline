@@ -68,10 +68,11 @@ const TravelSection = () => {
               {`${travelOptions.length}개의 여행 상품 중 ${index + 1}번째 상품입니다.`}
             </div>
             <button
+              type="button"
               className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
               onClick={() => handleCardClick(option.link)}
             >
-              <img src={option.image} className={styles.cardImage} alt="" aria-hidden />
+              <img src={option.image} className={styles.cardImage} alt="" />
               <div className={styles.cardContent}>
                 <p
                   className={`${styles.cardTitle} heading-3-text`}
@@ -96,6 +97,7 @@ const TravelSection = () => {
         ))}
       </div>
       <button
+        type="button"
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
         aria-label="이전 여행 상품"
@@ -103,6 +105,7 @@ const TravelSection = () => {
         <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
       <button
+        type="button"
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={nextTravel}
         aria-label="다음 여행 상품"

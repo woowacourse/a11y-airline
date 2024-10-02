@@ -32,10 +32,15 @@ const PromotionModal = () => {
         <p className={`${styles.modalDescription} body-text`}>
           체크인, 탑승권 저장, 수하물 알림까지 <br />- 앱으로 더욱 편하게 여행하세요!
         </p>
-        <button ref={firstFocusableRef} className={`${styles.modalActionButton} button-text`}>
+        <button
+          type="button"
+          ref={firstFocusableRef}
+          className={`${styles.modalActionButton} button-text`}
+        >
           앱에서 열기
         </button>
         <button
+          type="button"
           ref={lastFocusableRef}
           className={`${styles.modalCloseButton} heading-2-text`}
           onClick={closeModal}
