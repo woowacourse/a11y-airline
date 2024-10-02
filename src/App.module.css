@@ -9,6 +9,11 @@
   margin: 0 auto;
 }
 
+.content:focus {
+  color: black;
+  border-radius: 2px;
+}
+
 .header {
   padding: 48px 24px 24px 24px;
 }

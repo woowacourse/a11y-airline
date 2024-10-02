@@ -49,7 +49,7 @@ const Navigation = () => {
       {items.map((item, index) => (
         <li key={index} className={styles.navItem}>
           <a href={item.link}>{item.title}</a>
-          {item.subItems && renderNavItems(item.subItems)}
+          {item.subItems && <nav className={styles.subNav}>{renderNavItems(item.subItems)}</nav>}
         </li>
       ))}
     </ul>
@@ -60,7 +60,11 @@ const Navigation = () => {
       <button className={styles.navToggle} onClick={toggleNav}>
         {isNavOpen ? '닫기' : '메뉴'}
       </button>
-      <nav id="main-nav" className={`${styles.mainNav} ${isNavOpen ? styles.mainNavActive : ''}`}>
+      <nav
+        id="main-nav"
+        className={`${styles.mainNav} ${isNavOpen ? styles.mainNavActive : ''}`}
+        aria-label="주요 메뉴"
+      >
         {renderNavItems(navItems)}
       </nav>
     </>

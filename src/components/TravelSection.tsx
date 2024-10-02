@@ -55,35 +55,71 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
+  const getParsedCityName = (fullString: string) => {
+    return `${fullString.includes('/') ? fullString.replace('/', '슬래시') : fullString}`;
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLLIElement>, link: string) => {
+    if (e.key === 'Enter') handleCardClick(link);
+  };
+
   const handleCardClick = (link: string) => {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+    <div className={styles.travelSection} aria-label="여행 옵션 캐러셀">
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 여행 옵션 보기"
+        type="button"
+      >
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
-      <div className={styles.carousel}>
+      <ol
+        className={styles.carousel}
+        role="button"
+        aria-live="polite"
+        aria-label={`총 ${travelOptions.length}개의 여행 옵션 중 ${currentIndex + 1}번째 옵션`}
+      >
         {travelOptions.map((option, index) => (
-          <div
+          <li
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
+            tabIndex={0}
             onClick={() => handleCardClick(option.link)}
+            onKeyDown={(e) => handleKeyPress(e, option.link)}
           >
-            <img src={option.image} className={styles.cardImage} />
+            <img src={option.image} className={styles.cardImage} alt="" />
             <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
+              <p
+                className={`${styles.cardTitle} heading-3-text`}
+                aria-label={`출발 ${getParsedCityName(option.departure)} 도착 ${getParsedCityName(
+                  option.destination
+                )}`}
+              >
                 {option.departure} - {option.destination}
               </p>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+              <p
+                className={`${styles.cardPrice} body-text`}
+                aria-label={`가격: ${option.price.toLocaleString()}원`}
+              >
+                KRW {option.price.toLocaleString()}
+              </p>
+              <p className="visually-hidden">클릭하면 예약 페이지로 넘어갑니다.</p>
             </div>
-          </div>
+          </li>
         ))}
-      </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+      </ol>
+      <button
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+        aria-label="다음 여행 옵션 보기"
+        type="button"
+      >
+        <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
     </div>
   );
