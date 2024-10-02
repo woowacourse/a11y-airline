@@ -9,6 +9,29 @@
   margin: 0 auto;
 }
 
+.skipLink {
+  position: absolute;
+  top: -48px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 10px;
+  z-index: 100;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: top 0.3s;
+}
+
+.skipLink:focus {
+  top: 0;
+  /* 포커스를 받으면 화면 상단에 나타남 */
+}
+
+button a {
+  color: white;
+  text-decoration: none;
+}
+
 .header {
   padding: 48px 24px 24px 24px;
 }
