@@ -53,7 +53,7 @@ const FlightBooking = () => {
               className={styles.helpIcon}
               tabIndex={0}
               aria-describedby={showTooltip ? 'tooltip' : undefined}
-              aria-expanded={showTooltip}
+              aria-expanded={String(showTooltip)}
             />
             {showTooltip && (
               <div
