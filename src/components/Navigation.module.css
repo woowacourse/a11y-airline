@@ -1,0 +1,110 @@
+.mainNav {
+  background-color: #f8f8f8;
+  padding: 10px 0;
+}
+
+.navList {
+  list-style-type: none;
+  padding: 10px 16px;
+  margin: 0;
+}
+
+.navItem {
+  display: inline-block;
+  position: relative;
+  margin-right: 20px;
+}
+
+.navItem a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  padding: 5px 10px;
+  display: block;
+}
+
+.navItem a:hover,
+.navItem a:focus {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+}
+
+.navItem .navList {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navItem:hover > .navList,
+.navItem:focus-within > .navList {
+  display: block;
+}
+
+.navItem .navList .navItem {
+  width: 200px;
+  display: block;
+  margin-right: 0;
+}
+
+.navItem .navList .navItem a {
+  padding: 10px;
+}
+
+.navItem .navList .navItem a:hover,
+.navItem .navList .navItem a:focus {
+  background-color: #f0f0f0;
+}
+
+.navToggle {
+  display: none;
+  font-size: 16px;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .navToggle {
+    display: block;
+  }
+
+  .mainNav {
+    display: none;
+  }
+
+  .mainNavActive {
+    display: block;
+  }
+
+  .navItem {
+    display: block;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .navItem .navList {
+    position: static;
+    display: none;
+    width: auto;
+    border: none;
+    box-shadow: none;
+    margin-left: 20px;
+  }
+
+  .navItem:hover > .navList,
+  .navItem:focus-within > .navList {
+    display: block;
+  }
+
+  .navItem .navList .navItem {
+    width: auto;
+  }
+}
