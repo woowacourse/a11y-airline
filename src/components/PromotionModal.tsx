@@ -85,7 +85,11 @@ const PromotionModal = () => {
       role="dialog"
       aria-modal="true"
       aria-label="A11Y AIRLINE 서비스 안내 모달"
+      aria-live="assertive"
     >
+      <div className="visually-hidden">
+        서비스 안내 모달이 열려 있습니다. 닫기 버튼으로 이 모달을 닫을 수 있습니다.
+      </div>
       <div className={styles.modalBackdrop} onClick={closeModal} aria-hidden="true"></div>
       <div className={styles.modalContainer}>
         <div className={styles.modalContent}>
