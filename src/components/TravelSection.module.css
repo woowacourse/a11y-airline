@@ -97,3 +97,8 @@
   clip-path: inset(50%);
   border: 0;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+}
