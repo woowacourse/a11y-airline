@@ -59,7 +59,12 @@ const Navigation = () => {
 
   return (
     <>
-      <button className={styles.navToggle} onClick={toggleNav}>
+      <button
+        className={styles.navToggle}
+        onClick={toggleNav}
+        aria-label="메인 메뉴"
+        aria-expanded={isNavOpen}
+      >
         {isNavOpen ? '닫기' : '메뉴'}
       </button>
       <nav id="main-nav" className={`${styles.mainNav} ${isNavOpen ? styles.mainNavActive : ''}`}>
