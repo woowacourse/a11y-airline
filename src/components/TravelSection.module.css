@@ -21,6 +21,10 @@
 
 .cardActive {
   display: block;
+  text-align: left;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
 .cardImage {
