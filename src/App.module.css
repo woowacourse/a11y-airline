@@ -1,0 +1,53 @@
+.app {
+  font-family: Arial, sans-serif;
+  max-width: 480px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+.skipLink {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #fff;
+  color: #000;
+  padding: 8px 16px;
+  z-index: 1000;
+  transition: top 0.3s;
+  text-decoration: none;
+}
+
+.skipLink:focus {
+  top: 0;
+}
+
+.header {
+  padding: 48px 24px 24px 24px;
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+.main {
+  flex: 1;
+}
+
+.flightBooking {
+  background-image: url('./assets/booking-bg.png');
+  padding: 26px 24px;
+}
+
+.travelSection {
+  background-color: rgb(246, 246, 246);
+}
+
+.footer {
+  padding: 32px;
+  background-color: white;
+  text-align: center;
+}
