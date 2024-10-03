@@ -1,12 +1,12 @@
 import styles from './SkipToContent.module.css';
 
 interface SkipToContentProps {
-  onSkipToContent: () => void;
+  linkTarget?: string;
 }
 
-const SkipToContent = ({ onSkipToContent }: SkipToContentProps) => {
+const SkipToContent = ({ linkTarget = '#main-content' }: SkipToContentProps) => {
   return (
-    <a href="#main-content" onClick={onSkipToContent} className={styles.skipLink}>
+    <a href={linkTarget} className={styles.skipLink}>
       Skip to content
     </a>
   );
