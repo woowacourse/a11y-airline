@@ -66,7 +66,7 @@ const TravelSection = () => {
   const getCurrentDescription = (option: TravelOption) => {
     const { departure, destination, type, price } = option;
 
-    return `${departure}에서 출발해 ${destination}에 도착하는 ${price}원 ${type} 상품입니다. 선택하면 예약 페이지로 이동합니다.`;
+    return `${departure}에서 출발해 ${destination}에 도착하는 ${price.toLocaleString()}원 ${type} 상품입니다. 선택하면 예약 페이지로 이동합니다.`;
   };
 
   return (
