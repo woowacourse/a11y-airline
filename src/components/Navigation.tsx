@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import styles from './Navigation.module.css';
+import { useState } from 'react';
 
 interface NavItem {
   title: string;
@@ -37,8 +37,12 @@ const navItems: NavItem[] = [
   { title: '고객 지원', link: '#' }
 ];
 
-const Navigation = () => {
+const Navigation = ({ contentRef }: { contentRef?: React.RefObject<HTMLElement> }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const skipNavigationClickHandler = () => {
+    contentRef?.current?.focus();
+  };
 
   const toggleNav = () => {
     setIsNavOpen((prev) => !prev);
@@ -57,6 +61,9 @@ const Navigation = () => {
 
   return (
     <>
+      <button tabIndex={0} onClick={skipNavigationClickHandler} className={styles.skipNav}>
+        콘텐츠로 이동하기
+      </button>
       <button className={styles.navToggle} onClick={toggleNav}>
         {isNavOpen ? '닫기' : '메뉴'}
       </button>
