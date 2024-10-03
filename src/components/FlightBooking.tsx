@@ -17,7 +17,7 @@ const FlightBooking = () => {
   const incrementCount = useCallback(() => {
     if (adultCount === MAX_PASSENGERS) {
       setStatusMessage('최대 승객 수에 도달했습니다');
-      // setTimeout(() => setStatusMessage(''), 500);
+      setTimeout(() => setStatusMessage(''), 500);
       return;
     }
 
@@ -28,7 +28,7 @@ const FlightBooking = () => {
   const decrementCount = useCallback(() => {
     if (adultCount === MIN_PASSENGERS) {
       setStatusMessage('최소 1명의 승객이 필요합니다');
-      // setTimeout(() => setStatusMessage(''), 500);
+      setTimeout(() => setStatusMessage(''), 500);
       return;
     }
 
@@ -76,9 +76,9 @@ const FlightBooking = () => {
         </div>
       </div>
       {statusMessage && (
-        <div className="visually-hidden" role="alert">
+        <output className="visually-hidden" role="alert">
           {statusMessage}
-        </div>
+        </output>
       )}
       <button type="submit" className={styles.searchButton}>
         항공편 검색
