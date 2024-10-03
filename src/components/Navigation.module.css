@@ -108,3 +108,20 @@
     width: auto;
   }
 }
+
+.skip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: blue;
+  color: #fff;
+  padding: 1rem;
+  z-index: 100;
+  text-decoration: none;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+.skip:focus {
+  transform: translateY(0);
+}

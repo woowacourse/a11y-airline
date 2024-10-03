@@ -57,6 +57,9 @@ const Navigation = () => {
 
   return (
     <>
+      <a href="#main-content" className={styles.skip}>
+        본문으로 바로가기
+      </a>
       <button className={styles.navToggle} onClick={toggleNav}>
         {isNavOpen ? '닫기' : '메뉴'}
       </button>
