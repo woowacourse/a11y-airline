@@ -17,6 +17,7 @@
   color: #fff;
   padding: 8px;
   z-index: 1;
+  text-decoration: none;
 }
 
 .skipLink:focus {
