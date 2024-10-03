@@ -4,14 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy": "npm run build && npx gh-pages -d dist"
   },
   "author": "woowacourse",
-  "homepage": "https://{username}.github.io/a11y-airline",
+  "homepage": "https://skiende74.github.io/a11y-airline",
   "license": "MIT",
   "dependencies": {
     "react": "^18.3.1",
