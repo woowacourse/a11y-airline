@@ -15,7 +15,7 @@ type PromotionModalProps = {
 const PromotionModal = ({ isOpen, closeModal }: PromotionModalProps) => {
   const modalRef = useRef<HTMLAnchorElement | null>(null);
 
-  const handleEnterKeyDown = () => {
+  const handleEscapeKeyDown = () => {
     closeModal();
   };
 
@@ -23,7 +23,7 @@ const PromotionModal = ({ isOpen, closeModal }: PromotionModalProps) => {
     const { key } = event;
 
     if (isPressedKey(key, 'Escape')) {
-      handleEnterKeyDown();
+      handleEscapeKeyDown();
       return;
     }
 
