@@ -1,6 +1,6 @@
 .skipLink {
   position: absolute;
-  top: -40px;
+  transform: translateY(-40px);
   left: 0;
   background-color: #007bff;
   color: #fff;
@@ -9,7 +9,7 @@
   border-radius: 4px;
   border: none;
   text-decoration: none;
-  transition: top 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   clip: rect(1px, 1px, 1px, 1px);
   overflow: hidden;
   height: 1px;
@@ -18,7 +18,7 @@
 
 .skipLink:focus {
   clip: auto;
-  top: 0;
+  transform: translateY(0);
   height: auto;
   width: auto;
 }
