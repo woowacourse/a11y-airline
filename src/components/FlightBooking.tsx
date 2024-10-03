@@ -17,7 +17,7 @@ const FlightBooking = () => {
   const incrementCount = useCallback(() => {
     if (adultCount === MAX_PASSENGERS) {
       setStatusMessage('최대 승객 수에 도달했습니다');
-      setTimeout(() => setStatusMessage(''), 500);
+      // setTimeout(() => setStatusMessage(''), 500);
       return;
     }
 
@@ -28,7 +28,7 @@ const FlightBooking = () => {
   const decrementCount = useCallback(() => {
     if (adultCount === MIN_PASSENGERS) {
       setStatusMessage('최소 1명의 승객이 필요합니다');
-      setTimeout(() => setStatusMessage(''), 500);
+      // setTimeout(() => setStatusMessage(''), 500);
       return;
     }
 
@@ -39,8 +39,8 @@ const FlightBooking = () => {
   return (
     <form className={styles.flightBooking}>
       <h2 className="heading-2-text">항공권 예매</h2>
-      <fieldset className={styles.passengerCount}>
-        <legend className={styles.passengerLabel}>
+      <div role="group" className={styles.passengerCount}>
+        <div className={styles.passengerLabel}>
           <span className="body-text">성인</span>
           <div
             className={styles.helpIconWrapper}
@@ -54,7 +54,7 @@ const FlightBooking = () => {
             />
             {showTooltip && <div className={styles.tooltip}>최대 3명까지 예약할 수 있습니다</div>}
           </div>
-        </legend>
+        </div>
         <div className={styles.counter}>
           <button
             type="button"
@@ -74,7 +74,7 @@ const FlightBooking = () => {
             <img src={plus} alt="" />
           </button>
         </div>
-      </fieldset>
+      </div>
       {statusMessage && (
         <div className="visually-hidden" role="alert">
           {statusMessage}
