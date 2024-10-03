@@ -7,7 +7,7 @@ const MAX_PASSENGERS = 3;
 const useAdultCount = () => {
   const [adultCount, setAdultCount] = useState(1);
   const [alertMessage, setAlertMessage] = useState('');
-  const { handleDebouncedMessage, messageForATUser } = useDebouncedATMessage(200);
+  const { handleDebouncedMessage, messageForATUser } = useDebouncedATMessage(500);
 
   const incrementCount = () => {
     if (adultCount + 1 > MAX_PASSENGERS) {
