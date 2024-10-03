@@ -3,7 +3,7 @@ import Navigation from './components/Navigation';
 import FlightBooking from './components/FlightBooking';
 import TravelSection from './components/TravelSection';
 import { useEffect } from 'react';
-import PromotionModal from './components/PromotionModal';
+// import PromotionModal from './components/PromotionModal';
 
 function App() {
   useEffect(() => {
@@ -11,8 +11,10 @@ function App() {
   }, []);
 
   return (
-    <div className={styles.app}>
-      <a href="#main-content" className={styles.skipLink} title="본문으로 바로가기" />
+    <div className={styles.app} aria-hidden="true">
+      <a href="#main-content" className={styles.skipLink}>
+        본문으로 바로가기
+      </a>
       <Navigation />
       <header className={styles.header}>
         <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>
@@ -33,7 +35,7 @@ function App() {
         <p className="body-text">&copy; A11Y AIRLINE</p>
       </footer>
       {/* 추가 CHALLENGE: 모달 포커스 트랩 */}
-      <PromotionModal />
+      {/* <PromotionModal /> */}
     </div>
   );
 }
