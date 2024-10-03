@@ -55,7 +55,7 @@ const FlightBooking = () => {
             onBlur={() => setShowTooltip(false)}
             aria-describedby="booking-desc"
           >
-            <img src={helpIcon} alt="" className={styles.helpIcon} />
+            <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
             {showTooltip && (
               <div id="booking-desc" className={styles.tooltip}>
                 최대 3명까지 예약할 수 있습니다.
