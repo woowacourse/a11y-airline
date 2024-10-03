@@ -39,19 +39,42 @@ const navItems: NavItem[] = [
 
 const Navigation = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [openSubMenuTitle, setOpenSubMenuTitle] = useState<string | null>(null);
 
   const toggleNav = () => {
     setIsNavOpen((prev) => !prev);
   };
 
+  const toggleSubMenu = (title: string) => {
+    setOpenSubMenuTitle((prev) => (prev === title ? null : title));
+  };
+
   const renderNavItems = (items: NavItem[]) => (
     <ul className={styles.navList}>
-      {items.map((item, index) => (
-        <li key={index} className={styles.navItem}>
-          <a href={item.link}>{item.title}</a>
-          {item.subItems && renderNavItems(item.subItems)}
-        </li>
-      ))}
+      {items.map((item) => {
+        const isSubMenuOpen = openSubMenuTitle === item.title;
+
+        return (
+          <li key={item.title} className={styles.navItem}>
+            {item.subItems ? (
+              <a
+                href={item.link}
+                role="button"
+                aria-expanded={isSubMenuOpen}
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleSubMenu(item.title);
+                }}
+              >
+                {item.title}
+              </a>
+            ) : (
+              <a href={item.link}>{item.title}</a>
+            )}
+            {item.subItems && isSubMenuOpen && renderNavItems(item.subItems)}
+          </li>
+        );
+      })}
     </ul>
   );
 
