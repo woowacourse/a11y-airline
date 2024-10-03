@@ -48,9 +48,9 @@ const getItemDetailMessage = (index: number) => {
   const targetItem = travelOptions[index];
   const { departure, destination, type, price } = targetItem;
 
-  const itemDetailMessageForATUser = `${departure}출발 ${destination}도착 ${type} 가격${price.toLocaleString(
+  const itemDetailMessageForATUser = `${departure}출발, ${destination}도착, ${type} 가격${price.toLocaleString(
     'ko-KR'
-  )}원 선택하면 예약 페이지로 이동합니다.`;
+  )}원, 선택하면 예약 페이지로 이동합니다.`;
   return itemDetailMessageForATUser;
 };
 
@@ -72,7 +72,6 @@ const TravelSection = () => {
   const itemSequenceMessageForATUser = `${travelOptions.length}개의 여행 상품 중 ${
     currentIndex + 1
   }번 째 상품`;
-  const itemDetailMessageForATUser = getItemDetailMessage(currentIndex);
 
   return (
     <div className={styles.travelSection}>
@@ -85,14 +84,14 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             // onClick과 같은 사용자와 상호작용을 하기 위한 태그는 div보다는 button이 적합.
             onClick={() => handleCardClick(option.link)}
-            aria-label={itemDetailMessageForATUser}
+            aria-label={getItemDetailMessage(index)}
           >
             <img src={option.image} className={styles.cardImage} />
             {/* 스크린리더가 아래 정보는 읽지 않을 수 있도록 aria-hidden 속성 사용. */}
             <div className={styles.cardContent} aria-hidden>
-              <p className={`${styles.c2ardTitle} heading-3-text`}>
+              <h3 className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
-              </p>
+              </h3>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
