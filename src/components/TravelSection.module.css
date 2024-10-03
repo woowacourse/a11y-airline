@@ -17,6 +17,7 @@
   display: none;
   width: 100%;
   height: 246px;
+  padding: 0;
 }
 
 .cardActive {
@@ -39,6 +40,11 @@
   bottom: 0;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 26%, rgba(255, 255, 255, 0) 100%);
   padding: 24px 16px;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
 }
 
 .cardTitle {
@@ -85,4 +91,16 @@
 .navButtonIcon {
   width: 24px;
   height: 24px;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
