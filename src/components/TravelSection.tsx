@@ -63,7 +63,7 @@ const TravelSection = () => {
   useEffect(() => {
     const currentOption = travelOptions[currentIndex];
     setAnnouncement(
-      `전체 ${travelOptions.length}개 중 ${currentIndex + 1}번째 항목: ${currentOption.departure}에서 ${currentOption.destination}까지 ${currentOption.type}, 가격 ${currentOption.price.toLocaleString()}원`
+      `전체 ${travelOptions.length}개 중 ${currentIndex + 1}번째 항목. ${currentOption.departure}에서 ${currentOption.destination}까지 ${currentOption.type}, 가격 ${currentOption.price.toLocaleString()}원`
     );
   }, [currentIndex]);
 
@@ -86,9 +86,6 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
             role="group"
-            aria-roledescription="slide"
-            aria-label={`${index + 1}번째 여행 옵션 링크로 이동`}
-            aria-hidden={index !== currentIndex}
           >
             <img src={option.image} className={styles.cardImage} alt="" />
             <div className={styles.cardContent} aria-hidden>

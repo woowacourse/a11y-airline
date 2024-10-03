@@ -18,16 +18,11 @@ function App() {
         </p>
       </header>
       <main id="main-content" className={styles.main} tabIndex={-1}>
-        <section className={styles.flightBooking} aria-labelledby="flight-booking-title">
-          <h2 id="flight-booking-title" className="visually-hidden">
-            항공권 예약
-          </h2>
+        <section className={styles.flightBooking}>
           <FlightBooking />
         </section>
-        <section className={styles.travelSection} aria-labelledby="travel-section-title">
-          <h2 id="travel-section-title" className={`${styles.travelTitle} heading-2-text`}>
-            지금 떠나기 좋은 여행
-          </h2>
+        <section className={styles.travelSection}>
+          <h2 className={`${styles.travelTitle} heading-2-text`}>지금 떠나기 좋은 여행</h2>
           <TravelSection />
         </section>
       </main>
