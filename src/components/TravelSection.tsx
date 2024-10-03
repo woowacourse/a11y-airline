@@ -55,17 +55,13 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div className={styles.travelSection}>
       <div aria-live="polite" className="visually-hidden">
         총 {travelOptions.length}개의 여행 상품이 있습니다.
       </div>
       <div role="status" className="visually-hidden">
-        현재 {currentIndex + 1}번 째 상품에 있습니다., {travelOptions[currentIndex].departure} 출발,{' '}
+        현재 {currentIndex + 1}번째 상품에 있습니다., {travelOptions[currentIndex].departure} 출발,{' '}
         {travelOptions[currentIndex].destination} 도착, 항공권 유형{' '}
         {travelOptions[currentIndex].type}, 가격{' '}
         {travelOptions[currentIndex].price.toLocaleString()}원
@@ -79,10 +75,12 @@ const TravelSection = () => {
       </button>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <button
+          <a
             key={index}
+            href={option.link}
+            rel="noopener noreferrer"
+            target="_blank"
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
             aria-label={`${option.departure} 출발, ${option.destination} 도착, 항공권 유형 ${
               option.type
             }, 가격 ${option.price.toLocaleString()}원, 선택하시면 예약 페이지로 이동합니다.`}
@@ -95,7 +93,7 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </button>
+          </a>
         ))}
       </div>
       <button
