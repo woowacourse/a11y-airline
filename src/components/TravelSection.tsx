@@ -89,7 +89,7 @@ const TravelSection = () => {
             <button
               onClick={() => handleCardClick(option.link)}
               className={styles.carouselCardButton}
-              aria-label={`${option.departure} 출발 ${option.destination} 도착 ${option.type} 가격 ${option.price}원 선택하면 예약 페이지로 이동합니다.`}
+              aria-label={`${option.departure} 출발 ${option.destination} 도착. ${option.type} 가격 ${option.price}원. 선택하면 예약 페이지로 이동합니다.`}
             >
               <img
                 src={option.image}
