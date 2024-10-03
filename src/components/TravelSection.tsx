@@ -82,6 +82,7 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
             aria-label={getCurrentDescription(option)}
+            aria-live="polite"
           >
             <img src={option.image} className={styles.cardImage} />
             <article className={styles.cardContent}>
