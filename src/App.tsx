@@ -4,7 +4,6 @@ import FlightBooking from './components/FlightBooking';
 import PromotionModal from './components/PromotionModal';
 import { useEffect, useRef, useState } from 'react';
 import TravelSection from './components/TravelSection';
-// import PromotionModal from './components/PromotionModal';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(true);
