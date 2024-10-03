@@ -4,7 +4,7 @@ interface Props {
   children: ReactElement;
   childRef: MutableRefObject<HTMLElement | null>;
 }
-
+const FOCUSABLE_CHILDREN_SELECTOR = 'a[href], button:not([disabled]), textarea, input, select';
 const FocusTrap = ({ children, childRef }: Props) => {
   const keyDownHandler: KeyboardEventHandler<HTMLElement> = (e) => {
     // 탭키 클릭시만 동작
@@ -14,9 +14,7 @@ const FocusTrap = ({ children, childRef }: Props) => {
     if (childRef.current == null) return;
 
     // 자식들을 모두 얻기위해 querySelectorAll 사용
-    const focusableModalElements = childRef.current.querySelectorAll(
-      'a[href], button:not([disabled]), textarea, input, select, [aria-*]'
-    );
+    const focusableModalElements = childRef.current.querySelectorAll(FOCUSABLE_CHILDREN_SELECTOR);
 
     const firstElement = focusableModalElements[0];
     const lastElement = focusableModalElements[focusableModalElements.length - 1];
@@ -36,9 +34,8 @@ const FocusTrap = ({ children, childRef }: Props) => {
 
   // 모달이 열리면 첫 번째 요소에 포커스
   useEffect(() => {
-    const firstElement = childRef.current?.querySelector(
-      'a[href], button:not([disabled]), textarea, input, select'
-    );
+    const firstElement = childRef.current?.querySelector(FOCUSABLE_CHILDREN_SELECTOR);
+    console.log(firstElement);
     (firstElement as HTMLElement)?.focus();
   }, [childRef]);
 

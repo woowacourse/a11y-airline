@@ -5,7 +5,6 @@ import TravelSection from './components/TravelSection';
 import PromotionModal from './components/PromotionModal';
 import { useRef } from 'react';
 import FocusTrap from './components/FocusTrap';
-// import PromotionModal from './components/PromotionModal';
 
 function App() {
   const modalRef = useRef<HTMLDivElement | null>(null);
