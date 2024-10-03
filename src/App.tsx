@@ -6,25 +6,13 @@ import { Helmet } from 'react-helmet';
 // import PromotionModal from './components/PromotionModal';
 
 function App() {
-  const skipToMain = () => {
-    const mainContent = document.getElementById('main-content');
-    if (mainContent) mainContent.focus();
-  };
-
   return (
     <>
       <Helmet>
         <title>A11Y AIRLINE - 안전하고 쾌적한 여행을 위한 항공사</title>
       </Helmet>
       <div className={styles.app}>
-        <a
-          href="#main-content"
-          className={styles.skipLink}
-          onClick={(e) => {
-            e.preventDefault();
-            skipToMain();
-          }}
-        >
+        <a href="#main-content" className={styles.skipLink}>
           본문으로 바로가기
         </a>
         <Navigation />
