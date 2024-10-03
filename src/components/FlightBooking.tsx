@@ -9,6 +9,9 @@ import styles from './FlightBooking.module.css';
 const MIN_PASSENGERS = 1;
 const MAX_PASSENGERS = 3;
 
+const MAX_PASSENGERS_ALERT_MESSAGE = '최대 승객 수에 도달했습니다';
+const MIN_PASSENGERS_ALERT_MESSAGE = '최소 1명의 승객이 필요합니다';
+
 const FlightBooking = () => {
   const [adultCount, setAdultCount] = useState(MIN_PASSENGERS);
   const [statusMessage, setStatusMessage] = useState('');
@@ -16,7 +19,7 @@ const FlightBooking = () => {
 
   const incrementCount = useCallback(() => {
     if (adultCount === MAX_PASSENGERS) {
-      setStatusMessage('최대 승객 수에 도달했습니다');
+      setStatusMessage(MAX_PASSENGERS_ALERT_MESSAGE);
       return;
     }
 
@@ -26,7 +29,7 @@ const FlightBooking = () => {
 
   const decrementCount = useCallback(() => {
     if (adultCount === MIN_PASSENGERS) {
-      setStatusMessage('최소 1명의 승객이 필요합니다');
+      setStatusMessage(MIN_PASSENGERS_ALERT_MESSAGE);
       return;
     }
 
@@ -53,8 +56,11 @@ const FlightBooking = () => {
           <button
             className="button-text"
             onClick={decrementCount}
-            aria-label="성인 승객 감소"
+            aria-label={`성인 승객 감소, ${
+              adultCount <= MIN_PASSENGERS && MIN_PASSENGERS_ALERT_MESSAGE
+            }`}
             aria-disabled={adultCount <= MIN_PASSENGERS}
+            disabled={adultCount <= MIN_PASSENGERS}
           >
             <img src={minus} alt="" />
           </button>
@@ -62,8 +68,11 @@ const FlightBooking = () => {
           <button
             className="button-text"
             onClick={incrementCount}
-            aria-label="성인 승객 증가"
+            aria-label={`성인 승객 증가, ${
+              adultCount >= MAX_PASSENGERS && MAX_PASSENGERS_ALERT_MESSAGE
+            }`}
             aria-disabled={adultCount >= MAX_PASSENGERS}
+            disabled={adultCount >= MAX_PASSENGERS}
           >
             <img src={plus} alt="" />
           </button>
