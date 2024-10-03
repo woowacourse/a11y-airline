@@ -36,16 +36,11 @@ const FlightBooking = () => {
             <img src={minus} alt="" />
           </button>
           {messageForATUser && (
-            <div
-              className="visually-hidden"
-              aria-live="polite"
-              aria-atomic="true"
-              aria-relevant="additions"
-            >
+            <div className="visually-hidden" aria-live="polite">
               <p>{messageForATUser}</p>
             </div>
           )}
-          <span aria-live="polite">{adultCount}</span>
+          <span>{adultCount}</span>
           <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
             <img src={plus} alt="" />
           </button>
