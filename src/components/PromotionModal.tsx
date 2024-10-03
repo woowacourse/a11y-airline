@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useEscapeKeyDown } from '../hooks/useEscapeKeyDown';
+import { useFocusControlWithRef } from '../hooks/useFocusControlWithRef';
 
 import close from '../assets/close.svg';
 
@@ -7,19 +8,21 @@ import styles from './PromotionModal.module.css';
 
 const PromotionModal = () => {
   const [isOpen, setIsOpen] = useState(true);
+  const modalRef = useRef<HTMLDivElement | null>(null);
 
   const closeModal = () => {
     setIsOpen(false);
   };
 
   useEscapeKeyDown(isOpen, closeModal);
+  useFocusControlWithRef(isOpen, modalRef);
 
   if (!isOpen) {
     return null;
   }
 
   return (
-    <div className={styles.modal} role="dialog" aria-modal="true" tabIndex={0}>
+    <div className={styles.modal} role="dialog" aria-modal="true" tabIndex={0} ref={modalRef}>
       <div className={styles.modalBackdrop} onClick={closeModal}></div>
       <div className={styles.modalContainer}>
         <div className={styles.modalContent}>
