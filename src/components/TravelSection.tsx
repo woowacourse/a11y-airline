@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import travelItem01 from '../assets/travel-item-01.png';
 import travelItem02 from '../assets/travel-item-02.png';
 import travelItem03 from '../assets/travel-item-03.png';
@@ -57,6 +57,11 @@ const TravelSection = () => {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
 
+  useEffect(() => {
+    const currentCard = document.getElementById(`travel-option-${currentIndex}`);
+    currentCard?.focus();
+  }, [currentIndex]);
+
   const getAriaLabel = (option: TravelOption): string => {
     return `세계 여행 상품 ${travelOptions.length}개 중 ${currentIndex + 1}번째 상품. 
             ${option.departure} 출발, ${option.destination} 도착. 
@@ -69,10 +74,11 @@ const TravelSection = () => {
   return (
     <div className={styles.travelSection}>
       <h2 className={`${styles.travelTitle} heading-2-text`}>지금 떠나기 좋은 여행</h2>
-      <ul className={styles.carousel} aria-live="polite" aria-atomic="true">
+      <ul className={styles.carousel} aria-atomic="true">
         {travelOptions.map((option, index) => (
           <li
             key={index}
+            id={`travel-option-${index}`}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
             tabIndex={index === currentIndex ? 0 : -1}
