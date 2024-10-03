@@ -45,10 +45,12 @@ const Navigation = () => {
   };
 
   const renderNavItems = (items: NavItem[]) => (
-    <ul className={styles.navList}>
+    <ul role="menu" className={styles.navList}>
       {items.map((item, index) => (
         <li key={index} className={styles.navItem}>
-          <a href={item.link}>{item.title}</a>
+          <a role="menuitem" href={item.link}>
+            {item.title}
+          </a>
           {item.subItems && renderNavItems(item.subItems)}
         </li>
       ))}
@@ -57,7 +59,12 @@ const Navigation = () => {
 
   return (
     <>
-      <button className={styles.navToggle} onClick={toggleNav}>
+      <button
+        className={styles.navToggle}
+        onClick={toggleNav}
+        aria-label={isNavOpen ? '메인 메뉴 닫기' : '메인 메뉴 열기'}
+        aria-expanded={isNavOpen}
+      >
         {isNavOpen ? '닫기' : '메뉴'}
       </button>
       <nav id="main-nav" className={`${styles.mainNav} ${isNavOpen ? styles.mainNavActive : ''}`}>
