@@ -23,6 +23,7 @@ const PromotionModal = () => {
 
   return (
     <div className={styles.modal} role="dialog" aria-modal="true" tabIndex={0} ref={modalRef}>
+      <p className="visually-hidden">프로모션 모달. 닫기 버튼으로 모달을 닫을 수 있습니다.</p>
       <div className={styles.modalBackdrop} onClick={closeModal}></div>
       <div className={styles.modalContainer}>
         <div className={styles.modalContent}>
