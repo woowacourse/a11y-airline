@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import travelItem01 from '../assets/travel-item-01.png';
 import travelItem02 from '../assets/travel-item-02.png';
@@ -46,6 +46,11 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const cardRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  useEffect(() => {
+    cardRefs.current[currentIndex]?.focus();
+  }, [currentIndex]);
 
   const nextTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
@@ -72,6 +77,7 @@ const TravelSection = () => {
         {travelOptions.map((option, index) => (
           <button
             key={index}
+            ref={(el) => (cardRefs.current[index] = el)}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
             tabIndex={index === currentIndex ? 0 : -1}
@@ -89,8 +95,8 @@ const TravelSection = () => {
               <p className={`${styles.cardPrice} body-text`} aria-label={`가격 ${option.price}원`}>
                 KRW {option.price.toLocaleString()}
               </p>
-              <p aria-label="선택하면 예약 페이지로 이동합니다."></p>
             </div>
+            <p aria-label="선택하면 예약 페이지로 이동합니다."></p>
           </button>
         ))}
       </div>
