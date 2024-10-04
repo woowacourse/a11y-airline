@@ -100,7 +100,7 @@ const TravelSection = () => {
               </p>
             </div>
 
-            <div role="status" aria-live="polite" className={styles.visuallyHidden}>
+            <div role="status" className={styles.visuallyHidden}>
               {option.departure}에서 {option.destination}까지 {option.type},{' '}
               {option.price.toLocaleString()}원
             </div>
