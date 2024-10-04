@@ -78,7 +78,7 @@ const TravelSection = () => {
         aria-label={`이미지 캐러셀의 총 개수는 ${travelOptions.length}개`}
       >
         {travelOptions.map((option, index) => (
-          <div
+          <button
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
@@ -104,7 +104,7 @@ const TravelSection = () => {
               {option.departure}에서 {option.destination}까지 {option.type},{' '}
               {option.price.toLocaleString()}원
             </div>
-          </div>
+          </button>
         ))}
       </div>
       <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
