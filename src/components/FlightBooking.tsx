@@ -34,6 +34,16 @@ const FlightBooking = () => {
     setStatusMessage('');
   }, [adultCount]);
 
+  const handleDecrementClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.preventDefault();
+    decrementCount();
+  };
+
+  const handleIncrementClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.preventDefault();
+    incrementCount();
+  };
+
   return (
     <section className={styles.flightBooking}>
       <h2 className="heading-2-text">항공권 예매</h2>
@@ -46,6 +56,7 @@ const FlightBooking = () => {
             onFocus={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
             onBlur={() => setShowTooltip(false)}
+            onClick={(event) => event.preventDefault()}
             aria-label={`최소 ${MIN_PASSENGERS}명, 최대 ${MAX_PASSENGERS}명까지 예약할 수 있습니다.`}
           >
             <img src={helpIcon} className={styles.helpIcon} aria-hidden="true" alt="" />
@@ -57,13 +68,21 @@ const FlightBooking = () => {
           </button>
         </div>
         <div className={styles.counter}>
-          <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
+          <button
+            className="button-text"
+            onClick={handleDecrementClick}
+            aria-label="성인 승객 감소"
+          >
             <img src={minus} alt="" />
           </button>
           <span aria-live="polite" aria-atomic="true">
             {adultCount}
           </span>
-          <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
+          <button
+            className="button-text"
+            onClick={handleIncrementClick}
+            aria-label="성인 승객 증가"
+          >
             <img src={plus} alt="" />
           </button>
         </div>

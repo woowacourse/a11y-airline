@@ -35,7 +35,7 @@ const travelOptions: TravelOption[] = [
     link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasView?pkgpnh=KP44129'
   },
   {
-    departure: '서울/인천',
+    departure: '서울/���천',
     destination: '로마',
     type: '일반석 왕복',
     price: 1415800,
@@ -57,17 +57,22 @@ const TravelSection = () => {
     }
   }, [currentIndex]);
 
-  const nextTravel = () => {
+  const nextTravel: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.preventDefault();
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
   };
 
-  const prevTravel = () => {
+  const prevTravel: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.preventDefault();
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
+  const handleCardClick =
+    (link: string): React.MouseEventHandler<HTMLButtonElement> =>
+    (event) => {
+      event.preventDefault();
+      window.open(link, '_blank', 'noopener,noreferrer');
+    };
 
   return (
     <section className={styles.travelSection} aria-live="polite">

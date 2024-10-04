@@ -8,8 +8,8 @@ import FocusTrap from './FocusTrap';
 const PromotionModal = () => {
   const [isOpen, setIsOpen] = useState(true);
 
-  const closeModal = (e: React.MouseEvent<HTMLButtonElement | HTMLDivElement>) => {
-    e.preventDefault();
+  const closeModal: React.MouseEventHandler<HTMLButtonElement | HTMLDivElement> = (event) => {
+    event.preventDefault();
     setIsOpen(false);
   };
 
