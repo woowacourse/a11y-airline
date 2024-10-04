@@ -5,6 +5,8 @@ import TravelSection from './components/TravelSection';
 import PromotionModal from './components/PromotionModal';
 
 function App() {
+  document.title = 'A11Y AIRLINE 메인 페이지'
+  
   return (
     <div className={styles.app} title="메인 페이지에서 항공편을 검색할 수 있습니다.">
       <a href="#main-content" className="skip">
