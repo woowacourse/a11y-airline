@@ -1,0 +1,45 @@
+.toastNotification {
+  position: fixed;
+  z-index: 9999;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  max-width: 400px;
+  width: 75%;
+  height: 40px;
+  padding: 8px 0;
+
+  background-color: #333;
+  color: white;
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  animation: fadeOutUp 0.5s forwards, fadeInDown 0.5s forwards 3s;
+  animation-delay: 0s, 3s;
+}
+
+@keyframes fadeOutUp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 100%);
+  }
+}
