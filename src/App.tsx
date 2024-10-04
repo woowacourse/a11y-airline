@@ -7,7 +7,7 @@ import PromotionModal from './components/PromotionModal';
 function App() {
   return (
     <div className={styles.app} title="메인 페이지에서 항공편을 검색할 수 있습니다.">
-      <a href="#main" className="skip">
+      <a href="#main-content" className="skip">
         본문으로 바로가기
       </a>
 
@@ -18,7 +18,7 @@ function App() {
           A11Y AIRLINE은 고객 여러분의 안전하고 쾌적한 여행을 위해 최선을 다하고 있습니다.
         </p>
       </header>
-      <main id="main-content" className={styles.main}>
+      <main id="main-content" className={styles.main} tabIndex={-1}>
         <section className={styles.flightBooking}>
           <FlightBooking />
         </section>
