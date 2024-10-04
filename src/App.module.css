@@ -1,0 +1,60 @@
+.app {
+  font-family: Arial, sans-serif;
+  max-width: 480px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+.header {
+  padding: 48px 24px 24px 24px;
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+.main {
+  flex: 1;
+}
+
+.flightBooking {
+  background-image: url('./assets/booking-bg.png');
+  padding: 26px 24px;
+}
+
+.travelSection {
+  background-color: rgb(246, 246, 246);
+}
+
+.travelTitle {
+  font-size: 18px;
+  padding: 24px;
+}
+
+.footer {
+  padding: 32px;
+  background-color: white;
+  text-align: center;
+}
+
+.skipButton {
+  position: absolute;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+}
+
+.skipButton:focus {
+  opacity: 1;
+}
+
+.skipButton:not(:focus) {
+  opacity: 0;
+}
