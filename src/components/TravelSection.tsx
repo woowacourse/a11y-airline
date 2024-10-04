@@ -55,35 +55,72 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
+  const currentTravelItem = travelOptions[currentIndex];
+  const isPrevDisabled = currentIndex === 0;
+  const isNextDisabled = currentIndex === travelOptions.length - 1;
 
   return (
-    <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+    <div className={styles.travelSection} tabIndex={-1}>
+      <div
+        aria-live="polite"
+        aria-label={`여행 상품 캐러셀 총 ${travelOptions.length}개의 여행 상품 중 ${
+          currentIndex + 1
+        }번째 상품을 확인 중`}
+        className={styles.srOnly}
+      />
+      <div
+        id="travel-description"
+        aria-live="polite"
+        className={styles.srOnly}
+        aria-label={`현재 ${currentIndex + 1}번째 여행 상품: ${currentTravelItem.departure}출발
+          ${currentTravelItem.destination}도착 ${currentTravelItem.type}항공권입니다. 가격은
+          ${currentTravelItem.price}원 입니다.`}
+      />
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev} ${
+          isPrevDisabled ? styles.disabled : ''
+        }`}
+        onClick={prevTravel}
+        disabled={isPrevDisabled}
+        aria-label="이전 여행 상품"
+        aria-disabled={isPrevDisabled}
+      >
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
+
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <div
+          <a
             key={index}
+            aria-hidden={currentIndex !== index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
+            aria-describedby="travel-description"
+            aria-label={`클릭하시면 항공권 구매 링크로 이동합니다.`}
+            href={option.link}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
+            <img aria-hidden src={option.image} className={styles.cardImage} alt="" />
+            <div aria-hidden className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
               </p>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+      <button
+        className={`${styles.navButton} ${styles.navButtonNext} ${
+          isNextDisabled ? styles.disabled : ''
+        }`}
+        onClick={nextTravel}
+        disabled={isNextDisabled}
+        aria-label="다음 여행 상품"
+        aria-disabled={isNextDisabled}
+      >
+        <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
     </div>
   );
