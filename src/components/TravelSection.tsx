@@ -35,7 +35,7 @@ const travelOptions: TravelOption[] = [
     link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasView?pkgpnh=KP44129'
   },
   {
-    departure: '서울/���천',
+    departure: '서울/인천',
     destination: '로마',
     type: '일반석 왕복',
     price: 1415800,
@@ -106,15 +106,11 @@ const TravelSection = () => {
               aria-hidden="true"
             />
             <div className={styles.cardContent} aria-hidden="true">
-              <p className={`${styles.cardTitle} heading-3-text`} aria-hidden="true">
+              <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
               </p>
-              <p className={`${styles.cardType} body-text`} aria-hidden="true">
-                {option.type}
-              </p>
-              <p className={`${styles.cardPrice} body-text`} aria-hidden="true">
-                KRW {option.price.toLocaleString()}
-              </p>
+              <p className={`${styles.cardType} body-text`}>{option.type}</p>
+              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
           </button>
         ))}
