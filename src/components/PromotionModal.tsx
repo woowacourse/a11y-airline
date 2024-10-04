@@ -88,7 +88,7 @@ const PromotionModal = () => {
             aria-label="앱 설치 안내 닫기"
             onClick={closeModal}
           >
-            <img src={close} />
+            <img src={close} alt="" />
           </button>
         </div>
       </div>

@@ -85,7 +85,7 @@ const TravelSection = () => {
         aria-label="이전 여행 상품"
         aria-disabled={isPrevDisabled}
       >
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
 
       <div className={styles.carousel}>
@@ -100,7 +100,7 @@ const TravelSection = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img aria-hidden src={option.image} className={styles.cardImage} />
+            <img aria-hidden src={option.image} className={styles.cardImage} alt="" />
             <div aria-hidden className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
@@ -120,7 +120,7 @@ const TravelSection = () => {
         aria-label="다음 여행 상품"
         aria-disabled={isNextDisabled}
       >
-        <img src={chevronRight} className={styles.navButtonIcon} />
+        <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
     </div>
   );
