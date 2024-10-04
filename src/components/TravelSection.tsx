@@ -82,7 +82,7 @@ const TravelSection = () => {
         aria-label="이전 여행"
         aria-controls="carousel"
       >
-        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
+        <img src={chevronLeft} className={styles.navButtonIcon} role="presentation" alt="" />
       </button>
       <div className={styles.carousel} id="carousel">
         {travelOptions.map((option, index) => (
@@ -121,7 +121,7 @@ const TravelSection = () => {
         aria-label="다음 여행"
         aria-controls="carousel"
       >
-        <img src={chevronRight} className={styles.navButtonIcon} alt="" />
+        <img src={chevronRight} className={styles.navButtonIcon} role="presentation" alt="" />
       </button>
     </section>
   );

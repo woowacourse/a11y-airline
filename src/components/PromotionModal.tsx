@@ -52,7 +52,7 @@ const PromotionModal = () => {
               onClick={closeModal}
               aria-label="창 닫기"
             >
-              <img src={close} alt="" />
+              <img src={close} role="presentation" alt="" />
             </button>
           </div>
         </div>
