@@ -40,12 +40,25 @@ const FlightBooking = () => {
       <div className={styles.passengerCount}>
         <div className={styles.passengerLabel}>
           <span className="body-text">성인</span>
-          <div
-            className={styles.helpIconWrapper}
-            onMouseEnter={() => setShowTooltip(true)}
-            onMouseLeave={() => setShowTooltip(false)}
-          >
-            <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
+          <div className={styles.helpIconWrapper}>
+            <button
+              className={styles.helpIconButton}
+              onFocus={() => setShowTooltip(true)}
+              onBlur={() => setShowTooltip(false)}
+              onMouseEnter={() => setShowTooltip(true)}
+              onMouseLeave={() => setShowTooltip(false)}
+              aria-describedby="passengerTooltip"
+            >
+              <img src={helpIcon} alt="승객 예약 도움말" className={styles.helpIcon} />
+            </button>
+            <span
+              id="passengerTooltip"
+              className="visually-hidden"
+              role="tooltip"
+              aria-hidden={!showTooltip}
+            >
+              최대 3명까지 예약할 수 있습니다
+            </span>
             {showTooltip && <div className={styles.tooltip}>최대 3명까지 예약할 수 있습니다</div>}
           </div>
         </div>
