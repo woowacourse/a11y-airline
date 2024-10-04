@@ -1,0 +1,67 @@
+.app {
+  font-family: Arial, sans-serif;
+  max-width: 480px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+.header {
+  padding: 48px 24px 24px 24px;
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+.main {
+  flex: 1;
+}
+
+.flightBooking {
+  background-image: url('./assets/booking-bg.png');
+  padding: 26px 24px;
+}
+
+.travelSection {
+  background-color: rgb(246, 246, 246);
+}
+
+.travelTitle {
+  font-size: 18px;
+  padding: 24px;
+}
+
+.footer {
+  padding: 32px;
+  background-color: white;
+  text-align: center;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0); /* 구형 브라우저 호환성을 위한 clip */
+  border: 0;
+  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+
+.skipLink {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  z-index: 100;
+}
+.skipLink:focus {
+  top: 0;
+}

@@ -1,0 +1,101 @@
+.travelSection {
+  position: relative;
+  padding-bottom: 32px;
+}
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  padding: 0 24px;
+}
+
+.card {
+  color: black;
+  position: relative;
+  border-radius: 4px;
+  border: 1px solid rgba(217, 217, 217, 0.5);
+  overflow: hidden;
+  display: none;
+  width: 100%;
+  height: 246px;
+}
+
+.cardActive {
+  display: block;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.cardContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 26%, rgba(255, 255, 255, 0) 100%);
+  padding: 24px 16px;
+}
+
+.cardTitle {
+  margin-bottom: 24px;
+}
+
+.cardType,
+.cardPrice {
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-bottom: 8px;
+}
+
+.navButton {
+  position: absolute;
+  top: 25%;
+  background-color: rgb(44, 44, 44);
+  color: black;
+  border: none;
+  width: 32px;
+  height: 64px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.navButtonPrev {
+  left: 0;
+  border-radius: 0 40px 40px 0;
+  padding-left: 15px;
+}
+
+.navButtonNext {
+  right: 0;
+  border-radius: 40px 0 0 40px;
+  padding-right: 15px;
+}
+
+.navButtonIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0); /* 구형 브라우저 호환성을 위한 clip */
+  border: 0;
+  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
