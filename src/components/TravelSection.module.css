@@ -39,6 +39,7 @@
   bottom: 0;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 26%, rgba(255, 255, 255, 0) 100%);
   padding: 24px 16px;
+  text-align: start;
 }
 
 .cardTitle {
