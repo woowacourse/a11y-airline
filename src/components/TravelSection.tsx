@@ -70,7 +70,7 @@ const TravelSection = () => {
   };
 
   return (
-    <div className={styles.travelSection} aria-live="polite">
+    <section className={styles.travelSection} aria-live="polite">
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
@@ -122,7 +122,7 @@ const TravelSection = () => {
       >
         <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
-    </div>
+    </section>
   );
 };
 
