@@ -39,7 +39,7 @@ const FlightBooking = () => {
       <h2 className="heading-2-text">항공권 예매</h2>
       <div className={styles.passengerCount}>
         <div className={styles.passengerLabel}>
-          <span className="body-text">성인</span>
+          <label htmlFor="adult-count" className="body-text">성인</label>
           <div
             className={styles.helpIconWrapper}
             onMouseEnter={() => setShowTooltip(true)}
