@@ -54,6 +54,22 @@
   padding-bottom: 8px;
 }
 
+.pageIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  min-width: 3.6rem;
+  height: 2rem;
+  padding: 0 .5rem;
+  border-radius: 1rem 0 0;
+  background-color: #0009;
+  color: #fff;
+  font-size: 1rem;
+}
+
 .navButton {
   position: absolute;
   top: 25%;

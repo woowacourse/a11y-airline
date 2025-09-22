@@ -61,7 +61,7 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
+      <button className={`${styles.navButton} ${styles.navButtonPrev}`} aria-label="이전" onClick={prevTravel}>
         <img src={chevronLeft} className={styles.navButtonIcon} alt="이전" />
       </button>
       <div className={styles.carousel}>
@@ -71,18 +71,27 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
           >
-            <img src={option.image} className={styles.cardImage} alt='배경 이미지' />
-            <div className={styles.cardContent}>
+            <img src={option.image} className={styles.cardImage} alt="" />
+            <div className={styles.cardContent} aria-live={index === currentIndex ? 'polite' : undefined}
+                 tabIndex={index === currentIndex? 0 : -1}
+            >
+              {index === currentIndex && (
+                <span className="visually-hidden">총 {travelOptions.length}개 목록 중 {index + 1}번째</span>
+              )}
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
               </p>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+              <span aria-hidden="true" className={styles.pageIndicator}>
+                <span className={styles.currentPage}>{index + 1}</span>
+                /{travelOptions.length}
+              </span>
             </div>
           </div>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
+      <button className={`${styles.navButton} ${styles.navButtonNext}`} aria-label="다음" onClick={nextTravel}>
         <img src={chevronRight} className={styles.navButtonIcon} alt="다음" />
       </button>
     </div>
