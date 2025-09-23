@@ -7,13 +7,14 @@ import TravelSection from './components/TravelSection';
 function App() {
   return (
     <div className={styles.app}>
+      <a href="#main-content" className="skip-to-content-link">Skip to content</a>
       <Navigation />
-      <div className={styles.header}>
+      <header className={styles.header}>
         <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>
         <p className="body-text">
           A11Y AIRLINE은 고객 여러분의 안전하고 쾌적한 여행을 위해 최선을 다하고 있습니다.
         </p>
-      </div>
+      </header>
       <main id="main-content" className={styles.main}>
         <section className={styles.flightBooking}>
           <FlightBooking />
