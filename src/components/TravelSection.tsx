@@ -55,23 +55,38 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
+  // const handleCardClick = (link: string) => {
+  //   window.open(link, '_blank', 'noopener,noreferrer');
+  // };
 
   return (
     <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label={`이전 여행 상품`}
+      >
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
       <div className={styles.carousel}>
+        <h3 className="visually-hidden" aria-live="polite">{`${currentIndex + 1}번째 상품: ${
+          travelOptions[currentIndex].departure
+        }에서 ${travelOptions[currentIndex].destination}까지, ${
+          travelOptions[currentIndex].type
+        }, 가격 ${travelOptions[currentIndex].price.toLocaleString()}원`}</h3>
         {travelOptions.map((option, index) => (
-          <div
+          <a
             key={index}
+            href={option.link}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
+            aria-label={`${option.departure}에서 ${option.destination}까지 ${option.type}, 링크로 이동합니다`}
+            role="article"
           >
-            <img src={option.image} className={styles.cardImage} />
+            <img
+              src={option.image}
+              className={styles.cardImage}
+              alt={`${option.departure}에서 ${option.destination}까지 ${option.type} 여행 상품`}
+            />
             <div className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
@@ -79,10 +94,14 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
+      <button
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+        aria-label={`다음 여행 상품`}
+      >
         <img src={chevronRight} className={styles.navButtonIcon} />
       </button>
     </div>
