@@ -19,7 +19,9 @@ function App() {
           <FlightBooking />
         </div>
         <div className={styles.travelSection} aria-label="여행 카드">
-          <h2 className={`${styles.travelTitle} heading-2-text`}>지금 떠나기 좋은 여행</h2>
+          <h2 className={`${styles.travelTitle} heading-2-text`} aria-label="지금 떠나기 좋은 여행">
+            지금 떠나기 좋은 여행
+          </h2>
           <TravelSection />
         </div>
       </main>
