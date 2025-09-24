@@ -55,10 +55,6 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  // const handleCardClick = (link: string) => {
-  //   window.open(link, '_blank', 'noopener,noreferrer');
-  // };
-
   return (
     <div className={styles.travelSection}>
       <button
@@ -80,7 +76,8 @@ const TravelSection = () => {
             href={option.link}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             aria-label={`${option.departure}에서 ${option.destination}까지 ${option.type}, 링크로 이동합니다`}
-            role="article"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <img
               src={option.image}
