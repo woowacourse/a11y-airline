@@ -71,6 +71,9 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
           >
+            <span className={styles.visuallyHidden}>{`세계 여행 상품 중 ${
+              index + 1
+            }번째 상품`}</span>
             <img src={option.image} className={styles.cardImage} />
             <div className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
