@@ -69,23 +69,30 @@ const TravelSection = () => {
         <img src={chevronLeft} alt="" className={styles.navButtonIcon} />
       </button>
       <div className={styles.carousel} role="region" aria-label="여행 상품 목록">
-        {travelOptions.map((option, index) => (
-          <button
-            key={index}
-            className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
-            aria-label={`${option.departure}에서 ${option.destination}행 항공편, ${option.type}, ${option.price.toLocaleString()}원`}
-          >
-            <img src={option.image} alt={`${option.destination} 여행 이미지`} className={styles.cardImage} />
-            <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
-                {option.departure} - {option.destination}
-              </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
-            </div>
-          </button>
-        ))}
+        <ul role="list">
+          {travelOptions.map((option, index) => (
+            <li key={index} role="listitem">
+              <button
+                className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
+                onClick={() => handleCardClick(option.link)}
+                aria-label={`${option.departure}에서 ${option.destination}행 항공편, ${option.type}, ${option.price.toLocaleString()}원`}
+              >
+                <img src={option.image} alt={`${option.destination} 여행 이미지`} className={styles.cardImage} />
+                <div className={styles.cardContent}>
+                  <h3 className={`${styles.cardTitle} heading-3-text`}>
+                    {option.departure} - {option.destination}
+                  </h3>
+                  <dl className={styles.cardDetails}>
+                    <dt className="visually-hidden">좌석 등급</dt>
+                    <dd className={`${styles.cardType} body-text`}>{option.type}</dd>
+                    <dt className="visually-hidden">가격</dt>
+                    <dd className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</dd>
+                  </dl>
+                </div>
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
       <button
         className={`${styles.navButton} ${styles.navButtonNext}`}

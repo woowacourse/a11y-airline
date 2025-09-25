@@ -44,12 +44,12 @@ const Navigation = () => {
     setIsNavOpen((prev) => !prev);
   };
 
-  const renderNavItems = (items: NavItem[]) => (
-    <ul className={styles.navList}>
+  const renderNavItems = (items: NavItem[], isSubMenu = false) => (
+    <ul className={styles.navList} role={isSubMenu ? "menu" : "menubar"}>
       {items.map((item, index) => (
-        <li key={index} className={styles.navItem}>
-          <a href={item.link}>{item.title}</a>
-          {item.subItems && renderNavItems(item.subItems)}
+        <li key={index} className={styles.navItem} role="none">
+          <a href={item.link} role="menuitem">{item.title}</a>
+          {item.subItems && renderNavItems(item.subItems, true)}
         </li>
       ))}
     </ul>
@@ -65,7 +65,7 @@ const Navigation = () => {
       >
         {isNavOpen ? '닫기' : '메뉴'}
       </button>
-      <nav id="main-nav" className={`${styles.mainNav} ${isNavOpen ? styles.mainNavActive : ''}`}>
+      <nav id="main-nav" className={`${styles.mainNav} ${isNavOpen ? styles.mainNavActive : ''}`} aria-label="주요 네비게이션">
         {renderNavItems(navItems)}
       </nav>
     </>

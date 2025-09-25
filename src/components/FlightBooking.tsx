@@ -35,45 +35,50 @@ const FlightBooking = () => {
   }, [adultCount]);
 
   return (
-    <div className={styles.flightBooking}>
+    <section className={styles.flightBooking}>
       <h2 className="heading-2-text">항공권 예매</h2>
-      <div className={styles.passengerCount}>
-        <div className={styles.passengerLabel}>
-          <span className="body-text">성인</span>
-          <button
-            className={styles.helpIconWrapper}
-            onMouseEnter={() => setShowTooltip(true)}
-            onMouseLeave={() => setShowTooltip(false)}
-            onFocus={() => setShowTooltip(true)}
-            onBlur={() => setShowTooltip(false)}
-            aria-label="성인 승객 정보"
-            aria-describedby={showTooltip ? 'passenger-help' : undefined}
-          >
-            <img src={helpIcon} alt="" className={styles.helpIcon} />
-            {showTooltip && (
-              <div id="passenger-help" className={styles.tooltip} role="tooltip">
-                최대 3명까지 예약할 수 있습니다
-              </div>
-            )}
-          </button>
-        </div>
-        <div className={styles.counter}>
-          <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
-            <img src={minus} alt="" />
-          </button>
-          <span aria-live="polite">{adultCount}</span>
-          <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
-            <img src={plus} alt="" />
-          </button>
-        </div>
-      </div>
-      {statusMessage && (
-        <div className="visually-hidden" role="alert">
-          {statusMessage}
-        </div>
-      )}
-      <button className={styles.searchButton}>항공편 검색</button>
-    </div>
+      <form>
+        <fieldset className={styles.passengerCount}>
+          <legend className="visually-hidden">승객 수 선택</legend>
+          <div className={styles.passengerLabel}>
+            <span className="body-text">성인</span>
+            <button
+              type="button"
+              className={styles.helpIconWrapper}
+              onMouseEnter={() => setShowTooltip(true)}
+              onMouseLeave={() => setShowTooltip(false)}
+              onFocus={() => setShowTooltip(true)}
+              onBlur={() => setShowTooltip(false)}
+              aria-label="성인 승객 정보"
+              aria-describedby={showTooltip ? 'passenger-help' : undefined}
+            >
+              <img src={helpIcon} alt="" className={styles.helpIcon} />
+              {showTooltip && (
+                <div id="passenger-help" className={styles.tooltip} role="tooltip">
+                  최대 3명까지 예약할 수 있습니다
+                </div>
+              )}
+            </button>
+          </div>
+          <div className={styles.counter} role="group" aria-labelledby="passenger-label">
+            <span id="passenger-label" className="visually-hidden">성인 승객 수</span>
+            <button type="button" className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
+              <img src={minus} alt="" />
+            </button>
+            <output aria-live="polite">{adultCount}</output>
+            <button type="button" className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
+              <img src={plus} alt="" />
+            </button>
+          </div>
+        </fieldset>
+        {statusMessage && (
+          <div className="visually-hidden" role="alert">
+            {statusMessage}
+          </div>
+        )}
+        <button type="submit" className={styles.searchButton}>항공편 검색</button>
+      </form>
+    </section>
   );
 };
 
