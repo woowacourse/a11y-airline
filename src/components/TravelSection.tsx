@@ -76,7 +76,7 @@ const TravelSection = () => {
             onClick={() => handleCardClick(option.link)}
             role="button"
             tabIndex={0}
-            aria-labelledby="선택하면 예약페이지로 이동합니다."
+            aria-labelledby={`${styles.cardTitle} ${option.type} ${styles.cardPrice}`}
             aria-describedby={`${styles.srOnly}`}
           >
             <img src={option.image} className={styles.cardImage} alt="" />
