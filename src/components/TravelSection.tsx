@@ -85,12 +85,38 @@ const TravelSection = () => {
           </div>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 슬라이드"
+      >
+        <img
+          src={chevronLeft}
+          alt="이전 이동"
+          aria-hidden="true"
+          className={styles.navButtonIcon}
+        />
       </button>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+      <button
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+        aria-label="다음 슬라이드"
+      >
+        <img
+          src={chevronRight}
+          alt="다음 이동"
+          aria-hidden="true"
+          className={styles.navButtonIcon}
+        />
       </button>
+
+      <div aria-live="polite" aria-atomic="true" className={styles.visuallyHidden}>
+        {`${travelOptions[currentIndex].departure}에서 ${
+          travelOptions[currentIndex].destination
+        } 가는 ${travelOptions[currentIndex].type}, 가격 ${travelOptions[
+          currentIndex
+        ].price.toLocaleString()}원`}
+      </div>
     </div>
   );
 };
