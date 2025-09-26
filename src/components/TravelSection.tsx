@@ -64,15 +64,20 @@ const TravelSection = () => {
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
-      <div className={styles.carousel}>
+      <div className={styles.carousel} role="group" aria-label="세계의 여행 상품">
         {travelOptions.map((option, index) => (
           <div
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
+            role="button"
+            tabIndex={0}
+            aria-label={`${option.departure}출발 ${option.destination}도착 ${
+              option.type
+            } 가격${option.price.toLocaleString()}원 선택하면 예약페이지로 이동합니다.`}
           >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
+            <img src={option.image} className={styles.cardImage} alt="" />
+            <div className={styles.cardContent} aria-hidden="true">
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
               </p>
