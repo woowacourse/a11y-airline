@@ -61,10 +61,13 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
-      </button>
-      <div className={styles.carousel}>
+      <div
+        className={styles.carousel}
+        role="region"
+        aria-roledescription="케러셀로 이동 가능"
+        aria-label={`여행 프로모션, 총 ${travelOptions.length}개`}
+        tabIndex={0}
+      >
         {travelOptions.map((option, index) => (
           <div
             key={index}
@@ -82,6 +85,9 @@ const TravelSection = () => {
           </div>
         ))}
       </div>
+      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
+        <img src={chevronLeft} className={styles.navButtonIcon} />
+      </button>
       <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
         <img src={chevronRight} className={styles.navButtonIcon} />
       </button>
