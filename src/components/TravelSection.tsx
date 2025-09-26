@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 import travelItem01 from '../assets/travel-item-01.png';
 import travelItem02 from '../assets/travel-item-02.png';
@@ -62,7 +61,7 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <div className={styles.carousel}>
+      <div className={styles.carousel} aria-live="polite">
         {travelOptions.map((option, index) => (
           <button
             key={index}
@@ -74,9 +73,6 @@ const TravelSection = () => {
               option.type
             }, 가격 ${option.price.toLocaleString()} 원. 선택하면 예약 페이지로 이동합니다.`}
           >
-            <VisuallyHidden>{`${travelOptions.length}의 여행 상품 중 ${
-              index + 1
-            }번째 상품`}</VisuallyHidden>
             <img src={option.image} className={styles.cardImage} />
             <div className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
