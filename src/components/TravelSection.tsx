@@ -61,7 +61,11 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        type="button"
+        onClick={prevTravel}
+      >
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
       <div className={styles.carousel} role="group" aria-label="세계의 여행 상품">
@@ -72,17 +76,28 @@ const TravelSection = () => {
             onClick={() => handleCardClick(option.link)}
             role="button"
             tabIndex={0}
-            aria-label={`${option.departure}출발 ${option.destination}도착 ${
-              option.type
-            } 가격${option.price.toLocaleString()}원 선택하면 예약페이지로 이동합니다.`}
+            aria-labelledby="선택하면 예약페이지로 이동합니다."
+            aria-describedby={`${styles.srOnly}`}
           >
             <img src={option.image} className={styles.cardImage} alt="" />
-            <div className={styles.cardContent} aria-hidden="true">
-              <p className={`${styles.cardTitle} heading-3-text`}>
+            <div className={styles.cardContent}>
+              <p
+                className={`${styles.cardTitle} heading-3-text`}
+                aria-label={`${option.departure}출발 ${option.destination}도착`}
+              >
                 {option.departure} - {option.destination}
               </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+              <p className={`${styles.cardType} body-text`} aria-label={`${option.type}`}>
+                {option.type}
+              </p>
+              <p
+                className={`${styles.cardPrice} body-text`}
+                aria-label={`가격${option.price.toLocaleString()}원`}
+              >
+                KRW {option.price.toLocaleString()}
+              </p>
+
+              <span className={styles.srOnly}>선택하면 예약페이지로 이동합니다.</span>
             </div>
           </div>
         ))}
