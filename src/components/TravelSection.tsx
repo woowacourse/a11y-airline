@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 import travelItem01 from '../assets/travel-item-01.png';
 import travelItem02 from '../assets/travel-item-02.png';
@@ -71,9 +72,9 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
           >
-            <span className={styles.visuallyHidden}>{`세계 여행 상품 중 ${
+            <VisuallyHidden>{`${travelOptions.length}의 여행 상품 중 ${
               index + 1
-            }번째 상품`}</span>
+            }번째 상품`}</VisuallyHidden>
             <img src={option.image} className={styles.cardImage} />
             <div className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
