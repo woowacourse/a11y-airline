@@ -61,28 +61,35 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <div
-        className={styles.carousel}
-        role="region"
-        aria-roledescription="케러셀로 이동 가능"
-        aria-label={`여행 프로모션, 총 ${travelOptions.length}개`}
-        tabIndex={0}
-      >
+      <div className={styles.carousel}>
+        {/* 안내 전용 포커스 가능한 요소 */}
+        <div
+          tabIndex={0}
+          className={styles.visuallyHidden}
+          role="region"
+          aria-roledescription="케러셀로 이동 가능"
+        >
+          여행 프로모션, 총 {travelOptions.length}개
+        </div>
         {travelOptions.map((option, index) => (
-          <div
+          <button
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
+            aria-roledescription="클릭시 해당 페이지로 이동"
+            aria-label={`${option.departure}에서 ${option.destination} 가는 ${
+              option.type
+            }, 가격 ${option.price.toLocaleString()}원`}
           >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
+            <img src={option.image} className={styles.cardImage} aria-hidden="true" />
+            <div className={styles.cardContent} aria-hidden="true">
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
               </p>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </button>
         ))}
       </div>
       <button
@@ -110,12 +117,12 @@ const TravelSection = () => {
         />
       </button>
 
-      <div aria-live="polite" aria-atomic="true" className={styles.visuallyHidden}>
+      <div aria-live="assertive" aria-atomic="true" className={styles.visuallyHidden}>
         {`${travelOptions[currentIndex].departure}에서 ${
           travelOptions[currentIndex].destination
         } 가는 ${travelOptions[currentIndex].type}, 가격 ${travelOptions[
           currentIndex
-        ].price.toLocaleString()}원`}
+        ].price.toLocaleString()}원, 링크로 들어가시려면 Shift+Tab 2번 하고 클릭하세요`}
       </div>
     </div>
   );
