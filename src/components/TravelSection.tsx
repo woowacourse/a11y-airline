@@ -62,7 +62,7 @@ const TravelSection = () => {
         onClick={prevTravel}
         aria-label={`이전 여행 상품`}
       >
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
       <div className={styles.carousel}>
         <h3 className="visually-hidden" aria-live="polite">{`${currentIndex + 1}번째 상품: ${
@@ -99,7 +99,7 @@ const TravelSection = () => {
         onClick={nextTravel}
         aria-label={`다음 여행 상품`}
       >
-        <img src={chevronRight} className={styles.navButtonIcon} />
+        <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
     </div>
   );
