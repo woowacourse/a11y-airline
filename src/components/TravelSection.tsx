@@ -56,14 +56,15 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <section className={styles.travelSection}>
       <span className="visually-hidden" aria-live="polite" aria-atomic="true">
-        {count}
+        {`${count}.
+        ${travelOptions[currentIndex].departure} 출발
+        ${travelOptions[currentIndex].destination} 도착.
+        ${travelOptions[currentIndex].type}.
+        가격 ${travelOptions[currentIndex].price.toLocaleString()}원.
+        `}
       </span>
       <button
         aria-label="이전 여행 상품"
