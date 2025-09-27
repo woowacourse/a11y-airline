@@ -59,12 +59,19 @@ const TravelSection = () => {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
 
+  const getCurrentItemDescription = (option: TravelOption, index: number) => {
+    return `세계의 여행 상품 총 ${travelOptions.length}개 중 ${index + 1}번째 상품. ${
+      option.departure
+    } 출발. ${option.destination} 도착. ${option.type}. 가격 ${option.price.toLocaleString()}원.`;
+  };
+
   return (
     <section className={styles.travelSection}>
+      <div aria-live="polite" aria-atomic="true" className={styles.srOnly}>
+        {getCurrentItemDescription(travelOptions[currentIndex], currentIndex)}
+      </div>
+
       <div className={styles.carousel}>
-        <div aria-live="polite" aria-atomic="true" className={styles.srOnly}>
-          세계의 여행 상품 총 {travelOptions.length}개 중 {currentIndex + 1}번째 상품
-        </div>
         {travelOptions.map((option, index) => (
           <div
             key={index}
@@ -73,7 +80,6 @@ const TravelSection = () => {
             role="button"
             tabIndex={0}
             aria-labelledby={`card-title-${index} card-type-${index} card-price-${index}`}
-            aria-describedby={`${styles.srOnly}`}
           >
             <img src={option.image} className={styles.cardImage} alt="" />
             <div className={styles.cardContent}>
