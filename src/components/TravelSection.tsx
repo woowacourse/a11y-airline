@@ -83,16 +83,16 @@ const TravelSection = () => {
             <div className={styles.cardContent}>
               <p
                 className={`${styles.cardTitle} heading-3-text`}
-                aria-label={`${option.departure}출발 ${option.destination}도착`}
+                aria-label={`${option.departure} 출발. ${option.destination} 도착.`}
               >
                 {option.departure} - {option.destination}
               </p>
-              <p className={`${styles.cardType} body-text`} aria-label={`${option.type}`}>
+              <p className={`${styles.cardType} body-text`} aria-label={`${option.type}.`}>
                 {option.type}
               </p>
               <p
                 className={`${styles.cardPrice} body-text`}
-                aria-label={`가격${option.price.toLocaleString()}원`}
+                aria-label={`가격 ${option.price.toLocaleString()}원.`}
               >
                 KRW {option.price.toLocaleString()}
               </p>
