@@ -2,7 +2,7 @@ import styles from './App.module.css';
 import Navigation from './components/Navigation';
 import FlightBooking from './components/FlightBooking';
 import TravelSection from './components/TravelSection';
-// import PromotionModal from './components/PromotionModal';
+import PromotionModal from './components/PromotionModal';
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
       <footer>
         <p className="body-text">&copy; A11Y AIRLINE</p>
       </footer>
-      {/* <PromotionModal /> */}
+      <PromotionModal />
     </div>
   );
 }
