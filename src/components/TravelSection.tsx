@@ -72,22 +72,28 @@ const TravelSection = () => {
             onClick={() => handleCardClick(option.link)}
             role="button"
             tabIndex={0}
-            aria-labelledby={`${styles.cardTitle} ${option.type} ${styles.cardPrice}`}
+            aria-labelledby={`card-title-${index} card-type-${index} card-price-${index}`}
             aria-describedby={`${styles.srOnly}`}
           >
             <img src={option.image} className={styles.cardImage} alt="" />
             <div className={styles.cardContent}>
               <p
                 className={`${styles.cardTitle} heading-3-text`}
+                id={`card-title-${index}`}
                 aria-label={`${option.departure} 출발. ${option.destination} 도착.`}
               >
                 {option.departure} - {option.destination}
               </p>
-              <p className={`${styles.cardType} body-text`} aria-label={`${option.type}.`}>
+              <p
+                className={`${styles.cardType} body-text`}
+                id={`card-type-${index}`}
+                aria-label={`${option.type}.`}
+              >
                 {option.type}
               </p>
               <p
                 className={`${styles.cardPrice} body-text`}
+                id={`card-price-${index}`}
                 aria-label={`가격 ${option.price.toLocaleString()}원.`}
               >
                 KRW {option.price.toLocaleString()}
