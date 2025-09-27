@@ -28,4 +28,4 @@
 
   - [x] 헤딩을 논리적인 순서로 사용해 페이지 구조를 명확히 해주세요
 
-  - [] 키보드 사용자를 위해 페이지 최상단에 '본문으로 바로가기' 링크를 제공해 반복되는 메뉴를 건너뛸 수 있게 해주세요 (a.k.a. skip link / skip navigation. cf. github.com)
+  - [x] 키보드 사용자를 위해 페이지 최상단에 '본문으로 바로가기' 링크를 제공해 반복되는 메뉴를 건너뛸 수 있게 해주세요 (a.k.a. skip link / skip navigation. cf. github.com)
