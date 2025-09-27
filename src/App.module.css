@@ -9,7 +9,7 @@
   margin: 0 auto;
 }
 
-.header {
+header {
   padding: 48px 24px 24px 24px;
 }
 
@@ -17,7 +17,7 @@
   margin-bottom: 16px;
 }
 
-.main {
+main {
   flex: 1;
 }
 
@@ -35,7 +35,7 @@
   padding: 24px;
 }
 
-.footer {
+footer {
   padding: 32px;
   background-color: white;
   text-align: center;
