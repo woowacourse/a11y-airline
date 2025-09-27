@@ -49,7 +49,7 @@ const FlightBooking = () => {
               src={helpIcon}
               alt="도움말"
               className={styles.helpIcon}
-              aria-label="도움말, 최대 3명까지 예약할 수 있습니다"
+              aria-label="최대 3명까지 예약할 수 있습니다"
             />
             {showTooltip && <div className={styles.tooltip}>최대 3명까지 예약할 수 있습니다</div>}
           </div>
