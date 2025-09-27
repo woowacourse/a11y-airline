@@ -57,7 +57,7 @@ const TravelSection = () => {
   };
 
   return (
-    <section className={styles.travelSection}>
+    <div className={styles.travelSection}>
       <span className="visually-hidden" aria-live="polite" aria-atomic="true">
         {`${count}.
         ${travelOptions[currentIndex].departure} 출발
@@ -106,7 +106,7 @@ const TravelSection = () => {
       >
         <img src={chevronRight} alt="" className={styles.navButtonIcon} />
       </button>
-    </section>
+    </div>
   );
 };
 
