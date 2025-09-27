@@ -61,13 +61,6 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <div
-        aria-live="polite"
-        aria-atomic="true"
-        className="sr-only"
-      >
-        현재 {currentIndex + 1}번째 상품: {travelOptions[currentIndex].departure}에서 {travelOptions[currentIndex].destination}행, {travelOptions[currentIndex].type}, 가격 {travelOptions[currentIndex].price.toLocaleString()}원
-      </div>
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
@@ -78,14 +71,20 @@ const TravelSection = () => {
       <div
         className={styles.carousel}
         role="region"
-        aria-label={`여행 상품 캐로셀, 총 ${travelOptions.length}개 상품`}
+        aria-label={`여행 상품 캐로셀, 총 ${travelOptions.length}개 상품. 현재 ${
+          currentIndex + 1
+        }번째 상품: ${travelOptions[currentIndex].departure} - ${
+          travelOptions[currentIndex].destination
+        } ${travelOptions[currentIndex].price.toLocaleString()}원`}
       >
         {travelOptions.map((option, index) => (
           <div
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
-            aria-label={`${option.departure}에서 ${option.destination}행, ${option.type}, 가격 ${option.price.toLocaleString()}원 - 예약 페이지로 이동`}
+            aria-label={`${option.departure}에서 ${option.destination}행, ${
+              option.type
+            }, 가격 ${option.price.toLocaleString()}원 - 예약 페이지로 이동`}
             role="button"
             tabIndex={0}
             onKeyDown={(e) => {
@@ -95,7 +94,11 @@ const TravelSection = () => {
               }
             }}
           >
-            <img src={option.image} className={styles.cardImage} alt={`${option.destination} 여행 이미지`} />
+            <img
+              src={option.image}
+              className={styles.cardImage}
+              alt={`${option.destination} 여행 이미지`}
+            />
             <div className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
