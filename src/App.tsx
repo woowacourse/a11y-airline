@@ -7,6 +7,10 @@ import TravelSection from './components/TravelSection';
 function App() {
   return (
     <div className={styles.app}>
+      <a href="#main-content" className={styles.skipLink}>
+        본문으로 바로가기
+      </a>
+
       <Navigation />
       <header>
         <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>
@@ -26,7 +30,6 @@ function App() {
       <footer>
         <p className="body-text">&copy; A11Y AIRLINE</p>
       </footer>
-      {/* 추가 CHALLENGE: 모달 포커스 트랩 */}
       {/* <PromotionModal /> */}
     </div>
   );
