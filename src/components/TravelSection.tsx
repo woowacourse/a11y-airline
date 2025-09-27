@@ -66,7 +66,7 @@ const TravelSection = () => {
   };
 
   return (
-    <section className={styles.travelSection}>
+    <div className={styles.travelSection}>
       <div aria-live="polite" aria-atomic="true" className={styles.srOnly}>
         {getCurrentItemDescription(travelOptions[currentIndex], currentIndex)}
       </div>
@@ -120,7 +120,7 @@ const TravelSection = () => {
       <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
         <img src={chevronRight} alt="다음 여행 상품" className={styles.navButtonIcon} />
       </button>
-    </section>
+    </div>
   );
 };
 
