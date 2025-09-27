@@ -1,5 +1,17 @@
+:root {
+  --nav-bg: #f8f8f8;
+  --link-fg: #333333;
+  --hover-bg: #e0e0e0;
+  --submenu-bg: #ffffff;
+  --submenu-border: #dddddd;
+  --submenu-hover-bg: #f0f0f0;
+  --toggle-bg: #333333;
+  --toggle-fg: #ffffff;
+
+  --focus-ring: #1a73e8;
+}
 .mainNav {
-  background-color: #f8f8f8;
+  background-color: var(--nav-bg);
   padding: 10px 0;
 }
 
@@ -17,15 +29,15 @@
 
 .navItem a {
   text-decoration: none;
-  color: #333;
+  color: var(--link-fg);
   font-size: 16px;
-  padding: 5px 10px;
+  padding: 22px 24px;
   display: block;
 }
 
 .navItem a:hover,
 .navItem a:focus {
-  background-color: #e0e0e0;
+  background-color: var(--hover-bg);
   border-radius: 4px;
 }
 
@@ -34,9 +46,12 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  z-index: 1000;
+  margin-top: 10px;
+  background-color: var(--submenu-bg);
+  border: 1px solid var(--submenu-border);
+  border-radius: 12px;
+
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -57,18 +72,24 @@
 
 .navItem .navList .navItem a:hover,
 .navItem .navList .navItem a:focus {
-  background-color: #f0f0f0;
+  background-color: var(--submenu-hover-bg);
 }
 
 .navToggle {
   display: none;
   font-size: 16px;
   padding: 10px;
-  background-color: #333;
-  color: white;
+  background-color: var(--toggle-bg);
+  color: var(--toggle-fg);
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+.navItem a:focus-visible,
+.navToggle:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
 @media (max-width: 768px) {
