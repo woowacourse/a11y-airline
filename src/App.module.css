@@ -9,6 +9,20 @@
   margin: 0 auto;
 }
 
+.skipLink {
+  position: absolute;
+  left: -9999px;
+}
+
+.skipLink:focus {
+  left: 0;
+  top: 0;
+  background: black;
+  color: white;
+  padding: 8px;
+  z-index: 1000;
+}
+
 .header {
   padding: 48px 24px 24px 24px;
 }
