@@ -68,7 +68,7 @@ const TravelSection = () => {
       >
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
-      <div className={styles.carousel} role="group" aria-label="세계의 여행 상품">
+      <div className={styles.carousel} aria-label="세계의 여행 상품">
         {travelOptions.map((option, index) => (
           <div
             key={index}
