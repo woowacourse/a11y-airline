@@ -46,6 +46,7 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const count = `${travelOptions.length} 개의 여행 상품 중 ${currentIndex + 1}번 째 상품`;
 
   const nextTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
@@ -61,6 +62,9 @@ const TravelSection = () => {
 
   return (
     <section className={styles.travelSection}>
+      <span className="visually-hidden" aria-live="polite" aria-atomic="true">
+        {count}
+      </span>
       <button
         aria-label="이전 여행 상품"
         className={`${styles.navButton} ${styles.navButtonPrev}`}
