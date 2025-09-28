@@ -64,6 +64,9 @@ const TravelSection = () => {
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
+      <span className="visually-hidden" role="status">
+        {`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품`}
+      </span>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <div
