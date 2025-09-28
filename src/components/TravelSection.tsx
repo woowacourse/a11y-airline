@@ -85,6 +85,12 @@ const TravelSection = () => {
               aria-hidden={isActive ? 'false' : 'true'}
               tabIndex={isActive ? 0 : -1}
               onClick={() => handleCardClick(option.link)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  handleCardClick(option.link);
+                }
+              }}
             >
               <img src={option.image} className={styles.cardImage} alt="" aria-hidden="true" />
               <div className={styles.cardContent}>
