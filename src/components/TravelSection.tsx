@@ -70,10 +70,9 @@ const TravelSection = () => {
           <div
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
+            aria-live="polite"
           >
-            <span aria-live="polite" className="visually-hidden">
-              {option.carouselItemLabel}
-            </span>
+            <span className="visually-hidden">{option.carouselItemLabel}</span>
             <button
               type="button"
               onClick={() => handleCardClick(option.link)}
