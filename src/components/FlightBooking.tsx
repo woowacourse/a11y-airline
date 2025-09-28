@@ -47,7 +47,7 @@ const FlightBooking = () => {
           >
             <img
               src={helpIcon}
-              alt="도움말"
+              alt="도움말 아이콘"
               className={styles.helpIcon}
               aria-label="최대 3명까지 예약할 수 있습니다"
             />
@@ -56,11 +56,11 @@ const FlightBooking = () => {
         </div>
         <div className={styles.counter}>
           <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
-            <img src={minus} />
+            <img src={minus} alt="마이너스 아이콘" />
           </button>
           <span aria-live="polite">{adultCount}</span>
           <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
-            <img src={plus} />
+            <img src={plus} alt="플러스 아이콘" />
           </button>
         </div>
       </div>
