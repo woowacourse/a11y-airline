@@ -102,6 +102,7 @@ const TravelSection = () => {
         type="button"
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
+        aria-label="이전 여행 상품"
       >
         <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
@@ -109,6 +110,7 @@ const TravelSection = () => {
         type="button"
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={nextTravel}
+        aria-label="다음 여행 상품"
       >
         <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
