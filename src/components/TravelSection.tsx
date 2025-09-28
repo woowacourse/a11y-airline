@@ -61,9 +61,18 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label={`이전 여행 상품으로 이동. 현재 ${currentIndex + 1}번째 상품: ${
+          travelOptions[currentIndex].departure
+        }에서 ${travelOptions[currentIndex].destination}으로 가는 ${
+          travelOptions[currentIndex].type
+        }`}
+      >
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
+
       <div
         className={styles.carousel}
         role="region"
@@ -96,8 +105,17 @@ const TravelSection = () => {
           </div>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+
+      <button
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+        aria-label={`다음 여행 상품으로 이동. 현재 ${currentIndex + 1}번째 상품: ${
+          travelOptions[currentIndex].departure
+        }에서 ${travelOptions[currentIndex].destination}으로 가는 ${
+          travelOptions[currentIndex].type
+        }`}
+      >
+        <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
     </div>
   );
