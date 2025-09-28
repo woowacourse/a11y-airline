@@ -28,7 +28,7 @@ export const useFocusTrap = (active = true): RefCallback<HTMLElement | null> => 
       return;
     }
 
-    setTimeout(() => ref.current && focusNode(ref.current), 100);
+    setTimeout(() => ref.current && focusNode(ref.current), 300);
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Tab' && ref.current) {
@@ -54,7 +54,7 @@ export const useFocusTrap = (active = true): RefCallback<HTMLElement | null> => 
         if (node.getRootNode()) {
           focusNode(node);
         }
-      }, 100);
+      }, 300);
 
       ref.current = node;
     },
