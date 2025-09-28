@@ -14,7 +14,6 @@ function App() {
       <a href="#main-content" className="skip-link">
         본문으로 바로가기
       </a>
-
       <div className={styles.app}>
         <header className={styles.header}>
           <nav aria-label="주요 메뉴">
@@ -27,6 +26,7 @@ function App() {
         </header>
         <main id="main-content" className={styles.main}>
           <section className={styles.flightBooking} aria-labelledby="booking-heading">
+            <h2 id="booking-heading">항공권 예매</h2>
             <FlightBooking />
           </section>
           <section className={styles.travelSection} aria-labelledby="travel-heading">
