@@ -15,7 +15,6 @@ interface TravelOption {
   price: number;
   image: string;
   link: string;
-  carouselItemLabel: string;
 }
 
 const travelOptions: TravelOption[] = [
@@ -25,8 +24,7 @@ const travelOptions: TravelOption[] = [
     type: '일반석 왕복',
     price: 1121600,
     image: travelItem01,
-    link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasList?TOURTYP=KALPAK&PKGBRA=KP&PKGARE=E5&REGNB1=%uC720%uB7FD&REGNB2=%uC911%uB3D9&REGTOP=1',
-    carouselItemLabel: '3개의 여행 상품 중 첫 번째 상품'
+    link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasList?TOURTYP=KALPAK&PKGBRA=KP&PKGARE=E5&REGNB1=%uC720%uB7FD&REGNB2=%uC911%uB3D9&REGTOP=1'
   },
   {
     departure: '서울/인천',
@@ -34,8 +32,7 @@ const travelOptions: TravelOption[] = [
     type: '일반석 왕복',
     price: 1515200,
     image: travelItem02,
-    link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasView?pkgpnh=KP44129',
-    carouselItemLabel: '3개의 여행 상품 중 두 번째 상품'
+    link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasView?pkgpnh=KP44129'
   },
   {
     departure: '서울/인천',
@@ -43,8 +40,7 @@ const travelOptions: TravelOption[] = [
     type: '일반석 왕복',
     price: 1415800,
     image: travelItem03,
-    link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasView?pkgpnh=KP41216',
-    carouselItemLabel: '3개의 여행 상품 중 세 번째 상품'
+    link: 'https://koreanairkp.kaltour.com/ProductOverseas/OverseasView?pkgpnh=KP41216'
   }
 ];
 
@@ -72,7 +68,9 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             aria-live="polite"
           >
-            <span className="visually-hidden">{option.carouselItemLabel}</span>
+            <span className="visually-hidden">{`${travelOptions.length}개의 여행 상품 중 ${
+              currentIndex + 1
+            }번째 상품`}</span>
             <button
               type="button"
               onClick={() => handleCardClick(option.link)}
