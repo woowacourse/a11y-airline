@@ -72,18 +72,19 @@ const TravelSection = () => {
               key={index}
               className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
               aria-hidden={index !== currentIndex}
-              onClick={() => handleCardClick(option.link)}
             >
-              <img src={option.image} className={styles.cardImage} />
-              <div className={styles.cardContent}>
-                <p className={`${styles.cardTitle} heading-3-text`}>
-                  {option.departure} - {option.destination}
-                </p>
-                <p className={`${styles.cardType} body-text`}>{option.type}</p>
-                <p className={`${styles.cardPrice} body-text`}>
-                  KRW {option.price.toLocaleString()}
-                </p>
-              </div>
+              <button onClick={() => handleCardClick(option.link)}>
+                <img src={option.image} className={styles.cardImage} />
+                <div className={styles.cardContent}>
+                  <p className={`${styles.cardTitle} heading-3-text`}>
+                    {option.departure} - {option.destination}
+                  </p>
+                  <p className={`${styles.cardType} body-text`}>{option.type}</p>
+                  <p className={`${styles.cardPrice} body-text`}>
+                    KRW {option.price.toLocaleString()}
+                  </p>
+                </div>
+              </button>
             </li>
           ))}
         </ul>
