@@ -64,7 +64,13 @@ const TravelSection = () => {
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
-      <div className={styles.carousel}>
+      <div
+        className={styles.carousel}
+        role="region"
+        aria-label={`여행 상품 캐러셀, 총 ${travelOptions.length}개의 상품 중 ${
+          currentIndex + 1
+        }번째`}
+      >
         {travelOptions.map((option, index) => (
           <div
             key={index}
