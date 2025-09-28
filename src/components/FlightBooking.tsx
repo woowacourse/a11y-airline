@@ -5,6 +5,7 @@ import plus from '../assets/plus.svg';
 import minus from '../assets/minus.svg';
 
 import styles from './FlightBooking.module.css';
+import VisuallyHidden from './VisuallyHidden';
 
 const MIN_PASSENGERS = 1;
 const MAX_PASSENGERS = 3;
@@ -35,37 +36,70 @@ const FlightBooking = () => {
   }, [adultCount]);
 
   return (
-    <div className={styles.flightBooking}>
-      <h2 className="heading-2-text">항공권 예매</h2>
-      <div className={styles.passengerCount}>
+    <form className={styles.flightBooking} aria-labelledby="flight-booking-title">
+      <h2 id="flight-booking-title" className="heading-2-text">
+        항공권 예매
+      </h2>
+      <fieldset className={styles.passengerCount}>
         <div className={styles.passengerLabel}>
-          <span className="body-text">성인</span>
-          <div
+          <legend className="body-text">성인</legend>
+          <button
+            type="button"
             className={styles.helpIconWrapper}
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
+            onFocus={() => setShowTooltip(true)}
+            onBlur={() => setShowTooltip(false)}
           >
-            <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
-            {showTooltip && <div className={styles.tooltip}>최대 3명까지 예약할 수 있습니다</div>}
-          </div>
+            <img
+              src={helpIcon}
+              alt="도움말"
+              className={styles.helpIcon}
+              aria-describedby="tooltipInfo"
+            />
+            {showTooltip && (
+              <p className={styles.tooltip} role="tooltip" id="tooltipInfo">
+                최대 3명까지 예약할 수 있습니다
+              </p>
+            )}
+          </button>
         </div>
-        <div className={styles.counter}>
-          <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
+        <p className={styles.counter}>
+          <button
+            type="button"
+            className="button-text"
+            onClick={decrementCount}
+            aria-label="성인 승객 감소"
+          >
             <img src={minus} alt="" />
           </button>
-          <span aria-live="polite">{adultCount}</span>
-          <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
+          <span>{adultCount}</span>
+          <VisuallyHidden aria-live="polite" aria-atomic="true" as="span">
+            성인 {adultCount}명을 선택하였습니다.
+          </VisuallyHidden>
+          <button
+            type="button"
+            className="button-text"
+            onClick={incrementCount}
+            aria-label="성인 승객 증가"
+          >
             <img src={plus} alt="" />
           </button>
-        </div>
-      </div>
+        </p>
+      </fieldset>
       {statusMessage && (
-        <div className="visually-hidden" role="alert">
+        <span className="visually-hidden" role="alert">
           {statusMessage}
-        </div>
+        </span>
       )}
-      <button className={styles.searchButton}>항공편 검색</button>
-    </div>
+      <button
+        type="submit"
+        className={styles.searchButton}
+        aria-label={`성인 ${adultCount}명 항공편 검색`}
+      >
+        항공편 검색
+      </button>
+    </form>
   );
 };
 
