@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import travelItem01 from '../assets/travel-item-01.png';
 import travelItem02 from '../assets/travel-item-02.png';
@@ -46,6 +46,7 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const linksRef = useRef<Array<HTMLAnchorElement | null>>([]);
 
   const nextTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
@@ -55,37 +56,66 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
+  useEffect(() => {
+    linksRef.current[currentIndex]?.focus();
+  }, [currentIndex]);
 
   return (
-    <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
-      </button>
-      <div className={styles.carousel}>
+    <section className={styles.travelSection}>
+      <ul className={styles.carousel} aria-label="여행 상품 캐러셀" aria-live="polite">
         {travelOptions.map((option, index) => (
-          <div
+          <li
             key={index}
+            aria-hidden={index !== currentIndex}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
           >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
-                {option.departure} - {option.destination}
-              </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
-            </div>
-          </div>
+            <a
+              ref={(el) => {
+                linksRef.current[index] = el;
+              }}
+              tabIndex={index === currentIndex ? 0 : -1}
+              href={option.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${travelOptions.length}개의 여행 상품 중 ${index + 1}번째 상품 ${
+                option.departure
+              } 출발 ${option.destination} 도착 ${option.type} 가격 ${option.price.toLocaleString(
+                'ko-KR'
+              )}원 선택하면 예약 페이지로 이동합니다.`}
+            >
+              <figure>
+                <img src={option.image} className={styles.cardImage} alt="" />
+                <figcaption className={styles.cardContent}>
+                  <h3 className={`${styles.cardTitle} heading-3-text`}>
+                    {option.departure} - {option.destination}
+                  </h3>
+                  <p className={`${styles.cardType} body-text`}>{option.type}</p>
+                  <p className={`${styles.cardPrice} body-text`}>
+                    KRW {option.price.toLocaleString()}
+                  </p>
+                </figcaption>
+              </figure>
+            </a>
+          </li>
         ))}
-      </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+      </ul>
+      <button
+        type="button"
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 여행 상품"
+      >
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
-    </div>
+      <button
+        type="button"
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+        aria-label="다음 여행 상품"
+      >
+        <img src={chevronRight} className={styles.navButtonIcon} alt="" />
+      </button>
+    </section>
   );
 };
 
