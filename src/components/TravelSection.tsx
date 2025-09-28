@@ -64,13 +64,24 @@ const TravelSection = () => {
       <div
         className={styles.carousel}
         role="region"
-        aria-label={`여행 상품 캐로셀, 총 ${travelOptions.length}개 상품`}
+        aria-label={`여행 상품 캐로셀, 총 ${travelOptions.length}개 상품. 현재 ${
+          currentIndex + 1
+        }번째 상품: ${travelOptions[currentIndex].departure} - ${
+          travelOptions[currentIndex].destination
+        } ${travelOptions[
+          currentIndex
+        ].price.toLocaleString()}원. 선택하면 예약 사이트로 넘어갑니다.`}
+        aria-live="polite"
+        aria-atomic="true"
       >
         {travelOptions.map((option, index) => (
           <div
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
+            aria-label={`${option.departure}에서 ${option.destination}행, ${
+              option.type
+            }, 가격 ${option.price.toLocaleString()}원 - 예약 페이지로 이동`}
           >
             <img src={option.image} className={styles.cardImage} />
             <div className={styles.cardContent}>
