@@ -2,8 +2,13 @@ import styles from './App.module.css';
 import Navigation from './components/Navigation';
 import FlightBooking from './components/FlightBooking';
 import TravelSection from './components/TravelSection';
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    document.title = 'A11Y Airline – 홈';
+  }, []);
+
   return (
     <div className={styles.app}>
       <header className={styles.header}>
