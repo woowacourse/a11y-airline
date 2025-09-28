@@ -89,11 +89,19 @@ const TravelSection = () => {
       </div>
       {/* 캐로셀 컨트롤 버튼 그룹 영역 */}
       <div>
-        <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-          <img src={chevronLeft} className={styles.navButtonIcon} />
+        <button
+          className={`${styles.navButton} ${styles.navButtonPrev}`}
+          onClick={prevTravel}
+          aria-label="이전 여행 상품"
+        >
+          <img src={chevronLeft} alt="" className={styles.navButtonIcon} />
         </button>
-        <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-          <img src={chevronRight} className={styles.navButtonIcon} />
+        <button
+          className={`${styles.navButton} ${styles.navButtonNext}`}
+          onClick={nextTravel}
+          aria-label="다음 여행 상품"
+        >
+          <img src={chevronRight} alt="" className={styles.navButtonIcon} />
         </button>
       </div>
     </section>
