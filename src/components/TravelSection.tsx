@@ -60,35 +60,43 @@ const TravelSection = () => {
   };
 
   return (
-    <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
-      </button>
-      <span className="visually-hidden" role="status">
-        {`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품`}
-      </span>
-      <div className={styles.carousel}>
-        {travelOptions.map((option, index) => (
-          <div
-            key={index}
-            className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
-          >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
-                {option.departure} - {option.destination}
-              </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+    <section className={styles.travelSection}>
+      {/* 캐로셀 아이템 목록 영역 */}
+      <div>
+        <span className="visually-hidden" role="status">
+          {`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품`}
+        </span>
+        <div className={styles.carousel}>
+          {travelOptions.map((option, index) => (
+            <div
+              key={index}
+              className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
+              onClick={() => handleCardClick(option.link)}
+            >
+              <img src={option.image} className={styles.cardImage} />
+              <div className={styles.cardContent}>
+                <p className={`${styles.cardTitle} heading-3-text`}>
+                  {option.departure} - {option.destination}
+                </p>
+                <p className={`${styles.cardType} body-text`}>{option.type}</p>
+                <p className={`${styles.cardPrice} body-text`}>
+                  KRW {option.price.toLocaleString()}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
-      </button>
-    </div>
+      {/* 캐로셀 컨트롤 버튼 그룹 영역 */}
+      <div>
+        <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
+          <img src={chevronLeft} className={styles.navButtonIcon} />
+        </button>
+        <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
+          <img src={chevronRight} className={styles.navButtonIcon} />
+        </button>
+      </div>
+    </section>
   );
 };
 
