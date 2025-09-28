@@ -67,7 +67,7 @@ const TravelSection = () => {
 
       {/* 캐로셀 아이템 목록 영역 */}
       <div>
-        <ul className={styles.carousel} role="status">
+        <ul className={styles.carousel} aria-live="polite">
           {travelOptions.map((option, index) => (
             <li
               key={index}
