@@ -19,7 +19,6 @@ function App() {
           <FlightBooking />
         </div>
         <div className={styles.travelSection}>
-          <h1 className={`${styles.travelTitle} heading-2-text`}>지금 떠나기 좋은 여행</h1>
           <TravelSection />
         </div>
       </div>
