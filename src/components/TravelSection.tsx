@@ -61,17 +61,18 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <div className={styles.carousel} aria-live="polite">
+      <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <button
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
-            aria-label={`${travelOptions.length}의 여행 상품 중 ${index + 1}번째 상품, ${
+            aria-live="polite"
+            aria-label={`${travelOptions.length}의 여행 상품 중 ${index + 1}번째 상품. ${
               option.departure
-            } 출발 ${option.destination} 도착, ${
+            } 출발 ${option.destination} 도착. ${
               option.type
-            }, 가격 ${option.price.toLocaleString()} 원. 선택하면 예약 페이지로 이동합니다.`}
+            }. 가격 ${option.price.toLocaleString()} 원. 선택하면 예약 페이지로 이동합니다.`}
           >
             <img src={option.image} className={styles.cardImage} />
             <div className={styles.cardContent}>
