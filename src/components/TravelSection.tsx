@@ -70,27 +70,47 @@ const TravelSection = () => {
           <div
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
           >
             <span aria-live="polite" className="visually-hidden">
               {option.carouselItemLabel}
             </span>
-            <img src={option.image} className={styles.cardImage} alt={`${option.destination}`} />
-            <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
-                {option.departure} - {option.destination}
-              </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
-            </div>
+            <button
+              type="button"
+              onClick={() => handleCardClick(option.link)}
+              className={styles.carouselCardButton}
+              aria-label={`${option.departure} 출발 ${option.destination} 도착. ${option.type} 가격 ${option.price}원. 선택하면 예약 페이지로 이동합니다.`}
+            >
+              <img
+                src={option.image}
+                className={styles.cardImage}
+                alt={`${option.destination} 이미지`}
+              />
+              <div className={styles.cardContent}>
+                <p className={`${styles.cardTitle} heading-3-text`}>
+                  {option.departure} - {option.destination}
+                </p>
+                <p className={`${styles.cardType} body-text`}>{option.type}</p>
+                <p className={`${styles.cardPrice} body-text`}>
+                  KRW {option.price.toLocaleString()}
+                </p>
+              </div>
+            </button>
           </div>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+      <button
+        type="button"
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+      >
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+      <button
+        type="button"
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+      >
+        <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
     </div>
   );
