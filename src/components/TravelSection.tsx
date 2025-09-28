@@ -61,12 +61,13 @@ const TravelSection = () => {
 
   return (
     <section className={styles.travelSection}>
-      <span className="visually-hidden" role="status">
+      <span className="visually-hidden" role="status" aria-atomic="true">
         {`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품`}
       </span>
+
       {/* 캐로셀 아이템 목록 영역 */}
       <div>
-        <ul className={styles.carousel}>
+        <ul className={styles.carousel} role="status">
           {travelOptions.map((option, index) => (
             <li
               key={index}
@@ -94,6 +95,7 @@ const TravelSection = () => {
           ))}
         </ul>
       </div>
+
       {/* 캐로셀 컨트롤 버튼 그룹 영역 */}
       <div>
         <button
