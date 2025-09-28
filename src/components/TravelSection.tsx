@@ -61,9 +61,9 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <div className={styles.carousel}>
+      <ul className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <div
+          <li
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             aria-live="polite"
@@ -92,9 +92,9 @@ const TravelSection = () => {
                 </p>
               </div>
             </button>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
       <button
         type="button"
         className={`${styles.navButton} ${styles.navButtonPrev}`}
