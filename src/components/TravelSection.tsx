@@ -61,7 +61,11 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <div className={styles.carousel}>
+      <div
+        className={styles.carousel}
+        role="region"
+        aria-label={`여행 상품 캐로셀, 총 ${travelOptions.length}개 상품`}
+      >
         {travelOptions.map((option, index) => (
           <div
             key={index}
