@@ -57,7 +57,11 @@ const TravelSection = () => {
 
   return (
     <section className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 여행 상품"
+      >
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
       <article className={styles.carousel}>
@@ -70,17 +74,33 @@ const TravelSection = () => {
             rel="noopener noreferrer"
           >
             <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
-              <h3 className={`${styles.cardTitle} heading-3-text`}>
+            <div className={styles.cardContent} aria-live="polite">
+              <h3
+                className={`${styles.cardTitle} heading-3-text`}
+                aria-label={`${travelOptions.length}개의 여행 상품 중 ${
+                  currentIndex + 1
+                }번째 상품. ${option.departure} 출발. ${option.destination} 도착.`}
+                role="link"
+              >
                 {option.departure} - {option.destination}
               </h3>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+              <p
+                className={`${styles.cardPrice} body-text`}
+                aria-label={`가격 ${option.price.toLocaleString()}원. 선택하면 예약 페이지로 이동합니다.`}
+                role="link"
+              >
+                KRW {option.price.toLocaleString()}
+              </p>
             </div>
           </a>
         ))}
       </article>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
+      <button
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+        aria-label="다음 여행 상품"
+      >
         <img src={chevronRight} className={styles.navButtonIcon} />
       </button>
     </section>
