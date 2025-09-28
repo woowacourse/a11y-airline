@@ -56,7 +56,7 @@ const TravelSection = () => {
   };
 
   return (
-    <section className={styles.travelSection}>
+    <div className={styles.travelSection}>
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
@@ -103,7 +103,7 @@ const TravelSection = () => {
       >
         <img src={chevronRight} className={styles.navButtonIcon} />
       </button>
-    </section>
+    </div>
   );
 };
 

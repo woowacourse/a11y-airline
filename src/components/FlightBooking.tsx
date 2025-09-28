@@ -35,9 +35,9 @@ const FlightBooking = () => {
   }, [adultCount]);
 
   return (
-    <div className={styles.flightBooking}>
+    <form className={styles.flightBooking}>
       <h2 className="heading-2-text">항공권 예매</h2>
-      <div className={styles.passengerCount}>
+      <fieldset className={styles.passengerCount}>
         <div className={styles.passengerLabel}>
           <span className="body-text">성인</span>
           <div
@@ -50,22 +50,32 @@ const FlightBooking = () => {
           </div>
         </div>
         <div className={styles.counter}>
-          <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
+          <button
+            className="button-text"
+            onClick={decrementCount}
+            aria-label="성인 승객 감소"
+            type="button"
+          >
             <img src={minus} alt="" />
           </button>
           <span aria-live="polite">{adultCount}</span>
-          <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
+          <button
+            className="button-text"
+            onClick={incrementCount}
+            aria-label="성인 승객 증가"
+            type="button"
+          >
             <img src={plus} alt="" />
           </button>
         </div>
-      </div>
+      </fieldset>
       {statusMessage && (
         <div className="visually-hidden" role="alert">
           {statusMessage}
         </div>
       )}
       <button className={styles.searchButton}>항공편 검색</button>
-    </div>
+    </form>
   );
 };
 
