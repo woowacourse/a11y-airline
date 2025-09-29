@@ -61,12 +61,15 @@ const TravelSection = () => {
 
   return (
     <div aria-roledescription="carousel" className={styles.travelSection}>
-      <div role="tabpanel" aria-live="polite" aria-atomic="false" className={styles.carousel}>
-        <span className="visually-hidden">
-          총 ${travelOptions.length}개의 상품 중 ${currentIndex + 1}번째 여행 상품
-        </span>
+      <span className="visually-hidden">
+        {`총 ${travelOptions.length}개의 상품 중 ${currentIndex + 1}번째 여행 상품`}
+      </span>
+      <div role="region" aria-live="polite" aria-atomic="false" className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <a
+            href={option.link}
+            target="_blank"
+            rel="noopener noreferrer"
             key={index}
             aria-label={`${option.departure} 출발 ${option.destination} 도착, ${
               option.type
