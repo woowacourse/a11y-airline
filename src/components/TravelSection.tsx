@@ -73,6 +73,7 @@ const TravelSection = () => {
               option.type
             }, 가격 ${option.price.toLocaleString()} 원. 선택하면 예약 페이지로 이동합니다.`}
             aria-hidden={index !== currentIndex}
+            tabIndex={index === currentIndex ? 0 : -1}
             onClick={() => handleCardClick(option.link)}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
           >
