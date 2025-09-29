@@ -73,6 +73,12 @@ const TravelSection = () => {
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
+            role="button"
+            aria-label={`${option.departure} 출발 ${option.destination} 도착. ${
+              option.type
+            }. 가격 ${Math.floor(option.price / 10000)}만 ${(
+              option.price % 10000
+            ).toLocaleString()}원. 선택하면 예약 페이지로 이동합니다.`}
           >
             <img src={option.image} className={styles.cardImage} />
             <div className={styles.cardContent}>
