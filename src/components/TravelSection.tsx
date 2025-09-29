@@ -62,7 +62,9 @@ const TravelSection = () => {
   const getCurrentItemDescription = (option: TravelOption, index: number) => {
     return `세계의 여행 상품 총 ${travelOptions.length}개 중 ${index + 1}번째 상품. ${
       option.departure
-    } 출발. ${option.destination} 도착. ${option.type}. 가격 ${option.price.toLocaleString()}원.`;
+    } 출발. ${option.destination} 도착. ${
+      option.type
+    }. 가격 ${option.price.toLocaleString()}원. 선택하면 예약페이지로 이동합니다.`;
   };
 
   return (
@@ -104,8 +106,6 @@ const TravelSection = () => {
               >
                 KRW {option.price.toLocaleString()}
               </p>
-
-              <span className={styles.srOnly}>선택하면 예약페이지로 이동합니다.</span>
             </div>
           </div>
         ))}
