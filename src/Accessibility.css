@@ -12,13 +12,15 @@
 
 .skip {
   position: absolute;
-  left: -10000px;
-  top: auto;
+  left: 0;
+  top: -2rem;
   overflow: hidden;
+  transition: transform 0.5s;
+  color: white;
+  background: black;
+  padding: 5px;
 }
 
 .skip:focus {
-  position: absolute;
-  left: 0;
-  top: 0;
+  transform: translateY(2rem);
 }
