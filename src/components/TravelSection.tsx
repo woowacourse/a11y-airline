@@ -57,40 +57,41 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <article className={styles.carousel}>
+      <ul className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <a
-            key={index}
-            className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            href={option.link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent} aria-live="polite">
-              <p className="visually-hidden">{`${travelOptions.length}개의 여행 상품 중 ${
-                currentIndex + 1
-              }번째 상품`}</p>
-              <h3
-                className={`${styles.cardTitle} heading-3-text`}
-                aria-label={`${option.departure} 출발. ${option.destination} 도착.`}
-                role="link"
-              >
-                {option.departure} - {option.destination}
-              </h3>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p
-                className={`${styles.cardPrice} body-text`}
-                aria-label={`가격 ${option.price.toLocaleString()}원.`}
-                role="link"
-              >
-                KRW {option.price.toLocaleString()}
-              </p>
-              <p className="visually-hidden">선택하면 예약 페이지로 이동합니다.</p>
-            </div>
-          </a>
+          <li key={index}>
+            <a
+              href={option.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
+            >
+              <img src={option.image} className={styles.cardImage} />
+              <div className={styles.cardContent} aria-live="polite">
+                <p className="visually-hidden">{`${travelOptions.length}개의 여행 상품 중 ${
+                  currentIndex + 1
+                }번째 상품`}</p>
+                <h3
+                  className={`${styles.cardTitle} heading-3-text`}
+                  aria-label={`${option.departure} 출발. ${option.destination} 도착.`}
+                  role="link"
+                >
+                  {option.departure} - {option.destination}
+                </h3>
+                <p className={`${styles.cardType} body-text`}>{option.type}</p>
+                <p
+                  className={`${styles.cardPrice} body-text`}
+                  aria-label={`가격 ${option.price.toLocaleString()}원.`}
+                  role="link"
+                >
+                  KRW {option.price.toLocaleString()}
+                </p>
+                <p className="visually-hidden">선택하면 예약 페이지로 이동합니다.</p>
+              </div>
+            </a>
+          </li>
         ))}
-      </article>
+      </ul>
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
