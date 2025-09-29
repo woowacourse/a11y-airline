@@ -40,3 +40,18 @@
   background-color: white;
   text-align: center;
 }
+
+.skipNav {
+  position: relative;
+}
+
+.skipLink {
+  position: absolute;
+  z-index: -999;
+  width: fit-content;
+}
+
+.skipLink:focus {
+  left: 0;
+  top: 0;
+}

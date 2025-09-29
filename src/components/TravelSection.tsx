@@ -62,28 +62,41 @@ const TravelSection = () => {
   return (
     <div className={styles.travelSection}>
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="이전 여행 상품" />
       </button>
-      <div className={styles.carousel}>
+      <ul className={styles.carousel} aria-live="polite">
         {travelOptions.map((option, index) => (
-          <div
+          <li
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
           >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
+            <a
+              href={option.link}
+              aria-label={` ${travelOptions.length}개의 상품 중 ${currentIndex + 1}번째 상품. ${
+                option.departure
+              }출발 ${option.destination}도착. ${
+                option.type
+              }. 가격 ${option.price.toLocaleString()}원 예약페이지 이동.`}
+            ></a>
+            <img
+              src={option.image}
+              className={styles.cardImage}
+              alt={`${option.destination}여행`}
+              aria-hidden="true"
+            />
+            <div className={styles.cardContent} aria-hidden="true">
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
               </p>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
       <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+        <img src={chevronRight} className={styles.navButtonIcon} alt="다음 여행 상품" />
       </button>
     </div>
   );
