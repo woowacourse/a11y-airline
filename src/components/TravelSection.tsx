@@ -55,12 +55,8 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
-
   return (
-    <div className={styles.travelSection}>
+    <section className={styles.travelSection}>
       <h2 className="heading-2-text" tabIndex={0}>
         지금 떠나기 좋은 여행
       </h2>
@@ -69,7 +65,7 @@ const TravelSection = () => {
         세계 여행 상품 {travelOptions.length}개
       </p>
 
-      <div className={styles.carousel}>
+      <section className={styles.carousel}>
         {travelOptions.map((option, index) => {
           const isActive = index === currentIndex;
           const itemLabel =
@@ -78,19 +74,14 @@ const TravelSection = () => {
             '선택하면 예약 페이지로 이동합니다.';
 
           return (
-            <div
+            <a
               key={index}
               className={`${styles.card} ${isActive ? styles.cardActive : ''}`}
               aria-label={itemLabel}
               aria-hidden={isActive ? 'false' : 'true'}
               tabIndex={isActive ? 0 : -1}
-              onClick={() => handleCardClick(option.link)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  handleCardClick(option.link);
-                }
-              }}
+              href={option.link}
+              target="_blank"
             >
               <img src={option.image} className={styles.cardImage} alt="" aria-hidden="true" />
               <div className={styles.cardContent}>
@@ -102,10 +93,10 @@ const TravelSection = () => {
                   KRW {option.price.toLocaleString()}
                 </p>
               </div>
-            </div>
+            </a>
           );
         })}
-      </div>
+      </section>
       <p id="travel-live" className={styles.visuallyHidden} aria-live="polite" aria-atomic="true">
         세계 여행 상품 {travelOptions.length}개 중 {currentIndex + 1}번째 상품,{' '}
         {travelOptions[currentIndex].departure}출발,
@@ -128,7 +119,7 @@ const TravelSection = () => {
       >
         <img src={chevronRight} className={styles.navButtonIcon} alt="" aria-hidden="true" />
       </button>
-    </div>
+    </section>
   );
 };
 
