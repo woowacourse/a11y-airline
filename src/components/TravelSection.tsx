@@ -60,7 +60,7 @@ const TravelSection = () => {
   };
 
   return (
-    <section className={styles.travelSection} aria-roledescription="carousel">
+    <div className={styles.travelSection}>
       <ul className={styles.carousel} id="carousel-items">
         {travelOptions.map((option, index) => (
           <li
@@ -130,7 +130,7 @@ const TravelSection = () => {
       >
         <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
-    </section>
+    </div>
   );
 };
 
