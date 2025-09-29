@@ -60,7 +60,7 @@ const TravelSection = () => {
       <p className="visually-hidden" aria-live="polite">{`${
         travelOptions.length
       }개의 여행 상품 중 ${currentIndex + 1}번째 상품`}</p>
-      <ul className={styles.carousel}>
+      <ul className={styles.carousel} aria-live="polite">
         {travelOptions.map((option, index) => (
           <li
             key={index}
