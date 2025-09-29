@@ -61,9 +61,6 @@ const TravelSection = () => {
 
   return (
     <div aria-roledescription="carousel" className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
-      </button>
       <div role="tabpanel" aria-live="polite" aria-atomic="false" className={styles.carousel}>
         <span className="visually-hidden">{`총 ${travelOptions.length}개의 상품 중 ${
           currentIndex + 1
@@ -74,7 +71,7 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
           >
-            <img src={option.image} className={styles.cardImage} aria-hidden="true" />
+            <img src={option.image} className={styles.cardImage} alt="" aria-hidden="true" />
             <div className={styles.cardContent} aria-hidden="true">
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
@@ -85,8 +82,19 @@ const TravelSection = () => {
           </div>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+      <button
+        aria-label="이전 여행 상품"
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+      >
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
+      </button>
+      <button
+        aria-label="다음 여행 상품"
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+      >
+        <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
     </div>
   );
