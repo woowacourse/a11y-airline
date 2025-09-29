@@ -7,6 +7,11 @@ import TravelSection from './components/TravelSection';
 function App() {
   return (
     <div className={styles.app}>
+      <nav className={styles.skipNav}>
+        <a href="#main-content" className={styles.skipLink} autoFocus>
+          본문 바로가기
+        </a>
+      </nav>
       <Navigation />
       <header className={styles.header}>
         <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>
