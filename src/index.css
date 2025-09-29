@@ -83,7 +83,7 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
+  font-family: inherit;
   vertical-align: baseline;
   box-sizing: border-box;
 }
@@ -116,4 +116,10 @@ body {
   padding: 0;
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
+}
+button {
+  all: unset;
+  display: block;
+  box-sizing: border-box;
+  cursor: pointer;
 }

@@ -7,7 +7,6 @@ import chevronLeft from '../assets/chevron-left.svg';
 import chevronRight from '../assets/chevron-right.svg';
 
 import styles from './TravelSection.module.css';
-import '../Accessibility.css';
 
 interface TravelOption {
   departure: string;
@@ -67,18 +66,38 @@ const TravelSection = () => {
         {travelOptions.map((option, index) => (
           <button
             type="button"
-            aria-label="선택하면 예약 페이지로 이동합니다"
+            aria-labelledby="card-title card-type card-price"
+            aria-describedby="button-action"
             key={option.link}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
           >
             <img src={option.image} className={styles.cardImage} alt="" />
             <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
+              <p
+                id="card-title"
+                aria-label={`${option.departure}출발 - ${option.destination}도착,`}
+                className={`${styles.cardTitle} heading-3-text`}
+              >
                 {option.departure} - {option.destination}
               </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+              <p
+                id="card-type"
+                aria-label={`${option.type},`}
+                className={`${styles.cardType} body-text`}
+              >
+                {option.type}
+              </p>
+              <p
+                id="card-price"
+                aria-label={`가격 ${option.price.toLocaleString()}원,`}
+                className={`${styles.cardPrice} body-text`}
+              >
+                KRW {option.price.toLocaleString()}
+              </p>
+              <p id="button-action" className="visually-hidden">
+                선택하면 예약 페이지로 이동합니다
+              </p>
             </div>
           </button>
         ))}
