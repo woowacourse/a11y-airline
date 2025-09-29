@@ -61,7 +61,7 @@ const TravelSection = () => {
   };
 
   return (
-    <section className={styles.travelSection}>
+    <div className={styles.travelSection}>
       <ul className={styles.carousel} aria-live="polite">
         <span className="visually-hidden">
           {`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품`}
@@ -104,7 +104,7 @@ const TravelSection = () => {
       >
         <img src={chevronRight} className={styles.navButtonIcon} />
       </button>
-    </section>
+    </div>
   );
 };
 
