@@ -61,6 +61,42 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
+      <ul
+        className={styles.carousel}
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="여행 상품 목록"
+        aria-live="polite"
+      >
+        <p role="status" aria-atomic="true" className="visually-hidden">
+          {`총 ${travelOptions.length}개의 상품 중, ${currentIndex + 1}번째 상품.`}
+        </p>
+        {travelOptions.map((option, index) => (
+          <li
+            key={index}
+            className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
+            aria-hidden={index !== currentIndex}
+          >
+            <button
+              onClick={() => handleCardClick(option.link)}
+              aria-label={`${option.departure} 출발 ${option.destination} 도착. ${
+                option.type
+              }. 가격 ${option.price.toLocaleString()}원. 선택하면 예약 페이지로 이동합니다.`}
+            >
+              <img src={option.image} className={styles.cardImage} />
+              <div className={styles.cardContent}>
+                <p className={`${styles.cardTitle} heading-3-text`}>
+                  {option.departure} - {option.destination}
+                </p>
+                <p className={`${styles.cardType} body-text`}>{option.type}</p>
+                <p className={`${styles.cardPrice} body-text`}>
+                  KRW {option.price.toLocaleString()}
+                </p>
+              </div>
+            </button>
+          </li>
+        ))}
+      </ul>
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
@@ -68,27 +104,6 @@ const TravelSection = () => {
       >
         <img src={chevronLeft} className={styles.navButtonIcon} aria-hidden="true" />
       </button>
-      <div className={styles.carousel}>
-        {travelOptions.map((option, index) => (
-          <button
-            key={index}
-            className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
-            aria-label={`${option.departure} 출발 ${option.destination} 도착. ${
-              option.type
-            }. 가격 ${option.price.toLocaleString()}원. 선택하면 예약 페이지로 이동합니다.`}
-          >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
-                {option.departure} - {option.destination}
-              </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
-            </div>
-          </button>
-        ))}
-      </div>
       <button
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={nextTravel}
