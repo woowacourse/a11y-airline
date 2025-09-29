@@ -70,6 +70,7 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
           >
             <a
+              className={styles.link}
               ref={(el) => {
                 linksRef.current[index] = el;
               }}
