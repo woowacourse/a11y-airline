@@ -64,11 +64,11 @@ const TravelSection = () => {
     <div className={styles.travelSection}>
       <p className="visually-hidden">{`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품`}</p>
 
-      <ul className="travel-carousel">
+      <ul className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <li
             key={index}
-            className={`travel-card ${index === currentIndex ? 'active' : ''}`}
+            className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             aria-hidden={index !== currentIndex}
             onClick={() => handleCardClick(option.link)}
           >
