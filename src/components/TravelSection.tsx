@@ -60,19 +60,22 @@ const TravelSection = () => {
   };
 
   return (
-    <div className={styles.travelSection}>
+    <div aria-roledescription="carousel" className={styles.travelSection}>
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
-      <div className={styles.carousel}>
+      <div role="tabpanel" aria-live="polite" aria-atomic="false" className={styles.carousel}>
+        <span className="visually-hidden">{`총 ${travelOptions.length}개의 상품 중 ${
+          currentIndex + 1
+        }번째 여행 상품`}</span>
         {travelOptions.map((option, index) => (
           <div
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
           >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
+            <img src={option.image} className={styles.cardImage} aria-hidden="true" />
+            <div className={styles.cardContent} aria-hidden="true">
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
               </p>
