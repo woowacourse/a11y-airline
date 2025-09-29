@@ -9,6 +9,24 @@
   margin: 0 auto;
 }
 
+.skipLink {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  z-index: 1000;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: top 0.3s;
+}
+
+.skipLink:focus {
+  top: 6px;
+}
+
 .header {
   padding: 48px 24px 24px 24px;
 }

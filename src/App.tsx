@@ -2,11 +2,14 @@ import styles from './App.module.css';
 import Navigation from './components/Navigation';
 import FlightBooking from './components/FlightBooking';
 import TravelSection from './components/TravelSection';
-// import PromotionModal from './components/PromotionModal';
+import PromotionModal from './components/PromotionModal';
 
 function App() {
   return (
     <div className={styles.app}>
+      <a href="#main-content" className={styles.skipLink}>
+        메인 콘텐츠로 이동
+      </a>
       <Navigation />
       <header className={styles.header}>
         <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>
@@ -27,7 +30,7 @@ function App() {
         <p className="body-text">&copy; A11Y AIRLINE</p>
       </footer>
       {/* 추가 CHALLENGE: 모달 포커스 트랩 */}
-      {/* <PromotionModal /> */}
+      <PromotionModal />
     </div>
   );
 }
