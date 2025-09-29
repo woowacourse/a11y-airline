@@ -18,10 +18,7 @@ function App() {
       </header>
 
       <main id="main-content" className={styles.main} role="main">
-        <section className={styles.flightBooking} aria-labelledby="flight-booking-heading">
-          <h2 id="flight-booking-heading" className="visually-hidden">
-            항공편 예약
-          </h2>
+        <section className={styles.flightBooking}>
           <FlightBooking />
         </section>
 
