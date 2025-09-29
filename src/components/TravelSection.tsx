@@ -62,14 +62,21 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <div className="visually-hidden">{`${travelOptions.length}개의 상품 중 ${currentIndex}번째 상품`}</div>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
+      <div className="visually-hidden">{`${travelOptions.length}개의 여행 상품 중 ${currentIndex}번째 상품`}</div>
+      <button
+        type="button"
+        aria-label="이전 여행 상품"
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+      >
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <div
-            key={index}
+          <button
+            type="button"
+            aria-label="선택하면 예약 페이지로 이동합니다"
+            key={option.link}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
           >
@@ -81,10 +88,15 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </button>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
+      <button
+        type="button"
+        aria-label="다음 여행 상품"
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+      >
         <img src={chevronRight} className={styles.navButtonIcon} />
       </button>
     </div>
