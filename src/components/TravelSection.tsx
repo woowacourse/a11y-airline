@@ -62,13 +62,12 @@ const TravelSection = () => {
   return (
     <div aria-roledescription="carousel" className={styles.travelSection}>
       <div role="tabpanel" aria-live="polite" aria-atomic="false" className={styles.carousel}>
-        <span className="visually-hidden">{`총 ${travelOptions.length}개의 상품 중 ${
-          currentIndex + 1
-        }번째 여행 상품`}</span>
+        <span className="visually-hidden">
+          총 ${travelOptions.length}개의 상품 중 ${currentIndex + 1}번째 여행 상품
+        </span>
         {travelOptions.map((option, index) => (
-          <div
+          <a
             key={index}
-            role="button"
             aria-label={`${option.departure} 출발 ${option.destination} 도착, ${
               option.type
             }, 가격 ${option.price.toLocaleString()} 원. 선택하면 예약 페이지로 이동합니다.`}
@@ -85,7 +84,7 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
       <button
