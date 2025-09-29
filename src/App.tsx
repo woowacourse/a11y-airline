@@ -2,11 +2,15 @@ import styles from './App.module.css';
 import Navigation from './components/Navigation';
 import FlightBooking from './components/FlightBooking';
 import TravelSection from './components/TravelSection';
+import VisuallyHidden from './components/VisuallyHidden';
 // import PromotionModal from './components/PromotionModal';
 
 function App() {
   return (
     <div className={styles.app}>
+      <VisuallyHidden tag="a" href="#main-content">
+        본문으로 바로가기
+      </VisuallyHidden>
       <Navigation />
       <header className={styles.header}>
         <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>
