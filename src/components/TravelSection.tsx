@@ -7,6 +7,7 @@ import chevronLeft from '../assets/chevron-left.svg';
 import chevronRight from '../assets/chevron-right.svg';
 
 import styles from './TravelSection.module.css';
+import '../Accessibility.css';
 
 interface TravelOption {
   departure: string;
@@ -61,6 +62,7 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
+      <p className="visually-hidden">{`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품`}</p>
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
