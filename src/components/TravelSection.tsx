@@ -61,7 +61,7 @@ const TravelSection = () => {
 
   return (
     <section className={styles.travelSection} aria-roledescription="carousel">
-      <ul className={styles.carousel}>
+      <ul className={styles.carousel} id="carousel-items">
         {travelOptions.map((option, index) => (
           <li
             key={option.link}
