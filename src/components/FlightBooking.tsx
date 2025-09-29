@@ -46,22 +46,22 @@ const FlightBooking = () => {
             className={styles.helpIconWrapper}
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
-            onFocus={() => setShowTooltip(true)}
-            onBlur={() => setShowTooltip(false)}
-            aria-describedby={showTooltip ? 'passenger-help-tooltip' : undefined}
+            onClick={() => setShowTooltip((prev) => !prev)}
             aria-label="승객 수 제한 도움말"
+            aria-describedby={showTooltip ? 'passenger-help-tooltip' : undefined}
           >
             <img src={helpIcon} alt="" className={styles.helpIcon} />
-            <div
-              role="tooltip"
-              id="passenger-help-tooltip"
-              className={styles.tooltip}
-              aria-live="polite"
-              aria-hidden={!showTooltip}
-              hidden={!showTooltip}
-            >
-              최대 3명까지 예약할 수 있습니다.
-            </div>
+            {showTooltip && (
+              <div
+                id="passenger-help-tooltip"
+                role="tooltip"
+                className={styles.tooltip}
+                aria-live="polite"
+                aria-hidden={!showTooltip}
+              >
+                최대 3명까지 예약할 수 있습니다
+              </div>
+            )}
           </div>
         </div>
         <div className={styles.counter}>
