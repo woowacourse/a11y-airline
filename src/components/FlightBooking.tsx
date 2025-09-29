@@ -41,29 +41,32 @@ const FlightBooking = () => {
         항공권 예매
       </h2>
       <fieldset className={styles.passengerCount}>
-        <div className={styles.passengerLabel}>
-          <legend className="body-text">성인</legend>
-          <button
-            type="button"
-            className={styles.helpIconWrapper}
-            onMouseEnter={() => setShowTooltip(true)}
-            onMouseLeave={() => setShowTooltip(false)}
-            onFocus={() => setShowTooltip(true)}
-            onBlur={() => setShowTooltip(false)}
-          >
-            <img
-              src={helpIcon}
-              alt="도움말"
-              className={styles.helpIcon}
-              aria-describedby="tooltipInfo"
-            />
-            {showTooltip && (
-              <p className={styles.tooltip} role="tooltip" id="tooltipInfo">
-                최대 3명까지 예약할 수 있습니다
-              </p>
-            )}
-          </button>
-        </div>
+        <legend className="body-text">성인</legend>
+        <button
+          type="button"
+          className={styles.helpIconWrapper}
+          onMouseEnter={() => setShowTooltip(true)}
+          onMouseLeave={() => setShowTooltip(false)}
+          onFocus={() => setShowTooltip(true)}
+          onBlur={() => setShowTooltip(false)}
+        >
+          <img
+            src={helpIcon}
+            alt="도움말"
+            className={styles.helpIcon}
+            aria-describedby="tooltipInfo"
+          />
+          {showTooltip ? (
+            <span className={styles.tooltip} role="tooltip" id="tooltipInfo">
+              최대 3명까지 예약할 수 있습니다
+            </span>
+          ) : (
+            <VisuallyHidden as="span" role="tooltip" id="tooltipInfo">
+              최대 3명까지 예약할 수 있습니다
+            </VisuallyHidden>
+          )}
+        </button>
+
         <p className={styles.counter}>
           <button
             type="button"
