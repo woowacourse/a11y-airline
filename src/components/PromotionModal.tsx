@@ -33,18 +33,18 @@ const PromotionModal = () => {
       </div>
       <div
         className={styles.modal}
-        role="alertdialog"
+        role="dialog"
         aria-modal="true"
         aria-labelledby="promotion-modal-title"
         aria-describedby="promotion-modal-description"
       >
-        <div aria-hidden="false" className={styles.modalBackdrop} onClick={closeModal}></div>
+        <div aria-hidden="true" className={styles.modalBackdrop} onClick={closeModal}></div>
         <div ref={modalRef} className={styles.modalContainer}>
           <div className={styles.modalContent}>
             <h2 id="promotion-modal-title" className={`${styles.modalTitle} heading-2-text`}>
               여행할 땐 A11Y AIRLINE 앱
             </h2>
-            <p id="promotion-modal-description" className={`${styles.modalDescription} body-text`}>
+            <p className={`${styles.modalDescription} body-text`}>
               체크인, 탑승권 저장, 수하물 알림까지
               <br />- 앱으로 더욱 편하게 여행하세요!
             </p>
