@@ -71,6 +71,7 @@ const TravelSection = () => {
             key={option.link}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
+            aria-hidden={index !== currentIndex}
           >
             <img src={option.image} className={styles.cardImage} alt="" />
             <div className={styles.cardContent}>
