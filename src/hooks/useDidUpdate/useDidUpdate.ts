@@ -1,6 +1,6 @@
 import { type DependencyList, type EffectCallback, useEffect, useRef } from 'react';
 
-export function useDidUpdate(fn: EffectCallback, dependencies?: DependencyList) {
+export function useDidUpdate(effect: EffectCallback, dependencies?: DependencyList) {
   const mounted = useRef(false);
 
   useEffect(
@@ -12,11 +12,10 @@ export function useDidUpdate(fn: EffectCallback, dependencies?: DependencyList) 
 
   useEffect(() => {
     if (mounted.current) {
-      return fn();
+      return effect();
     }
 
     mounted.current = true;
-    return undefined;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies);
 }

@@ -28,8 +28,6 @@ export const useFocusTrap = (active = true): RefCallback<HTMLElement | null> => 
       return;
     }
 
-    setTimeout(() => ref.current && focusNode(ref.current), 300);
-
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Tab' && ref.current) {
         scopeTab(ref.current, event);
