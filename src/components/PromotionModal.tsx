@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import close from '../assets/close.svg';
 
@@ -8,12 +8,20 @@ import FocusTrap from '../hooks/FocusTrap';
 
 const PromotionModal = () => {
   const [isOpen, setIsOpen] = useState(true);
+  const modalContentRef = useRef<HTMLDivElement>(null);
 
   const closeModal = () => {
     setIsOpen(false);
   };
 
   useEscapeClose(closeModal);
+
+  // 모달 열릴 때 포커스를 dialog로 이동
+  useEffect(() => {
+    if (isOpen && modalContentRef.current) {
+      modalContentRef.current.focus();
+    }
+  }, [isOpen]);
 
   if (!isOpen) {
     return null;
@@ -25,20 +33,21 @@ const PromotionModal = () => {
         <div className={styles.modalBackdrop} onClick={closeModal}></div>
         <div className={styles.modalContainer}>
           <div
+            ref={modalContentRef}
             className={styles.modalContent}
             role="dialog"
             aria-modal="true"
-            aria-labelledby="modal-title"
-            aria-describedby="modal-description"
+            aria-label="여행할 땐 A11Y AIRLINE 앱"
+            tabIndex={-1}
           >
-            <h2 className={`${styles.modalTitle} heading-2-text`} id="modal-title">
+            <h2 className={`${styles.modalTitle} heading-2-text`} aria-hidden="true">
               여행할 땐 A11Y AIRLINE 앱
             </h2>
-            <p className={`${styles.modalDescription} body-text`} id="modal-description">
+            <p className={`${styles.modalDescription} body-text`}>
               체크인, 탑승권 저장, 수하물 알림까지
               <br />- 앱으로 더욱 편하게 여행하세요!
             </p>
-
+            <button className={`${styles.modalActionButton} button-text`}>앱에서 열기</button>
             <button
               className={`${styles.modalCloseButton} heading-2-text`}
               onClick={closeModal}
@@ -46,7 +55,6 @@ const PromotionModal = () => {
             >
               <img src={close} alt="" />
             </button>
-            <button className={`${styles.modalActionButton} button-text`}>앱에서 열기</button>
           </div>
         </div>
       </FocusTrap>

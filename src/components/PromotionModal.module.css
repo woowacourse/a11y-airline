@@ -31,6 +31,10 @@
   position: relative;
 }
 
+.modalContent:focus {
+  outline: none;
+}
+
 .modalTitle {
   margin: 16px 0;
 }
