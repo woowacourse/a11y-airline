@@ -65,17 +65,18 @@ const TravelSection = () => {
         <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
       <div className={styles.carousel}>
-        <h3 className="visually-hidden" aria-live="polite">{`${currentIndex + 1}번째 상품: ${
-          travelOptions[currentIndex].departure
-        }에서 ${travelOptions[currentIndex].destination}까지, ${
-          travelOptions[currentIndex].type
-        }, 가격 ${travelOptions[currentIndex].price.toLocaleString()}원`}</h3>
+        <div className="visually-hidden" aria-live="polite" aria-atomic="true">
+          {currentIndex + 1}번째 상품: {travelOptions[currentIndex].departure}에서
+          {travelOptions[currentIndex].destination}까지
+        </div>
         {travelOptions.map((option, index) => (
           <a
             key={index}
             href={option.link}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             aria-label={`${option.departure}에서 ${option.destination}까지 ${option.type}, 링크로 이동합니다`}
+            aria-hidden={index !== currentIndex}
+            tabIndex={index !== currentIndex ? -1 : 0}
             target="_blank"
             rel="noopener noreferrer"
           >

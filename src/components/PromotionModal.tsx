@@ -37,12 +37,9 @@ const PromotionModal = () => {
             className={styles.modalContent}
             role="dialog"
             aria-modal="true"
-            aria-label="여행할 땐 A11Y AIRLINE 앱"
             tabIndex={-1}
           >
-            <h2 className={`${styles.modalTitle} heading-2-text`} aria-hidden="true">
-              여행할 땐 A11Y AIRLINE 앱
-            </h2>
+            <h2 className={`${styles.modalTitle} heading-2-text`}>여행할 땐 A11Y AIRLINE 앱</h2>
             <p className={`${styles.modalDescription} body-text`}>
               체크인, 탑승권 저장, 수하물 알림까지
               <br />- 앱으로 더욱 편하게 여행하세요!
