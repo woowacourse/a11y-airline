@@ -1,13 +1,12 @@
 import { useState } from 'react';
 
+import chevronLeft from '../assets/chevron-left.svg';
+import chevronRight from '../assets/chevron-right.svg';
 import travelItem01 from '../assets/travel-item-01.png';
 import travelItem02 from '../assets/travel-item-02.png';
 import travelItem03 from '../assets/travel-item-03.png';
-import chevronLeft from '../assets/chevron-left.svg';
-import chevronRight from '../assets/chevron-right.svg';
 
 import styles from './TravelSection.module.css';
-import VisuallyHidden from './VisuallyHidden';
 
 interface TravelOption {
   departure: string;
@@ -61,11 +60,11 @@ const TravelSection = () => {
   };
 
   return (
-    <section className={styles.travelSection}>
+    <div className={styles.travelSection}>
       <div className={styles.carousel}>
-        <VisuallyHidden aria-live="polite">{`${travelOptions.length}개의 여행 상품 중 ${
-          currentIndex + 1
-        }번째 상품`}</VisuallyHidden>
+        <span className="visually-hidden" role="status" aria-atomic="true">
+          {`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품`}
+        </span>
         <ul className="travel-carousel" aria-live="polite">
           {travelOptions.map((option, index) => (
             <li
@@ -112,7 +111,7 @@ const TravelSection = () => {
       >
         <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
-    </section>
+    </div>
   );
 };
 
