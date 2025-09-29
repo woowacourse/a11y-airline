@@ -61,7 +61,7 @@ const TravelSection = () => {
   }, [currentIndex]);
 
   return (
-    <section className={styles.travelSection}>
+    <section className={styles.travelSection} aria-label="여행 상품 영역">
       <ul className={styles.carousel} aria-label="여행 상품 캐러셀" aria-live="polite">
         {travelOptions.map((option, index) => (
           <li
@@ -79,9 +79,9 @@ const TravelSection = () => {
               rel="noopener noreferrer"
               aria-label={`${travelOptions.length}개의 여행 상품 중 ${index + 1}번째 상품 ${
                 option.departure
-              } 출발 ${option.destination} 도착 ${option.type} 가격 ${option.price.toLocaleString(
-                'ko-KR'
-              )}원 선택하면 예약 페이지로 이동합니다.`}
+              } 출발 ${option.destination} 도착 ${
+                option.type
+              } 가격 ${option.price.toLocaleString()}원 선택하면 예약 페이지로 이동합니다.`}
             >
               <figure>
                 <img src={option.image} className={styles.cardImage} alt="" />
