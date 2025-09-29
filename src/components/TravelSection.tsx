@@ -67,17 +67,10 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <span className="visually-hidden" role="status">
-        {`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품`}
-      </span>
-      <button
-        className={`${styles.navButton} ${styles.navButtonPrev}`}
-        onClick={prevTravel}
-        aria-label="이전 여행 상품"
-      >
-        <img src={chevronLeft} className={styles.navButtonIcon} alt="이전" />
-      </button>
       <div className={styles.carousel} aria-live="polite">
+        <span className="visually-hidden">
+          {`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품`}
+        </span>
         {travelOptions.map((option, index) => (
           <div
             key={index}
@@ -97,6 +90,13 @@ const TravelSection = () => {
           </div>
         ))}
       </div>
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 여행 상품"
+      >
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="이전" />
+      </button>
       <button
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={nextTravel}
