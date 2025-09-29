@@ -44,6 +44,9 @@ const FlightBooking = () => {
             className={styles.helpIconWrapper}
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
+            onFocus={() => setShowTooltip(true)}
+            onBlur={() => setShowTooltip(false)}
+            aria-label="도움말: 최대 3명까지 예약할 수 있습니다"
           >
             <img
               src={helpIcon}
@@ -63,7 +66,7 @@ const FlightBooking = () => {
           <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
             <img src={minus} alt="" />
           </button>
-          <span aria-live="polite">{adultCount}</span>
+          <span aria-live="polite">{adultCount}명</span>
           <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
             <img src={plus} alt="" />
           </button>
