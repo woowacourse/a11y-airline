@@ -55,10 +55,6 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div aria-roledescription="carousel" className={styles.travelSection}>
       <span className="visually-hidden">
@@ -76,7 +72,6 @@ const TravelSection = () => {
             }, 가격 ${option.price.toLocaleString()} 원. 선택하면 예약 페이지로 이동합니다.`}
             aria-hidden={index !== currentIndex}
             tabIndex={index === currentIndex ? 0 : -1}
-            onClick={() => handleCardClick(option.link)}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
           >
             <img src={option.image} className={styles.cardImage} alt="" aria-hidden="true" />
