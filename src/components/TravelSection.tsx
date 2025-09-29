@@ -62,14 +62,12 @@ const TravelSection = () => {
           tabIndex={0}
           role="region"
           aria-label={`여행 프로모션, 총 ${travelOptions.length}개`}
-        />
+          className={styles.srOnly}
+        >
+          여행 프로모션 안내
+        </div>
         <div>
-          <ul
-            role="list"
-            aria-label={`여행 프로모션, 총 ${travelOptions.length}개`}
-            className={styles.carousel}
-            aria-live="polite"
-          >
+          <ul role="list" className={styles.carousel} aria-live="polite">
             {travelOptions.map((option, index) => (
               <li key={index}>
                 <a
@@ -77,7 +75,7 @@ const TravelSection = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-                  aria-label={`${option.departure} - ${option.destination}, ${
+                  aria-label={`${option.departure} 출발 - ${option.destination} 도착, ${
                     option.type
                   }, 가격 ${option.price.toLocaleString()}원. 선택하면 예약 페이지로 이동합니다.`}
                 >
