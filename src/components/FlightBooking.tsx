@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import styles from './FlightBooking.module.css';
+import './FlightBooking.css';
 
 const MAX_PASSENGERS = 3;
 
@@ -45,14 +45,14 @@ const FlightBooking = () => {
   };
 
   return (
-    <div className={styles.flightBooking}>
-      <div aria-live="assertive" className={styles.visuallyHidden}>
+    <div className="flight-booking">
+      <div aria-live="assertive" className="visually-hidden">
         {announcement}
       </div>
       <h2 className="heading-2-text">항공권 예매</h2>
-      <div className={styles.passengerCount}>
+      <div className="passenger-count">
         <span className="body-text">성인</span>
-        <div className={styles.counter}>
+        <div className="counter">
           <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
             -
           </button>
@@ -62,7 +62,7 @@ const FlightBooking = () => {
           </button>
         </div>
       </div>
-      <button className={styles.searchButton}>항공편 검색</button>
+      <button className="search-button">항공편 검색</button>
     </div>
   );
 };
