@@ -56,7 +56,7 @@ const TravelSection = () => {
   };
 
   return (
-    <div className={styles.travelSection}>
+    <section className={styles.travelSection}>
       <p className="visually-hidden" aria-live="polite">{`${
         travelOptions.length
       }개의 여행 상품 중 ${currentIndex + 1}번째 상품`}</p>
@@ -76,15 +76,15 @@ const TravelSection = () => {
               }, 가격 ${option.price.toLocaleString()}원`}
             >
               <img src={option.image} className={styles.cardImage} alt="" />
-              <div className={styles.cardContent} aria-hidden="true">
-                <p className={`${styles.cardTitle} heading-3-text`}>
+              <article className={styles.cardContent} aria-hidden="true">
+                <h3 className={`${styles.cardTitle} heading-3-text`}>
                   {option.departure} - {option.destination}
-                </p>
+                </h3>
                 <p className={`${styles.cardType} body-text`}>{option.type}</p>
                 <p className={`${styles.cardPrice} body-text`}>
                   KRW {option.price.toLocaleString()}
                 </p>
-              </div>
+              </article>
             </a>
           </li>
         ))}
@@ -103,7 +103,7 @@ const TravelSection = () => {
       >
         <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
-    </div>
+    </section>
   );
 };
 
