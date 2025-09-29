@@ -76,7 +76,7 @@ const TravelSection = () => {
                 option.type
               }, 가격 ${option.price.toLocaleString()} 원`}
             >
-              <img src={option.image} className={styles.cardImage} />
+              <img src={option.image} className={styles.cardImage} alt="" />
               <div className={styles.cardContent} aria-hidden="true">
                 <h2 className={`${styles.cardTitle} heading-3-text`}>
                   {option.departure} - {option.destination}
