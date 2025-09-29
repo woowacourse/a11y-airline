@@ -1,6 +1,5 @@
 import { useState } from 'react';
-
-import './FlightBooking.css';
+import styles from './FlightBooking.module.css';
 
 const MAX_PASSENGERS = 3;
 
@@ -45,24 +44,32 @@ const FlightBooking = () => {
   };
 
   return (
-    <div className="flight-booking">
-      <div aria-live="assertive" className="visually-hidden">
+    <div className={styles['flight-booking']}>
+      <div aria-live="assertive" className={styles['visually-hidden']}>
         {announcement}
       </div>
-      <h2 className="heading-2-text">항공권 예매</h2>
-      <div className="passenger-count">
-        <span className="body-text">성인</span>
-        <div className="counter">
-          <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
+      <h2 className={styles['heading-2-text']}>항공권 예매</h2>
+      <div className={styles['passenger-count']}>
+        <span className={styles['body-text']}>성인</span>
+        <div className={styles['counter']}>
+          <button
+            className={styles['button-text']}
+            onClick={decrementCount}
+            aria-label="성인 승객 감소"
+          >
             -
           </button>
           <span aria-live="polite">{adultCount}</span>
-          <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
+          <button
+            className={styles['button-text']}
+            onClick={incrementCount}
+            aria-label="성인 승객 증가"
+          >
             +
           </button>
         </div>
       </div>
-      <button className="search-button">항공편 검색</button>
+      <button className={styles['search-button']}>항공편 검색</button>
     </div>
   );
 };
