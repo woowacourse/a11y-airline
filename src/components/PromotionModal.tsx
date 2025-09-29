@@ -7,6 +7,7 @@ import useFocusTrap from '../hooks/useFocusTrap';
 
 const PromotionModal = () => {
   const [isOpen, setIsOpen] = useState(true);
+
   const modalRef = useRef<HTMLDivElement>(null);
 
   const closeModal = () => {
@@ -29,6 +30,7 @@ const PromotionModal = () => {
         aria-labelledby="modal-title"
         aria-describedby="modal-desc"
         ref={modalRef}
+        tabIndex={-1}
       >
         <div className={styles.modalContent}>
           <h2 id="modal-title" className={`${styles.modalTitle} heading-2-text`}>
