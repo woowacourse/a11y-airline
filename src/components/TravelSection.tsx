@@ -46,12 +46,15 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [hasInteracted, setHasInteracted] = useState(false);
 
   const nextTravel = () => {
+    setHasInteracted(true);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
   };
 
   const prevTravel = () => {
+    setHasInteracted(true);
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
@@ -67,7 +70,7 @@ const TravelSection = () => {
             key={option.link}
             aria-hidden={index !== currentIndex}
             aria-roledescription="slide"
-            aria-live="polite"
+            aria-live={hasInteracted ? 'polite' : 'off'}
           >
             <div key={option.link} className="visually-hidden">{`${
               travelOptions.length
