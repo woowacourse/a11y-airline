@@ -14,6 +14,8 @@
   position: relative;
   margin-left: 5px;
   cursor: pointer;
+  background: none;
+  border: none;
 }
 
 .helpIcon {
