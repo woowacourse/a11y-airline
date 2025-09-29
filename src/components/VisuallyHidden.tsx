@@ -1,8 +1,8 @@
-import type { ElementType, PropsWithChildren } from 'react';
+import type { ElementType, HTMLAttributes, PropsWithChildren } from 'react';
 import styles from './VisuallyHidden.module.css';
 import Polymorphic from './Polymorphic';
 
-interface VisuallyHiddenProps {
+interface VisuallyHiddenProps extends HTMLAttributes<ElementType> {
   as?: ElementType;
 }
 
