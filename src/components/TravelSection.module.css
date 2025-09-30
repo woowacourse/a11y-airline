@@ -7,6 +7,7 @@
   position: relative;
   overflow: hidden;
   padding: 0 24px;
+  cursor: pointer;
 }
 
 .card {

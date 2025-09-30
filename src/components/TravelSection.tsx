@@ -61,22 +61,27 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <button
-        className={`${styles.navButton} ${styles.navButtonPrev}`}
-        onClick={prevTravel}
-        aria-label="이전 상품"
-        aria-controls="travel-carousel"
-      >
-        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
-      </button>
-      <div className={styles.carousel}>
+      <div className={styles.carousel} aria-roledescription="carousel" id="travel-carousel">
+        <p aria-live="polite" aria-atomic="true" style={{ position: 'absolute', left: '-9999px' }}>
+          {`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품. ${
+            travelOptions[currentIndex].departure
+          } 출발, ${travelOptions[currentIndex].destination} 도착, ${
+            travelOptions[currentIndex].type
+          }, 가격 ${travelOptions[
+            currentIndex
+          ].price.toLocaleString()}원. 선택하면 예약 페이지로 이동합니다.`}
+        </p>
         {travelOptions.map((option, index) => (
           <div
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
             tabIndex={index === currentIndex ? 0 : -1}
-            aria-label={`${travelOptions.length}개의 여행 상품 중 ${index + 1}번째 상품`}
+            aria-label={`${travelOptions.length}개의 여행 상품 중 ${index + 1}번째 상품: ${
+              option.departure
+            } 출발, ${option.destination} 도착, ${
+              option.type
+            }, 가격 ${option.price.toLocaleString()}원. 선택하면 예약 페이지로 이동합니다.`}
           >
             <img src={option.image} className={styles.cardImage} alt="" />
             <div className={styles.cardContent}>
@@ -89,6 +94,14 @@ const TravelSection = () => {
           </div>
         ))}
       </div>
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 상품"
+        aria-controls="travel-carousel"
+      >
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
+      </button>
       <button
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={nextTravel}
