@@ -62,7 +62,7 @@ const TravelSection = () => {
   return (
     <div className={styles.travelSection}>
       <div className={styles.carousel}>
-        <span className="visually-hidden" role="status" aria-atomic="true">
+        <span className="visually-hidden" role="status" aria-atomic="true" aria-live="polite">
           {`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품`}
         </span>
         <ul className="travel-carousel" aria-live="polite">
@@ -79,10 +79,10 @@ const TravelSection = () => {
                 rel="noopener noreferrer"
                 aria-label={`${option.departure} 출발 ${option.destination} 도착, ${
                   option.type
-                }, 가격 ${option.price.toLocaleString()} 원`}
+                }, 가격 ${option.price.toLocaleString()} 원. 선택하면 예약 페이지로 이동합니다.`}
               >
-                <img src={option.image} className={styles.cardImage} />
-                <div className={styles.cardContent}>
+                <img src={option.image} className={styles.cardImage} alt="" />
+                <div className={styles.cardContent} aria-hidden="true">
                   <h2 className={`${styles.cardTitle} heading-3-text`}>
                     {option.departure} - {option.destination}
                   </h2>
