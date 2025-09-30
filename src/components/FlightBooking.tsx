@@ -68,11 +68,7 @@ const FlightBooking = () => {
           >
             <img src={minus} alt="" />
           </button>
-          <output aria-live="polite">
-            <span className="visually-hidden">현재 성인 승객 수: </span>
-            {adultCount}
-            <span className="visually-hidden">명</span>
-          </output>
+          <output aria-live="polite">{adultCount}</output>
           <button
             type="button"
             className="button-text"
