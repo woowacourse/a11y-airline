@@ -118,11 +118,11 @@ const TravelSection = () => {
       </button>
 
       <div aria-live="assertive" aria-atomic="true" className={styles.visuallyHidden}>
-        {`${travelOptions[currentIndex].departure}에서 ${
-          travelOptions[currentIndex].destination
-        } 가는 ${travelOptions[currentIndex].type}, 가격 ${travelOptions[
-          currentIndex
-        ].price.toLocaleString()}원, 링크로 들어가시려면 Shift+Tab 2번 하고 클릭하세요`}
+        세계 여행 상품 {travelOptions.length}개 중 {currentIndex + 1}번째 상품,
+        {travelOptions[currentIndex].departure}에서 {travelOptions[currentIndex].destination} 가는
+        {travelOptions[currentIndex].type}, 가격
+        {travelOptions[currentIndex].price.toLocaleString()}원, 링크로 들어가시려면 Shift+Tab 2번
+        하고 클릭하세요
       </div>
     </main>
   );
