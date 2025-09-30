@@ -5,11 +5,12 @@ import close from '../assets/close.svg';
 import styles from './PromotionModal.module.css';
 import useFocusTrapRef from '../hooks/useFocusTrapRef';
 
-const PromotionModal = () => {
+const PromotionModal = ({ restoreFocus }: { restoreFocus: () => void }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const closeModal = () => {
     setIsOpen(false);
+    restoreFocus();
   };
 
   const focusRef = useFocusTrapRef<HTMLDivElement>();
