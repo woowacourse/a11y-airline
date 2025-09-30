@@ -8,7 +8,7 @@ interface VisuallyHiddenProps extends HTMLAttributes<HTMLElement> {
 
 function VisuallyHidden({ as, children, ...props }: PropsWithChildren<VisuallyHiddenProps>) {
   return (
-    <Polymorphic as={as} className={styles.visuallyHidden} {...props}>
+    <Polymorphic {...props} as={as} className={styles.visuallyHidden}>
       {children}
     </Polymorphic>
   );
