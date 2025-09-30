@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 import close from '../assets/close.svg';
 
@@ -27,9 +27,6 @@ const PromotionModal = () => {
 
   const modalRef = useFocusTrap(isOpen);
 
-  const modalContainerRef = useRef<HTMLDivElement>(null);
-  const firstInteractiveRef = useRef<HTMLButtonElement>(null);
-
   if (!isOpen) {
     return null;
   }
@@ -45,7 +42,7 @@ const PromotionModal = () => {
       aria-describedby="modal-description"
     >
       <div className={styles.modalContainer} ref={addToSafeZone}>
-        <div className={styles.modalContent} ref={modalContainerRef}>
+        <div className={styles.modalContent}>
           <h2 className={`${styles.modalTitle} heading-2-text`} id="modal-title">
             여행할 땐 A11Y AIRLINE 앱
           </h2>
@@ -58,7 +55,6 @@ const PromotionModal = () => {
             className={`${styles.modalCloseButton} heading-2-text`}
             onClick={closeModal}
             aria-label="프로모션 모달 닫기"
-            ref={firstInteractiveRef}
           >
             <img src={close} alt="" />
           </button>
