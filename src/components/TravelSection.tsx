@@ -46,7 +46,7 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const liveMessage = `${travelOptions.length}개 세계 여행 상품 중 ${currentIndex + 1}번째 상품`;
+  const liveMessage = `${travelOptions.length}개 여행 상품 중 ${currentIndex + 1}번째 상품`;
 
   const nextTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
@@ -71,6 +71,7 @@ const TravelSection = () => {
             <li key={`${option.departure}-${option.destination}`}>
               <button
                 type="button"
+                aria-live="polite"
                 className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
                 onClick={() => handleCardClick(option.link)}
                 aria-label={`${option.departure}에서 ${option.destination}까지, ${
