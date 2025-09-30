@@ -2,7 +2,7 @@ import styles from './App.module.css';
 import Navigation from './components/Navigation';
 import FlightBooking from './components/FlightBooking';
 import TravelSection from './components/TravelSection';
-// import PromotionModal from './components/PromotionModal';
+import PromotionModal from './components/PromotionModal';
 
 function App() {
   return (
@@ -12,17 +12,19 @@ function App() {
       </a>
       <Navigation />
       <header className={styles.header}>
-        <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>
-        <p className="body-text">
+        <h1 className={`${styles.title} heading-1-text`} tabIndex={0}>
+          A11Y AIRLINE
+        </h1>
+        <p className="body-text" tabIndex={0}>
           A11Y AIRLINE은 고객 여러분의 안전하고 쾌적한 여행을 위해 최선을 다하고 있습니다.
         </p>
       </header>
       <main id="main-content" className={styles.main}>
-        <section className={styles.flightBooking} aria-labelledby="flight-booking-heading">
+        <section className={styles.flightBooking}>
           <FlightBooking />
         </section>
-        <section className={styles.travelSection} aria-labelledby="travel-section-heading">
-          <h2 id="travel-section-heading" className={`${styles.travelTitle} heading-2-text`}>
+        <section className={styles.travelSection}>
+          <h2 className={`${styles.travelTitle} heading-2-text`} tabIndex={0}>
             지금 떠나기 좋은 여행
           </h2>
           <TravelSection />
@@ -32,7 +34,7 @@ function App() {
         <p className="body-text">&copy; A11Y AIRLINE</p>
       </footer>
       {/* 추가 CHALLENGE: 모달 포커스 트랩 */}
-      {/* <PromotionModal /> */}
+      <PromotionModal />
     </div>
   );
 }
