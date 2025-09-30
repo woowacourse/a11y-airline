@@ -39,6 +39,11 @@ const navItems: NavItem[] = [
 
 const Navigation = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const toggleNav = () => {
+    setIsNavOpen((prev) => !prev);
+  };
 
   const renderNavItems = (items: NavItem[]) => (
     <ul className={styles.navList}>
@@ -75,9 +80,18 @@ const Navigation = () => {
   );
 
   return (
-    <nav id="main-nav" className={styles.mainNav} aria-label="메인 네비게이션">
-      {renderNavItems(navItems)}
-    </nav>
+    <>
+      <button type="button" className={styles.navToggle} onClick={toggleNav}>
+        {isNavOpen ? '닫기' : '메뉴'}
+      </button>
+      <nav
+        id="main-nav"
+        className={`${styles.mainNav} ${isNavOpen ? styles.mainNavActive : ''}`}
+        aria-label="메인 네비게이션"
+      >
+        {renderNavItems(navItems)}
+      </nav>
+    </>
   );
 };
 
