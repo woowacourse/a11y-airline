@@ -68,16 +68,22 @@ const TravelSection = () => {
       >
         <img src={chevronLeft} alt="" className={styles.navButtonIcon} />
       </button>
-      <div className={styles.carousel} role="region" aria-label="여행 상품 목록">
-        <ul role="list">
+      <div className={styles.carousel} aria-label="여행 상품 목록">
+        <ul>
           {travelOptions.map((option, index) => (
-            <li key={index} role="listitem">
+            <li key={index}>
               <button
                 className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
                 onClick={() => handleCardClick(option.link)}
-                aria-label={`${option.departure}에서 ${option.destination}행 항공편, ${option.type}, ${option.price.toLocaleString()}원`}
+                aria-label={`새해 여행 상품 중 ${index + 1}번째 상품, ${option.departure}에서 ${
+                  option.destination
+                }행 항공편, ${option.type}, ${option.price.toLocaleString()}원`}
               >
-                <img src={option.image} alt={`${option.destination} 여행 이미지`} className={styles.cardImage} />
+                <img
+                  src={option.image}
+                  alt={`${option.destination} 여행 이미지`}
+                  className={styles.cardImage}
+                />
                 <div className={styles.cardContent}>
                   <h3 className={`${styles.cardTitle} heading-3-text`}>
                     {option.departure} - {option.destination}
@@ -86,7 +92,9 @@ const TravelSection = () => {
                     <dt className="visually-hidden">좌석 등급</dt>
                     <dd className={`${styles.cardType} body-text`}>{option.type}</dd>
                     <dt className="visually-hidden">가격</dt>
-                    <dd className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</dd>
+                    <dd className={`${styles.cardPrice} body-text`}>
+                      KRW {option.price.toLocaleString()}
+                    </dd>
                   </dl>
                 </div>
               </button>
