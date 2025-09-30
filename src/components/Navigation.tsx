@@ -39,6 +39,7 @@ const navItems: NavItem[] = [
 
 const Navigation = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  console.log(expandedIndex);
 
   const renderNavItems = (items: NavItem[]) => (
     <ul className={styles.navList}>
@@ -46,21 +47,24 @@ const Navigation = () => {
         const hasSubItems = !!item.subItems;
         const isExpanded = expandedIndex === index;
         return (
-          <li key={index} className={styles.navItem}>
+          <li
+            key={index}
+            className={styles.navItem}
+            onFocus={() => {
+              if (hasSubItems) {
+                setExpandedIndex(index);
+              }
+            }}
+            onBlur={() => {
+              if (hasSubItems) {
+                setExpandedIndex(null);
+              }
+            }}
+          >
             <a
               href={item.link}
               aria-haspopup={item.subItems ? 'menu' : 'false'}
               aria-expanded={hasSubItems ? isExpanded : undefined}
-              onFocus={() => {
-                if (hasSubItems) {
-                  setExpandedIndex(index);
-                }
-              }}
-              onBlur={() => {
-                if (hasSubItems) {
-                  setExpandedIndex(null);
-                }
-              }}
             >
               {item.title}
             </a>
