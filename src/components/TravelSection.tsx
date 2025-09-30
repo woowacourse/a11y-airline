@@ -88,7 +88,13 @@ const TravelSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.cardLink}
-                aria-label={`${travelOptions[currentIndex].departure} - ${travelOptions[currentIndex].destination}: 선택하면 예약 페이지로 이동합니다.`}
+                aria-label={`${travelOptions.length}개의 여행 상품 중 ${
+                  currentIndex + 1
+                }번째 상품: ${travelOptions[currentIndex].departure} - ${
+                  travelOptions[currentIndex].destination
+                } ${travelOptions[currentIndex].type} ${travelOptions[
+                  currentIndex
+                ].price.toLocaleString()}원. 선택하면 예약 페이지로 이동합니다.`}
               >
                 <img src={option.image} className={styles.cardImage} alt="캐러셀 이미지" />
                 <div className={styles.cardContent}>
