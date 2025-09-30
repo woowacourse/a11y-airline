@@ -412,7 +412,7 @@ type KoreanKeyboardsOnly = 'HangulMode' | 'HanjaMode' | 'JunjaMode';
 
 type SpecialValueKey = 'Unidentified';
 
-export declare type KeyboardEventKey =
+export type KeyboardEventKey =
   | SpecialValueKey
   | ModifierKeys
   | WhitespaceKeys
