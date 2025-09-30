@@ -99,6 +99,8 @@ const PromotionModal = () => {
         className={styles.modalContainer}
         role="dialog"
         aria-modal="true"
+        aria-labelledby="promotion-modal-title"
+        aria-describedby="promotion-modal-desc"
         ref={modalContainerRef}
         tabIndex={-1}
       >

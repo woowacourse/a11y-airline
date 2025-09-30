@@ -57,8 +57,13 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <div className={styles.carousel} aria-roledescription="carousel" id="travel-carousel">
-        <p aria-live="polite" aria-atomic="true" style={{ position: 'absolute', left: '-9999px' }}>
+      <div
+        className={styles.carousel}
+        role="region"
+        aria-roledescription="carousel"
+        id="travel-carousel"
+      >
+        <p aria-live="polite" style={{ position: 'absolute', left: '-9999px' }}>
           {`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품. ${
             travelOptions[currentIndex].departure
           } 출발, ${travelOptions[currentIndex].destination} 도착, ${

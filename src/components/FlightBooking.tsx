@@ -36,9 +36,7 @@ const FlightBooking = () => {
 
   return (
     <div className={styles.flightBooking}>
-      <h2 className="heading-2-text" tabIndex={0}>
-        항공권 예매
-      </h2>
+      <h2 className="heading-2-text">항공권 예매</h2>
       <div className={styles.passengerCount}>
         <div className={styles.passengerLabel}>
           <span className="body-text">성인</span>
@@ -55,7 +53,7 @@ const FlightBooking = () => {
           <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
             <img src={minus} alt="" />
           </button>
-          <span aria-live="polite" tabIndex={0} aria-label={`성인 승객 수: ${adultCount}명`}>
+          <span aria-live="polite" aria-label={`성인 승객 수: ${adultCount}명`}>
             {adultCount}
           </span>
           <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
