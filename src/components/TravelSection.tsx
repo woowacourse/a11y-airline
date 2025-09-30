@@ -61,28 +61,48 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
-      </button>
-      <div className={styles.carousel}>
+      <ul className={styles.carousel} aria-live="polite">
         {travelOptions.map((option, index) => (
-          <div
+          <li
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
+            aria-hidden={index !== currentIndex}
             onClick={() => handleCardClick(option.link)}
           >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
-                {option.departure} - {option.destination}
-              </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
-            </div>
-          </div>
+            <a
+              href={option.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${option.departure} 출발 ${option.destination} 도착, ${
+                option.type
+              }, 가격 ${option.price.toLocaleString()} 원`}
+            >
+              <img src={option.image} className={styles.cardImage} alt="" />
+              <div className={styles.cardContent} aria-hidden="true">
+                <p className={`${styles.cardTitle} heading-3-text`}>
+                  {option.departure} - {option.destination}
+                </p>
+                <p className={`${styles.cardType} body-text`}>{option.type}</p>
+                <p className={`${styles.cardPrice} body-text`}>
+                  KRW {option.price.toLocaleString()}
+                </p>
+              </div>
+            </a>
+          </li>
         ))}
-      </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
+      </ul>
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        aria-label="이전 여행 상품"
+        onClick={prevTravel}
+      >
+        <img src={chevronLeft} className={styles.navButtonIcon} />
+      </button>
+      <button
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        aria-label="다음 여행 상품"
+        onClick={nextTravel}
+      >
         <img src={chevronRight} className={styles.navButtonIcon} />
       </button>
     </div>
