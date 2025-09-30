@@ -49,7 +49,7 @@ const Navigation = () => {
           <li key={index} className={styles.navItem}>
             <a
               href={item.link}
-              aria-haspopup={item.subItems ? 'listbox' : 'false'}
+              aria-haspopup={item.subItems ? 'menu' : 'false'}
               aria-expanded={hasSubItems ? isExpanded : undefined}
               onFocus={() => {
                 if (hasSubItems) {
