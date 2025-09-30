@@ -103,3 +103,11 @@ a {
   color: black;
   text-decoration: none;
 }
+
+.heading2 {
+  padding: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  font-size: 18px;
+}

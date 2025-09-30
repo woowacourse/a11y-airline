@@ -57,7 +57,7 @@ const TravelSection = () => {
 
   return (
     <section className={styles.travelSection}>
-      <h2 className="heading-2-text" tabIndex={0}>
+      <h2 className={styles.heading2} tabIndex={0}>
         지금 떠나기 좋은 여행
       </h2>
 
