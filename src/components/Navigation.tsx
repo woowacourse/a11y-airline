@@ -39,7 +39,6 @@ const navItems: NavItem[] = [
 
 const Navigation = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-  console.log(expandedIndex);
 
   const renderNavItems = (items: NavItem[]) => (
     <ul className={styles.navList}>
