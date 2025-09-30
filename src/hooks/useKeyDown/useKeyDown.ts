@@ -1,13 +1,19 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import type { KeyboardEventKey } from './useKeyDown.type';
 
 type KeyEventHandler = Partial<Record<KeyboardEventKey, (event: KeyboardEvent) => void>>;
 
 export const useKeyDown = (keyEventsHandler: KeyEventHandler) => {
+  const handlerRef = useRef(keyEventsHandler);
+
+  useEffect(() => {
+    handlerRef.current = keyEventsHandler;
+  }, [keyEventsHandler]);
+
   useEffect(() => {
     const handleDocumentKeyDown = (event: KeyboardEvent) => {
       const key = event.key as KeyboardEventKey;
-      const eventHandler = keyEventsHandler[key];
+      const eventHandler = handlerRef.current[key];
 
       if (eventHandler) {
         eventHandler(event);
@@ -19,5 +25,5 @@ export const useKeyDown = (keyEventsHandler: KeyEventHandler) => {
     return () => {
       document.removeEventListener('keydown', handleDocumentKeyDown);
     };
-  }, [keyEventsHandler]);
+  }, []);
 };
