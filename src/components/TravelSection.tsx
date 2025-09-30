@@ -61,12 +61,7 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <div
-        aria-live="polite"
-        aria-atomic="true"
-        className="sr-only visually-hidden"
-      >{`${travelOptions.length}개의 상품 중 ${currentIndex + 1}번째 상품`}</div>
-      <ul className={styles.carousel}>
+      <ul className={styles.carousel} aria-live="polite">
         {travelOptions.map((option, index) => (
           <li
             key={index}
@@ -78,9 +73,9 @@ const TravelSection = () => {
               href={option.link}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`${option.departure} 출발 ${option.destination} 도착, ${
+              aria-label={`${travelOptions.length}개의 상품 중 ${currentIndex + 1}번째 상품입니다. ${option.departure} 출발 ${option.destination} 도착으로, ${
                 option.type
-              }, 가격 ${option.price.toLocaleString()} 원`}
+              }이며, 가격은 ${option.price.toLocaleString()} 원입니다.`}
             >
               <img src={option.image} className={styles.cardImage} alt="" />
               <div className={styles.cardContent} aria-hidden="true">
