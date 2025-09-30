@@ -3,7 +3,8 @@ import Navigation from './components/Navigation';
 import FlightBooking from './components/FlightBooking';
 import TravelSection from './components/TravelSection';
 import VisuallyHidden from './components/VisuallyHidden';
-// import PromotionModal from './components/PromotionModal';
+import PromotionModal from './components/PromotionModal';
+import { createPortal } from 'react-dom';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           A11Y AIRLINE은 고객 여러분의 안전하고 쾌적한 여행을 위해 최선을 다하고 있습니다.
         </p>
       </header>
-      <main id="main-content" className={styles.main}>
+      <main id="main-content" className={styles.main} tabIndex={-1} aria-label="메인 콘텐츠 영역">
         <section className={styles.flightBooking}>
           <FlightBooking />
         </section>
@@ -30,8 +31,7 @@ function App() {
       <footer className={styles.footer}>
         <p className="body-text">&copy; A11Y AIRLINE</p>
       </footer>
-      {/* 추가 CHALLENGE: 모달 포커스 트랩 */}
-      {/* <PromotionModal /> */}
+      {createPortal(<PromotionModal />, document.body)}
     </div>
   );
 }
