@@ -62,6 +62,9 @@ const TravelSection = () => {
   return (
     <div className={styles.travelSection}>
       <ul className={styles.carousel} aria-live="polite">
+        <div className="visually-hidden" aria-atomic="true" key={currentIndex}>
+          {`${travelOptions.length}개의 여행 상품중 ${currentIndex + 1}번째 상품`}
+        </div>
         {travelOptions.map((option, index) => (
           <li
             key={index}
@@ -77,7 +80,11 @@ const TravelSection = () => {
                 option.type
               }, 가격 ${option.price.toLocaleString()} 원`}
             >
-              <img src={option.image} className={styles.cardImage} alt="" />
+              <img
+                src={option.image}
+                className={styles.cardImage}
+                alt={`${option.destination} 여행 이미지`}
+              />
               <div className={styles.cardContent} aria-hidden="true">
                 <p className={`${styles.cardTitle} heading-3-text`}>
                   {option.departure} - {option.destination}
@@ -96,14 +103,14 @@ const TravelSection = () => {
         aria-label="이전 여행 상품"
         onClick={prevTravel}
       >
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="이전" />
       </button>
       <button
         className={`${styles.navButton} ${styles.navButtonNext}`}
         aria-label="다음 여행 상품"
         onClick={nextTravel}
       >
-        <img src={chevronRight} className={styles.navButtonIcon} />
+        <img src={chevronRight} className={styles.navButtonIcon} alt="다음" />
       </button>
     </div>
   );
