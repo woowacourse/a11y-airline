@@ -62,9 +62,6 @@ const TravelSection = () => {
   return (
     <div className={styles.travelSection}>
       <ul className={styles.carousel} aria-live="polite">
-        <div className="visually-hidden" aria-atomic="true" key={currentIndex}>
-          {`${travelOptions.length}개의 여행 상품중 ${currentIndex + 1}번째 상품`}
-        </div>
         {travelOptions.map((option, index) => (
           <li
             key={index}
@@ -72,6 +69,9 @@ const TravelSection = () => {
             aria-hidden={index !== currentIndex}
             onClick={() => handleCardClick(option.link)}
           >
+            <div className="visually-hidden" aria-atomic="true" key={currentIndex}>
+              {`${travelOptions.length}개의 여행 상품중 ${currentIndex + 1}번째 상품`}
+            </div>
             <a
               href={option.link}
               target="_blank"
