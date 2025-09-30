@@ -66,11 +66,12 @@ const TravelSection = () => {
         aria-atomic="true"
         className="sr-only visually-hidden"
       >{`${travelOptions.length}개의 상품 중 ${currentIndex + 1}번째 상품`}</div>
-      <div className={styles.carousel}>
+      <ul className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <div
+          <li
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
+            aria-hidden={index !== currentIndex}
             onClick={() => handleCardClick(option.link)}
           >
             <img src={option.image} className={styles.cardImage} />
@@ -81,9 +82,9 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         aria-label="이전 여행 상품"
