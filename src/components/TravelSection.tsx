@@ -61,6 +61,11 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
+      <div
+        aria-live="polite"
+        aria-atomic="true"
+        className="sr-only visually-hidden"
+      >{`${travelOptions.length}개의 상품 중 ${currentIndex + 1}번째 상품`}</div>
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
