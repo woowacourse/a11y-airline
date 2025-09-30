@@ -32,10 +32,10 @@ const FlightBooking = () => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   return (
-    <div className={styles.flightBooking}>
+    <main className={styles.flightBooking}>
       <h2 className="heading-2-text">항공권 예매</h2>
-      <div className={styles.passengerCount}>
-        <div className={styles.passengerLabel}>
+      <section className={styles.passengerCount}>
+        <section className={styles.passengerLabel}>
           <label className="body-text">성인</label>
           <div
             className={styles.helpIconWrapper}
@@ -45,8 +45,8 @@ const FlightBooking = () => {
             <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
             {showTooltip && <div className={styles.tooltip}>최대 3명까지 예약할 수 있습니다</div>}
           </div>
-        </div>
-        <div className={styles.counter}>
+        </section>
+        <section className={styles.counter}>
           <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
             <img src={minus} alt="" />
           </button>
@@ -54,15 +54,15 @@ const FlightBooking = () => {
           <button className="button-text" onClick={incrementCount} aria-label="인원 수 늘리기">
             <img src={plus} alt="" />
           </button>
-        </div>
-      </div>
+        </section>
+      </section>
       {message && (
         <div className="visually-hidden" role="alert">
           {message}
         </div>
       )}
       <button className={styles.searchButton}>항공편 검색</button>
-    </div>
+    </main>
   );
 };
 

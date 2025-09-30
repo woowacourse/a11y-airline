@@ -60,17 +60,17 @@ const TravelSection = () => {
   };
 
   return (
-    <div className={styles.travelSection}>
-      <div className={styles.carousel}>
+    <main className={styles.travelSection}>
+      <section className={styles.carousel}>
         {/* 안내 전용 포커스 가능한 요소 */}
-        <div
+        <section
           tabIndex={0}
           className={styles.visuallyHidden}
           role="region"
           aria-roledescription="케러셀로 이동 가능"
         >
           여행 프로모션, 총 {travelOptions.length}개
-        </div>
+        </section>
         {travelOptions.map((option, index) => (
           <button
             key={index}
@@ -91,7 +91,7 @@ const TravelSection = () => {
             </div>
           </button>
         ))}
-      </div>
+      </section>
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
@@ -124,7 +124,7 @@ const TravelSection = () => {
           currentIndex
         ].price.toLocaleString()}원, 링크로 들어가시려면 Shift+Tab 2번 하고 클릭하세요`}
       </div>
-    </div>
+    </main>
   );
 };
 
