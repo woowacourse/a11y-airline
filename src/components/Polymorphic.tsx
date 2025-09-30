@@ -1,6 +1,11 @@
-import { forwardRef, type ComponentPropsWithoutRef, type ElementType } from 'react';
+import {
+  forwardRef,
+  type ComponentPropsWithRef,
+  type ComponentPropsWithoutRef,
+  type ElementType
+} from 'react';
 
-type PolymorphicRef<T extends ElementType> = ComponentPropsWithoutRef<T>['ref'];
+type PolymorphicRef<T extends ElementType> = ComponentPropsWithRef<T>['ref'];
 
 type PolymorphicProps<T extends ElementType> = {
   as?: T;
