@@ -61,38 +61,40 @@ const TravelSection = () => {
         <img src={chevronLeft} className={styles.navButtonIcon} alt="이전" />
       </button>
       <div className={styles.carousel}>
-        {travelOptions.map((option, index) => (
-          <div
-            key={index}
-            className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-          >
-            <a href={option.link}
-               className={styles.link}
-               target="_blank"
-               rel="noopener noreferrer"
-               tabIndex={index === currentIndex ? 0 : -1}
-               aria-live={index === currentIndex ? "polite" : undefined}
-               aria-atomic="true"
-               aria-label={`${option.departure} 출발 - ${option.destination} 도착, ${option.type}, ${option.price.toLocaleString()}원. 클릭 시 예약 페이지로 이동`}>
-              <img src={option.image} className={styles.cardImage} alt="" />
-              <div className={styles.cardContent}>
-                {index === currentIndex && (
-                  <span className="visually-hidden">{`총 ${travelOptions.length}개 목록 중 ${currentIndex + 1}번째`}</span>
-                )}
-                <p className={`${styles.cardTitle} heading-3-text`} aria-hidden="true">
-                  {option.departure} - {option.destination}
-                </p>
-                <p className={`${styles.cardType} body-text`} aria-hidden="true">{option.type}</p>
-                <p className={`${styles.cardPrice} body-text`}
-                   aria-hidden="true">KRW {option.price.toLocaleString()}</p>
-                <span aria-hidden="true" className={styles.pageIndicator}>
+        <span className="visually-hidden" role="status" aria-atomic="true" aria-live="polite">
+          {`총 ${travelOptions.length}개 목록 중 ${currentIndex + 1}번째`}
+        </span>
+        <ul aria-live="polite">
+          {travelOptions.map((option, index) => (
+            <li
+              key={index}
+              className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
+              aria-hidden={index !== currentIndex}
+            >
+              <a
+                href={option.link}
+                className={styles.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                tabIndex={index === currentIndex ? 0 : -1}
+                aria-label={`${option.departure} 출발 - ${option.destination} 도착, ${option.type}, ${option.price.toLocaleString()}원. 클릭 시 예약 페이지로 이동`}>
+                <img src={option.image} className={styles.cardImage} alt="" />
+                <div className={styles.cardContent}>
+                  <p className={`${styles.cardTitle} heading-3-text`} aria-hidden="true">
+                    {option.departure} - {option.destination}
+                  </p>
+                  <p className={`${styles.cardType} body-text`} aria-hidden="true">{option.type}</p>
+                  <p className={`${styles.cardPrice} body-text`}
+                     aria-hidden="true">KRW {option.price.toLocaleString()}</p>
+                  <span aria-hidden="true" className={styles.pageIndicator}>
                 <span>{index + 1}</span>
                 /{travelOptions.length}
               </span>
-              </div>
-            </a>
-          </div>
-        ))}
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
       <button className={`${styles.navButton} ${styles.navButtonNext}`} aria-label="다음 여행 상품" onClick={nextTravel}>
         <img src={chevronRight} className={styles.navButtonIcon} alt="다음" />
