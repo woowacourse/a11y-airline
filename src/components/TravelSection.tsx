@@ -61,7 +61,7 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} aria-label="이전" onClick={prevTravel}>
+      <button className={`${styles.navButton} ${styles.navButtonPrev}`} aria-label="이전 여행 상품" onClick={prevTravel}>
         <img src={chevronLeft} className={styles.navButtonIcon} alt="이전" />
       </button>
       <div className={styles.carousel}>
@@ -91,7 +91,7 @@ const TravelSection = () => {
           </div>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} aria-label="다음" onClick={nextTravel}>
+      <button className={`${styles.navButton} ${styles.navButtonNext}`} aria-label="다음 여행 상품" onClick={nextTravel}>
         <img src={chevronRight} className={styles.navButtonIcon} alt="다음" />
       </button>
     </div>
