@@ -19,9 +19,9 @@ function App() {
       </header>
 
       <main id="main-content" className={styles.main}>
-        <div className={styles.flightBooking}>
+        <section className={styles.flightBooking}>
           <FlightBooking />
-        </div>
+        </section>
         <section className={styles.travelSection}>
           <h2 className={`${styles.travelTitle} heading-2-text`}>지금 떠나기 좋은 여행</h2>
           <TravelSection />
