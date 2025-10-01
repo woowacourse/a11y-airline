@@ -55,10 +55,6 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
-
   const getCurrentItemDescription = (option: TravelOption, index: number) => {
     return `세계의 여행 상품 총 ${travelOptions.length}개 중 ${index + 1}번째 상품. ${
       option.departure
@@ -75,13 +71,15 @@ const TravelSection = () => {
 
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <div
+          <a
+            href={option.link}
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
-            role="button"
             tabIndex={0}
             aria-labelledby={`card-title-${index} card-type-${index} card-price-${index}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => console.log(option.link)}
           >
             <img src={option.image} className={styles.cardImage} alt="" />
             <div className={styles.cardContent}>
@@ -107,7 +105,7 @@ const TravelSection = () => {
                 KRW {option.price.toLocaleString()}
               </p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
       <button

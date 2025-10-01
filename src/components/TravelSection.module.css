@@ -17,6 +17,16 @@
   display: none;
   width: 100%;
   height: 246px;
+  text-decoration: none;
+  color: inherit;
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    color: inherit;
+  }
 }
 
 .cardActive {
