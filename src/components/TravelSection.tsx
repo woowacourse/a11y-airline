@@ -64,11 +64,7 @@ const TravelSection = () => {
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
-        aria-label={`이전 여행 상품으로 이동. 현재 ${currentIndex + 1}번째 상품: ${
-          travelOptions[currentIndex].departure
-        }에서 ${travelOptions[currentIndex].destination}으로 가는 ${
-          travelOptions[currentIndex].type
-        }`}
+        aria-label="이전 여행 상품으로 이동"
       >
         <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
@@ -76,9 +72,7 @@ const TravelSection = () => {
       <div
         className={styles.carousel}
         role="region"
-        aria-label={`여행 상품 캐러셀, 총 ${travelOptions.length}개의 상품 중 ${
-          currentIndex + 1
-        }번째`}
+        aria-label={`여행 상품 캐러셀, 총 ${travelOptions.length}개의 상품`}
       >
         {travelOptions.map((option, index) => (
           <div
@@ -95,6 +89,8 @@ const TravelSection = () => {
                 handleCardClick(option.link);
               }
             }}
+            aria-live="polite"
+            aria-atomic="true"
           >
             <img
               src={option.image}
@@ -115,11 +111,7 @@ const TravelSection = () => {
       <button
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={nextTravel}
-        aria-label={`다음 여행 상품으로 이동. 현재 ${currentIndex + 1}번째 상품: ${
-          travelOptions[currentIndex].departure
-        }에서 ${travelOptions[currentIndex].destination}으로 가는 ${
-          travelOptions[currentIndex].type
-        }`}
+        aria-label="다음 여행 상품으로 이동"
       >
         <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
