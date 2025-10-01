@@ -51,7 +51,7 @@ const FlightBooking = () => {
             <img src={minus} alt="" />
           </button>
           <span aria-live="polite">{adultCount}</span>
-          <button className="button-text" onClick={incrementCount} aria-label="인원 수 늘리기">
+          <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
             <img src={plus} alt="" />
           </button>
         </section>
