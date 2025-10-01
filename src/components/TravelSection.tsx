@@ -86,7 +86,7 @@ const TravelSection = () => {
                 <p className={`${styles.cardPrice} body-text`}
                    aria-hidden="true">KRW {option.price.toLocaleString()}</p>
                 <span aria-hidden="true" className={styles.pageIndicator}>
-                <span className={styles.currentPage}>{index + 1}</span>
+                <span>{index + 1}</span>
                 /{travelOptions.length}
               </span>
               </div>
