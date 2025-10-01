@@ -71,10 +71,6 @@ const TravelSection = () => {
     }, 0);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div className={styles.travelSection}>
       <button
@@ -88,9 +84,11 @@ const TravelSection = () => {
         <ul>
           {travelOptions.map((option, index) => (
             <li key={index}>
-              <button
+              <a
+                href={option.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-                onClick={() => handleCardClick(option.link)}
                 data-index={index}
                 aria-label={`새해 여행 상품 중 ${index + 1}번째 상품, ${option.departure}에서 ${
                   option.destination
@@ -116,7 +114,7 @@ const TravelSection = () => {
                     </dd>
                   </dl>
                 </div>
-              </button>
+              </a>
             </li>
           ))}
         </ul>
