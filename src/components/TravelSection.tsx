@@ -90,7 +90,11 @@ const TravelSection = () => {
                 className={styles.cardLink}
                 aria-describedby="carousel-instruction"
               >
-                <img src={option.image} className={styles.cardImage} alt="캐러셀 이미지" />
+                <img
+                  src={option.image}
+                  className={styles.cardImage}
+                  alt={`${travelOptions[currentIndex].departure} - ${travelOptions[currentIndex].destination} 캐러셀 이미지`}
+                />
                 <div className={styles.cardContent}>
                   <p className={`${styles.cardTitle} heading-3-text`}>
                     {option.departure} - {option.destination}
