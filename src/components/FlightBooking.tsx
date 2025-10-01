@@ -38,6 +38,7 @@ const FlightBooking = () => {
     <form className={styles.flightBooking}>
       <h2 className="heading-2-text">항공권 예매</h2>
       <fieldset className={styles.passengerCount}>
+        <legend className="visually-hidden">승객 수 선택</legend>
         <div className={styles.passengerLabel}>
           <span className="body-text">성인</span>
           <div
