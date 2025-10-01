@@ -57,13 +57,18 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <span className="visually-hidden" role="status" aria-atomic="true">
+      <span className="visually-hidden" aria-live="polite" aria-atomic="true">
         {`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품: ${
           travelOptions[currentIndex].departure
         } - ${travelOptions[currentIndex].destination} ${
           travelOptions[currentIndex].type
         } ${travelOptions[currentIndex].price.toLocaleString()}원`}
       </span>
+
+      <span id="carousel-instruction" className="visually-hidden">
+        선택하면 예약 페이지로 이동합니다.
+      </span>
+
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
@@ -83,13 +88,7 @@ const TravelSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.cardLink}
-                aria-label={`${travelOptions.length}개의 여행 상품 중 ${
-                  currentIndex + 1
-                }번째 상품: ${travelOptions[currentIndex].departure} - ${
-                  travelOptions[currentIndex].destination
-                } ${travelOptions[currentIndex].type} ${travelOptions[
-                  currentIndex
-                ].price.toLocaleString()}원. 선택하면 예약 페이지로 이동합니다.`}
+                aria-describedby="carousel-instruction"
               >
                 <img src={option.image} className={styles.cardImage} alt="캐러셀 이미지" />
                 <div className={styles.cardContent}>
