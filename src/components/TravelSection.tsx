@@ -75,10 +75,12 @@ const TravelSection = () => {
         aria-atomic="true"
       >
         {travelOptions.map((option, index) => (
-          <div
+          <a
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
+            href={option.link}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <img
               src={option.image}
@@ -92,7 +94,7 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
       <button
