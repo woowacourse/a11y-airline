@@ -19,7 +19,6 @@ function App() {
       </header>
       <main id="main-content" className={styles.main}>
         <section className={styles.flightBooking}>
-          <h2 className="heading-2-text">항공편 예약</h2>
           <FlightBooking />
         </section>
         <section className={styles.travelSection}>
