@@ -55,24 +55,14 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div className={styles.travelSection}>
       <div
         className={styles.carousel}
         role="region"
-        aria-label={`여행 상품 캐로셀, 총 ${travelOptions.length}개 상품. 현재 ${
+        aria-label={`여행 상품 캐로셀, 총 ${travelOptions.length}개 상품, 현재 ${
           currentIndex + 1
-        }번째 상품: ${travelOptions[currentIndex].departure} - ${
-          travelOptions[currentIndex].destination
-        } ${travelOptions[
-          currentIndex
-        ].price.toLocaleString()}원. 선택하면 예약 사이트로 넘어갑니다.`}
-        aria-live="polite"
-        aria-atomic="true"
+        }번째 상품`}
       >
         {travelOptions.map((option, index) => (
           <a
@@ -81,6 +71,11 @@ const TravelSection = () => {
             href={option.link}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`${option.departure}에서 ${option.destination}행 ${
+              option.type
+            }, 가격 ${option.price.toLocaleString()}원. 예약 페이지로 이동`}
+            aria-live="polite"
+            aria-atomic="true"
           >
             <img
               src={option.image}
