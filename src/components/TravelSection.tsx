@@ -56,13 +56,17 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
+  const currentOption = travelOptions[currentIndex];
 
   return (
     <div className={styles.travelSection}>
-      <p className="visually-hidden">{`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품`}</p>
+      <div className="visually-hidden" aria-live="polite" aria-atomic="true">
+        {`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품: ${
+          currentOption.departure
+        } 출발 ${currentOption.destination} 도착, ${
+          currentOption.type
+        }, 가격 ${currentOption.price.toLocaleString('ko-KR')} 원`}
+      </div>
 
       <ul className={styles.carousel}>
         {travelOptions.map((option, index) => (
@@ -71,11 +75,13 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             aria-hidden={index !== currentIndex}
           >
-            <button
-              onClick={() => handleCardClick(option.link)}
-              aria-label={`${option.departure} 출발 ${option.destination} 도착, ${
-                option.type
-              }, 가격 ${option.price.toLocaleString()} 원. 선택하면 예약 페이지로 이동합니다.`}
+            <a
+              href={option.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.cardLink}
+              tabIndex={index === currentIndex ? 0 : -1}
+              aria-label={`${option.departure} 출발 ${option.destination} 도착, ${option.type}, 가격 ${option.price.toLocaleString('ko-KR')} 원`}
             >
               <img src={option.image} className={styles.cardImage} alt="" />
               <div className={styles.cardContent} aria-hidden="true">
@@ -84,10 +90,10 @@ const TravelSection = () => {
                 </h3>
                 <p className={`${styles.cardType} body-text`}>{option.type}</p>
                 <p className={`${styles.cardPrice} body-text`}>
-                  KRW {option.price.toLocaleString()}
+                  KRW {option.price.toLocaleString('ko-KR')}
                 </p>
               </div>
-            </button>
+            </a>
           </li>
         ))}
       </ul>
