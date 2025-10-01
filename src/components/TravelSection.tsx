@@ -55,10 +55,6 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div className={styles.travelSection}>
       <div className={styles.carousel}>
@@ -70,7 +66,6 @@ const TravelSection = () => {
             <li
               key={index}
               className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-              onClick={() => handleCardClick(option.link)}
               aria-hidden={index !== currentIndex}
             >
               <a
