@@ -54,6 +54,7 @@ const TravelSection = () => {
   const prevTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
+  const currentTravel = travelOptions[currentIndex];
 
   return (
     <div className={styles.travelSection}>
@@ -66,34 +67,41 @@ const TravelSection = () => {
       </button>
       <div className={styles.carousel}>
         <div className="visually-hidden" aria-live="polite" aria-atomic="true">
-          {currentIndex + 1}번째 상품: {travelOptions[currentIndex].departure}에서
-          {travelOptions[currentIndex].destination}까지
+          {currentIndex + 1}번째 상품: {currentTravel.departure}에서
+          {currentTravel.destination}까지
+          {currentTravel.type} 여행 상품
+          {currentTravel.price.toLocaleString()}원
         </div>
-        {travelOptions.map((option, index) => (
-          <a
-            key={index}
-            href={option.link}
-            className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            aria-label={`${option.departure}에서 ${option.destination}까지 ${option.type}, 링크로 이동합니다`}
-            aria-hidden={index !== currentIndex}
-            tabIndex={index !== currentIndex ? -1 : 0}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src={option.image}
-              className={styles.cardImage}
-              alt={`${option.departure}에서 ${option.destination}까지 ${option.type} 여행 상품`}
-            />
-            <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
-                {option.departure} - {option.destination}
-              </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
-            </div>
-          </a>
-        ))}
+        <ul>
+          {travelOptions.map((option, index) => (
+            <li key={index}>
+              <a
+                href={option.link}
+                className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
+                aria-label={`${option.departure}에서 ${option.destination}까지 ${option.type}, 링크로 이동합니다`}
+                aria-hidden={index !== currentIndex}
+                tabIndex={index !== currentIndex ? -1 : 0}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={option.image}
+                  className={styles.cardImage}
+                  alt={`${option.departure}에서 ${option.destination}까지 ${option.type} 여행 상품`}
+                />
+                <div className={styles.cardContent}>
+                  <p className={`${styles.cardTitle} heading-3-text`}>
+                    {option.departure} - {option.destination}
+                  </p>
+                  <p className={`${styles.cardType} body-text`}>{option.type}</p>
+                  <p className={`${styles.cardPrice} body-text`}>
+                    KRW {option.price.toLocaleString()}
+                  </p>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
       <button
         className={`${styles.navButton} ${styles.navButtonNext}`}
