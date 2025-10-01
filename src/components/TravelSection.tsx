@@ -62,7 +62,6 @@ const TravelSection = () => {
           <li
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            style={{ display: index === currentIndex ? 'block' : 'none' }}
           >
             <a
               href={option.link}
