@@ -56,7 +56,7 @@ const TravelSection = () => {
   };
 
   return (
-    <section className={styles.travelSection}>
+    <div className={styles.travelSection}>
       <div className={styles.carousel} aria-live="polite">
         <div className={styles.srOnly}>{`세계의 여행상품 중 ${currentIndex + 1}번째 상품`}</div>
         {travelOptions.map((option, index) => (
@@ -95,7 +95,7 @@ const TravelSection = () => {
       >
         <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
-    </section>
+    </div>
   );
 };
 

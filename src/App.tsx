@@ -18,13 +18,13 @@ function App() {
         </p>
       </header>
       <main id="main-content" className={styles.main}>
-        <div className={styles.flightBooking}>
+        <section className={styles.flightBooking}>
           <FlightBooking />
-        </div>
-        <div className={styles.travelSection}>
+        </section>
+        <section className={styles.travelSection}>
           <h2 className={`${styles.travelTitle} heading-2-text`}>지금 떠나기 좋은 여행</h2>
           <TravelSection />
-        </div>
+        </section>
       </main>
       <footer className={styles.footer}>
         <p className="body-text">&copy; A11Y AIRLINE</p>
