@@ -57,7 +57,7 @@ const TravelSection = () => {
 
   return (
     <section className={styles.travelSection} aria-label="여행 상품 캐러셀">
-      <p role="status" aria-atomic="true" className="visually-hidden" aria-live="polite">
+      <p role="status" className="visually-hidden">
         {`총 ${travelOptions.length}개의 상품 중, ${currentIndex + 1}번째 상품.`}
       </p>
 
