@@ -58,10 +58,14 @@ const PromotionModal = () => {
       if (e.key !== 'Tab') return;
 
       const focusableElements = Array.from(
-        container.querySelectorAll<HTMLElement>(
-          'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
-        )
-      ).filter((el) => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden'));
+        container.querySelectorAll<HTMLElement>('a[href], button, textarea, input, select')
+      ).filter(
+        (el) =>
+          !el.hasAttribute('disabled') &&
+          !el.hasAttribute('hidden') &&
+          !el.getAttribute('aria-hidden') &&
+          el.tabIndex !== -1
+      );
 
       if (focusableElements.length === 0) {
         container.focus();
