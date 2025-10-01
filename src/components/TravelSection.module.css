@@ -86,3 +86,8 @@
   width: 24px;
   height: 24px;
 }
+
+.card a {
+  text-decoration: none;
+  color: inherit;
+}
