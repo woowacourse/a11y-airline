@@ -99,3 +99,8 @@
   white-space: nowrap;
   border: 0;
 }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
