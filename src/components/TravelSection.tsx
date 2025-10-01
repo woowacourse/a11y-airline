@@ -60,8 +60,8 @@ const TravelSection = () => {
   };
 
   return (
-    <main className={styles.travelSection}>
-      <section className={styles.carousel}>
+    <div className={styles.travelSection}>
+      <div className={styles.carousel}>
         {/* 안내 전용 포커스 가능한 요소 */}
         <section
           tabIndex={0}
@@ -91,7 +91,7 @@ const TravelSection = () => {
             </div>
           </button>
         ))}
-      </section>
+      </div>
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
@@ -124,7 +124,7 @@ const TravelSection = () => {
         {travelOptions[currentIndex].price.toLocaleString()}원, 링크로 들어가시려면 Shift+Tab 2번
         하고 클릭하세요
       </div>
-    </main>
+    </div>
   );
 };
 
