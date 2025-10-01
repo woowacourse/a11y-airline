@@ -46,6 +46,7 @@ const FlightBooking = () => {
             onMouseLeave={() => setShowTooltip(false)}
             onFocus={() => setShowTooltip(true)}
             onBlur={() => setShowTooltip(false)}
+            tabIndex={0}
             aria-label="도움말: 최대 3명까지 예약할 수 있습니다"
           >
             <img
