@@ -48,11 +48,27 @@ const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextTravel = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
+    const newIndex = (currentIndex + 1) % travelOptions.length;
+    setCurrentIndex(newIndex);
+
+    setTimeout(() => {
+      const activeCard = document.querySelector(`[data-index="${newIndex}"]`);
+      if (activeCard) {
+        (activeCard as HTMLElement).focus();
+      }
+    }, 0);
   };
 
   const prevTravel = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
+    const newIndex = (currentIndex - 1 + travelOptions.length) % travelOptions.length;
+    setCurrentIndex(newIndex);
+
+    setTimeout(() => {
+      const activeCard = document.querySelector(`[data-index="${newIndex}"]`);
+      if (activeCard) {
+        (activeCard as HTMLElement).focus();
+      }
+    }, 0);
   };
 
   const handleCardClick = (link: string) => {
@@ -75,9 +91,12 @@ const TravelSection = () => {
               <button
                 className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
                 onClick={() => handleCardClick(option.link)}
+                data-index={index}
                 aria-label={`새해 여행 상품 중 ${index + 1}번째 상품, ${option.departure}에서 ${
                   option.destination
-                }행 항공편, ${option.type}, ${option.price.toLocaleString()}원`}
+                }행 항공편, ${
+                  option.type
+                }, ${option.price.toLocaleString()}원, 선택하면 예약페이지로 이동합니다`}
               >
                 <img
                   src={option.image}
