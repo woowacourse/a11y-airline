@@ -67,6 +67,7 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
           >
             <a href={option.link}
+               className={styles.link}
                target="_blank"
                rel="noopener noreferrer"
                tabIndex={index === currentIndex ? 0 : -1}
