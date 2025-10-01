@@ -77,7 +77,7 @@ const TravelSection = () => {
               <img src={option.image} className={styles.cardImage} alt="" />
               <div className={styles.cardContent}>
                 {index === currentIndex && (
-                  <span className="visually-hidden">총 {travelOptions.length}개 목록 중 {index + 1}번째</span>
+                  <span className="visually-hidden">{`총 ${travelOptions.length}개 목록 중 ${currentIndex + 1}번째`}</span>
                 )}
                 <p className={`${styles.cardTitle} heading-3-text`} aria-hidden="true">
                   {option.departure} - {option.destination}
