@@ -80,6 +80,7 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
             role="button"
+            tabIndex={index === currentIndex ? 0 : -1}
             aria-label={`${option.departure}에서 ${option.destination}으로 가는 ${
               option.type
             } 여행 상품, 가격 ${option.price.toLocaleString()}원. 클릭하면 예약 페이지로 이동합니다.`}
@@ -89,8 +90,6 @@ const TravelSection = () => {
                 handleCardClick(option.link);
               }
             }}
-            aria-live="polite"
-            aria-atomic="true"
           >
             <img
               src={option.image}
