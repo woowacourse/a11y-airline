@@ -9,7 +9,7 @@
   margin: 0 auto;
 }
 
-header {
+.app header {
   padding: 48px 24px 24px 24px;
 }
 
@@ -17,7 +17,7 @@ header {
   margin-bottom: 16px;
 }
 
-main {
+.app main {
   flex: 1;
 }
 
@@ -35,7 +35,7 @@ main {
   padding: 24px;
 }
 
-footer {
+.app footer {
   padding: 32px;
   background-color: white;
   text-align: center;
