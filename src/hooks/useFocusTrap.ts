@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 
 const useFocusTrap = (containerRef: React.RefObject<HTMLElement>, onClose: () => void) => {
   useEffect(() => {
+    const previouslyFocused = document.activeElement as HTMLElement | null;
     const container = containerRef.current;
     if (!container) return;
 
@@ -14,11 +15,11 @@ const useFocusTrap = (containerRef: React.RefObject<HTMLElement>, onClose: () =>
       '[tabindex]:not([tabindex="-1"])'
     ];
     const focusableElements = container.querySelectorAll<HTMLElement>(focusableSelectors.join(','));
-    const firstEl = focusableElements[0];
-    const lastEl = focusableElements[focusableElements.length - 1];
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
 
-    if (firstEl) {
-      firstEl.focus();
+    if (firstElement) {
+      firstElement.focus();
     }
 
     function handleKeyDown(e: KeyboardEvent) {
@@ -35,22 +36,25 @@ const useFocusTrap = (containerRef: React.RefObject<HTMLElement>, onClose: () =>
 
         if (e.shiftKey) {
           // Shift + Tab → 첫 요소에서 마지막으로
-          if (document.activeElement === firstEl) {
+          if (document.activeElement === firstElement) {
             e.preventDefault();
-            lastEl.focus();
+            lastElement.focus();
           }
         } else {
           // Tab → 마지막에서 첫 요소로
-          if (document.activeElement === lastEl) {
+          if (document.activeElement === lastElement) {
             e.preventDefault();
-            firstEl.focus();
+            firstElement.focus();
           }
         }
       }
     }
 
     document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      previouslyFocused?.focus();
+    };
   }, [containerRef, onClose]);
 };
 
