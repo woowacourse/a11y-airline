@@ -63,12 +63,7 @@ const TravelSection = () => {
     <div className={styles.travelSection}>
       <div className={styles.carousel}>
         {/* 안내 전용 포커스 가능한 요소 */}
-        <section
-          tabIndex={0}
-          className={styles.visuallyHidden}
-          role="region"
-          aria-roledescription="케러셀로 이동 가능"
-        >
+        <section tabIndex={0} className={styles.visuallyHidden} aria-label="여행 프로모션 캐러셀">
           여행 프로모션, 총 {travelOptions.length}개
         </section>
         {travelOptions.map((option, index) => (
