@@ -66,13 +66,6 @@ const TravelSection = () => {
         가격 ${travelOptions[currentIndex].price.toLocaleString()}원.
         `}
       </span>
-      <button
-        aria-label="이전 여행 상품"
-        className={`${styles.navButton} ${styles.navButtonPrev}`}
-        onClick={prevTravel}
-      >
-        <img src={chevronLeft} alt="" className={styles.navButtonIcon} />
-      </button>
       <ul className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <li key={index}>
@@ -99,6 +92,13 @@ const TravelSection = () => {
           </li>
         ))}
       </ul>
+      <button
+        aria-label="이전 여행 상품"
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+      >
+        <img src={chevronLeft} alt="" className={styles.navButtonIcon} />
+      </button>
       <button
         aria-label="다음 여행 상품"
         className={`${styles.navButton} ${styles.navButtonNext}`}
