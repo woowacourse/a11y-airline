@@ -6,7 +6,7 @@ const MAX_PASSENGERS = 3;
 const MIN_PASSENGERS = 1;
 
 const FlightBooking = () => {
-  const [adultCount, setAdultCount] = useState(1);
+  const [adultCount, setAdultCount] = useState(MIN_PASSENGERS);
   const [alertMessage, setAlertMessage] = useState('');
 
   const incrementCount = () => {
