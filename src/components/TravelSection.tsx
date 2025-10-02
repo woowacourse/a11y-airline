@@ -60,13 +60,6 @@ const TravelSection = () => {
       <span className="visually-hidden" role="status">
         {`총 ${travelOptions.length}개 상품 중 ${currentIndex + 1}번째`}
       </span>
-      <button
-        className={`${styles.navButton} ${styles.navButtonPrev}`}
-        onClick={prevTravel}
-        aria-label="이전 여행 상품 보기"
-      >
-        <img src={chevronLeft} className={styles.navButtonIcon} alt="이전 여행 상품 보기" />
-      </button>
       <ul className={styles.carousel} aria-live="polite">
         {travelOptions.map((option, index) => (
           <li
@@ -100,6 +93,13 @@ const TravelSection = () => {
           </li>
         ))}
       </ul>
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 여행 상품 보기"
+      >
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="이전 여행 상품 보기" />
+      </button>
       <button
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={nextTravel}
