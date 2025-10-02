@@ -90,6 +90,8 @@ const TravelSection = () => {
                 handleCardClick(option.link);
               }
             }}
+            aria-live="polite"
+            aria-atomic="true"
           >
             <img
               src={option.image}
