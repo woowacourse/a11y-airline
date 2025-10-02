@@ -40,3 +40,27 @@
   background-color: white;
   text-align: center;
 }
+
+.skipLink {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skipLink:focus {
+  position: absolute;
+  width: auto;
+  height: auto;
+  padding: 10px 14px;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+}
