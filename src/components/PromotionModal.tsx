@@ -8,6 +8,7 @@ const PromotionModal = () => {
   const [isOpen, setIsOpen] = useState(true);
   const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const focusableElementsRef = useRef<HTMLElement[]>([]);
 
   const closeModal = () => {
     setIsOpen(false);
@@ -16,7 +17,7 @@ const PromotionModal = () => {
   const getFocusableElements = () => {
     if (!modalRef.current) return [];
 
-    return Array.from(modalRef.current.querySelectorAll('button:not([disabled]')) as HTMLElement[];
+    return Array.from(modalRef.current.querySelectorAll('button:not([disabled])')) as HTMLElement[];
   };
 
   const handleKeyDown = (e: KeyboardEvent) => {
@@ -26,7 +27,7 @@ const PromotionModal = () => {
     }
 
     if (e.key === 'Tab') {
-      const focusableElements = getFocusableElements();
+      const focusableElements = focusableElementsRef.current;
       if (focusableElements.length === 0) return;
 
       const firstElement = focusableElements[0];
@@ -47,6 +48,8 @@ const PromotionModal = () => {
 
   useEffect(() => {
     if (isOpen) {
+      focusableElementsRef.current = getFocusableElements();
+
       const timer = setTimeout(() => {
         if (closeButtonRef.current) {
           closeButtonRef.current.focus();
