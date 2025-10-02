@@ -22,7 +22,7 @@ function App() {
           <FlightBooking />
         </section>
         <section className={styles.travelSection}>
-          <h1 className={`${styles.travelTitle} heading-2-text`}>지금 떠나기 좋은 여행</h1>
+          <h2 className={`${styles.travelTitle} heading-2-text`}>지금 떠나기 좋은 여행</h2>
           <TravelSection />
         </section>
       </div>

@@ -55,4 +55,5 @@
 .skipLink:focus {
   transform: translateY(0);
   outline: 2px solid #fff;
+  color: #fff;
 }
