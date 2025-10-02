@@ -30,7 +30,9 @@ function App() {
             <FlightBooking />
           </section>
           <section className={styles.travelSection} aria-labelledby="travel-heading">
-            <h2 className={`${styles.travelTitle} heading-2-text`}>지금 떠나기 좋은 여행</h2>
+            <h2 id="travel-heading" className={`${styles.travelTitle} heading-2-text`}>
+              지금 떠나기 좋은 여행
+            </h2>
             <TravelSection />
           </section>
         </main>
