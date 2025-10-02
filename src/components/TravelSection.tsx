@@ -62,7 +62,7 @@ const TravelSection = () => {
   return (
     <div className={styles.travelSection}>
       <div className={styles.carousel}>
-        <div className="visually-hidden" aria-live="polite" key={currentIndex}>
+        <div className="visually-hidden" aria-live="polite" key={currentIndex} aria-atomic="true">
           {`${travelOptions.length}개의 여행 상품중 ${currentIndex + 1}번째 상품`}
         </div>
         {travelOptions.map((option, index) => (
