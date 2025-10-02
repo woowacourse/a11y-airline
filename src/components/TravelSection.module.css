@@ -19,6 +19,11 @@
   height: 246px;
 }
 
+.card a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .cardActive {
   display: block;
 }
