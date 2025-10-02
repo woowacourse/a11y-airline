@@ -45,7 +45,12 @@ const FlightBooking = () => {
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
           >
-            <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
+            <img
+              src={helpIcon}
+              alt=""
+              className={styles.helpIcon}
+              aria-label="최대 3명까지 예약할 수 있습니다"
+            />
             {showTooltip && <div className={styles.tooltip}>최대 3명까지 예약할 수 있습니다</div>}
           </div>
         </div>
