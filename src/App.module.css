@@ -1,4 +1,5 @@
 .app {
+  position: relative;
   font-family: Arial, sans-serif;
   max-width: 480px;
   width: 100%;
@@ -39,4 +40,20 @@
   padding: 32px;
   background-color: white;
   text-align: center;
+}
+.skipLink {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.6rem 0.9rem;
+  background: #000;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  z-index: 1000;
+  transform: translateY(-100%);
+  transition: transform 0.15s ease-in-out;
+}
+.skipLink:focus {
+  transform: translateY(0);
 }
