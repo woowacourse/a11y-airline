@@ -21,6 +21,7 @@
 
 .cardActive {
   display: block;
+  color: black;
 }
 
 .cardImage {
