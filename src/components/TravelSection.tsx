@@ -56,7 +56,7 @@ const TravelSection = () => {
   };
 
   return (
-    <section className={styles.travelSection}>
+    <div className={styles.travelSection}>
       <h2 className={styles.heading2} tabIndex={0}>
         지금 떠나기 좋은 여행
       </h2>
@@ -119,7 +119,7 @@ const TravelSection = () => {
       >
         <img src={chevronRight} className={styles.navButtonIcon} alt="" aria-hidden="true" />
       </button>
-    </section>
+    </div>
   );
 };
 
