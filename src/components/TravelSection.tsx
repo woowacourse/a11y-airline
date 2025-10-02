@@ -78,12 +78,12 @@ const TravelSection = () => {
               key={index}
               className={`${styles.card} ${isActive ? styles.cardActive : ''}`}
               aria-label={itemLabel}
-              aria-hidden={isActive ? 'false' : 'true'}
+              aria-hidden={isActive ? false : true}
               tabIndex={isActive ? 0 : -1}
               href={option.link}
               target="_blank"
             >
-              <img src={option.image} className={styles.cardImage} alt="" aria-hidden="true" />
+              <img src={option.image} className={styles.cardImage} alt="" aria-hidden={true} />
               <div className={styles.cardContent}>
                 <p className={`${styles.cardTitle} heading-3-text`}>
                   {option.departure} - {option.destination}
@@ -97,7 +97,7 @@ const TravelSection = () => {
           );
         })}
       </section>
-      <p id="travel-live" className={styles.visuallyHidden} aria-live="polite" aria-atomic="true">
+      <p id="travel-live" className={styles.visuallyHidden} aria-live="polite" aria-atomic={true}>
         세계 여행 상품 {travelOptions.length}개 중 {currentIndex + 1}번째 상품,{' '}
         {travelOptions[currentIndex].departure}출발,
         {travelOptions[currentIndex].destination}도착, {travelOptions[currentIndex].type}, 가격
