@@ -66,7 +66,10 @@ const TravelSection = () => {
       <div className={styles.travelSection}>
         <ul className={styles.carousel} id="travel-carousel">
           {travelOptions.map((option, index) => (
-            <li key={`${option.departure}-${option.destination}`}>
+            <li
+              key={`${option.departure}-${option.destination}`}
+              aria-hidden={index !== currentIndex}
+            >
               <button
                 type="button"
                 className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
