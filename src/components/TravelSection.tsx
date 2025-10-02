@@ -105,7 +105,7 @@ const TravelSection = () => {
               aria-roledescription="slide"
               aria-label={`${index + 1} / ${travelOptions.length}: ${option.departure}에서 ${
                 option.destination
-              } — ${option.type}, KRW ${option.price.toLocaleString()}`}
+              } — ${option.type}, KRW ${option.price.toLocaleString()}원`}
               aria-current={isActive ? 'true' : undefined}
               className={`${styles.card} ${isActive ? styles.cardActive : ''}`}
             >
@@ -122,7 +122,7 @@ const TravelSection = () => {
                   </h3>
                   <p className={`${styles.cardType} body-text`}>{option.type}</p>
                   <p className={`${styles.cardPrice} body-text`}>
-                    KRW {option.price.toLocaleString()}
+                    {option.price.toLocaleString()}원
                   </p>
                 </div>
               </a>
