@@ -78,9 +78,9 @@ const TravelSection = () => {
               >
                 <img src={option.image} className={styles.cardImage} alt="" />
                 <div className={styles.cardContent} aria-hidden="true">
-                  <h2 className={`${styles.cardTitle} heading-3-text`}>
+                  <h3 className={`${styles.cardTitle} heading-3-text`}>
                     {option.departure} - {option.destination}
-                  </h2>
+                  </h3>
                   <p className={`${styles.cardType} body-text`}>{option.type}</p>
                   <p className={`${styles.cardPrice} body-text`}>
                     KRW {option.price.toLocaleString()}
