@@ -40,3 +40,22 @@
   background-color: white;
   text-align: center;
 }
+
+.skipNav {
+  position: relative;
+}
+
+.skipLink {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #000;
+  color: #000;
+  z-index: 1000;
+  text-decoration: none;
+  &:focus {
+    left: 0;
+  }
+}

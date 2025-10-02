@@ -117,3 +117,16 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
 }
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:focus,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
