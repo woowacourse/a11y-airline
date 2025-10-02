@@ -1,5 +1,9 @@
 const AriaHidden = ({ children }: { children: React.ReactNode }) => {
-  return <span aria-hidden="true">{children}</span>;
+  return (
+    <div aria-hidden="true" style={{ display: 'contents' }}>
+      {children}
+    </div>
+  );
 };
 
 export default AriaHidden;
