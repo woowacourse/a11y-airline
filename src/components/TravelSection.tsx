@@ -56,7 +56,7 @@ const TravelSection = () => {
   };
 
   return (
-    <section className={styles.travelSection} aria-label="여행 상품 캐러셀">
+    <div className={styles.travelSection} aria-label="여행 상품 캐러셀">
       <p role="status" className="visually-hidden">
         {`총 ${travelOptions.length}개의 상품 중, ${currentIndex + 1}번째 상품.`}
       </p>
@@ -78,9 +78,9 @@ const TravelSection = () => {
             >
               <img src={option.image} className={styles.cardImage} alt="" />
               <div className={styles.cardContent} aria-hidden="true">
-                <h2 className={`${styles.cardTitle} heading-3-text`}>
+                <h3 className={`${styles.cardTitle} heading-3-text`}>
                   {option.departure} - {option.destination}
-                </h2>
+                </h3>
                 <p className={`${styles.cardType} body-text`}>{option.type}</p>
                 <p className={`${styles.cardPrice} body-text`}>
                   KRW {option.price.toLocaleString()}
@@ -105,7 +105,7 @@ const TravelSection = () => {
       >
         <img src={chevronRight} className={styles.navButtonIcon} alt="" aria-hidden="true" />
       </button>
-    </section>
+    </div>
   );
 };
 
