@@ -93,14 +93,14 @@ const TravelSection = () => {
           onClick={prevTravel}
           aria-label="이전 여행 상품"
         >
-          <img src={chevronLeft} className={styles.navButtonIcon} alt="다음 화살표 아이콘" />
+          <img src={chevronLeft} className={styles.navButtonIcon} />
         </button>
         <button
           className={`${styles.navButton} ${styles.navButtonNext}`}
           onClick={nextTravel}
           aria-label="다음 여행 상품"
         >
-          <img src={chevronRight} className={styles.navButtonIcon} alt="이전 화살표 아이콘" />
+          <img src={chevronRight} className={styles.navButtonIcon} />
         </button>
       </div>
     </div>
