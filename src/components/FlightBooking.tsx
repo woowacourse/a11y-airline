@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import styles from './FlightBooking.module.css';
+import VisuallyHidden from './VisuallyHidden';
 
 const MAX_PASSENGERS = 3;
 
@@ -46,9 +47,9 @@ const FlightBooking = () => {
 
   return (
     <div className={styles['flight-booking']}>
-      <div aria-live="assertive" className={styles['visually-hidden']}>
-        {announcement}
-      </div>
+      <VisuallyHidden>
+        <div aria-live="assertive">{announcement}</div>
+      </VisuallyHidden>
       <h2 className="heading-2-text">항공권 예매</h2>
       <div className={styles['passenger-count']}>
         <span className="body-text">성인</span>
