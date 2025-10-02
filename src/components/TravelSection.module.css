@@ -86,3 +86,13 @@
   width: 24px;
   height: 24px;
 }
+.travelSection a {
+  color: #000;
+  text-decoration: none;
+}
+
+.travelSection a:hover,
+.travelSection a:focus {
+  color: #000;
+  text-decoration: underline;
+}
