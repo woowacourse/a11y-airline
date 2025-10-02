@@ -114,7 +114,7 @@ const TravelSection = () => {
             <img
               src={option.image}
               className={styles.cardImage}
-              alt={`${option.departure}에서 ${option.destination}으로 가는 여행 상품 이미지`}
+              alt=""
             />
             <div className={styles.cardContent}>
               <h3 className={`${styles.cardTitle} heading-3-text`}>
