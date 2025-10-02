@@ -38,6 +38,7 @@ const navItems: NavItem[] = [
 ];
 
 const Navigation = () => {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const toggleNav = () => {
@@ -46,21 +47,48 @@ const Navigation = () => {
 
   const renderNavItems = (items: NavItem[]) => (
     <ul className={styles.navList}>
-      {items.map((item, index) => (
-        <li key={index} className={styles.navItem}>
-          <a href={item.link}>{item.title}</a>
-          {item.subItems && renderNavItems(item.subItems)}
-        </li>
-      ))}
+      {items.map((item, index) => {
+        const hasSubItems = !!item.subItems;
+        const isExpanded = expandedIndex === index;
+        return (
+          <li
+            key={index}
+            className={styles.navItem}
+            onFocus={() => {
+              if (hasSubItems) {
+                setExpandedIndex(index);
+              }
+            }}
+            onBlur={() => {
+              if (hasSubItems) {
+                setExpandedIndex(null);
+              }
+            }}
+          >
+            <a
+              href={item.link}
+              aria-haspopup={item.subItems ? 'menu' : 'false'}
+              aria-expanded={hasSubItems ? isExpanded : undefined}
+            >
+              {item.title}
+            </a>
+            {item.subItems && renderNavItems(item.subItems)}
+          </li>
+        );
+      })}
     </ul>
   );
 
   return (
     <>
-      <button className={styles.navToggle} onClick={toggleNav}>
+      <button type="button" className={styles.navToggle} onClick={toggleNav}>
         {isNavOpen ? '닫기' : '메뉴'}
       </button>
-      <nav id="main-nav" className={`${styles.mainNav} ${isNavOpen ? styles.mainNavActive : ''}`}>
+      <nav
+        id="main-nav"
+        className={`${styles.mainNav} ${isNavOpen ? styles.mainNavActive : ''}`}
+        aria-label="메인 네비게이션"
+      >
         {renderNavItems(navItems)}
       </nav>
     </>

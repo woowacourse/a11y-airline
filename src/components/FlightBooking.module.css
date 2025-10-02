@@ -14,6 +14,8 @@
   position: relative;
   margin-left: 5px;
   cursor: pointer;
+  padding: 0;
+  height: 16px;
 }
 
 .helpIcon {
@@ -47,18 +49,22 @@
 
 .passengerCount {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
 }
 
-.passengerCount span {
+.passengerCount legend {
   font-weight: 700;
+  float: left;
+  width: auto;
+  margin: 0;
+  padding: 0;
 }
 
 .counter {
   display: flex;
   align-items: center;
+  margin-left: auto;
 }
 
 .counter button {
@@ -77,7 +83,6 @@
 .counter span {
   font-size: 18px;
   text-align: center;
-  font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
