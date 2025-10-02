@@ -62,16 +62,13 @@ const TravelSection = () => {
 
   return (
     <section aria-labelledby="travel-section-title">
-      <div aria-live="polite" aria-atomic="true" className="visually-hidden">
-        {liveMessage}
-      </div>
+      <output className="visually-hidden">{liveMessage}</output>
       <div className={styles.travelSection}>
         <ul className={styles.carousel} id="travel-carousel">
           {travelOptions.map((option, index) => (
             <li key={`${option.departure}-${option.destination}`}>
               <button
                 type="button"
-                aria-live="polite"
                 className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
                 onClick={() => handleCardClick(option.link)}
                 aria-label={`${option.departure}에서 ${option.destination}까지, ${
