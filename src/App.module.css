@@ -9,6 +9,22 @@
   margin: 0 auto;
 }
 
+.skipLink a {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #333333;
+  color: #fff;
+  padding: 8px 16px;
+  z-index: 100;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+
+.skipLink a:focus {
+  top: 0;
+}
+
 .header {
   padding: 48px 24px 24px 24px;
 }
