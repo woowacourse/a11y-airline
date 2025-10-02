@@ -9,3 +9,18 @@
   white-space: nowrap;
   border: 0;
 }
+
+.skip {
+  position: absolute;
+  left: 0;
+  top: -2rem;
+  overflow: hidden;
+  transition: transform 0.5s;
+  color: white;
+  background: black;
+  padding: 5px;
+}
+
+.skip:focus {
+  transform: translateY(2rem);
+}

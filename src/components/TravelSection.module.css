@@ -10,6 +10,7 @@
 }
 
 .card {
+  cursor: pointer;
   position: relative;
   border-radius: 4px;
   border: 1px solid rgba(217, 217, 217, 0.5);

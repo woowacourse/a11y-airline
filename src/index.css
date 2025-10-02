@@ -110,6 +110,9 @@ ul {
 }
 button {
   color: #000;
+  padding: 0;
+  background: none;
+  border: none;
 }
 body {
   margin: 0;
