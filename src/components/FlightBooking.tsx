@@ -4,45 +4,35 @@ import styles from './FlightBooking.module.css';
 import VisuallyHidden from './VisuallyHidden';
 
 const MAX_PASSENGERS = 3;
+const MIN_PASSENGERS = 1;
 
 const FlightBooking = () => {
   const [adultCount, setAdultCount] = useState(1);
   const [announcement, setAnnouncement] = useState('');
 
   const incrementCount = () => {
-    setAdultCount((prev) => {
-      if (prev === 3) {
-        setAnnouncement('최대 승객수 입니다');
-        return prev;
-      }
-      const newCount = Math.min(MAX_PASSENGERS, prev + 1);
+    if (adultCount < MAX_PASSENGERS) {
+      const newCount = adultCount + 1;
+      setAdultCount(newCount);
 
       if (newCount === MAX_PASSENGERS) {
         setAnnouncement('성인 승객 증가, 최대 승객 수에 도달했습니다.');
       } else {
         setAnnouncement('성인 승객 증가');
       }
-      return newCount;
-    });
+    } else {
+      setAnnouncement('최대 승객수 입니다');
+    }
   };
 
   const decrementCount = () => {
-    setAdultCount((prev) => {
-      if (prev === 1) {
-        setAnnouncement('최소 승객수 입니다');
-        return prev;
-      }
-
-      const newCount = Math.max(1, prev - 1);
-
-      if (newCount === MAX_PASSENGERS) {
-        setAnnouncement('성인 승객 감소, 최소 승객수 입니다');
-      } else {
-        setAnnouncement('성인 승객 감소');
-      }
-
-      return newCount;
-    });
+    if (adultCount > MIN_PASSENGERS) {
+      const newCount = adultCount - 1;
+      setAdultCount(newCount);
+      setAnnouncement('성인 승객 감소');
+    } else {
+      setAnnouncement('최소 승객수 입니다');
+    }
   };
 
   return (
