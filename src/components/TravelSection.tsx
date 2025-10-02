@@ -95,7 +95,7 @@ const TravelSection = () => {
           {travelOptions.length}개의 여행상품중 {currentIndex + 1}번째 상품
         </VisuallyHidden>
         {travelOptions.map((option, index) => (
-          <div
+          <a
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
@@ -123,7 +123,7 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {formatPrice(option.price)}</p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
 
