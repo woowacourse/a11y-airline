@@ -68,7 +68,7 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
             aria-live="polite"
-            aria-label={`${travelOptions.length}의 여행 상품 중 ${index + 1}번째 상품. ${
+            aria-label={`${travelOptions.length}개의 여행 상품 중 ${index + 1}번째 상품. ${
               option.departure
             } 출발 ${option.destination} 도착. ${
               option.type
