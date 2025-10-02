@@ -9,7 +9,7 @@
   margin: 0 auto;
 }
 
-.header {
+.app header {
   padding: 48px 24px 24px 24px;
 }
 
@@ -17,7 +17,7 @@
   margin-bottom: 16px;
 }
 
-.main {
+.app main {
   flex: 1;
 }
 
@@ -35,8 +35,25 @@
   padding: 24px;
 }
 
-.footer {
+.app footer {
   padding: 32px;
   background-color: white;
   text-align: center;
+}
+
+.skipLink {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(-40px);
+  background: #000;
+  color: #fff;
+  padding: 8px 16px;
+  z-index: 100;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.skipLink:focus {
+  transform: translateY(0);
 }
