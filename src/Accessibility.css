@@ -9,3 +9,20 @@
   white-space: nowrap;
   border: 0;
 }
+
+.skip-to-content-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  padding: 1em;
+  color: white;
+  background-color: #000;
+  opacity: 0;
+  z-index: 100;
+}
+
+.skip-to-content-link:focus {
+  left: 0;
+  transform: translateY(0);
+  opacity: 1;
+}
