@@ -7,7 +7,7 @@ import PromotionModal from './components/PromotionModal';
 function App() {
   return (
     <div className={styles.app}>
-      <a href="#main-content" className="visually-hidden">
+      <a href="#main-content" className="skipLink">
         본문으로 바로가기
       </a>
 
