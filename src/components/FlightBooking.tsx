@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import styles from './FlightBooking.module.css';
 
 const MAX_PASSENGERS = 3;
@@ -48,23 +49,15 @@ const FlightBooking = () => {
       <div aria-live="assertive" className={styles['visually-hidden']}>
         {announcement}
       </div>
-      <h2 className={styles['heading-2-text']}>항공권 예매</h2>
+      <h2 className="heading-2-text">항공권 예매</h2>
       <div className={styles['passenger-count']}>
-        <span className={styles['body-text']}>성인</span>
-        <div className={styles['counter']}>
-          <button
-            className={styles['button-text']}
-            onClick={decrementCount}
-            aria-label="성인 승객 감소"
-          >
+        <span className="body-text">성인</span>
+        <div className={styles.counter}>
+          <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
             -
           </button>
           <span aria-live="polite">{adultCount}</span>
-          <button
-            className={styles['button-text']}
-            onClick={incrementCount}
-            aria-label="성인 승객 증가"
-          >
+          <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
             +
           </button>
         </div>
