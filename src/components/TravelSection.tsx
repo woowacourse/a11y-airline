@@ -56,7 +56,7 @@ const TravelSection = () => {
   };
 
   return (
-    <section className={styles.travelSection}>
+    <div className={styles.travelSection}>
       <span className="visually-hidden" role="status">
         {`총 ${travelOptions.length}개 상품 중 ${currentIndex + 1}번째`}
       </span>
@@ -107,7 +107,7 @@ const TravelSection = () => {
       >
         <img src={chevronRight} className={styles.navButtonIcon} alt="다음 여행 상품 보기" />
       </button>
-    </section>
+    </div>
   );
 };
 
