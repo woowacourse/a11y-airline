@@ -59,19 +59,30 @@ const TravelSection = () => {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
 
+  const getTravelInfo = (option: TravelOption) => {
+    return `${option.departure} 출발 ${option.destination} 도착. ${
+      option.type
+    }. 가격 ${option.price.toLocaleString()}원. 선택하면 예약 페이지로 이동합니다.`;
+  };
+
   return (
     <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
-      </button>
-      <div className={styles.carousel}>
+      <div className={styles.carousel} aria-live="polite">
+        <span className="visually-hidden">
+          {`${travelOptions.length}개의 여행 상품 중 ${currentIndex + 1}번째 상품`}
+        </span>
         {travelOptions.map((option, index) => (
-          <div
+          <button
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
+            aria-label={getTravelInfo(option)}
           >
-            <img src={option.image} className={styles.cardImage} />
+            <img
+              src={option.image}
+              className={styles.cardImage}
+              alt={`${option.destination} 여행지 이미지`}
+            />
             <div className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
@@ -79,11 +90,22 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </button>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 여행 상품"
+      >
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="이전" />
+      </button>
+      <button
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+        aria-label="다음 여행 상품"
+      >
+        <img src={chevronRight} className={styles.navButtonIcon} alt="다음" />
       </button>
     </div>
   );
