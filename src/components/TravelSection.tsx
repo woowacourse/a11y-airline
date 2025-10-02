@@ -55,10 +55,6 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div className={styles.travelSection}>
       <ul className={styles.carousel} aria-live="polite">
@@ -67,7 +63,6 @@ const TravelSection = () => {
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             aria-hidden={index !== currentIndex}
-            onClick={() => handleCardClick(option.link)}
           >
             <div className="visually-hidden" aria-atomic="true" key={currentIndex}>
               {`${travelOptions.length}개의 여행 상품중 ${currentIndex + 1}번째 상품`}
