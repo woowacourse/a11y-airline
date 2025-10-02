@@ -40,21 +40,42 @@ const FlightBooking = () => {
       <div className={styles.passengerCount}>
         <div className={styles.passengerLabel}>
           <span className="body-text">성인</span>
-          <div
+          <button
+            type="button"
             className={styles.helpIconWrapper}
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
+            onFocus={() => setShowTooltip(true)}
+            onBlur={() => setShowTooltip(false)}
+            aria-describedby={showTooltip ? 'help-tooltip' : undefined}
+            aria-label="승객 수 제한 도움말"
           >
-            <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
-            {showTooltip && <div className={styles.tooltip}>최대 3명까지 예약할 수 있습니다</div>}
-          </div>
+            <img src={helpIcon} alt="" className={styles.helpIcon} />
+            {showTooltip && (
+              <div id="help-tooltip" className={styles.tooltip} role="tooltip">
+                최대 3명까지 예약할 수 있습니다
+              </div>
+            )}
+          </button>
         </div>
         <div className={styles.counter}>
-          <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
+          <button
+            type="button"
+            className="button-text"
+            onClick={decrementCount}
+            aria-label="성인 승객 감소"
+            disabled={adultCount === MIN_PASSENGERS}
+          >
             <img src={minus} alt="" />
           </button>
-          <span aria-live="polite">{adultCount}</span>
-          <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
+          <output aria-live="polite">{adultCount}</output>
+          <button
+            type="button"
+            className="button-text"
+            onClick={incrementCount}
+            aria-label="성인 승객 증가"
+            disabled={adultCount === MAX_PASSENGERS}
+          >
             <img src={plus} alt="" />
           </button>
         </div>
@@ -64,7 +85,9 @@ const FlightBooking = () => {
           {statusMessage}
         </div>
       )}
-      <button className={styles.searchButton}>항공편 검색</button>
+      <button type="button" className={styles.searchButton}>
+        항공편 검색
+      </button>
     </div>
   );
 };

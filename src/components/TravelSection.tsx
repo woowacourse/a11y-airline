@@ -46,6 +46,7 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const liveMessage = `${travelOptions.length}개 여행 상품 중 ${currentIndex + 1}번째 상품`;
 
   const nextTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
@@ -60,32 +61,61 @@ const TravelSection = () => {
   };
 
   return (
-    <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
-      </button>
-      <div className={styles.carousel}>
-        {travelOptions.map((option, index) => (
-          <div
-            key={index}
-            className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
-          >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
-                {option.departure} - {option.destination}
-              </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
-            </div>
-          </div>
-        ))}
+    <section aria-labelledby="travel-section-title">
+      <output className="visually-hidden">{liveMessage}</output>
+      <div className={styles.travelSection}>
+        <ul className={styles.carousel} id="travel-carousel">
+          {travelOptions.map((option, index) => (
+            <li
+              key={`${option.departure}-${option.destination}`}
+              aria-hidden={index !== currentIndex}
+            >
+              <button
+                type="button"
+                className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
+                onClick={() => handleCardClick(option.link)}
+                aria-label={`${option.departure}에서 ${option.destination}까지, ${
+                  option.type
+                }, 가격 KRW ${option.price.toLocaleString(
+                  'ko-KR'
+                )} 클릭하시면 예약페이지로 이동합니다.`}
+                aria-current={index === currentIndex ? 'true' : undefined}
+                tabIndex={index === currentIndex ? 0 : -1}
+              >
+                <img src={option.image} className={styles.cardImage} alt="" />
+                <div className={styles.cardContent}>
+                  <p className={`${styles.cardTitle} heading-3-text`}>
+                    {option.departure} - {option.destination}
+                  </p>
+                  <p className={`${styles.cardType} body-text`}>{option.type}</p>
+                  <p className={`${styles.cardPrice} body-text`}>
+                    KRW {option.price.toLocaleString('ko-KR')}
+                  </p>
+                </div>
+              </button>
+            </li>
+          ))}
+        </ul>
+        <button
+          type="button"
+          className={`${styles.navButton} ${styles.navButtonPrev}`}
+          onClick={prevTravel}
+          aria-controls="travel-carousel"
+          aria-label="이전 여행 상품"
+        >
+          <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
+        </button>
+        <button
+          type="button"
+          className={`${styles.navButton} ${styles.navButtonNext}`}
+          onClick={nextTravel}
+          aria-controls="travel-carousel"
+          aria-label="다음 여행 상품"
+        >
+          <img src={chevronRight} className={styles.navButtonIcon} alt="" />
+        </button>
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
-      </button>
-    </div>
+    </section>
   );
 };
 
