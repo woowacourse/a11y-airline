@@ -25,11 +25,11 @@ function App() {
           A11Y AIRLINE은 고객 여러분의 안전하고 쾌적한 여행을 위해 최선을 다하고 있습니다.
         </p>
       </header>
-      <main id="main-content" className={styles.main}>
-        <section id="flightBooking" className={styles.flightBooking}>
+      <main id="main-content" className={styles.main} tabIndex={-1}>
+        <section id="flightBooking" className={styles.flightBooking} tabIndex={0}>
           <FlightBooking />
         </section>
-        <section id="travelSection" className={styles.travelSection}>
+        <section id="travelSection" className={styles.travelSection} tabIndex={1}>
           <h2 className={`${styles.travelTitle} heading-2-text`}>지금 떠나기 좋은 여행</h2>
           <TravelSection />
         </section>
