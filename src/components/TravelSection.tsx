@@ -81,6 +81,10 @@ const TravelSection = () => {
               }
             }}
             tabIndex={index === currentIndex ? 0 : -1}
+            role="button"
+            aria-label={`${option.departure}에서 ${option.destination}로 가는 ${
+              option.type
+            } 항공편, 가격 ${option.price.toLocaleString()}원`}
           >
             <img
               src={option.image}
