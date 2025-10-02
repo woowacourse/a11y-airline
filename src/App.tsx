@@ -11,9 +11,7 @@ function App() {
         본문으로 바로가기
       </a>
 
-      <nav id="nav-content">
-        <Navigation />
-      </nav>
+      <Navigation />
 
       <header id="hedaer-content" className={styles.header}>
         <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>
