@@ -61,6 +61,11 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        {travelOptions.length}개 중 {currentIndex + 1}번째 상품: {travelOptions[currentIndex].departure}에서{' '}
+        {travelOptions[currentIndex].destination}행, {travelOptions[currentIndex].type}, 가격{' '}
+        {travelOptions[currentIndex].price.toLocaleString()}원
+      </div>
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
@@ -71,11 +76,7 @@ const TravelSection = () => {
       <div
         className={styles.carousel}
         role="region"
-        aria-label={`여행 상품 캐로셀, 총 ${travelOptions.length}개 상품. 현재 ${
-          currentIndex + 1
-        }번째 상품: ${travelOptions[currentIndex].departure} - ${
-          travelOptions[currentIndex].destination
-        } ${travelOptions[currentIndex].price.toLocaleString()}원`}
+        aria-label="여행 상품 캐로셀"
       >
         {travelOptions.map((option, index) => (
           <div
