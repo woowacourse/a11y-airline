@@ -55,10 +55,6 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div className={styles.travelSection}>
       <div className="sr-only" aria-live="polite" aria-atomic="true">
@@ -79,21 +75,15 @@ const TravelSection = () => {
         aria-label="여행 상품 캐로셀"
       >
         {travelOptions.map((option, index) => (
-          <div
+          <a
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
+            href={option.link}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label={`${option.departure}에서 ${option.destination}행, ${
               option.type
             }, 가격 ${option.price.toLocaleString()}원 - 예약 페이지로 이동`}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                handleCardClick(option.link);
-              }
-            }}
           >
             <img
               src={option.image}
@@ -107,7 +97,7 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
       <button
