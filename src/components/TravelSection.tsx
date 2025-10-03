@@ -60,9 +60,13 @@ const TravelSection = () => {
   };
 
   return (
-    <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+    <section className={styles.travelSection}>
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 여행 상품"
+      >
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
@@ -70,8 +74,23 @@ const TravelSection = () => {
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleCardClick(option.link);
+              }
+            }}
+            tabIndex={index === currentIndex ? 0 : -1}
+            role="button"
+            aria-label={`${option.departure}에서 ${option.destination}로 가는 ${
+              option.type
+            } 항공편, 가격 ${option.price.toLocaleString()}원`}
           >
-            <img src={option.image} className={styles.cardImage} />
+            <img
+              src={option.image}
+              className={styles.cardImage}
+              alt={`${option.destination} 여행지`}
+            />
             <div className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
@@ -82,10 +101,20 @@ const TravelSection = () => {
           </div>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+      <button
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+        aria-label="다음 여행 상품"
+      >
+        <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
-    </div>
+
+      <div className="visually-hidden" aria-live="polite">
+        {travelOptions.length}개 중 {currentIndex + 1}번째 상품:{' '}
+        {travelOptions[currentIndex].departure} {travelOptions[currentIndex].destination}{' '}
+        {travelOptions[currentIndex].type}
+      </div>
+    </section>
   );
 };
 
