@@ -62,13 +62,6 @@ const TravelSection = () => {
         {travelOptions[currentIndex].destination}행, {travelOptions[currentIndex].type}, 가격{' '}
         {travelOptions[currentIndex].price.toLocaleString()}원
       </div>
-      <button
-        className={`${styles.navButton} ${styles.navButtonPrev}`}
-        onClick={prevTravel}
-        aria-label="이전 여행 상품 보기"
-      >
-        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
-      </button>
       <div
         className={styles.carousel}
         role="region"
@@ -100,6 +93,13 @@ const TravelSection = () => {
           </a>
         ))}
       </div>
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 여행 상품 보기"
+      >
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
+      </button>
       <button
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={nextTravel}
