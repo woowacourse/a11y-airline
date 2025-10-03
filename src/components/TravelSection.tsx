@@ -55,23 +55,34 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
-      </button>
-      <div className={styles.carousel}>
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        {travelOptions.length}개 중 {currentIndex + 1}번째 상품: {travelOptions[currentIndex].departure}에서{' '}
+        {travelOptions[currentIndex].destination}행, {travelOptions[currentIndex].type}, 가격{' '}
+        {travelOptions[currentIndex].price.toLocaleString()}원
+      </div>
+      <div
+        className={styles.carousel}
+        role="region"
+        aria-label="여행 상품 캐로셀"
+      >
         {travelOptions.map((option, index) => (
-          <div
+          <a
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
+            href={option.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${option.departure}에서 ${option.destination}행, ${
+              option.type
+            }, 가격 ${option.price.toLocaleString()}원 - 예약 페이지로 이동`}
           >
-            <img src={option.image} className={styles.cardImage} />
+            <img
+              src={option.image}
+              className={styles.cardImage}
+              alt={`${option.destination} 여행 이미지`}
+            />
             <div className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
@@ -79,11 +90,22 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 여행 상품 보기"
+      >
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
+      </button>
+      <button
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+        aria-label="다음 여행 상품 보기"
+      >
+        <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
     </div>
   );
