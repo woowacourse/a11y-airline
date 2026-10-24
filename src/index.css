@@ -111,6 +111,12 @@ ul {
 button {
   color: #000;
 }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 3px;
+}
 body {
   margin: 0;
   padding: 0;
