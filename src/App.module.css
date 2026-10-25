@@ -9,6 +9,15 @@
   margin: 0 auto;
 }
 
+.skipLink:not(:focus) {
+  position: absolute;
+  left: -9999px;
+}
+
+.skipLink:focus {
+  padding: 8px;
+}
+
 .header {
   padding: 48px 24px 24px 24px;
 }

@@ -7,6 +7,9 @@ import TravelSection from './components/TravelSection';
 function App() {
   return (
     <div className={styles.app}>
+      <a href="#main-content" className={styles.skipLink}>
+        본문으로 바로가기
+      </a>
       <header>
         <Navigation />
 
@@ -18,7 +21,7 @@ function App() {
         </div>
       </header>
 
-      <main id="main-content" className={styles.main}>
+      <main id="main-content" className={styles.main} tabIndex={-1}>
         <section className={styles.flightBooking} aria-labelledby="flight-booking">
           <FlightBooking />
         </section>
