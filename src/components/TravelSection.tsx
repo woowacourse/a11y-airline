@@ -46,16 +46,26 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [announcement, setAnnouncement] = useState('');
   const currentTravel = travelOptions[currentIndex];
 
   const changeTravel = (direction: -1 | 1) => {
-    setCurrentIndex((index) => (index + direction + travelOptions.length) % travelOptions.length);
+    const nextIndex = (currentIndex + direction + travelOptions.length) % travelOptions.length;
+    const nextTravel = travelOptions[nextIndex];
+
+    setCurrentIndex(nextIndex);
+    setAnnouncement(
+      `현재 표시된 여행: ${travelOptions.length}개 중 ${nextIndex + 1}번째, 출발 ${nextTravel.departure}, 도착 ${nextTravel.destination}`
+    );
   };
 
   return (
     <div className={styles.travelSection}>
+      <div className="visually-hidden" role="status">
+        {announcement}
+      </div>
       <button
-        aria-label="이전 여행"
+        aria-label="이전 여행 보기"
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={() => changeTravel(-1)}
         type="button"
@@ -68,18 +78,25 @@ const TravelSection = () => {
             <img alt="" src={currentTravel.image} className={styles.cardImage} />
             <div className={styles.cardContent}>
               <h3 className={`${styles.cardTitle} heading-3-text`}>
-                {currentTravel.departure} - {currentTravel.destination}
+                <span className="visually-hidden">
+                  {travelOptions.length}개 중 {currentIndex + 1}번째, 출발{' '}
+                </span>
+                {currentTravel.departure}
+                <span aria-hidden="true"> - </span>
+                <span className="visually-hidden">도착 </span>
+                {currentTravel.destination}
               </h3>
               <p className={`${styles.cardType} body-text`}>{currentTravel.type}</p>
               <p className={`${styles.cardPrice} body-text`}>
                 KRW {currentTravel.price.toLocaleString()}
               </p>
             </div>
+            <span className="visually-hidden">관련 여행 상품 보기, 새 탭에서 열림</span>
           </a>
         </div>
       </div>
       <button
-        aria-label="다음 여행"
+        aria-label="다음 여행 보기"
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={() => changeTravel(1)}
         type="button"
