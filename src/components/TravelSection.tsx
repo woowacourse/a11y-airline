@@ -46,6 +46,7 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const currentTravel = travelOptions[currentIndex];
 
   const changeTravel = (direction: -1 | 1) => {
     setCurrentIndex((index) => (index + direction + travelOptions.length) % travelOptions.length);
@@ -61,24 +62,22 @@ const TravelSection = () => {
       >
         <img alt="" src={chevronLeft} className={styles.navButtonIcon} />
       </button>
-      <ol className={styles.carousel}>
-        {travelOptions.map((option, index) => (
-          <li key={index} className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}>
-            <a href={option.link} target="_blank" rel="noopener noreferrer">
-              <img alt="" src={option.image} className={styles.cardImage} />
-              <div className={styles.cardContent}>
-                <h3 className={`${styles.cardTitle} heading-3-text`}>
-                  {option.departure} - {option.destination}
-                </h3>
-                <p className={`${styles.cardType} body-text`}>{option.type}</p>
-                <p className={`${styles.cardPrice} body-text`}>
-                  KRW {option.price.toLocaleString()}
-                </p>
-              </div>
-            </a>
-          </li>
-        ))}
-      </ol>
+      <div className={styles.carousel}>
+        <div className={styles.card}>
+          <a href={currentTravel.link} target="_blank" rel="noopener noreferrer">
+            <img alt="" src={currentTravel.image} className={styles.cardImage} />
+            <div className={styles.cardContent}>
+              <h3 className={`${styles.cardTitle} heading-3-text`}>
+                {currentTravel.departure} - {currentTravel.destination}
+              </h3>
+              <p className={`${styles.cardType} body-text`}>{currentTravel.type}</p>
+              <p className={`${styles.cardPrice} body-text`}>
+                KRW {currentTravel.price.toLocaleString()}
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
       <button
         aria-label="다음 여행"
         className={`${styles.navButton} ${styles.navButtonNext}`}
