@@ -18,10 +18,12 @@ function App() {
         <div className={styles.flightBooking}>
           <FlightBooking />
         </div>
-        <div className={styles.travelSection}>
-          <h1 className={`${styles.travelTitle} heading-2-text`}>지금 떠나기 좋은 여행</h1>
+        <section className={styles.travelSection} aria-labelledby="good-for-travel-now">
+          <h1 id="good-for-travel-now" className={`${styles.travelTitle} heading-2-text`}>
+            지금 떠나기 좋은 여행
+          </h1>
           <TravelSection />
-        </div>
+        </section>
       </div>
       <div className={styles.footer}>
         <p className="body-text">&copy; A11Y AIRLINE</p>
