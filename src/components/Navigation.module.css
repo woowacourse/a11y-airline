@@ -15,7 +15,18 @@
   margin-right: 20px;
 }
 
-.navItem a {
+.navItem > button {
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.navItem a,
+.navItem > button {
   text-decoration: none;
   color: #333;
   font-size: 16px;
@@ -24,7 +35,9 @@
 }
 
 .navItem a:hover,
-.navItem a:focus {
+.navItem a:focus,
+.navItem > button:hover,
+.navItem > button:focus-visible {
   background-color: #e0e0e0;
   border-radius: 4px;
 }
@@ -40,8 +53,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.navItem:hover > .navList,
-.navItem:focus-within > .navList {
+.navItem:hover > .navList {
   display: block;
 }
 
@@ -58,6 +70,10 @@
 .navItem .navList .navItem a:hover,
 .navItem .navList .navItem a:focus {
   background-color: #f0f0f0;
+}
+
+.navItem > button[aria-expanded='true'] + .navList {
+  display: block;
 }
 
 .navToggle {
@@ -101,8 +117,7 @@
     margin-left: 20px;
   }
 
-  .navItem:hover > .navList,
-  .navItem:focus-within > .navList {
+  .navItem:hover > .navList {
     display: block;
   }
 
