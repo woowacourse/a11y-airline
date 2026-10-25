@@ -75,8 +75,13 @@ const TravelSection = () => {
         {travelOptions
           .filter((_, index) => currentIndex === index)
           .map((option, index) => (
-            <li key={index} className={`${styles.card} ${styles.cardActive}`}>
-              <a href={option.link} aria-label={announcement}>
+            <li
+              key={index}
+              className={`${styles.card} ${styles.cardActive}`}
+              aria-setsize={travelOptions.length}
+              aria-posinset={currentIndex + 1}
+            >
+              <a href={option.link} aria-label={announcement} aria-live="polite">
                 <img src={option.image} className={styles.cardImage} />
                 <div className={styles.cardContent}>
                   <p className={`${styles.cardTitle} heading-3-text`}>
