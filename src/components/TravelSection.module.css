@@ -5,29 +5,22 @@
 
 .carousel {
   position: relative;
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: hidden;
   padding: 0 24px;
-  scroll-padding-inline: 24px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
-
-.carousel::-webkit-scrollbar {
-  display: none;
 }
 
 .card {
   position: relative;
-  flex: 0 0 100%;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
   border-radius: 4px;
   border: 1px solid rgba(217, 217, 217, 0.5);
   overflow: hidden;
+  display: none;
+  width: 100%;
   height: 246px;
+}
+
+.cardActive {
+  display: block;
 }
 
 .cardImage {

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useState } from 'react';
 
 import travelItem01 from '../assets/travel-item-01.png';
 import travelItem02 from '../assets/travel-item-02.png';
@@ -45,16 +45,10 @@ const travelOptions: TravelOption[] = [
 ];
 
 const TravelSection = () => {
-  const carouselRef = useRef<HTMLOListElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const scrollTravel = (direction: -1 | 1) => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-
-    carousel.scrollBy({
-      left: direction * carousel.clientWidth,
-      behavior: 'smooth'
-    });
+  const changeTravel = (direction: -1 | 1) => {
+    setCurrentIndex((index) => (index + direction + travelOptions.length) % travelOptions.length);
   };
 
   return (
@@ -62,14 +56,14 @@ const TravelSection = () => {
       <button
         aria-label="이전 여행"
         className={`${styles.navButton} ${styles.navButtonPrev}`}
-        onClick={() => scrollTravel(-1)}
+        onClick={() => changeTravel(-1)}
         type="button"
       >
         <img alt="" src={chevronLeft} className={styles.navButtonIcon} />
       </button>
-      <ol ref={carouselRef} className={styles.carousel}>
+      <ol className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <li key={index} className={styles.card}>
+          <li key={index} className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}>
             <a href={option.link} target="_blank" rel="noopener noreferrer">
               <img alt="" src={option.image} className={styles.cardImage} />
               <div className={styles.cardContent}>
@@ -88,7 +82,7 @@ const TravelSection = () => {
       <button
         aria-label="다음 여행"
         className={`${styles.navButton} ${styles.navButtonNext}`}
-        onClick={() => scrollTravel(1)}
+        onClick={() => changeTravel(1)}
         type="button"
       >
         <img alt="" src={chevronRight} className={styles.navButtonIcon} />
