@@ -61,6 +61,8 @@
 }
 
 .navToggle {
+  width: 100%;
+  box-sizing: border-box;
   display: none;
   font-size: 16px;
   padding: 10px;
