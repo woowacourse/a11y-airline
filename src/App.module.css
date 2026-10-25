@@ -9,6 +9,21 @@
   margin: 0 auto;
 }
 
+.skipLink {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 20;
+  padding: 10px 14px;
+  background: #fff;
+  color: #111;
+  transform: translateY(-150%);
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+}
+
 .header {
   padding: 48px 24px 24px 24px;
 }
