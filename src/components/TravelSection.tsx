@@ -46,17 +46,29 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [liveMessage, setLiveMessage] = useState('');
 
   const nextTravel = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
+    const nextIndex = (currentIndex + 1) % travelOptions.length;
+    setCurrentIndex(nextIndex);
+    setLiveMessage(
+      `${travelOptions.length}개 중 ${nextIndex + 1}번째 상품: ${travelOptions[nextIndex].departure} - ${travelOptions[nextIndex].destination}`
+    );
   };
 
   const prevTravel = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
+    const prevIndex = (currentIndex - 1 + travelOptions.length) % travelOptions.length;
+    setCurrentIndex(prevIndex);
+    setLiveMessage(
+      `${travelOptions.length}개 중 ${prevIndex + 1}번째 상품: ${travelOptions[prevIndex].departure} - ${travelOptions[prevIndex].destination}`
+    );
   };
 
   return (
     <div className={styles.travelSection}>
+      <div className="visually-hidden" aria-live="polite" aria-atomic="true">
+        {liveMessage}
+      </div>
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
@@ -64,7 +76,7 @@ const TravelSection = () => {
       >
         <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
-      <ul className={styles.carousel} aria-live="polite">
+      <ul className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <li
             key={index}
@@ -77,9 +89,10 @@ const TravelSection = () => {
               href={option.link}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`${travelOptions.length}개 중 ${index + 1}번째 상품, ${option.departure} - ${option.destination}, ${option.type}, KRW ${option.price.toLocaleString()}, 새 창으로 열림`}
             >
               <img src={option.image} className={styles.cardImage} alt="" />
-              <div className={styles.cardContent}>
+              <div className={styles.cardContent} aria-hidden="true">
                 <p className={`${styles.cardTitle} heading-3-text`}>
                   {option.departure} - {option.destination}
                 </p>
