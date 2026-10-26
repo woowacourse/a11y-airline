@@ -58,7 +58,7 @@ const TravelSection = () => {
   };
 
   return (
-    <div className={styles.travelSection} role="group" aria-label="프로모션 여행 상품">
+    <div className={styles.travelSection}>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <a
