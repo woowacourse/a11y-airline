@@ -46,14 +46,20 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [hasMoved, setHasMoved] = useState(false);
 
   const nextTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
+    setHasMoved(true);
   };
 
   const prevTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
+    setHasMoved(true);
   };
+
+  const currentOption = travelOptions[currentIndex];
+  const currentAnnouncement = `${travelOptions.length}개 중 ${currentIndex + 1}번째, ${currentOption.departure}에서 ${currentOption.destination}, ${currentOption.type}, ${currentOption.price.toLocaleString()}원`;
 
   return (
     <div className={styles.travelSection}>
@@ -106,6 +112,10 @@ const TravelSection = () => {
       >
         <img src={chevronRight} alt="" className={styles.navButtonIcon} />
       </button>
+      {/* 버튼을 누른 뒤에만 안내해, 처음 페이지를 읽을 때 같은 내용이 두 번 읽히지 않게 한다 */}
+      <p className="visually-hidden" aria-live="polite">
+        {hasMoved ? currentAnnouncement : ''}
+      </p>
     </div>
   );
 };
