@@ -1,4 +1,6 @@
 .mainNav {
+  position: relative;
+  z-index: 1;
   background-color: #f8f8f8;
   padding: 10px 0;
 }
@@ -15,7 +17,8 @@
   margin-right: 20px;
 }
 
-.navItem a {
+.navItem a,
+.navItem summary {
   text-decoration: none;
   color: #333;
   font-size: 16px;
@@ -23,8 +26,16 @@
   display: block;
 }
 
+.navItem summary {
+  display: list-item;
+  list-style-position: inside;
+  cursor: pointer;
+}
+
 .navItem a:hover,
-.navItem a:focus {
+.navItem a:focus,
+.navItem summary:hover,
+.navItem summary:focus {
   background-color: #e0e0e0;
   border-radius: 4px;
 }
@@ -40,8 +51,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.navItem:hover > .navList,
-.navItem:focus-within > .navList {
+.navItem details[open] > .navList {
   display: block;
 }
 
@@ -97,11 +107,6 @@
     border: none;
     box-shadow: none;
     margin-left: 20px;
-  }
-
-  .navItem:hover > .navList,
-  .navItem:focus-within > .navList {
-    display: block;
   }
 
   .navItem .navList .navItem {
