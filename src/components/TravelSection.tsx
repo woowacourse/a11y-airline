@@ -60,7 +60,11 @@ const TravelSection = () => {
   };
 
   return (
-    <div className={styles.travelSection}>
+    <section className={styles.travelSection}>
+      <h2 className={`${styles.sectionTitle} heading-2-text`}>
+        지금 떠나기 좋은 여행
+        <span className="visually-hidden">. 총 {travelOptions.length}개</span>
+      </h2>
       <div className="visually-hidden" role="status">
         {announcement}
       </div>
@@ -103,7 +107,7 @@ const TravelSection = () => {
       >
         <img alt="" src={chevronRight} className={styles.navButtonIcon} />
       </button>
-    </div>
+    </section>
   );
 };
 
