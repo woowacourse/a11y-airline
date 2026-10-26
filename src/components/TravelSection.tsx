@@ -68,8 +68,9 @@ const TravelSection = () => {
   };
 
   return (
-    <section
-      aria-roledescription="carousel"
+    <div
+      role="group"
+      aria-roledescription="캐로셀"
       aria-label="프로모션 여행 상품"
       className={styles.travelSection}
     >
@@ -117,7 +118,7 @@ const TravelSection = () => {
       <p aria-live="polite" className="visually-hidden">
         {announcement}
       </p>
-    </section>
+    </div>
   );
 };
 
