@@ -44,6 +44,9 @@ const travelOptions: TravelOption[] = [
   }
 ];
 
+const getTravelLabel = (option: TravelOption, index: number) =>
+  `${travelOptions.length}개 중 ${index + 1}번째, ${option.departure} 출발 ${option.destination} 도착, ${option.type}, ${option.price.toLocaleString()}원`;
+
 const TravelSection = () => {
   const [hasTravelChanged, setHasTravelChanged] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -59,17 +62,19 @@ const TravelSection = () => {
   };
 
   return (
-    <div className={styles.travelSection}>
-      <div className={styles.carousel}>
+    <div className={styles.travelSection} role="group" aria-label="프로모션 여행 상품">
+      <div
+        className={styles.carousel}
+        aria-live={hasTravelChanged ? 'polite' : 'off'}
+        aria-atomic="false"
+      >
         {travelOptions.map((option, index) => (
           <a
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             href={option.link}
             target="_blank"
-            aria-live={hasTravelChanged ? 'polite' : 'off'}
-            aria-atomic="true"
-            aria-label={`${travelOptions.length}개 중 ${index + 1}번째, ${option.departure} 출발 ${option.destination} 도착, ${option.type}, ${option.price.toLocaleString()}원`}
+            aria-label={getTravelLabel(option, index)}
           >
             <img src={option.image} className={styles.cardImage} alt="" />
             <div className={styles.cardContent} aria-hidden="true">
