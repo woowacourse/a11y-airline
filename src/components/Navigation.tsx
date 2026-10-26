@@ -39,6 +39,7 @@ const navItems: NavItem[] = [
 
 const Navigation = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [openItem, setOpenItem] = useState<string | null>(null);
 
   const toggleNav = () => {
     setIsNavOpen((prev) => !prev);
@@ -47,8 +48,34 @@ const Navigation = () => {
   const renderNavItems = (items: NavItem[]) => (
     <ul className={styles.navList}>
       {items.map((item, index) => (
-        <li key={index} className={styles.navItem}>
-          <a href={item.link}>{item.title}</a>
+        <li
+          key={index}
+          className={styles.navItem}
+          onMouseEnter={() => {
+            if (item.subItems) setOpenItem(item.title);
+          }}
+          onMouseLeave={(event) => {
+            if (item.subItems && !event.currentTarget.contains(document.activeElement)) {
+              setOpenItem(null);
+            }
+          }}
+          onBlur={(event) => {
+            if (item.subItems && !event.currentTarget.contains(event.relatedTarget)) {
+              setOpenItem(null);
+            }
+          }}
+        >
+          {item.subItems ? (
+            <button
+              type="button"
+              aria-expanded={openItem === item.title}
+              onClick={() => setOpenItem((prev) => (prev === item.title ? null : item.title))}
+            >
+              {item.title}
+            </button>
+          ) : (
+            <a href={item.link}>{item.title}</a>
+          )}
           {item.subItems && renderNavItems(item.subItems)}
         </li>
       ))}
