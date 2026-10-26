@@ -67,9 +67,10 @@ const TravelSection = () => {
             href={option.link}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`${option.departure}에서 ${option.destination}, ${option.type}, ${option.price.toLocaleString()}원`}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
           >
-            <img src={option.image} className={styles.cardImage} />
+            <img src={option.image} alt="" className={styles.cardImage} />
             <div className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
