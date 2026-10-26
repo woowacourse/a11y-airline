@@ -5,6 +5,7 @@ import travelItem02 from '../assets/travel-item-02.png';
 import travelItem03 from '../assets/travel-item-03.png';
 import chevronLeft from '../assets/chevron-left.svg';
 import chevronRight from '../assets/chevron-right.svg';
+import { announce } from '../utils/announce';
 
 import styles from './TravelSection.module.css';
 
@@ -52,22 +53,22 @@ const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextTravel = () => {
+    const nextIndex = (currentIndex + 1) % travelOptions.length;
     setHasTravelChanged(true);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
+    setCurrentIndex(nextIndex);
+    announce(getTravelLabel(travelOptions[nextIndex], nextIndex));
   };
 
   const prevTravel = () => {
+    const prevIndex = (currentIndex - 1 + travelOptions.length) % travelOptions.length;
     setHasTravelChanged(true);
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
+    setCurrentIndex(prevIndex);
+    announce(getTravelLabel(travelOptions[prevIndex], prevIndex));
   };
 
   return (
     <div className={styles.travelSection} role="group" aria-label="프로모션 여행 상품">
-      <div
-        className={styles.carousel}
-        aria-live={hasTravelChanged ? 'polite' : 'off'}
-        aria-atomic="false"
-      >
+      <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <a
             key={index}
