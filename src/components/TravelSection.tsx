@@ -44,15 +44,23 @@ const travelOptions: TravelOption[] = [
   }
 ];
 
+const getTravelLabel = (index: number) => {
+  const option = travelOptions[index];
+  return `${travelOptions.length}개 중 ${index + 1}번째, ${option.departure}에서 ${option.destination}, ${option.type}, ${option.price.toLocaleString()}원`;
+};
+
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [hasNavigated, setHasNavigated] = useState(false);
 
   const nextTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
+    setHasNavigated(true);
   };
 
   const prevTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
+    setHasNavigated(true);
   };
 
   return (
@@ -67,7 +75,7 @@ const TravelSection = () => {
             href={option.link}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`${option.departure}에서 ${option.destination}, ${option.type}, ${option.price.toLocaleString()}원`}
+            aria-label={getTravelLabel(index)}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
           >
             <img src={option.image} alt="" className={styles.cardImage} />
@@ -81,6 +89,9 @@ const TravelSection = () => {
           </a>
         ))}
       </div>
+      <p className="visually-hidden" aria-live="polite">
+        {hasNavigated && getTravelLabel(currentIndex)}
+      </p>
       <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
         <img src={chevronRight} alt="다음 여행 상품" className={styles.navButtonIcon} />
       </button>
