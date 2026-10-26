@@ -56,13 +56,14 @@ const TravelSection = () => {
   };
 
   const currentOption = travelOptions[currentIndex];
+  const currentDescription = `${travelOptions.length}개 중 ${currentIndex + 1}번째, ${currentOption.departure}에서 ${currentOption.destination}, ${currentOption.type}, ${currentOption.price.toLocaleString('ko-KR')}원`;
 
   return (
     <div className={styles.travelSection}>
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
         <img src={chevronLeft} alt="이전 여행 상품" className={styles.navButtonIcon} />
       </button>
-      <div className={styles.carousel} aria-live="polite">
+      <div className={styles.carousel} aria-live="polite" aria-atomic="true">
         <a
           key={currentIndex}
           href={currentOption.link}
@@ -71,11 +72,7 @@ const TravelSection = () => {
           className={styles.card}
         >
           <img src={currentOption.image} alt="" className={styles.cardImage} />
-          <span className="visually-hidden">
-            {travelOptions.length}개 중 {currentIndex + 1}번째, {currentOption.departure}에서{' '}
-            {currentOption.destination}, {currentOption.type},{' '}
-            {currentOption.price.toLocaleString()}원
-          </span>
+          <span className="visually-hidden">{currentDescription}</span>
           <div className={styles.cardContent} aria-hidden="true">
             <p className={`${styles.cardTitle} heading-3-text`}>
               {currentOption.departure} - {currentOption.destination}
