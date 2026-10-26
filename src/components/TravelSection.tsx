@@ -55,10 +55,6 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div className={styles.travelSection}>
       <button
@@ -70,20 +66,32 @@ const TravelSection = () => {
       </button>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <div
+          <a
             key={index}
+            href={option.link}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
           >
-            <img src={option.image} className={styles.cardImage} />
+            <img src={option.image} alt="" className={styles.cardImage} />
             <div className={styles.cardContent}>
+              <span className="visually-hidden">
+                {travelOptions.length}개 중 {index + 1}번째,
+              </span>
               <p className={`${styles.cardTitle} heading-3-text`}>
-                {option.departure} - {option.destination}
+                {option.departure}
+                <span aria-hidden="true"> - </span>
+                <span className="visually-hidden">에서</span> {option.destination}
               </p>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+              <p className={`${styles.cardPrice} body-text`}>
+                <span aria-hidden="true">KRW </span>
+                {option.price.toLocaleString()}
+                <span className="visually-hidden">원</span>
+              </p>
+              <span className="visually-hidden">새 창에서 열림</span>
             </div>
-          </div>
+          </a>
         ))}
       </div>
       <button
