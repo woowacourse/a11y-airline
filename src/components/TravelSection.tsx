@@ -64,26 +64,32 @@ const TravelSection = () => {
       >
         <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
-      <div className={styles.carousel}>
+      <ul className={styles.carousel} aria-live="polite">
         {travelOptions.map((option, index) => (
-          <a
+          <li
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            href={option.link}
-            target="_blank"
-            rel="noopener noreferrer"
+            aria-setsize={travelOptions.length}
+            aria-posinset={index + 1}
           >
-            <img src={option.image} className={styles.cardImage} alt="" />
-            <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
-                {option.departure} - {option.destination}
-              </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
-            </div>
-          </a>
+            <a
+              className={styles.cardLink}
+              href={option.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={option.image} className={styles.cardImage} alt="" />
+              <div className={styles.cardContent}>
+                <p className={`${styles.cardTitle} heading-3-text`}>
+                  {option.departure} - {option.destination}
+                </p>
+                <p className={`${styles.cardType} body-text`}>{option.type}</p>
+                <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+              </div>
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
       <button
         className={`${styles.navButton} ${styles.navButtonNext}`}
         onClick={nextTravel}
