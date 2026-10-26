@@ -87,7 +87,9 @@ const TravelSection = () => {
           </a>
         ))}
       </div>
-      <p className="visually-hidden">이전·다음 버튼으로 다른 여행 상품을 확인할 수 있습니다</p>
+      {!hasTravelChanged && (
+        <p className="visually-hidden">이전·다음 버튼으로 다른 여행 상품을 확인할 수 있습니다</p>
+      )}
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
