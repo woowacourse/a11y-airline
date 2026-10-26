@@ -13,6 +13,13 @@
 .helpIconWrapper {
   position: relative;
   margin-left: 5px;
+}
+
+.helpButton {
+  display: flex;
+  padding: 0;
+  border: none;
+  background: none;
   cursor: pointer;
 }
 
