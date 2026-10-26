@@ -46,15 +46,25 @@ const travelOptions: TravelOption[] = [
 
 const TOTAL = travelOptions.length;
 
+// 스크린 리더가 한 번에 읽을 카드 설명 문장
+const describeTravel = (option: TravelOption, index: number) =>
+  `${TOTAL}개 중 ${index + 1}번째 여행지, ${option.departure} 출발 ${option.destination} 도착, ${option.type}, ${option.price.toLocaleString()}원`;
+
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [announcement, setAnnouncement] = useState('');
+
+  const moveTo = (nextIndex: number) => {
+    setCurrentIndex(nextIndex);
+    setAnnouncement(describeTravel(travelOptions[nextIndex], nextIndex));
+  };
 
   const nextTravel = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % TOTAL);
+    moveTo((currentIndex + 1) % TOTAL);
   };
 
   const prevTravel = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + TOTAL) % TOTAL);
+    moveTo((currentIndex - 1 + TOTAL) % TOTAL);
   };
 
   return (
@@ -72,40 +82,30 @@ const TravelSection = () => {
       >
         <img src={chevronLeft} alt="" className={styles.navButtonIcon} />
       </button>
-      {/* 이전/다음으로 이동하면 새로 보이는 카드 정보를 스크린 리더가 읽어줍니다 */}
-      <div className={styles.carousel} aria-live="polite">
+      <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
           // 비활성 카드는 display: none 이라 접근성 트리에서도 빠집니다
           <div
             key={option.link}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
           >
+            {/* 링크 하나에 완성된 문장을 이름으로 주고, 화면용 내용은 숨겨 한 번에 읽히게 합니다 */}
             <a
               className={styles.cardLink}
               href={option.link}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`${describeTravel(option, index)}, 새 창에서 열림`}
             >
               <img src={option.image} alt="" className={styles.cardImage} />
-              <div className={styles.cardContent}>
-                <span className="visually-hidden">{`${TOTAL}개 중 ${index + 1}번째 여행지, `}</span>
-                <h3 className={`${styles.cardTitle} heading-3-text`}>
-                  <span aria-hidden="true">
-                    {option.departure} - {option.destination}
-                  </span>
-                  <span className="visually-hidden">
-                    {`${option.departure} 출발 ${option.destination} 도착, `}
-                  </span>
-                </h3>
-                <p className={`${styles.cardType} body-text`}>
-                  {option.type}
-                  <span className="visually-hidden">, </span>
+              <div className={styles.cardContent} aria-hidden="true">
+                <p className={`${styles.cardTitle} heading-3-text`}>
+                  {option.departure} - {option.destination}
                 </p>
+                <p className={`${styles.cardType} body-text`}>{option.type}</p>
                 <p className={`${styles.cardPrice} body-text`}>
-                  <span aria-hidden="true">KRW {option.price.toLocaleString()}</span>
-                  <span className="visually-hidden">{`${option.price.toLocaleString()}원`}</span>
+                  KRW {option.price.toLocaleString()}
                 </p>
-                <span className="visually-hidden">, 새 창에서 열림</span>
               </div>
             </a>
           </div>
@@ -119,6 +119,10 @@ const TravelSection = () => {
       >
         <img src={chevronRight} alt="" className={styles.navButtonIcon} />
       </button>
+      {/* 이전/다음으로 이동했을 때만 새 카드 정보를 읽어줍니다 */}
+      <p className="visually-hidden" aria-live="polite" aria-atomic="true">
+        {announcement}
+      </p>
     </div>
   );
 };
