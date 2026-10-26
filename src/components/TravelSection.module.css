@@ -86,3 +86,19 @@
   width: 24px;
   height: 24px;
 }
+
+.card {
+  color: #111;
+  text-decoration: none;
+}
+
+.carousel {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.position {
+  margin-top: 12px;
+  text-align: center;
+  color: #333;
+}
