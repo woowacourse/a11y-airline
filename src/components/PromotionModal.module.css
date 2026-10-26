@@ -1,21 +1,23 @@
 .modal {
-  display: block;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #000;
 }
 
-.modalBackdrop {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 480px;
-  height: 100%;
+.modal::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
 }
 
 .modalContainer {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -23,8 +25,9 @@
   padding: 20px;
   width: 100%;
   max-width: 480px;
+  max-height: 100%;
+  overflow: auto;
   border-radius: 8px 8px 0 0;
-  z-index: 1001;
 }
 
 .modalContent {
@@ -32,7 +35,7 @@
 }
 
 .modalTitle {
-  margin: 16px 0;
+  margin: 16px 40px 16px 0;
 }
 
 .modalDescription {
@@ -54,6 +57,11 @@
   position: absolute;
   top: -10px;
   right: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   background: none;
   border: none;
   cursor: pointer;
