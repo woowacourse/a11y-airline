@@ -44,19 +44,28 @@ const travelOptions: TravelOption[] = [
   }
 ];
 
+const getTravelDescription = (option: TravelOption, index: number) =>
+  `${travelOptions.length}개 중 ${index + 1}번째, ${option.departure}에서 ${option.destination}, ${option.type}, ${option.price.toLocaleString()}원`;
+
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [hasNavigated, setHasNavigated] = useState(false);
 
   const nextTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
+    setHasNavigated(true);
   };
 
   const prevTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
+    setHasNavigated(true);
   };
 
   return (
     <div className={styles.travelSection}>
+      <p className="visually-hidden" role="status">
+        {hasNavigated ? getTravelDescription(travelOptions[currentIndex], currentIndex) : ''}
+      </p>
       <button
         type="button"
         className={`${styles.navButton} ${styles.navButtonPrev}`}
@@ -71,7 +80,7 @@ const TravelSection = () => {
             key={option.link}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             href={option.link}
-            aria-label={`${travelOptions.length}개 중 ${index + 1}번째, ${option.departure}에서 ${option.destination}, ${option.type}, ${option.price.toLocaleString()}원`}
+            aria-label={getTravelDescription(option, index)}
           >
             <img src={option.image} alt="" className={styles.cardImage} />
             <div className={styles.cardContent}>
