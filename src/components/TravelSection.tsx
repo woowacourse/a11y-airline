@@ -85,7 +85,7 @@ const TravelSection = () => {
                   </p>
                   <p className={`${styles.cardType} body-text`}>{option.type}</p>
                   <p className={`${styles.cardPrice} body-text`}>
-                    KRW {option.price.toLocaleString()}
+                    KRW {option.price.toLocaleString('ko-KR')}
                   </p>
                 </div>
               </a>

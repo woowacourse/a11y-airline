@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type MouseEvent } from 'react';
 
 import close from '../assets/close.svg';
 
@@ -15,20 +15,23 @@ const PromotionModal = () => {
 
   const closeModal = () => dialogRef.current?.close();
 
+  const closeOnBackdropClick = (event: MouseEvent<HTMLDialogElement>) => {
+    if (event.target === event.currentTarget) closeModal();
+  };
+
   return (
     <dialog
       ref={dialogRef}
       className={styles.modal}
       aria-labelledby="promotion-modal-title"
-      onClick={(event) => {
-        if (event.target === event.currentTarget) closeModal();
-      }}
+      aria-describedby="promotion-modal-description"
+      onClick={closeOnBackdropClick}
     >
       <div className={styles.modalContent}>
         <h2 id="promotion-modal-title" className={`${styles.modalTitle} heading-2-text`}>
           여행할 땐 A11Y AIRLINE 앱
         </h2>
-        <p className={`${styles.modalDescription} body-text`}>
+        <p id="promotion-modal-description" className={`${styles.modalDescription} body-text`}>
           체크인, 탑승권 저장, 수하물 알림까지
           <br />- 앱으로 더욱 편하게 여행하세요!
         </p>
