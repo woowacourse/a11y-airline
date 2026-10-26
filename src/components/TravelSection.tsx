@@ -83,7 +83,7 @@ const TravelSection = () => {
             aria-label={getTravelDescription(option, index)}
           >
             <img src={option.image} alt="" className={styles.cardImage} />
-            <div className={styles.cardContent}>
+            <div className={styles.cardContent} aria-hidden="true">
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure}에서 {option.destination}
               </p>
