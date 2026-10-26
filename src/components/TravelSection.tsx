@@ -55,10 +55,6 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div className={styles.travelSection}>
       <button
@@ -71,20 +67,35 @@ const TravelSection = () => {
       </button>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <div
+          <a
             key={index}
+            href={option.link}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
           >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
-                {option.departure} - {option.destination}
-              </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
-            </div>
-          </div>
+            <img src={option.image} alt="" className={styles.cardImage} />
+            <span className={styles.cardContent}>
+              <span className="visually-hidden">
+                {travelOptions.length}개 중 {index + 1}번째,
+              </span>
+              <span className={`${styles.cardTitle} heading-3-text`}>
+                {option.departure}
+                <span aria-hidden="true"> - </span>
+                <span className="visually-hidden">에서 </span>
+                {option.destination}
+                <span className="visually-hidden">,</span>
+              </span>
+              <span className={`${styles.cardType} body-text`}>
+                {option.type}
+                <span className="visually-hidden">,</span>
+              </span>
+              <span className={`${styles.cardPrice} body-text`}>
+                <span aria-hidden="true">KRW {option.price.toLocaleString()}</span>
+                <span className="visually-hidden">{option.price.toLocaleString()}원</span>
+              </span>
+            </span>
+          </a>
         ))}
       </div>
       <button
