@@ -60,48 +60,55 @@ const TravelSection = () => {
   };
 
   return (
-    <div className={styles.travelSection}>
-      <ul className={styles.carousel}>
-        {travelOptions.map((option, index) => (
-          <li
-            key={option.link}
-            className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-          >
-            <a
-              href={option.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.cardLink}
-              aria-label={describeTravel(index)}
+    <section aria-labelledby="travel-section-title">
+      <h2 id="travel-section-title" className={`${styles.title} heading-2-text`}>
+        지금 떠나기 좋은 여행
+      </h2>
+      <div className={styles.travelSection}>
+        <ul className={styles.carousel}>
+          {travelOptions.map((option, index) => (
+            <li
+              key={option.link}
+              className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             >
-              <img src={option.image} className={styles.cardImage} alt="" />
-              <div className={styles.cardContent} aria-hidden="true">
-                <p className={`${styles.cardTitle} heading-3-text`}>
-                  {option.departure} - {option.destination}
-                </p>
-                <p className={`${styles.cardType} body-text`}>{option.type}</p>
-                <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
-              </div>
-            </a>
-          </li>
-        ))}
-      </ul>
-      <button
-        className={`${styles.navButton} ${styles.navButtonPrev}`}
-        onClick={() => moveTravel(-1)}
-        aria-label="이전 여행 상품"
-      >
-        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
-      </button>
-      <button
-        className={`${styles.navButton} ${styles.navButtonNext}`}
-        onClick={() => moveTravel(1)}
-        aria-label="다음 여행 상품"
-      >
-        <img src={chevronRight} className={styles.navButtonIcon} alt="" />
-      </button>
-      <output className="visually-hidden">{announcement}</output>
-    </div>
+              <a
+                href={option.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.cardLink}
+                aria-label={describeTravel(index)}
+              >
+                <img src={option.image} className={styles.cardImage} alt="" />
+                <div className={styles.cardContent} aria-hidden="true">
+                  <p className={`${styles.cardTitle} heading-3-text`}>
+                    {option.departure} - {option.destination}
+                  </p>
+                  <p className={`${styles.cardType} body-text`}>{option.type}</p>
+                  <p className={`${styles.cardPrice} body-text`}>
+                    KRW {option.price.toLocaleString()}
+                  </p>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <button
+          className={`${styles.navButton} ${styles.navButtonPrev}`}
+          onClick={() => moveTravel(-1)}
+          aria-label="이전 여행 상품"
+        >
+          <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
+        </button>
+        <button
+          className={`${styles.navButton} ${styles.navButtonNext}`}
+          onClick={() => moveTravel(1)}
+          aria-label="다음 여행 상품"
+        >
+          <img src={chevronRight} className={styles.navButtonIcon} alt="" />
+        </button>
+        <output className="visually-hidden">{announcement}</output>
+      </div>
+    </section>
   );
 };
 
