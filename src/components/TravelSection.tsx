@@ -46,12 +46,15 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [hasNavigated, setHasNavigated] = useState(false);
 
   const nextTravel = () => {
+    setHasNavigated(true);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
   };
 
   const prevTravel = () => {
+    setHasNavigated(true);
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
@@ -100,7 +103,7 @@ const TravelSection = () => {
         <img src={chevronRight} alt="" className={styles.navButtonIcon} />
       </button>
       <p className="visually-hidden" role="status" aria-atomic="true">
-        {getTravelLabel(currentTravel, currentIndex)}
+        {hasNavigated ? getTravelLabel(currentTravel, currentIndex) : ''}
       </p>
     </div>
   );
