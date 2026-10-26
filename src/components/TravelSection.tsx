@@ -70,7 +70,7 @@ const TravelSection = () => {
       >
         <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
-      <ul className={styles.carousel}>
+      <ul className={styles.carousel} aria-live="polite">
         {travelOptions.map((option, index) => (
           <li
             key={option.link}
