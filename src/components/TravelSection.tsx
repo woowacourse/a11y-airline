@@ -51,16 +51,13 @@ const getTravelLabel = (index: number) => {
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [hasNavigated, setHasNavigated] = useState(false);
 
   const nextTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
-    setHasNavigated(true);
   };
 
   const prevTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
-    setHasNavigated(true);
   };
 
   return (
@@ -68,18 +65,18 @@ const TravelSection = () => {
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
         <img src={chevronLeft} alt="이전 여행 상품" className={styles.navButtonIcon} />
       </button>
-      <div className={styles.carousel}>
+      <div className={styles.carousel} aria-live="polite">
         {travelOptions.map((option, index) => (
           <a
             key={index}
             href={option.link}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={getTravelLabel(index)}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
           >
+            <span className="visually-hidden">{getTravelLabel(index)}</span>
             <img src={option.image} alt="" className={styles.cardImage} />
-            <div className={styles.cardContent}>
+            <div className={styles.cardContent} aria-hidden="true">
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
               </p>
@@ -89,9 +86,6 @@ const TravelSection = () => {
           </a>
         ))}
       </div>
-      <p className="visually-hidden" aria-live="polite">
-        {hasNavigated && getTravelLabel(currentIndex)}
-      </p>
       <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
         <img src={chevronRight} alt="다음 여행 상품" className={styles.navButtonIcon} />
       </button>
