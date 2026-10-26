@@ -68,9 +68,9 @@ const TravelSection = () => {
       >
         <img src={chevronLeft} className={styles.navButtonIcon} />
       </button>
-      <div className={styles.carousel}>
+      <ul className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <div
+          <li
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
@@ -83,9 +83,9 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
       <button
         className={`${styles.navButton} a${styles.navButtonNext}`}
         onClick={nextTravel}
