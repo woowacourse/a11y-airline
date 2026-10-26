@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import useIsMounted from '../hooks/useIsMounted';
 
 import travelItem01 from '../assets/travel-item-01.png';
 import travelItem02 from '../assets/travel-item-02.png';
@@ -46,14 +45,16 @@ const travelOptions: TravelOption[] = [
 ];
 
 const TravelSection = () => {
-  const isMounted = useIsMounted();
+  const [hasTravelChanged, setHasTravelChanged] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextTravel = () => {
+    setHasTravelChanged(true);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
   };
 
   const prevTravel = () => {
+    setHasTravelChanged(true);
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
@@ -66,7 +67,7 @@ const TravelSection = () => {
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             href={option.link}
             target="_blank"
-            aria-live={isMounted ? 'polite' : 'off'}
+            aria-live={hasTravelChanged ? 'polite' : 'off'}
             aria-atomic="true"
             aria-label={`${travelOptions.length}개 중 ${index + 1}번째, ${option.departure} 출발 ${option.destination} 도착, ${option.type}, ${option.price.toLocaleString()}원`}
           >

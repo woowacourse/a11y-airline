@@ -1,5 +1,4 @@
 import { useCallback, useState } from 'react';
-import useIsMounted from '../hooks/useIsMounted';
 
 import helpIcon from '../assets/help.svg';
 import plus from '../assets/plus.svg';
@@ -11,7 +10,7 @@ const MIN_PASSENGERS = 1;
 const MAX_PASSENGERS = 3;
 
 const FlightBooking = () => {
-  const isMounted = useIsMounted();
+  const [hasCountChanged, setHasCountChanged] = useState(false);
   const [adultCount, setAdultCount] = useState(MIN_PASSENGERS);
   const [statusMessage, setStatusMessage] = useState('');
   const [showTooltip, setShowTooltip] = useState(false);
@@ -22,6 +21,7 @@ const FlightBooking = () => {
       return;
     }
 
+    setHasCountChanged(true);
     setAdultCount((prev) => Math.min(MAX_PASSENGERS, prev + 1));
     setStatusMessage('');
   }, [adultCount]);
@@ -32,6 +32,7 @@ const FlightBooking = () => {
       return;
     }
 
+    setHasCountChanged(true);
     setAdultCount((prev) => Math.max(MIN_PASSENGERS, prev - 1));
     setStatusMessage('');
   }, [adultCount]);
@@ -55,7 +56,7 @@ const FlightBooking = () => {
           <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
             <img src={minus} alt="" />
           </button>
-          <span aria-live={isMounted ? 'polite' : 'off'}>{adultCount}</span>
+          <span aria-live={hasCountChanged ? 'polite' : 'off'}>{adultCount}</span>
           <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
             <img src={plus} alt="" />
           </button>
