@@ -11,7 +11,7 @@ function App() {
       <a href="#main-content" className="skip-link">
         본문으로 바로가기
       </a>
-      <header>
+      <header className={styles.banner}>
         <Navigation />
         <div className={styles.header}>
           <h1 className={`${styles.title} heading-1-text`}>A11Y AIRLINE</h1>
