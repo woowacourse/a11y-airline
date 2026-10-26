@@ -44,46 +44,80 @@ const travelOptions: TravelOption[] = [
   }
 ];
 
+const TOTAL = travelOptions.length;
+
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextTravel = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % TOTAL);
   };
 
   const prevTravel = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
-  };
-
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + TOTAL) % TOTAL);
   };
 
   return (
-    <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+    <div
+      className={styles.travelSection}
+      role="region"
+      aria-roledescription="carousel"
+      aria-label={`추천 여행지 ${TOTAL}개`}
+    >
+      <button
+        type="button"
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 여행지 보기"
+      >
+        <img src={chevronLeft} alt="" className={styles.navButtonIcon} />
       </button>
-      <div className={styles.carousel}>
+      {/* 이전/다음으로 이동하면 새로 보이는 카드 정보를 스크린 리더가 읽어줍니다 */}
+      <div className={styles.carousel} aria-live="polite">
         {travelOptions.map((option, index) => (
+          // 비활성 카드는 display: none 이라 접근성 트리에서도 빠집니다
           <div
-            key={index}
+            key={option.link}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
           >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
-                {option.departure} - {option.destination}
-              </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
-            </div>
+            <a
+              className={styles.cardLink}
+              href={option.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={option.image} alt="" className={styles.cardImage} />
+              <div className={styles.cardContent}>
+                <span className="visually-hidden">{`${TOTAL}개 중 ${index + 1}번째 여행지, `}</span>
+                <h3 className={`${styles.cardTitle} heading-3-text`}>
+                  <span aria-hidden="true">
+                    {option.departure} - {option.destination}
+                  </span>
+                  <span className="visually-hidden">
+                    {`${option.departure} 출발 ${option.destination} 도착, `}
+                  </span>
+                </h3>
+                <p className={`${styles.cardType} body-text`}>
+                  {option.type}
+                  <span className="visually-hidden">, </span>
+                </p>
+                <p className={`${styles.cardPrice} body-text`}>
+                  <span aria-hidden="true">KRW {option.price.toLocaleString()}</span>
+                  <span className="visually-hidden">{`${option.price.toLocaleString()}원`}</span>
+                </p>
+                <span className="visually-hidden">, 새 창에서 열림</span>
+              </div>
+            </a>
           </div>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+      <button
+        type="button"
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+        aria-label="다음 여행지 보기"
+      >
+        <img src={chevronRight} alt="" className={styles.navButtonIcon} />
       </button>
     </div>
   );
