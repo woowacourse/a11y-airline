@@ -10,10 +10,23 @@
   align-items: center;
 }
 
-.helpIconWrapper {
+.helpControl {
   position: relative;
   margin-left: 5px;
+}
+
+.helpIconButton {
+  display: flex;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 50%;
   cursor: pointer;
+}
+
+.helpIconButton:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 2px;
 }
 
 .helpIcon {
@@ -33,6 +46,13 @@
   font-size: 12px;
   white-space: nowrap;
   z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.tooltipVisible {
+  visibility: visible;
+  opacity: 1;
 }
 
 .tooltip::after {
