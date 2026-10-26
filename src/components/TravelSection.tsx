@@ -74,6 +74,7 @@ const TravelSection = () => {
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             onClick={() => handleCardClick(option.link)}
+            aria-label={`${travelOptions.length}}개 중 ${index + 1}번째`}
           >
             <img src={option.image} className={styles.cardImage} />
             <div className={styles.cardContent}>
