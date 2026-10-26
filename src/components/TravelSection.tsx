@@ -44,35 +44,44 @@ const travelOptions: TravelOption[] = [
   }
 ];
 
+const describeTravel = (index: number) => {
+  const { departure, destination, type, price } = travelOptions[index];
+  return `${travelOptions.length}개 중 ${index + 1}번째, ${departure}에서 ${destination}, ${type}, ${price.toLocaleString('ko-KR')}원`;
+};
+
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [announcement, setAnnouncement] = useState('');
+
+  const moveTo = (index: number) => {
+    setCurrentIndex(index);
+    setAnnouncement(describeTravel(index));
+  };
 
   const nextTravel = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
+    moveTo((currentIndex + 1) % travelOptions.length);
   };
 
   const prevTravel = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
+    moveTo((currentIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
   const currentOption = travelOptions[currentIndex];
-  const currentDescription = `${travelOptions.length}개 중 ${currentIndex + 1}번째, ${currentOption.departure}에서 ${currentOption.destination}, ${currentOption.type}, ${currentOption.price.toLocaleString('ko-KR')}원`;
 
   return (
     <div className={styles.travelSection}>
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
         <img src={chevronLeft} alt="이전 여행 상품" className={styles.navButtonIcon} />
       </button>
-      <div className={styles.carousel} aria-live="polite" aria-atomic="true">
+      <div className={styles.carousel}>
         <a
-          key={currentIndex}
           href={currentOption.link}
           target="_blank"
           rel="noopener noreferrer"
           className={styles.card}
         >
           <img src={currentOption.image} alt="" className={styles.cardImage} />
-          <span className="visually-hidden">{currentDescription}</span>
+          <span className="visually-hidden">{describeTravel(currentIndex)}</span>
           <div className={styles.cardContent} aria-hidden="true">
             <p className={`${styles.cardTitle} heading-3-text`}>
               {currentOption.departure} - {currentOption.destination}
@@ -87,6 +96,9 @@ const TravelSection = () => {
       <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
         <img src={chevronRight} alt="다음 여행 상품" className={styles.navButtonIcon} />
       </button>
+      <p className="visually-hidden" aria-live="polite">
+        {announcement}
+      </p>
     </div>
   );
 };
