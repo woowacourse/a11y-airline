@@ -7,6 +7,9 @@ import TravelSection from './components/TravelSection';
 function App() {
   return (
     <div className={styles.app}>
+      <a href="#main-content" className="skip-link">
+        본문으로 바로가기
+      </a>
       <header>
         <Navigation />
         <div className={styles.header}>
@@ -16,7 +19,7 @@ function App() {
           </p>
         </div>
       </header>
-      <main id="main-content" className={styles.main}>
+      <main id="main-content" className={styles.main} tabIndex={-1}>
         <div className={styles.flightBooking}>
           <FlightBooking />
         </div>
