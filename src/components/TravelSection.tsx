@@ -65,9 +65,9 @@ const TravelSection = () => {
         지금 떠나기 좋은 여행
       </h2>
       <div className={styles.travelSection}>
-        <ul className={styles.carousel}>
+        <div className={styles.carousel}>
           {travelOptions.map((option, index) => (
-            <li
+            <div
               key={option.link}
               className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
             >
@@ -89,9 +89,9 @@ const TravelSection = () => {
                   </p>
                 </div>
               </a>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
         <button
           className={`${styles.navButton} ${styles.navButtonPrev}`}
           onClick={() => moveTravel(-1)}
