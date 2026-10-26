@@ -89,21 +89,22 @@ const TravelSection = () => {
             className={styles.cardLink}
             href={currentTravel.link}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             <span className="visually-hidden">
               {travelOptions.length}개 중 {currentIndex + 1}번째,
             </span>
             <img src={currentTravel.image} className={styles.cardImage} alt="" />
             <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
+              <h3 className={`${styles.cardTitle} heading-3-text`}>
                 {currentTravel.departure} - {currentTravel.destination}
-              </p>
+              </h3>
               <p className={`${styles.cardType} body-text`}>{currentTravel.type}</p>
               <p className={`${styles.cardPrice} body-text`}>
                 KRW {currentTravel.price.toLocaleString('ko-KR')}
               </p>
             </div>
+            <span className="visually-hidden">새 창에서 열림</span>
           </a>
         </article>
       </div>
