@@ -44,8 +44,10 @@ const travelOptions: TravelOption[] = [
   }
 ];
 
-const getTravelLabel = (option: TravelOption) =>
-  `${option.departure}에서 ${option.destination}, ${option.type}, ${option.price.toLocaleString()}원`;
+const getTravelLabel = (option: TravelOption, index: number) =>
+  `${travelOptions.length}개 중 ${index + 1}번째, ${option.departure}에서 ${option.destination}, ${
+    option.type
+  }, ${option.price.toLocaleString()}원`;
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -79,7 +81,7 @@ const TravelSection = () => {
               target="_blank"
               rel="noopener noreferrer"
               className={styles.cardLink}
-              aria-label={getTravelLabel(option)}
+              aria-label={getTravelLabel(option, index)}
             >
               <img src={option.image} className={styles.cardImage} alt="" />
               <div className={styles.cardContent} aria-hidden="true">
