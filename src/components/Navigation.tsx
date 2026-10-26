@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { KeyboardEvent, useState } from 'react';
 import styles from './Navigation.module.css';
 
 interface NavItem {
@@ -40,16 +40,41 @@ const navItems: NavItem[] = [
 const Navigation = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
+  const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
+
   const toggleNav = () => {
     setIsNavOpen((prev) => !prev);
+  };
+
+  const toggleSubMenu = (title: string) => {
+    setOpenSubMenu((prev) => (prev === title ? null : title));
+  };
+
+  const closeSubMenuOnEscape = (event: KeyboardEvent<HTMLLIElement>) => {
+    if (event.key !== 'Escape') return;
+
+    setOpenSubMenu(null);
+    event.currentTarget.querySelector('button')?.focus();
   };
 
   const renderNavItems = (items: NavItem[]) => (
     <ul className={styles.navList}>
       {items.map((item, index) => (
-        <li key={index} className={styles.navItem}>
-          <a href={item.link}>{item.title}</a>
-          {item.subItems && renderNavItems(item.subItems)}
+        <li key={index} className={styles.navItem} onKeyDown={closeSubMenuOnEscape}>
+          {item.subItems ? (
+            <>
+              <button
+                type="button"
+                aria-expanded={openSubMenu === item.title}
+                onClick={() => toggleSubMenu(item.title)}
+              >
+                {item.title}
+              </button>
+              {openSubMenu === item.title && renderNavItems(item.subItems)}
+            </>
+          ) : (
+            <a href={item.link}>{item.title}</a>
+          )}
         </li>
       ))}
     </ul>
