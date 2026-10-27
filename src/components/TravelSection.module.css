@@ -14,13 +14,21 @@
   border-radius: 4px;
   border: 1px solid rgba(217, 217, 217, 0.5);
   overflow: hidden;
-  display: none;
   width: 100%;
   height: 246px;
 }
 
-.cardActive {
+.cardLink {
+  color: inherit;
   display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.cardLink:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: -3px;
 }
 
 .cardImage {
@@ -85,4 +93,9 @@
 .navButtonIcon {
   width: 24px;
   height: 24px;
+}
+
+.navButton:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: -3px;
 }

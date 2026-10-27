@@ -36,24 +36,44 @@ const FlightBooking = () => {
 
   return (
     <div className={styles.flightBooking}>
-      <h2 className="heading-2-text">항공권 예매</h2>
+      <h2 id="flight-booking-title" className="heading-2-text">
+        항공권 예매
+      </h2>
       <div className={styles.passengerCount}>
         <div className={styles.passengerLabel}>
           <span className="body-text">성인</span>
-          <div
-            className={styles.helpIconWrapper}
-            onMouseEnter={() => setShowTooltip(true)}
-            onMouseLeave={() => setShowTooltip(false)}
-          >
-            <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
-            {showTooltip && <div className={styles.tooltip}>최대 3명까지 예약할 수 있습니다</div>}
+          <div className={styles.helpControl}>
+            <button
+              type="button"
+              className={styles.helpIconButton}
+              aria-label="성인 승객 도움말"
+              aria-describedby="adult-passenger-help"
+              aria-controls="adult-passenger-help"
+              aria-expanded={showTooltip}
+              onClick={() => setShowTooltip((prev) => !prev)}
+              onMouseEnter={() => setShowTooltip(true)}
+              onMouseLeave={() => setShowTooltip(false)}
+              onFocus={() => setShowTooltip(true)}
+              onBlur={() => setShowTooltip(false)}
+            >
+              <img src={helpIcon} alt="" className={styles.helpIcon} />
+            </button>
+            <span
+              id="adult-passenger-help"
+              role="tooltip"
+              className={`${styles.tooltip} ${showTooltip ? styles.tooltipVisible : ''}`}
+            >
+              최대 3명까지 예약할 수 있습니다
+            </span>
           </div>
         </div>
         <div className={styles.counter}>
           <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
             <img src={minus} alt="" />
           </button>
-          <span aria-live="polite">{adultCount}</span>
+          <span aria-live="polite" aria-atomic="true">
+            {adultCount}
+          </span>
           <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
             <img src={plus} alt="" />
           </button>
@@ -64,7 +84,9 @@ const FlightBooking = () => {
           {statusMessage}
         </div>
       )}
-      <button className={styles.searchButton}>항공편 검색</button>
+      <button type="button" className={styles.searchButton}>
+        항공편 검색
+      </button>
     </div>
   );
 };
