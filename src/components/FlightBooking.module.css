@@ -93,3 +93,15 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+.helpButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 32px;
+  border: 0;
+  padding: 4px;
+  background: transparent;
+  cursor: pointer;
+}

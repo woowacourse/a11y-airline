@@ -40,20 +40,30 @@ const FlightBooking = () => {
       <div className={styles.passengerCount}>
         <div className={styles.passengerLabel}>
           <span className="body-text">성인</span>
-          <div
-            className={styles.helpIconWrapper}
-            onMouseEnter={() => setShowTooltip(true)}
-            onMouseLeave={() => setShowTooltip(false)}
-          >
-            <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
-            {showTooltip && <div className={styles.tooltip}>최대 3명까지 예약할 수 있습니다</div>}
+          <div className={styles.helpIconWrapper}>
+            <button
+              type="button"
+              className={styles.helpButton}
+              aria-label="성인 승객 예약 안내"
+              aria-expanded={showTooltip}
+              aria-controls="passenger-help"
+              onClick={() => setShowTooltip((prev) => !prev)}
+              onKeyDown={(event) => {
+                if (event.key === 'Escape') setShowTooltip(false);
+              }}
+            >
+              <img src={helpIcon} alt="" className={styles.helpIcon} />
+            </button>
+            <p id="passenger-help" hidden={!showTooltip} className={styles.tooltip}>
+              최대 3명까지 예약할 수 있습니다
+            </p>
           </div>
         </div>
         <div className={styles.counter}>
           <button className="button-text" onClick={decrementCount} aria-label="성인 승객 감소">
             <img src={minus} alt="" />
           </button>
-          <span aria-live="polite">{adultCount}</span>
+          <span aria-live="polite" aria-atomic="true"><span className="visually-hidden">성인 </span>{adultCount}<span className="visually-hidden">명</span></span>
           <button className="button-text" onClick={incrementCount} aria-label="성인 승객 증가">
             <img src={plus} alt="" />
           </button>
