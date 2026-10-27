@@ -1,3 +1,20 @@
+.skipLink {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  padding: 12px 16px;
+  background-color: #fff;
+  color: #000;
+  transform: translateY(calc(-100% - 8px));
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
 .app {
   font-family: Arial, sans-serif;
   max-width: 480px;
