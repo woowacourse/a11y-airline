@@ -74,9 +74,14 @@ const TravelSection = () => {
             aria-setsize={travelOptions.length}
             aria-posinset={index + 1}
           >
-            <a href={option.link} target="_blank" rel="noopener noreferrer">
+            <a
+              href={option.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-labe={`${travelOptions.length}}개 중 ${index + 1}번째, ${option.departure}에서 ${option.destination}, ${option.type}, ${option.price.toLocaleString()}원, 새 탭으로 열림`}
+            >
               <img src={option.image} className={styles.cardImage} />
-              <div className={styles.cardContent}>
+              <div className={styles.cardContent} aria-hidden="true">
                 <p className={`${styles.cardTitle} heading-3-text`}>
                   {option.departure} - {option.destination}
                 </p>
