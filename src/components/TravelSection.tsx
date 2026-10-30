@@ -76,7 +76,8 @@ const TravelSection = () => {
             onClick={() => handleCardClick(option.link)}
             role="group"
             aria-roledescription="슬라이드"
-            aria-label={`${travelOptions.length}}개 중 ${index + 1}번째`}
+            aria-setsize={travelOptions.length}
+            aria-posinset={index + 1}
           >
             <img src={option.image} className={styles.cardImage} />
             <div className={styles.cardContent}>
