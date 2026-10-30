@@ -70,7 +70,7 @@ const TravelSection = () => {
 
   return (
     <div className={styles.travelSection}>
-      <p aria-live="polite" aria-atomic="true">
+      <p className="visually-hidden" aria-live="polite" aria-atomic="true">
         {accessibilityMessage}
       </p>
       <button
