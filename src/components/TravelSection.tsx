@@ -79,14 +79,20 @@ const TravelSection = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-labe={`${travelOptions.length}}개 중 ${index + 1}번째, ${option.departure}에서 ${option.destination}, ${option.type}, ${option.price.toLocaleString()}원, 새 탭으로 열림`}
+              aria-labelledby={`departure-destination-${index} type-${index} price-${index}`}
             >
               <img src={option.image} className={styles.cardImage} />
               <div className={styles.cardContent} aria-hidden="true">
-                <p className={`${styles.cardTitle} heading-3-text`}>
+                <p
+                  className={`${styles.cardTitle} heading-3-text`}
+                  id={`departure-destination-${index}`}
+                >
                   {option.departure} - {option.destination}
                 </p>
-                <p className={`${styles.cardType} body-text`}>{option.type}</p>
-                <p className={`${styles.cardPrice} body-text`}>
+                <p className={`${styles.cardType} body-text`} id={`type-${index}`}>
+                  {option.type}
+                </p>
+                <p className={`${styles.cardPrice} body-text`} id={`price-${index}`}>
                   KRW {option.price.toLocaleString()}
                 </p>
               </div>
