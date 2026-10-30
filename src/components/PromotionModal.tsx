@@ -26,7 +26,11 @@ const PromotionModal = () => {
             <br />- 앱으로 더욱 편하게 여행하세요!
           </p>
           <button className={`${styles.modalActionButton} button-text`}>앱에서 열기</button>
-          <button className={`${styles.modalCloseButton} heading-2-text`} onClick={closeModal}>
+          <button
+            className={`${styles.modalCloseButton} heading-2-text`}
+            onClick={closeModal}
+            aria-label="딛기"
+          >
             <img src={close} alt="" />
           </button>
         </div>
