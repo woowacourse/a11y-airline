@@ -46,17 +46,33 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [accessibilityMessage, setAccessibilityMessage] = useState('');
 
   const nextTravel = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
+    const nextIndex = (currentIndex + 1) % travelOptions.length;
+    setCurrentIndex(nextIndex);
+
+    const option = travelOptions[nextIndex];
+    setAccessibilityMessage(
+      `${travelOptions.length}}개 중 ${nextIndex + 1}번째, ${option.departure}에서 ${option.destination}, ${option.type}, ${option.price.toLocaleString()}원, 새 탭으로 열림`
+    );
   };
 
   const prevTravel = () => {
+    const prevIndex = (currentIndex + 1) % travelOptions.length;
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
+
+    const option = travelOptions[prevIndex];
+    setAccessibilityMessage(
+      `${travelOptions.length}}개 중 ${prevIndex + 1}번째, ${option.departure}에서 ${option.destination}, ${option.type}, ${option.price.toLocaleString()}원, 새 탭으로 열림`
+    );
   };
 
   return (
     <div className={styles.travelSection}>
+      <p aria-live="polite" aria-atomic="true">
+        {accessibilityMessage}
+      </p>
       <button
         className={`${styles.navButton} ${styles.navButtonPrev}`}
         onClick={prevTravel}
