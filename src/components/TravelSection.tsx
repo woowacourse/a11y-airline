@@ -78,7 +78,7 @@ const TravelSection = () => {
         onClick={prevTravel}
         aria-label="이전 여행 상품"
       >
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+        <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
       </button>
       <ul className={styles.carousel}>
         {travelOptions.map((option, index) => (
@@ -97,7 +97,7 @@ const TravelSection = () => {
               aria-labe={`${travelOptions.length}}개 중 ${index + 1}번째, ${option.departure}에서 ${option.destination}, ${option.type}, ${option.price.toLocaleString()}원, 새 탭으로 열림`}
               aria-labelledby={`departure-destination-${index} type-${index} price-${index}`}
             >
-              <img src={option.image} className={styles.cardImage} />
+              <img src={option.image} className={styles.cardImage} alt="" />
               <div className={styles.cardContent} aria-hidden="true">
                 <p
                   className={`${styles.cardTitle} heading-3-text`}
@@ -121,7 +121,7 @@ const TravelSection = () => {
         onClick={nextTravel}
         aria-label="다음 여행 상품"
       >
-        <img src={chevronRight} className={styles.navButtonIcon} />
+        <img src={chevronRight} className={styles.navButtonIcon} alt="" />
       </button>
     </div>
   );
