@@ -55,23 +55,21 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div className={styles.travelSection}>
       <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+        <img src={chevronLeft} alt="이전 여행 상품" className={styles.navButtonIcon} />
       </button>
-      <div className={styles.carousel}>
+      {/* 이전/다음 버튼으로 카드가 바뀌면 새로 보이는 카드 정보를 읽어준다 */}
+      <div className={styles.carousel} aria-live="polite">
         {travelOptions.map((option, index) => (
-          <div
+          <a
             key={index}
+            href={option.link}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
+            aria-label={`${travelOptions.length}개 중 ${index + 1}번째, ${option.departure}에서 ${option.destination}, ${option.type}, ${option.price.toLocaleString()}원`}
           >
-            <img src={option.image} className={styles.cardImage} />
+            <img src={option.image} alt="" className={styles.cardImage} />
             <div className={styles.cardContent}>
               <p className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
@@ -79,11 +77,11 @@ const TravelSection = () => {
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
       <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+        <img src={chevronRight} alt="다음 여행 상품" className={styles.navButtonIcon} />
       </button>
     </div>
   );
