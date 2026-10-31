@@ -45,8 +45,23 @@ const FlightBooking = () => {
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
           >
-            <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
-            {showTooltip && <div className={styles.tooltip}>최대 3명까지 예약할 수 있습니다</div>}
+            {/* hover뿐 아니라 키보드 포커스로도 열고, 스크린 리더에는 버튼 설명으로 항상 읽힌다 */}
+            <button
+              className={styles.helpButton}
+              aria-describedby="passenger-help"
+              onFocus={() => setShowTooltip(true)}
+              onBlur={() => setShowTooltip(false)}
+            >
+              <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
+            </button>
+            <div
+              id="passenger-help"
+              role="tooltip"
+              className={styles.tooltip}
+              hidden={!showTooltip}
+            >
+              최대 3명까지 예약할 수 있습니다
+            </div>
           </div>
         </div>
         <div className={styles.counter}>
