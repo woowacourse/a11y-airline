@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useId, useState } from 'react';
 
 import helpIcon from '../assets/help.svg';
 import plus from '../assets/plus.svg';
@@ -13,6 +13,7 @@ const FlightBooking = () => {
   const [adultCount, setAdultCount] = useState(MIN_PASSENGERS);
   const [statusMessage, setStatusMessage] = useState('');
   const [showTooltip, setShowTooltip] = useState(false);
+  const helpId = useId();
 
   const incrementCount = useCallback(() => {
     if (adultCount === MAX_PASSENGERS) {
@@ -36,17 +37,27 @@ const FlightBooking = () => {
 
   return (
     <div className={styles.flightBooking}>
-      <h2 className="heading-2-text">항공권 예매</h2>
+      <h2 id="flight-booking-title" className="heading-2-text">항공권 예매</h2>
       <div className={styles.passengerCount}>
         <div className={styles.passengerLabel}>
           <span className="body-text">성인</span>
-          <div
-            className={styles.helpIconWrapper}
-            onMouseEnter={() => setShowTooltip(true)}
-            onMouseLeave={() => setShowTooltip(false)}
-          >
-            <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
-            {showTooltip && <div className={styles.tooltip}>최대 3명까지 예약할 수 있습니다</div>}
+          <div className={styles.helpIconWrapper}>
+            <button
+              type="button"
+              className={styles.helpButton}
+              aria-label="예약 인원 도움말"
+              aria-expanded={showTooltip}
+              aria-controls={helpId}
+              onClick={() => setShowTooltip((prev) => !prev)}
+              onKeyDown={(event) => {
+                if (event.key === 'Escape') setShowTooltip(false);
+              }}
+            >
+              <img src={helpIcon} alt="" className={styles.helpIcon} />
+            </button>
+            <div id={helpId} className={styles.tooltip} hidden={!showTooltip}>
+              최대 3명까지 예약할 수 있습니다
+            </div>
           </div>
         </div>
         <div className={styles.counter}>

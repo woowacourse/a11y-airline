@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
 
 import travelItem01 from '../assets/travel-item-01.png';
 import travelItem02 from '../assets/travel-item-02.png';
@@ -46,6 +46,7 @@ const travelOptions: TravelOption[] = [
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const travelId = useId();
 
   const nextTravel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
@@ -55,36 +56,57 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+      <button
+        type="button"
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 여행 상품"
+      >
+        <img src={chevronLeft} alt="" className={styles.navButtonIcon} />
       </button>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
-          <div
+          <a
             key={index}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
+            href={option.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-labelledby={`${travelId}-${index}-title ${travelId}-${index}-type ${travelId}-${index}-price`}
           >
-            <img src={option.image} className={styles.cardImage} />
+            <img src={option.image} alt="" className={styles.cardImage} />
             <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
+              <p id={`${travelId}-${index}-title`} className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
               </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+              <p id={`${travelId}-${index}-type`} className={`${styles.cardType} body-text`}>
+                {option.type}
+              </p>
+              <p id={`${travelId}-${index}-price`} className={`${styles.cardPrice} body-text`}>
+                KRW {option.price.toLocaleString()}
+              </p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+      <button
+        type="button"
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+        aria-label="다음 여행 상품"
+      >
+        <img src={chevronRight} alt="" className={styles.navButtonIcon} />
       </button>
+      <p className={styles.carouselStatus} aria-live="polite" aria-atomic="true">
+        <span aria-hidden="true">
+          {currentIndex + 1} / {travelOptions.length}
+        </span>
+        <span className="visually-hidden">
+          {travelOptions[currentIndex].destination}, 전체 {travelOptions.length}개 중 {currentIndex + 1}번째 상품
+        </span>
+      </p>
     </div>
   );
 };

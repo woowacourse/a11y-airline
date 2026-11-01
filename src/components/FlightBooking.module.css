@@ -13,7 +13,26 @@
 .helpIconWrapper {
   position: relative;
   margin-left: 5px;
+}
+
+.helpButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
   cursor: pointer;
+}
+
+.helpButton:hover {
+  background-color: #e8e8e8;
+}
+
+.helpButton:focus-visible {
+  outline: 2px solid #333;
+  outline-offset: 2px;
 }
 
 .helpIcon {
