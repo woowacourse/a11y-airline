@@ -9,6 +9,14 @@
   padding: 0 24px;
 }
 
+.carouselStatus {
+  margin: 12px 24px 0;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+
 .card {
   position: relative;
   border-radius: 4px;

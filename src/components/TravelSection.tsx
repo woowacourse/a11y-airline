@@ -99,6 +99,14 @@ const TravelSection = () => {
       >
         <img src={chevronRight} alt="" className={styles.navButtonIcon} />
       </button>
+      <p className={styles.carouselStatus} aria-live="polite" aria-atomic="true">
+        <span aria-hidden="true">
+          {currentIndex + 1} / {travelOptions.length}
+        </span>
+        <span className="visually-hidden">
+          {travelOptions[currentIndex].destination}, 전체 {travelOptions.length}개 중 {currentIndex + 1}번째 상품
+        </span>
+      </p>
     </div>
   );
 };
