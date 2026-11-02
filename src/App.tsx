@@ -19,10 +19,7 @@ function App() {
         <div className={styles.flightBooking}>
           <FlightBooking />
         </div>
-        <section className={styles.travelSection} aria-labelledby="travel-title">
-          <h2 id="travel-title" className={`${styles.travelTitle} heading-2-text`}>지금 떠나기 좋은 여행</h2>
-          <TravelSection />
-        </section>
+        <TravelSection />
       </main>
       <footer className={styles.footer}>
         <p className="body-text">&copy; A11Y AIRLINE</p>
