@@ -23,6 +23,18 @@
   display: block;
 }
 
+.card > a {
+  display: block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.card > a:focus-visible .cardContent {
+  outline: 3px solid #005fcc;
+  outline-offset: -3px;
+}
+
 .cardImage {
   width: 100%;
   height: 100%;
