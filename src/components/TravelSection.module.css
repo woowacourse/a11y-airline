@@ -1,3 +1,12 @@
+.promotionSection {
+  background-color: rgb(246, 246, 246);
+}
+
+.travelTitle {
+  font-size: 18px;
+  padding: 24px;
+}
+
 .travelSection {
   position: relative;
   padding-bottom: 32px;
@@ -85,4 +94,20 @@
 .navButtonIcon {
   width: 24px;
   height: 24px;
+}
+
+.card {
+  color: #111;
+  text-decoration: none;
+}
+
+.carousel {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.position {
+  margin-top: 12px;
+  text-align: center;
+  color: #333;
 }

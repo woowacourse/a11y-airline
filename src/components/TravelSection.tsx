@@ -55,37 +55,58 @@ const TravelSection = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
+  const option = travelOptions[currentIndex];
+  const description = `${travelOptions.length}개 중 ${currentIndex + 1}번째, ${option.departure}에서 ${option.destination}, ${option.type}, ${option.price.toLocaleString('ko-KR')}원`;
 
   return (
-    <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
-      </button>
-      <div className={styles.carousel}>
-        {travelOptions.map((option, index) => (
-          <div
-            key={index}
-            className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
-          >
-            <img src={option.image} className={styles.cardImage} />
+    <section
+      className={styles.promotionSection}
+      aria-labelledby="travel-title"
+      aria-describedby="travel-description"
+      aria-roledescription="캐로셀"
+    >
+      <h2 id="travel-title" className={`${styles.travelTitle} heading-2-text`}>지금 떠나기 좋은 여행</h2>
+      <p id="travel-description" className="visually-hidden">
+        총 {travelOptions.length}개의 프로모션 여행 상품이 있습니다.
+      </p>
+      <div className={styles.travelSection}>
+        <button
+          type="button"
+          className={`${styles.navButton} ${styles.navButtonPrev}`}
+          onClick={prevTravel}
+          aria-label="이전 여행 상품"
+        >
+          <img src={chevronLeft} alt="" className={styles.navButtonIcon} />
+        </button>
+        <div className={styles.carousel}>
+          <a className={`${styles.card} ${styles.cardActive}`} href={option.link}>
+            <img src={option.image} alt="" className={styles.cardImage} />
             <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
+              <h3 className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
-              </p>
+              </h3>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+              <p className={`${styles.cardPrice} body-text`}>{option.price.toLocaleString('ko-KR')}원</p>
             </div>
-          </div>
-        ))}
+            <span className="visually-hidden">
+              {travelOptions.length}개 중 {currentIndex + 1}번째
+            </span>
+          </a>
+        </div>
+        <button
+          type="button"
+          className={`${styles.navButton} ${styles.navButtonNext}`}
+          onClick={nextTravel}
+          aria-label="다음 여행 상품"
+        >
+          <img src={chevronRight} alt="" className={styles.navButtonIcon} />
+        </button>
+        <p className={styles.position} aria-hidden="true">{currentIndex + 1} / {travelOptions.length}</p>
+        <p className="visually-hidden" role="status" aria-atomic="true">
+          {description}
+        </p>
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
-      </button>
-    </div>
+    </section>
   );
 };
 
