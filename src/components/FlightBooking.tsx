@@ -12,7 +12,10 @@ const MAX_PASSENGERS = 3;
 const FlightBooking = () => {
   const [adultCount, setAdultCount] = useState(MIN_PASSENGERS);
   const [statusMessage, setStatusMessage] = useState('');
-  const [showTooltip, setShowTooltip] = useState(false);
+  const [isHelpHovered, setIsHelpHovered] = useState(false);
+  const [isHelpFocused, setIsHelpFocused] = useState(false);
+  const [isHelpDismissed, setIsHelpDismissed] = useState(false);
+  const showTooltip = (isHelpHovered || isHelpFocused) && !isHelpDismissed;
 
   const incrementCount = useCallback(() => {
     if (adultCount === MAX_PASSENGERS) {
@@ -42,11 +45,34 @@ const FlightBooking = () => {
           <span className="body-text">성인</span>
           <div
             className={styles.helpIconWrapper}
-            onMouseEnter={() => setShowTooltip(true)}
-            onMouseLeave={() => setShowTooltip(false)}
+            onMouseEnter={() => {
+              setIsHelpHovered(true);
+              setIsHelpDismissed(false);
+            }}
+            onMouseLeave={() => setIsHelpHovered(false)}
           >
-            <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
-            {showTooltip && <div className={styles.tooltip}>최대 3명까지 예약할 수 있습니다</div>}
+            <button
+              type="button"
+              className={styles.helpButton}
+              aria-describedby="adult-help-tooltip"
+              onClick={() => setIsHelpDismissed(false)}
+              onFocus={() => {
+                setIsHelpFocused(true);
+                setIsHelpDismissed(false);
+              }}
+              onBlur={() => setIsHelpFocused(false)}
+              onKeyDown={(event) => event.key === 'Escape' && setIsHelpDismissed(true)}
+            >
+              <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
+            </button>
+            <div
+              id="adult-help-tooltip"
+              role="tooltip"
+              className={styles.tooltip}
+              hidden={!showTooltip}
+            >
+              최대 3명까지 예약할 수 있습니다
+            </div>
           </div>
         </div>
         <div className={styles.counter}>
