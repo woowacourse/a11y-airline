@@ -16,6 +16,14 @@
   cursor: pointer;
 }
 
+.helpButton {
+  display: flex;
+  padding: 4px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
 .helpIcon {
   width: 16px;
   height: 16px;
@@ -74,7 +82,7 @@
   align-items: center;
 }
 
-.counter span {
+.counter output {
   font-size: 18px;
   text-align: center;
   font-size: 18px;
