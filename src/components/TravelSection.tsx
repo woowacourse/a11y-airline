@@ -82,9 +82,9 @@ const TravelSection = () => {
           <a className={`${styles.card} ${styles.cardActive}`} href={option.link}>
             <img src={option.image} alt="" className={styles.cardImage} />
             <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
+              <h3 className={`${styles.cardTitle} heading-3-text`}>
                 {option.departure} - {option.destination}
-              </p>
+              </h3>
               <p className={`${styles.cardType} body-text`}>{option.type}</p>
               <p className={`${styles.cardPrice} body-text`}>{option.price.toLocaleString('ko-KR')}원</p>
             </div>
