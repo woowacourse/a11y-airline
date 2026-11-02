@@ -16,9 +16,9 @@ function App() {
         </p>
       </header>
       <main id="main-content" tabIndex={-1} className={styles.main}>
-        <div className={styles.flightBooking}>
+        <section className={styles.flightBooking} aria-labelledby="booking-title">
           <FlightBooking />
-        </div>
+        </section>
         <TravelSection />
       </main>
       <footer className={styles.footer}>
