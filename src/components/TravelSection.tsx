@@ -44,47 +44,84 @@ const travelOptions: TravelOption[] = [
   }
 ];
 
+const formatPrice = (price: number) => `${price.toLocaleString()}원`;
+
+const getTravelDescription = (option: TravelOption) =>
+  `${option.departure}에서 ${option.destination}, ${option.type}, ${formatPrice(option.price)}`;
+
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [announcement, setAnnouncement] = useState('');
+
+  const moveTo = (index: number) => {
+    setCurrentIndex(index);
+    setAnnouncement(
+      `총 ${travelOptions.length}개 중 ${index + 1}번째, ${getTravelDescription(travelOptions[index])}`
+    );
+  };
 
   const nextTravel = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
+    moveTo((currentIndex + 1) % travelOptions.length);
   };
 
   const prevTravel = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
-  };
-
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
+    moveTo((currentIndex - 1 + travelOptions.length) % travelOptions.length);
   };
 
   return (
-    <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+    <div
+      className={styles.travelSection}
+      role="region"
+      aria-roledescription="캐러셀"
+      aria-label={`추천 여행 상품 총 ${travelOptions.length}개`}
+    >
+      <button
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 여행 상품"
+        aria-controls="travel-carousel"
+      >
+        <img src={chevronLeft} alt="" className={styles.navButtonIcon} />
       </button>
-      <div className={styles.carousel}>
+      <div id="travel-carousel" className={styles.carousel}>
         {travelOptions.map((option, index) => (
           <div
             key={index}
+            role="group"
+            aria-roledescription="슬라이드"
+            aria-label={`총 ${travelOptions.length}개 중 ${index + 1}번째`}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
           >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
-                {option.departure} - {option.destination}
-              </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
-            </div>
+            <a
+              href={option.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.cardLink}
+              aria-label={`${getTravelDescription(option)}, 새 창에서 열림`}
+            >
+              <img src={option.image} alt="" className={styles.cardImage} />
+              <div className={styles.cardContent}>
+                <p className={`${styles.cardTitle} heading-3-text`}>
+                  {option.departure} - {option.destination}
+                </p>
+                <p className={`${styles.cardType} body-text`}>{option.type}</p>
+                <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
+              </div>
+            </a>
           </div>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+      <button
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+        aria-label="다음 여행 상품"
+        aria-controls="travel-carousel"
+      >
+        <img src={chevronRight} alt="" className={styles.navButtonIcon} />
       </button>
+      <p className="visually-hidden" aria-live="polite" aria-atomic="true">
+        {announcement}
+      </p>
     </div>
   );
 };
