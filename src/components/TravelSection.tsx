@@ -69,15 +69,18 @@ const TravelSection = () => {
         <img src={chevronLeft} alt="" className={styles.navButtonIcon} />
       </button>
       <div className={styles.carousel}>
-        <a className={`${styles.card} ${styles.cardActive}`} href={option.link} aria-label={description}>
+        <a className={`${styles.card} ${styles.cardActive}`} href={option.link}>
           <img src={option.image} alt="" className={styles.cardImage} />
           <div className={styles.cardContent}>
             <p className={`${styles.cardTitle} heading-3-text`}>
               {option.departure} - {option.destination}
             </p>
             <p className={`${styles.cardType} body-text`}>{option.type}</p>
-            <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString('ko-KR')}</p>
+            <p className={`${styles.cardPrice} body-text`}>{option.price.toLocaleString('ko-KR')}원</p>
           </div>
+          <span className="visually-hidden">
+            {travelOptions.length}개 중 {currentIndex + 1}번째
+          </span>
         </a>
       </div>
       <button
