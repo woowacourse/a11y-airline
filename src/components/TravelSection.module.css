@@ -17,10 +17,17 @@
   display: none;
   width: 100%;
   height: 246px;
+  color: inherit;
+  text-decoration: none;
 }
 
 .cardActive {
   display: block;
+}
+
+.card:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: -3px;
 }
 
 .cardImage {
