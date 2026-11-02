@@ -7,6 +7,24 @@
   flex-direction: column;
   background-color: #fff;
   margin: 0 auto;
+  position: relative;
+}
+
+.skipLink {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2000;
+  padding: 12px 16px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skipLink:focus {
+  transform: translateY(0);
 }
 
 .header {
