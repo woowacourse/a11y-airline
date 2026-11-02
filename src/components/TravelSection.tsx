@@ -44,47 +44,85 @@ const travelOptions: TravelOption[] = [
   }
 ];
 
+const TOTAL = travelOptions.length;
+
+// 스크린 리더가 한 번에 읽을 카드 설명 문장
+const describeTravel = (option: TravelOption, index: number) =>
+  `${TOTAL}개 중 ${index + 1}번째 여행지, ${option.departure} 출발 ${option.destination} 도착, ${option.type}, ${option.price.toLocaleString()}원`;
+
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [announcement, setAnnouncement] = useState('');
+
+  const moveTo = (nextIndex: number) => {
+    setCurrentIndex(nextIndex);
+    setAnnouncement(describeTravel(travelOptions[nextIndex], nextIndex));
+  };
 
   const nextTravel = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % travelOptions.length);
+    moveTo((currentIndex + 1) % TOTAL);
   };
 
   const prevTravel = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + travelOptions.length) % travelOptions.length);
-  };
-
-  const handleCardClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
+    moveTo((currentIndex - 1 + TOTAL) % TOTAL);
   };
 
   return (
-    <div className={styles.travelSection}>
-      <button className={`${styles.navButton} ${styles.navButtonPrev}`} onClick={prevTravel}>
-        <img src={chevronLeft} className={styles.navButtonIcon} />
+    <div
+      className={styles.travelSection}
+      role="region"
+      aria-roledescription="carousel"
+      aria-label={`추천 여행지 ${TOTAL}개`}
+    >
+      <button
+        type="button"
+        className={`${styles.navButton} ${styles.navButtonPrev}`}
+        onClick={prevTravel}
+        aria-label="이전 여행지 보기"
+      >
+        <img src={chevronLeft} alt="" className={styles.navButtonIcon} />
       </button>
       <div className={styles.carousel}>
         {travelOptions.map((option, index) => (
+          // 비활성 카드는 display: none 이라 접근성 트리에서도 빠집니다
           <div
-            key={index}
+            key={option.link}
             className={`${styles.card} ${index === currentIndex ? styles.cardActive : ''}`}
-            onClick={() => handleCardClick(option.link)}
           >
-            <img src={option.image} className={styles.cardImage} />
-            <div className={styles.cardContent}>
-              <p className={`${styles.cardTitle} heading-3-text`}>
-                {option.departure} - {option.destination}
-              </p>
-              <p className={`${styles.cardType} body-text`}>{option.type}</p>
-              <p className={`${styles.cardPrice} body-text`}>KRW {option.price.toLocaleString()}</p>
-            </div>
+            {/* 링크 하나에 완성된 문장을 이름으로 주고, 화면용 내용은 숨겨 한 번에 읽히게 합니다 */}
+            <a
+              className={styles.cardLink}
+              href={option.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${describeTravel(option, index)}, 새 창에서 열림`}
+            >
+              <img src={option.image} alt="" className={styles.cardImage} />
+              <div className={styles.cardContent} aria-hidden="true">
+                <p className={`${styles.cardTitle} heading-3-text`}>
+                  {option.departure} - {option.destination}
+                </p>
+                <p className={`${styles.cardType} body-text`}>{option.type}</p>
+                <p className={`${styles.cardPrice} body-text`}>
+                  KRW {option.price.toLocaleString()}
+                </p>
+              </div>
+            </a>
           </div>
         ))}
       </div>
-      <button className={`${styles.navButton} ${styles.navButtonNext}`} onClick={nextTravel}>
-        <img src={chevronRight} className={styles.navButtonIcon} />
+      <button
+        type="button"
+        className={`${styles.navButton} ${styles.navButtonNext}`}
+        onClick={nextTravel}
+        aria-label="다음 여행지 보기"
+      >
+        <img src={chevronRight} alt="" className={styles.navButtonIcon} />
       </button>
+      {/* 이전/다음으로 이동했을 때만 새 카드 정보를 읽어줍니다 */}
+      <p className="visually-hidden" aria-live="polite" aria-atomic="true">
+        {announcement}
+      </p>
     </div>
   );
 };
