@@ -42,7 +42,11 @@ const FlightBooking = () => {
       <div className={styles.passengerCount}>
         <div className={styles.passengerLabel}>
           <span className="body-text">성인</span>
-          <div className={styles.helpControl}>
+          <div
+            className={styles.helpControl}
+            onMouseEnter={() => setShowTooltip(true)}
+            onMouseLeave={() => setShowTooltip(false)}
+          >
             <button
               type="button"
               className={styles.helpIconButton}
@@ -51,8 +55,6 @@ const FlightBooking = () => {
               aria-controls="adult-passenger-help"
               aria-expanded={showTooltip}
               onClick={() => setShowTooltip((prev) => !prev)}
-              onMouseEnter={() => setShowTooltip(true)}
-              onMouseLeave={() => setShowTooltip(false)}
               onFocus={() => setShowTooltip(true)}
               onBlur={() => setShowTooltip(false)}
             >
