@@ -9,6 +9,23 @@
   margin: 0 auto;
 }
 
+.skipLink {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 100;
+  padding: 12px 16px;
+  color: #fff;
+  background-color: #1f1f1f;
+  text-decoration: none;
+  transform: translate(-50%, -120%);
+  transition: transform 0.2s ease;
+}
+
+.skipLink:focus {
+  transform: translate(-50%, 0);
+}
+
 .header {
   padding: 48px 24px 24px 24px;
 }
@@ -19,6 +36,11 @@
 
 .main {
   flex: 1;
+}
+
+.main:focus {
+  outline: 3px solid #005fcc;
+  outline-offset: -3px;
 }
 
 .flightBooking {

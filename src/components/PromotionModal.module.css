@@ -50,6 +50,12 @@
   cursor: pointer;
 }
 
+.modalActionButton:focus-visible,
+.modalCloseButton:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 3px;
+}
+
 .modalCloseButton {
   position: absolute;
   top: -10px;
