@@ -51,12 +51,9 @@ const describeTravel = (index: number) => {
 
 const TravelSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [announcement, setAnnouncement] = useState('');
 
   const moveTravel = (step: number) => {
-    const nextIndex = (currentIndex + step + travelOptions.length) % travelOptions.length;
-    setCurrentIndex(nextIndex);
-    setAnnouncement(describeTravel(nextIndex));
+    setCurrentIndex((currentIndex + step + travelOptions.length) % travelOptions.length);
   };
 
   return (
@@ -65,6 +62,13 @@ const TravelSection = () => {
         지금 떠나기 좋은 여행
       </h2>
       <div className={styles.travelSection}>
+        <button
+          className={`${styles.navButton} ${styles.navButtonPrev}`}
+          onClick={() => moveTravel(-1)}
+          aria-label="이전 여행 상품"
+        >
+          <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
+        </button>
         <div className={styles.carousel}>
           {travelOptions.map((option, index) => (
             <div
@@ -93,20 +97,13 @@ const TravelSection = () => {
           ))}
         </div>
         <button
-          className={`${styles.navButton} ${styles.navButtonPrev}`}
-          onClick={() => moveTravel(-1)}
-          aria-label="이전 여행 상품"
-        >
-          <img src={chevronLeft} className={styles.navButtonIcon} alt="" />
-        </button>
-        <button
           className={`${styles.navButton} ${styles.navButtonNext}`}
           onClick={() => moveTravel(1)}
           aria-label="다음 여행 상품"
         >
           <img src={chevronRight} className={styles.navButtonIcon} alt="" />
         </button>
-        <output className="visually-hidden">{announcement}</output>
+        <output className="visually-hidden">{describeTravel(currentIndex)}</output>
       </div>
     </section>
   );
