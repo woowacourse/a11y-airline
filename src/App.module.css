@@ -40,3 +40,18 @@
   background-color: white;
   text-align: center;
 }
+
+.skipLink {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(-100%);
+  z-index: 9999;
+  transition: transform 0.2s ease;
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+  outline: 3px solid #0056b3;
+}
