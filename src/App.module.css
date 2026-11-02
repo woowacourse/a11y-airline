@@ -13,6 +13,26 @@
   padding: 48px 24px 24px 24px;
 }
 
+.skipLink {
+  position: fixed;
+  top: 8px;
+  left: 50%;
+  transform: translate(-50%, calc(-100% - 16px));
+  z-index: 1000;
+  padding: 12px 16px;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.skipLink:focus {
+  transform: translateX(-50%);
+  outline: 2px solid #333;
+  outline-offset: 2px;
+}
+
 .title {
   margin-bottom: 16px;
 }
