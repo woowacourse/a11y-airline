@@ -1,3 +1,23 @@
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  padding: 12px 16px;
+  background: #fff;
+  color: #000;
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 3px;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
