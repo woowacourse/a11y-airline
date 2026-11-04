@@ -45,8 +45,23 @@ const FlightBooking = () => {
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
           >
-            <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
-            {showTooltip && <div className={styles.tooltip}>최대 3명까지 예약할 수 있습니다</div>}
+            <button
+              type="button"
+              className={styles.helpButton}
+              aria-describedby="adult-help"
+              onFocus={() => setShowTooltip(true)}
+              onBlur={() => setShowTooltip(false)}
+            >
+              <img src={helpIcon} alt="도움말" className={styles.helpIcon} />
+            </button>
+            {/* 항상 DOM에 두어 버튼 설명(aria-describedby)으로 읽히게 하고, 본문에서 중복으로 읽히지 않게 숨김 */}
+            <p
+              id="adult-help"
+              aria-hidden="true"
+              className={showTooltip ? styles.tooltip : 'visually-hidden'}
+            >
+              최대 3명까지 예약할 수 있습니다
+            </p>
           </div>
         </div>
         <div className={styles.counter}>

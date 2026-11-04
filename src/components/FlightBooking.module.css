@@ -16,6 +16,14 @@
   cursor: pointer;
 }
 
+.helpButton {
+  display: flex;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
 .helpIcon {
   width: 16px;
   height: 16px;
